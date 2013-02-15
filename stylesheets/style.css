@@ -184,7 +184,7 @@ center.date {
   font-size: 60%;
   position: relative;
   height: 0;
-  top: -10px; }
+  top: -4px; }
 
 .hr {
   height: 1px;
@@ -205,3 +205,5 @@ center.date {
     text-align: center;
     color: #a0a0a0;
     display: inline-block; }
+    .hr .title.main {
+      font-size: 0.8em; }

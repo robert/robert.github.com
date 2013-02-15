@@ -151,7 +151,7 @@ section.info {
 
 center.date {
   font-size: 60%; position: relative;
-  height: 0; top: -10px;
+  height: 0; top: -4px;
 }
 
 .hr { 
@@ -164,5 +164,8 @@ center.date {
     white-space: nowrap; max-width: 90%; overflow: hidden; text-overflow: ellipsis;
     background: #f9f9f9; padding: 0 8px; margin: -21px 0; font-size: 0.5em; text-align: center;
     color: #a0a0a0; display: inline-block;
+    &.main {
+      font-size: 0.8em;
+    }
   }
 }

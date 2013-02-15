@@ -1,54 +1,70 @@
 <div class='hr'>
   <div class='title'>
-    feed
+    RSS
   </div>
 </div>
 <section>
-  <a class='big-button' href='http://feeds.feedburner.com/{{site.feedburner_id}}' id='subscribe' target='_blank'>Subscribe Me !</a>
+  <a class='big-button' href='http://feeds.feedburner.com/{{site.feedburner_id}}' id='subscribe' target='_blank'>Feed me</a>
 </section>
 <div class='stuff'>
   <section class='info'>
     <div class='hr'>
-      <div class='title'>In</div>
+      <div class='title'>What next?</div>
+    </div>
+    {% for post in site.posts %}
+    <div class='item'>
+      <a href="{{ post.url }}">
+        {{ post.title }}
+        <small class="muted" data-time="{{ post.date }}">{{ post.date | date_to_string }} </small>
+      </a>
+    </div>
+    {% endfor %}
+
+
+  </section>
+  <section class='info'>
+    <div class='hr'>
+      <div class='title'>Who is that masked man?</div>
     </div>
     <div class='item'>
+      <small>Co-founder</small>
       <a href='http://copyin.com' id='copyin' target='_blank'>Copyin.com</a>
-      <small>as designer & developer</small>
     </div>
     <div class='item'>
-      <a href='http://zeczec.com' id='zeczec' target='_blank'>Zeczec.com</a>
-      <small>as co-founder & sole dev</small>
+      <small>Co-founder</small>
+      <a href='http://qcumberclothing.com' target='_blank'>QCumberClothing</a>
+    </div>
+    <div class='item'>
+      <small>Co-experimenter</small>
+      <a href='http://copyin.com' id='copyin' target='_blank'>Sakuru.co</a>
+    </div>
+    <div class='item'>
+      <small>Bedroom DJ</small>
+      <a href='http://www.youtube.com/user/bobh4242/videos?view=0' id='copyin' target='_blank'>Logic Studio</a>
     </div>
   </section>
   <section class='info'>
     <div class='hr'>
-      <div class='title'>By</div>
+      <div class='title'>Web</div>
     </div>
-    <div class='item'>
-      <a href='https://chrome.google.com/webstore/detail/pivotal-tweaker/aodalckpkgijlndlnlhblojedfboaglg' id='tweaker' target='_blank'>Pivotal Tweaker</a>
-      <small>Jan 2013</small>
-    </div>
-  </section>
-  <section class='info'>
-    <div class='hr'>
-      <div class='title'>Via</div>
-    </div>
-    <a href='http://twitter.com/muanchiou' id='twitter' target='_blank'>@muanchiou</a>
+    <a href='http://twitter.com/robjheaton' id='twitter' target='_blank'>@RobJHeaton</a>
     <br />
-    <a href='http://github.com/muanchiou' id='github' target='_blank'>Github</a>
+    <a href='http://github.com/robertheaton' id='github' target='_blank'>Github</a>
     <br />
-    <a href='http://instagram.com/muanchiou' id='instagram' target='_blank'>Instagram</a>
+    <a href='http://uk.linkedin.com/in/robertjheaton' id='linkedin' target='_blank'>LinkedIn</a>
   </section>
 </div>
 <br />
+<!--
 <div class='hr'>
   <div class='title'>
     <small>This is Mu-An Chiou, a designer/developer based in London</small>
   </div>
 </div>
+-->
 <div class='hr'>
   <div class='title'>
-    <small>This site is built <a href="http://github.com/muanchiou/muanchiou.github.com">with Jekyll on Github Pages</a></small>
+    <small>Built with glue, spit and <a href="http://github.com/muanchiou/muanchiou.github.com">Jekyll on Github Pages</a></small>
   </div>
 </div>
 {{ include ga.html }}
