@@ -1,3 +1,7 @@
+---
+layout: post
+title: Featurewhack
+---
 Imagine a game of whack-a-mole with 900 angry moles, many of whom have knives. Moles win.
 
 Now imagine a second game with 1 mole that is already quite elderly and infirm. Bad time to be furry and blind.
