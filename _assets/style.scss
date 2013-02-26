@@ -80,7 +80,7 @@ ul.posts {
   }
 }
 
-section.post {
+.site section.blogpost {
   border: 1px dotted #CCC;
   padding: 15px 15px 0;
   border-top: 0;
@@ -88,9 +88,9 @@ section.post {
   min-height: 250px;
 }
 
-section.post, section > p {
+.site section.blogpost, .site section > p {
   font-size: 1.20rem; line-height: 1.75rem;
-  * { max-width: 100%; }
+  * {}
   blockquote { font-style: italic; color: #999; }
   li .CodeMirror { margin: 10px 0; }
   li p { margin-bottom: 5px; }
@@ -101,7 +101,7 @@ section.post, section > p {
 }
 
 @media (max-width: 580px) {
-  section.post img.half { width: 100%; }
+  section.blogpost img.half { width: 100%; }
 }
 .muted { color: #777; }
 

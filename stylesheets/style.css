@@ -102,32 +102,30 @@ ul.posts li a {
     font-size: 50%;
     text-transform: uppercase; }
 
-section.post {
+.site section.blogpost {
   border: 1px dotted #cccccc;
   padding: 15px 15px 0;
   border-top: 0;
   margin: -25px 0 0;
   min-height: 250px; }
 
-section.post, section > p {
+.site section.blogpost, .site section > p {
   font-size: 1.20rem;
   line-height: 1.75rem; }
-  section.post *, section > p * {
-    max-width: 100%; }
-  section.post blockquote, section > p blockquote {
+  .site section.blogpost blockquote, .site section > p blockquote {
     font-style: italic;
     color: #999; }
-  section.post li .CodeMirror, section > p li .CodeMirror {
+  .site section.blogpost li .CodeMirror, .site section > p li .CodeMirror {
     margin: 10px 0; }
-  section.post li p, section > p li p {
+  .site section.blogpost li p, .site section > p li p {
     margin-bottom: 5px; }
-  section.post img, section > p img {
+  .site section.blogpost img, .site section > p img {
     max-width: 100%; }
-    section.post img.half, section > p img.half {
+    .site section.blogpost img.half, .site section > p img.half {
       width: 50%; }
 
 @media (max-width: 580px) {
-  section.post img.half {
+  section.blogpost img.half {
     width: 100%; } }
 .muted {
   color: #777; }
