@@ -12,16 +12,36 @@
 <div class='stuff'>
   <section class='info'>
     <div class='hr'>
-      <div class='title'>What next?</div>
+      <div class='title'>Previously on 24</div>
     </div>
-    {% for post in site.posts limit: 2 %}
+    
+    {% if page.next %}
     <div class='item'>
-      <a href="{{ post.url }}">
-        {{ post.title }}
-        <small class="muted" data-time="{{ post.date }}">{{ post.date | date_to_string }} </small>
+      <a href="{{ page.next.url }}">
+        {{ page.next.title }}
       </a>
     </div>
-    {% endfor %}
+    {% else %}
+    <div class='item'>
+      <a href="{{ site.pages[0].url }}">
+        {{ site.posts[0].title }}
+      </a>
+    </div>
+    {% endif %}
+
+    {% if page.previous %}
+    <div class='item'>
+      <a href="{{ page.previous.url }}">
+        {{ page.previous.title }}
+      </a>
+    </div>
+    {% else %}
+    <div class='item'>
+      <a href="{{ site.pages[-1].url }}">
+        {{ site.posts[-1].title }}
+      </a>
+    </div>
+    {% endif %}
 
 
   </section>
