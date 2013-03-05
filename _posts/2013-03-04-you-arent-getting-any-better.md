@@ -15,3 +15,5 @@ You might just want to have fun. You might just want to mess around with some co
 No one would argue that some ways of learning are more effective than others, but it is important to realise that the ineffective ones are not only sub-optimal, but completely useless. Whilst you are unavoidably picking up points on your CV with every project you complete and every line of code you write, you may not, and indeed probably are not actually getting any better. If that's what you want, you have to make a conscious effort and chart a deliberate course. Following your nose will lead you to some interesting places, but it will not make you exceptional.
 
 [1] "Talent is Overrated" by Geoff Colvin, p7
+
+<a href="http://news.ycombinator.com/item?id=5324029" target="_blank">Discussion on Hacker News</a>
