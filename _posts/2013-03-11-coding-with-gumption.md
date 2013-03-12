@@ -29,3 +29,5 @@ Motorcycle maintenance is fraught with hundreds more gumption traps, and enginee
 -----
 
 All of the above is directly inspired by Pirsig, some parts more directly than others.
+
+<a href="https://news.ycombinator.com/item?id=5361465" target="_blank">Discussion on Hacker News</a>
