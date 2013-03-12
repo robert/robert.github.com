@@ -35,9 +35,9 @@
           <center class='date muted'>{{ page.date | date_to_string }}</center>
           {{ content }}
           <div style="text-align:center; margin-bottom: 15px">
-            <span class='st_facebook_vcount' displayText='Facebook'></span>
-            <span class='st_twitter_vcount' displayText='Tweet'></span>
-            <span class='st_googleplus_vcount' displayText='Google +'></span>
+            <span class='st_facebook_vcount' displayText='Facebook' st_title="{{page.title}}" st_summary="{{page.title}}"></span>
+            <span class='st_twitter_vcount' displayText='Tweet' st_via="RobJHeaton" st_title="{{page.title}}"></span>
+            <span class='st_googleplus_vcount' displayText='Google +' st_title="{{page.title}}"></span>
             <span class='st_twitterfollow_vcount' displayText='Twitter Follow' st_username='RobJHeaton'></span>                   
           </div>
         </section>
