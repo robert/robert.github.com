@@ -1,90 +1,56 @@
-<section>
-  <iframe height='440' src='//copyin.com/invite_requests/embed?uid=8104058588' style='border: 0;' width='100%'></iframe>
-</section>
-<div class='hr'>
-  <div class='title'>
-    RSS
+<footer>
+
+  <div class='stuff'>
+    <section class='info'>
+      <h3 class="section-title">Previously on 24</h3>
+      {% if site.related_posts %}
+        {% for post in site.related_posts, limit: 4 %}
+          <div class="item"><a href="{{ post.url }}">{{ post.title }}</a></div>
+        {% endfor %}
+      {% else %}
+        {% for post in site.posts, limit: 4 %}
+          <div class="item"><a href="{{ post.url }}">{{ post.title }}</a></div>
+        {% endfor %}
+      {% endif %}
+    </section>
+
+    <section class='info'>
+      <h3 class="section-title">Who is that masked man?</h3>
+      <div class='item'>
+        <a href='http://copyin.com' id='copyin' target='_blank'>Copyin.com</a>
+        <small>Co-founder</small>
+      </div>
+      <div class='item'>
+        <a href='http://qcumberclothing.com' target='_blank'>QCumberClothing</a>
+        <small>Co-founder</small>
+      </div>
+      <div class='item'>
+        <a href='http://sakuru.co' id='copyin' target='_blank'>Sakuru.co</a>
+        <small>Co-experimenter</small>
+      </div>
+      <div class='item'>
+        <a href='http://www.youtube.com/user/bobh4242/videos?view=0' id='copyin' target='_blank'>Logic Studio</a>
+        <small>Bedroom DJ</small>
+      </div>
+    </section>
+    <section class='info'>
+      <h3 class="section-title">Follow that car</h3>
+      <div style="position:relative; top: 5px; margin-bottom: 15px;">
+        <a href="https://twitter.com/RobJHeaton" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @RobJHeaton</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+      <div class='item'>
+        <a href='http://twitter.com/robjheaton' id='twitter' target='_blank'>Twitter</a>
+      </div>
+      <div class='item'>
+        <a href='http://github.com/robert' id='github' target='_blank'>Github</a>
+      </div>
+      <div class='item'>
+        <a href='http://uk.linkedin.com/in/robertjheaton' id='linkedin' target='_blank'>LinkedIn</a>
+      </div>
+    </section>
   </div>
-</div>
-<section>
-  <a class='big-button' href='http://feeds.feedburner.com/{{site.feedburner_id}}' id='subscribe' target='_blank'>Feed me</a>
-</section>
-<div class='stuff'>
-  <section class='info'>
-    <div class='hr'>
-      <div class='title'>Previously on 24</div>
-    </div>
-    
-    {% if page.next %}
-    <div class='item'>
-      <a href="{{ page.next.url }}">
-        {{ page.next.title }}
-      </a>
-    </div>
-    {% else %}
-    <div class='item'>
-      <a href="{{ site.pages[0].url }}">
-        {{ site.posts[3].title }}
-      </a>
-    </div>
-    {% endif %}
-
-    {% if page.previous %}
-    <div class='item'>
-      <a href="{{ page.previous.url }}">
-        {{ page.previous.title }}
-      </a>
-    </div>
-    {% else %}
-    <div class='item'>
-      <a href="{{ site.pages[-1].url }}">
-        {{ site.posts[-1].title }}
-      </a>
-    </div>
-    {% endif %}
-
-
-  </section>
-  <section class='info'>
-    <div class='hr'>
-      <div class='title'>Who is that masked man?</div>
-    </div>
-    <div class='item'>
-      <small>Co-founder</small>
-      <a href='http://copyin.com' id='copyin' target='_blank'>Copyin.com</a>
-    </div>
-    <div class='item'>
-      <small>Co-founder</small>
-      <a href='http://qcumberclothing.com' target='_blank'>QCumberClothing</a>
-    </div>
-    <div class='item'>
-      <small>Co-experimenter</small>
-      <a href='http://copyin.com' id='copyin' target='_blank'>Sakuru.co</a>
-    </div>
-    <div class='item'>
-      <small>Bedroom DJ</small>
-      <a href='http://www.youtube.com/user/bobh4242/videos?view=0' id='copyin' target='_blank'>Logic Studio</a>
-    </div>
-  </section>
-  <section class='info'>
-    <div class='hr'>
-      <div class='title'>Follow that car</div>
-    </div>
-    <!--<a href='http://twitter.com/robjheaton' id='twitter' target='_blank'>@RobJHeaton</a>-->
-    <span style="position:relative; top: 5px;">
-    <a href="https://twitter.com/RobJHeaton" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @RobJHeaton</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    </span>
-    <br />
-    <a href='http://github.com/robert' id='github' target='_blank'>Github</a>
-    <br />
-    <a href='http://uk.linkedin.com/in/robertjheaton' id='linkedin' target='_blank'>LinkedIn</a>
-  </section>
-</div>
-<br />
-<div class='hr'>
-  <div class='title'>
-    <small>Built with glue, spit and <a href="http://github.com/muanchiou/muanchiou.github.com">Jekyll on Github Pages</a></small>
-  </div>
-</div>
-{{ include ga.html }}
+  <br />
+  <br />
+  <center><small>Built with glue, spit and <a href="http://github.com/muan/muan.github.com">Jekyll on Github Pages</a></small></center>
+</footer>
