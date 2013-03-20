@@ -8,7 +8,7 @@ In motorcycle maintenance, gumption is what allows you to take apart and reassem
 
 In software, gumption is what allows you to assemble tokens in files so as to improve the lives of your users.
 
-*"A person filled with gumption doesn't sit around dissipating and stewing about things. He's at the front of the train of his own awareness, watching to see what's up the track and meeting it when it comes. That's gumption."*
+> A person filled with gumption doesn't sit around dissipating and stewing about things. He's at the front of the train of his own awareness, watching to see what's up the track and meeting it when it comes. That's gumption.
 
 Gumption is having heart. It is having enthusiasm, quiet confidence and commitment to your work and projects. It is being in tune with whatever you choose to have in front of you, regardless of the distractions around and within you. That's gumption.
 
@@ -24,7 +24,7 @@ Instead, when you realise than a painful dismantling of your recent work is goin
  
 Motorcycle maintenance is fraught with hundreds more gumption traps, and engineering is no safer. To be an engineer you need artistries and skills, but you must also build and maintain the heart to use them. Gumption reduces short-term productivity hacks down to the core of what it is to intrinsically care about your craft. If you can study and know yourself and your own state of mind, even and especially when you are hurting and reeling, and if you can use this study to nurture and preserve constantly embering enthusiasm in the face of setbacks and hang ups, then you cannot fail to create great and serene things as a matter of course.
 
-*"You aren't just after a fixed machine, you are after peace of mind."*
+> You aren't just after a fixed machine, you are after peace of mind.
 
 -----
 
