@@ -29,3 +29,6 @@ I take pride in what I have achieved. Doctors can't do much. Drugs are ineffecti
 I’m not battling pain, so I haven't beaten it as such, but I haven't let it beat me either. I am in many ways stronger, whether I like it or not. I am in all likelihood more understanding of some of the crap that other people go through, although that might just be maturity or my imagination. 
 
 And I am happier.
+
+<a href="https://news.ycombinator.com/item?id=5406693" target="_blank">Discussion on Hacker News</a>
+
