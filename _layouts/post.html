@@ -10,7 +10,7 @@
     <div id='container'>
       <div class='site'>
         <section class='post blogpost'>
-          <h1 class='subject'>{{ page.title }}</h1>
+          <h1 class='subject'><a href="{{page.url}}">{{ page.title }}</a></h1>
           <div class='date muted'>{{ page.date | date_to_string }}</div>
           {{ content }}
           {% include social_links.html %}
