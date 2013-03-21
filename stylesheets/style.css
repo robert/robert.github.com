@@ -274,7 +274,6 @@ section.share-links {
     *display: inline;
     *vertical-align: auto;
     vertical-align: top;
-    overflow: hidden;
     height: 20px; }
     section.share-links .button.spaced {
       margin-right: 30px; }
