@@ -206,7 +206,6 @@ section.share-links {
   .button { 
     @include inline-block;
     vertical-align: top;
-    overflow: hidden;
     height: 20px; 
     &.spaced { margin-right: 30px; }
   }
