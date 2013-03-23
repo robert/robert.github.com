@@ -32,3 +32,5 @@ And I am happier.
 
 <a href="https://news.ycombinator.com/item?id=5406693" target="_blank">Discussion on Hacker News</a>
 
+This post was also republished on <a href="http://lifehacker.com/5991778/how-chronic-pain-has-made-me-happier" target="_blank">Lifehacker</a>.
+
