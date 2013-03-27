@@ -98,7 +98,11 @@ a, .as-link {
 #container, .stuff {
   width: 100%;
   max-width: 700px;
-  margin: auto; }
+  margin: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
 
 @media (min-width: 960px) {
   #container {
@@ -125,7 +129,8 @@ hr {
 
 ul.posts {
   padding: 0;
-  margin: 20px auto 60px; }
+  max-width: 600px;
+  margin: 0 auto 40px; }
   ul.posts li {
     margin: 0;
     padding: 0;
@@ -214,12 +219,6 @@ section.info {
   *display: inline;
   *vertical-align: auto;
   vertical-align: top; }
-  section.info.one {
-    width: 100%; }
-    section.info.one:not(:last-of-type) {
-      border-bottom: 1px dotted #cccccc;
-      margin-bottom: 20px;
-      padding-bottom: 35px; }
   section.info a {
     line-height: 2.4em; }
   section.info:not(:last-of-type) {
@@ -230,6 +229,13 @@ section.info {
     padding-bottom: 2px;
     border-bottom: 1px dotted #cccccc; }
 
+@media (max-width: 600px) {
+  section.info {
+    width: 100%; }
+    section.info:not(:last-of-type) {
+      border-bottom: 1px dotted #cccccc;
+      margin-bottom: 20px;
+      padding-bottom: 35px; } }
 .subject {
   font-size: 20px;
   line-height: 1.5em;
