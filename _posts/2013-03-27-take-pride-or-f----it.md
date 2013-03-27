@@ -20,4 +20,4 @@ For my undead redemption I have to either immediately make amends for what I hav
 
 Too often I feel like spending time doing things right or at least defensively wrong is intellectual self-indulgence. Get it done! Ship it! But bad code slows you down far more than good code does. It's too easy to write something crap, be forced to write several layers of crap on top of that, shout "LEAN STARTUP" at anyone who questions you and make a shamble for the exit. You need a very good and immediate reason to write bad code, and a vague feeling of pressure or lethargy is not enough.
 
-Because it never ends there. And as soon as even a trace element of monkey faeces hits production, we've got a situation on our hands.
+Because it never ends there. And as soon as even a trace element of monkey excrement hits production, you're going to have a faeces flood on your hands.
