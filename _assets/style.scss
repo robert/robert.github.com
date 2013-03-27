@@ -74,6 +74,8 @@ a, .as-link {
   width: 100%;
   max-width: 700px;
   margin: auto;
+  padding: 10px;
+  @include box-sizing(border-box);
 }
 
 @media (min-width: 960px) {
@@ -94,7 +96,8 @@ hr {
 
 ul.posts {
   padding: 0;
-  margin: 20px auto 60px;
+  max-width: 600px;
+  margin: 0 auto 40px;
   li { margin: 0; padding: 0; list-style: none; }
   li a { 
     &, * { @include transition(all, 0.3s); }
@@ -159,13 +162,6 @@ footer {
 }
 
 section.info {
-  &.one { 
-    width: 100%; 
-    &:not(:last-of-type) { 
-      border-bottom: 1px dotted #ccc; margin-bottom: 20px;
-      padding-bottom: 35px;
-    }
-  }
   width: 49%; 
   font-size: 13px;
   a { line-height: 2.4em; }
@@ -174,6 +170,16 @@ section.info {
   vertical-align: top;
   small { color: #999; }
   .item { * { padding-bottom: 2px; border-bottom: 1px dotted #ccc;} }
+}
+
+@media (max-width: 600px) {
+  section.info {
+    width: 100%; 
+    &:not(:last-of-type) { 
+      border-bottom: 1px dotted #ccc; margin-bottom: 20px;
+      padding-bottom: 35px;
+    }
+  }
 }
 
 .subject {
