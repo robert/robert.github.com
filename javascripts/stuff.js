@@ -20,7 +20,7 @@ jQuery(function() {
   $.each($("a[id]"), function(index, ele) {
     return $(ele).click(function(e) {
       e.stopImmediatePropagation();
-      return _gaq.push(["_trackEvent", "Clicks on " + e.target.id]);
+      return _gaq.push(["_trackEvent", "Links", "Clicked on " + e.target.id]);
     });
   });
   return $.each($("[data-time]"), function(index, ele) {
