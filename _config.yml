@@ -1,5 +1,7 @@
 permalink:   pretty
 markdown:    rdiscount
+rdiscount:
+  extensions: [smart]
 name: Robert Heaton
 description: 
 url: http://robertheaton.com
