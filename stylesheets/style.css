@@ -21,6 +21,7 @@ header {
   width: 300px;
   height: 150px;
   border: 1px dotted #e6e6e7;
+  border-radius: 3px;
   margin: 50px auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
