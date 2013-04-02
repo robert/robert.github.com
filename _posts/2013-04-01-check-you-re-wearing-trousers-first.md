@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Are you wearing trousers?
+title: Check you're wearing trousers first
 ---
 It’s easy, fun, and a catastrophic mistake to over-intellectualise. Unfortunately it also pays pretty well.
 
