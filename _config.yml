@@ -3,7 +3,7 @@ markdown:    rdiscount
 rdiscount:
   extensions: [smart]
 name: Robert Heaton
-description: 
+description: 'Co-founder @Copyin.com. Lies, damn lies and startups.'
 url: http://robertheaton.com
 auto: true
 feedburner_id: robertheaton
