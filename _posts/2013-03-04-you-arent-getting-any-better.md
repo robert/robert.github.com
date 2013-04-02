@@ -1,6 +1,7 @@
 ---
 layout: post
 title: You aren't getting any better
+hn: 5324029
 ---
 My limited and very biased samples suggest that hackers have a much greater intrinsic desire to improve their skills than those in other professions. We want to be ninjas not just because it will mean better-paying and more exciting jobs, but because there is something innately cool about knowing how to properly wield Javascript, Erlang or Clojure. So we spend an inordinate amount of time in after-hours experimentation, blogging and productivity optimisation, with the unspoken assumption that the weight of this combined experience will necessarily and always lead to a sustained, continuous improvement in knowledge and chops. But it won't.
 
@@ -15,5 +16,3 @@ You might just want to have fun. You might just want to mess around with some co
 No one would argue that some ways of learning are more effective than others, but it is important to realise that the ineffective ones are not only sub-optimal, but completely useless. Whilst you are unavoidably picking up points on your CV with every project you complete and every line of code you write, you may not, and indeed probably are not actually getting any better. If that's what you want, you have to make a conscious effort and chart a deliberate course. Following your nose will lead you to some interesting places, but it will not make you exceptional.
 
 [1] "Talent is Overrated" by Geoff Colvin, p7
-
-<a href="http://news.ycombinator.com/item?id=5324029" target="_blank">Discussion on Hacker News</a>

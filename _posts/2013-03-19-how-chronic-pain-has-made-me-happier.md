@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How chronic pain has made me happier
+hn: 5406693
 ---
 Seven years ago I did so much cycling that my legs blew up. My body completely gave out and my brain decided that from now on everything was going to hurt all the time so that I would stop running myself into the ground. Since then I've had every type of scan ever invented and been to every kind of doctor under the sun. No one has ever found anything physically wrong with me.
 
@@ -32,7 +33,4 @@ And I am happier.
 
 -----
 
-<a href="https://news.ycombinator.com/item?id=5406693" target="_blank">Discussion on Hacker News</a>
-
 This post was also republished on <a href="http://lifehacker.com/5991778/how-chronic-pain-has-made-me-happier" target="_blank">Lifehacker</a>.
-
