@@ -17,3 +17,7 @@ Anecdotally it seems that when companies bring in management consultants to save
 It's a pleasant delusion to believe that all our problems require hard solutions. This way we feel interesting, get to do challenging things and become more attractive to members of our preferred sex. If you're constantly feeling tired it's tempting to become concerned about your iron levels, consider painting your ceiling a relaxing shade of ochre and look into buying a new pillow that fits your personality better. But you probably just need to go to bed a bit earlier. Perhaps on some level of consciousness we find it hard to believe that anything simple could possibly make a dent in our problems, which as we already know are of course really difficult and can only be solved by a super-genius such as ourselves. But there will always be simple things you are doing badly that you should look at first, especially in a startup where you deliberately ignore 90% of things so that you can do the other 10% really, really right.
 
 Simple solutions are almost always quickest, easiest and most effective. Maybe sometimes it does turn out that they aren't enough and you do in fact need to do something hard. But if people in the street keep giving you funny looks, make sure you're wearing trousers before you start worrying about what colour they are.
+
+-----
+
+<a href="https://news.ycombinator.com/item?id=5478893" target="_blank">Discussion on Hacker News</a>
