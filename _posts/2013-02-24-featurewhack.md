@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Featurewhack
+hn: 5298338
 ---
 Imagine a game of whack-a-mole with 900 angry moles, many of whom have knives. Moles win.
 
