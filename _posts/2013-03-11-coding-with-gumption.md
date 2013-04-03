@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Coding with gumption
+hn: 5361465
 ---
 The first and only mention of Gumption Theory in modern writing is found towards the end of Robert Pirsig's Zen and the Art of Motorcycle Maintenance. The author sets out a plain and uncomplicated approach to attaining and maintaining the state of mind required to repair a motorcycle. It takes about 20 pages. And the first time I read it, I knew that this was what my engineering practise was missing.
 
@@ -29,5 +30,3 @@ Motorcycle maintenance is fraught with hundreds more gumption traps, and enginee
 -----
 
 All of the above is directly inspired by Pirsig, some parts more directly than others.
-
-<a href="https://news.ycombinator.com/item?id=5361465" target="_blank">Discussion on Hacker News</a>
