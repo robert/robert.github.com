@@ -258,7 +258,7 @@ section.navigation {
   section.navigation a {
     width: 50%; }
     section.navigation a span {
-      opacity: 0.2;
+      opacity: 0.8;
       padding: 0 5px;
       -webkit-transition: all, 0.3s;
       -moz-transition: all, 0.3s;
