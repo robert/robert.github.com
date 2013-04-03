@@ -34,3 +34,5 @@ And I am happier.
 -----
 
 This post was also republished on <a href="http://lifehacker.com/5991778/how-chronic-pain-has-made-me-happier" target="_blank">Lifehacker</a>.
+
+I now write more about how I deal with chronic pain at <a href="http://ifoundthishelped.com">I found this helped</a>.
