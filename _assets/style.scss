@@ -200,7 +200,7 @@ section.navigation {
   margin: 0 0 15px;
   a {
     width: 50%;
-    span { opacity: 0.2; padding: 0 5px; @include transition(all, 0.3s); }
+    span { opacity: 0.8; padding: 0 5px; @include transition(all, 0.3s); }
     &:hover span { opacity: 1; }
   }
 }
