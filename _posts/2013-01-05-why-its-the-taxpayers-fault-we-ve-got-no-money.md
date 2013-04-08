@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Why it's the taxpayer's fault we've got no money
+title: Why it’s the taxpayer’s fault we’ve got no money
 ---
 Do you pay your taxes? Do you pay the amount of tax that the law, interpreted by A Reasonable Man, says you should pay? Then it’s your fault the country is so much in debt.
 

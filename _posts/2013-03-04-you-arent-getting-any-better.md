@@ -1,6 +1,6 @@
 ---
 layout: post
-title: You aren't getting any better
+title: You aren’t getting any better
 hn: 5324029
 ---
 My limited and very biased samples suggest that hackers have a much greater intrinsic desire to improve their skills than those in other professions. We want to be ninjas not just because it will mean better-paying and more exciting jobs, but because there is something innately cool about knowing how to properly wield Javascript, Erlang or Clojure. So we spend an inordinate amount of time in after-hours experimentation, blogging and productivity optimisation, with the unspoken assumption that the weight of this combined experience will necessarily and always lead to a sustained, continuous improvement in knowledge and chops. But it won't.
