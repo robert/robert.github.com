@@ -15,14 +15,10 @@ strong, b {
   font-weight: normal; }
 
 header {
-  padding: 35px 20px;
+  padding: 15px 0;
   line-height: 1.3em;
-  text-align: center;
-  width: 300px;
-  height: 150px;
-  border: 1px dotted #e6e6e7;
-  border-radius: 3px;
-  margin: 50px auto;
+  margin: 0 auto 30px;
+  background: #f7f8f9;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -49,6 +45,26 @@ header {
     margin: 0;
     font-size: 13px;
     line-height: 2em; }
+  header .rob {
+    position: absolute;
+    left: -56px;
+    top: 10px;
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    *display: inline;
+    *vertical-align: auto;
+    overflow: hidden;
+    border-radius: 50px;
+    border: 4px solid rgba(0, 0, 0, 0.05); }
+
+footer {
+  margin: 40px 0 0 0;
+  padding: 25px;
+  background: #f7f8f9;
+  line-height: 2rem; }
+  footer h3 {
+    font-size: 14px; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal; }
@@ -96,17 +112,18 @@ a, .as-link {
       a.big-button.red:active, .as-link.big-button.red:active {
         box-shadow: inset 0 1px 2px #602022; }
 
-#container, .stuff {
+.container, .stuff {
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   margin: auto;
-  padding: 10px;
+  padding: 15px;
+  position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 @media (min-width: 960px) {
-  #container {
+  .container {
     width: 60%; } }
 .pull-right {
   float: right; }
@@ -155,8 +172,7 @@ ul.posts {
 
 .site section.blogpost {
   max-width: 600px;
-  margin: auto;
-  padding: 0 10px; }
+  margin: auto; }
 
 .site section.blogpost, .site section > p {
   line-height: 1.8em; }
@@ -203,14 +219,6 @@ ul.posts {
   font-size: 80%;
   text-shadow: -1px -1px 0px black; }
 
-footer {
-  margin: 40px 0 0 0;
-  padding: 25px;
-  background: #f7f8f9;
-  line-height: 2rem; }
-  footer h3 {
-    font-size: 14px; }
-
 section.info {
   width: 49%;
   font-size: 13px;
@@ -238,8 +246,8 @@ section.info {
       margin-bottom: 20px;
       padding-bottom: 35px; } }
 .subject {
-  font-size: 20px;
-  line-height: 1.5em;
+  font-size: 18px;
+  line-height: 1.3em;
   margin: 0; }
 
 .section-title {
