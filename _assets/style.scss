@@ -1,5 +1,11 @@
 @import "bourbon/bourbon";
 
+@include keyframes(fade-in) {
+  0% { opacity: 0 }
+  50% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
 body { 
   background: #fff;
   color: #000;
@@ -27,12 +33,13 @@ header {
   p { margin: 0; font-size: 13px; line-height: 2em; }
   .rob { 
     position: absolute;
-    left: -56px;
+    left: -66px;
     top: 10px;
     @include inline-block;
     overflow: hidden;
     border-radius: 50px;
     border: 4px solid fade-out(black, 0.95);
+    @include animation(fade-in 1.5s);
   }
 }
 
