@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Infinite monkeys and infinite repos
+hn: 5517334
 ---
 Imagine a startup ecosystem populated by an infinite number of monkeys, working on an infinite number of startups, running on an infinite number of Heroku dynos and Github repos. The simian startups would admittedly have a lot of inherent problems. Monkeys are notoriously bad at customer development, so there would be a very poor feedback loop. There wouldn't be much in the way of strategy. Pivots would be made at random and more often than not into something involving faeces. The company would smell, which would make hiring very difficult, and since monkeys are very territorial new hires would frequently get mauled to death on their first day. Users would have to deal with a whole host of dubious products. There would be an app for making grocery shopping more dangerous. There would be an app for hailing cabs, except all the cabs are made of bread. There would be a marketplace for democratizing setting badgers on fire. Many of these startups would fail in their first 2 years of operation.
 
