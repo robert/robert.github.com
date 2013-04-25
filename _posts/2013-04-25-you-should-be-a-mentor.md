@@ -1,6 +1,7 @@
 ---
 layout: post
 title: You should be a mentor
+hn: 5606545
 ---
 When I tell my friends that I’ve started mentoring at startup events, they politely splutter into their coffee and start throwing things at me. And when you haven't yet achieved anything spectacular yourself, it can be very hard not to feel like a fraud when mentoring or advising or otherwise doing anything that implies you know more than someone else about building a company. But you simply do not need to have reached your end goal in order to talk intelligently about how to get to where you are today. No matter how small you believe your accomplishments so far to be.
 
