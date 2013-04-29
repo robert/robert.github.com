@@ -550,6 +550,14 @@
 				"buffer_size": 3777,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "_includes/header.html",
+			"settings":
+			{
+				"buffer_size": 2600,
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -915,7 +923,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1027,6 +1035,32 @@
 						"zoom_level": 1.0
 					},
 					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "_includes/header.html",
+					"settings":
+					{
+						"buffer_size": 2600,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2498,
+								2498
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 151.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
 				}
 			]
 		}
@@ -1080,6 +1114,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"he",
+				"_includes/header.html"
+			],
 			[
 				"index",
 				"_layouts/index.html"
@@ -1587,10 +1625,6 @@
 			[
 				"mail_",
 				"app/models/mail_request.rb"
-			],
-			[
-				"receiv",
-				"extras/receiver_api_constraint_base.rb"
 			]
 		],
 		"width": 0.0
