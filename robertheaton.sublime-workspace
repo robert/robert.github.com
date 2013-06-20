@@ -519,6 +519,33 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "",
+			"file": "javascripts/artylytics.js",
+			"file_size": 1992,
+			"file_write_time": 1371734051000000,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_includes/header.html",
+			"settings":
+			{
+				"buffer_size": 2430,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_includes/ga.html",
+			"settings":
+			{
+				"buffer_size": 2557,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -572,6 +599,7 @@
 	},
 	"file_history":
 	[
+		"/Users/robertheaton/Dropbox/robert.github.com/index.html",
 		"/Users/robertheaton/Dropbox/robert.github.com/_assets/stuff.coffee",
 		"/Users/robertheaton/Dropbox/robert.github.com/_posts/2013-04-25-you-should-be-a-mentor.md",
 		"/Users/robertheaton/Dropbox/robert.github.com/_layouts/index.html",
@@ -698,8 +726,7 @@
 		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/lib/tasks/db.rake",
 		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/views/error_mailer/generic_mail_error.html.haml",
 		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/helpers/application_helper.rb",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/views/layouts/logged_out.html.haml",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/assets/javascripts/application.js.coffee"
+		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/views/layouts/logged_out.html.haml"
 	],
 	"find":
 	{
@@ -720,6 +747,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"title",
 			"gaq",
 			"margin: 40px",
 			"i found",
@@ -846,8 +874,7 @@
 			"and_create_list",
 			"get_homepage_path",
 			"rspec",
-			"Timecop",
-			"faker"
+			"Timecop"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -883,8 +910,89 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "javascripts/artylytics.js",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "_includes/header.html",
+					"settings":
+					{
+						"buffer_size": 2430,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2001,
+								2001
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 91.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "_includes/ga.html",
+					"settings":
+					{
+						"buffer_size": 2557,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2548,
+								2548
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 635.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -937,6 +1045,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"hea",
+				"_includes/header.html"
+			],
 			[
 				"he",
 				"_includes/header.html"
@@ -1444,10 +1556,6 @@
 			[
 				"test_cont",
 				"app/controllers/test_controller.rb"
-			],
-			[
-				"mail_",
-				"app/models/mail_request.rb"
 			]
 		],
 		"width": 0.0
