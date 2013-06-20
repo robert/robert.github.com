@@ -33,67 +33,6 @@
 <script src='/javascripts/shell-cm.js' type='text/javascript'></script>
 <script src='/javascripts/pd.js' type='text/javascript'></script>
 <script src='/javascripts/stuff.js' type='text/javascript'></script>
-<script type='text/javascript'>
- // ----------------------------
-var timingInterval = 10;
-var activeReadingTime = 0;
-var dormancyThreshold = 90;
-var docLoadTimestamp = getTimeInSeconds();
-updateLastActionTime();
-window.setInterval(function(){
-  // determine whether scroll suggests document is dormant
-  if (window.isActive && (getTimeInSeconds() - window.lastActionTime) > dormancyThreshold) {
-    setStatusToInactive();
-    var dormancyTime = getTimeInSeconds() - docLoadTimestamp;
-    _gaq.push(['_trackEvent','Document became dormant', dormancyTime + ' seconds', pageTitle, dormancyTime, true]);
-    console.log('Recorded dormancy after '+ dormancyTime + ' seconds')
-  }
-
-  if (window.isActive) {
-    activeReadingTime += timingInterval;
-    nonInteraction = activeReadingTime < 30 ? true : false
-    
-    var pageTitle = "{{ post.title }}" || "Home"
-    _gaq.push(['_trackEvent','Reading time', activeReadingTime + ' seconds', pageTitle, $(window).scrollTop(), nonInteraction]);
-    console.log('Tracked reading time of ' + activeReadingTime + ' seconds');
-  }
-
-}, timingInterval * 1000)
-// ----------------------------
-// bind listeners
-$(window).bind('focus', handleFocus);
-$(window).bind('blur', handleBlur);
-$(document).bind('mouseover', logAction);
-$(document).bind('scroll', logAction);
-
-
-// Setup a function to make sure we only time active page engagement
-window.isActive = false;
-function getTimeInSeconds(){
-  return Math.round( (new Date()).getTime() / 1000 );
-}
-function updateLastActionTime(){
-  window.lastActionTime = getTimeInSeconds();
-  console.log('last action time updated to: ' + window.lastActionTime)
-}
-function handleFocus(){
-  console.log('Window focussed');
-  logAction();
-}
-function handleBlur() {
-  setStatusToInactive();
-  console.log('Window blurred');
-};
-function setStatusToInactive(){
-  window.isActive = false;
-  console.log('Window has become inactive')
-}
-function logAction(){
-  updateLastActionTime();
-  window.isActive = true;
-};
-// ---------------------------
-</script>
 <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
