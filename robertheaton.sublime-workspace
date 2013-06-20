@@ -519,46 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "_layouts/post.html",
-			"settings":
-			{
-				"buffer_size": 877,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "_assets/style.scss",
-			"settings":
-			{
-				"buffer_size": 4652,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "_layouts/index.html",
-			"settings":
-			{
-				"buffer_size": 325,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "_posts/2013-04-25-you-should-be-a-mentor.md",
-			"settings":
-			{
-				"buffer_size": 3777,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "_includes/header.html",
-			"settings":
-			{
-				"buffer_size": 2600,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -612,8 +572,13 @@
 	},
 	"file_history":
 	[
-		"/Users/robertheaton/Dropbox/robert.github.com/feed.xml",
+		"/Users/robertheaton/Dropbox/robert.github.com/_assets/stuff.coffee",
 		"/Users/robertheaton/Dropbox/robert.github.com/_posts/2013-04-25-you-should-be-a-mentor.md",
+		"/Users/robertheaton/Dropbox/robert.github.com/_layouts/index.html",
+		"/Users/robertheaton/Dropbox/robert.github.com/_assets/style.scss",
+		"/Users/robertheaton/Dropbox/robert.github.com/_layouts/post.html",
+		"/Users/robertheaton/Dropbox/robert.github.com/_includes/header.html",
+		"/Users/robertheaton/Dropbox/robert.github.com/feed.xml",
 		"/Users/robertheaton/Dropbox/RobertHeaton/robertheaton.github.com/_posts/2013-03-04-you-arent-getting-any-better.md",
 		"/Users/robertheaton/Dropbox/RobertHeaton/robertheaton.github.com/index.html",
 		"/Users/robertheaton/Dropbox/RobertHeaton/robertheaton.github.com/_layouts/post.html",
@@ -734,12 +699,7 @@
 		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/views/error_mailer/generic_mail_error.html.haml",
 		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/helpers/application_helper.rb",
 		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/views/layouts/logged_out.html.haml",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/assets/javascripts/application.js.coffee",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/views/layouts/application.html.haml",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/controllers/mail/test_controller.rb",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/extras/devise_overrides_for_password_reset.rb",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/controllers/test_controller.rb",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/extras/mail_router.rb"
+		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/assets/javascripts/application.js.coffee"
 	],
 	"find":
 	{
@@ -747,7 +707,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"",
@@ -760,6 +720,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"gaq",
 			"margin: 40px",
 			"i found",
 			"get the",
@@ -886,8 +847,7 @@
 			"get_homepage_path",
 			"rspec",
 			"Timecop",
-			"faker",
-			"rspec"
+			"faker"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -923,145 +883,8 @@
 	"groups":
 	[
 		{
-			"selected": 4,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "_layouts/post.html",
-					"settings":
-					{
-						"buffer_size": 877,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								785,
-								785
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "_assets/style.scss",
-					"settings":
-					{
-						"buffer_size": 4652,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								960,
-								960
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 389.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "_layouts/index.html",
-					"settings":
-					{
-						"buffer_size": 325,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								233,
-								211
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "_posts/2013-04-25-you-should-be-a-mentor.md",
-					"settings":
-					{
-						"buffer_size": 3777,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								58,
-								58
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "_includes/header.html",
-					"settings":
-					{
-						"buffer_size": 2600,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2498,
-								2498
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 151.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
