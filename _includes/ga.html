@@ -29,7 +29,6 @@
       activeReadingTime += timingInterval;
       nonInteraction = activeReadingTime < 30 ? true : false
       
-      var pageTitle = "{{ post.title }}" || "Home"
       _gaq.push(['_trackEvent','Reading time', activeReadingTime + ' seconds', pageTitle, $(window).scrollTop(), nonInteraction]);
       console.log('Tracked reading time of ' + activeReadingTime + ' seconds');
     }
