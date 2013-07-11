@@ -519,33 +519,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "",
-			"file": "javascripts/artylytics.js",
-			"file_size": 1992,
-			"file_write_time": 1371734051000000,
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "_includes/header.html",
-			"settings":
-			{
-				"buffer_size": 2430,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "_includes/ga.html",
-			"settings":
-			{
-				"buffer_size": 2557,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -599,13 +572,15 @@
 	},
 	"file_history":
 	[
+		"/Users/robertheaton/Dropbox/robert.github.com/_includes/ga.html",
+		"/Users/robertheaton/Dropbox/robert.github.com/_includes/header.html",
+		"/Users/robertheaton/Dropbox/robert.github.com/javascripts/artylytics.js",
 		"/Users/robertheaton/Dropbox/robert.github.com/index.html",
 		"/Users/robertheaton/Dropbox/robert.github.com/_assets/stuff.coffee",
 		"/Users/robertheaton/Dropbox/robert.github.com/_posts/2013-04-25-you-should-be-a-mentor.md",
 		"/Users/robertheaton/Dropbox/robert.github.com/_layouts/index.html",
 		"/Users/robertheaton/Dropbox/robert.github.com/_assets/style.scss",
 		"/Users/robertheaton/Dropbox/robert.github.com/_layouts/post.html",
-		"/Users/robertheaton/Dropbox/robert.github.com/_includes/header.html",
 		"/Users/robertheaton/Dropbox/robert.github.com/feed.xml",
 		"/Users/robertheaton/Dropbox/RobertHeaton/robertheaton.github.com/_posts/2013-03-04-you-arent-getting-any-better.md",
 		"/Users/robertheaton/Dropbox/RobertHeaton/robertheaton.github.com/index.html",
@@ -724,9 +699,7 @@
 		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/db/migrate/20130201095454_add_fields_to_mail_request.rb",
 		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/db/migrate/20130201095516_rename_base_mail_request_to_mail_request.rb",
 		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/lib/tasks/db.rake",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/views/error_mailer/generic_mail_error.html.haml",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/helpers/application_helper.rb",
-		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/views/layouts/logged_out.html.haml"
+		"/Users/robertheaton/Dropbox/PingPanel/Code/CopyIn/app/views/error_mailer/generic_mail_error.html.haml"
 	],
 	"find":
 	{
@@ -734,7 +707,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"",
@@ -910,89 +883,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "javascripts/artylytics.js",
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "_includes/header.html",
-					"settings":
-					{
-						"buffer_size": 2430,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2001,
-								2001
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 91.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "_includes/ga.html",
-					"settings":
-					{
-						"buffer_size": 2557,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2548,
-								2548
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 635.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1046,6 +938,14 @@
 		"selected_items":
 		[
 			[
+				"heade",
+				"_includes/header.html"
+			],
+			[
+				"ga",
+				"_includes/ga.html"
+			],
+			[
 				"hea",
 				"_includes/header.html"
 			],
@@ -1076,10 +976,6 @@
 			[
 				"foot",
 				"_includes/footer.html"
-			],
-			[
-				"ga",
-				"_includes/ga.html"
 			],
 			[
 				"fee",
@@ -1552,10 +1448,6 @@
 			[
 				"buf",
 				"app/controllers/mail/buffer_controller.rb"
-			],
-			[
-				"test_cont",
-				"app/controllers/test_controller.rb"
 			]
 		],
 		"width": 0.0

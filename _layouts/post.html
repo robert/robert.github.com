@@ -1,4 +1,4 @@
-<html>
+html>
   <head>
     <title>{{ page.title }} | Robert Heaton</title>
     {% include header.html %}
@@ -17,10 +17,11 @@
             <a href="https://news.ycombinator.com/item?id={{ page.hn }}" target="_blank">Discussion on Hacker News</a>
           {% endif %}
           {% include social_links.html %}
+					{% include rss.html %}
           {% include recent_posts.html %}
         </section>
       </div>
-      {% include rss.html %}
+      
       <hr>
       {% include copyin.html %}
     </div>
