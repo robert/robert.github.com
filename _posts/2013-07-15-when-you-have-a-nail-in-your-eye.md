@@ -1,6 +1,6 @@
 ---
 layout: post
-title: When you have a nail in your eye, everything looks like nails
+title: When you have a nail in your eye, everything looks like a nail
 hn: 6051120
 ---
 The instinct of most developers, myself most definitely included, is to gravitate towards technological challenges and hope that a product challenge or two gets solved along the way. When all you have is a new kind of ultra-scalable hammer that everyone on Hacker News is talking about, then you go around hitting everything with it until all your possessions crumble to dust and everyone you love is dead from massive head traumas.
