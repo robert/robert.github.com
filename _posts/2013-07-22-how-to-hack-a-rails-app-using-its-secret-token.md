@@ -8,10 +8,10 @@ Create a new Rails app, open `/config/initializers/secret_token.rb` and you'll s
 ### Why your `secret_token` is important - session cookies
 
 Your `secret_token` is used for verifying the integrity of your app's session cookies. A session cookie will look something like:
-<pre><code>
 
+{% highlight ruby %}
     _MyApp_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFRkkiJTcyZTAwMmRjZTg2NTBiZmI0M2UwZmY0MjEyNGJjODBhBjsAVEkiEF9jc3JmX3Rva2VuBjsARkkiMWhmYTBKSGQwYVQxRlhnTFZWK2FEZEVhbEtLbDBMSitoVEo5YU4zR2dxM3M9BjsARg%3D%3D--dc40a55cd52fe32bb3b84ae0608956dfb5824689
-</code></pre>
+{% endhighlight %}
 
 The cookie value (the part after the `=`) is split into 2 parts, separated by `--`. The first part is a Base64 encoded serialization of the hash that Rails will use as the `session` variable in controllers. The second part is a signature created using `secret_token`, that Rails uses to check that the cookie it has been passed is legit. This prevents users from forging nefarious cookies and from tricking Rails into loading data it doesn't want to load. Unless of course they have your `secret_token` and can also forge the signature...
 
@@ -19,7 +19,9 @@ The cookie value (the part after the `=`) is split into 2 parts, separated by `-
 
 The first part of the cookie is a Marshal dump of the session hash, encoded in Base64. Marshal is a Ruby object serialization format that is used here to allow Rails to persist objects between requests made in the same session. In many cases it will only store the `session_id`, `_csrf_token` and Warden authentication data, but calling `session["foo"] = "bar"` in your controllers allows you to store pretty much anything you want. For my cookie above, unescaping the URL encoding and then Base64 decoding gives:
 
+{% highlight ruby %}
     \x04\b{\aI\"\x0Fsession_id\x06:\x06EFI\"%72e002dce8650bfb43e0ff42124bc80a\x06;\x00TI\"\x10_csrf_token\x06;\x00FI\"1hfa0JHd0aT1FXgLVV+aDdEalKKl0LJ+hTJ9aN3Ggq3s=\x06;\x00F
+{% endhighlight %}
 
 which if you squint hard enough is indeed starting to look kind of like a hash. This cookie is passed up to the server with each request, Rails calls `Marshal.load` on it, and merrily populates `session` with whatever serialized objects it is passed. Object persistance between requests. Brilliant.
 
@@ -33,6 +35,7 @@ That's where our `secret_token` and the second part of the cookie value (the par
 
 If you know an app's `secret_token` and want to forge a valid cookie, you simply need to reverse the above process:
 
+{% highlight ruby %}
     require "net/http"
     require "uri"
 
@@ -67,9 +70,11 @@ If you know an app's `secret_token` and want to forge a valid cookie, you simply
     res = Net::HTTP.new(url.host, url.port).start do |http|
       http.request(req)
     end
+{% endhighlight %}
 
 This request will load `my_evil_session_hash` into `session`, which is purely on principal not good. But loading arbitrary strings and integers is not about to melt any servers. How can you choose the contents of your hash so as to actually do some damage? Some obsure objects buried deep inside Rails are happy to oblige:
-   
+
+{% highlight ruby %}
     # Thanks to the folks at CodeClimate for pointing this out
 
     # The code in the ERB will run when the session is accessed
@@ -81,12 +86,10 @@ This request will load `my_evil_session_hash` into `session`, which is purely on
         "proxy_of_death" => Marshal.dump(proxy)
     }
     # ... continue as above
+{% endhighlight %}
 
 And presto.
 
 ### Knowing is half the battle
 
 ALL of this trouble can be trivially avoided by taking `secret_token` out of your version control. Put it into an environment variable (https://github.com/bkeepers/dotenv works on local, https://devcenter.heroku.com/articles/config-vars shows you how to set them on Heroku) and you can sleep (a bit more) soundly at night. If you suspect that someone you wouldn't want to meet on a dark night knows your `secret_token` then you can simply change it. All your existing cookies will be invalidated, but nothing else bad will happen. Of course, you still don't want anyone you don't trust to get any kind of access to your codebase at all. But you can at least make life difficult for them even if they do.
-
-
-
