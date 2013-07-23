@@ -1,6 +1,6 @@
-.highlight, code { font-size: inherit; }
+.highlight, code { font-size: inherit; white-space: pre; overflow: scroll; }
 code { background: #29281e; color: #f9f8f2; padding: 0 2px; }
-div.highlight, div.highlight code, div.highlight pre  { background: #29281e; white-space: pre-line; word-break: break-all; padding: 0 3px; }
+div.highlight, div.highlight code, div.highlight pre  { background: #29281e; padding: 0 3px; margin: 0; }
 div.highlight code { padding: 0; }
 div.highlight .c { color: #959181 } /* Comment */
 div.highlight .err { color: #960050; background-color: #1e0010 } /* Error */
