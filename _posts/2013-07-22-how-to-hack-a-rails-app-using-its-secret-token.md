@@ -1,8 +1,8 @@
 ---
 layout: post
 title: How to hack a Rails app using its secret_token
-hn: 6051120
 ---
+
 Create a new Rails app, open `/config/initializers/secret_token.rb` and you'll see your app's `secret_token`. As I will show you, if anyone who wishes you harm gets hold of this string then they can execute arbitrary code on your server. Troublingly, the Rails default includes it in your version control, and if you don't remove it then anyone who gets or is given access to your codebase has complete, complete control over your server. Maybe you added them to your private repo for a code review, or unthinkingly put a side-project production app into a public repo, or someone sneaked a look at your Sublime while you were out. It doesn't matter - if they have this key then they own you.
 
 ### Why your `secret_token` is important - session cookies
@@ -20,7 +20,7 @@ The cookie value (the part after the `=`) is split into 2 parts, separated by `-
 The first part of the cookie is a Marshal dump of the session hash, encoded in Base64. Marshal is a Ruby object serialization format that is used here to allow Rails to persist objects between requests made in the same session. In many cases it will only store the `session_id`, `_csrf_token` and Warden authentication data, but calling `session["foo"] = "bar"` in your controllers allows you to store pretty much anything you want. For my cookie above, unescaping the URL encoding and then Base64 decoding gives:
 
 {% highlight ruby %}
-    \x04\b{\aI\"\x0Fsession_id\x06:\x06EFI\"%72e002dce8650bfb43e0ff42124bc80a\x06;\x00TI\"\x10_csrf_token\x06;\x00FI\"1hfa0JHd0aT1FXgLVV+aDdEalKKl0LJ+hTJ9aN3Ggq3s=\x06;\x00F
+    "\x04\b{\aI\"\x0Fsession_id\x06:\x06EFI\"%72e002dce8650bfb43e0ff42124bc80a\x06;\x00TI\"\x10_csrf_token\x06;\x00FI\"1hfa0JHd0aT1FXgLVV+aDdEalKKl0LJ+hTJ9aN3Ggq3s=\x06;\x00F"
 {% endhighlight %}
 
 which if you squint hard enough is indeed starting to look kind of like a hash. This cookie is passed up to the server with each request, Rails calls `Marshal.load` on it, and merrily populates `session` with whatever serialized objects it is passed. Object persistance between requests. Brilliant.
@@ -74,7 +74,7 @@ If you know an app's `secret_token` and want to forge a valid cookie, you simply
 
 This request will load `my_evil_session_hash` into `session`, which is purely on principal not good. But loading arbitrary strings and integers is not about to melt any servers. How can you choose the contents of your hash so as to actually do some damage? Some obsure objects buried deep inside Rails are happy to oblige:
 
-{% highlight ruby %}
+{% highlight ruby %}   
     # Thanks to the folks at CodeClimate for pointing this out
 
     # The code in the ERB will run when the session is accessed
@@ -93,3 +93,6 @@ And presto.
 ### Knowing is half the battle
 
 ALL of this trouble can be trivially avoided by taking `secret_token` out of your version control. Put it into an environment variable (https://github.com/bkeepers/dotenv works on local, https://devcenter.heroku.com/articles/config-vars shows you how to set them on Heroku) and you can sleep (a bit more) soundly at night. If you suspect that someone you wouldn't want to meet on a dark night knows your `secret_token` then you can simply change it. All your existing cookies will be invalidated, but nothing else bad will happen. Of course, you still don't want anyone you don't trust to get any kind of access to your codebase at all. But you can at least make life difficult for them even if they do.
+
+
+
