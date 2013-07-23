@@ -68,7 +68,7 @@ If you know an app's `secret_token` and want to forge a valid cookie, you simply
     req.add_field("Cookie", my_evil_cookie)
 
     res = Net::HTTP.new(url.host, url.port).start do |http|
-      http.request(req)
+      	http.request(req)
     end
 {% endhighlight %}
 
