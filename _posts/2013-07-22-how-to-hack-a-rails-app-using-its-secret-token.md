@@ -92,7 +92,12 @@ And presto.
 
 ### Knowing is half the battle
 
-ALL of this trouble can be trivially avoided by taking `secret_token` out of your version control. Put it into an environment variable (https://github.com/bkeepers/dotenv works on local, https://devcenter.heroku.com/articles/config-vars shows you how to set them on Heroku) and you can sleep (a bit more) soundly at night. If you suspect that someone you wouldn't want to meet on a dark night knows your `secret_token` then you can simply change it. All your existing cookies will be invalidated, but nothing else bad will happen. Of course, you still don't want anyone you don't trust to get any kind of access to your codebase at all. But you can at least make life difficult for them even if they do.
+ALL of this trouble can be trivially avoided by taking `secret_token` out of your version control. Put it into an environment variable (<a href="https://github.com/bkeepers/dotenv">dotenv</a> is handy for local, it's easy on <a href="https://devcenter.heroku.com/articles/config-vars">Heroku</a> too) and you can sleep (a bit more) soundly at night. If you suspect that someone you wouldn't want to meet on a dark night knows your `secret_token` then you can simply change it. All your existing cookies will be invalidated, but nothing else bad will happen. Of course, you still don't want anyone you don't trust to get any kind of access to your codebase at all. But you can at least make life difficult for them even if they do.
 
+### Thanks to
+
+<a href="http://railssecurity.com" target="_blank">Rails Security by Code Climate</a>
+and
+<a href="http://techbrahmana.blogspot.co.uk/2012/03/rails-cookie-handling-serialization-and.html" target="_blank">TechBrahmana</a>
 
 
