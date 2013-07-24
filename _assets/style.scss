@@ -92,7 +92,7 @@ a, .as-link {
 
 .container, .stuff {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   margin: auto;
   padding: 15px;
   position: relative;
@@ -100,7 +100,7 @@ a, .as-link {
 }
 
 @media (min-width: 960px) {
-  .container { width: 60%; }
+  .container { width: 80%; }
 }
 
 .pull-right { float: right; }
@@ -117,7 +117,7 @@ hr {
 
 ul.posts {
   padding: 0;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto 40px;
   li { margin: 0; padding: 0; list-style: none; }
   li a { 
@@ -132,7 +132,7 @@ ul.posts {
 }
 
 .site section.blogpost {
-  max-width: 600px;
+  max-width: 800px;
   margin: auto;
 }
 .site section.blogpost, .site section > p {
@@ -184,7 +184,7 @@ section.info {
   .item { * { padding-bottom: 2px; border-bottom: 1px dotted #ccc;} }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   section.info {
     width: 100%; 
     &:not(:last-of-type) { 
@@ -227,4 +227,9 @@ section.share-links {
     height: 20px; 
     &.spaced { margin-right: 30px; }
   }
+}
+
+pre {
+	padding-top: 8px !important;
+	margin-left: -30px !important;
 }
