@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How to hack a Rails app using its secret_token
+hn: 6110386
 ---
 
 Create a new Rails app, open `/config/initializers/secret_token.rb` and you'll see your app's `secret_token`. As I will show you, if anyone who wishes you harm gets hold of this string then they can execute arbitrary code on your server. Troublingly, the Rails default includes it in your version control, and if you don't remove it then anyone who gets or is given access to your codebase has complete, complete control over your server. Maybe you added them to your private repo for a code review, or unthinkingly put a side-project production app into a public repo, or someone sneaked a look at your Sublime while you were out. It doesn't matter - if they have this key then they own you.
@@ -72,7 +73,7 @@ If you know an app's `secret_token` and want to forge a valid cookie, you simply
     end
 {% endhighlight %}
 
-This request will load `my_evil_session_hash` into `session`, which is purely on principal not good. But loading arbitrary strings and integers is not about to melt any servers. How can you choose the contents of your hash so as to actually do some damage? Some obsure objects buried deep inside Rails are happy to oblige:
+This request will load `my_evil_session_hash` into `session`, which is purely on principal not good. But loading arbitrary strings and integers is not about to melt any servers. How can you choose the contents of your hash so as to actually do some damage? Some obscure objects buried deep inside Rails are happy to oblige:
 
 {% highlight ruby %}   
     # Thanks to the folks at CodeClimate for pointing this out
