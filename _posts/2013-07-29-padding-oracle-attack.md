@@ -135,5 +135,7 @@ But as we have seen, it only takes the tiniest of side-channel information leaks
 
 Of course, this particular attack could be prevented by catching the exception, rate-limiting requests from the same IP address, or monitoring for suspicious requests, but that's obviously not the point. Attackers will always be sophisticated, and can exploit even the tiniest of implementation imperfections. Be careful with your crypto, even when it's someone else's!
 
-(thanks to the <a href="http://www.matasano.com/articles/crypto-challenges/" target="_blank">Matasano Crypto Challenges</a> for switching me onto crypto. Highly highly recommended)
+## Thanks to
+
+The <a href="http://www.matasano.com/articles/crypto-challenges/" target="_blank">Matasano Crypto Challenges</a> for switching me onto crypto. Highly highly recommended
 
