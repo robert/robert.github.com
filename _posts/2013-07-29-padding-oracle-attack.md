@@ -7,7 +7,7 @@ We all know that you don't do your own crypto. We know that even though we've cl
 
 But even implementing someone else's secure encryption algorithm is fraught with danger. And even using someone else's secure implementation of an encryption algorithm, with well-chosen secret keys and suchlike, is still open to brutally effective attacks. A skilled attacker needs only a tiny, indirect information leak in order to pick your encryption apart.
 
-My point isn't that you should abandon encryption altogether or bring in $1000/hour consultants whenever you even think about using a cipher. My point is partly that you should never be complacent and should always be on the lookout for any way an attacker could gain *any* insight into your encryption, and partly that the Padded Oracle Attack is an incredibly cool demonstration of this. Read on.
+My point isn't that you should abandon encryption altogether or bring in $1000/hour consultants whenever you even think about using a cipher. My point is partly that you should never be complacent and should always be on the lookout for any way an attacker could gain *any* insight into your encryption, and partly that the Padding Oracle Attack is an incredibly cool demonstration of this. Read on.
 
 ## CBC Mode
 
@@ -30,7 +30,7 @@ The preferred method of padding block ciphertexts is PKCS7. In PKSC7, the value 
 
 So a decrypted plaintext with a final block ending in `[... , 13, 06, 05]` is not valid. The original cipher text therefore could not have been valid - there are no allowed plaintexts that would encrypt to that ciphertext.
 
-## The Padded Oracle Attack
+## The Padding Oracle Attack
 
 It turns out that knowing whether or not a given ciphertext produces plaintext with valid padding is ALL that an attacker needs to break a CBC encryption. If you can feed in ciphertexts and somehow find out whether or not they decrypt to something with valid padding or not, then you can decrypt ANY given ciphertext.
 
@@ -125,6 +125,8 @@ Rinse, repeat, and read the entire 16 bytes of `C2`!
 
 A cipherblock's decrypted form depends only on itself and the preceding cipherblock. So we can apply the above algorithm to every block in the ciphertext (apart from the first one). The first cipherblock would have been encrypted using an IV (initialization vector), a secret cipherblock chosen by the encrypter during the encryption process. Unless we know the IV, we can't decrypt the first block. There is nothing particularly clever we can do here, apart from trying stupidly obvious values like [0, 0, 0, ...] for the IV and seeing if we get anything sensible out. Hopefully the first 16 bytes will just be something like "Dearest Humphrey" anyway.
 
+And that's the Padding Oracle Attack
+
 ## So this is why going anywhere near crypto is scary
 
 We know that you don't use your own cryptography algorithms, and so we build on what's already devised and built. It's easy to then feel complacent when you're hiding behind a powerful cipher created by professionals. As long as you keep your secret keys secret and don't store anything in plaintext, you feel immune.
@@ -133,5 +135,5 @@ But as we have seen, it only takes the tiniest of side-channel information leaks
 
 Of course, this particular attack could be prevented by catching the exception, rate-limiting requests from the same IP address, or monitoring for suspicious requests, but that's obviously not the point. Attackers will always be sophisticated, and can exploit even the tiniest of implementation imperfections. Be careful with your crypto, even when it's someone else's!
 
-
+(thanks to the <a href="http://www.matasano.com/articles/crypto-challenges/" target="_blank">Matasano Crypto Challenges</a> for switching me onto crypto. Highly highly recommended)
 
