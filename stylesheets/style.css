@@ -112,7 +112,6 @@ header {
     animation: fade-in 1.5s; }
 
 footer {
-  padding: 25px;
   background: #f7f8f9;
   line-height: 2rem; }
   footer h3 {
@@ -168,7 +167,8 @@ a, .as-link {
   width: 100%;
   max-width: 800px;
   margin: auto;
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
