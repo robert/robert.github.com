@@ -13,9 +13,11 @@
           <div class='date muted'>{{ page.date | date_to_string }}</div>
           {{ content }}
           {% if page.hn %}
-            <hr>
             <a href="https://news.ycombinator.com/item?id={{ page.hn }}" target="_blank">Discussion on Hacker News</a>
           {% endif %}
+          <hr>
+          <a href="/hire-me"><h3>Hire me</h3></a>
+          <p>It might interest you to know that I am <a href="/hire-me">looking for my next job</a>.</p> 
           {% include social_links.html %}
 					{% include rss.html %}
           {% include recent_posts.html %}
