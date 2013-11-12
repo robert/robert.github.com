@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Kanban at London's National Gallery
+hn: 6717569
 ---
 So a few weeks ago I went to London's National Gallery. I have very little interest in art, but occasionally find myself with someone who does, and there are worse ways to spend a few hours than looking at big paintings of people in funny hats. On this occasion there was a special exhibition on display. It contained some reasonable arts and one of the best queues I have ever had the privilege of standing in.
 
