@@ -65,7 +65,7 @@ This is where it is most fun to let the table stew for a while. Common (and wron
   <li>It has no effect obviously, argh argh rargh</li>
 </ul>
 
-The explanation is the most delicate step, and must be handled very carefully. If you do not manage to convincingly explain to your audience why you are right, you risk being seen as the arrogant, attention-seeking sociopath you are are not.
+The explanation is the most delicate step, and must be handled very carefully. If you do not manage to convincingly explain to your audience why you are right, you risk being seen as the arrogant, attention-seeking sociopath you <del>are</del> are not.
 
 The proof by induction is correct. New information IS being introduced to the island, and so common sense answer 1 is wrong.
 
