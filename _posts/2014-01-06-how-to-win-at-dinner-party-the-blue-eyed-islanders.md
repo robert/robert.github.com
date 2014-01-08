@@ -9,7 +9,7 @@ The following script gives you substantial chunks of time with the whole room's 
 
 <h3 style="font-weight: bolder">0. The setup</h3>
 
-If you want to completely obliterate someone's standing in your group (for example a rival alpha male or a romantic enemy), try and tempt them into venturing another, infinitely inferior brainteaser that you can use as a segue into stomping them mercilessly into the ground. However, by the time you've finished, no one will remember anything else that happened earlier, so feel free to shoehorn it in with a complete non-sequiteur too. Take care not to start too late in the evening or just before an interval in the proceedings like a change of course. As with any tour de force, you do not want to have to pause for plate-clattering or mass urination.
+If you want to completely obliterate someone's standing in your group (for example a rival alpha male or a romantic enemy), try and tempt them into venturing another, infinitely inferior brainteaser that you can use as a segue into stomping them mercilessly into the ground. However, by the time you've finished, no one will remember anything else that happened earlier, so feel free to shoehorn it in with a complete non-sequitur too. Take care not to start too late in the evening or just before an interval in the proceedings like a change of course. As with any tour de force, you do not want to have to pause for plate-clattering or mass urination.
 
 <h3 style="font-weight: bolder">1. The basic puzzle</h3>
 
