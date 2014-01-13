@@ -2,7 +2,7 @@
 layout: post
 title: Mathematicians and civil liberties - 100 prisoners and 100 boxes
 ---
-Hypothetical prisoners are the great unspoken shame of our civilisation. Their "crimes" are universally vague in nature and rarely even specified, and they are constantly taunted with unnecessarily difficult ways in which they might gain their freedom. The scandalous treatment of these innocent casualties of circumstance is just one of the reasons why it can be so hard to distinguish between a Kafka-esque totalitarian nightmare and a Maths degree.
+Hypothetical prisoners are the great unspoken shame of our civilisation. Incarcerated inside sinister "mathematics departments" all over the world, their "crimes" are universally vague in nature and rarely even specified, and they are constantly taunted with unnecessarily difficult ways in which to try and gain their freedom. The scandalous treatment of these innocent casualties of circumstance is just one of the reasons why it can be so hard to distinguish between a Kafka-esque totalitarian nightmare and a maths degree.
 
 <h3 style="font-weight: bolder">0. Question</h3>
 
@@ -34,7 +34,7 @@ The prisoners collectively decide on and commit to memory a random mapping betwe
 
 At first and second glances, this is bananas.
 
-But like any good rollercoaster, it all comes down to loops. Let's say the boxes that the prisoners decide map to Andy, Bob, Colin and Derek all coincidentally turn out to lead in a loop. This would mean that if a prisoner opens the box that the prisoners have randomly decided maps to Andy, he finds the name "Bob". When he then opens the box that maps to Bob, he finds the name "Colin". When he opens the box that maps to Colin, he finds the name "Daz", and when he opens the box that maps to Derek, he finds the name Andy. He has already opened Andy's box, so we have a loop of length 4.
+But like any good rollercoaster, it all comes down to loops. Let's say the boxes that the prisoners decide map to Andy, Bob, Colin and Daz all coincidentally turn out to lead in a loop. This would mean that if a prisoner opens the box that the prisoners have randomly decided maps to Andy, he finds the name "Bob". When he then opens the box that maps to Bob, he finds the name "Colin". When he opens the box that maps to Colin, he finds the name "Daz", and when he opens the box that maps to Derek, he finds the name Andy. He has already opened Andy's box, so we have a loop of length 4.
 
 If this prisoner is one of Andy, Bob, Colin or Daz, he will have successfully found his own name, and everything is on track. If he is anyone else and he continues to follow the algorithm, then he will go round in circles forever and all the prisoners are doomed. However, Andy, Bob, Colin or Daz are the only prisoners who will ever get onto this loop in the first place! They will start by opening the box that maps to their name, and then proceed as above. Since each name only appears in one box, there is no way to cut into the loop unless you started on it. So in this case, we know for certain that Andy, Bob, Colin and Daz will all find their own names after opening exactly 4 boxes, and that no other prisoners will ever open these boxes.
 
@@ -42,7 +42,7 @@ If this prisoner is one of Andy, Bob, Colin or Daz, he will have successfully fo
 <img src="/images/loop.png" />
 </p>
 
-In fact, if a prisoner follows this strategy then the only way he can fail to find his own name is if the box it is in turns out to be part of a loop >=51 boxes in length. Suppose a prisoner's name is in a box that is part of a loop of length 68. By the algorithm, the first box the prisoner opens is the one that maps to his own name. So the box that actually contains his name must be one step back in the loop, which will be the 68th box that he will try opening. Unfortunately he will of course be thrown to the sharks after his first 50 attempts, so in this case the prisoners are in trouble. Nonetheless, if all loops have length 50 or less (say 3 loops that are 48, 39 and 13 boxes long), then all the prisoners will definitely find their own names and they will all be released.
+In fact, if a prisoner follows this strategy then the only way he can fail to find his own name is if the box it is in turns out to be part of a loop >=51 boxes in length. Suppose a prisoner's name is in a box that is part of a loop of length 68. By the algorithm, the first box the prisoner opens is the one that maps to his own name. So the box that actually contains his name must be one step back in the loop, which will be the 68th box that he will try opening. Unfortunately he will of course be thrown to the sharks after his first 50 attempts, so in this case the prisoners are in trouble. Nonetheless, if all loops have length 50 or less (say there are 3 loops that are 48, 39 and 13 boxes long), then all the prisoners will definitely find their own names and they will all be released.
 
 So the question "what is the prisoners' probability of survival?" becomes "what is the probability that there are no loops longer than 50 boxes?"
 
@@ -77,3 +77,6 @@ This gives a probability of there existing no loop of length > 50 of `1 - 1/100 
 Not quite suitable for the dinner table unless you happen to be eating next to a large whiteboard, but still absolutely beautiful. The solution even seems obvious with hindsight, as it's essentially the only way for the prisoners to co-ordinate their choices in any way beyond blind luck. In theory there could be be variations on this box-pointer theme that offer even better chances of success, but theory is no match for Curtin, Warshauer, 2006, which proved that the relatively simple strategy above is in fact optimal. So if you find yourself at the mercy of a despotic mathematician without the benefit of a handy blunt object, you know exactly what to do. 
 
 You're welcome.
+
+<h3 style="font-weight: bolder">5. References</h3>
+[0] <a href="http://www.math.dartmouth.edu/~pw/solutions.pdf" target="_blank">http://www.math.dartmouth.edu/~pw/solutions.pdf</a>
