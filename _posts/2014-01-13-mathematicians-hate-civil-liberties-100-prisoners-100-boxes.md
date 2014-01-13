@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mathematicians and civil liberties - 100 prisoners and 100 boxes
+title: Mathematicians hate civil liberties - 100 prisoners and 100 boxes
 ---
 Hypothetical prisoners are the great unspoken shame of our civilisation. Incarcerated inside sinister "mathematics departments" all over the world, their "crimes" are universally vague in nature and rarely even specified, and they are constantly taunted with unnecessarily difficult ways in which to try and gain their freedom. The scandalous treatment of these innocent casualties of circumstance is just one of the reasons why it can be so hard to distinguish between a Kafka-esque totalitarian nightmare and a maths degree.
 
