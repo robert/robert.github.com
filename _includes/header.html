@@ -1,22 +1,24 @@
 <script>
 var pageTitle = "{{ page.title }}" || "Home"
-<!-- All the meta tags in the world -->
 </script>
+<!-- All the meta tags in the world -->
 <meta property="og:image" content="http://robertheaton.com/images/icon.png"/>
 <meta property="og:image:width" content="300" />
 <meta property="og:image:height" content="300" />
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport' />
 <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+<meta property='og:site_name' content='Robert Heaton' />
+<meta property="og:type" content="blog"/>
 {% if page.date %}
 <meta content='{{ site.url }}{{ page.url }}' property='og:url' />
-<meta property="og:type" content="article"/>
-<meta property="og:title" content="{{ page.title }} | {{ site.name }}"/>
-<meta property="og:description" content="{{ page.content | strip_html | strip_newlines | truncate: 200 }}"/>
+<meta property="og:type" content='article'/>
+<meta property="og:title" content='{{ page.title }} | {{ site.name }}'/>
+<meta property="og:description" content='{{ page.content | strip_html | strip_newlines | truncate: 200 }}'/>
 {% else %}
 <meta content='{{ site.url }}' property='og:url' />
-<meta property="og:type" content="blog"/>
-<meta property="og:title" content="{{ site.name }}"/>
-<meta property="og:description" content="{{ site.description }}"/>
+<meta property="og:type" content='blog'/>
+<meta property="og:title" content='{{ site.name }}'/>
+<meta property="og:description" content='{{ site.description }}'/>
 {% endif %}
 <!-- All the meta tags in the world -->
 

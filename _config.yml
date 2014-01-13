@@ -4,7 +4,7 @@ markdown:    rdiscount
 rdiscount:
   extensions: [smart]
 name: Robert Heaton
-description: 'Co-founder @Copyin.com. Lies, damn lies and startups.'
+description: 'Ruby/Rails Engineer. One-track lover down a two-way lane'
 url: http://robertheaton.com
 auto: true
 feedburner_id: robertheaton
