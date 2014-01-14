@@ -18,6 +18,7 @@ Well, yes, incredibly easily. In Sinatra:
     get '/' do
       '<script type="text/javascript" src="/tracking_id.js"></script>'
       # Add more JS to use the trackingId variable to track the user
+      # eg. _myTrackingFramework.track(trackingId);
     end
 
     get '/tracking_id.js' do
