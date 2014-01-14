@@ -45,7 +45,7 @@ When Steve visits `/`, his browser makes an additional request to `/tracking_id.
 We generate and store a new tracking ID for Steve, and return a tiny JS file:
 
 {% highlight javascript %}
-    var trackingId = "33848722-da08-4b43-b0e8-0c6deaa906f6"
+    var trackingId = "33848722-da08-4b43-b0e8-0c6deaa906f6";
 {% endhighlight %}
 
 Steve goes away and comes back later with amorous monkeys on his mind. He clears his cookies and returns to our site. When he visits /, his browser again makes an additional request to `/tracking_id.js`. But this time the headers look something like:
