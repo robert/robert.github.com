@@ -101,5 +101,5 @@ You may also want to read about the interesting interactions these concepts have
 
 <h3 style="font-weight: bolder">Useful links</h3>
 
-<a href="http://foobarnbaz.com/2012/07/08/understanding-python-variables/">http://foobarnbaz.com/2012/07/08/understanding-python-variables/</a>
-<a href="http://javadude.com/articles/passbyvalue.htm">http://javadude.com/articles/passbyvalue.htm</a>
+<a target="_blank" href="http://foobarnbaz.com/2012/07/08/understanding-python-variables/">http://foobarnbaz.com/2012/07/08/understanding-python-variables/</a>
+<a target="_blank" href="http://javadude.com/articles/passbyvalue.htm">http://javadude.com/articles/passbyvalue.htm</a>
