@@ -58,7 +58,7 @@ To reiterate, in pass-by-reference, the function and the caller both use the exa
 
 <h3 style="font-weight: bolder">Pass-by-value</h3>
 
-In pass-by-value, the function receive a copy of the argument objects passed to it by the caller, stored in a new location in memory.
+In pass-by-value, the function receives a copy of the argument objects passed to it by the caller, stored in a new location in memory.
 
 <img src="/images/PBVIntro.jpg">
 
@@ -97,7 +97,7 @@ Now we see what Philip K. Dick was trying to tell us. A name and a person are di
     print listA
 {% endhighlight %}
 
-You may also want to read about the interesting interactions these concepts have with mutable and immutable types. But those are stories for another day. Now if you'll excuse me, I'm going to read "Do Androids Dream Of Electric Sheep?" - my meta-programming is a little rusty.
+You may also want to read about the interesting interactions these concepts have with mutable and immutable types. But those are stories for another day. Now if you'll excuse me, I'm going to read <i>"Do Androids Dream Of Electric Sheep?"</i> - my meta-programming is a little rusty.
 
 <h3 style="font-weight: bolder">Useful links</h3>
 
