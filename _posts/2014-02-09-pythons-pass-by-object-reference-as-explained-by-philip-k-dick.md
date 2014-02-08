@@ -76,11 +76,11 @@ The copies of variables and objects in the context of the caller are completely 
 
 Python is different. As we know, in Python, "Object references are passed by value".
 
-A function receives a reference to (and will access) the same object in memory as used by the caller. However, it does not receive the box that the caller is storing this object in; as in pass-by-value, the function provides its own box and creates a new variable for itself. This is what is meant by passing the object references by value - the function and caller use the same object in memory, but accessed through different variables. This means that the same object is being stored in multiple different boxes, and the metaphor kind of breaks down. Pretend it's quantum or something. In any case, let's try appending again.
+A function receives a reference to (and will access) the same object in memory as used by the caller. However, it does not receive the box that the caller is storing this object in; as in pass-by-value, the function provides its own box and creates a new variable for itself. Let's try appending again:
 
 <img src="/images/PBORAppend.jpg">
 
-Both the function and the caller refer to the same object in memory, so when the append function adds an extra item to the list, we see this in the caller too! They're different names for the same thing; different boxes containing the same object.
+Both the function and the caller refer to the same object in memory, so when the append function adds an extra item to the list, we see this in the caller too! They're different names for the same thing; different boxes containing the same object. This is what is meant by passing the object references by value - the function and caller use the same object in memory, but accessed through different variables. This means that the same object is being stored in multiple different boxes, and the metaphor kind of breaks down. Pretend it's quantum or something.
 
 But the key is that they really are <i>different</i> names, and <i>different</i> boxes. In pass-by-reference, they were essentially the same box. When you tried to reassign a variable, and put something different into the function's box, you also put it into the caller's box, because they were the same box. But, in pass-by-object-reference:
 
