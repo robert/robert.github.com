@@ -97,8 +97,8 @@ header {
     line-height: 2em; }
   header .rob {
     position: absolute;
-    left: -80px;
-    top: 6px;
+    left: -110px;
+    top: 0px;
     display: inline-block;
     vertical-align: baseline;
     zoom: 1;
