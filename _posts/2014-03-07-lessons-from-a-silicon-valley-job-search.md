@@ -81,7 +81,7 @@ Whilst first impressions do matter, your cover letter/CV will quickly get forgot
 
 <h3>2.2 Intros</h3>
 
-Intros are fine, but far from essential. In a company of any size with a defined process, you'll probably get thrown into the top of their standard interview funnel anyway, so it doesn't seem to make much difference. I was so pleased with my skeleton cover letter that I actually preferred not to go through an intro unless it was to someone particularly senior and guaranteed to be burning hot.
+Intros are fine, but far from essential. In a company of any size with a defined process you'll probably get thrown into the top of their standard interview funnel anyway, so it doesn't seem to make much difference. I was so pleased with my skeleton cover letter that I actually preferred not to go through an intro unless it was to someone particularly senior and guaranteed to be burning hot.
 
 <h3>2.3 Spreadsheet</h3>
 
