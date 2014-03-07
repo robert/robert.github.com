@@ -77,7 +77,7 @@ Thomas Ptacek from Matasano has written some interesting thoughts in the <a href
 
 <h3>2.1 Cover letter/CV</h3>
 
-Whilst first impressions do matter, your cover letter/CV will quickly get forgotten when you start talking code, so all they really have to do is get you in the door and maybe be a bit memorable. I liked leading with repeated references to my blog and a list of impressive yet quirky facts about me, but this might just be because I think that at the moment they are more impressive than my programming accomplishments. There are already enough pixels on the internet about how to write cover letters/CVs, but I thought my cover letter in particular was pretty good, so if you're interested then <a href="/skeleton-cover-letter">here is it</a>.
+Whilst first impressions do matter, your cover letter/CV will quickly get forgotten when you start talking code, so all they really have to do is get you in the door and maybe be a bit memorable. I liked leading with repeated references to my blog and a list of impressive yet quirky facts about me, but this might just be because I think that at the moment they are more impressive than my programming accomplishments. There are already enough pixels on the internet about how to write CVs, but I thought my cover letter in particular was pretty good and somewhat amusing, so if you're interested then <a href="/skeleton-cover-letter">here is it</a>.
 
 <h3>2.2 Intros</h3>
 
