@@ -33,7 +33,6 @@ I'm moving to San Francisco very shortly, but right now I live in London and hav
 
 I wanted to use my H1B to move to San Francisco and seek my fame and fortune, so I finished a contract in Oct 2013, spent Nov/Dev funemployed, and hit the interview trail in mid-Jan 2014.
 
-
 <h3>0.3 Timeframe and logistics</h3>
 
 The process took 6 weeks from start to finish; 3 weeks of phone screens and 3 weeks of on-sites in San Francisco. Not already living in SF made everything a lot more intense than it would otherwise have been. I had to make sure that I blitzed all my on-site interviews in a single trip and that I actually had an offer that I wanted to take by the end of it. Having to come back to SF for another round would have been time-consuming, demoralising and not a good signal.
@@ -78,7 +77,7 @@ Thomas Ptacek from Matasano has written some interesting thoughts in the <a href
 
 <h3>2.1 Cover letter/CV</h3>
 
-Whilst first impressions do matter, your cover letter/CV will quickly get forgotten when you start talking code, so all they really have to do is get you in the door and maybe be a bit memorable. I liked leading with repeated references to my blog and a list of impressive yet quirky facts about me, but this might just be because I think that at the moment they are more impressive than my programming accomplishments. There are already enough pixels on the internet about how to write cover letters/CVs, but I thought that mine were pretty good, so if you're interested then here they are. [LINKS]
+Whilst first impressions do matter, your cover letter/CV will quickly get forgotten when you start talking code, so all they really have to do is get you in the door and maybe be a bit memorable. I liked leading with repeated references to my blog and a list of impressive yet quirky facts about me, but this might just be because I think that at the moment they are more impressive than my programming accomplishments. There are already enough pixels on the internet about how to write cover letters/CVs, but I thought my cover letter in particular was pretty good, so if you're interested then <a href="/skeleton-cover-letter">here is it</a>.
 
 <h3>2.2 Intros</h3>
 
@@ -111,7 +110,7 @@ I had a "Hire Me" banner on my blog for about 4 months. I received 7 messages be
 
 I would therefore suggest not relying on or expecting much such freestyle inbound interest, unless you are a either a rockstar or more highly trafficked than I. That said, I was mostly writing technical and other labour-of-love posts, and it would be interesting to see what would happen if you made a 30k hit score on Hacker News.
 
-My "Hire Me" page turned out to be most useful as a way to get people from my cover letter/CV onto my blog ("Here's some further detail on what I'm all about"), and to cram a load of impressive but only tangentially relevant info into any application. With this in mind, a "Hire Me" page and banner are very worthwhile things to do, but should not be relied on to generate inbound interest. I've left my page up for posterity here. [LINK]
+My "Hire Me" page turned out to be most useful as a way to get people from my cover letter/CV onto my blog ("Here's some further detail on what I'm all about"), and to cram a load of impressive but only tangentially relevant info into any application. With this in mind, a "Hire Me" page and banner are very worthwhile things to do, but should not be relied on to generate inbound interest. I've <a href="/old-hire-me">left my page up for posterity</a>.
 
 <h3>3. General Interviews</h3>
 
@@ -149,7 +148,7 @@ It's obviously extremely unhelpful to give away interview questions, but since I
 
 > "Design the infrastructure for a link-shortener."
 
-The first time I was awful, the second time I was better, and from then on I think I sounded like the CEO of bit.ly[LINK] himself.
+The first time I was awful, the second time I was better, and from then on I think I sounded like the CEO of bit.ly himself.
 
 <h3>3.6 The other question I will give away</h3>
 
