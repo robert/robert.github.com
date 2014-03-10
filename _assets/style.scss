@@ -33,7 +33,7 @@ header {
   p { margin: 0; font-size: 13px; line-height: 2em; }
   .rob { 
     position: absolute;
-    left: -66px;
+    left: -104px;
     top: 10px;
     @include inline-block;
     overflow: hidden;
@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; }
 a, .as-link {
   text-decoration: none; 
   color: #527d9a;
-  &:hover { color: #336688; }
+  &:hover { color: #003355; }
   &.big-button {
     display: block;
     border-radius: 3px;

@@ -52,7 +52,7 @@
 body {
   background: #fff;
   color: #000;
-  font-family: "Merriweather", Georgia, helvetica, arial, sans-serif;
+  font-family: 'Merriweather', Georgia, helvetica, arial, sans-serif;
   font-size: 16px;
   line-height: 1.55em;
   padding: 0;
@@ -67,7 +67,7 @@ strong, b {
 header {
   padding: 15px 0;
   line-height: 1.3em;
-  margin: 0 auto 10px;
+  margin: 0 auto 30px;
   background: #f7f8f9;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -97,8 +97,8 @@ header {
     line-height: 2em; }
   header .rob {
     position: absolute;
-    left: -110px;
-    top: 0px;
+    left: -104px;
+    top: 10px;
     display: inline-block;
     vertical-align: baseline;
     zoom: 1;
@@ -112,6 +112,7 @@ header {
     animation: fade-in 1.5s; }
 
 footer {
+  padding: 25px;
   background: #f7f8f9;
   line-height: 2rem; }
   footer h3 {
@@ -133,7 +134,7 @@ a, .as-link {
   text-decoration: none;
   color: #527d9a; }
   a:hover, .as-link:hover {
-    color: #336688; }
+    color: #003355; }
   a.big-button, .as-link.big-button {
     display: block;
     border-radius: 3px;
@@ -149,7 +150,7 @@ a, .as-link {
     text-transform: uppercase;
     letter-spacing: 2px;
     text-align: center;
-    border: 4px solid #88aabb;
+    border: 4px solid #8ab;
     background: #6f8f9f; }
     a.big-button:hover, .as-link.big-button:hover {
       background: #608090; }
@@ -164,12 +165,10 @@ a, .as-link {
         box-shadow: inset 0 1px 2px #602022; }
 
 .container, .stuff {
-  padding-top: 10px;
   width: 100%;
   max-width: 800px;
   margin: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
   position: relative;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -195,7 +194,7 @@ a, .as-link {
 
 hr {
   border: 0;
-  border-bottom: 1px dotted #cccccc;
+  border-bottom: 1px dotted #CCC;
   margin: 25px 0; }
 
 ul.posts {
@@ -270,7 +269,7 @@ ul.posts {
   margin: 10px auto;
   text-align: center;
   font-size: 80%;
-  text-shadow: -1px -1px 0px black; }
+  text-shadow: -1px -1px 0px #000; }
 
 section.info {
   width: 49%;
@@ -289,13 +288,13 @@ section.info {
     color: #999; }
   section.info .item * {
     padding-bottom: 2px;
-    border-bottom: 1px dotted #cccccc; }
+    border-bottom: 1px dotted #ccc; }
 
 @media (max-width: 800px) {
   section.info {
     width: 100%; }
     section.info:not(:last-of-type) {
-      border-bottom: 1px dotted #cccccc;
+      border-bottom: 1px dotted #ccc;
       margin-bottom: 20px;
       padding-bottom: 35px; } }
 .subject {
@@ -331,8 +330,8 @@ section.navigation {
 
 section.share-links {
   text-align: center;
-  border-top: 1px dotted #dddddd;
-  border-bottom: 1px dotted #dddddd;
+  border-top: 1px dotted #ddd;
+  border-bottom: 1px dotted #ddd;
   padding: 20px 0 10px;
   margin: 20px 0; }
   section.share-links .button {
