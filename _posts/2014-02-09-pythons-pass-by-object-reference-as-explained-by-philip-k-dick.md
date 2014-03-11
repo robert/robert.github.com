@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python's Pass-By-Object-Reference, as explained by Philip K. Dick
+title: Is Python pass-by-reference or pass-by-value?
 hn: 7224324
 ---
 > "Suppose I say to Fat, or Kevin says to Fat, "You did not experience God. You merely experienced something with the qualities and aspects and nature and powers and wisdom and goodness of God." This is like the joke about the German proclivity toward double abstractions; a German authority on English literature declares, "Hamlet was not written by Shakespeare; it was merely written by a man named Shakespeare." In English the distinction is verbal and without meaning, although German as a language will express the difference (which accounts for some of the strange features of the German mind)."
