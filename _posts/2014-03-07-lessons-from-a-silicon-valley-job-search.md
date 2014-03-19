@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Lessons from a Silicon Valley job search
+hn: 7428469
 ---
 <span style="color: #777879">*This post is a fairly exhaustive summary of the things I learned during my recent Silicon Valley job search. It is really quite long, but has been edited aggressively, and I've tried to make sure that nearly every point is either actionable, interesting, or both. If you're currently or may one day be looking for a job as a programmer, either in San Francisco or elsewhere in the world, then there should hopefully be a bunch of useful stuff for you. I've tried to give numbers and stats where possible - your mileage will of course vary, but my hope is that they are still helpful for working out which ballpark to start in.*</span>
 
@@ -267,7 +268,6 @@ This is all incredibly unintuitive and unfamiliar for most engineers (myself inc
 It's a great market to be an engineer, but finding the right job still requires a lot of time and effort. Spray applications anywhere and everywhere you like the look of, and see what sticks. A little organisation will go a long way, but a little over-thinking will quickly make you go insane. How best to conduct a technical interview process is a hot and very worthwhile topic of discussion at the moment, but just go with whatever is thrown at you, regardless of what you think is and isn't a good hiring strategy. Unless you think a company is being unreasonable or exploitative, your own interview is vanishingly unlikely to be the time or the place to try and change a company's interview practises. You can always make yourself an instant hero on your first day by explaining to your interviewers in exacting detail all the ways in which they are idiots.
 
 During your job search you'll solve some delectable puzzles, meet some heavyweight people and see inside some very zany office spaces. You'll say some face-meltingly intelligent stuff and commit some rusty-scissor-apendectomy-esque blunders. And hopefully, with the right combination of luck, skill and more luck, you'll even come out the other side with a job. Good luck!
-
 
 
 
