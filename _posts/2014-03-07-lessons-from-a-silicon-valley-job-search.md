@@ -143,7 +143,7 @@ Many companies include a 2-3 hour take-home technical challenge as part of their
 
 Most companies will ask a question about designing a high-level (often distributed) system - what machines would you use, how would you arrange them, how would you deal with failures, how would you set up your database etc. If, like me, you have little practical experience with this stuff, then don't lose any sleep over it. It's all surprisingly logical and non-magical, and you can stumble through the problem, learn a few things, and reach a broadly sensible answer.
 
-<h3>4.5 The one question I will give away</h3>
+<h3>3.5 The one question I will give away</h3>
 
 It's obviously extremely unhelpful to give away interview questions, but since I was asked this clearly already non-secret systems design question an honest-to-Dog total of 6 times I will make an exception:
 
