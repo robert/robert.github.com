@@ -2,7 +2,7 @@
 layout: post
 title: How does HTTPS actually work?
 ---
-HTTPS is simply your standard HTTP protocol slathered with a generous layer of delicious SSL/TLS encryption goodness. Unless something goes horribly wrong (and it can), it prevents people like the <a href="http://en.wikipedia.org/wiki/Alice_and_Bob#Cast_of_characters" target="_blank">infamous Eve</a> from viewing or modifying the requests that make up your browsing experience; it's what keeps your passwords, communications and credit card details safe on the wire between your computer and the servers you want to send this data to. It was hardcore enough to play a significant and amusing role in the Lavabit/NSA debacle, but anyone with access to your computer (say, your employer) has some fairly simple workarounds to help them get their snoop on (see section 4 for details on both of these). Whilst the little green padlock and the letters "https" in your address bar don't mean that there isn't still ample rope for both you and the website you are viewing to hang yourselves elsewhere, they do at least help you communicate securely whilst you do so.
+HTTPS is simply your standard HTTP protocol slathered with a generous layer of delicious SSL/TLS encryption goodness. Unless something goes horribly wrong (and it can), it prevents people like the <a href="http://en.wikipedia.org/wiki/Alice_and_Bob#Cast_of_characters" target="_blank">infamous Eve</a> from viewing or modifying the requests that make up your browsing experience; it's what keeps your passwords, communications and credit card details safe on the wire between your computer and the servers you want to send this data to. Whilst the little green padlock and the letters "https" in your address bar don't mean that there isn't still ample rope for both you and the website you are viewing to hang yourselves elsewhere, they do at least help you communicate securely whilst you do so.
 
 <h3>1. What is HTTPS and what does it do?</h3>
 
@@ -11,7 +11,7 @@ HTTPS takes the well-known and understood HTTP protocol, and simply layers a SSL
 * Verifying that you are talking directly to the server that you think you are talking to
 * Ensuring that only the server can read what you send it and only you can read what it sends back
 
-The really, really clever part is that anyone can intercept every single one of the messages you exchange with a server, including the ones where you are agreeing on the key and encryption strategy to use, and still not be able to read any of the actual data you send. Yes, you're right, that is awesome.
+The really, really clever part is that anyone can intercept every single one of the messages you exchange with a server, including the ones where you are agreeing on the key and encryption strategy to use, and still not be able to read any of the actual data you send.
 
 <h3>2. How an SSL connection is established</h3>
 
