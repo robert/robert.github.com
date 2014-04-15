@@ -40,7 +40,7 @@ A little concerned that my post looks like I think I've got everything solved an
 
 <h3>DIARY, 2ND AUG 2014</h3>
 
-Back from the European Bruce Springsteen Convention. Sadly The Boss did not turn up, but we're hopeful that this will be the year he comes to the Christmas party. Time to actually finish the blog post I started before I left. The content isn't as weighty or timeless as I would like, and I think it's stylistically a bit too dry and bland. I'll throw in some of my trademark anarchic humour to spice it up a little, but I still can't imagine Steve Blank putting it on his must-read list of startup essays. It's too specific to one situation; I'll expand its horizons and add in an outline of the universal framework for approaching product decisions that I've been thinking about (the Feature Essentiality Scale (FES)). Then BOOM, get it in front of real readers ASAP and see what they make of it.
+Back from the European Bruce Springsteen Convention. Sadly The Boss did not turn up, but we're hopeful that he'll make it to the Christmas party. Time to actually finish the blog post I started before I left. The content isn't as weighty or timeless as I would like, and I think it's stylistically a bit too dry and bland. I'll throw in some of my trademark anarchic humour to spice it up a little, but I still can't imagine Steve Blank putting it on his must-read list of startup essays. It's too specific to one situation; I'll expand its horizons and add in an outline of the universal framework for approaching product decisions that I've been thinking about (the Feature Essentiality Scale (FES)). Then BOOM, get it in front of real readers ASAP and see what they make of it.
 
 <hr/>
 

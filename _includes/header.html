@@ -14,17 +14,17 @@ var pageTitle = "{{ page.title }}" || "Home"
 <meta property="og:type" content='article'/>
 <meta property="og:title" content='{{ page.title | markdownify | strip_html | trim }} | {{ site.name }}'/>
   {% if page.custom_meta %}
-  <meta property="og:description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 }}'/>
-  <meta property="description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 }}'/>
+  <meta property="og:description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
+  <meta property="description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
   {% else %}
-  <meta property="og:description" content='{{ page.content | strip_html | strip_newlines | truncate: 200 }}'/>
-  <meta property="description" content='{{ page.content | strip_html | strip_newlines | truncate: 200 }}'/>
+  <meta property="og:description" content='{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}'/>
+  <meta property="description" content='{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}'/>
   {% endif %}
 {% else %}
 <meta content='{{ site.url }}' property='og:url' />
 <meta property="og:type" content='blog'/>
-<meta property="og:title" content='{{ site.name }}'/>
-<meta property="og:description" content='{{ site.description }}'/>
+<meta property="og:title" content='{{ site.name | escape }}'/>
+<meta property="og:description" content='{{ site.description | escape }}'/>
 {% endif %}
 <!-- All the meta tags in the world -->
 
