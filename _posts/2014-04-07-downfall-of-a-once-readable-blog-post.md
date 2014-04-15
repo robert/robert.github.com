@@ -1,7 +1,6 @@
 ---
 layout: post
-title: Devolution of an unreadable blog post
-published: false
+title: Downfall of a once readable blog post
 ---
 <h3>DIARY, 12TH APR 2014</h3>
 
