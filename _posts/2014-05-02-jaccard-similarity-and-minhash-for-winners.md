@@ -51,7 +51,7 @@ We calculate `hmin(S)` for the sets `A` and `B`. Suppose it turns out that for o
     P[hmin(A) = hmin(B)] = P[hmin(A ∪ B) present in A ∩ B]
 {% endhighlight %}
 
-The a priori P[hmin(A ∪ B) present in A ∩ B] is simply the ratio of the sizes of these sets:
+The a priori `P[hmin(A ∪ B) present in A ∩ B]` is simply the ratio of the sizes of these sets:
 
 {% highlight text %}
     |A ∩ B| / |A ∪ B|
