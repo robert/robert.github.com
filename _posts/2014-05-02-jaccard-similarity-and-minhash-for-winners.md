@@ -30,7 +30,7 @@ The Jaccard Similarity between two sets A and B is a metric that indicates (unsu
     J(A,B) = |A ∩ B| / |A ∪ B|
 {% endhighlight %}
 
-`J = 1` if the sets are identical; `J = 0` if they share no members; and clearly `0 <= J <= 1` if they are somewhere in between. It can be expressed literally as “the probability that a random element from the union of two sets is also in their intersection”.
+`J = 1` if the sets are identical; `J = 0` if they share no members; and clearly `0 <= J <= 1` if they are somewhere in between. It can be expressed literally as “the probability that a random element from the union of two sets is also in their intersection” or "the probability that a randomly chosen element chosen from one of the sets is also in the other set."
 
 By computing the Jaccard Similarities between the set of PhilCollins's followers (`A`) and the sets of followers of various other celebrities (`B`), you can find the similar celebrities without having to get your hands covered in achingly slow SQL.
 
