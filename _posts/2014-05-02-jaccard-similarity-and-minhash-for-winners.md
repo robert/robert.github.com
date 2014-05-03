@@ -85,7 +85,9 @@ It is relatively straightforward to see that `X` must therefore also be equal to
 Now `Y = X ∩ h(k)(A) ∩ h(k)(B)` is the set of members of `X` that also belong to `A ∩ B`. Returning to simple probability terminology, we have taken a random sample of `k` members of `A ∪ B` (`k` "trials"). `|Y|` of these members also belong to `A ∩ B` (`|Y|` successes). Therefore:
 
 {% highlight text %}
-    |Y|/k =~ P[random element from A ∪ B is also in A ∩ B] = |A ∩ B|/|A ∪ B| = J(A,B)
+    |Y|/k =~ P[random element from A ∪ B is also in A ∩ B]
+          = |A ∩ B|/|A ∪ B|
+          = J(A,B)
 {% endhighlight %}
 
 To recap, to estimate Jaccard Simlarity between 2 sets `A` and `B` by Single Hash MinHash:
