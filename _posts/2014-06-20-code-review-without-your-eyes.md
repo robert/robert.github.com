@@ -18,13 +18,13 @@ Concerns should absolutely be separated. And of course any class should only eve
 
 <img width="500" src="/images/ex2.jpg" />
 
-So I can see that this is technically all very DRY, and there’s nothing that can be factored in the literal sense of the word. But from the length of that one monolithic method I’m guessing you’re not a unit tester. And whilst I can work out that that 20 line block in the middle is used to decide which users we need to send emails to if you give me an afternoon and some strong coffee, I would humbly suggest that you stick it inside a def users_to_send_emails_to so that I don’t have to.
+So I can see that this is technically all very DRY, and there’s nothing that can be factored in the literal sense of the word. But from the length of that one monolithic method I’m guessing you’re not a unit tester. And whilst I can work out that that 20 line block in the middle is used to decide which users we need to send emails to if you give me an afternoon and some strong coffee, I would humbly suggest that you stick it inside a `def users_to_send_emails_to` so that I don’t have to.
 
 <h3>Exhibit 3</h3>
 
 <img width="500" src="/images/ex3.jpg" />
 
-OK, this is probably progress. But whilst the inventor of the phrase “too much of a good thing” was most likely not thinking about small methods in Ruby classes when he came up with those words, this nonetheless still is too much of a good thing. Whilst the Ruby interpreter doesn’t care about you leaping between methods every other line, most human interpreters do. I’m as happy as the next guy to scroll around a file a bit, but when I start having to manually write my own stack trace to remember where I came from, it’s probably time to munge some of those methods back together.
+OK, this is probably progress. But whilst the inventor of the phrase “too much of a good thing” was most likely not thinking about small methods in Ruby classes when he came up with those words, this nonetheless still is too much of a good thing. Whilst the Ruby interpreter doesn’t care about you leaping between methods every other line, most human interpreters do. I’m as happy as the next person to scroll around a file a bit, but when I start having to manually write my own stack trace to remember where I came from, it’s probably time to munge some of those methods back together.
 
 <h3>Exhibit 4</h3>
 
@@ -44,4 +44,4 @@ Clarificatory comments, thumbs up! Code that requires an accompanying multi-chap
 
 Methods tend to need arguments in order to do their job. But if a method needs 8 arguments in order to know what job to do and how to do it, that method is way overworked. Spread the load and take some of the weight off its shoulders with a springtime refactoring. Split it into two, or maybe it makes more sense to give some of these arguments to the instance in its initializer. Could you deal with 8 arguments simultaneously? Then don’t expect your methods to.
 
-So that’s how to do code review when you’ve forgotten your glasses or have been staring directly into the sun for longer than medically recommended. If I was better at programming then I’m sure I could have come up with some far more subtle examples. On the other hand, one could argue (and I fully intend to do so) that triviality can sometimes be interesting, is almost always more important than we would like to think. However clear, simple and well-patterned your design may be, it’s all for naught if you construct it out of mud and toenails. 
+So that’s how to do code review when you’ve forgotten your glasses or have been staring directly into the sun for longer than medically recommended. If I was better at programming then I’m sure I could have come up with some far more subtle examples. On the other hand, one could argue (and I fully intend to do so) that triviality can sometimes be interesting, and is almost always more important than we would like to think. However clear, simple and well-patterned your design may be, it’s all for naught if you construct it out of mud and toenails. 
