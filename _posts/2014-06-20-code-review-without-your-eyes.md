@@ -4,7 +4,7 @@ title: Code review without your eyes
 ---
 You’re part of a preternaturally enlightened dev team, and have set aside an entire day for nothing but code review. However, after the first 2 hours, you realise that you have forgotten your glasses and have just been staring at colourful blurs all morning. What do you do?
 
-The correct answer is of course to go back home and get your glasses, since you only live a 10 minute walk away and it’s a nice day. But assume that as you left the house this morning you discovered that a swarm of particularly belligerent hornets had just completed construction on a nest in your glasses wardrobe and that they didn’t look keen on being disturbed. WHAT THEN.
+The correct answer is to go back home and get your glasses, since you only live a 10 minute walk away and it’s a nice day. But assume that as you left the house this morning you discovered that a swarm of particularly belligerent hornets had just completed construction on a nest in your glasses wardrobe and that they didn’t look keen on being disturbed. WHAT THEN.
 
 The new correct answer is of course to avoid embarrassment by pretending that you are wearing contact lenses, and remembering that you can tell a surprising amount about a file without actually reading any of it.
 
