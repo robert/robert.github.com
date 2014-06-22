@@ -30,7 +30,7 @@ OK, this is probably progress. But whilst the inventor of the phrase “too much
 
 <img width="500" src="/images/ex4.jpg" />
 
-Again, namespacing is good. But by the time you get to the 6th level, it seems likely that you are trying to cram too much stuff into a small space. Consider either stop splitting up quite so finely (yes I can see that those 2 Helper classes could have their own Helper namespace, but are they really hurting anything in the next one up?), or decoupling and splitting some code into an entirely different base namespace altogether.
+Again, namespacing is good. But by the time you get to the 6th level, it seems likely that you are trying to cram too much stuff into too small a space. Consider either stop splitting up quite so finely (yes I can see that those 2 Helper classes could have their own Helper namespace, but are they really hurting anything in the next one up?), or decoupling and splitting some code into an entirely different base namespace altogether.
 
 <h3>Exhibit 5</h3>
 
