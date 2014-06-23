@@ -1,6 +1,7 @@
 ---
 layout: post
 title: A beginner's guide to funemployment
+hn: 7932102
 ---
 Before recently joining Stripe, I did no work for 5 months, and aside from writing a few blog posts and getting to Gold League in Starcraft, I achieved very little. It was wonderful. 
 
