@@ -24,7 +24,7 @@ Looking at this rather large method disguised as a class, I can see that it is t
 
 <img width="500" src="/images/ex3.jpg" />
 
-OK, so in this class your methods are much shorter, and this is probably progress. However, you can and do have too much of a good thing. Whilst the Ruby interpreter doesn’t care about you leaping between methods every other line, most human interpreters do. I’m as happy as the next person to scroll around a file a bit, but when I start having to manually write my own stack trace to remember where I came from, it’s probably time to munge some of those methods back together.
+OK, so in this class your methods are much shorter, and this is probably progress. However, you can and do have too much of a good thing. Whilst the Ruby interpreter doesn’t care about you leaping between methods every other line, most human interpreters do. I’m as happy as the next person to scroll around a file a bit, but when I start having to write a stack trace on my arm to remember where I came from, it’s probably time to munge some of those methods back together.
 
 <h3>Exhibit 4</h3>
 
