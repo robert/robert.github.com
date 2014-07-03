@@ -7,7 +7,7 @@ hn: 7428469
 
 <hr/>
 
-After 4 months of funemployment, 25 job applications and 6 weeks of constant interviewing, I'm going to be an engineer at <a href="https://stripe.com" target="_blank">Stripe</a>. It goes without saying that <a target="_blank" href="https://stripe.com/jobs">we're always hiring</a>.
+After 4 months of funemployment, 25 job applications and 6 weeks of constant interviewing, I've finally got a job in Silicon Valley.<!--I'm going to be an engineer at <a href="https://stripe.com" target="_blank">Stripe</a>. It goes without saying that <a target="_blank" href="https://stripe.com/jobs">we're always hiring</a>.-->
 
 The job search experience wasn't some epic, arduous, life-affirming quest in which I realised that the nerdy girl with glasses was actually both inwardly beautiful and outwardly smoking hot when she brushed her hair. But it was certainly non-trivial and did take a lot more work and time than I had expected. As with anything, there were some things I did that accidentally turned out to be pretty smart, many things that turned out to be boneheaded, and lots of basics and finesses about making applications, doing interviews and negotiating deals that I feel I understand far more now than I did when I started. There's plenty more on these below, but there are 2 lessons I would particularly like to emphasise from the start:
 
