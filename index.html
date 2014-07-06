@@ -5,17 +5,15 @@ title: Robert Heaton
 
 <div id="home">
   <ul class="posts">
-    {% for post in site.posts %}
     <li>
-      <a href="{{ post.url }}">
-        {{ post.title }}
+      <a href="/2014/06/20/code-review-without-your-eyes/">
+        Code review without your eyes
         <br />
-        <small class="muted" data-time="{{ post.date }}">
-          {{ post.date | date_to_string }}
+        <small class="muted" data-time="20 Jun 2014">
+          20 Jun 2014
         </small>
-        <small class="muted hide">{{ post.date | date_to_string }}</small>
+        <small class="muted hide">20 Jun 2014</small>
       </a>
     </li>
-    {% endfor %}
   </ul>
 </div>
