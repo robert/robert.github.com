@@ -2,6 +2,7 @@
 layout: post
 title: Check you’re wearing trousers first
 hn: 5478893
+bestof: true
 ---
 It’s easy, fun, and a catastrophic mistake to over-intellectualise. Unfortunately it also pays pretty well.
 

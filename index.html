@@ -3,17 +3,25 @@ layout: index
 title: Robert Heaton
 ---
 
+
+<h3 style="text-align: center; margin-top:0">My favourite posts (<a href="/archive">view all</a>)</h3>
 <div id="home">
   <ul class="posts">
+    {% for post in site.posts %}
+    {% if post.bestof %}
     <li>
-      <a href="/2014/06/20/code-review-without-your-eyes/">
-        Code review without your eyes
+      <a href="{{ post.url }}">
+        {{ post.title }}
         <br />
-        <small class="muted" data-time="20 Jun 2014">
-          20 Jun 2014
+        <!--
+        <small class="muted" data-time="{{ post.date }}">
+          {{ post.date | date_to_string }}
         </small>
-        <small class="muted hide">20 Jun 2014</small>
+        <small class="muted hide">{{ post.date | date_to_string }}</small>
+        -->
       </a>
     </li>
+    {% endif %}
+    {% endfor %}
   </ul>
 </div>

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How to win at dinner party - the Blue-Eyed Islanders Puzzle
+bestof: true
 hn: 7023595
 ---
 If you have never seen the Blue-Eyed Islanders Puzzle before, then hold onto your hats and stand near some sterilised plastic sheeting because your brain is about to explode. If you have seen it before but have never thought to use it at a dinner party then you are insane. In either case, be warned that you may be overwhelmed and/or seriously injured by the unmanageable influx of respect, kudos and attractive women/men/both that will follow this puzzle's use at your next evening engagement.

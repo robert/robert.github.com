@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Take pride or f--- it
+bestof: true
 hn: 5448923
 ---
 The blank, unblemished untitled.txt shimmering in your code editor can mean only one thing. It’s new feature time.
