@@ -2,7 +2,7 @@
 layout: post
 title: Why I love refactoring
 ---
-I love refactoring. If it weren’t for the obvious, disconnected-entirely-from-the-real-world deficiencies it would imply in my approach to software development, I would say that I like it substantially more than building features. Let’s just say that I spend almost every Christmas, New Year and Kwanza extracting gems and building decorators and leave it at that.
+I love refactoring. If it weren’t for the obvious, disconnected-entirely-from-the-real-world deficiencies it would imply in my approach to software development, I would even say that I like it substantially more than building features. Let’s just say that I spend almost every Christmas, New Year and Kwanza extracting gems and building decorators and leave it at that.
 
 When refactoring, you know more about the domain than when the code was first written, so can unwind the erroneous assumptions of the past. You can make much more educated guesses at what the code will need to do in the future, and can structure it accordingly. You can see where the performance problems are, and whether performance is in fact something you should be worried about at all.
 
