@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Assume good intentions
+published: false
 ---
 At a recent Stripe All The Hands meeting, one of {John, Patrick} Collison (I can’t be certain which, and there are so many Collisons at Stripe that it seems unreasonable to expect anyone to keep track of them both) riffed a little on the idea of assuming good intentions of those around you. My friends, family, long-time readers and members of my experimental hip-hop dance troupe will know that I don’t like giving anyone else any credit for anything I write about. Unfortunately, people other than me do sometimes come up with interesting ideas whilst 100 or so people that I am in daily contact with are also listening, and in situations like this I like to credit them for the seed of the idea, but make it clear that I was the one with the vision to see its full ramifications.
 
