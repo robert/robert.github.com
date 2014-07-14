@@ -16,7 +16,7 @@ I spent my first year as a real person playing poker, learning about programming
 
 The next year was when I started to get bizzay (in a strictly professional sense). I did a Masters in CS, started a company selling sweaters with pictures of fruit on them and continued teaching a few programming classes. I would often work evenings and weekends, and if I didn't have any work that needed to be done then I would damn well make some. I felt very validated.
 
-I can’t remember how exactly, but for some reason I started reading <a href="http://www.lifehack.org/" target="_blank">lifehack.org</a> everyday. The site was far from famous or revolutionary, but as far as I was concerned it contained almost all of the important knowledge amassed by mankind to date. After reading my bajillionth post paraphrasing Getting Things Done by <a href="http://en.wikipedia.org/wiki/Getting_Things_Done" target="_blank">David Allen</a>, I finally forked out seven of my English pounds for my very own copy of the source material. I read it.
+I can’t remember how exactly, but for some reason I started reading <a href="http://www.lifehack.org/" target="_blank">lifehack.org</a> everyday. The site was far from famous or revolutionary, but as far as I was concerned it contained almost all of the important knowledge amassed by mankind to date. After reading my bajillionth post paraphrasing <a href="http://en.wikipedia.org/wiki/Getting_Things_Done" target="_blank">Getting Things Done</a> byDavid Allen, I finally forked out seven of my English pounds for my very own copy of the source material. I read it.
 
 It would be an exaggeration to say my head exploded, but not by much.
 
