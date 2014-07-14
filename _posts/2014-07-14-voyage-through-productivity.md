@@ -24,7 +24,7 @@ This was just what the busy, ambitious and important young professional needed. 
 
 I stuck coloured paper all over my walls so that I was rarely more than 2 seconds away from a surface that could be used to capture important information or ideas. I devoured numerous other productivity books, almost all of which gave either the same or strictly worse advice. I actually went back through GTD and did all of the exercises that you always ignore because you are too cool for them. I was hooked
 
-### Chapter 3 - GTD is upon us
+### Chapter 3 - It is upon us
 
 Me under the influence of GTD was greatly deserving of something between a gentle lampooning and a crowbar to the face. It would be unfair to blame GTD for all of this, especially since I do think that most of what’s in there is incredibly powerful. It would also be unfair to suggest that GTD necessarily has to make you go insane. However, since caricature is much easier than nuanced prose, I will do both of these things.
 
