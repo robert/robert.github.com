@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Strategy, operations and tactics
+published: false
 ---
 In lecture 8 (or thereabouts) of his wonderful Stanford lecture series, <a href="https://itunes.apple.com/us/itunes-u/history-international-system/id384240428?mt=10" target="_blank">"The History of the International System"</a>, James Sheehan discusses the different scales at which military activities are planned and carried out. This spectrum of high- to low-level concerns is traditionally divided up into 3 main categories - strategy, operations and tactics. Strategy is the translation of a political situation into military objectives. Operations is the manoeuvring of units and supplies in order to force the battles you want to fight. And tactics is the actual way in which a given battle is fought.
 
