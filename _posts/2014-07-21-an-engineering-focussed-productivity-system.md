@@ -7,7 +7,7 @@ In my <a href="/2014/07/14/voyage-through-productivity/" target="_blank">last po
 
 ### 0. My engineer-specific productivity system
 
-I’m a software engineer, and so that’s what this process is optimised for.
+I’m a software engineer, and so that’s what this system is optimised for.
 
 It requires very little discipline after the initial breaking-in period, because everything in it either produces immediate benefit or fills a spreadsheet with pretty colours. And as my pappy always says, it doesn’t take much force of will to have lunch everyday. Whilst it seems like a lot when written down, it feels very lightweight to me. It adds very little overhead, is mostly centred around bringing structure to things you already do, and I want to say that everything is there for a reason. But then again, I would say that.
 
