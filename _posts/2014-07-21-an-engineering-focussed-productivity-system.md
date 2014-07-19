@@ -12,9 +12,9 @@ It requires very little discipline after the initial breaking-in period, because
 
 ### 1. Broad structure
 
-* Setup - at the start of each day, read your emails, plan your day on a Sticky, learn something new and run through your Anki deck
+* Setup - at the start of each day, read your emails, plan your day on a <a href="http://en.wikipedia.org/wiki/Stickies_(software)" target="_blank">Sticky</a>, learn something new and run through your <a href="http://ankisrs.net/" target="_blank">Anki</a> flashcard deck
 * Doing work - work in 45 min sprints, and record them on today’s Sticky
-* Capturing information - capture questions in Omnifocus, answers in Anki, and company-specific information in Notational Velocity
+* Capturing information - capture questions in <a href="https://www.omnigroup.com/omnifocus" target="_blank">Omnifocus</a>, answers in Anki, and company-specific information in <a href="http://notational.net/" target="_blank">Notational Velocity</a>
 * Sending emails - when programming, ignore your emails. Every 45 mins, send urgent, time sensitive emails. Batch non-urgent emails at the end of the day
 * End of the day -  fill in a brief spreadsheet
 
@@ -24,19 +24,21 @@ It requires very little discipline after the initial breaking-in period, because
 
 The default <a href="http://en.wikipedia.org/wiki/Stickies_(software)" target="_blank">OSX Stickies</a> application is at the front and centre of each and every day. In the morning, read all your emails (more on this later) and then fill out a Sticky with the following fields:
 
-[SCREENSHOT]
+<p style="text-align: center">
+<img src="/images/sticky.jpg" />
+</p>
 
 ### 2.1.1 DO
 
-The 2-3 concrete, specific, fail-able things you want to do today. Don’t be vague. "Work on OplogTailer” is vague and impossible to fail or succeed at. "Finish skeleton architecture and tests for OplogTailer” is much better. "Email more customers” is vague. "Email 10 customers and respond to the 4 who replied yesterday” is great. This kind of language gives you actual goalposts to aim at, rather than aimlessly booting a ball around a park. Break these headlines into lists of sub-tasks if that is useful. Mark things with `(DONE)` when you finish them.
+The 2-3 concrete, specific, fail-able things you want to do today. Don’t be vague. "Work on OplogTailer" is vague and impossible to fail or succeed at. "Finish skeleton architecture and tests for OplogTailer" is much better. "Email more customers" is vague. "Email 10 customers and respond to the 4 who replied yesterday" is great. This kind of language gives you actual goalposts to aim at, rather than aimlessly booting a ball around a park. Break these headlines into lists of sub-tasks if that is useful. Mark things with `(DONE)` when you finish them.
 
 ### 2.1.2 SMALL
 
-The N little things that you need to do today but won’t define whether or not today is a good day. "Read Steve’s report”, "Ask Barry whether he is around on Monday” and "Install SilverSearcher” all belong here.
+The N little things that you need to do today but won’t define whether or not today is a good day. "Read Steve’s report", "Ask Barry whether he is around on Monday" and "Install SilverSearcher" all belong here.
 
 ### 2.1.3 QUESTION
 
-Pick one question from your Omnifocus list of questions (see below) and find out the answer during your Setup. Put the answer in Anki (see below). "What is the actual difference between JSONP and CORS?”, "What’s the deal with PGP?” and "How do buffers work in vim?” are good examples.
+Pick one question from your Omnifocus list of questions (see below) and find out the answer during your Setup. Put the answer in Anki (see below). "What is the actual difference between JSONP and CORS?", "What’s the deal with PGP?" and "How do buffers work in vim?" are good examples.
 
 ### 2.1.4 SESSIONS
 
@@ -54,7 +56,7 @@ However, there are dangers. It’s important not to make each day a localised co
 
 ### 2.1.5 Each week
 
-On Monday morning, before making your Sticky for the coming day, make a note in <a href="https://evernote.com" target="_blank">Evernote</a> called "$YOUR_COMPANY WB $LAST_MONDAYS_DATE”. Copy last week’s Stickies into this note and then delete them. Have a quick look over them, and write a 5-line summary of how your week went and what you did. The results will often be illuminating, and the process helps bring shape to your weeks in the same way that the individual Stickies bring it to your days. Having a better picture of your high-level history makes it easier to see your overall thread, roughly how long things take in calendar time, and what the hell you actually spend your days doing.
+On Monday morning, before making your Sticky for the coming day, make a note in <a href="https://evernote.com" target="_blank">Evernote</a> called "$YOUR_COMPANY WB $LAST_MONDAYS_DATE". Copy last week’s Stickies into this note and then delete them. Have a quick look over them, and write a 5-line summary of how your week went and what you did. The results will often be illuminating, and the process helps bring shape to your weeks in the same way that the individual Stickies bring it to your days. Having a better picture of your high-level history makes it easier to see your overall thread, roughly how long things take in calendar time, and what the hell you actually spend your days doing.
 
 ### 2.2 The Spreadsheet Of Truth
 
@@ -62,13 +64,15 @@ Even in the best of dev teams[link to Stripe/jobs], you will sometimes get block
 
 Getting unblocked is often a much less satisfying process than writing code. When projects start to require input other than more and better LOC, I often find myself feeling restless and under-utilised. The most pleasant solution is to grab another issue, `git checkout -b rob-new-feature-4723`, and get back to mashing my keyboard. But this leaves a lot of balls in the air and thousands of dollars of invisible Work In Progress code inventory lying around. It makes it difficult to hard-switch your entire focus to an emerging problem because you have to keep track of so much WIP that you vaguely know you need to deploy sometime soon.
 
-Your cycle time (the time taken for a feature to go from idea to deployment) is typically more important to your overall success than aggregate throughput and capacity. It is generally better to complete 3 projects that each take 2 weeks one after the other, rather than complete 4 projects in parallel that are all deployed at the end of 6 weeks. The most intuitive explanation is that the quicker something gets into production, the quicker you can start learning from it, and that this can easily trump all other considerations. Donald Reinertsen’s <a href="http://www.amazon.com/The-Principles-Product-Development-Flow/dp/1935401009" target="_blank">Product Development Flow<a/> has 300 pages of pure rigour on this and many other topics.
+Your cycle time (the time taken for a feature to go from idea to deployment) is typically more important to your overall success than aggregate throughput and capacity. It is generally better to complete 3 projects that each take 2 weeks one after the other, rather than complete 4 projects in parallel that are all deployed at the end of 6 weeks. The most intuitive explanation is that the quicker something gets into production, the quicker you can start learning from it, and that this can easily trump all other considerations. Donald Reinertsen’s <a href="http://www.amazon.com/The-Principles-Product-Development-Flow/dp/1935401009" target="_blank">Product Development Flow</a> has 300 pages of pure rigour on this and many other topics.
 
 To make my invisible WIP show itself, to get some concrete idea of my typical cycle times, and to be able to say definitively all the things I am currently committed to work on, I made a colourful Google Docs spreadsheet (The Spreadsheet Of Truth).
 
-[SCREENSHOT]
+<p style="text-align: center">
+<img style="text-align:centre" src="/images/ss.jpg" />
+</p>
 
-Each column is a project, and should usually map to a single pull request, for example "Speed up Elasticsearch indexing” or "Refactor Ruby bindings”. At the top of each Preparing and Coding project column, put an O for Open, or a B for Blocked. There are then 4 larger groups of columns:
+Each column is a project, and should usually map to a single pull request, for example "Speed up Elasticsearch indexing" or "Refactor Ruby bindings". At the top of each Preparing and Coding project column, put an O for Open, or a B for Blocked. There are then 4 larger groups of columns:
 
 * Planning - you have started establishing specs, talking to external partners, and all the other things you do that don’t involve writing code
 * Current - you have started coding
@@ -99,9 +103,11 @@ And this is only from the last few months.
 
 ### 2.3 Omnifocus
 
-[SCREENSHOT]
+<p style="text-align: center">
+<img src="/images/omnifocus.jpg" />
+</p>
 
-Omnifocus allows you to press a global shortcut (default Ctrl+Cmd+Space) and make a note from anywhere. This is worth the $40 pricetag on its own. It makes capturing small to-dos, vague ideas and inspiring quotes entirely effortless. The rest of the product is built around a classical <a href="http://en.wikipedia.org/wiki/Getting_Things_Done" target="_blank">GTD</a> system, but I just have one list of Misc to-dos and mostly use it as a place to dump things I think of that don’t belong anywhere else. The most important lists I have are:
+<a href="https://www.omnigroup.com/omnifocus" target="_blank">Omnifocus</a> allows you to press a global shortcut (default Ctrl+Cmd+Space) and make a note from anywhere. This is worth the $40 pricetag on its own. It makes capturing small to-dos, vague ideas and inspiring quotes entirely effortless. The rest of the product is built around a classical <a href="http://en.wikipedia.org/wiki/Getting_Things_Done" target="_blank">GTD</a> system, but I just have one list of Misc to-dos and mostly use it as a place to dump things I think of that don’t belong anywhere else. The most important lists I have are:
 
 * Questions - mostly technical questions that you would like to know the answer to. Pick one/day to put on your Sticky (see above), and answer it in Anki (see below).
 * Wishlist - product ideas you would like to implement one day, but aren’t yet mature or important enough to put in the team's backlog.
@@ -111,15 +117,19 @@ Context-agnostic note-taking really is a special thing.
 
 ### 2.4 Notational Velocity
 
-[SCREENSHOT]
+<p style="text-align: center">
+<img src="/images/nv.jpg" />
+</p>
 
-Notational Velocity is perfect for storing all the company-specific incantations and solutions for common error messages that you otherwise have to ask or Google for over and over again. It’s essentially Evernote optimised for storing and retrieving pointed snippets of information. It's incredibly simple, lightning fast and stuffed with every keyboard shortcut you could ever desire. I’ve found it particularly useful for storing ad-hoc scripts that I run in a console, e.g. "Create and refund 10 test charges” or "Set every user’s country to be Germany”. You’d be surprised how often these have reuse value and how much more frequently you write sensible scripts if you know you are permanently expanding your arsenal of commands. For the sake of stack-size control I also write longer documents like test plans and architecture designs in it, although I suspect that this is not the optimum place for them.
+<a href="https://www.omnigroup.com/omnifocus" target="_blank">Notational Velocity</a> is perfect for storing all the company-specific incantations and solutions for common error messages that you otherwise have to ask co-workers or Google for over and over again. It’s essentially Evernote optimised for storing and retrieving pointed snippets of information. It's incredibly simple, lightning fast and stuffed with every keyboard shortcut you could ever desire. I’ve found it particularly useful for storing ad-hoc scripts that I run in a console, e.g. "Create and refund 10 test charges" or "Set every user’s country to be Germany". You’d be surprised how often these have reuse value and how much more frequently you write sensible scripts if you know you are permanently expanding your arsenal of commands. For the sake of stack-size control I also write longer documents like test plans and architecture designs in it, although I suspect that this is not the optimum place for them.
 
 ### 2.5 Anki
 
-[SCREENSHOT]
+<p style="text-align: center">
+<img src="/images/anki.jpg" />
+</p>
 
-Anki is Q&A flashcards done very simply and very well. I’ve wanted to use it properly for several years, but have never been able to make the habit stick. However, now that it has become part of my morning Setup and I am systematically learning at least one definable new thing every day, it has finally stuck. As you start to remember more stuff, and can see an ever-expanding list of all the new things you now know, you spark off a virtuous circle of wanting to learn and capture even more things.
+<a href="http://ankisrs.net/" target="_blank">Anki</a> is Q&A flashcards done very simply and very well. I’ve wanted to use it properly for several years, but have never been able to make the habit stick. However, now that it has become part of my morning Setup and I am systematically learning at least one definable new thing every day, it has finally stuck. As you start to remember more stuff, and can see an ever-expanding list of all the new things you now know, you spark off a virtuous circle of wanting to learn and capture even more things.
 
 It is particularly suited for learning things like Unix commands, vim syntax and OSX shortcuts. Whilst learning new Unix commands materially increases the amount of stuff you are able to, getting better at vim and OSX just makes you a little bit faster at doing the same stuff you were doing before. This is cool, but I would suggest that after a while they become another form of code golf, and are mostly ways to save wear and tear on your mouse hand rather than make any qualitative difference to your output and abilities. Which is fine, but seems worth recognising (more on this below).
 
@@ -127,11 +137,9 @@ As mentioned above, blitz through your deck during your morning Setup each day a
 
 ### 3. Inbox zero
 
-At the end of each day, I am always (always) at inbox zero. But I guess that this is quite easy, since I don’t really get that many emails. Unsubscribe to everything you can, and try and ensure that the only messages that make it into your main inbox are those that were written by a human and are addressed specifically to you. Filter and archive emails from Github, Sentry, Tddium etc. onto their own separate labels, without marking them as read. This effectively gives you different inboxes with different characteristics and levels of priority. It allows you to batch-read each type of email, rather than jumping between them. Use an <a href="http://gadgetboy.org/archives/2013/10/16/using-gmail-labels-to-manage-tasks" target="_blank">@Action label</a> to mark the emails you actually need to reply to, and blitz through them once/day (or thereabouts).
+At the end of each day, I am always (always) at <a href="http://www.43folders.com/2006/03/13/inbox-zero" target="_blank">inbox zero</a>. But I guess that this is quite easy, since I don’t really get that many emails. Unsubscribe to everything you can, and try and ensure that the only messages that make it into your main inbox are those that were written by a human and are addressed specifically to you. Filter and archive emails from Github, Sentry, Tddium etc. onto their own separate labels, without marking them as read. This effectively gives you different inboxes with different characteristics and levels of priority. It allows you to batch-read each type of email, rather than jumping between them. Use an <a href="http://gadgetboy.org/archives/2013/10/16/using-gmail-labels-to-manage-tasks" target="_blank">@Action label</a> to mark the emails you actually need to reply to, and blitz through them once/day (or thereabouts).
 
-[SCREENSHOT]
-
-In general, do read your emails at the start of the working day. There are many posts written about <a href="http://lifehacker.com/5738727/why-you-shouldnt-check-your-email-first-thing-in-the-morning" target="_blank">the holiness of the morning</a> and why you shouldn’t do this, but these all assume that you are spending most of your days being buffeted by the winds of your inbox, and need to carve out morsels of time to think and focus. However, if you are an engineer who doesn’t get to spend big chunks of the day focussing and programming already, you have systemic problems that need solving at the root. As long as you don’t answer these emails, you trade ~15 minutes (that you will have to spend at some point anyway) in return for being totally up to date when writing your daily Sticky. You know in advance if there are any emergent curveballs that you will need to take a look at, and can make immediate course-corrections on the main work you are doing.
+In general, do read your emails at the start of the working day. Much is made of the holiness of the morning and how this is a terrible idea that will destroy your entire day, but this assumes that you are spending most of your days being buffeted by the winds of your inbox, and need to carve out morsels of time to think and focus. However, if you are an engineer who doesn’t get to spend big chunks of the day focussing and programming already, you have systemic problems that need solving at the root. As long as you don’t answer these emails, you trade ~15 minutes (that you will have to spend at some point anyway) in return for being totally up to date when writing your daily Sticky. You know in advance if there are any emergent curveballs that you will need to take a look at, and can make immediate course-corrections on the main work you are doing.
 
 <!--Email at Stripe has a whole load of further intricacies[LINK], but that’s a story for another day.-->
 
@@ -149,11 +157,11 @@ If and when you have to spend a significant amount of time on things other than 
 
 ### 5. Conclusion
 
-In my <a href="/2014/07/14/voyage-through-productivity/" target="_blank">previous post<a/>, I was pretty hard on my old self and his approach to organisation. And for good reason. That guy was OK, but had some pretty crazy delusions of grandeur and was just desperate to feel busier and more important than he actually was. On the other hand, you do just have to try things and see what sticks. It’s only arrogant douchebaggery if it doesn’t work, otherwise it’s just being smart. As I wrote before, if you’re going to do something then you might as well do it right. A degree of structure, developed over time in response to needs that you actually feel, has to be a sensible thing. Just be careful when some doofus starts trying to force-feed you his goofy system.
+In my <a href="/2014/07/14/voyage-through-productivity/" target="_blank">previous post</a>, I was pretty hard on my old self and his approach to organisation. And for good reason. That guy was OK, but had some pretty crazy delusions of grandeur and was just desperate to feel busier and more important than he actually was. On the other hand, you do just have to try things and see what sticks. It’s only arrogant douchebaggery if it doesn’t work, otherwise it’s just being smart. As I wrote before, if you’re going to do something then you might as well do it right. A degree of structure, developed over time in response to needs that you actually feel, has to be a sensible thing. Just be careful when some doofus starts trying to force-feed you his goofy system.
 
 ### Appendix
 
-* Public GoogleDocs Spreadsheet Of Truth example - <a href="https://docs.google.com/spreadsheets/d/1ZYRzJUXIjA4sToSzAUEdC7ZeHFKVyfWJ1UW-wYLPZJY/edit#gid=0" target="_blank">https://docs.google.com/spreadsheets/d/1ZYRzJUXIjA4sToSzAUEdC7ZeHFKVyfWJ1UW-wYLPZJY/edit#gid=0</a>
+* Public Spreadsheet Of Truth example - <a href="https://docs.google.com/spreadsheets/d/1ZYRzJUXIjA4sToSzAUEdC7ZeHFKVyfWJ1UW-wYLPZJY/edit#gid=0" target="_blank">GoogleDocs</a>
 * Omnifocus - <a href="" target="_blank">https://www.omnigroup.com/omnifocus</a>
 * Notational Velocity - <a href="http://notational.net/" target="_blank">http://notational.net/</a>
 * Evernote - <a href="https://evernote.com/" target="_blank">https://evernote.com/</a>
