@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Nothing Done: a misguided quest for productivity
+title: "Getting Nothing Done: a misguided quest for productivity"
 bestof: true
 ---
 If you’ve read Lord of the Rings, then this is pretty much that but with to-do apps instead of hobbits and inefficiency instead of the Nazgul. Also spreadsheets instead of Boromir.
