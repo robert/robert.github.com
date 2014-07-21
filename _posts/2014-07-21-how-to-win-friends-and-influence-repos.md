@@ -61,7 +61,7 @@ On Monday morning, before making your Sticky for the coming day, make a note in 
 
 ### 2.2 The Spreadsheet Of Truth
 
-Even in the best of dev teams[link to Stripe/jobs], you will sometimes get blocked. Maybe you are waiting on code review, or on confirmation of specs, or on an external vendor. If the team is big, and especially if you are remote, this can happen more than you would like.
+Even in the best of dev teams, you will sometimes get blocked. Maybe you are waiting on code review, or on confirmation of specs, or on an external vendor. If the team is big, and especially if you are remote, this can happen more than you would like.
 
 Getting unblocked is often a much less satisfying process than writing code. When projects start to require input other than more and better LOC, I often find myself feeling restless and under-utilised. The most pleasant solution is to grab another issue, `git checkout -b rob-new-feature-4723`, and get back to mashing my keyboard. But this leaves a lot of balls in the air and thousands of dollars of invisible Work In Progress code inventory lying around. It makes it difficult to hard-switch your entire focus to an emerging problem because you have to keep track of so much WIP that you vaguely know you need to deploy sometime soon.
 
