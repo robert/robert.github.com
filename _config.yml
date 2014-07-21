@@ -9,5 +9,4 @@ url: http://robertheaton.com
 auto: true
 feedburner_id: robertheaton
 future: true
-gems:
-  - jekyll-redirect-from
+gems: [jekyll-redirect-from]
