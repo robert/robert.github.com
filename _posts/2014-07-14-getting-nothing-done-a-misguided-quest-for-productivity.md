@@ -57,4 +57,4 @@ I made my own delusions of grandeur. Flicking back through GTD, it’s not short
 
 If you are going to do job X, project Y and hobby Z then you might as well be methodical about them. But the structure you use should exist to support your life, not the other way around. You have to be very careful not to get so caught up in organising and collating all the things you care about that you forget to actually do any of them. Personally, since my extreme "Fuck lifehacking" days, I’ve evolved a proprietary system of knobs and pulleys that feels like it lets me do things whilst not making me (any more of) an unbearable wazzock. I think it’s working. Although you can never tell from the inside.
 
-<i style="color:#999">(UPDATE: I've finished my <a href="http://robertheaton.com/2014/07/21/how-to-win-friends-and-influence-repos/">writeup of my current organisational approach</a>.</i>
+<i style="color:#999">(UPDATE: I've finished my <a href="http://robertheaton.com/2014/07/21/how-to-win-friends-and-influence-repos/">writeup of my current organisational approach</a>.)</i>
