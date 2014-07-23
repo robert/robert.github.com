@@ -3,9 +3,9 @@ layout: post
 published: false
 title: Is Ruby pass-by-reference or pass-by-value?
 ---
-The two most widely known and easy to understand approaches to parameter passing amongst programming languages are pass-by-reference and pass-by-value. In a ruthlessly technical sense, Ruby is pass-by-value, that's the end of the story, and we can all go home. However, we would miss out on a lot of subtlety if we did.
+The two most widely known and easy to understand approaches to parameter passing amongst programming languages are pass-by-reference and pass-by-value. In one, ruthlessly technical sense, Ruby is pass-by-value, that's the end of the story, and we can all go home. However, we would miss out on a lot of subtlety if we did.
 
-For Ruby does pass its arguments by value, but the arguments it passes by value are references.
+For Ruby does pass its arguments by value, but the values it passes are references.
 
 Say what?
 
@@ -14,7 +14,7 @@ It turns out there are actually 2 types of pass-by-value.
 * Pass-value-by-value
 * Pass-reference-by-value
 
-Stop your crying and take your head out of the oven, everything's going to be OK. Even after adding pass-by-reference into the equation, it turns out that all 3 paradigms can be simply and intuitively understood by how they cause the following 2 functions to behave:
+Stop crying, everything's going to be OK. It turns out that all of the paradigms can be simply and intuitively understood by how they cause the following 2 functions to behave:
 
 {% highlight ruby %}
     def reassign(list)
@@ -64,7 +64,7 @@ To reiterate, in pass-by-reference, the function and the caller both use the exa
 
 <h3 style="font-weight: bolder">Pass-value-by-value</h3>
 
-In pass-by-value, the function receives a copy of the argument objects passed to it by the caller, stored in a new location in memory.
+In pass-value-by-value, the function receives a copy of the argument objects passed to it by the caller, stored in a new location in memory.
 
 <img src="/images/PBVIntro.jpg">
 
@@ -80,15 +80,15 @@ The copies of variables and objects in the context of the caller are completely 
 
 <h3 style="font-weight: bolder">Pass-reference-by-value</h3>
 
-Ruby passes its arguments by value, but the arguments it passes by value are references.
+Ruby is pass-by-value, but the values it passes are references.
 
-A function receives a reference to (and will access) the same object in memory as used by the caller. However, it does not receive the box that the caller is storing this object in; as in pass-by-value, the function provides its own box and creates a new variable for itself. Let's try appending again:
+A function receives a reference to (and will access) the same object in memory as used by the caller. However, it does not receive the box that the caller is storing this object in; as in pass-value-by-value, the function provides its own box and creates a new variable for itself. Let's try appending again:
 
 <img src="/images/PBORAppend.jpg">
 
-Both the function and the caller refer to the same object in memory, so when the append function adds an extra item to the list, we see this in the caller too! They're different names for the same thing; different boxes containing the same object. This is what is meant by passing the object references by value - the function and caller use the same object in memory, but accessed through different variables. This means that the same object is being stored in multiple different boxes, and the metaphor kind of breaks down. Pretend it's quantum or something.
+Both the function and the caller refer to the same object in memory, so when the append function adds an extra item to the list, we see this in the caller too! They're different names for the same thing; different boxes containing the same object. This is what is meant by passing references by value - the function and caller reference the same object in memory, but accessed through different variables. This means that the same object is being stored in multiple different boxes, and the metaphor kind of breaks down. Pretend it's quantum or something.
 
-But the key is that they really are <i>different</i> names, and <i>different</i> boxes. In pass-by-reference, they were essentially the same box. When you tried to reassign a variable, and put something different into the function's box, you also put it into the caller's box, because they were the same box. But, in pass-by-object-reference:
+But the key is that they really are <i>different</i> names, and <i>different</i> boxes. In pass-by-reference, they were essentially the same box. When you tried to reassign a variable, and put something different into the function's box, you also put it into the caller's box, because they were the same box. But, in pass-reference-by-value:
 
 <img src="/images/PBORReassign.jpg">
 
