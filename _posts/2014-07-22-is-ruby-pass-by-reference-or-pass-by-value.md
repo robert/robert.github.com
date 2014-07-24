@@ -106,5 +106,7 @@ Now if you'll excuse me, I'm going to read <i>"Do Androids Dream Of Electric She
 
 <h3 style="font-weight: bolder">Useful links</h3>
 
-<a target="_blank" href="http://javadude.com/articles/passbyvalue.htm">http://javadude.com/articles/passbyvalue.htm</a>
-<a target="_blank" href="http://stackoverflow.com/questions/1872110/is-ruby-pass-by-reference-or-by-value">http://stackoverflow.com/questions/1872110/is-ruby-pass-by-reference-or-by-value</a>
+<ul>
+<li><a target="_blank" href="http://javadude.com/articles/passbyvalue.htm">http://javadude.com/articles/passbyvalue.htm</a></li>
+<li><a target="_blank" href="http://stackoverflow.com/questions/1872110/is-ruby-pass-by-reference-or-by-value">http://stackoverflow.com/questions/1872110/is-ruby-pass-by-reference-or-by-value</a></li>
+</ul>
