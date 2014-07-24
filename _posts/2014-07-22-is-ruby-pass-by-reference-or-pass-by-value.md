@@ -50,15 +50,15 @@ then `[]` is an empty array. `a` is a variable that points to this empty array, 
 
 In pass-by-reference, the box (the variable) is passed directly into the function, and its contents (the object represented by the variable) implicitly come with it. Inside the function context, the argument is essentially a complete alias for the variable passed in by the caller. They are both the exact same box, and therefore also refer to the exact same object in memory.
 
-<img src="/images/PBRIntro.jpg">
+<img src="/images/RubyPBRIntro.jpg">
 
 Anything the function does to either the variable or the object it represents will therefore be visible to the caller. For example, the function could completely change the variable's content, and point it at a completely different object:
 
-<img src="/images/PBRReassign.jpg">
+<img src="/images/RubyPBRReassign.jpg">
 
 The function could also manipulate the object without reassigning it, with the same effect:
 
-<img src="/images/PBRAppend.jpg">
+<img src="/images/RubyPBRAppend.jpg">
 
 To reiterate, in pass-by-reference, the function and the caller both use the exact same variable and object.
 
@@ -66,15 +66,15 @@ To reiterate, in pass-by-reference, the function and the caller both use the exa
 
 In pass-value-by-value, the function receives a copy of the argument objects passed to it by the caller, stored in a new location in memory.
 
-<img src="/images/PBVIntro.jpg">
+<img src="/images/RubyPBVIntro.jpg">
 
 The function then effectively supplies its own box to put the value in, and there is no longer any relationship between either the variables or the objects referred to by the function and the caller. The objects happen to have the same value, but they are totally separate, and nothing that happens to one will affect the other. If we again try to reassign:
 
-<img src="/images/PBVReassign.jpg">
+<img src="/images/RubyPBVReassign.jpg">
 
 Outside the function, nothing happens. Similarly:
 
-<img src="/images/PBVAppend.jpg">
+<img src="/images/RubyPBVAppend.jpg">
 
 The copies of variables and objects in the context of the caller are completely isolated.
 
@@ -84,13 +84,13 @@ Ruby is pass-by-value, but the values it passes are references.
 
 A function receives a reference to (and will access) the same object in memory as used by the caller. However, it does not receive the box that the caller is storing this object in; as in pass-value-by-value, the function provides its own box and creates a new variable for itself. Let's try appending again:
 
-<img src="/images/PBORAppend.jpg">
+<img src="/images/RubyPBORAppend.jpg">
 
 Both the function and the caller refer to the same object in memory, so when the append function adds an extra item to the list, we see this in the caller too! They're different names for the same thing; different boxes containing the same object. This is what is meant by passing references by value - the function and caller reference the same object in memory, but accessed through different variables. This means that the same object is being stored in multiple different boxes, and the metaphor kind of breaks down. Pretend it's quantum or something.
 
 But the key is that they really are <i>different</i> names, and <i>different</i> boxes. In pass-by-reference, they were essentially the same box. When you tried to reassign a variable, and put something different into the function's box, you also put it into the caller's box, because they were the same box. But, in pass-reference-by-value:
 
-<img src="/images/PBORReassign.jpg">
+<img src="/images/RubyPBORReassign.jpg">
 
 The caller doesn't care if you reassign the function's box. Different boxes, same content.
 
