@@ -1,6 +1,5 @@
 ---
 layout: post
-published: false
 title: Is Ruby pass-by-reference or pass-by-value?
 ---
 The two most widely known and easy to understand approaches to parameter passing amongst programming languages are pass-by-reference and pass-by-value. In one, ruthlessly technical sense, Ruby is pass-by-value, that's the end of the story, and we can all go home. However, we would miss out on a lot of subtlety if we did.
