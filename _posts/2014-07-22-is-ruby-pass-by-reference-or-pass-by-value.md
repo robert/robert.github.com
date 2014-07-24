@@ -8,24 +8,24 @@ For Ruby does pass its arguments by value, but the values it passes are referenc
 
 Say what?
 
-It turns out there are actually 2 types of pass-by-value.
+I find it helps to think of there being 2 different types of pass-by-value:
 
 * Pass-value-by-value
 * Pass-reference-by-value
 
-Stop crying, everything's going to be OK. It turns out that all of the paradigms can be simply and intuitively understood by how they cause the following 2 functions to behave:
+Stop crying, everything's going to be OK. All of these paradigms can be simply and intuitively understood by how they cause the following 2 functions to behave:
 
 {% highlight ruby %}
-    def reassign(list)
-      list = [0, 1]
+    def reassign(array)
+      array = [0, 1]
 
-    def append(list)
-      list.append(1)
+    def append(array)
+      array << 1
 
-    list = [0]
-    reassign(list)
-    append(list)
-{% endhighlight %}
+    array = [0]
+    reassign(array)
+    append(array)
+{% endhighlight %}l
 
 Let's explore.
 
