@@ -25,7 +25,7 @@ Stop crying, everything's going to be OK. All of these paradigms can be simply a
     array = [0]
     reassign(array)
     append(array)
-{% endhighlight %}l
+{% endhighlight %}
 
 Let's explore.
 
