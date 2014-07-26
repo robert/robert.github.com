@@ -1,4 +1,7 @@
-
+---
+layout: post
+title: Lessons from this surprisingly successful blog
+---
 0. Lessons from 18 months of somewhat successful blogging
 
 Since I started writing at the end of 2012, I’ve written 30 posts. I think that 15 of them are good[LINK], 5 are quite bad[LINK], and the other 10 are OK[LINK]. To date they’ve been read just under 350,000 times, which is a tiny number in the grand scheme of things but feels pretty solid when I remember that I’m just some random guy with a website and a thesaurus creased open at the word “monkey”. 
