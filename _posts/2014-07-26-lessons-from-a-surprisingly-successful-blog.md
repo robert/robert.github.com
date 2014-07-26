@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lessons from this surprisingly successful blog
+title: Lessons from a surprisingly successful blog
 weight: -1
 blurb: I realised I'd had 350,000 hits in the last 18 months. This is a hefty post about how that happened.
 ---
