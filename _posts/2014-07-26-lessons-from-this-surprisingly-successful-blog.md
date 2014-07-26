@@ -71,13 +71,13 @@ When you start writing, you will probably have very lofty notions of what consti
 
 An incomplete list:
 
-* Questions people ask you - http://robertheaton.com/2014/04/18/why-you-should-be-vegetarian/
-* Questions you ask and find out the answers to - http://robertheaton.com/2014/03/27/how-does-https-actually-work/
+* <a href="http://robertheaton.com/2014/04/18/why-you-should-be-vegetarian/" target="_blank">Questions people ask you</a>
+* <a href="http://robertheaton.com/2014/03/27/how-does-https-actually-work/" target="_blank">Questions you ask and find out the answers to</a>
 * Thought provoking quotes - "Many delusions are attractive because they allow the deluded to work hard" - True or False
-* You notice a hidden reason why something works - http://robertheaton.com/2013/11/05/kanban-at-londons-national-gallery/
-* You work out why something about society is the way it is - http://paulgraham.com/submarine.html
-* You realise you are actually relatively qualified to write about a topic - http://robertheaton.com/2014/03/07/lessons-from-a-silicon-valley-job-search/
-* You write a long email to someone - http://robertheaton.com/2013/04/25/you-should-be-a-mentor/
+* <a href="http://robertheaton.com/2013/11/05/kanban-at-londons-national-gallery/" target="_blank">You notice a hidden reason why something works</a>
+* <a href="http://paulgraham.com/submarine.html" target="_blank">You work out why something about society is the way it is</a>
+* <a href="http://robertheaton.com/2014/03/07/lessons-from-a-silicon-valley-job-search/" target="_blank">You realise you are actually relatively qualified to write about a topic</a>
+* <a href="http://robertheaton.com/2013/04/25/you-should-be-a-mentor/" target="_blank">You write a long email to someone</a>
 
 Don't worry too much about sticking to one topic. Just write about whatever you find interesting and trust that someone else will agree with you. I have no quantifiable evidence that this is a sensible idea, but it’s what I’ve done and I feel like it’s worked out.
 
