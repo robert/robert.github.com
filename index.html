@@ -5,7 +5,7 @@ title: Robert Heaton
 <h3 style="text-align: center; margin-top:10px; margin-bottom: 30px; text-align: left;">My favourite posts (<a href="/archive">view all</a>)</h3>
 <div id="home">
   <ul class='posts'>
-    {% for weight in (0..10) %}
+    {% for weight in (-1..10) %}
       {% for post in site.posts %}
         {% if post.weight == weight %}
           <li>
