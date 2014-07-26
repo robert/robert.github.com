@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Getting Nothing Done&#58; a misguided quest for productivity
-bestof: true
+weight: 0
+blurb: In which our hero is driven temporarily insane for several years by a rabid need to be productive.
 ---
 If you’ve read Lord of the Rings, then this is pretty much that but with to-do apps instead of hobbits and inefficiency instead of the Nazgul. Also spreadsheets instead of Boromir.
 

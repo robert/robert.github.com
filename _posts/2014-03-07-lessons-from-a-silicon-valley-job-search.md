@@ -2,7 +2,8 @@
 layout: post
 title: Lessons from a Silicon Valley job search
 hn: 7428469
-bestof: true
+weight: 0
+blurb: A very detailed summary of what I learned whilst finding a job in Silicon Valley. The most useful thing I've written.
 ---
 <span style="color: #777879">*This post is a fairly exhaustive summary of the things I learned during my recent Silicon Valley job search. It is really quite long, but has been edited aggressively, and I've tried to make sure that nearly every point is either actionable, interesting, or both. If you're currently or may one day be looking for a job as a programmer, either in San Francisco or elsewhere in the world, then there should hopefully be a bunch of useful stuff for you. I've tried to give numbers and stats where possible - your mileage will of course vary, but my hope is that they are still helpful for working out which ballpark to start in.*</span>
 

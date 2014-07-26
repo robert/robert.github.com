@@ -2,26 +2,29 @@
 layout: index
 title: Robert Heaton
 ---
-
-
-<h3 style="text-align: center; margin-top:0">My favourite posts (<a href="/archive">view all</a>)</h3>
+<h3 style="text-align: center; margin-top:10px; margin-bottom: 30px; text-align: left;">My favourite posts (<a href="/archive">view all</a>)</h3>
 <div id="home">
-  <ul class="posts">
-    {% for post in site.posts %}
-    {% if post.bestof %}
-    <li>
-      <a href="{{ post.url }}">
-        {{ post.title }}
-        <br />
-        <!--
-        <small class="muted" data-time="{{ post.date }}">
-          {{ post.date | date_to_string }}
-        </small>
-        <small class="muted hide">{{ post.date | date_to_string }}</small>
-        -->
-      </a>
-    </li>
-    {% endif %}
+  <ul class='posts'>
+    {% for weight in (0..10) %}
+      {% for post in site.posts %}
+        {% if post.weight == weight %}
+          <li>
+            <a href="{{ post.url }}">
+              {{ post.title }}
+              <br/>
+            <small class="muted">{{ post.blurb }}</small>
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
     {% endfor %}
   </ul>
+  <div style="
+      border-top: 1px dotted #ddd;
+      padding-top: 20px;
+      margin-top: -20px;
+      text-align: center;
+  ">
+    <a href="/archive">View all</a>
+  </div>
 </div>
