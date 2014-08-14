@@ -16,17 +16,15 @@ I find it helps to think of there being 2 different types of pass-by-value:
 Stop crying, everything's going to be OK. All of these paradigms can be simply and intuitively understood by how they cause the following 2 functions to behave:
 
 {% highlight ruby %}
-    
-    def reassign(array)
-      array = [0, 1]
+def reassign(array)
+  array = [0, 1]
 
-    def append(array)
-      array << 1
+def append(array)
+  array << 1
 
-    array = [0]
-    reassign(array)
-    append(array)
-    
+array = [0]
+reassign(array)
+append(array)
 {% endhighlight %}
 
 Let's explore.
