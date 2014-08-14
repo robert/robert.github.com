@@ -5,7 +5,7 @@ hn: 7932102
 weight: 1
 blurb: I did no work for 5 months. This is why and how.
 ---
-Before recently joining Stripe, I did no work for 5 months, and aside from writing a few blog posts and getting to Gold League in Starcraft, I achieved very little. It was wonderful. 
+I recently stopped working for 5 months, and aside from writing a few blog posts and getting to Gold League in Starcraft, I achieved very little. It was wonderful. 
 
 To open with some disclaimers, this of course required an incredible number of privileges, including having some savings, the existence of a strong labour market for software engineers, and many others I haven’t even thought of. It’s also worth acknowledging that it’s moderately obnoxious to go on about how great it is to not work in the context of the generally crappy job market of Earth in 2014. Idealistically I’d like to see long periods of non-work become universally feasible for all.
 
