@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Lessons from a Silicon Valley J1 search
-hn: 7428469
 weight: 0
 blurb: A very detailed summary of what I learned whilst finding a trainee placement in Silicon Valley. The most useful thing I've written.
 redirect_from:
