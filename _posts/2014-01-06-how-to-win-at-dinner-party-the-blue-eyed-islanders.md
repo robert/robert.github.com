@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to win at dinner party - the Blue-Eyed Islanders Puzzle
+title: The Blue-Eyed Islanders Puzzle
 hn: 7023595
 weight: 5
 blurb: Dissecting the most incredible brainteaser ever. Guaranteed to blow your mind.
