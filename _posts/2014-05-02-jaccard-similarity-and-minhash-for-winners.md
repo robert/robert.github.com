@@ -5,17 +5,17 @@ title: Jaccard Similarity and MinHash for winners
 Suppose you work at Twitter. You want to find celebrities similar to PhilCollins, and decide to do this by comparing his account to a bunch of other accounts and seeing how many followers they share. Since Twitter almost definitely store all their data in a single MySQL database, you write some SQL:
 
 {% highlight sql %}
-    SELECT
-         f1.following, COUNT(f1.follower)
-    FROM
-         follows f1
-    INNER JOIN
-         follows f2 ON f1.follower = f2.follower
-    WHERE
-         f1.following IN ('EnriqueIglasias', 'BruceSpringsteen') AND --(etc.)
-         f2.following = 'PhilCollins'
-    GROUP BY
-         f1.following
+SELECT
+     f1.following, COUNT(f1.follower)
+FROM
+     follows f1
+INNER JOIN
+     follows f2 ON f1.follower = f2.follower
+WHERE
+     f1.following IN ('EnriqueIglasias', 'BruceSpringsteen') AND --(etc.)
+     f2.following = 'PhilCollins'
+GROUP BY
+     f1.following
 {% endhighlight %}
 
 Several years later your query finishes JOINing several kajillion rows together and coughs up some data. Even if the query optimizer process the WHERE clause first, these are popular celebrities we are talking about, and still a lot of rows to JOIN. You wish there was a faster way.
@@ -27,7 +27,7 @@ You are very happy when you stumble across <a href="http://en.wikipedia.org/wiki
 The Jaccard Similarity between two sets A and B is a metric that indicates (unsurprisingly) how similar they are.
 
 {% highlight text %}
-    J(A,B) = |A ∩ B| / |A ∪ B|
+J(A,B) = |A ∩ B| / |A ∪ B|
 {% endhighlight %}
 
 `J = 1` if the sets are identical; `J = 0` if they share no members; and clearly `0 <= J <= 1` if they are somewhere in between. It can be expressed literally as “the probability that a random element from the union of two sets is also in their intersection” or "the probability that a randomly chosen element chosen from one of the sets is also in the other set."
@@ -48,19 +48,19 @@ We are going to use our literal definition of the Jaccard Similarity in order to
 We calculate `hmin(S)` for the sets `A` and `B`. Suppose it turns out that for our chosen `h`, `hmin(A) = hmin(B)` (call the value `HM`). It clearly must also be true that `HM = hmin(A ∪ B)`, the minimum hash value for the union of the sets. Since `HM` is by definition a member of both sets `A` and `B`, it must therefore also be a member of the intersection of these sets, `A ∩ B`. We therefore have a situation where `hmin(A ∪ B)`, essentially a randomly chosen element from `A ∪ B` due to the random nature of `h`, is also present in `A ∩ B`. This is possible iff `hmin(A) = hmin(B)`, and therefore:
 
 {% highlight text %}
-    P[hmin(A) = hmin(B)] = P[hmin(A ∪ B) present in A ∩ B]
+P[hmin(A) = hmin(B)] = P[hmin(A ∪ B) present in A ∩ B]
 {% endhighlight %}
 
 The a priori probability of the element's presence is simply the ratio of the sizes of these sets:
 
 {% highlight text %}
-    P[hmin(A ∪ B) present in A ∩ B] = |A ∩ B| / |A ∪ B|
+P[hmin(A ∪ B) present in A ∩ B] = |A ∩ B| / |A ∪ B|
 {% endhighlight %}
  
 Which is of course the Jaccard Similarity. Therefore:
 
 {% highlight text %}
-    P[hmin(A) = hmin(B)] = J(A,B)
+P[hmin(A) = hmin(B)] = J(A,B)
 {% endhighlight %}
 
 If we can estimate this probability, then in doing so we also estimate `J(A,B)`.
@@ -85,9 +85,9 @@ It is relatively straightforward to see that `X` must therefore also be equal to
 Now `Y = X ∩ h(k)(A) ∩ h(k)(B)` is the set of members of `X` that also belong to `A ∩ B`. Returning to simple probability terminology, we have taken a random sample of `k` members of `A ∪ B` (`k` "trials"). `|Y|` of these members also belong to `A ∩ B` (`|Y|` successes). Therefore:
 
 {% highlight text %}
-    |Y|/k =~ P[random element from A ∪ B is also in A ∩ B]
-          = |A ∩ B|/|A ∪ B|
-          = J(A,B)
+|Y|/k =~ P[random element from A ∪ B is also in A ∩ B]
+      = |A ∩ B|/|A ∪ B|
+      = J(A,B)
 {% endhighlight %}
 
 To recap, to estimate Jaccard Simlarity between 2 sets `A` and `B` by Single Hash MinHash:

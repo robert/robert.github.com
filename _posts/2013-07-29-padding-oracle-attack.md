@@ -15,7 +15,7 @@ My point isn't that you should abandon encryption altogether or bring in $1000/h
 CBC, or Cipher-Block Chaining, is a block cipher mode of encryption. This means that it encrypts plaintext by passing individual block of bytes (each character is a byte) of a fixed length through a "block cipher", which uses a secret key to pretty much mess up the block beyond recognition. So if you were encrypting the sentence:
 
 {% highlight text %}
-    This is a sentence of a carefully chosen length.
+This is a sentence of a carefully chosen length.
 {% endhighlight %}
 
 you would encrypt the first block of 16 characters using your chosen block cipher algorithm, then the next block, then the final block. If the final block does not have exactly 16 characters then you add padding until it does (more on this later).
@@ -38,12 +38,12 @@ It turns out that knowing whether or not a given ciphertext produces plaintext w
 So the only mistake that you need to make in your implementation of CBC encryption is to have an API endpoint that returns `200` if the ciphertext gives a plaintext with valid padding, and `500` if not. This is not unlikely - the Ruby OpenSSL library will be more than happy to help. Using the example code given in the <a target="_blank" href="http://www.ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/Cipher.html#documentation:">Ruby docs</a>:
 
 {% highlight ruby %}
-    decipher = OpenSSL::Cipher::AES.new(128, :CBC)
-    decipher.decrypt
-    decipher.key = "the most secret!"
-    decipher.iv = "also very secret"
+decipher = OpenSSL::Cipher::AES.new(128, :CBC)
+decipher.decrypt
+decipher.key = "the most secret!"
+decipher.iv = "also very secret"
 
-    plain = decipher.update("thewrongpadding!") + decipher.final
+plain = decipher.update("thewrongpadding!") + decipher.final
 {% endhighlight %}
 
 throws an `OpenSSL::Cipher::CipherError: bad decrypt`, which if uncaught will return a `500` response.
@@ -59,9 +59,9 @@ The attack works by calculating the "intermediate state" of the decryption (see 
 Why is the intermediate state so important? Notice that:
 
 {% highlight text %}
-    I2 = C1 ^ P2
-    and
-    P2 = C1 ^ I2
+I2 = C1 ^ P2
+and
+P2 = C1 ^ I2
 {% endhighlight %}
 
 We know C1 already, as it is just part of our ciphertext, so if we find I2 then we can trivially find P2 and decrypt the ciphertext.
@@ -77,17 +77,17 @@ To begin with, we choose `C1'[1..15]` to be random bytes, and `C1'[16]` to be `0
 Lets say that it turns out that `C1'[16] = 94` gives us valid padding. So now we have:
 
 {% highlight text %}
-    I2     = C1'     ^ P2'
-    I2[16] = C1'[16] ^ P2'[16]
-           = 94      ^ 01
-           = 95
+I2     = C1'     ^ P2'
+I2[16] = C1'[16] ^ P2'[16]
+       = 94      ^ 01
+       = 95
 {% endhighlight %}
 
 We now know the final bit of the intermediate state! Notice that since `C2` is the same as it is in the real ciphertext, `I2` is also the same as in the real ciphertext. We can therefore go back to the ciphertext we are trying to decrypt:
 
 {% highlight text %}
-    P2[16] = C1[16] ^ I2[16]
-           = C1[16] ^ 95
+P2[16] = C1[16] ^ I2[16]
+       = C1[16] ^ 95
 {% endhighlight %}
 
 We plugin in whatever `C1[16]` is and find the last byte of the actual ciphertext! At this stage this will just be padding, so we will have to do some more decrypting before we find something interesting.
@@ -99,25 +99,25 @@ We found the last byte by fiddling with `C1'` until we produced something with v
 We now choose `C1'[1..14]` to be random bytes, `C1'[15]` to be the byte `00`, and `C1'[16]` to be a byte chosen so as to make `P2'[16] == 02`:
    
 {% highlight text %}
-    C'1[16] = P'2[16] ^ I2[16]
-            = 02      ^ 95
-            = 93
+C'1[16] = P'2[16] ^ I2[16]
+        = 02      ^ 95
+        = 93
 {% endhighlight %}
 
 So we can be sure that `P2'` will end in a `02`, and therefore the only way for `P2'` to have valid padding is if `P2[15]` is also `02`! We fiddle with `C1'[15]` until the server does its things and tells us we have passed it a ciphertext that decrypts to a plaintext with valid padding. Say this happens when `C1'[15] = 106` - we do exactly what we did before:
 
 {% highlight text %}
-    I2     = C1'     ^ P2`
-    I2[15] = C1'[15] ^ P2'[15]
-           = 106     ^ 02
-           = 104
+I2     = C1'     ^ P2`
+I2[15] = C1'[15] ^ P2'[15]
+       = 106     ^ 02
+       = 104
 {% endhighlight %}
 
 And presto, we know the second last byte of `I2` as well. We can therefore find the second last byte of `P2`, the real plaintext, again in exactly the same way as before:
 
 {% highlight text %}
-    P2[15] = C1[15] ^ I2[15]
-           = C1[15] ^ 104
+P2[15] = C1[15] ^ I2[15]
+       = C1[15] ^ 104
 {% endhighlight %}
 
 Rinse, repeat, and read the entire 16 bytes of `C2`!

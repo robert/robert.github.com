@@ -38,7 +38,7 @@ In his 1981 sci-fi bizarreo-fest, "<a href="http://en.wikipedia.org/wiki/VALIS" 
 He points out that there is a subtle difference between a thing, and the label we use to refer to that things. "The man named Shakespeare" is a man. "Shakespeare" is just a name. Ruby makes exactly the same distinction. If we do:
 
 {% highlight ruby %}
-    a = []
+a = []
 {% endhighlight %}
 
 then `[]` is an empty array. `a` is a variable that points to this empty array, but `a` itself is not an empty array. I will draw and frequently refer to variables as "boxes" that contain objects; but however you conceive of it, this difference is key.
@@ -96,10 +96,10 @@ The caller doesn't care if you reassign the function's box. Different boxes, sam
 Now we see what Philip K. Dick was trying to tell us. A name and a person are different things. A variable and an object are different things. Armed with this knowledge, you can perhaps start to infer what happens when you do things like
 
 {% highlight ruby %}
-    array_a = [0]
-    array_b = array_a
-    array_b.append(1)
-    print array_a
+array_a = [0]
+array_b = array_a
+array_b.append(1)
+print array_a
 {% endhighlight %}
 
 Now if you'll excuse me, I'm going to read <i>"Do Androids Dream Of Electric Sheep?"</i> - my meta-programming is a little rusty.

@@ -15,50 +15,50 @@ Alarm bells should now be going off in your head. The client is storing data bet
 Well, yes, incredibly easily. In Sinatra:
 
 {% highlight ruby %}
-    get '/' do
-      '<script type="text/javascript" src="/tracking_id.js"></script>'
-      # Add more JS to use the trackingId variable to track the user
-      # eg. _myTrackingFramework.track(trackingId);
-    end
+get '/' do
+  '<script type="text/javascript" src="/tracking_id.js"></script>'
+  # Add more JS to use the trackingId variable to track the user
+  # eg. _myTrackingFramework.track(trackingId);
+end
 
-    get '/tracking_id.js' do
-      last_modified Time.at(0)
-      response['Content-Type'] = 'text/javascript'
+get '/tracking_id.js' do
+  last_modified Time.at(0)
+  response['Content-Type'] = 'text/javascript'
 
-      "var trackingId = '#{SecureRandom.uuid}';"
-      # Also store the tracking_id for future reference
-    end
+  "var trackingId = '#{SecureRandom.uuid}';"
+  # Also store the tracking_id for future reference
+end
 {% endhighlight %}
 
 When Steve visits `/`, his browser makes an additional request to `/tracking_id.js`. The HTTP request headers will look something like:
 
 {% highlight text %}
-    Accept: */*
-    Accept-Encoding: gzip,deflate,sdch
-    Accept-Language: en-US,en;q=0.8
-    Connection: keep-alive
-    Host: cookieless-user-tracking.herokuapp.com
-    Referer: http://cookieless-user-tracking.herokuapp.com/
-    User-Agent: *snip*
+Accept: */*
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+Connection: keep-alive
+Host: cookieless-user-tracking.herokuapp.com
+Referer: http://cookieless-user-tracking.herokuapp.com/
+User-Agent: *snip*
 {% endhighlight %}
 
 We generate and store a new tracking ID for Steve, and return a tiny JS file:
 
 {% highlight javascript %}
-    var trackingId = "33848722-da08-4b43-b0e8-0c6deaa906f6";
+var trackingId = "33848722-da08-4b43-b0e8-0c6deaa906f6";
 {% endhighlight %}
 
 Steve goes away and comes back later with amorous monkeys on his mind. For safety, he clears his cookies and returns to our site. When he visits `/`, his browser again makes an additional request to `/tracking_id.js`. But this time the request headers look something like:
 
 {% highlight text %}
-    Accept: */*
-    Accept-Encoding: gzip,deflate,sdch
-    Accept-Language: en-US,en;q=0.8
-    Connection: keep-alive
-    Host: cookieless-user-tracking.herokuapp.com
-    If-Modified-Since: Thu, 01 Jan 1970 00:00:00 GMT 
-    Referer: http://cookieless-user-tracking.herokuapp.com/
-    User-Agent: *snip*
+Accept: */*
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+Connection: keep-alive
+Host: cookieless-user-tracking.herokuapp.com
+If-Modified-Since: Thu, 01 Jan 1970 00:00:00 GMT 
+Referer: http://cookieless-user-tracking.herokuapp.com/
+User-Agent: *snip*
 {% endhighlight %}
 
 The value of the `If-Modified-Since` header tells us that we only need to send back a new resource if it has been modified since the beginning of UNIX time. We choose to interpret this request creatively, and reply that our JS file has not been modified since the beginning of UNIX time and so Steve's browser should go ahead and use the same file we sent him before, with the same tracking ID as before. Bingo, jackpot, snake eyes. We die a little when we see what user #21987121 is searching for. 

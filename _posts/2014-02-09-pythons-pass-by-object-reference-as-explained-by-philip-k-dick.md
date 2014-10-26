@@ -17,15 +17,15 @@ The two most widely known and easy to understand approaches to parameter passing
 When I first read this smug and overly-pithy definition, I wanted to punch something. After removing the shards of glass from my hands and being escorted out of the strip club, I realised that all 3 paradigms can be understood in terms of how they cause the following 2 functions to behave:
 
 {% highlight python %}
-    def reassign(list):
-      list = [0, 1]
+def reassign(list):
+  list = [0, 1]
 
-    def append(list):
-      list.append(1)
+def append(list):
+  list.append(1)
 
-    list = [0]
-    reassign(list)
-    append(list)
+list = [0]
+reassign(list)
+append(list)
 {% endhighlight %}
 
 Let's explore.
@@ -35,7 +35,7 @@ Let's explore.
 "Hamlet was not written by Shakespeare; it was merely written by a man named Shakespeare." Both Python and PKD make a crucial distinction between a thing, and the label we use to refer to that thing. "The man named Shakespeare" is a man. "Shakespeare" is just a name. If we do:
 
 {% highlight python %}
-    a = []
+a = []
 {% endhighlight %}
 
 then `[]` is the empty list. `a` is a variable that points to the empty list, but `a` itself is not the empty list. I draw and frequently refer to variables as "boxes" that contain objects; but however you conceive of it, this difference is key.
@@ -93,10 +93,10 @@ The caller doesn't care if you reassign the function's box. Different boxes, sam
 Now we see what Philip K. Dick was trying to tell us. A name and a person are different things. A variable and an object are different things. Armed with this knowledge, you can perhaps start to infer what happens when you do things like 
 
 {% highlight python %}
-    listA = [0]
-    listB = listA
-    listB.append(1)
-    print listA
+listA = [0]
+listB = listA
+listB.append(1)
+print listA
 {% endhighlight %}
 
 You may also want to read about the interesting interactions these concepts have with mutable and immutable types. But those are stories for another day. Now if you'll excuse me, I'm going to read <i>"Do Androids Dream Of Electric Sheep?"</i> - my meta-programming is a little rusty.
