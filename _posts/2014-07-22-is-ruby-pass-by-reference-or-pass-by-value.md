@@ -98,7 +98,7 @@ Now we see what Philip K. Dick was trying to tell us. A name and a person are di
 {% highlight ruby %}
 array_a = [0]
 array_b = array_a
-array_b.append(1)
+array_b << 1
 print array_a
 {% endhighlight %}
 
