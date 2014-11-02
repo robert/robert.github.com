@@ -1,5 +1,5 @@
 ---
-title: *Playing to Win* by David Sirlin
+title: Playing to Win by David Sirlin
 layout: post
 ---
 *Playing to Win* is the book that Roger Federer would write if he wasn’t already richer than God and didn’t wear tracksuits embroidered with his own initials onto them. It is a no-nonsense guide to how the best video-game players in the world become so good, and why the worst video-game players in the world are incapable of improving. Admittedly, there are several subtle differences between competitive video gaming and Grand Slam tennis. But it seems inevitable that there must be many common elements in the high-level processes behind developing and nurturing an all-consuming obsession in either discipline. It feels almost guaranteed that as David Sirlin describes how and why he practices placing his VirtuaFighter character to single-pixel precisions, he is also describing many of the exact same motivations and mindsets that got Tiger Woods, Wayne Rooney and LeBron James to where they are today. Except with joysticks instead of golf clubs and video arcades instead of Madison Square Gardens.
