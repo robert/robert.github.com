@@ -16,7 +16,7 @@ This is most clearly seen in one of the final chapters, where he offers his thou
 
 > Recognize that you have power, even if it is over the small group of people in this world who play your game.
 
-Like any world, competitive gaming is not short of its fair share of narcissistic delusionals, indisputably drunk on self-importance and Gatorade. But Sirlin recognises and firmly points out that anyone with the platform and ability to influence the thoughts and actions of even a small group of people still has "power", for a given value of "power", and that with mild-but-non-zero power comes mild-but-non-zero responsibility. This recognition that gaming is not the most important thing in the world, but neither is it the least, is an ever-present and incredibly sensible backdrop to everything else in the book.
+Like any world, competitive gaming is not short of its fair share of narcissistic delusionals, indisputably drunk on self-importance and Gatorade. But Sirlin recognises and firmly points out that anyone with the platform and ability to influence even a small group of people still has "power", for a given value of "power", and that with mild-but-non-zero power comes mild-but-non-zero responsibility. This recognition that gaming is not the most important thing in the world, but neither is it the least, is an ever-present and incredibly sensible backdrop to everything else in the book.
 
 Against all the odds, *Playing to Win* is the kind of book that compels you to read it several times, write pages of notes after each reading and scribble all over it in as many different colours of pen as you own. It contains enough memorable concepts to fill, like, an entire book. But my two favourites are "The Scrub" and "Yomi".
 
