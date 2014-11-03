@@ -67,4 +67,4 @@ There are many other features of the book that are worth a detailed analysis. So
 
 *Playing to Win* can be read as a collection of curiosities, an explanation of why you’re never going to beat your sister at Mario Kart, or a guidebook for how you can and will become a professional gamer. In order to exist, it required someone with the intelligence, humbleness and lucid writing style of David Sirlin to become completely obsessed with winning at something, get to the very highest echelon of that thing, and still have the interest and ability to discern and write about the underlying principles behind how they got there. I don’t believe that such a nuanced and un-crowd-pleasing analysis was ever likely to come from mainstream sport, and given the stereotypical cultural crossovers between science and computer games, it is perhaps not entirely surprising that it came from competitive video games. I’m glad that it did.
 
-*Buy or read for free Playing to Win direct from the author <a href="http://www.sirlin.net/ptw" target="_blank">here</a>.*
+*Buy Playing to Win direct from the author or read it for free <a href="http://www.sirlin.net/ptw" target="_blank">here</a>.*
