@@ -139,7 +139,7 @@ This response is in a slightly different format to the previous one. It is what 
 
 For what feels like an eternity, time stands still.
 
-And then Steve Steveington’s Tinder account appears before you. You did it. Tears of joy and relief streaming down your face, you change all of his photos to pictures of Gary Busey and start educating all of his matches about his deleterious personal hygiene in unnecessarily vigorous detail.
+And then Steve Steveington’s Tinder account appears before you. You did it. Tears of joy and relief streaming down your face, you change all of his photos to pictures of Gary Busey and start educating all of his matches about his deleterious personal hygiene.
 
 <p style="text-align:center">
 <img src="/images/fb/in.png" />
