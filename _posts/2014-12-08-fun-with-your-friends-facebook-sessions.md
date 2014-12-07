@@ -1,7 +1,6 @@
 ---
 title: Fun with your friend's Facebook sessions
 layout: post
-published: false
 ---
 <h3>The Setup</h3>
 
