@@ -1,6 +1,8 @@
 ---
-title: Fun with your friend's Facebook sessions
+title: Fun with your friend's Facebook and Tinder session tokens
 layout: post
+redirect_from:
+  - /2014/12/08/fun-with-your-friends-facebook-sessions/
 ---
 <h3>The Setup</h3>
 
@@ -8,7 +10,7 @@ You are engaged in a titanic battle of wills and pranking with your good friend 
 
 You have to hit him where it hurts. Totally destroy something that he loves. You have to gain access to his <a href="http://www.gotinder.com/" target="_blank">Tinder</a> account. 
 
-It’s now 4pm. You and Steve Steveington are kicking back in his front room. He has gone to make a sandwich, and has made the fatal error of forgetting to lock his computer. You have discovered that all you need is a little time with his laptop's Facebook session and you can bust into his Tinder account on your phone.
+It’s now 4pm. You and Steve Steveington are kicking back in his front room. He has gone to make a sandwich, and has made the fatal error of forgetting to lock his computer. You have discovered that all you need is a little time with his laptop's Facebook session and you can bust into his Tinder account on your phone. This is the best opportunity you're ever going to get.
 
 Your research suggest that he usually favours peanut butter and banana for his late afternoon snacks, and that you most likely have 2 minutes alone with his computer, perhaps 3 if he has trouble locating the peanut butter jar that you strategically hid behind the mustard. Game on.
 
@@ -72,15 +74,13 @@ You quickly install it, hit "Export" and email yourself the JSON serialised cook
 ]
 {% endhighlight %}
 
-You uninstall it and delete the browser history to avoid arousing suspicion. You fire up your laptop, import these cookies, and hit facebook.com. Steve Steveington’s Facebook account materialises. You have access. As long as Steve doesn’t log out and expire your now shared session, phase 1 is complete.
+You uninstall it and delete the browser history to avoid arousing suspicion. You fire up your laptop, import these cookies using the same extension, and hit facebook.com. Steve Steveington’s Facebook account materialises. You have access. As long as Steve doesn’t log out and expire your now shared session, phase 1 is complete.
 
 Steve comes back, enormous sandwich in hand. But it’s too late. You’re in.
 
 <h3>Phase 2 - The Proxy</h3>
 
-Now for the tricky part - parlaying a Facebook session on a laptop into a Tinder session on an iPhone app.
-
-You’ve bought yourself some time with your cookie tossing trick. You can only hope to God it’s enough.
+Now for the tricky part - parlaying a Facebook session on a laptop into a Tinder session on an iPhone app. You’ve bought yourself some time with your cookie tossing trick. You can only hope to God it’s enough.
 
 You download the free version of <a href="http://portswigger.net/burp/" target="_blank">Burp Suite Proxy</a>. You <a href="http://portswigger.net/burp/help/suite_gettingstarted.html" target="_blank">set it up</a>; this doesn’t take more than a few minutes. You install the Burp Suite SSL certificate on your phone, setup the proxy on your computer and connect your phone to it.
 
@@ -116,7 +116,7 @@ Date: Sun, 16 Nov 2014 23:13:59 GMT
 Connection: keep-alive
 Content-Length: 1947
 
-for (;;);{"__ar":1,"payload":null,"jsmods":{"require":[["ServerRedirect","redirectPageTo",[],["fb464891386855067:\/\/authorize\/#state=\u00257B\u002522is_open_session\u002522\u00253Atrue\u00252C\u002522is_active_session\u002522\u00253Atrue\u00252C\u002522com.facebook.sdk_client_state\u002522\u00253Atrue\u00252C\u0025223_method\u002522\u00253A\u002522browser_auth\u002522\u00252C\u0025220_auth_logger_id\u002522\u00253A\u0025225B6667BD-13D0-48CF-9157-5B8FB374F401\u002522\u00257D&granted_scopes=public_profile\u00252Cbasic_info\u00252Cemail\u00252Ccontact_email\u00252Cuser_birthday\u00252Cuser_relationship_details\u00252Cuser_location\u00252Cuser_likes\u00252Cuser_activities\u00252Cuser_interests\u00252Cuser_education_history\u00252Cuser_photos\u00252Cuser_friends\u00252Cuser_about_me\u00252Cuser_status&denied_scopes=&signed_request=5c4FR7ED_xVU2knkQHRHNRZa016BBGC38BgGVkw4AI4.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImNvZGUiOiJBUUE0VFhjUldGOEZTMTN0VnhyUmtyN2g2QWc3VHQwNGNBRVRoeXc0M2RnOFVOanp2Nzh5OUpVZUNvR083bTF5VFRwU0MzRDFzNFVRV083aVdDREVIVktjTThzMTBNZnRKLWZVM3puaXY0OEV3QTRPOU9EQk5XakdyZWNFTzktYkphMTJhLXJ3Qzk4QXptQjF1cFM1T3U5bGF5MHFNMXBRZzh0RGtDdnBRQ29nbldzNEZYa3k5UFVzcFBiUndXSDBERElicUZvZ1ZNdjVlY3pmajhNNTRGNnZ2RGNXTEJkX2RDZ0Q3OTRmbjhRbXROcHJWcDB2eUR0SXVJeTlZanBnNTlPVU1FYlFFX3BJTzNTRGpjS2dRa0MtYzk4NERybVdCbko5M3VSc0Zra1dkMDJmNjk5THVuVGlWQVF0aWc4LVJlRmctbDdvVFpBdWhwdmJURVdkTldTdGJGdnZqeUtrT2MwaUU0dnhMejZVMlEiLCJpc3N1ZWRfYXQiOjE0MTYxNzk2MzksInVzZXJfaWQiOiIzNjgxODc1NyJ9&access_token=CAAGm0PX4ZCpsBAP3Q75xs8VgF71BHxIAeN7ieZCFZBv6UT9fAQ5eKf9FOTygLVlZCwZB79z72urotOK8y7GmmeTXyiSKlZCIHLYZBZApli8KaCo39C4aEMcAAOZCPsxxMUkZATFxjPLhJQbqVO5v0x8vxsStas8eIqd6eDOcjjSAI10ORUspEZACOZBU8IlvehtfkbjnimhIkqMEGfXmsBy9Cb2JDKo3KAdheU3K2C3W2rdI1gZDZD&expires_in=6361",true]]]},"js":["BxHP+"],"bootloadable":{},"resource_map":{"BxHP+":{"type":"js","crossOrigin":1,"src":"https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yG\/r\/jpiKiPJrEY9.js"}},"ixData":{}}
+for (;;);{"__ar":1,"payload":null,"jsmods":{"require":[["ServerRedirect","redirectPageTo",[],["fb464891386855067:\/\/authorize\/#state=\u00257B\u002522is_open_session\u002522\u00253Atrue\u00252C\u002522is_active_session\u002522\u00253Atrue\u00252C\u002522com.facebook.sdk_client_state\u002522\u00253Atrue\u00252C\u0025223_method\u002522\u00253A\u002522browser_auth\u002522\u00252C\u0025220_auth_logger_id\u002522\u00253A\u0025225B6667BD-13D0-48CF-9157-5B8FB374F401\u002522\u00257D&granted_scopes=public_profile\u00252Cbasic_info\u00252Cemail\u00252Ccontact_email\u00252Cuser_birthday\u00252Cuser_relationship_details\u00252Cuser_location\u00252Cuser_likes\u00252Cuser_activities\u00252Cuser_interests\u00252Cuser_education_history\u00252Cuser_photos\u00252Cuser_friends\u00252Cuser_about_me\u00252Cuser_status&denied_scopes=&signed_request=LtdszbMfnttb6Hl4zhsBb59gYAt0eLE3tIvU7B5cOWaWItJrQWvXGPEKZ0a2H348WBrvOZIPE8VCGiX73lpno3kGoYPIwpvuY809tZCMn9dx5YPSGElcHJiFhzQWl1jJ4Q0wy9hw7aqfoBTL1INlI0zaYPPbpF6Naha4Z2LDM8Tm39PoMsLZGOLVSWp6GlmyjeVUfNy2FsS0FehAJhhtY1flDTjpBB2cPu3p3LpuedUaY1GC900ytvsa98CPdqnHmAwLtSRLz1PXEECPOD2qnQ02QYeYXb89o9UWl9LnqkWlyT1rkLnZV4FBataFyPI3YkYU7L0JpsFvqapk9GQLkqj7FIUbHHmVplbiresXrD6zmwdDqAMqcIZ5KZPzFcHKTuQBgZTzP6CeWrkL&access_token=sKYEHeRkscTDo5lj1GrHKTLQSv6TNMFVXrPcUVsItHYUtmxj3AUjuFgTH6OWGbMo0COWRo1a98Cal2N2pwHHbyOyMyaNAnbVfZs7UpHMySrl9myq6S5xxbWcQW0eQdyFAo0TzWn7rBNKP4BlgGD0PDAUjkmzDjjdM5LKWcxjL9OAnWF1UgpDdqfEqz8TAA8kEyFc0lwP&expires_in=6361",true]]]},"js":["BxHP+"],"bootloadable":{},"resource_map":{"BxHP+":{"type":"js","crossOrigin":1,"src":"https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yG\/r\/jpiKiPJrEY9.js"}},"ixData":{}}
 {% endhighlight %}
 
 This several kB string of text contains the encrypted auth token that will get you into Steve’s Tinder account. Now you just have to throw it onto your phone. The coup de grace.
@@ -132,14 +132,14 @@ Date: Sun, 23 Nov 2014 00:06:59 GMT
 Connection: keep-alive
 Content-Length: 239263
 
-<script type="text/javascript">window.location.href="fb464891386855067:\/\/authorize\/#state=\u00257B\u002522is_open_session\u002522\u00253Atrue\u00252C\u002522is_active_session\u002522\u00253Atrue\u00252C\u002522com.facebook.sdk_client_state\u002522\u00253Atrue\u00252C\u0025223_method\u002522\u00253A\u002522browser_auth\u002522\u00252C\u0025220_auth_logger_id\u002522\u00253A\u00252231F9899A-8CE6-4D3E-AEA6-5B61BA29E674\u002522\u00257D&granted_scopes=public_profile\u00252Cbasic_info\u00252Cemail\u00252Ccontact_email\u00252Cuser_birthday\u00252Cuser_relationship_details\u00252Cuser_location\u00252Cuser_likes\u00252Cuser_activities\u00252Cuser_interests\u00252Cuser_education_history\u00252Cuser_photos\u00252Cuser_friends\u00252Cuser_about_me\u00252Cuser_status&denied_scopes=&signed_request=cmFlBtZQ_MhRPrMcABHR4xmfQ-0qaM3sErO2iHlgqME.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImNvZGUiOiJBUUR6QzFHamV1Z1otbnRlSUVYdkFfNWxNTXk5b1B3ZU9DbkVFcjd2RlJvWW9HSllKN2cxMlJKSnI3REZndEZncDdGZ2VYTjN5WnJjZk5PQ0JWLTl3MTZfcnBFZ2pyMlM4YjhET012OW9rNUR0eENzMFd2QThWcVlDcFJoU3oyU0RNcmwtMkJtQ1ZqYjcxMW0yVmtlelJlWm5NbjVBeE5kS0ZfSzN1MFlRX2dnODU1MHlXczBJbjlLcWMtQTVxMW1wYkI3dHAwRFJxeXczQ3A4b2NjVTFNSWNYNU9WUWZLeElOSkVobHFoUHNETEI1MTc1NGRzVVZwSFRIbGdTV2hNWWF6ZWpCck5wTEFTcDB0THhMUW1ISVJzSDlVVGJsQ2hFRWg5S19ab1JqcHVQRTZKQnJPRk9qTmRqU3pqQUpTTnBhdmQxMklPbm9HMU9DNUd5TmtUOHdHazljdFB3WHhkaXYyYmczQ1VIMmxpVEEiLCJpc3N1ZWRfYXQiOjE0MTY3MDExNTYsInVzZXJfaWQiOiIxMDAwMDc4MjQ5MTI3OTkifQ&access_token=CAAGm0PX4ZCpsBANFGB33gYaJZBuAngUFyOOb8LBtokVcYf307Vd2pYJhSZBp7EbKZCmnfGEOo7Iou1Hc7elC9v3OWHymcX25ZCtDOVJEkwQJi8eBQTXZBmPtrZBrSAhfZAOCmFwI4dmpPJ43KgePVEJWE8t8pdoiBBBJtvgICyaSDaHH5BOGoJvUZA2Oi3z7LuoApGO72uJOZBxTZBiX0k7YZCmEjhptZASEPNVQpKMakllGRngZDZD&expires_in=6844";</script>
+<script type="text/javascript">window.location.href="fb464891386855067:\/\/authorize\/#state=\u00257B\u002522is_open_session\u002522\u00253Atrue\u00252C\u002522is_active_session\u002522\u00253Atrue\u00252C\u002522com.facebook.sdk_client_state\u002522\u00253Atrue\u00252C\u0025223_method\u002522\u00253A\u002522browser_auth\u002522\u00252C\u0025220_auth_logger_id\u002522\u00253A\u00252231F9899A-8CE6-4D3E-AEA6-5B61BA29E674\u002522\u00257D&granted_scopes=public_profile\u00252Cbasic_info\u00252Cemail\u00252Ccontact_email\u00252Cuser_birthday\u00252Cuser_relationship_details\u00252Cuser_location\u00252Cuser_likes\u00252Cuser_activities\u00252Cuser_interests\u00252Cuser_education_history\u00252Cuser_photos\u00252Cuser_friends\u00252Cuser_about_me\u00252Cuser_status&denied_scopes=&signed_request=LukVNgjioas5vYf9Q7QwZdzaLWtHwobbnSlHvOSSS8zyl9i8lwohliTGNEC3LI7DVf1QIyMiNcGch8H692ZXPdXHa5tpli8tVPLlj6826YV0x7ECcIqh3H5Git784kegsqLd1WVBpRLLThkX3Z9cE6tewrtRTuRteHviXgQU4r8wck9BI3tAuaZNKMjtgoDxn4BRbx6doPEQiaylE2WMIsRLMjrlBA4PNPKmxX7EQ8J5d47tNiHSpPPqUTY95N3XghLo3mPlNNMOGpUObtGan5exId0AeBkIg5RHhXBa3t45k9GXSpL7JrLojKrmb6rXt6BGSH8kksKrUjmlSucaZDHpLnHqdrnDlu1u4UqpT9aPU3SVKKJPgUCFrQ2HkOxwTB77i22Ql0Irrun9&access_token=Y4NsuC8VqZpMPVJTLywf6afOZUEctqISGDPMxhIrG02gRjUMzZT1lGPiljVtFeKi3TsDU9OvIMf5aBsBzo3XE9IcTj1FSlZExtElgxW5s8jMG7mCGC9ygH4ubvpJ2P375fWa4jrfqDSyo38Yipy9JkXkBIWBfnXNevhJddCIUTMQebJ2X7KqyuUfRcB62HD6cjETOAay&expires_in=6844";</script>
 {% endhighlight %}
 
-This response is in a slightly different format to the that for the request you made from your laptop. It is what will tell Safari to pass control and an encrypted FB auth token back to Tinder. But you don’t want it to pass your auth token. You want it to pass Steve’s. You open Evernote and pull up the response from the identical auth request you made from your laptop using Steve’s Facebook session. You copy everything in this response from `fb464891386855067` up to `expires_in=6361`, and replace the corresponding section in the response that is still hanging in Burp Suite. You send this modified response, with Steve’s auth token buried and ciphered inside it, on its way to your phone.
+This response is in a slightly different format to the previous one. It is what will tell Safari to pass control and an encrypted FB auth token back to Tinder. But you don’t want it to pass your auth token. You want it to pass Steve’s. You open Evernote and pull up the response from the identical auth request you made from your laptop using Steve’s Facebook session. You copy everything in this response from `fb464891386855067` up to `expires_in=6361`, and replace the corresponding section in the response that is still hanging in Burp Suite. You send this modified response, with Steve’s auth token buried and ciphered inside it, on its way to your phone.
 
 For what feels like an eternity, time stands still.
 
-And then Steve Steveington’s Tinder account appears before you. You did it. Tears of joy and relief streaming down your face, you change all of his photos to pictures of Gary Busey and tell all of his matches that he is having a pants party and they are invited.
+And then Steve Steveington’s Tinder account appears before you. You did it. Tears of joy and relief streaming down your face, you change all of his photos to pictures of Gary Busey and start educating all of his matches about his deleterious personal hygiene in unnecessarily vigorous detail.
 
 <p style="text-align:center">
 <img src="/images/fb/in.png" />
