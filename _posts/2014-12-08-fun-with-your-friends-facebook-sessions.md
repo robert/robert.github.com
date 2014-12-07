@@ -160,6 +160,6 @@ or
 {"error":{"message":"An active access token must be used to query information about the current user.","type":"OAuthException","code":2500}}
 {% endhighlight %}
 
-Tinder totally freaks and logs you out. You don’t know why.
+Tinder totally freaks and logs you out. You don’t know why either.
 
 It also turns out that Sandra, 28, is a huge Lethal Weapon fan. She and Steve now have 2 children and a condo in San Jose.
