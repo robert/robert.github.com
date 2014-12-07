@@ -4,15 +4,17 @@ layout: post
 ---
 <h3>The Setup</h3>
 
-Your friend, the noble Steve Steveington, has been really getting your goat recently.
+You are engaged in a titanic battle of wills and pranking with your good friend and mortal enemy, Steve Steveington. Last week he went too far, and did some things to your World of Warcraft character that you would really rather not talk about. You are now officially at war(craft).
 
-You have to hit him where it hurts. In his Tinder account.
+You have to hit him where it hurts. Totally destroy something that he loves. You have to gain access to his <a href="http://www.gotinder.com/" target="_blank">Tinder</a> account. 
 
-It’s now 4pm. Steve Steveington has gone to make a sandwich, and has made the fatal error of forgetting to lock his computer. Your research suggest that he usually favours peanut butter and banana for his late afternoon snack, and that you most likely have 2 minutes alone with his computer, perhaps 3 if he has trouble locating the peanut butter jar that you strategically hid behind the mustard.
+It’s now 4pm. You and Steve Steveington are kicking back in his front room. He has gone to make a sandwich, and has made the fatal error of forgetting to lock his computer. You have discovered that all you need is a little time with his laptop's Facebook session and you can bust into his Tinder account on your phone.
+
+Your research suggest that he usually favours peanut butter and banana for his late afternoon snacks, and that you most likely have 2 minutes alone with his computer, perhaps 3 if he has trouble locating the peanut butter jar that you strategically hid behind the mustard. Game on.
 
 <h3>Phase 1 - The Cookie Toss</h3>
 
-You’ve trained for this moment for months, but even 3 minutes is not enough time to execute your entire plan end-to-end. You keep calm. You can use this small window of opportunity to throw his Facebook session from his laptop onto yours, then continue with the next phase right under his oblivious nose.
+You’ve trained for this moment for days, but even 3 minutes is not enough time to execute your entire plan end-to-end. You keep calm. You can use this small window of opportunity to throw his Facebook session from his laptop onto yours, then continue with the next phase right under his oblivious nose.
 
 His session is in his browser cookies. You get his facebook.com cookies, you get his session.
 
@@ -70,7 +72,7 @@ You quickly install it, hit "Export" and email yourself the JSON serialised cook
 ]
 {% endhighlight %}
 
-You uninstall it again and delete the browser history to avoid arousing suspicion. You fire up your laptop, import these cookies, and hit facebook.com. Steve Steveington’s Facebook account materialises. As long as Steve doesn’t log out and expire your now shared session, phase 1 is complete.
+You uninstall it and delete the browser history to avoid arousing suspicion. You fire up your laptop, import these cookies, and hit facebook.com. Steve Steveington’s Facebook account materialises. You have access. As long as Steve doesn’t log out and expire your now shared session, phase 1 is complete.
 
 Steve comes back, enormous sandwich in hand. But it’s too late. You’re in.
 
@@ -78,17 +80,13 @@ Steve comes back, enormous sandwich in hand. But it’s too late. You’re in.
 
 Now for the tricky part - parlaying a Facebook session on a laptop into a Tinder session on an iPhone app.
 
-You’ve bought yourself some time with your cooking tossing trick. You can only hope to God it’s enough.
+You’ve bought yourself some time with your cookie tossing trick. You can only hope to God it’s enough.
 
-<h3>Step 1 - You Got The Proxy</h3>
-
-You download the free version of Burp Suite Proxy. You set it up; this doesn’t take more than a few minutes. You install the Burp Suite SSL certificate on your phone, setup the proxy on your computer and connect your phone to it.
+You download the free version of <a href="http://portswigger.net/burp/" target="_blank">Burp Suite Proxy</a>. You <a href="http://portswigger.net/burp/help/suite_gettingstarted.html" target="_blank">set it up</a>; this doesn’t take more than a few minutes. You install the Burp Suite SSL certificate on your phone, setup the proxy on your computer and connect your phone to it.
 
 It’s time to <a href="http://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank">Man-In-The-Middle</a> yourself.
 
-<h3>Step 2 - The Man In The Middle</h3>
-
-Palms sweating, you uninstall the Facebook app to make sure your Facebook auth requests open in Safari. You log out of your Tinder account. Germintrude, 26, can wait. This cannot.
+Palms sweating, you uninstall the Facebook app on your phone to make sure your Facebook auth requests open in Safari. You log out of your Tinder account. Germintrude, 26, can wait. This cannot.
 
 <p style="text-align:center">
 <img src="/images/fb/image.png" />
@@ -107,7 +105,7 @@ You open Burp Suite and find the log for the HTTP GET request for the auth page 
 <img src="/images/fb/authlaptop.png" />
 </p>
 
-You return to Burp Suite and find the log for the HTTP POST request for this authorisation. You copy the HTTP response into Evernote.
+You return to Burp Suite and find the log for the HTTP POST request for this authentication. You copy the HTTP response into Evernote for later.
 
 {% highlight text %}
 HTTP/1.1 200 OK
@@ -123,7 +121,7 @@ for (;;);{"__ar":1,"payload":null,"jsmods":{"require":[["ServerRedirect","redire
 
 This several kB string of text contains the encrypted auth token that will get you into Steve’s Tinder account. Now you just have to throw it onto your phone. The coup de grace.
 
-You turn on Burp Suite’s “Intercept” mode, which will catch HTTP requests and responses for you to inspect and edit before forwarding them on to their destination. You return to the Facebook auth screen on your phone, which is still logged into Facebook as you. You touch “Authorize”. Burp Suite intercepts the HTTP request, but you allow it through unmolested. When the response comes back, you pause.
+You turn on Burp Suite’s "Intercept" mode, which will catch HTTP requests and responses for you to inspect and edit before forwarding them on to their destination. You return to the Facebook auth screen on your phone, which is still logged into Facebook as you. You touch "OK". Burp Suite intercepts the HTTP request, but you allow it through unmolested. When the response comes back, you pause.
 
 {% highlight text %}
 HTTP/1.1 200 OK
@@ -137,7 +135,7 @@ Content-Length: 239263
 <script type="text/javascript">window.location.href="fb464891386855067:\/\/authorize\/#state=\u00257B\u002522is_open_session\u002522\u00253Atrue\u00252C\u002522is_active_session\u002522\u00253Atrue\u00252C\u002522com.facebook.sdk_client_state\u002522\u00253Atrue\u00252C\u0025223_method\u002522\u00253A\u002522browser_auth\u002522\u00252C\u0025220_auth_logger_id\u002522\u00253A\u00252231F9899A-8CE6-4D3E-AEA6-5B61BA29E674\u002522\u00257D&granted_scopes=public_profile\u00252Cbasic_info\u00252Cemail\u00252Ccontact_email\u00252Cuser_birthday\u00252Cuser_relationship_details\u00252Cuser_location\u00252Cuser_likes\u00252Cuser_activities\u00252Cuser_interests\u00252Cuser_education_history\u00252Cuser_photos\u00252Cuser_friends\u00252Cuser_about_me\u00252Cuser_status&denied_scopes=&signed_request=cmFlBtZQ_MhRPrMcABHR4xmfQ-0qaM3sErO2iHlgqME.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImNvZGUiOiJBUUR6QzFHamV1Z1otbnRlSUVYdkFfNWxNTXk5b1B3ZU9DbkVFcjd2RlJvWW9HSllKN2cxMlJKSnI3REZndEZncDdGZ2VYTjN5WnJjZk5PQ0JWLTl3MTZfcnBFZ2pyMlM4YjhET012OW9rNUR0eENzMFd2QThWcVlDcFJoU3oyU0RNcmwtMkJtQ1ZqYjcxMW0yVmtlelJlWm5NbjVBeE5kS0ZfSzN1MFlRX2dnODU1MHlXczBJbjlLcWMtQTVxMW1wYkI3dHAwRFJxeXczQ3A4b2NjVTFNSWNYNU9WUWZLeElOSkVobHFoUHNETEI1MTc1NGRzVVZwSFRIbGdTV2hNWWF6ZWpCck5wTEFTcDB0THhMUW1ISVJzSDlVVGJsQ2hFRWg5S19ab1JqcHVQRTZKQnJPRk9qTmRqU3pqQUpTTnBhdmQxMklPbm9HMU9DNUd5TmtUOHdHazljdFB3WHhkaXYyYmczQ1VIMmxpVEEiLCJpc3N1ZWRfYXQiOjE0MTY3MDExNTYsInVzZXJfaWQiOiIxMDAwMDc4MjQ5MTI3OTkifQ&access_token=CAAGm0PX4ZCpsBANFGB33gYaJZBuAngUFyOOb8LBtokVcYf307Vd2pYJhSZBp7EbKZCmnfGEOo7Iou1Hc7elC9v3OWHymcX25ZCtDOVJEkwQJi8eBQTXZBmPtrZBrSAhfZAOCmFwI4dmpPJ43KgePVEJWE8t8pdoiBBBJtvgICyaSDaHH5BOGoJvUZA2Oi3z7LuoApGO72uJOZBxTZBiX0k7YZCmEjhptZASEPNVQpKMakllGRngZDZD&expires_in=6844";</script>
 {% endhighlight %}
 
-This response is in a slightly different format to the that for the request you made from your laptop. It is what will tell Safari to pass control and an encrypted FB auth token back to Tinder. But you don’t want it to pass your auth token. You want it to pass Steve’s. You open Evernote and pull up the response from the identical auth request you made using Steve’s Facebook session from your laptop. You copy everything in this response from `fb464891386855067` up to `expires_in=6361`, and replace the corresponding section in the response that is still hanging in Burp Suite. You send this modified response, with Steve’s auth token buried and ciphered inside it, on its way to your phone.
+This response is in a slightly different format to the that for the request you made from your laptop. It is what will tell Safari to pass control and an encrypted FB auth token back to Tinder. But you don’t want it to pass your auth token. You want it to pass Steve’s. You open Evernote and pull up the response from the identical auth request you made from your laptop using Steve’s Facebook session. You copy everything in this response from `fb464891386855067` up to `expires_in=6361`, and replace the corresponding section in the response that is still hanging in Burp Suite. You send this modified response, with Steve’s auth token buried and ciphered inside it, on its way to your phone.
 
 For what feels like an eternity, time stands still.
 
