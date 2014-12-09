@@ -20,7 +20,7 @@ You’ve trained for this moment for days, but even 3 minutes is not enough time
 
 His session is in his browser cookies. You get his facebook.com cookies, you get his session.
 
-You open up Chrome, reach for a developer console and throw down some Javascript. But `document.cookies` only gives you ~6 of the ~11 cookies set by Facebook. The other 5, the ones with the session data that you actually care about, are all marked httponly and are completely inaccessible by Javascript. The clock is ticking.
+You open up Chrome, reach for a developer console and throw down some Javascript. But `document.cookies` only gives you ~6 of the ~11 cookies set by Facebook. The other 5, the ones with the session data that you actually care about, are all marked <a href="https://www.owasp.org/index.php/HttpOnly" target="_blank">httponly</a> and are completely inaccessible by Javascript. The clock is ticking.
 
 You remember that Chrome stores its cookies in a sqlite3 database in `~/Library/Application\ Support/Google/Chrome/Default/`. Perfect.
 
