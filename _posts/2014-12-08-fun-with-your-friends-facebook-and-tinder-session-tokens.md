@@ -160,4 +160,4 @@ or
 
 Tinder totally freaks and logs you out. You don’t know why either.
 
-It also turns out that Sandra, 28, is a huge Lethal Weapon fan. She and Steve now have 2 children and a condo in San Jose.
+It also turns out that Monica, 28, is a huge Lethal Weapon fan. She and Steve now have 2 children and a condo in San Jose.
