@@ -10,7 +10,7 @@ blurb: A very detailed summary of what I learned whilst finding a job in Silicon
 
 <hr/>
 
-After 4 months of funemployment, 25 job applications and 6 weeks of constant interviewing, I've finally got a job in Silicon Valley.
+After 4 months of funemployment, 25 job applications and 6 weeks of constant interviewing, I've finally got a job at <a href="https://stripe.com" target="_blank">>Stripe</a>.
 
 The job search experience wasn't some epic, arduous, life-affirming quest in which I realised that the nerdy girl with glasses was actually both inwardly beautiful and outwardly smoking hot when she brushed her hair. But it was certainly non-trivial and did take a lot more work and time than I had expected. As with anything, there were some things I did that accidentally turned out to be pretty smart, many things that turned out to be boneheaded, and lots of basics and finesses about making applications, doing interviews and negotiating deals that I feel I understand far more now than I did when I started. There's plenty more on these below, but there are 2 lessons I would particularly like to emphasise from the start:
 
@@ -35,7 +35,7 @@ I'm a 25 year old Ruby/Rails guy with a smattering of experience in other stacks
 
 I'm moving to San Francisco very shortly, but right now I live in London and have an H1B US work visa from the April 2013 ballot burning a hole in my pocket (complicated story). US visas are hard and I got very lucky with mine. If you're looking then the main options are H1B, O1, J1 and L1 (here's <a href="http://blog.sourcing.io/visa-guide" target="_blank">a great summary of these as well as some more exotic options</a>). Even if you've never even thought about getting a US visa before, many companies are happy to use their flock of lawyers to help try and drag you through the process. However, some aren't, especially smaller companies, so make sure you find out early in the conversation.
 
-I wanted to use my H1B to move to San Francisco and seek my fame and fortune, so I finished a contract in Oct 2013, spent Nov/Dev funemployed, and hit the interview trail in mid-Jan 2014.
+I wanted to move to San Francisco and seek my fame and fortune, so I finished a contract in Oct 2013, spent Nov/Dev funemployed, and hit the interview trail in mid-Jan 2014.
 
 <h3>0.3 Timeframe and logistics</h3>
 
