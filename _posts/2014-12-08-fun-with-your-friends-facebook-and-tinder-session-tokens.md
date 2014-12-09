@@ -112,7 +112,6 @@ HTTP/1.1 200 OK
 Content-Type: application/x-javascript; charset=utf-8
 P3P: CP="Facebook does not have a P3P policy. Learn why here: http://fb.me/p3p”
 <SNIP>
-Date: Sun, 16 Nov 2014 23:13:59 GMT
 Connection: keep-alive
 Content-Length: 1947
 
@@ -128,7 +127,6 @@ HTTP/1.1 200 OK
 Strict-Transport-Security: max-age=15552000; preload
 X-Frame-Options: DENY
 <SNIP>
-Date: Sun, 23 Nov 2014 00:06:59 GMT
 Connection: keep-alive
 Content-Length: 239263
 
