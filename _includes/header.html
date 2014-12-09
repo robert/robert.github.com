@@ -12,7 +12,7 @@ var pageTitle = "{{ page.title }}" || "Home"
 {% if page.date %}
 <meta content='{{ site.url }}{{ page.url }}' property='og:url' />
 <meta property="og:type" content='article'/> 
-<meta property="og:title" content='{{ page.title | strip_html | trim }} | {{ site.name }}'/>
+<meta property="og:title" content='{{ page.title | strip_html | trim | escape }} | {{ site.name }}'/>
   {% if page.custom_meta %}
   <meta property="og:description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
   <meta property="description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
