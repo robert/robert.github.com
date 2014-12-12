@@ -42,14 +42,14 @@ We will start simple and work our way up. The real world practicalities of some 
 
 <img src="/images/gw/case1demo.jpg" />
 
-This is the trivial base case upon which all else depends. The lights are spaced a distance d apart, and the Green Wave speed limit is v.
+This is the trivial base case upon which all else depends. The lights are spaced a distance `d` apart, and the Green Wave speed limit is `v.
 
 The solution, which can be shown to be correct by simple inspection, is:
 
 At `t=0`:
 
-* Consecutive lights alternate red and green
-* Lines of bikes of length d stretch backwards from each green light to the previous red light
+* Consecutive lights start alternately red and green
+* Lines of bikes of length `d` stretch backwards from each green light to the previous red light
 
 <img src="/images/gw/case1zero.jpg" />
 
@@ -78,7 +78,7 @@ At `t=0`:
 * Lights at 0, 4, 8, 12 set to green, lights at 2, 6, 10 set to red
 * Lines of bikes of length 2 stretch backwards from each green light to the previous red light
 
-Then every `T = `d_eff`/v = 2/v`, all traffic lights invert color.
+Then every `T = d_eff/v = 2/v`, all traffic lights invert color.
 
 To solve for the irregular, real case, we simply set the real lights to be whatever they are required to be in the regular, imaginary case, and throw away the imaginary lights that we added.
 
@@ -86,12 +86,12 @@ To solve for the irregular, real case, we simply set the real lights to be whate
 
 In our example, this means:
 
-At t=0:
+At `t=0`:
 
 * Lights at 0, 4, 12 set to green, light at 6 set to red
 * Lines of bikes of length 2 arranged as above, even though there are no lights next to some of these lines
 
-and then again all traffic light invert color after every `T = 2/v`.
+and once again all traffic light invert color after every `T = 2/v`.
 
 <h3>3. Regular grid with a single speed limit</h3>
 
@@ -106,7 +106,7 @@ This basic grid has the solution, again easily verifiable by inspection:
 At `t=0`:
 
 * Lights alternate vertical and horizontal across the grid in a checkerboard pattern
-* Lines of bikes of length d stretch backwards from each green light to the previous red light along the direction of travel
+* Lines of bikes of length `d` stretch backwards from each green light to the previous red light along the direction of travel
 
 <p style='text-align: center'>
 <img src="/images/gw/case3zero.jpg" />
@@ -136,15 +136,15 @@ Detailed example left as an exercise for the reader.
 
 <h3>5. Irregular grid with multiple speed limits</h3>
 
-Finally, the holy grail. We now take an irregular grid, as in case 4, but remove the restriction of a single universal Green Wave speed. Some streets may want to cater for Lance Armstrong, others for Lance Armstrong not tripping his nuts off. The solution is surprisingly simple, although unsurprisingly kind of stupid.
+Finally, the holy grail. We now take an irregular grid, as in case 4, but remove the restriction of a single universal Green Wave speed. Some streets may want to cater for Lance Armstrong, others for Lance Armstrong not tripping his face off. The solution is surprisingly simple, although unsurprisingly kind of stupid.
 
 Notice that a Green Wave that allows bikes to continuously travel at a constant speed `v` also allows them to travel at `v/2`, `v/3`, `v/4` and so on. Conceptually these "harmonics" arise because by the time a bike traveling at `v/4` has travelled from green light to green light, exactly 4 whole inversion cycles have occurred in front of it. It is therefore exactly lined up to take advantage of the 5th cycle, and continue on its steady way.
 
-Therefore, for a **regular** grid with varying speed limits, we simply need to oscillate a checkerboard pattern (as in case 3) at a frequency that caters for a speed `v_eff` that has all of the different speed limits on the grid as harmonics. This speed is the <a href="http://en.wikipedia.org/wiki/Least_common_multiple" target="_blank">Lowest Common Multiple</a> (LCM) of all of the individual Green Wave speeds. Since `v_eff` is an integer multiple of all individual `v`, all `v` must be harmonics of `v_eff` and therefore able to travel along a Green Wave set for `v_eff`. The entire grid is therefore covered in Green Waves.
+Therefore, for a <u>regular</u> grid with varying speed limits, we simply need to oscillate a checkerboard pattern (as in case 3) at a frequency that caters for a speed `v_eff` that has all of the different speed limits on the grid as harmonics. This speed is the <a href="http://en.wikipedia.org/wiki/Least_common_multiple" target="_blank">Lowest Common Multiple</a> (LCM) of all of the individual Green Wave speeds. Since `v_eff` is an integer multiple of all individual `v`, all `v` must be harmonics of `v_eff` and therefore able to travel along a Green Wave set for `v_eff`. The entire grid is therefore covered in Green Waves.
 
-For example, say we have Green Wave speeds of `{10, 20, 50, 80}`. The LCM of these is `400`, and so we invert the direction of all lights every `T = d/v_eff = d/400`. The initial bike arrangement is different to that for a regular grid, since it has to cater for an effective speed of `400`. The lights will invert every `d/400`, and so the lengths of each group of bikes on each street should be the maximum length that can pass through a green light in this time, given `v_street`, the Green Wave speed for that street. This length is `v_street * T = vstreet * d/v_eff`. In the case where all speeds are the same and `v_eff = v_street` (case 3), this reduces to `d`, as expected.
+For example, say we have Green Wave speeds of `{10, 20, 50, 80}`. The LCM, or `v_eff` of these is `400`, and so we invert the direction of all lights every `T = d/v_eff = d/400`. The initial bike arrangement is different to that for a regular grid, since it has to cater for an effective speed of `400`. The lights will invert every `d/400`, and so the lengths of each group of bikes on each street should be the maximum length that can pass through a green light in this time, given `v_street`, the Green Wave speed for that street. This length is `v_street * T = v_street * d/v_eff`. In the case where all speeds are the same and `v_eff = v_street` (case 3), this reduces to `d`, as expected.
 
-We now generalise this solution to an irregular grid, in exactly the same way as in case 4. We add imaginary roads at a spacing of `d_eff`, where `d_eff` is the HCF of all of the distances between consecutive lights on all roads. We then calculate `v_eff` as above - the LCM of all speeds on the grid. This gives us a `T = d_eff/v_eff`, and bikes arranged in alternating lines of length vstreet*deff/v_eff. As always, we use our imaginary checkerboard to assign initial light colours and bike placements, and then oscillate directions accordingly. We sit back and admire our handiwork.
+We now generalise this solution to an irregular grid, in exactly the same way as in case 4. We add imaginary roads at a spacing of `d_eff`, where `d_eff` is the HCF of all of the distances between consecutive lights on all roads. We then calculate `v_eff` as above - the LCM of all speeds on the grid. This gives us a `T = d_eff/v_eff`, and bikes arranged in alternating lines of length `v_street*deff/v_eff`. As always, we use our imaginary checkerboard to assign initial light colours and bike placements, and then oscillate directions accordingly. We sit back and admire our handiwork.
 
 <h3>Conclusion</h3>
 
