@@ -1,7 +1,6 @@
 ---
 title: Green Waves on an arbitrary Valencia Street
 layout: post
-published: false
 ---
 The tall, dark, handsome man stood atop Bernal Heights and looked out over San Francisco, the wind gently tousling his perfect bedhead of hair. The man had loads of friends, but tonight he needed solitude. It wasn't that he didn’t have options for other things to do that evening, he had turned down like five different invitations to five really cool parties. He could have easily gone to a bar and scored with a 6, maybe even a 7 if he could be bothered. But sometimes you need the perspective and quietude that only a nighttime panorama can give.
 
