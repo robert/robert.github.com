@@ -18,8 +18,6 @@ As you may have already worked out, it is actually incredibly trivial to create 
 
 > How can you create Green Waves along every single road of a completely irregularly spaced grid of roads, where each road has a completely different speed limit?
 
-[IMAGE]
-
 Using some simple maths, let's find out.
 
 <h3>Definitions</h3>
