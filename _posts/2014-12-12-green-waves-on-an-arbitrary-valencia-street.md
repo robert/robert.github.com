@@ -24,7 +24,7 @@ Using some simple maths, let's find out.
 
 We define a Green Wave to be a set of rules for deciding traffic light colors and initial bike placement such that:
 
-* Any bike that is moving at t=0 will also always be moving at t>0
+* All bikes are always moving
 * 50% of the road in each direction is covered with bikes
 * Each traffic light is green 50% of the time
 
