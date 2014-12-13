@@ -158,3 +158,7 @@ So the lights must be oscillated every `T = d_eff/v_eff = 0.01/5640 = 0.0000017 
 And taking the 20mph street as an example, bikes must be arranged in lines of length `v_street*d_eff/v_eff = 20*0.01/5640 = 0.000036miles`, or `5cm`.
 
 Assuming your city is made up of bikes and people of no more than 5cm in length, has lights capable of switching between green and red a thousand times per second, and has pedestrians capable of navigating this terrifying combination, you may want me to design your traffic system. My rates are unreasonably expensive, especially given the appalling results, and my <a href="https://twitter.com/robjheaton">Twitter handle</a> can be found below.
+
+<hr>
+
+<i>Thanks to <a href="https://twitter.com/sidd">Sidd</a> and <a href="https://twitter.com/kiranb">Kiran</a> for their help with this puzzle.</i>
