@@ -83,7 +83,7 @@ I2[16] = C1'[16] ^ P2'[16]
        = 95
 {% endhighlight %}
 
-We now know the final bit of the intermediate state! Notice that since `C2` is the same as it is in the real ciphertext, `I2` is also the same as in the real ciphertext. We can therefore go back to the ciphertext we are trying to decrypt:
+We now know the final byte of the intermediate state! Notice that since `C2` is the same as it is in the real ciphertext, `I2` is also the same as in the real ciphertext. We can therefore go back to the ciphertext we are trying to decrypt:
 
 {% highlight text %}
 P2[16] = C1[16] ^ I2[16]
