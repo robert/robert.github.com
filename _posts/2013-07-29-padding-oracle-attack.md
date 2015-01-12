@@ -140,3 +140,4 @@ Of course, this particular attack could be prevented by catching the exception, 
 
 The <a href="http://www.matasano.com/articles/crypto-challenges/" target="_blank">Matasano Crypto Challenges</a> for switching me onto crypto. Highly highly recommended
 
+Kindly translated into Russian by Alex at <a href="http://habrahabr.ru/post/247527/">habrahabr.ru</a>.
