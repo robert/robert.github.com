@@ -1,13 +1,12 @@
 ---
-title: Pain??
+title: Something that I don't talk about much
 layout: post
-published: false
 ---
 <h3>0. Introduction</h3>
 
 2 years ago, I wrote a post called <a href="/2013/03/19/how-chronic-pain-has-made-me-happier/">"How chronic pain has made me happier"</a>. It was a silly title.
 
-9 years ago, when I was 17, I did the London to Brighton cycle ride, a 54 mile charity event ridden by 27,000 people. I came in 3rd in a time of 2.5 hours. I wasn’t allowed to bring my bike on the train back to London, so I turned around and cycled the 54 miles back home. This would probably have been OK, but I had spent the preceding 6 months cycling many, many hundreds of miles a week, regardless of how I felt. Rest days and protein supplements were for the weak and mentally infirm. My muscles felt tired almost all the time, but I was able to keep spinning my legs and moving my bike along pretty rapidly so this didn’t seem to matter. I just kept cycling.
+9 years ago, when I was 17, I did the London to Brighton cycle ride, a 54 mile charity event ridden by 27,000 people. I came in 3rd in a time of 2.5 hours. I wasn’t allowed to bring my bike on the train back to London, so I turned around and cycled the 54 miles back home. This would probably have been OK, but I had spent the preceding 6 months cycling many, many hundreds of miles a week, regardless of how I felt. Rest days and protein supplements were for the weak and sexually frustrated. My muscles felt tired almost all the time, but I was able to keep spinning my legs and moving my bike along pretty rapidly so this didn’t seem to matter. I just kept cycling.
 
 After this ride, my nervous system decided that it had had enough. It decided that from now on my body, in particular my legs, was going to hurt a lot, all the time. Finally I had no choice but to stop. At least, this is my best guess for what happened. No one has ever worked out what is actually wrong with me.
 
@@ -161,9 +160,9 @@ To be wooly, I am probably calmer that I would have been otherwise, I am probabl
 
 Your comfort zone is the space of activities that feel familiar and that you can do with minimal anxiety. Everybody has one. Between years 1-3 I let mine shrink to roughly the size of my bedroom and a few other places where I could wear baggy tracksuits. I’ve gradually re-expanded it, but this has required a lot of not-always-enjoyable effort. I typically like not drinking too much and going to bed on time. Many twenty-something activities involve lots of drinking and very deliberately not going to bed on time. I’ve heard Going Out described as "very rarely fun, but the price you have to pay to be normal." That sounds about right to me.
 
-When I feel bad, I can feel really really bad, and so any activity that lasts a long time with a high cost of bailing halfway through is to be approached with trepidation. I tend to do a lot of stuff on my own. This doesn’t mean there aren’t a bunch of people aroun  d, but it does mean I tend not to have much social obligation to them to stay. On the other hand, Going Out with a small group of people who are expecting a Big Night is probably my precise, if very mild, idea of hell.
+When I feel bad, I can feel really really bad, and so any activity that lasts a long time with a high cost of bailing halfway through is to be approached with trepidation. I tend to do a lot of stuff on my own. This doesn’t mean there aren’t a bunch of people around, but it does mean I tend not to have much social obligation to them to stay. On the other hand, Going Out with a small group of people who are expecting a Big Night is probably my precise, if very mild, idea of hell.
 
-I used to use pain as an excuse for not doing things, both consciously and sub-consciously. This is understandable, but not very helpful. It would be the reason why I would say no to every invitation that didn’t involve an evening of Mario Kart, and the reason why you couldn’t judge me for it. My apartment and my parents’ house are the safest places in the world, and the outside world is a scary place where you can’t always lie down and stretch whenever and however you want. Feeling good is better than feeling bad is better than the mental effort of change (<a href="http://thelastpsychiatrist.com/">The Last Psychiatrist</a>).
+I used to use pain as an excuse for not doing things, both consciously and sub-consciously. This is understandable, but not very helpful. It would be the reason why I would say no to every invitation that didn’t involve an evening of Mario Kart, and the reason why you couldn’t judge me for it. My apartment and my parents’ house are the safest places in the world, and the outside world is a scary place where you can’t always lie down and stretch whenever and however you want. Feeling good is better than feeling terrible is better than the mental effort of change (<a href="http://thelastpsychiatrist.com/">The Last Psychiatrist</a>).
 
 I’m much better now though.
 
