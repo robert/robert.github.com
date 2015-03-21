@@ -8,7 +8,7 @@ layout: post
 
 9 years ago, when I was 17, I did the London to Brighton cycle ride, a 54 mile charity event ridden by 27,000 people. I came in 3rd in a time of 2.5 hours. I wasn’t allowed to bring my bike on the train back to London, so I turned around and cycled the 54 miles back home. This would probably have been OK, but I had spent the preceding 6 months cycling many, many hundreds of miles a week, regardless of how I felt. Rest days and protein supplements were for the weak and sexually frustrated. My muscles felt tired almost all the time, but I was able to keep spinning my legs and moving my bike along pretty rapidly so this didn’t seem to matter. I just kept cycling.
 
-After this ride, my nervous system decided that it had had enough. It decided that from now on my body, in particular my legs, was going to hurt a lot, all the time. Finally I had no choice but to stop. At least, this is my best guess for what happened. No one has ever worked out what is actually wrong with me.
+After this ride, my nervous system decided that it had had enough. It decided that from now on my body was going to hurt a lot, all the time. Finally I had no choice but to stop. At least, this is my best guess for what happened. No one has ever worked out what is actually wrong with me.
 
 I’ve seen more specialists than I have Adam Sandler movies (I’ll talk about this). I’ve spent years dealing with the pain in multiple equally terrible ways (I’ll talk about this). I believe I’ve learned and changed a lot about how I relate to myself and other people, and what the point is (I’ll talk about this). And over the last year, I think I’ve actually started to get better (I don’t really know how or why, but I’ll talk about this too).
 
