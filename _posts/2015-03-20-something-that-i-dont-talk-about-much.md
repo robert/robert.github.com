@@ -62,7 +62,7 @@ It does turn out that the best self-help books are the ones that sneakily disgui
 
 I really, really love being active. I got myself into this mess by cycling and cycling and cycling until my brain and body collaboratively decided that they had to make me stop before I killed myself. At the time it happened, a big chunk of my identity was tied up in how much of a long-distance-hardcore-badass I was. Losing this was essentially soulcrushing. If I wanted to be hyperbolic I would say that the road back to fitness is like the path to getting my soul back.
 
-CBT convinced me that refusing to exercise at all until I was totally better was somewhere between unwise and life-ruining. I began gently running.
+CBT convinced me that refusing to exercise at all until I was totally better was somewhere between unwise and life-ruining. I began gently moving.
 
 However, when you are walking along a path that has your soul at the other end, it's impossible not to break into a jog sometimes. I’ve got in shape 4 times in the last 5 years, and each time eventually exploded in a cloud of over-exertion and stress and ended up right back where I started. Several months later, having traded all my progress for a few vague and unlearned lessons, I would grit my teeth and start again with yet another 1 minute run, 30 second walk, 1 minute run.
 
