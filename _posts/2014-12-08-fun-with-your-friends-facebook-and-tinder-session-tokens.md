@@ -3,6 +3,9 @@ title: Fun with your friend's Facebook and Tinder sessions
 layout: post
 redirect_from:
   - /2014/12/08/fun-with-your-friends-facebook-sessions/
+hn: 8758196
+weight: 2
+blurb: Hacking for love and vengeance.
 ---
 <h3>The Setup</h3>
 

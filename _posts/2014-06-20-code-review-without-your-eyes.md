@@ -2,7 +2,6 @@
 layout: post
 title: Code review without your glasses
 hn: 7998657
-weight: 2
 blurb: Things you can tell about code without actually reading it.
 ---
 You’re part of a preternaturally enlightened dev team, and have set aside an entire day for nothing but code review. However, after the first 2 hours, you realise that you have forgotten your glasses and have just been staring at colourful blurs all morning. What do you do?
