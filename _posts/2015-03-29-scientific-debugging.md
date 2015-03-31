@@ -1,6 +1,8 @@
 ---
-title: My hypothesis is
+title: Scientific debugging
 layout: post
+redirect_from:
+  - /2015/03/29/my-hypothesis-is/
 ---
 I’ve started noticing a common theme in the way that many good engineers speak whilst debugging. I’m calling their approach "Scientific Debugging".
 
