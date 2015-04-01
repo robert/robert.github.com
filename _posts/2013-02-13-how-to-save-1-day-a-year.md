@@ -29,4 +29,4 @@ So the next time you want to start an exciting new Rails project, do future-you 
 
 All it needs is for you to be slightly more methodical the next time you start a new project, and get all the generic stuff out of the way before doing anything fun. Then push to Github and clone it the next time you want to mess around with something new. If you find a new must-have gem or pattern then just add it to your basic Rails repo. Your instant and infinite supply of free Ferraris just became an instant and infinite supply of free custom Ferraris. Do you have enough money to pass on custom Ferraris?
 
-(Feel free to fork mine (https://github.com/robertheaton/basic-rails) , but I suggest that you don’t. We might have very different ideas of what qualifies as indispensable.)
+(Feel free to fork mine (https://github.com/robert/basic-rails) , but I suggest that you don’t. We might have very different ideas of what qualifies as indispensable.)
