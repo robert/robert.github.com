@@ -61,7 +61,7 @@ If you put it on your site, people will email you from time to time, even about 
 
 <h3>2.7 Analytics</h3>
 
-Set up both <a href="https://google.com/analytics" target="_blank">Google Analytics</a> and <a href="https://www.google.com/webmasters/tools/" target="_blank">Google Webmaster Tools</a>. Until the numbers they produce become important for some reason they are just vanity metric generators. But all is vanity, so set them up.
+Set up both <a href="http://google.com/analytics" target="_blank">Google Analytics</a> and <a href="https://www.google.com/webmasters/tools/" target="_blank">Google Webmaster Tools</a>. Until the numbers they produce become important for some reason they are just vanity metric generators. But all is vanity, so set them up.
 
 <h3>3. Ideas</h3>
 
