@@ -47,3 +47,7 @@ Clarificatory comments, thumbs up! Code that requires an accompanying multi-chap
 Look closely at the second method down. If a method needs 8 arguments in order to know what job to do and how to do it, that method is way overworked. Spread the load and take some of the weight off its shoulders with a springtime refactoring. Split it into two (or more), or maybe it makes more sense to give some of these arguments to the instance in its initializer. Could you deal with 8 arguments simultaneously? Then don’t expect your methods to.
 
 So that’s how to do code review when you’ve forgotten your glasses or have been staring directly into the sun for longer than medically recommended. If I was better at programming then I’m sure I could have come up with some far more subtle examples. On the other hand, one could argue (and I fully intend to do so) that triviality can sometimes be interesting, and is almost always more important than we would like to think. However clear, simple and well-patterned your design may be, it’s all for naught if you construct it out of mud and toenails. 
+
+<hr/>
+
+<i>Kindly <a href="http://luminiscencia-en-rojo.blogspot.com/2015/06/una-revision-de-codigo-sin-tus-lentes.html">translated into Spanish by David Rojo</a>.</i>
