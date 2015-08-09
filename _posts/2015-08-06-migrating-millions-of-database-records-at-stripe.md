@@ -1,6 +1,7 @@
 ---
 title: Migrating millions of database records at Stripe
 layout: post
+published: false
 ---
 At Stripe we have a Merchant table and an AccountApplication table. Every Merchant has an AccountApplication, and once upon a time these tables contained all of a given merchant's details. This included both trivial information like support_phone_number and self_estimated_yearly_turnover, and very very important information like business_name and tax_id_number.
 
