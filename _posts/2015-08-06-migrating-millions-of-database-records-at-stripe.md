@@ -36,7 +36,6 @@ We start by making the LegalEntity model in our ORM, and the associated table in
 
 {% highlight ruby %}
 class LegalEntity
-     # blah blah blah
 end
 {% endhighlight %}
 
@@ -48,28 +47,36 @@ With the utmost of care, we use some meta-programming magic:
 
 {% highlight ruby %}
 class Merchant
-     # Each Merchant has a LegalEntity
-     prop :legal_entity, foreign: LegalEntity
+  # Each Merchant has a LegalEntity
+  prop :legal_entity, foreign: LegalEntity
     
-     def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
-          # etc
-     end
+  def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
+    # Redefine the Merchant setter method to also write to the LegalEntity
+    merchant_prop_name_set = :"#{merchant_prop_name}="
+    original_merchant_prop_name_set = :"original_#{merchant_prop_name_set}"
+    alias_method original_merchant_prop_name_set, merchant_prop_name_set if method_defined?(merchant_prop_name_set)
 
-     legal_entity_proxy :owner_first_name, :first_name
+    define_method(merchant_prop_name_set) do |val|
+      self.public_send(original_merchant_prop_name_set, val)
+      self.legal_entity_.public_send(:"#{legal_entity_prop_name}=", val)
+    end
+  end
 
-     before_save do
-          # Make sure that we actually save our LegalEntity dark-write.
-          # This "multi-save" can cause confusion and unnecessary database calls,
-          # but is a necessary evil and will be unwound later
-           self.legal_entity_.save      
-     end
+  legal_entity_proxy :owner_first_name, :first_name
+ 
+  before_save do
+    # Make sure that we actually save our LegalEntity dark-write.
+    # This "multi-save" can cause confusion and unnecessary database calls,
+    # but is a necessary evil and will be unwound later
+    self.legal_entity_.save      
+  end
 end
 
-merchant.owner_first_name = ‘Barry'
+merchant.owner_first_name = 'Barry'
 merchant.save
 
 merchant.legal_entity_.first_name
-# => Also ‘Barry'
+# => Also 'Barry'
 {% endhighlight %}
 
 We let this run in production for a few days, and verify that the data is consistent between tables. If it is not then that we can debug and fix at our leisure, since the Merchant and AccountApplication tables are still the source of truth and we are not relying on the data in the LegalEntity for anything at this point.
@@ -93,9 +100,31 @@ We are now very confident that the LegalEntity table is in sync with and just as
 
 {% highlight ruby %}
 class Merchant
-     def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
-          # etc
-     end
+  prop :legal_entity, foreign: LegalEntity
+    
+  def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
+    # Now we also redefine the Merchant getter method to read from the LegalEntity
+    alias_method :"original_#{merchant_prop_name}", merchant_prop_name if method_defined?(merchant_prop_name)
+    define_method(merchant_prop_name) do
+      self.legal_entity_.public_send(legal_entity_prop_name)
+    end
+
+    # We continue to write to both tables for safety
+    merchant_prop_name_set = :"#{merchant_prop_name}="
+    original_merchant_prop_name_set = :"original_#{merchant_prop_name_set}"
+    alias_method original_merchant_prop_name_set, merchant_prop_name_set if method_defined?(merchant_prop_name_set)
+
+    define_method(merchant_prop_name_set) do |val|
+      self.public_send(original_merchant_prop_name_set, val)
+      self.legal_entity_.public_send(:"#{legal_entity_prop_name}=", val)
+    end
+  end
+
+  legal_entity_proxy :owner_first_name, :first_name
+
+  before_save do
+    self.legal_entity_.save      
+  end
 end
 {% endhighlight %}
 
@@ -125,12 +154,12 @@ Our data is now fully migrated, and all that remains is to clean up our codebase
 This step requires us to be particularly methodical, and is best carried out from within some kind of isolation tank. For each Merchant or AccountApplication property that is being proxied through to the LegalEntity, we grep the entire codebase for every single read or write of it, and change to read or write to the LegalEntity directly. For example:
 
 {% highlight ruby %}
-merchant.owner_first_name = ‘Barry'
+merchant.owner_first_name = 'Barry'
 
 becomes:
 
 {% highlight ruby %}
-legal_entity.first_name = ‘Barry'
+legal_entity.first_name = 'Barry'
 {% endhighlight %}
 
 We touch a lot of unfamiliar code that we have never seen before, so we are thankful for our extensive and reliable test suite and ask the people with the most context on the code we are updating to review our changes.. We migrate each property in a separate pull request that can be reviewed, monitored and reverted (if necessary) individually.
@@ -148,13 +177,28 @@ However, in order to make sure we have tracked down everything before we turn of
 
 {% highlight ruby %}
 class Merchant
-     def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
-          # etc
-     end
+  prop :legal_entity, foreign: LegalEntity
+
+  def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
+    alias_method :"original_#{merchant_prop_name}", merchant_prop_name if method_defined?(merchant_prop_name)
+    define_method(merchant_prop_name) do
+      log.info('Deprecated method called')
+      self.legal_entity_.public_send(legal_entity_prop_name)
+    end
+
+    merchant_prop_name_set = :"#{merchant_prop_name}="
+    original_merchant_prop_name_set = :"original_#{merchant_prop_name_set}"
+    alias_method original_merchant_prop_name_set, merchant_prop_name_set if method_defined?(merchant_prop_name_set)
+
+    define_method(merchant_prop_name_set) do |val|
+      log.info('Deprecated method called')
+      self.legal_entity_.public_send(:"#{legal_entity_prop_name}=", val)
+    end
+  end
 end
 {% endhighlight %}
 
-We let this run in production, search our logs for ‘Deprecated method called', and remove every instance we find.
+We let this run in production, search our logs for `'Deprecated method called'`, and remove every instance we find.
 
 ## 3.3 Remove proxying altogether
 
@@ -162,20 +206,19 @@ Once our logging has been silent for for a suitable amount of time (say 2-7 days
 
 {% highlight ruby %}
 class Merchant
-     # Each Merchant has a LegalEntity
-     prop :legal_entity, foreign: LegalEntity
+  prop :legal_entity, foreign: LegalEntity
 
-     # REMOVED
-     #
-     # def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
-     #      # etc
-     # end
-     # 
-     # legal_entity_proxy :owner_first_name, :first_name
+  # REMOVED
+  #
+  # def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
+  #      # etc
+  # end
+  # 
+  # legal_entity_proxy :owner_first_name, :first_name
 
-     before_save do
-           self.legal_entity_.save      
-     end
+  before_save do
+    self.legal_entity_.save      
+  end
 end
 {% endhighlight %}
 
@@ -186,7 +229,7 @@ end
 All of our data is now being read and written directly to the LegalEntity. However, we are still chaining saves through our models, and saving the Merchant still secretly saves the LegalEntity (see the above before_save block). We will most likely have a large number of slightly obtuse looking sections along the lines of:
 
 {% highlight ruby %}
-legal_entity.first_name = ‘Barry'
+legal_entity.first_name = 'Barry'
 merchant.save
 {% endhighlight %}
 
@@ -194,17 +237,15 @@ This still works, but is not a tidy state of affairs. We therefore log all place
 
 {% highlight ruby %}
 class Merchant
-     # Each Merchant has a LegalEntity
-     prop :legal_entity, foreign: LegalEntity
+  prop :legal_entity, foreign: LegalEntity
 
-     before_save do
-          # Our ORM's implementation of "dirty" fields
-          unless self.legal_entity_.updated_fields.empty?
-                self.legal_entity_.save
-               log.info(‘Multi-saved an updated model', klass: self.legal_entity_.class, updated_fields: self.legal_entity_.updated_fields)
-               log.info("Stacktrace:\r\n #{caller.join("\r\n")}")
-          end
-     end
+  before_save do
+    # Our ORM's implementation of "dirty" fields
+    unless self.legal_entity_.updated_fields.empty?
+      self.legal_entity_.save
+      log.info('Multi-saved an updated model')
+    end
+  end
 end
 {% endhighlight %}
 
@@ -212,21 +253,21 @@ We also add a feature flag to allow us to force multi-saving, even when there ar
 
 ## 4.2 Hunting
 
-For the next few days, we search our logs for ‘Multi-saved an updated model' to track down all places where saving the Merchant or AccountApplication is also responsible for saving new data on the LegalEntity. We save the LegalEntity ourselves, just before saving the other model, which sets legal_entity.updated_fields to be empty, preventing our log-line from being hit.
+For the next few days, we search our logs for `'Multi-saved an updated model'` to track down all places where saving the Merchant or AccountApplication is also responsible for saving new data on the LegalEntity. We save the LegalEntity ourselves, just before saving the other model, which sets legal_entity.updated_fields to be empty, preventing our log-line from being hit.
 
 {% highlight ruby %}
-legal_entity.first_name = ‘Barry'
-merchant.business_url = ‘http://foobar.com'
+legal_entity.first_name = 'Barry'
+merchant.business_url = 'http://foobar.com'
 merchant.save
 {% endhighlight %}
 
 will trigger our log-line, since merchant.save will also save the new LegalEntity#owner_name. It becomes:
 
 {% highlight ruby %}
-legal_entity.first_name = ‘Barry'
+legal_entity.first_name = 'Barry'
 legal_entity.save
 
-merchant.business_url = ‘http://foobar.com'
+merchant.business_url = 'http://foobar.com'
 merchant.save
 {% endhighlight %}
 
@@ -238,8 +279,7 @@ Once our log-line has stopped being triggered and we are confident that every mo
 
 {% highlight ruby %}
 class Merchant
-     # Each Merchant has a LegalEntity
-     prop :legal_entity, foreign: LegalEntity
+  prop :legal_entity, foreign: LegalEntity
 end
 {% endhighlight %}
 
