@@ -12,13 +12,21 @@ Here's how we did it.
 
 # 0. The principle.
 
-The entire migration is essentially a transition of data reading:
+The entire migration is essentially a transition of data reading from:
 
+<img src="/images/Read1.jpg" />
 
+to:
 
-and data writing:
+<img src="/images/ReadLast.jpg" />
 
+and data writing from:
 
+<img src="/images/Write1.jpg" />
+
+to:
+
+<img src="/images/WriteLast.jpg" />
 
 If we could temporarily take down our entire system for a while, and if we were programming robots who never made anything remotely close to a mistake, we would simply turn off our servers, tell all of our merchants not to sell anything for a while, move all the data from the Merchant and AccountApplication tables to the LegalEntity table, convert all of our code to read and write to this new table, turn our servers on again, and give the all clear that the internet can start selling things again. But:
 
@@ -83,8 +91,13 @@ We let this run in production for a few days, and verify that the data is consis
 
 This updates our data-flows to:
 
+Read:
 
+<img src="/images/Read1.jpg" />
 
+Write:
+
+<img src="/images/Write1.jpg" />
 
 ## 1.3 Migrate old data to the LegalEntity
 
@@ -133,17 +146,29 @@ merchant.owner_first_name
 
 This updates our data-flows to:
 
+Read:
 
+<img src="/images/Read2.jpg" />
+
+Write:
+
+<img src="/images/Write2.jpg" />
 
 We let this code run in production for a few days, stay vigilant for any strange bug reports, and check regularly that all of our data continues to be in sync. The LegalEntity is now the source of truth.
 
 ## 2.2 Stop writing to the Merchant/AccountApplication altogether
 
-We are now reading all of our data from the LegalEntity, and are no longer using the data stored in the corresponding Merchant or AccountApplication fields. Once we are sufficiently confident in our setup, we remove the Merchant and AccountApplication fields and database columns altogether. merchant.owner_first_name now both reads and writes only to the LegalEntity, and the Merchant no longer has a real owner_first_name property.
+We are now reading all of our data from the LegalEntity, and are no longer using the data stored in the corresponding Merchant or AccountApplication fields. Once we are sufficiently confident in our setup, we remove the Merchant and AccountApplication fields and database columns altogether and stop writing to them. `merchant.owner_first_name` now both reads and writes only to the LegalEntity, and the Merchant no longer has a real owner_first_name property.
 
 This updates our data-flows to:
 
+Read:
 
+<img src="/images/Read2.jpg" />
+
+Write:
+
+<img src="/images/Write3.jpg" />
 
 Our data is now fully migrated, and all that remains is to clean up our codebase to reflect this. We are still making multiple database calls every time we save our objects, and we are still relying on a non-obvious chain of meta-programming and indirection to proxy and glue everything together. 
 
@@ -166,8 +191,13 @@ We touch a lot of unfamiliar code that we have never seen before, so we are than
 
 This updates our data-flows to:
 
+Read:
 
+<img src="/images/ReadLast.jpg" />
 
+Write:
+
+<img src="/images/WriteLast.jpg" />
 
 ## 3.2 Use logging to track down stragglers
 
