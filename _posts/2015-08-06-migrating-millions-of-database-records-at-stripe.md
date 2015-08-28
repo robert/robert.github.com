@@ -94,11 +94,11 @@ This updates our data-flows to:
 
 Read:
 
-<img src="/images/Read1.jpg" />
+<img src="/images/Read2.jpg" />
 
 Write:
 
-<img src="/images/Write1.jpg" />
+<img src="/images/Write2.jpg" />
 
 ## 1.3 Migrate old data to the LegalEntity
 
