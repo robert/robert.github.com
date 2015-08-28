@@ -3,39 +3,54 @@ title: Migrating bajillions of database records at Stripe
 layout: post
 published: false
 ---
-At Stripe we have a Merchant table and an AccountApplication table. Every Merchant has an AccountApplication, and once upon a time these tables contained all of a merchant's details. This included both trivial information like `email_font_color` and `self_estimated_yearly_turnover`, and very very important information like `business_name` and `tax_id_number`.
-
-There is a big difference between these two types of data. We are legally required to ask our merchants for details about their business in order to comply with local Know Your Customer laws, and to verify that they are who they claim they to be. For the recent launch of <a href="https://stripe.com/connect">Stripe Connect</a>, we needed to build out a new system that would tell Connect Applications exactly what "KYC" information is currently required from each of their connected merchants. This is a complicated process that can vary by country, business type, and other factors. We therefore needed to move all these "KYC"-related fields out of the Merchant and AccountApplication tables and into a new LegalEntity table. Separating and isolating this legally required data would be key in making this new identity verification system simple, modular and tractable. It would also allow us to open multiple merchant accounts from the same set of LegalEntity data, without requiring the information to be continually re-entered.
-
-There are roughly ten thousand bajillion merchants (to the nearest bajillion) registered with Stripe. We had to move large amounts of data between database tables for every single one of them, without losing any of it, without any downtime, mis-reads or mis-writes, whilst running a system that is responsible for the transfer of squillions of dollars every single day.
+There are roughly ten thousand bajillion (to the nearest bajillion) merchants registered with Stripe. We recently finished a Very Big Migration of Large Amounts Of Data between several database tables for every single one of them, without losing any of it, without any downtime, mis-reads or mis-writes, whilst running a system that is responsible for the transfer of squillions of dollars every single day.
 
 This was conceptually relatively simple, but the devil and the ability to sleep at night is in the details. Here's how we did it.
 
 # 0. The principle.
 
+At Stripe we have a Merchant table and an AccountApplication table. Every Merchant has an AccountApplication, and once upon a time these tables contained every single one of a merchant's details. This included both trivial information like `email_font_color` and `self_estimated_yearly_turnover`, and very very important, legally-required "Know Your Customer" information like `business_name` and `tax_id_number`.
+
+For the recent launch of <a href="https://stripe.com/connect">Stripe Connect</a>, we needed to build out a new system that would tell Connect Applications exactly what "KYC" information is currently required for each of their connected merchants. This is a complicated process that varies by country, business type and other factors. To make the new system as simple, modular and generally tractable as possible, we needed to extract all of these "KYC" fields into a single, seperate LegalEntity table.
+
+If we could temporarily take down our entire system for a while, and if we were programming robots who never made anything remotely close to a mistake, we would simply turn off our servers, tell all of our merchants not to sell anything for a while, move all the data from the Merchant and AccountApplication tables to the LegalEntity table, convert all of our code to read and write to this new table, turn our servers on again, and give the all clear that the internet can start trading again.
+
+But we obviously cannot take down our system at all. This means that during the time we are migrating all of this data, we are going to have ten thousand bajillion pesky users wanting to read and write new information. If we're not careful then we could easily end up reading old data and failing to write new data. This would be Really Really Bad.
+
+And we are not programming robots, and if we try and change many thousands of lines of code that touch every single part of our system all at once, at some point we are inevitably going to miss something. Instead of one enormous "pleaseworkpleaseworkpleaswork" change, we want to make a long series of many small changes so that we can easily A) monitor each small change in production for correctness, preferably "in the dark" alongside our old code and B) easily recover from any mistakes that we do make.
+
 The entire migration is essentially a transition of data reading from:
 
+<p style="text-align:center">
 <img src="/images/Read1.jpg" />
+</p>
 
 to:
 
+<p style="text-align:center">
 <img src="/images/ReadLast.jpg" />
+</p>
 
 and data writing from:
 
+<p style="text-align:center">
 <img src="/images/Write1.jpg" />
+</p>
 
 to:
 
+<p style="text-align:center">
 <img src="/images/WriteLast.jpg" />
+</p>
 
-If we could temporarily take down our entire system for a while, and if we were programming robots who never made anything remotely close to a mistake, we would simply turn off our servers, tell all of our merchants not to sell anything for a while, move all the data from the Merchant and AccountApplication tables to the LegalEntity table, convert all of our code to read and write to this new table, turn our servers on again, and give the all clear that the internet can start trading again. But:
+This is done in 4 phases:
 
-1. We obviously cannot take down our system at all. This means that during the time we are migrating all of this data, we are going to have ten thousand bajillion pesky users wanting to read and write new information. If we're not careful then we could easily end up reading old data and failing to write new data. This would be Really Really Bad.
+1. Dark-write new data to the old models and the LegalEntity at the same time. Migrate all old data to the LegalEntity.
+2. Proxy all reads to the Merchant and AccountApplication through to the LegalEntity.
+3. Read and write all data to only the LegalEntity directly.
+4. Miscellaneous but surprisingly challenging cleanup.
 
-2. We are not programming robots, and if we try and change many thousands of lines of code that touch every single part of our system all at once, at some point we are inevitably going to miss something. Instead of one enormous "pleaseworkpleaseworkpleaswork" change, we want to make a long series of many small changes so that we can easily A) monitor each small change in production for correctness, preferably "in the dark" alongside our old code and B) easily recover from any mistakes that we do make.
-
-We therefore uncontroversially elected to be very very gradual, careful and cautious.
+Read on to find out both the nitty and the gritty details.
 
 # 1. Dark-Writing
 
@@ -94,11 +109,15 @@ This updates our data-flows to:
 
 Read:
 
+<p style="text-align:center">
 <img src="/images/Read2.jpg" />
+</p>
 
 Write:
 
+<p style="text-align:center">
 <img src="/images/Write2.jpg" />
+</p>
 
 ## 1.3 Migrate old data to the LegalEntity
 
@@ -149,11 +168,15 @@ This updates our data-flows to:
 
 Read:
 
+<p style="text-align:center">
 <img src="/images/Read2.jpg" />
+</p>
 
 Write:
 
+<p style="text-align:center">
 <img src="/images/Write2.jpg" />
+</p>
 
 We let this code run in production for a few days, stay vigilant for any strange bug reports, and check regularly that all of our data continues to be in sync. The LegalEntity is now the source of truth.
 
@@ -165,11 +188,15 @@ This updates our data-flows to:
 
 Read:
 
+<p style="text-align:center">
 <img src="/images/Read2.jpg" />
+</p>
 
 Write:
 
+<p style="text-align:center">
 <img src="/images/Write3.jpg" />
+</p>
 
 Our data is now fully migrated, and all that remains is to clean up our codebase to reflect this. We are still making multiple database calls every time we save our objects, and we are still relying on a non-obvious chain of meta-programming and indirection to proxy and glue everything together.
 
@@ -195,11 +222,15 @@ This updates our data-flows to:
 
 Read:
 
+<p style="text-align:center">
 <img src="/images/ReadLast.jpg" />
+</p>
 
 Write:
 
+<p style="text-align:center">
 <img src="/images/WriteLast.jpg" />
+</p>
 
 ## 3.2 Use logging to track down stragglers
 
