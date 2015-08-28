@@ -1,15 +1,15 @@
 ---
-title: Migrating millions of database records at Stripe
+title: Migrating bajillions of database records at Stripe
 layout: post
 published: false
 ---
-At Stripe we have a Merchant table and an AccountApplication table. Every Merchant has an AccountApplication, and once upon a time these tables contained all of a given merchant's details. This included both trivial information like support_phone_number and self_estimated_yearly_turnover, and very very important information like business_name and tax_id_number.
+At Stripe we have a Merchant table and an AccountApplication table. Every Merchant has an AccountApplication, and once upon a time these tables contained all of a given merchant's details. This included both trivial information like `email_font_color` and `self_estimated_yearly_turnover`, and very very important information like business_name and tax_id_number.
 
-There is a big difference between these two types of data. We are legally required to ask our merchants for details about their business in order to comply with local Know Your Customer laws, and to verify that they are who they claim they are. For the recent launch of <a href="https://stripe.com/connect">Stripe Connect</a>, we needed to build out a new system that would tell Connect Applications exactly what information is currently required from each of their connected merchants. This is a complicated process that can vary by country, business type, and other factors. We therefore needed to move all these "KYC"-related fields out of the Merchant and AccountApplication tables and into a new LegalEntity table. Separating and isolating this legally required data would be key in making this new identity verification system simple, modular and tractable.
+There is a big difference between these two types of data. We are legally required to ask our merchants for details about their business in order to comply with local Know Your Customer laws, and to verify that they are who they claim they are. For the recent launch of <a href="https://stripe.com/connect">Stripe Connect</a>, we needed to build out a new system that would tell Connect Applications exactly what "KYC" information is currently required from each of their connected merchants. This is a complicated process that can vary by country, business type, and other factors. We therefore needed to move all these "KYC"-related fields out of the Merchant and AccountApplication tables and into a new LegalEntity table. Separating and isolating this legally required data would be key in making this new identity verification system simple, modular and tractable. It would also allow us to open multiple merchant accounts from the same set of LegalEntity data, without requiring the information to be continually re-entered.
 
-There are millions of merchants registered with Stripe. We had to move large amounts of data between database tables for every single one of them, without losing any of it, without any downtime, mis-reads or mis-writes, whilst running a system that is responsible for the transfer of tens of millions of dollars every single day.
+There are roughly ten thousand bajillion merchants (to the nearest bajillion) registered with Stripe. We had to move large amounts of data between database tables for every single one of them, without losing any of it, without any downtime, mis-reads or mis-writes, whilst running a system that is responsible for the transfer of squillions of dollars every single day.
 
-Here's how we did it.
+This was conceptually relatively simple, but the devil and the ability to sleep at night is in the details. Here's how we did it.
 
 # 0. The principle.
 
@@ -29,7 +29,7 @@ to:
 
 <img src="/images/WriteLast.jpg" />
 
-If we could temporarily take down our entire system for a while, and if we were programming robots who never made anything remotely close to a mistake, we would simply turn off our servers, tell all of our merchants not to sell anything for a while, move all the data from the Merchant and AccountApplication tables to the LegalEntity table, convert all of our code to read and write to this new table, turn our servers on again, and give the all clear that the internet can start selling things again. But:
+If we could temporarily take down our entire system for a while, and if we were programming robots who never made anything remotely close to a mistake, we would simply turn off our servers, tell all of our merchants not to sell anything for a while, move all the data from the Merchant and AccountApplication tables to the LegalEntity table, convert all of our code to read and write to this new table, turn our servers on again, and give the all clear that the internet can start trading again. But:
 
 1. We obviously cannot take down our system at all. This means that during the time we are migrating all of this data, we are going to have bajillions of pesky users wanting to read and write new information. If we're not careful then we could easily end up reading old data and failing to write new data. This would be Really Really Bad.
 
@@ -102,7 +102,7 @@ Write:
 
 ## 1.3 Migrate old data to the LegalEntity
 
-Next, we iterate through every single Merchant and AccountApplication record and migrate the relevant properties over to the LegalEntity. Our previous double-writing ensures that whilst this (long-running) migration is in progress, we stay in sync even as data is added and updated.
+Next, we iterate through every single Merchant and AccountApplication record and migrate the relevant properties over to the LegalEntity. Our double-writing code ensures that whilst this (long-running) migration is in progress, we stay in sync even as data is added and updated.
 
 We once again check that the relevant Merchant, AccountApplication and LegalEntity fields contain exactly the same data.
 
@@ -110,7 +110,7 @@ We once again check that the relevant Merchant, AccountApplication and LegalEnti
 
 ## 2.1 Proxy reads to the Merchant/AccountApplication through to the LegalEntity
 
-We are now very confident that the LegalEntity table is in sync with and just as reliable as the Merchant and AccountApplication tables. Carefully using some more meta-programming magic, we make all calls to read from eg. merchant.owner_first_name instead read their data from the LegalEntity. We continue to write data to both tables and put this proxying behind a feature flag. This means that if we discover an inconsistency or other error we can instantly flip the feature flag off and switch back to reading directly from the Merchant table whilst we debug.
+We are now very confident that the LegalEntity table is in sync with and just as reliable as the Merchant and AccountApplication tables. Carefully using some more meta-programming magic, we make all calls to eg. merchant.owner_first_name proxy through to read their data from the associated LegalEntity. We continue to write data to both tables and put this proxying behind a feature flag. This means that if we discover an inconsistency or other error we can instantly flip the feature flag off and switch back to reading directly from the Merchant table whilst we debug.
 
 {% highlight ruby %}
     class Merchant
@@ -177,7 +177,7 @@ Our data is now fully migrated, and all that remains is to clean up our codebase
 
 ## 3.1 Grep grep grep grep
 
-This step requires us to be particularly methodical, and is best carried out from within some kind of isolation tank. For each Merchant or AccountApplication property that is being proxied through to the LegalEntity, we grep the entire codebase for every single read or write of it, and change to read or write to the LegalEntity directly. For example:
+This step requires us to be particularly methodical, and is best carried out from within some kind of isolation tank or spiritual mountain retreat. For each Merchant or AccountApplication property that is being proxied through to the LegalEntity, we grep the entire codebase for every single read or write of it, and change to read or write to the LegalEntity directly. For example:
 
 {% highlight ruby %}
     merchant.owner_first_name = 'Barry'
@@ -203,7 +203,7 @@ Write:
 
 ## 3.2 Use logging to track down stragglers
 
-Whilst we are of course hyper-focussed programming demigods, there is nonetheless a small chance that we may miss the odd call to `Merchant#owner_favorite_type_of_fruit` (NB this is not a real property and we are not legally required to collect it outside of New Mexico). It is also very probable that our blissfully unaware colleagues may have added new calls to the very fields we are trying to remove. This is fine, since these calls will still correctly proxy through to the relevant LegalEntity properties.
+Whilst we are of course hyper-focussed programming demigods, there is nonetheless a small chance that we may miss the odd call to `Merchant#owner_favorite_type_of_fruit` (NB we are not legally required to collect this information outside of New Mexico). It is also very probable that our blissfully unaware colleagues may have added new calls to the very fields we are trying to remove. This is fine, since these calls will still correctly proxy through to the relevant LegalEntity properties.
 
 However, in order to make sure we have tracked down everything before we turn off read-proxying completely, we log whenever a deprecated Merchant or AccountApplication field is accessed, and add in an assertion that will make tests fail whenever they are called (but will not throw errors in production).
 
@@ -261,11 +261,11 @@ Once our logging has been silent for for a suitable amount of time (say 2-7 days
 All of our data is now being read and written directly to the LegalEntity. However, we are still chaining saves through our models, and saving the Merchant still secretly saves the LegalEntity (see the above before_save block). We will most likely have a large number of slightly obtuse looking sections along the lines of:
 
 {% highlight ruby %}
-legal_entity.first_name = 'Barry'
-merchant.save
+    legal_entity.first_name = 'Barry'
+    merchant.save
 {% endhighlight %}
 
-This still works, but is not a tidy state of affairs. We therefore log all places where our merchant.save (or whatever) is also actually causing fields on the legal_entity to be updated. We update our before_save blocks to look like:
+This still works, but is not a tidy state of affairs. We would like to remove the confusing and obfuscating save-chaining and explicitly save everything we need to save ourselves. We therefore log all places where our merchant.save (or whatever) is also actually causing fields on the legal_entity to be changed (as above). We update our before_save blocks to look like:
 
 {% highlight ruby %}
     class Merchant
@@ -283,7 +283,7 @@ This still works, but is not a tidy state of affairs. We therefore log all place
 
 We also add a feature flag to allow us to force multi-saving, even when there are apparently no updated fields. We can panic-turn this on if we believe that it is necessary.
 
-## 4.2 Hunting
+## 4.2 Good Hunting
 
 For the next few days, we search our logs for `'Multi-saved an updated model'` to track down all places where saving the Merchant or AccountApplication is also responsible for saving new data on the LegalEntity. We save the LegalEntity ourselves, just before saving the other model, which sets legal_entity.updated_fields to be empty, preventing our log-line from being hit.
 
@@ -315,7 +315,7 @@ Once our log-line has stopped being triggered and we are confident that every mo
     end
 {% endhighlight %}
 
-It is over.
+It is over. We feel human once again.
 
 # 5. Conclusion
 
@@ -323,4 +323,4 @@ Throughout the entire migration, we never made a change that we didn't have stro
 
 On the other hand, by far the most awkward part of the process is "The Multi-Save". Having an innocent merchant.save trigger saving multiple different models as well is Not Intuitive, and requires you to be very precise and clear that the LegalEntity object in memory you are updating is the same one that is being multi-saved. ORM's are a wonderful thing, but can start to creak a little when you rely on them too much.
 
-To quote <a href="https://twitter.com/bkrausz">Brian Krausz</a>, who devised pretty much the entire plan and executed the first few stages of it - "this was either trivially obvious or really smart, and I'm not sure we'll ever know which."
+To quote <a href="https://twitter.com/bkrausz">Brian Krausz</a>, who devised pretty much the entire plan and single-handedly executed the first few stages of it - "this was either trivially obvious or really smart, and I'm not sure we'll ever know which."
