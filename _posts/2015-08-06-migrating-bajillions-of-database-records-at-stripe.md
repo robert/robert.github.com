@@ -45,10 +45,10 @@ to:
 
 This is done in 4 phases:
 
-[1. Migrate all old data to the LegalEntity. Use double-writing to make sure it stays in sync.](#section1)
-2. Proxy all reads to the Merchant and AccountApplication through to the LegalEntity.
-3. Read and write all data to only the LegalEntity directly.
-4. Miscellaneous but surprisingly challenging cleanup.
+1. [Migrate all old data to the LegalEntity. Use double-writing to make sure it stays in sync.](#section1)
+2. [Proxy all reads to the Merchant and AccountApplication through to the LegalEntity.](#section2)
+3. [Read and write all data to only the LegalEntity directly.](#section3)
+4. [Miscellaneous but surprisingly challenging cleanup.](#section4)
 
 Read on to find out both the nitty and the gritty details.
 
@@ -125,7 +125,7 @@ Next, we iterate through every single Merchant and AccountApplication record and
 
 We once again check that the relevant Merchant, AccountApplication and LegalEntity fields contain exactly the same data.
 
-# 2. Start reading from the LegalEntity
+# <a name="section2"></a> 2. Start reading from the LegalEntity
 
 ## 2.1 Proxy reads to the Merchant/AccountApplication through to the LegalEntity
 
@@ -202,7 +202,7 @@ Write:
 
 Our data is now fully migrated, and all that remains is to clean up our codebase to reflect this. We are still making multiple database calls every time we save our objects, and we are still relying on a non-obvious chain of meta-programming and indirection to proxy and glue everything together.
 
-# 3. Read and write to the LegalEntity directly
+# <a name="section3"></a> 3. Read and write to the LegalEntity directly
 
 ## 3.1 Grep grep grep grep
 
@@ -293,7 +293,7 @@ Once our logging has been silent for for a suitable amount of time (say 2-7 days
     end
 {% endhighlight %}
 
-# 4. Stop multi-saving
+# <a name="section4"></a> 4. Stop multi-saving
 
 ## 4.1 Log where the multi-save is needed
 
