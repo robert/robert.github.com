@@ -45,7 +45,7 @@ to:
 
 This is done in 4 phases:
 
-1. [Migrate all old data to the LegalEntity. Use double-writing to make sure it stays in sync.](#section1)
+[1. Migrate all old data to the LegalEntity. Use double-writing to make sure it stays in sync.](#section1)
 2. Proxy all reads to the Merchant and AccountApplication through to the LegalEntity.
 3. Read and write all data to only the LegalEntity directly.
 4. Miscellaneous but surprisingly challenging cleanup.
