@@ -110,7 +110,7 @@ This updates our data-flows to:
 Read:
 
 <p style="text-align:center">
-<img src="/images/Read2.jpg" />
+<img src="/images/Read1.jpg" />
 </p>
 
 Write:
