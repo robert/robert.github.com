@@ -362,8 +362,8 @@ Throughout the entire migration, we never made a change that we didn't have stro
 
 On the other hand, by far the most awkward part of the process is "The Multi-Save". Having an innocent merchant.save trigger saving multiple different models as well is Not Intuitive, and requires you to be very precise and clear that the LegalEntity object in memory you are updating is the same one that is being multi-saved. ORM's are a wonderful thing, but can start to creak a little when you rely on them too much.
 
-If you ever find yourself writing a single, enormous yolo-pull-request to migrate a very large number of anything, think hard about whether there are any ways you can make the moment of deploying less pant-wettingly terrifying. If the answer is "no", be sure to come up with your new fake identity and backstory for when you inevitably have to flee the country and start a new life in Brazil.
+If you ever find yourself writing a single, enormous yolo-pull-request to migrate a very large amount of anything, think hard about whether it is possible to make the moment of deploying less pant-wettingly terrifying. If the answer is "no", be sure to come up with your new fake identity and backstory for when you inevitably have to flee the country and start a new life in Brazil.
 
 <i>
-Thanks to Brian Krausz, Sandy Wu, Avi Itskovich, Maher Beg, Julia Evans, Tim Drinian and Darragh Buckley for reading and improving drafts of this post.
+Thanks to Brian Krausz for devising the entire migration. Thanks also to Sandy Wu, Avi Itskovich, Maher Beg, Julia Evans, Tim Drinian and Darragh Buckley for reading and improving drafts of this post.
 </i>
