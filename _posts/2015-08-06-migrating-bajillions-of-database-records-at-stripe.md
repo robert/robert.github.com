@@ -13,7 +13,7 @@ At Stripe we have a Merchant table and an AccountApplication table. Every Mercha
 
 For the recent launch of <a href="https://stripe.com/connect">Stripe Connect</a>, we needed to build out a new system that would tell Connect Applications exactly what "KYC" information is currently required for each of their connected merchants. This is a complicated process that varies by country, business type and other factors. To make the new system as simple, modular and generally tractable as possible, we needed to extract all of these "KYC" fields into a single, seperate LegalEntity table.
 
-If we could temporarily take down our entire system for a while, and if we were programming robots who never made anything remotely close to a mistake, we would simply turn off our servers, tell all of our merchants not to sell anything for a while, move all the data from the Merchant and AccountApplication tables to the LegalEntity table, convert all of our code to read and write to this new table, turn our servers on again, and give the all clear that the internet can start trading again.
+If we could temporarily take down our entire system for a while, and if we were programming robots who never made anything remotely close to a mistake, we would simply turn off our servers, tell all of our merchants not to sell anything for a while, move all the data from the Merchant and AccountApplication tables to the LegalEntity table, convert all of our code to read and write to this new table, turn our servers on again, and give the all clear that the internet can start selling again.
 
 But we obviously cannot take down our system at all. This means that during the time we are migrating all of this data, we are going to have ten thousand bajillion pesky users wanting to read and write new information. If we're not careful then we could easily end up reading old data and failing to write new data. This would be Really Really Bad.
 
@@ -45,14 +45,14 @@ to:
 
 This is done in 4 phases:
 
-1. Dark-write new data to the old models and the LegalEntity at the same time. Migrate all old data to the LegalEntity.
+1. [Migrate all old data to the LegalEntity. Use double-writing to make sure it stays in sync.](#section1)
 2. Proxy all reads to the Merchant and AccountApplication through to the LegalEntity.
 3. Read and write all data to only the LegalEntity directly.
 4. Miscellaneous but surprisingly challenging cleanup.
 
 Read on to find out both the nitty and the gritty details.
 
-# 1. Dark-Writing
+# <a name="section1"></a> 1. Data migration
 
 ## 1.1 Make the LegalEntity model
 
@@ -63,9 +63,9 @@ We start by making the LegalEntity model in our ORM, and the associated table in
     end
 {% endhighlight %}
 
-## 1.2 Start dark-writing to the LegalEntity
+## 1.2 Start double-writing to the LegalEntity
 
-We begin by dark-writing all writes to the relevant Merchant and AccountApplication properties to the LegalEntity equivalent. For example, when we write to `Merchant#owner_first_name`, we also write to `LegalEntity#first_name`. Note that we have not yet migrated old data to the LegalEntity, so the Merchant and AccountApplication remain the source of truth.
+We begin by double-writing all writes to the relevant Merchant and AccountApplication properties to the LegalEntity equivalent. For example, when we write to `Merchant#owner_first_name`, we also write to `LegalEntity#first_name`. Note that we have not yet migrated old data to the LegalEntity, so the Merchant and AccountApplication remain the source of truth.
 
 With the utmost of care, we use some meta-programming magic:
 
@@ -82,24 +82,24 @@ With the utmost of care, we use some meta-programming magic:
 
         define_method(merchant_prop_name_set) do |val|
           self.public_send(original_merchant_prop_name_set, val)
-          self.legal_entity_.public_send(:"#{legal_entity_prop_name}=", val)
+          self.legal_entity.public_send(:"#{legal_entity_prop_name}=", val)
         end
       end
 
       legal_entity_proxy :owner_first_name, :first_name
 
       before_save do
-        # Make sure that we actually save our LegalEntity dark-write.
+        # Make sure that we actually save our LegalEntity double-write.
         # This "multi-save" can cause confusion and unnecessary database calls,
         # but is a necessary evil and will be unwound later
-        self.legal_entity_.save
+        self.legal_entity.save
       end
     end
 
     merchant.owner_first_name = 'Barry'
     merchant.save
 
-    merchant.legal_entity_.first_name
+    merchant.legal_entity.first_name
     # => Also 'Barry'
 {% endhighlight %}
 
@@ -129,17 +129,19 @@ We once again check that the relevant Merchant, AccountApplication and LegalEnti
 
 ## 2.1 Proxy reads to the Merchant/AccountApplication through to the LegalEntity
 
-We are now very confident that the LegalEntity table is in sync with and just as reliable as the Merchant and AccountApplication tables. Carefully using some more meta-programming magic, we make all calls to eg. merchant.owner_first_name proxy through to read their data from the associated LegalEntity. We continue to write data to both tables and put this proxying behind a feature flag. This means that if we discover an inconsistency or other error we can instantly flip the feature flag off and switch back to reading directly from the Merchant table whilst we debug.
+We are now very confident that the LegalEntity table is in sync with and just as reliable as the Merchant and AccountApplication tables. Carefully using some more meta-programming magic, we make all calls to eg. merchant.owner_first_name proxy through to read their data from the associated LegalEntity. We continue to write data to both tables and put this proxying behind a feature flag. This is a simple flag that can be instantly toggled from a UI. When deciding whether to read data from the LegalEntity or from one of our old models, we first check to see if the feature flag is set to "on". This means that if we discover an inconsistency or other error we can instantly flip the feature flag off and switch back to reading directly from the Merchant table whilst we debug.
 
 {% highlight ruby %}
     class Merchant
       prop :legal_entity, foreign: LegalEntity
 
       def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
-        # Now we also redefine the Merchant getter method to read from the LegalEntity
+        #
+        # UPDATED: Now we also redefine the Merchant getter method to read from the LegalEntity
+        #
         alias_method :"original_#{merchant_prop_name}", merchant_prop_name if method_defined?(merchant_prop_name)
         define_method(merchant_prop_name) do
-          self.legal_entity_.public_send(legal_entity_prop_name)
+          self.legal_entity.public_send(legal_entity_prop_name)
         end
 
         # We continue to write to both tables for safety
@@ -149,14 +151,14 @@ We are now very confident that the LegalEntity table is in sync with and just as
 
         define_method(merchant_prop_name_set) do |val|
           self.public_send(original_merchant_prop_name_set, val)
-          self.legal_entity_.public_send(:"#{legal_entity_prop_name}=", val)
+          self.legal_entity.public_send(:"#{legal_entity_prop_name}=", val)
         end
       end
 
       legal_entity_proxy :owner_first_name, :first_name
 
       before_save do
-        self.legal_entity_.save
+        self.legal_entity.save
       end
     end
 
@@ -245,8 +247,11 @@ However, in order to make sure we have tracked down everything before we turn of
       def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
         alias_method :"original_#{merchant_prop_name}", merchant_prop_name if method_defined?(merchant_prop_name)
         define_method(merchant_prop_name) do
+          #
+          # UPDATED: We add in logging
+          #
           log.info('Deprecated method called')
-          self.legal_entity_.public_send(legal_entity_prop_name)
+          self.legal_entity.public_send(legal_entity_prop_name)
         end
 
         merchant_prop_name_set = :"#{merchant_prop_name}="
@@ -254,8 +259,11 @@ However, in order to make sure we have tracked down everything before we turn of
         alias_method original_merchant_prop_name_set, merchant_prop_name_set if method_defined?(merchant_prop_name_set)
 
         define_method(merchant_prop_name_set) do |val|
+          #
+          # UPDATED: We add in logging
+          #
           log.info('Deprecated method called')
-          self.legal_entity_.public_send(:"#{legal_entity_prop_name}=", val)
+          self.legal_entity.public_send(:"#{legal_entity_prop_name}=", val)
         end
       end
     end
@@ -274,13 +282,13 @@ Once our logging has been silent for for a suitable amount of time (say 2-7 days
       # REMOVED
       #
       # def self.legal_entity_proxy(merchant_prop_name, legal_entity_prop_name)
-      #      # etc
+      #   # etc
       # end
       #
       # legal_entity_proxy :owner_first_name, :first_name
 
       before_save do
-        self.legal_entity_.save
+        self.legal_entity.save
       end
     end
 {% endhighlight %}
@@ -304,8 +312,8 @@ This still works, but is not a tidy state of affairs. We would like to remove th
 
       before_save do
         # Our ORM's implementation of "dirty" fields
-        unless self.legal_entity_.updated_fields.empty?
-          self.legal_entity_.save
+        unless self.legal_entity.updated_fields.empty?
+          self.legal_entity.save
           log.info('Multi-saved an updated model')
         end
       end
