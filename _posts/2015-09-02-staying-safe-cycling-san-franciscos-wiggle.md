@@ -18,7 +18,7 @@ The SFPD is right - bikes and cars [should be treated identically at stop signs]
 
 So please, educate yourselves and your loved ones with these 3 ways to stay safe:
 
-1. Always be vigilant - patrol cars can come from any direction, no matter how hard you think you have checked. When going over a junction, always be on the look out for police vehicles, especially those behind you or several blocks away.
+1. Always be vigilant - patrol cars can come from any direction, no matter how hard you think you have checked. When going over a junction, devote a minimum of 50% of your attention to looking out for police vehicles, especially those behind you or several blocks away.
 
 2. Check your visibility - wear dark clothing to make it harder for officers to see you.
 
