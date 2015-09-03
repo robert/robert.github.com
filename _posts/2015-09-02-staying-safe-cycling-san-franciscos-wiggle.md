@@ -3,7 +3,7 @@ title: Staying safe cycling San Francisco's Wiggle
 layout: post
 published: true
 ---
-In the past year, untold numbers of cyclists have tragically [lost $198 at the hands of the SFPD](http://sf.streetsblog.org/2015/08/05/sfpd-park-station-begins-pointless-harassment-of-bike-commuters) whilst rolling over stop signs along [the Wiggle](https://localwiki.org/sf/The_Wiggle).
+In the past year, untold numbers of cyclists have tragically [lost $198 at the hands of the SFPD](http://sf.streetsblog.org/2015/08/05/sfpd-park-station-begins-pointless-harassment-of-bike-commuters) whilst rolling over stop signs along [the Wiggle](https://localwiki.org/sf/The_Wiggle), a popoular San Francisco bike route .
 
 <blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">There are cops ticketing cyclists on the wiggle *right now* <a href="https://twitter.com/WiggParty">@WiggParty</a> unbelievable. <a href="http://t.co/E4XpJ9hUae">pic.twitter.com/E4XpJ9hUae</a></p>&mdash; Jack (@WarrenMarcusson) <a href="https://twitter.com/WarrenMarcusson/status/629895526045999104">August 8, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
