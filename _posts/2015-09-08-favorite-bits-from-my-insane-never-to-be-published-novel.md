@@ -2,7 +2,7 @@
 title: Favorite bits from my insane, never-to-be-published novel
 layout: post
 ---
-I just re-found a 50,000 word, 80% finished novel that I wrote 10 years ago in high school. As a story with a coherent plot and nuanced characters it is a total disaster, but I still think that some of the individual sections are kind of funny. So before I decide that it’s a bad idea, below are 12 of them.
+I just re-found a 50,000 word, 80% finished novel that I wrote 10 years ago in high school. As a story with a coherent plot and nuanced characters it is a total disaster, but I still think that some of the individual sections are kind of funny. So before I decide that it’s a bad idea, here are 12 of them.
 
 At the time I was very into bizarre, irreverent, fantastical fiction like Robert Rankin, Terry Pratchett and Douglas Adams. This was my ham-fisted cargo-culting of their far more considered and deliberate weirdness. The plot centered around two Ordinary Guys, Terry and Gerrard, arbitrarily destined as The Only Ones Who Could Save The World from the evil designs of Moriarty, an incomparably villainous mole (literally a small furry mammal).
 
