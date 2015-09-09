@@ -28,7 +28,7 @@ The government’s billion-dollar supercomputer, “The Mgsaksm”, is hacked:
 
 >    “How philosophical,” mused Terry. He was beginning to like that word.
 
->    “But whilst the Mgsaksm is severely damaged, its most vital components remains intact. It is believed that one of the engineers who built it made a minor mix-up involving a variable resistor and a walrus. This made no difference to operational capabilities, but confused the hell out of our murderer!” He chuckled. “Just think of it, his stolen blueprints said a walrus, and he finds a variable resistor! How ridiculous!"
+>    “But whilst the Mgsaksm is severely damaged, its most vital components remain intact. It is believed that one of the engineers who built it made a minor mix-up involving a variable resistor and a walrus. This made no difference to operational capabilities, but confused the hell out of our murderer!” He chuckled. “Just think of it, his stolen blueprints said a walrus, and he finds a variable resistor! How ridiculous!"
 
 ---
 
@@ -63,6 +63,7 @@ The government’s billion-dollar supercomputer, “The Mgsaksm”, is hacked:
 Remember, Moriarty is literally a mole:
 
 > Moriarty swivelled smoothly in his chair, for that was what it was designed to do. 
+
 >   “Gentlemen,” he said, calmly and collectedly, “Shall we begin?” A nod of non-committal deference arced round the grand oak table. “Very good. First order of business…bouncy castles. We need more of them. But make the next batch more resistant to claws.”
 
 >   “Metal…bouncy…castles,” Fred noted, “Very good.” 
@@ -86,6 +87,7 @@ Remember, Moriarty is literally a mole:
 ---
 
 > Hyde Park. Yuppies describe it as a nice place to have lunch and catch a breath of fresh air.
+
 >   And, conversely, hobos describe it as a nice place to have a breath of fresh air and catch lunch.  
 
 ---
