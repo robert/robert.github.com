@@ -6,8 +6,9 @@ I just re-found a 50,000 word, 80% finished novel that I wrote 10 years ago in h
 
 At the time I was very into bizarre, irreverent, fantastical writers like Robert Rankin, Terry Pratchett and Douglas Adams. This was my ham-fisted cargo-culting of their far more considered and deliberate weirdness. The plot centered around two Ordinary Guys, Terry and Gerrard, arbitrarily destined as The Only Ones Who Could Save The World from the evil designs of Moriarty, an incomparably villainous mole (literally a small furry mammal).
 
-![A chav](http://d364y98vz4769w.cloudfront.net/drawings/images/000/034/515/full/image-365248861.jpg?1343556061)
-<i>http://bestofdrawsomething.com/drawings/34515-chav</i>
+![A chav](https://cloud.githubusercontent.com/assets/1565857/9752994/fa59d6f4-566b-11e5-94b9-cc564652d13d.jpg)
+
+<i>[(Original)](http://bestofdrawsomething.com/drawings/34515-chav)</i>
 
 Unfortunately, much of the story also revolved around a group known as “The Meatheads”, my middle-class-teenager treatment of the cultural-cum-socio-economic group also briefly known as “[Chavs](http://www.telegraph.co.uk/news/uknews/1478863/Cheltenham-ladies-and-the-chavs.html)” in sections of the British media during the 2000s. I chose to ignore the nuances surrounding the systematic ostracization of sections of the working class, in favor of the fact that said sections kept stealing me and my friends’ phones when we were going home on the bus. Let us gloss over those bits and instead start with a good old fashioned joke about poo.
 
