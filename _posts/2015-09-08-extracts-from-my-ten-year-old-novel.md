@@ -1,7 +1,8 @@
+---
 title: Extracts from my ten year-old novel
 layout: post
 published: false
---
+---
 I just re-found a 50,000 word, 80% finished novel that I wrote 10 years ago in high school. As a story with a coherent plot and nuanced characters it is a total disaster, but I still think that some of the individual sections are kind of funny. So before I decide that it’s a bad idea, here are 12 of them.
 
 ---
