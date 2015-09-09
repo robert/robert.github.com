@@ -3,15 +3,13 @@ title: Extracts from my ten year-old novel
 layout: post
 published: false
 ---
-I just re-found a 50,000 word, 80% finished novel that I wrote 10 years ago in high school. As a story with a coherent plot and nuanced characters it is a total disaster, but I still think that some of the individual sections are kind of funny. So before I decide that it’s a bad idea, here are 12 of them.
+I just re-found a 50,000 word, 80% finished novel that I wrote 10 years ago in high school. As a story with a coherent plot and nuanced characters it is a total disaster, but I still think that some of the individual sections are kind of funny. So before I decide that it’s a bad idea, below are 12 of them.
 
----
-
-At the time I was very into bizarre, irreverent, fantastical fiction like Robert Rankin, Terry Pratchett and Douglas Adams. This was my ham-fisted cargo-culting of their much more considered and deliberate weirdness. The plot centered around two Ordinary Guys, Terry and Gerrard, arbitrarily destined as The Only Ones Who Could Save The World from the evil designs of Moriarty, an incomparably villainous mole (literally a small furry mammal).
+At the time I was very into bizarre, irreverent, fantastical fiction like Robert Rankin, Terry Pratchett and Douglas Adams. This was my ham-fisted cargo-culting of their far more considered and deliberate weirdness. The plot centered around two Ordinary Guys, Terry and Gerrard, arbitrarily destined as The Only Ones Who Could Save The World from the evil designs of Moriarty, an incomparably villainous mole (literally a small furry mammal).
 
 Judge Dredd
 
-Unfortunately, much of the story also revolved around a group known as “The Meatheads”[LINK to Judge Dredd], my middle-class-teenager treatment of the cultural-cum-socio-economic group also briefly known as “Chavs”[LINK] in sections of the British media during the 2000s. I chose to ignore the nuances surrounding the systematic ostracization of sections of the working class, in favor of the fact that said sections kept stealing me and my friends’ phones when we were going home on the bus. Let us gloss over those bits and instead start with a good old fashioned joke about poo.
+Unfortunately, much of the story also revolved around a group known as “The Meatheads”, my middle-class-teenager treatment of the cultural-cum-socio-economic group also briefly known as “[Chavs](http://www.telegraph.co.uk/news/uknews/1478863/Cheltenham-ladies-and-the-chavs.html)” in sections of the British media during the 2000s. I chose to ignore the nuances surrounding the systematic ostracization of sections of the working class, in favor of the fact that said sections kept stealing me and my friends’ phones when we were going home on the bus. Let us gloss over those bits and instead start with a good old fashioned joke about poo.
 
 ---
 
