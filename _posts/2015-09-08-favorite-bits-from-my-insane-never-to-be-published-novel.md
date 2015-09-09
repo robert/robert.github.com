@@ -4,7 +4,7 @@ layout: post
 ---
 I just re-found a 50,000 word, 80% finished novel that I wrote 10 years ago in high school. As a story with a coherent plot and nuanced characters it is a total disaster, but I still think that some of the individual sections are kind of funny. So before I decide that it’s a bad idea, here are 12 of them.
 
-At the time I was very into bizarre, irreverent, fantastical fiction like Robert Rankin, Terry Pratchett and Douglas Adams. This was my ham-fisted cargo-culting of their far more considered and deliberate weirdness. The plot centered around two Ordinary Guys, Terry and Gerrard, arbitrarily destined as The Only Ones Who Could Save The World from the evil designs of Moriarty, an incomparably villainous mole (literally a small furry mammal).
+At the time I was very into bizarre, irreverent, fantastical writers like Robert Rankin, Terry Pratchett and Douglas Adams. This was my ham-fisted cargo-culting of their far more considered and deliberate weirdness. The plot centered around two Ordinary Guys, Terry and Gerrard, arbitrarily destined as The Only Ones Who Could Save The World from the evil designs of Moriarty, an incomparably villainous mole (literally a small furry mammal).
 
 ![Judge Dredd](https://cloud.githubusercontent.com/assets/1565857/9752868/2d67500a-566a-11e5-95f2-62dcc2d45d0f.jpg)
 ![Judge Dredd](https://cloud.githubusercontent.com/assets/1565857/9752869/2d8ac936-566a-11e5-8246-9a534769e5e5.jpg)
