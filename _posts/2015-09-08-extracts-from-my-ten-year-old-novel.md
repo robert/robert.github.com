@@ -7,7 +7,8 @@ I just re-found a 50,000 word, 80% finished novel that I wrote 10 years ago in h
 
 At the time I was very into bizarre, irreverent, fantastical fiction like Robert Rankin, Terry Pratchett and Douglas Adams. This was my ham-fisted cargo-culting of their far more considered and deliberate weirdness. The plot centered around two Ordinary Guys, Terry and Gerrard, arbitrarily destined as The Only Ones Who Could Save The World from the evil designs of Moriarty, an incomparably villainous mole (literally a small furry mammal).
 
-Judge Dredd
+![Judge Dredd](https://cloud.githubusercontent.com/assets/1565857/9752868/2d67500a-566a-11e5-95f2-62dcc2d45d0f.jpg)
+![Judge Dredd](https://cloud.githubusercontent.com/assets/1565857/9752869/2d8ac936-566a-11e5-8246-9a534769e5e5.jpg)
 
 Unfortunately, much of the story also revolved around a group known as “The Meatheads”, my middle-class-teenager treatment of the cultural-cum-socio-economic group also briefly known as “[Chavs](http://www.telegraph.co.uk/news/uknews/1478863/Cheltenham-ladies-and-the-chavs.html)” in sections of the British media during the 2000s. I chose to ignore the nuances surrounding the systematic ostracization of sections of the working class, in favor of the fact that said sections kept stealing me and my friends’ phones when we were going home on the bus. Let us gloss over those bits and instead start with a good old fashioned joke about poo.
 
