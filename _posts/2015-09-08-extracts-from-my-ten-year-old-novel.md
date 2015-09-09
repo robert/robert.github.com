@@ -18,6 +18,7 @@ Unfortunately, much of the story also revolved around a group known as “The Me
 The Meatheads are taking a shortcut through the sewers:
 
 > Pro-hunting lobbyists and axe murderers maintain that the principal enjoyment of their pastime is the thrill of the chase – the adrenaline pumping round their bodies in the knowledge that once it is over something will die. They claim that the pursuit is the focal point of the whole experience; without it the episode is empty.
+
 > Being hounded, as they are, by ten tonnes of rancid poo, our young friends would disagree to the point of violence with this assertion. It’s all fun and games when you’re the murderer or decomposing faeces, but when you’re the fox, victim or startled idiot, the chase ceases to possess quite the same allure it once did.
 
 ---
