@@ -3,7 +3,7 @@ title: Robber Barons understand technical debt too
 layout: post
 published: false
 ---
-Like every good blog post about technical debt, I would like to begin by linking to a better blog post about technical debt by Martin Fowler[LINK]. 
+Like every good blog post about technical debt, I would like to begin by linking to a [better blog post about technical debt by Martin Fowler](http://martinfowler.com/bliki/TechnicalDebt.html). 
 
 --- 
 
@@ -11,11 +11,11 @@ In the best case, technical debt is a deliberate deficiency in your system that 
 
 Used correctly this process can be a fantastic tool for making you faster and nimbler. Used incorrectly it can leave you with a depraved, godless mess and a sticky nose.
 
-On a deceivingly related note, between 1880 and 1914, during the era of the Robber Barons[LINK], 160,000 miles of railroad were built in the USA. As the economy boomed and industrialized, people and goods needed and wanted to be transported ever-increasing distances across the ever-expanding country, and for decades the railroad was (figuratively) the only way to travel. 
+On a deceivingly related note, between 1880 and 1914, during the era of the [Robber Barons](https://en.wikipedia.org/wiki/Robber_baron_(industrialist)), 160,000 miles of railroad were built in the USA. As the economy boomed and industrialized, people and goods needed and wanted to be transported ever-increasing distances across the ever-expanding country, and for decades the railroad was (figuratively) the only way to travel. 
 
-The American approach to building railways was a textbook strategy of going as fast and cheaply and taking on as much technical debt as physically possible whilst still remaining in business. Christian Wolmar describes it in his wonderful book, “The Great Railroad Revolution”[LINK]: 
+The American approach to building railways was a textbook strategy of going as fast and cheaply and taking on as much technical debt as physically possible whilst still remaining in business. Christian Wolmar describes it in his wonderful book, ["The Great Railroad Revolution"](http://www.goodreads.com/book/show/13587231-the-great-railroad-revolution): 
 
-“The philosophy was simple - and very different from the approach that prevailed in Europe: get the track laid and the locomotives built, and start running trains as quickly as possible to start generating income, even if that means cutting corners that push up operating costs." 
+> “The philosophy was simple - and very different from the approach that prevailed in Europe: get the track laid and the locomotives built, and start running trains as quickly as possible to start generating income, even if that means cutting corners that push up operating costs." 
 
 Furthermore, as Captain Douglas Galton of the Royal Engineers observed at the time, “In a rapidly developing new country, capital is dear”. Early promoters were typically operating on whatever meagre shoestrings they could lay their hands on, and rarely had the luxury of even considering building a high quality railroad. The only thing that mattered was getting to something capable of running trains and producing cash as soon as possible. 
 
@@ -30,3 +30,5 @@ The Picnic Train Disaster and many similar tragedies contributed to the death of
 Wisely managed technical debt can help with all kinds of problems, whether you’re moving people, parsnips or push notifications. The idea of cutting corners now in order get to the future faster is very far from unique to software development, and neither is the concept of (often unfairly) resenting your past self and colleagues for doing so.
 
 But be careful. Even when you’re not directly responsible for thousands of 19th century lives, there are some corners that you cannot afford to cut.
+
+*All "train facts" are from ["The Great Railroad Revolution"](http://www.goodreads.com/book/show/13587231-the-great-railroad-revolution), and all errors in quotation or understanding are mine*
