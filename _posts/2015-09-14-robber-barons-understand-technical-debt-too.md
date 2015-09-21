@@ -1,7 +1,6 @@
 ---
 title: Robber Barons understand technical debt too
 layout: post
-published: false
 ---
 Like every good blog post about technical debt, I would like to begin by linking to a [better blog post about technical debt by Martin Fowler](http://martinfowler.com/bliki/TechnicalDebt.html). 
 
