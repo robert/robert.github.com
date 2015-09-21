@@ -1,7 +1,7 @@
 <section class="navigation" style="border-top: 1px dotted #ddd;padding-top:13; margin:0">
   {% if page.previous %}
     <div class="pull-left">
-      <a href="{{ page.previous.url }}">
+      <a href="{{ page.previous.url }}" id="next">
         <i class='icon-angle-left'></i>
         <span>{{page.previous.title}}</span>
       </a>
@@ -9,7 +9,7 @@
   {% endif %}
   {% if page.next %}
     <div class="pull-right">
-      <a href="{{page.next.url}}">
+      <a href="{{page.next.url}}" id="prev">
         <span>{{page.next.title}}</span>
         <i class='icon-angle-right'></i>
       </a>
