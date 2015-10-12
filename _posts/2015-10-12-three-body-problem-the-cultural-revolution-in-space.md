@@ -1,5 +1,5 @@
 ---
-title: Three Body Problem - The Cultural Revolution, in space
+title: Three Body Problem, by Cixin Liu - the Cultural Revolution, in space
 layout: post
 ---
 The first two-thirds of Cixin Liu’s “Remembrance of Earth’s Past” trilogy show the wonderful things that happen when you take a fascinating premise, add another fascinating premise, then several further fascinating premises, and don’t really have any room for anything else. “Three Body Problem” and “The Dark Forest” star the Trisolarians, a technologically advanced alien race living light years away from humanity, in a three-sun solar system. The chaotic orbital dynamics of such a set-up make the destruction of their civilization by either extreme heat or extreme cold inevitable, which they are quite keen to avoid. Due to one woman's total dick move, they become aware of the existence of a relatively stable, non-immediately-doomed planet name “Earth”, and they set out with all due haste to exterminate its inhabitants. Earth has 400 years to respond, and nine hundred of my next thousand words notwithstanding, these are two of the most fun and intense books I have read this year. 
