@@ -1,6 +1,6 @@
 ---
-layout: post
 title: Why and how to make smaller pull requests
+layout: post
 ---
 There are only two things in the world scarier than making a 2,000 line pull request. One of them is giant murderous space robots, and the other is having to review a 2,000 line pull request. Your reviewer will inevitably make themselves a strong cup of coffee, sit themselves down in their favorite chair and read the first 100 lines very carefully. They will then realize that there are 1,900 more lines of this lunacy to go, randomly suggest you rename a few variables and give a caveated “Lgtm, although I don’t have much context on this code”.
 
