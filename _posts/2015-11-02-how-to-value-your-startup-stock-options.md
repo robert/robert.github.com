@@ -1,7 +1,6 @@
 ---
 title: How to value your startup stock options
 layout: post
-published: false
 ---
 # Your situation
 
