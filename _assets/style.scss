@@ -25,7 +25,7 @@ header {
   padding: 15px 0;
   line-height: 1.3em; 
   margin: 0 auto 30px;
-  background: #f7f8f9;
+  background: #f0f1f2;
   @include box-sizing(border-box);
   @include transition(all, 0.3s);
   a { @include transition(all, 0.3s); }
@@ -45,7 +45,7 @@ header {
 
 footer {
   padding: 25px; 
-  background: #f7f8f9;
+  background: #f0f1f2;
   line-height: 2rem;
   h3 { font-size: 14px; }
 }
