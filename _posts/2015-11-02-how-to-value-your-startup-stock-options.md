@@ -1,6 +1,7 @@
 ---
 title: How to value your startup stock options
 layout: post
+custom_meta: You have an offer letter from a Silicon Valley-style startup. Well done! It details your salary, health insurance, gym membership and beard trimming benefits. It also says that you will be granted 100,000 stock options. You are unclear if this is good; you’ve never really had 100,000 of anything before.
 ---
 # Your situation
 
