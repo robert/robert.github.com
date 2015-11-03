@@ -147,6 +147,6 @@ There’s no such thing as the right to buy a free lunch at a fixed price, and I
 
 ### Further reading:
 
-[Wealthfront series on stock options](https://blog.wealthfront.com/improving-tax-results-stock-options-restricted-stock-grants/)
-[Startup Equity for Employees](http://www.payne.org/index.php/Startup_Equity_For_Employees)
-[An angry but on-point rant by Michael O’Church](https://michaelochurch.wordpress.com/2012/07/08/dont-waste-your-time-in-crappy-startup-jobs/)
+* [Wealthfront series on stock options](https://blog.wealthfront.com/improving-tax-results-stock-options-restricted-stock-grants/)
+* [Startup Equity for Employees](http://www.payne.org/index.php/Startup_Equity_For_Employees)
+* [An angry but on-point rant by Michael O’Church](https://michaelochurch.wordpress.com/2012/07/08/dont-waste-your-time-in-crappy-startup-jobs/)
