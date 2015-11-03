@@ -99,43 +99,43 @@ You can then work of the TechCrunch value of your options and consider the 5 dis
 ### The Common Stock Discount
 The TechCrunch valuation assumes all preferred stock, but you only have common stock
 
-Significant if: the company has or probably will take a lot of VC money, relative to their current valuation
+Significant if: the company has or probably will take a lot of VC money, relative to their current valuation<br/>
 Less significant if: the company is and is likely to remain mostly bootstrapped
 
 ### The Strike Price Discount
 You have to actually buy your shares before you can sell them
 
-Significant if: the company is relatively late stage
+Significant if: the company is relatively late stage<br/>
 Less significant if: the company is very young
 
 ### The Mobility Discount
 Leaving this job will be very expensive if you don’t want to lose all your options
 
-Significant if: you don’t have piles of spare money you would like to spend on buying your options years before you can sell them
+Significant if: you don’t have piles of spare money you would like to spend on buying your options years before you can sell them<br/>
 Less significant if: you do
 
 ### The Tax Discount
 You pay a much higher rate of tax than investors do
 
-Significant if: taxes are always significant
+Significant if: taxes are always significant<br/>
 Less significant: you have the money, guts and ability to exercise early whilst the spread between strike price and FMV is low
 
 ### The Risk Discount
 Your options might end up being worth nothing
 
-Significant if: you are risk averse or the company is still very young and uncertain
+Significant if: you are risk averse or the company is still very young and uncertain<br/>
 Less significant if: you are comfortable with very high risk, or the company is established and the only real question is when and how much it will IPO for
 
 ### The Liquidity Discount
 You can’t pay your rent with options
 
-Significant if: you would ideally like to spend the theoretical value of your options in the immediate future
+Significant if: you would ideally like to spend the theoretical value of your options in the immediate future<br/>
 Less significant if: you already have all the money you could conceivably need right now
 
 ### The I Quit Appreciation
 If things go badly then you can just leave
 
-Significant if: the company is likely to either go bust or get much more valuable in the near future
+Significant if: the company is likely to either go bust or get much more valuable in the near future<br/>
 Less significant if: it will take many years to see if the company will succeed or fail
 
 There’s no such thing as the right to buy a free lunch at a fixed price, and I’ve heard smart people suggest that individuals should value options at as little as 20% of their TechCrunch valuation. This feels a little on the low side to me, but I don’t think it’s too far off. You shouldn’t turn your nose up at them, but you shouldn’t start planning your retirement anytime soon either, and you should think long and hard before accepting any salary cut that is justified by options.
