@@ -6,9 +6,7 @@ layout: post
 
 You have an offer letter from a Silicon Valley-style startup. Well done! It details your salary, health insurance, gym membership and beard trimming benefits. It also says that you will be granted 100,000 stock options. You are unclear if this is good; you’ve never really had 100,000 of anything before. You also have a second offer letter from another Silicon Valley-style startup. Extremely well done! This one details your salary, complimentary artisan tea subscription, laundry provisions and sexual partner location services. This time the salary is somewhat lower, but the letter says that you will be granted 125,000 stock options. You are very unclear if this is better.
 
-This post will help you understand your stock options and the myriad of ways in which they are probably a lot less valuable than you might hope. Some of this is obvious, some of it it not, and some of it requires the keen legal knowledge that only a completely unqualified person on the internet can bring.
-
-Please remember that whilst I am smart, cool, attractive, athletic, personable, humble and a gentle lover, I am most emphatically not a lawyer.
+This post will help you understand your stock options and the myriad of ways in which they are probably a lot less valuable than you might hope. Please remember that whilst I am smart, cool, attractive, athletic, personable, humble and a gentle lover, I am most emphatically not a lawyer.
 
 # The basic mechanics of an option grant
 
