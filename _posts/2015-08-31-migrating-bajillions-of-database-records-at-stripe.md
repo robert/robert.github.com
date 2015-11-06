@@ -2,6 +2,7 @@
 title: Migrating bajillions of database records at Stripe
 layout: post
 published: true
+tags: [Programming]
 ---
 There are roughly ten thousand bajillion (to the nearest bajillion) merchants registered with Stripe. We recently finished a Very Big Migration of Large Amounts Of Data between several database tables for every single one of them, without losing any of it, without any downtime, mis-reads or mis-writes, whilst running a system that is responsible for the transfer of squillions of dollars every single day.
 

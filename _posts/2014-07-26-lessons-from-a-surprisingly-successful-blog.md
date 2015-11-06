@@ -3,6 +3,7 @@ layout: post
 title: Lessons from a surprisingly successful blog
 weight: -1
 blurb: I realised I'd had 350,000 hits in the last 18 months. This is a hefty post about how that happened.
+tags: [Writing]
 ---
 Since I started writing at the end of 2012, I’ve written 34 posts. I think that 17 of them are <a href="http://robertheaton.com/2014/03/07/lessons-from-a-silicon-valley-job-search/" target="_blank">good</a>, 5 are quite <a href="http://robertheaton.com/2013/02/13/how-to-save-1-day-a-year/" target="_blank">bad</a>, and the other 12 are <a href="http://robertheaton.com/2013/07/15/when-you-have-a-nail-in-your-eye/" target="_blank">OK</a>. To date they’ve been read just under 350,000 times, which is a tiny number in the grand scheme of things but feels pretty solid when I remember that I’m just some random guy with a website and a thesaurus creased open at the word "monkey". 
 

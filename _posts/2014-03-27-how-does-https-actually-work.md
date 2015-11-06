@@ -1,6 +1,7 @@
 ---
 layout: post
 title: How does HTTPS actually work?
+tags: [Security]
 ---
 HTTPS is simply your standard HTTP protocol slathered with a generous layer of delicious SSL/TLS encryption goodness. Unless something goes horribly wrong (and it can), it prevents people like the <a href="http://en.wikipedia.org/wiki/Alice_and_Bob#Cast_of_characters" target="_blank">infamous Eve</a> from viewing or modifying the requests that make up your browsing experience; it's what keeps your passwords, communications and credit card details safe on the wire between your computer and the servers you want to send this data to. Whilst the little green padlock and the letters "https" in your address bar don't mean that there isn't still ample rope for both you and the website you are viewing to hang yourselves elsewhere, they do at least help you communicate securely whilst you do so.
 

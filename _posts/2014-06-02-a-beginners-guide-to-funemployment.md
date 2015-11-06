@@ -4,6 +4,7 @@ title: A beginner's guide to funemployment
 hn: 7932102
 weight: 1
 blurb: I did no work for 5 months. This is why and how.
+tags: [Employment]
 ---
 I recently stopped working for 5 months, and aside from writing a few blog posts and getting to Gold League in Starcraft, I achieved very little. It was wonderful. 
 

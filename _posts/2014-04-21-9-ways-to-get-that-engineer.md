@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 9 ways to get that engineer
+tags: [Employment]
 ---
 There are many convincing arguments that the entire way in which engineers are hired is fundamentally flawed, many of which are both compelling and a little scary. Devising a new, generally applicable paradigm for how companies can best identify the best candidates for their jobs is an enormous challenge that I have no intention of tackling here. However, I do feel <a href="http://robertheaton.com/2014/03/07/lessons-from-a-silicon-valley-job-search/" target="_blank">reasonably well placed</a> to suggest some desperately simple ways to improve a candidate's experience of your interview process, making it much more likely that the people you decide to make offers to do actually accept them. The advice below won't completely revolutionise your hiring system, but I am confident that it will make it noticeably more effective for very little extra cost or effort.
 

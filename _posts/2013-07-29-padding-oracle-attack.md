@@ -2,6 +2,7 @@
 layout: post
 title: The Padding Oracle Attack - why crypto is terrifying
 bestof: true
+tags: [Security]
 ---
 
 We all know that you don't do your own crypto. We know that even though we've cleverly reversed the order of every word, shifted each letter along by 5 and added in dummy text to throw attackers off the scent, our ingenious cipher is going to get crushed to dust by anyone who knows what they're doing (or in this case a moderately intelligent 12 year-old).

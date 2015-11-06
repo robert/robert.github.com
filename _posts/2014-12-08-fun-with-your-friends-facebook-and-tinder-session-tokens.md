@@ -6,6 +6,7 @@ redirect_from:
 hn: 8758196
 weight: 2
 blurb: Hacking for love and vengeance.
+tags: [Security]
 ---
 <h3>The Setup</h3>
 

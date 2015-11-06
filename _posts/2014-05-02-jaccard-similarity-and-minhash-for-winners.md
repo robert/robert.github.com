@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Jaccard Similarity and MinHash for winners
+tags: [Programming]
 ---
 Suppose you work at Twitter. You want to find celebrities similar to PhilCollins, and decide to do this by comparing his account to a bunch of other accounts and seeing how many followers they share. Since Twitter almost definitely store all their data in a single MySQL database, you write some SQL:
 

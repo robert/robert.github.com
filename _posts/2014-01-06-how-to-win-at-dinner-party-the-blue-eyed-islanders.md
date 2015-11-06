@@ -4,6 +4,7 @@ title: The Blue-Eyed Islanders Puzzle
 hn: 7023595
 weight: 5
 blurb: Dissecting the most incredible brainteaser ever. Guaranteed to blow your mind.
+tags: [Puzzles]
 ---
 If you have never seen the Blue-Eyed Islanders Puzzle before, then hold onto your hats and stand near some sterilised plastic sheeting because your brain is about to explode. If you have seen it before but have never thought to use it at a dinner party then you are insane. In either case, be warned that you may be overwhelmed and/or seriously injured by the unmanageable influx of respect, kudos and attractive women/men/both that will follow this puzzle's use at your next evening engagement.
 

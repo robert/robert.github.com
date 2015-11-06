@@ -1,6 +1,7 @@
 ---
 title: Something that I don't talk about much
 layout: post
+tags: [Pain]
 ---
 <h3>0. Introduction</h3>
 
