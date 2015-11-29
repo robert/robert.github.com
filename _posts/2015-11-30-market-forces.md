@@ -35,18 +35,18 @@ The Market decided that Mr. Smith would purchase a coffee and a bagel in the nea
 
 Mr. Smith empathized and purchased a bagel with cream cheese and a latte with soy milk. Soy milk was a $0.21 surcharge, well below the maximum $0.28 that he would have paid, not accounting for the gross moral hazard entailed by the Small Government picking up his work expenses. He found a table and sipped his consumer surplus as he listened to the hum of nearby tables and the world.
 
-“I prefer 3 barrels of oil to the complete works of Dwayne Johnson on Blue Ray."
-“If the price of salt were to triple, my levels of salt consumption would barely change."
-“I would work 2.3% less hard if tax rates increased by 0.12%.”
+"I prefer 3 barrels of oil to the complete works of Dwayne Johnson on Blue Ray."
+"If the price of salt were to triple, my levels of salt consumption would barely change."
+"I would work 2.3% less hard if tax rates increased by 0.12%."
 
 Mr. Smith gazed out of the window. The coffee shop was on the edge of The Free Market, and looked out into A Planned Economy next door. He could see The Central Planner calculating where to distribute The Economy’s resources today. Even from a distance it was clear that she was making a lot of mistakes. 8.1 tonnes of tin were sent to a factory that could actually have created 92% of the value using only 6.5 tonnes of copper, whilst a second factory that could have made productive use of 4.2 tonnes of tin received a mere 2.4 tonnes, resulting in only 58% assembly line utilization. The Central Planner also diverted eight point four billion dollars that were going to be spent on marketing a new type of sandwich (with three types of cheese) to instead go towards research into treatments for multiple sclerosis.
 
 He tuned back into the conversation at the table next to him.
 
-“Have you heard about the sharing economy?"
-“I have, but I don’t see why I would want to share my goods and utilities when I could instead rent them out for a profit."
-“You don’t understand, that’s exactly what the sharing economy is!"
-“Oh! Well why didn’t you say so the first time? How do I join?"
+"Have you heard about the sharing economy?"
+"I have, but I don’t see why I would want to share my goods and utilities when I could instead rent them out for a profit."
+"You don’t understand, that’s exactly what the sharing economy is!"
+"Oh! Well why didn’t you say so the first time? How do I join?"
 
 Mr. Smith looked down at his watch. It was time to go. He left the cafe and took a shortcut through the Bazaar Of Friendship, Where You Can Be Friends With Anyone For The Right Price. Prospective Friends shouted out their qualities, qualifications and reasonable by-the-minute rates. Upmarket Friends proudly and prominently displayed their certifications and celebrity endorsements, whilst cheaper and more abrasive amateurs offered bulk deals and deep discounting for off-peak time slots.
 
@@ -54,11 +54,11 @@ Mr. Smith saw a few Friends who he believed could probably show a person an inte
 
 Mr. Smith spoke.
 
-“Are you the only Internet Service Provider for the entire of the East Coast of the United States?"
+"Are you the only Internet Service Provider for the entire of the East Coast of the United States?"
 
 The pile of flesh shrank slightly, trying unsuccessfully to make itself look small and unthreatening.
 
-“No, no, no, we are a general internet company, we have many competitors” it rasped, “For example, many consumers choose to access the internet solely through their mobile phones. We have many competitors, the internet is a hard fought space. Why, there are hundreds of internet companies springing up every second!"
+"No, no, no, we are a general internet company, we have many competitors" it rasped, "For example, many consumers choose to access the internet solely through their mobile phones. We have many competitors, the internet is a hard fought space. Why, there are hundreds of internet companies springing up every second!"
 
 "You are…a monopoly." The pile of flesh visibly recoiled.
 
