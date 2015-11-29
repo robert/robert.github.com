@@ -1,7 +1,7 @@
 ---
 title: American Prankster
 layout: post
-tags: [Writing]
+tags: [Stories, Writing]
 ---
 Daniel was a great prankster. He carried out truly artisanal mischief. When Daniel pranked you, you felt like you were participating in a wonderful piece of performance art. You did want to kill him, but you felt like your getting covered in jam or mistakenly spending 3 days in police custody actually meant something.
 
