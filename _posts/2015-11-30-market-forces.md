@@ -15,7 +15,7 @@ Welcome to The Free Market.
 
 Mr. Smith’s tiny phone rang for the first time in 6 business days.
 
-He answered it and listened to 24 seconds of instructions and background information. He replaced the tiny phone onto his desk. He shuffled back his compact chair and stood halfway up, making sure not to disturb the sharp creases in his sharp suit. Hunched over beneath his office’s extremely low ceiling, he located his coat, hat, and briefcase. He bent down to open his squat filing cabinet and located some professional tools. He weighed up several devices, feeling their heft and balance, before settling on two. Satisfied, he placed them into his briefcase and snapped it shut. He shuffled towards his office's cramped door and ducked out.
+He answered it and listened to 24 seconds of instructions and background information. He replaced the tiny phone onto his desk. He shuffled back his compact chair and stood halfway up, making sure not to disturb the sharp creases in his sharp suit. Hunched over beneath his office’s extremely low ceiling, he located his coat, hat, and briefcase. He bent down further to open his squat filing cabinet, and located some professional tools. He weighed up several devices, feeling their heft and balance, before settling on two. Satisfied, he placed them into his briefcase and snapped it shut. He shuffled towards his office's cramped door and ducked out.
 
 Mr. Smith’s office was part of a very small and simple complex. It was 4 stories high. Not very much went on inside it, and it was a rare day that Mr. Smith was asked to do anything at all. He spent most of his time sitting quietly on his miniature chair behind his miniature desk, being careful not to stray where he was neither wanted nor needed, and not to hit his head on the ceiling. However, today his services were required. And he was good at his job.
 
@@ -25,13 +25,13 @@ Mr. Smith was the head and sole employee of the Ministry of Finance, and it was 
 
 ---
 
-Mr. Smith entered The Free Market, and was immediately enveloped by the usual cloud of suspicion and distrust that followed him everywhere as an agent of the Small Government. He was accused of violating personal autonomy four times within his first thirteen steps. He walked past several games of Healthy Free Market Competition, or “Blotch” as it is better known. Blotch is a cross between badminton and laissez-faire capitalism, and it is what makes This Country great.
+Mr. Smith entered The Free Market, and was immediately enveloped by the usual cloud of suspicion and distrust that followed him everywhere as an agent of the Small Government. He was accused of violating personal autonomy four times within his first thirteen steps. He walked past several games of Healthy Free Market Competition, or "Blotch" as it is better known. Blotch is a cross between badminton and laissez-faire capitalism, and it is what makes This Country great.
 
-On the first court, a manufacturer of durable and high-performing but expensive lawnmowers was dueling it out against a manufacturer of lower-quality but cheaper alternatives. Mr. Smith watched a few rallies; the low-quality manufacturer appeared to be winning by a slim margin, but the global trend towards urban, high-rise living was gradually shrinking the very dimensions of the court. In the next-door game, a judge ruled that a mobile phone manufacturer’s factory conditions “met minimum human rights standards”, and a CEO in an expensive V-neck delivered a resounding smash shot, placing the shuttlecock well out of the reach of his opposite number.
+On the first court, a manufacturer of durable and high-performing but expensive lawnmowers was dueling it out against a manufacturer of lower-quality but cheaper alternatives. Mr. Smith watched a few rallies; the low-quality manufacturer appeared to be winning by a slim margin, but the global trend towards urban, high-rise living was gradually shrinking the very dimensions of the court. In the next-door game, a judge ruled that a mobile phone manufacturer’s factory conditions "met minimum human rights standards", and a CEO in an expensive V-neck delivered a resounding smash shot, placing the shuttlecock well out of the reach of his opposite number.
 
 The Market decided that Mr. Smith would purchase a coffee and a bagel in the nearest coffee shop. He walked in and asked the well-groomed, discretely tattooed intellectual behind the counter how his day was going. He learned that it was in fact going poorly; another local coffee shop had closed down yesterday, flooding the market with a slight surplus of well-groomed, discretely tattooed intellectuals. His wages had dropped by 26% overnight, and he was having to update his consumption choices.
 
-“Still, I can’t complain, since this is a contract between consenting, autonomous parties."
+"Still, I can’t complain, since this is a contract between consenting, autonomous parties."
 
 Mr. Smith empathized and purchased a bagel with cream cheese and a latte with soy milk. Soy milk was a $0.21 surcharge, well below the maximum $0.28 that he would have paid, not accounting for the gross moral hazard entailed by the Small Government picking up his work expenses. He found a table and sipped his consumer surplus as he listened to the hum of nearby tables and the world.
 
@@ -39,7 +39,7 @@ Mr. Smith empathized and purchased a bagel with cream cheese and a latte with so
 "If the price of salt were to triple, my levels of salt consumption would barely change."
 "I would work 2.3% less hard if tax rates increased by 0.12%."
 
-Mr. Smith gazed out of the window. The coffee shop was on the edge of The Free Market, and looked out into A Planned Economy next door. He could see The Central Planner calculating where to distribute The Economy’s resources today. Even from a distance it was clear that she was making a lot of mistakes. 8.1 tonnes of tin were sent to a factory that could actually have created 92% of the value using only 6.5 tonnes of copper, whilst a second factory that could have made productive use of 4.2 tonnes of tin received a mere 2.4 tonnes, resulting in only 58% assembly line utilization. The Central Planner also diverted eight point four billion dollars that were going to be spent on marketing a new type of sandwich (with three types of cheese) to instead go towards research into treatments for multiple sclerosis.
+Mr. Smith gazed out of the window. The coffee shop was on the edge of The Free Market, and looked out into A Planned Economy next door. He could see The Central Planner calculating where to distribute The Economy’s resources today. Even from a distance it was clear that she was making a lot of mistakes. 8.1 tonnes of tin were sent to a factory that could have created 92% of the value using only 6.5 tonnes of copper, whilst a second factory that could have made productive use of 4.2 tonnes of tin received a mere 2.4 tonnes, resulting in only 58% assembly line utilization. The Central Planner also diverted eight point four billion dollars that were going to be spent on marketing a new type of sandwich (with three different types of cheese) to instead go towards research into treatments for multiple sclerosis.
 
 He tuned back into the conversation at the table next to him.
 
@@ -60,7 +60,7 @@ The pile of flesh shrank slightly, trying unsuccessfully to make itself look sma
 
 "No, no, no, we are a general internet company, we have many competitors" it rasped, "For example, many consumers choose to access the internet solely through their mobile phones. We have many competitors, the internet is a hard fought space. Why, there are hundreds of internet companies springing up every second!"
 
-"You are…a monopoly." The pile of flesh visibly recoiled.
+"You are...a monopoly." The pile of flesh visibly recoiled.
 
 "No, no we are not, how could we be a…monopoly, we are an internet company, there are hundreds of internet companies, the internet is a hard fought space, studies have shown that prices have risen only an acceptable margin faster than cost of living and our customers expect and receive excellent service, they don’t want to use any providers other than us. The internet is a hard fought space. Look, look at these competitors." It waved an appendage towards a row of assorted dead rodents that appeared, to Mr. Smith’s highly trained eye, to be held in an upright position by small stakes in the ground.
 
