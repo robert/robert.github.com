@@ -43,10 +43,10 @@ Mr. Smith gazed out of the window. The coffee shop was on the edge of The Free M
 
 He tuned back into the conversation at the table next to him.
 
-"Have you heard about the sharing economy?"
-"I have, but I don’t see why I would want to share my goods and utilities when I could instead rent them out for a profit."
-"You don’t understand, that’s exactly what the sharing economy is!"
-"Oh! Well why didn’t you say so the first time? How do I join?"
+"Have you heard about the sharing economy?"  
+"I have, but I don’t see why I would want to share my goods and utilities when I could instead rent them out for a profit."  
+"You don’t understand, that’s exactly what the sharing economy is!"  
+"Oh! Well why didn’t you say so the first time? How do I join?"  
 
 Mr. Smith looked down at his watch. It was time to go. He left the cafe and took a shortcut through the Bazaar Of Friendship, Where You Can Be Friends With Anyone For The Right Price. Prospective Friends shouted out their qualities, qualifications and reasonable by-the-minute rates. Upmarket Friends proudly and prominently displayed their certifications and celebrity endorsements, whilst cheaper and more abrasive amateurs offered bulk deals and deep discounting for off-peak time slots.
 
