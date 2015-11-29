@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Market forces
+tags: [Stories, Writing]
 ---
 Chefs, families, supermarket representatives, and all other types of person who might wish to purchase rice, were sat at rows upon rows of desks at the far end of The Great Marginal Hall. They were filling out Form 41A, regarding the ways in which the price per kilogram might affect the amount of rice that they would purchase that day.
 
