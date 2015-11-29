@@ -1,8 +1,8 @@
---
+---
 layout: post
 title: Market forces
 published: false
---
+---
 Chefs, families, supermarket representatives, and all other types of person who might wish to purchase rice, were sat at rows upon rows of desks at the far end of The Great Marginal Hall. They were filling out Form 41A, regarding the ways in which the price per kilogram might affect the amount of rice that they would purchase that day.
 
 The hall also contained farmers, wholesalers, supermarket representatives, and all other types of person who might wish to sell rice. They were sat at their own rows upon rows of desks, where they were filling out Form 41B, regarding the ways in which the price per kilogram might affect the amount of rice they would produce and sell that day. 
