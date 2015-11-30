@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A day at the Free Market
+title: A day at The Free Market
 tags: [Stories, Writing]
 redirect_from: [/2015/11/30/market-forces/]
 ---
