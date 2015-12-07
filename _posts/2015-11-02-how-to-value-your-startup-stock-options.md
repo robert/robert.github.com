@@ -140,7 +140,7 @@ If things go badly then you can just leave
 Significant if: the company is likely to either go bust or get much more valuable in the near future<br/>
 Less significant if: it will take many years to see if the company will succeed or fail
 
-There’s no such thing as the right to buy a free lunch at a fixed price, and I’ve heard smart people suggest that individuals should value options at as little as 20% of their TechCrunch valuation. This feels a little on the low side to me, but I don’t think it’s too far off. You shouldn’t turn your nose up at them, but you shouldn’t start planning your retirement anytime soon either, and you should think long and hard before accepting any salary cut that is justified by options.
+There’s no such thing as the right to buy a free lunch at a fixed price, and I’ve heard smart people suggest that individuals should value options at as little as 20% of their TechCrunch valuation. This feels a little on the low side to me, but I don’t think it’s too far off. Options are just another type of financial asset, and are great to have as long as you value them correctly. However, companies are incentivized to help you wildly over-value them, and so you should think long and hard before accepting any salary cut that is justified by options.
 
 *Thanks to Carrie Bentley for reading drafts of this*
 
