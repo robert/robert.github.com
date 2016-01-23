@@ -8,7 +8,6 @@
 
   100% {
     opacity: 1; } }
-
 @-moz-keyframes fade-in {
   0% {
     opacity: 0; }
@@ -18,7 +17,6 @@
 
   100% {
     opacity: 1; } }
-
 @-ms-keyframes fade-in {
   0% {
     opacity: 0; }
@@ -28,7 +26,6 @@
 
   100% {
     opacity: 1; } }
-
 @-o-keyframes fade-in {
   0% {
     opacity: 0; }
@@ -38,7 +35,6 @@
 
   100% {
     opacity: 1; } }
-
 @keyframes fade-in {
   0% {
     opacity: 0; }
@@ -48,7 +44,6 @@
 
   100% {
     opacity: 1; } }
-
 body {
   background: #fff;
   color: #000;
@@ -67,8 +62,8 @@ strong, b {
 header {
   padding: 15px 0;
   line-height: 1.3em;
-  margin: 0 auto 20px;
-  background: #f7f8f9;
+  margin: 0 auto 30px;
+  background: #f0f1f2;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -112,7 +107,8 @@ header {
     animation: fade-in 1.5s; }
 
 footer {
-  background: #f7f8f9;
+  padding: 25px;
+  background: #f0f1f2;
   line-height: 2rem; }
   footer h3 {
     font-size: 14px; }
@@ -271,7 +267,7 @@ ul.posts {
   text-shadow: -1px -1px 0px #000; }
 
 section.info {
-  
+  width: 49%;
   font-size: 13px;
   display: inline-block;
   vertical-align: baseline;
@@ -347,4 +343,9 @@ section.share-links {
 pre {
   padding-top: 8px !important;
   padding-bottom: 8px !important;
-/*  margin-left: -30px !important;*/ }
+  margin-left: -30px !important; }
+
+.indenter p {
+  text-indent: 30px;
+  text-align: justify;
+  margin: 0; }

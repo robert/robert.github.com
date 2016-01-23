@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>{{ page.title }} | Robert Heaton</title>
+    {% include header.html %}
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    {% include navbar.html %}
+    <div class='container'>
+      <div class='site'>
+        <section class='post blogpost'>
+          <h1 class='subject'><a href="{{page.url}}">{{ page.title }}</a></h1>
+          <div class='date muted'>{{ page.date | date_to_string }}</div>
+          <div class='indenter'>
+            {{ content }}
+          </div>
+          {% if page.hn %}
+            <a href="https://news.ycombinator.com/item?id={{ page.hn }}" target="_blank">Discussion on Hacker News</a>
+          {% endif %}
+          {% include social_links.html %}
+					{% include rss.html %}
+          <hr/>
+          {% include related_posts.html %}
+          {% include recent_posts.html %}
+        </section>
+      </div>
+    </div>
+    {% include footer.html %}
+  </body>
+</html>
