@@ -1,8 +1,9 @@
 ---
 title: American Prankster
-layout: post
+layout: indented_post
 tags: [Stories, Writing]
 ---
+<br/>
 Daniel was a great prankster. He carried out truly artisanal mischief. When Daniel pranked you, you felt like you were participating in a wonderful piece of performance art. You did want to kill him, but you felt like your getting covered in jam or mistakenly spending 3 days in police custody actually meant something.
 
 Daniel had a strict set of principles around what made a truly masterful prank. A well-executed prank was a virtuous act, with inherent goodness and worth. Daniel used to say that the ultimate prankster was he who pulled a prank that he wasn't around to see the punchline for. He went on about these principles a lot; we laughed a lot and paid little attention.
