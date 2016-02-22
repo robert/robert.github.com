@@ -3,6 +3,7 @@ title: There was only time like the present
 layout: indented_post
 tags: [Stories]
 ---
+<br/>
 Time continued to stand still. You could travel a million light years in any direction and see the same scenes, the mediocrity principle writ eternal. If you came across the universe in your travels you would wonder what had happened here.
 
 It would never be one excited child’s birthday; it would be another’s indefinitely. The high school student who worked hard to get accepted into college would never go; neither would the one who spent their senior year stealing cars and being wasted. The twenty-five year old about to have sex for the first time would remain a virgin in perpetuity, no one would ever know who won the Brazilian general election, and terminal patients who hung on for those few extra seconds would get to live forever.
