@@ -59,7 +59,7 @@ Read on to find out both the nitty and the gritty details.
 
 We start by making the LegalEntity model in our ORM, and the associated table in our database. So far it contains no data, and does absolutely nothing.
 
-```
+```ruby highlight
 class LegalEntity
 end
 ```
