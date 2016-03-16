@@ -94,6 +94,7 @@ GEM
       ffi (>= 0.5.0)
     rdiscount (2.1.7.1)
     redcarpet (3.1.2)
+    rouge (1.10.1)
     safe_yaml (1.0.3)
     sass (3.3.14)
     slop (3.6.0)
@@ -120,4 +121,8 @@ DEPENDENCIES
   rake
   rb-fsevent
   rdiscount
+  rouge
   sass
+
+BUNDLED WITH
+   1.10.6

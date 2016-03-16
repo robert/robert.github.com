@@ -1,5 +1,5 @@
 permalink:   pretty
-highlighter: pygments
+highlighter: rouge
 markdown:    rdiscount
 rdiscount:
   extensions: [smart]
@@ -9,5 +9,5 @@ url: http://robertheaton.com
 auto: true
 feedburner_id: robertheaton
 future: true
-gems: 
+gems:
   - jekyll-redirect-from
