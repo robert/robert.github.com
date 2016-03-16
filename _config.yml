@@ -1,8 +1,5 @@
 permalink:   pretty
 highlighter: rouge
-markdown:    rdiscount
-rdiscount:
-  extensions: [smart]
 name: Robert Heaton
 description: 'Software engineer. One-track lover down a two-way lane'
 url: http://robertheaton.com
