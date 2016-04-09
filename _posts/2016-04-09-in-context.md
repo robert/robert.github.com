@@ -29,7 +29,6 @@ He was instantly as drenched and disoriented as if he had walked the hundred and
 Peter knew that for all his infuriating faults, Diedrich would indeed greet him with a tumbler of the closest thing to his demand that man has ever created, and, just as importantly, would pay for both it and the one after too. Buttressed by this anticipation, he turned up the collar of his black felt trench coat, a gesture of defiance and misplaced optimism rather than advantage, and broke for 6th.
 
 <br/>
-
 Diedrich was dry and untouched. He greeted Peter warmly, and immediately set about helping with his saturated coat and calling for towels from behind the bar. Peter barely had time to say hello before he was engulfed by the protective cloud of intellectualism and money that had been growing around Diedrich for the last fifteen years.
 
 Peter and Diedrich met at parties in Chicago when they were both twenty-five. Initially they bonded over their complete disagreement about everything. As good, open-minded people, they saw each other as an opportunity to understand the twisted and misguided minds on the other side of the political and philosophical tracks that they so rarely came into contact with. They argued about the what should be done with the poor, the proper function of the profit motive, what should be done with the extremely poor and the existence of an objective standard of worth in art. They did share tastes in movies and cheap weed, passions that they indulged together most evenings after spending the days being a graduate English student and a junior advertising executive.
@@ -47,7 +46,6 @@ Peter felt Liberal dissonance as he begrudged the cost of Medicare. He dismissed
 When you're an English professor, changing is expensive, and Oscar Wilde mostly stays the same from year to year.
 
 <br/>
-
 Novella was the type of bar that Peter never went to and was only tangentially aware existed. So he hated it. Sitting, soaking, squeaking in a dark-leather armchair, he saw a dimly lit, pocket-gouging lack of price lists. He heard droll chuckles and hushed bullshit. He smelt an admittedly tall and powerful whiskey that Diedrich had paid for, and put aside his misgivings and complexes for another twenty minutes.
 
 "Thank you," said Peter, offering a small nod and arm-raise of appreciation. Diedrich returned the gestures and sunk into the armchair opposite.
