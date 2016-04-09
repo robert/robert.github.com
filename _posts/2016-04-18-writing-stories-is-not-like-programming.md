@@ -17,7 +17,7 @@ I’m sure that temporarily forgetting about characters in order to focus on plo
 
 I’d love to be wrong, but I don’t think that writers can start with something quite as simple and iterate to quite the same extent as programmers.
 
-> "The short man stole a ring and took it to Mordor."
-> "The short man and his fat friend stole a ring and took it to Mordor."
-> "The short man and his fat friend, neither of whom would stop singing oh my God Jesus Christ, stole a ring and took it to Mordor."
+> "The short man stole a ring and took it to Mordor."<br/>
+> "The short man and his fat friend stole a ring and took it to Mordor."<br/>
+> "The short man and his fat friend, neither of whom would stop singing oh my God Jesus Christ, stole a ring and took it to Mordor."<br/>
 > "The short man..."
