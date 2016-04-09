@@ -58,7 +58,7 @@ Tens of thousands of days later he looked in the mirror and saw wrinkles.
 It finally happened one afternoon in June. As had become his habit, David was perusing his local Victoria’s Secret and eating grease and chicken out of a bucket. Distracted by a particularly challenging drumstick and an eye-catching display in the toys section that he had not seen before, he failed to notice a burger oil slick that he had left on the floor during his last visit. He slipped; all of his limbs and pieces of chicken flew into the air. Time seemed to stand even stiller than it already was. He fell to the floor. A small bone from his breakfast lodged itself in his throat, and like so many before him, David choked to death surrounded by women trying on underwear.
 
 <br/>
-Twelve thousand people were being born at the time David died. Two thousand were having heart attacks, fifty-three were striking a homerun, and three thousand were being raped. In one sense, David foiled a terrorist attack on Barcelona that was scheduled for the next day.
+Twelve thousand people were being born at the time David died. Two thousand were having heart attacks, fifty-three were striking a homerun. In one sense, David foiled a terrorist attack on Barcelona that was scheduled for the next day.
 
 Everything was potential. From now on, there would be only potential. It was time to add up the final score of the universe.
 
