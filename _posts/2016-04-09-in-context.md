@@ -1,11 +1,10 @@
 ---
 layout: indented_post
-title: Ceremony is a tool
+title: In context
 tags: [Stories]
-published: false
 ---
 <br/>
-Peter wished he still lived in New York. If he still lived in New York, he could have spent the last night of his trip in the strip club next to his hotel. He could have told Diedrich that he was far too wet and hungover to see him tonight, and cordially invited him to a dive near wherever-he-lived for a brace of tallboys and chasers sometime next year. Instead, he was crawling to the bottom of the East Village in a rain-lashed cab trying to find whatever nonsense concept bar Diedrich was frequenting this month. And if he still lived in New York, he wouldn’t have to live in Massachusetts anymore. As it was, he was paying a small fortune to be taken to a bar on the absolute other side of the city that his taxi driver insisted did not exist. The driver didn’t mind, as long as Peter understood that the meter was always running and always had to be paid for.
+Peter wished he still lived in New York. If he still lived in New York, he could have spent the last night of his trip in the strip club next to his hotel. He could have told Diedrich that he was far too wet and hungover to see him tonight, and cordially invited him to a dive near wherever-he-lived for a brace of tallboys and chasers sometime next year. Instead, he was crawling to the bottom of the East Village in a rain-lashed cab, paying a small fortune to be taken to a bar on the absolute other side of the city that his driver insisted did not exist. The driver didn’t mind, as long as Peter understood that the meter was always running and always had to be paid for.
 
 He wiped condensation off the window with his sleeve; still nothing but a watery mess of refracted yellow and red light and dark that could be any street on the island. There was nothing to do except block out the radio’s incongruous mariachi music and the driver's continued insistences that the bar he was looking for had never existed, or had perhaps shut down back in ’84, or perhaps did exist but was actually a laundromat. Nothing else to do but finish forgetting whatever had been said during the day at the New York University Dostoyevsky symposium.
 
@@ -30,6 +29,7 @@ He was instantly as drenched and disoriented as if he had walked the hundred and
 Peter knew that for all his infuriating faults, Diedrich would indeed greet him with a tumbler of the closest thing to his demand that man has ever created, and, just as importantly, would pay for both it and the one after too. Buttressed by this anticipation, he turned up the collar of his black felt trench coat, a gesture of defiance and misplaced optimism rather than advantage, and broke for 6th.
 
 <br/>
+
 Diedrich was dry and untouched. He greeted Peter warmly, and immediately set about helping with his saturated coat and calling for towels from behind the bar. Peter barely had time to say hello before he was engulfed by the protective cloud of intellectualism and money that had been growing around Diedrich for the last fifteen years.
 
 Peter and Diedrich met at parties in Chicago when they were both twenty-five. Initially they bonded over their complete disagreement about everything. As good, open-minded people, they saw each other as an opportunity to understand the twisted and misguided minds on the other side of the political and philosophical tracks that they so rarely came into contact with. They argued about the what should be done with the poor, the proper function of the profit motive, what should be done with the extremely poor and the existence of an objective standard of worth in art. They did share tastes in movies and cheap weed, passions that they indulged together most evenings after spending the days being a graduate English student and a junior advertising executive.
@@ -47,13 +47,14 @@ Peter felt Liberal dissonance as he begrudged the cost of Medicare. He dismissed
 When you're an English professor, changing is expensive, and Oscar Wilde mostly stays the same from year to year.
 
 <br/>
+
 Novella was the type of bar that Peter never went to and was only tangentially aware existed. So he hated it. Sitting, soaking, squeaking in a dark-leather armchair, he saw a dimly lit, pocket-gouging lack of price lists. He heard droll chuckles and hushed bullshit. He smelt an admittedly tall and powerful whiskey that Diedrich had paid for, and put aside his misgivings and complexes for another twenty minutes.
 
 "Thank you," said Peter, offering a small nod and arm-raise of appreciation. Diedrich returned the gestures and sunk into the armchair opposite.
 
 "How was the conference?" asked Diedrich.
 
-"An expensive boondoggle that took us all one step closer to both tenure and the grave."
+"An expensive boondoggle that took us all one step closer to tenure and the grave."
 
 "Did you present?"
 
@@ -71,7 +72,7 @@ Diedrich took a taste of whiskey and breathed out. Peter used to put effort into
 
 "The students are the same, wherever you go." But at Harvard they did not yet have six years of institutional knowledge warning attractive young girls - even plain young girls now - to handle themselves with care around Professor Peter Harris. "They know that if they don’t expect anything from me before midday and write sufficiently coherent essays that eschew the phrase ‘the fact that’, they’ll get at least a B. The pushy and the pretty ones know that they stand a good chance of an A."
 
-"How’s Fiona?" Diedrich asked.
+"How’s Samantha?" Diedrich asked.
 
 "She is more special than anyone I have ever been with, but I think that I’m about to lose her."
 
@@ -113,7 +114,7 @@ Diedrich agreed completely. But he had never given much credence to Peter’s cl
 
 "You’re being over-literary."
 
-"I’m all literary, Diedrich." He half-stood, gesturing at his friend’s glass inquisitively. Diedrich raised a palm and shook his head. Peter had hoped that Diedrich would intercept him and insist on continuing to buy. He still had no idea how much a triple-whiskey would cost in this place. He hovered for a second, then sat back down. "You know what Fiona says about my writing? She says that I should put it to one side and concentrate on my career. And when we argue, when things get nasty, she says that it’s all pretentious double-talk and I’m wasting my time. And when we really argue, when things get really nasty...when she thinks she’s found out about another girl, when furniture gets smashed and bathroom doors get barricaded, when neither of us think that the other will forgive us this time, she says that I’m just desperately scrabbling to capture the last semblance of feeling before it vanishes forever and I’m a bitter old man with no way to prove that I was ever anything else."
+"I’m all literary, Diedrich." He half-stood, gesturing at his friend’s glass inquisitively. Diedrich raised a palm and shook his head. Peter had hoped that Diedrich would intercept him and insist on continuing to buy. He still had no idea how much a triple-whiskey would cost in this place. He hovered for a second, then sat back down. "You know what Samantha says about my writing? She says that I should put it to one side and concentrate on my career. And when we argue, when things get nasty, she says that it’s all pretentious double-talk and I’m wasting my time. And when we really argue, when things get really nasty...when she thinks she’s found out about another girl, when furniture gets smashed and bathroom doors get barricaded, when neither of us think that the other will forgive us this time, she says that I’m just desperately scrabbling to capture the last semblance of feeling before it vanishes forever and I’m a bitter old man with no way to prove that I was ever anything else."
 
 "Is she right?" Diedrich knew that she was.
 
@@ -131,7 +132,7 @@ Diedrich did not believe that New York kept you young. He could believe that it 
 
 "You actually think that?"
 
-Peter frowned. "I know I don’t care about humanity or contributing to it in any other way. But yes, this feels special. Writing is important. It’s not just stringing together sentences that make contextual sense and conform to The Elements of Style. When you find the right adjective to complete the sentence "he felt X", the word that no one else has every thought to use in this situation, it’s sublime. Last week I wrote "he felt hazardous" and it was perfect."
+Peter frowned. "I know I don’t care about humanity or contributing to it in any other way. But yes, this feels special. Writing is important. It’s not just stringing together sentences that make contextual sense and conform to The Elements of Style. When you find the right adjective to complete the sentence "he felt X", the word that no one else has every thought to use, it’s sublime. Last week I wrote "he felt hazardous" and it was perfect."
 
 Diedrich steepled his hands over his nose. Last year he had found Peter’s notebook of story ideas. Or rather, he had found one of Peter’s notebooks of story ideas, with the number fifteen written in the top right corner of the tattered cover. He had been pleased to see how many of the entries were based on events from his own life; they looked good on paper.
 
@@ -157,7 +158,7 @@ Maybe New York hadn’t been keeping Peter young, but it had keen keeping him di
 
 "I don’t care about fame or fortune anymore; I just want to make something that I feel good about." Pause, time for something different. "How’s Frieda?"
 
-"She’s well. Her mother is sick though. How’s Fiona?"
+"She’s well. Her mother is sick though. How’s Samantha?"
 
 Peter knew that he had told Diedrich most of what he had just said several times already. He hated the way in which he always ended up giving so much of himself to Diedrich, and never got anything back. He found it extremely boring when someone gave him every unfiltered thing that passed through their life, but just as boring and not a little insulting when they censored absolutely everything with any color or personality. He felt like the patient to Diedrich’s psychologist. It was his role to be a mess and Diedrich’s be the tolerant, nonjudgmental listener, giving him the room he needed to express his emotions fully before offering gentle, carefully phrased advice and thinking that Peter couldn’t see as he judged the fuck out of him.
 
@@ -213,9 +214,9 @@ Peter was not surprised to find that he didn’t care what Diedrich spoke to his
 
 Peter raised his eyes. "It makes me drink and try to sleep with other women."
 
-"Have you considered that Fiona might be depressed?"
+"Have you considered that Samantha might be depressed?"
 
-"Of course I’ve considered it. I had my friend who used to be on prozac who opened up to me and in twenty not-always-comprehensible minutes helped me understand every single depth and nuance of the depressed mind. Just like everyone else had theirs. But just like I don’t want to have to have a disabled child or a parent with a very, very slow degenerative illness, I don’t want to have a depressive wife. If Fiona is depression, then it’s not artistic or pervertedly inspirational. It’s boring as fuck, and I don’t want it to belong to me.
+"Of course I’ve considered it. I had my friend who used to be on prozac who opened up to me and in twenty not-always-comprehensible minutes helped me understand every single depth and nuance of the depressed mind. Just like everyone else had theirs. But just like I don’t want to have to have a disabled child or a parent with a very, very slow degenerative illness, I don’t want to have a depressive wife. If Samantha is depression, then it’s not artistic or pervertedly inspirational. It’s boring as fuck, and I don’t want it to belong to me.
 
 "But I do love her."
 
