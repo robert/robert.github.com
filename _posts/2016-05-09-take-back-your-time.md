@@ -37,9 +37,17 @@ Or BBC News:
 <img src="https://cloud.githubusercontent.com/assets/1565857/15089701/b6f4c0ca-13be-11e6-93be-91b42b78b5b1.png" />
 </p>
 
+Or even Gmail:
+
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/1565857/15089929/4a8d855a-13c5-11e6-85d8-19a96c0c081c.png" />
+</p>
+
 If you want to just hide a page completely, you can use the rule `body {display: none}` to obliterate everything. But I quite like only hiding a portion of the page where possible, because it reminds me that the site hasn’t just failed to load and makes me feel like a subversive internet cowboy. Your changes can be easily disabled:
 
 which gives you an out when you decide that you really would like to spend a bit of time catching up with your friends, or the state of the internet, or the world. But it inserts a friendly, inquisitive goblin that peeks over your shoulder and asks chirpily “are you sure you want to do that?” It yanks you outside of yourself for a brief second. It makes you remember that you have a definition of The Good Life, and whether it’s writing a screenplay, crushing your quarterly sales targets or simply being more present, it’s probably not this.
+
+---
 
 <i>
 To hide distracting parts of the internet for yourself:
