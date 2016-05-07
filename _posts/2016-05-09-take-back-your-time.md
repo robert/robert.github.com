@@ -41,4 +41,10 @@ If you want to just hide a page completely, you can use the rule `body {display:
 
 which gives you an out when you decide that you really would like to spend a bit of time catching up with your friends, or the state of the internet, or the world. But it inserts a friendly, inquisitive goblin that peeks over your shoulder and asks chirpily “are you sure you want to do that?” It yanks you outside of yourself for a brief second. It makes you remember that you have a definition of The Good Life, and whether it’s writing a screenplay, crushing your quarterly sales targets or simply being more present, it’s probably not this.
 
-To set up Stylish with these styles, do XYZ.
+<i>
+To hide distracting parts of the internet for yourself:
+
+* Download Stylish for [Chrome](https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/stylish/) 
+* Install the styles you would like to change from [here](https://userstyles.org/users/331645)
+* If you would like to hide additional sites, you can either create new style with the rule `body {display: none}` to hide everything, or (advanced) use [the developer tools](https://developer.chrome.com/devtools#dom-and-styles) to hide only that part of the site that is causing you problems
+<i>
