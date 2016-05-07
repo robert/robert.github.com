@@ -13,13 +13,29 @@ On the other hand, there are times when you, being of sound mind and body, genui
 
 You just need to be able to get in, do what you need to do and then get the hell out of Dodge without being waylaid by articles written from viewpoints that you are politically sympathetic to but will have forgotten completely come the morning. You need to ignore the parts of the page that are nothing more than a thin plastic tarp over a bottomless void, leaving only the predictable, old-fashioned widgets that enable you to have a specific plan and then click a button to execute that plan. “Dear Grandma, it was my birthday yesterday, where the fuck are my presents? Hope you are well. SEND. QUIT." If the page is all bottomless void then you need to be able to insert some additional safety ropes around the entire thing, so that you only enter when you have a trained support team ready to drag you out.
 
-Enter Stylish. Stylish is a browser extension for [Chrome](https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/stylish/) that allows you to manipulate a webpage’s [CSS](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/What_is_CSS) into doing your bidding, rather than that of the organization that sent you the page. CSS is essentially the rules that tell your browser how to display a page. If you change the rules to say that a particular part of the page should be hidden, then your browser will hear and obey. You can use it to trivially hide the Facebook newsfeed:
+Enter Stylish. Stylish is a browser extension for [Chrome](https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/stylish/) that allows you to manipulate a webpage’s [CSS](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/What_is_CSS) into doing your bidding, rather than that of the organization that sent you the page. CSS is essentially the rules that tell your browser how to display a page. If you change the rules to say that a particular part of the page should be hidden, then your browser will hear and obey. It is straightforward to hide the Facebook newsfeed:
+
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/1565857/15089699/b6e9eeac-13be-11e6-8ead-9c8bb74820aa.png" />
+</p>
 
 Or the Twitter newsfeed:
 
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/1565857/15089698/b6d902d6-13be-11e6-836d-5dea1122ac6f.png" />
+</p>
+
 Or Hacker News:
 
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/1565857/15089700/b6f3f258-13be-11e6-9e7d-d0bf6567dcff.png" />
+</p>
+
 Or BBC News:
+
+<p align="center">
+<img src="https://cloud.githubusercontent.com/assets/1565857/15089701/b6f4c0ca-13be-11e6-93be-91b42b78b5b1.png" />
+</p>
 
 If you want to just hide a page completely, you can use the rule `body {display: none}` to obliterate everything. But I quite like only hiding a portion of the page where possible, because it reminds me that the site hasn’t just failed to load and makes me feel like a subversive internet cowboy. Your changes can be easily disabled:
 
