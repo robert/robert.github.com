@@ -28,7 +28,7 @@ Or the Twitter newsfeed:
 Or Hacker News:
 
 <p align="center">
-<img src="https://cloud.githubusercontent.com/assets/1565857/15089700/b6f3f258-13be-11e6-9e7d-d0bf6567dcff.png" />
+<img src="https://cloud.githubusercontent.com/assets/1565857/15089723/7838c1aa-13bf-11e6-93ec-87508fa3d8a6.png" />
 </p>
 
 Or BBC News:
