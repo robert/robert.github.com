@@ -43,7 +43,7 @@ Or even Gmail:
 <img src="https://cloud.githubusercontent.com/assets/1565857/15089929/4a8d855a-13c5-11e6-85d8-19a96c0c081c.png" />
 </p>
 
-If you want to just hide a page completely, you can use the rule `body {display: none}` to obliterate everything. But I quite like only hiding a portion of the page where possible, because it reminds me that the site hasn’t just failed to load and makes me feel like a subversive internet cowboy. Your changes can be easily disabled:
+If you want to just hide a page completely, you can use the rule `body {display: none}` to obliterate everything. But I quite like only hiding a portion of the page where possible, because it reminds me that the site hasn’t just failed to load and makes me feel like a subversive internet cowboy. Your changes can be easily temporarily disabled:
 
 <p align="center">
 <img src="https://cloud.githubusercontent.com/assets/1565857/15089935/bcd4346a-13c5-11e6-8a74-0edcfe7d68b3.png" />
