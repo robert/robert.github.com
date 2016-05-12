@@ -53,7 +53,9 @@ So say we have stolen a ciphertext. If we are able to submit ciphertexts and fin
 
 ## The intermediate state
 
-To repeat - in CBC encryption, each block of plaintext is XORed with the previous ciphertext block before being passed into the cipher. So in CBC decryption, each ciphertext is passed through the cipher, then XORed with the previous ciphertext block to give the plaintext.<p style="text-align:center"><img src="/images/cbc2.png" /></p>
+To repeat - in CBC encryption, each block of plaintext is XORed with the previous ciphertext block before being passed into the cipher. So in CBC decryption, each ciphertext is passed through the cipher, then XORed with the previous ciphertext block to give the plaintext.
+
+<p style="text-align:center"><img src="/images/cbc2.png" /></p>
 
 The attack works by calculating the "intermediate state" of the decryption (see diagram) for each ciphertext. This is the state of a ciphertext block *after* being decrypted by the block cipher but *before* being XORed with the previous ciphertext block. We do this by working *up* from the plaintext rather than *down* through the block cipher, and don't have to worry about the key or even the type of algorithm used in the block cipher.
 
@@ -73,7 +75,9 @@ We know C1 already, as it is just part of our ciphertext, so if we find I2 then 
 
 Remember that we can pass in any ciphertext, and the server will tell us whether it decrypts to plaintext with valid padding or not. That's it. We exploit this by passing in `C1' + C2`, where `C1'` is a sneakily chosen ciphertext block, `C2` is the ciphertext block we are trying to decrypt, and `C1' + C2` is the concatenation of the two. We call the decrypted plaintext block produced `P'2`.
 
-To begin with, we choose `C1'[1..15]` to be random bytes, and `C1'[16]` to be `00`. We pass `C1' + C2` to the server. If the server says we have produced a plaintext with valid padding, then we can be pretty sure that `P2'[16]` must be `01` (as this would give us valid padding). Of course, if the server comes back and tells us that our padding is invalid, then we just set `C1'[16]` to `01`, then `02`, and so on, until we hit the jackpot.<p style="text-align:center"><img src="/images/cbcfake.png" /></p>
+To begin with, we choose `C1'[1..15]` to be random bytes, and `C1'[16]` to be `00`. We pass `C1' + C2` to the server. If the server says we have produced a plaintext with valid padding, then we can be pretty sure that `P2'[16]` must be `01` (as this would give us valid padding). Of course, if the server comes back and tells us that our padding is invalid, then we just set `C1'[16]` to `01`, then `02`, and so on, until we hit the jackpot.
+
+<p style="text-align:center"><img src="/images/cbcfake.png" /></p>
 
 Lets say that it turns out that `C1'[16] = 94` gives us valid padding. So now we have:
 
