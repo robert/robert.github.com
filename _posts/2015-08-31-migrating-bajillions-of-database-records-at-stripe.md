@@ -307,7 +307,7 @@ merchant.save
 
 This still works, but is not a tidy state of affairs. We would like to remove the confusing and obfuscating save-chaining and explicitly save everything we need to save ourselves. We therefore log all places where our merchant.save (or whatever) is also actually causing fields on the legal_entity to be changed (as above). We update our before_save blocks to look like:
 
-```
+```ruby
 class Merchant
   prop :legal_entity, foreign: LegalEntity
 
