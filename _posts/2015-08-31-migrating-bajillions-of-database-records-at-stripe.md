@@ -276,7 +276,7 @@ We let this run in production, search our logs for `'Deprecated method called'`,
 
 Once our logging has been silent for for a suitable amount of time (say 2-7 days, depending on how paranoid we are), we remove the proxying layer altogether. All being well it is no longer being used and this should be a no-op, although we nonetheless remove proxying for one or small groups of properties at a time, rather than all of them at once. Just in case.
 
-```
+```ruby
 class Merchant
   prop :legal_entity, foreign: LegalEntity
 
