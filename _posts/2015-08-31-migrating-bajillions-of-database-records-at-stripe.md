@@ -59,7 +59,7 @@ Read on to find out both the nitty and the gritty details.
 
 We start by making the LegalEntity model in our ORM, and the associated table in our database. So far it contains no data, and does absolutely nothing.
 
-```ruby highlight
+```ruby
 class LegalEntity
 end
 ```
@@ -70,7 +70,7 @@ We begin by double-writing all writes to the relevant Merchant and AccountApplic
 
 With the utmost of care, we use some meta-programming magic:
 
-{% highlight ruby %}
+```ruby
 class Merchant
   # Each Merchant has a LegalEntity
   prop :legal_entity, foreign: LegalEntity
@@ -102,7 +102,7 @@ merchant.save
 
 merchant.legal_entity.first_name
 # => Also 'Barry'
-{% endhighlight %}
+```
 
 We let this run in production for a few days, and verify that the data is consistent between tables. If it is not then that we can debug and fix at our leisure, since the Merchant and AccountApplication tables are still the source of truth and we are not relying on the data in the LegalEntity for anything at this point.
 
@@ -132,7 +132,7 @@ We once again check that the relevant Merchant, AccountApplication and LegalEnti
 
 We are now very confident that the LegalEntity table is in sync with and just as reliable as the Merchant and AccountApplication tables. Carefully using some more meta-programming magic, we make all calls to eg. merchant.owner_first_name proxy through to read their data from the associated LegalEntity. We continue to write data to both tables and put this proxying behind a feature flag. This is a simple flag that can be instantly toggled from a UI. When deciding whether to read data from the LegalEntity or from one of our old models, we first check to see if the feature flag is set to "on". This means that if we discover an inconsistency or other error we can instantly flip the feature flag off and switch back to reading directly from the Merchant table whilst we debug.
 
-{% highlight ruby %}
+```ruby
 class Merchant
   prop :legal_entity, foreign: LegalEntity
 
@@ -165,7 +165,7 @@ end
 
 merchant.owner_first_name
 # => calls legal_entity.first_name, which should be the same as Merchant#owner_first_name anyway
-{% endhighlight %}
+```
 
 This updates our data-flows to:
 
@@ -209,15 +209,15 @@ Our data is now fully migrated, and all that remains is to clean up our codebase
 
 This step requires us to be particularly methodical, and is best carried out from within some kind of isolation tank or spiritual mountain retreat. For each Merchant or AccountApplication property that is being proxied through to the LegalEntity, we grep the entire codebase for every single read or write of it, and change to read or write to the LegalEntity directly. For example:
 
-{% highlight ruby %}
+```ruby
 merchant.owner_first_name = 'Barry'
-{% endhighlight %}
+```
 
 becomes:
 
-{% highlight ruby %}
+```ruby
 legal_entity.first_name = 'Barry'
-{% endhighlight %}
+```
 
 We touch a lot of unfamiliar code that we have never seen before, so we are thankful for our extensive and reliable test suite and ask the people with the most context on the code we are updating to review our changes.. We migrate each property in a separate pull request that can be reviewed, monitored and reverted (if necessary) individually.
 
@@ -241,7 +241,7 @@ Whilst we are of course hyper-focussed programming demigods, there is nonetheles
 
 However, in order to make sure we have tracked down everything before we turn off read-proxying completely, we log whenever a deprecated Merchant or AccountApplication field is accessed, and add in an assertion that will make tests fail whenever they are called (but will not throw errors in production).
 
-{% highlight ruby %}
+```ruby
 class Merchant
   prop :legal_entity, foreign: LegalEntity
 
@@ -268,7 +268,7 @@ class Merchant
     end
   end
 end
-{% endhighlight %}
+```
 
 We let this run in production, search our logs for `'Deprecated method called'`, and remove every instance we find.
 
@@ -276,7 +276,7 @@ We let this run in production, search our logs for `'Deprecated method called'`,
 
 Once our logging has been silent for for a suitable amount of time (say 2-7 days, depending on how paranoid we are), we remove the proxying layer altogether. All being well it is no longer being used and this should be a no-op, although we nonetheless remove proxying for one or small groups of properties at a time, rather than all of them at once. Just in case.
 
-{% highlight ruby %}
+```
 class Merchant
   prop :legal_entity, foreign: LegalEntity
 
@@ -292,7 +292,7 @@ class Merchant
     self.legal_entity.save
   end
 end
-{% endhighlight %}
+```
 
 # <a name="section4"></a> 4. Stop multi-saving
 
@@ -300,26 +300,26 @@ end
 
 All of our data is now being read and written directly to the LegalEntity. However, we are still chaining saves through our models, and saving the Merchant still secretly saves the LegalEntity (see the above before_save block). We will most likely have a large number of slightly obtuse looking sections along the lines of:
 
-{% highlight ruby %}
+```ruby
 legal_entity.first_name = 'Barry'
 merchant.save
-{% endhighlight %}
+```
 
 This still works, but is not a tidy state of affairs. We would like to remove the confusing and obfuscating save-chaining and explicitly save everything we need to save ourselves. We therefore log all places where our merchant.save (or whatever) is also actually causing fields on the legal_entity to be changed (as above). We update our before_save blocks to look like:
 
-{% highlight ruby %}
-    class Merchant
-      prop :legal_entity, foreign: LegalEntity
+```
+class Merchant
+  prop :legal_entity, foreign: LegalEntity
 
-      before_save do
-        # Our ORM's implementation of "dirty" fields
-        unless self.legal_entity.updated_fields.empty?
-          self.legal_entity.save
-          log.info('Multi-saved an updated model')
-        end
-      end
+  before_save do
+    # Our ORM's implementation of "dirty" fields
+    unless self.legal_entity.updated_fields.empty?
+      self.legal_entity.save
+      log.info('Multi-saved an updated model')
     end
-{% endhighlight %}
+  end
+end
+```
 
 We also add a feature flag to allow us to force multi-saving, even when there are apparently no updated fields. We can panic-turn this on if we believe that it is necessary.
 
@@ -327,21 +327,21 @@ We also add a feature flag to allow us to force multi-saving, even when there ar
 
 For the next few days, we search our logs for `'Multi-saved an updated model'` to track down all places where saving the Merchant or AccountApplication is also responsible for saving new data on the LegalEntity. We save the LegalEntity ourselves, just before saving the other model, which sets legal_entity.updated_fields to be empty, preventing our log-line from being hit.
 
-{% highlight ruby %}
+```ruby
 legal_entity.first_name = 'Barry'
 merchant.business_url = 'http://foobar.com'
 merchant.save
-{% endhighlight %}
+```
 
 will trigger our log-line, since merchant.save will also save the new LegalEntity#owner_name. It becomes:
 
-{% highlight ruby %}
+```ruby
 legal_entity.first_name = 'Barry'
 legal_entity.save
 
 merchant.business_url = 'http://foobar.com'
 merchant.save
-{% endhighlight %}
+```
 
 which will not, since legal_entity has already saved itself. We add assertions in our before_save block that will make tests that rely on the multi-save to fail, and clean them up too.
 
@@ -349,11 +349,11 @@ which will not, since legal_entity has already saved itself. We add assertions i
 
 Once our log-line has stopped being triggered and we are confident that every model with updated data is correctly saving itself, we pull the final trigger and remove the multi-save. All of our data is where it is supposed to be, we are not proxying any reads or writes, and we are not using any meta-programming.
 
-{% highlight ruby %}
+```ruby
 class Merchant
   prop :legal_entity, foreign: LegalEntity
 end
-{% endhighlight %}
+```
 
 It is over. We feel human once again.
 
