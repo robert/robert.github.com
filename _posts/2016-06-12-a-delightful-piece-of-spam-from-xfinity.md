@@ -15,7 +15,8 @@ I looked closer. The envelope urgently informed the postal service - "DO NOT BEN
 
 The potential costs of a mistake were too high. I grabbed the letter, hurried upstairs, opened it and WHAM it was just spam all along. I tried to look away but it was too late, I had already been forcibly informed that I could add Streampix(R) to my Xfinity account for the low cost of $4.99 per month or get some kind of TV service thing for a 12-month introductory rate of $79.99 per month. Defeated, I tossed the ad and what turned out to be a completely vestigial piece of plastic shaped like a credit card into the kitchen recycling. 
 
-[PICTURE OF FAKE CREDIT CARD]
+![xfinity0](https://cloud.githubusercontent.com/assets/1565857/15996566/cb40ddc0-30dd-11e6-89bc-31c334d64e3f.jpg)
+![xfinity1](https://cloud.githubusercontent.com/assets/1565857/15996567/cb40cede-30dd-11e6-8e08-763a32fca9f1.jpg)
 
 This spam mail was successful for three reasons:
 
