@@ -1,7 +1,6 @@
 ---
 title: A delightful piece of spam from Xfinity
 layout: post
-published: false
 ---
 Last week I was completely outfoxed by some quite delightful spam from Xfinity. It was a Thursday like any other. I opened the mailbox and collected my subscriptions to The New Yorker, Life and Big Jugs Monthly. I went to close the small metal door and retire to my study to peruse this new literature. But today there was also a letter. It was addressed personally to both me and my wife, the big, red, proud Xfinity logo stamped in the top left. I paused.
 
