@@ -2,7 +2,7 @@
 title: How to make Slack less bad
 published: false
 ---
-Slack claim to be in the business of "[making your working life simpler, more pleasant, and more productive](https://slack.com/)". We’re about to be cynical, so let’s acknowledge that this is probably at least partly true. 
+Slack claim to be in the business of "[making your working life simpler, more pleasant, and more productive](https://slack.com/)". We’re about to be cynical, so let’s acknowledge that this is probably at least partly true.
 
 Then let’s acknowledge that they are actually in the much more profitable business of making money and driving product usage by belching out a cataclysm of urgent red circles and desktop alerts and mobile notifications. We should also note that they will be in this business until the not-too-distant day when every single office worker is either face down in a pool of blood at their desk or rocking back and forth in a county asylum muttering "Slackbot told me to do it".
 
@@ -54,9 +54,13 @@ In a further moderately revealing UX choice, it is not possible to go into perma
 
 2. Remove notifications from the Slack dock icon
 
-[Screenshot]
+<p style="text-align: centre">
+<img src="https://cloud.githubusercontent.com/assets/1565857/16693460/1763a316-44ea-11e6-87b8-6313d360bbeb.png" />
+</p>
 
-Even if you have turned off desktop notifications, you’ll still be tabbing through different applications whilst you do your actual work, and I defy you to ignore a “5” in a red circle for longer than 7 seconds. Turning icon notifications off entirely is not possible in the Slack app, so you’ll have to do it in the OS X notifications center.
+([see here](http://appsliced.co/ask/how-do-i-disable-the-red-badge-dock-alerts-in-os-x))
+
+Even if you have turned off desktop notifications, you’ll still be tabbing through different applications whilst you do your actual work, and I defy you to ignore a "5" in a red circle for longer than 7 seconds. Turning icon notifications off entirely is not possible in the Slack app, so you’ll have to do it in the OS X notifications center.
 
 3. Build your own protective shield
 
@@ -66,5 +70,5 @@ Despite your best efforts, you may still catch a hypnotic glimpse of an unread c
 
 [Make conclusion better once everything else is finished]
 
-I do believe that describing Slack as the Facebook of work is extremely apt. When I’m getting a dopamine rush for work discussions I can’t help but feel that something has gone quite wrong somewhere. That said, a company making an enterprise product that people are physically scared of is probably doing very well. It’s relevant. No one is scared of Yammer. 
+When I’m getting a dopamine rush for workplace chatter, I can’t help but feel that something has gone quite wrong. That said, a company making an enterprise product that people are kind of scared of is probably doing very well. It’s relevant. No one is scared of a fax machine anymore.
 
