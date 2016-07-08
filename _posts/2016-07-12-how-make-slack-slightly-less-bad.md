@@ -46,23 +46,23 @@ To do Slack’s work for them and add in the features that they inexplicably mis
 
 1. Turn on Do Not Disturb mode from 12:00AM to 11:30PM everyday
 
-<p style="text-align: centre">
-<img src="https://cloud.githubusercontent.com/assets/1565857/16693331/9bd380d6-44e9-11e6-98cf-8671216ca6d4.png" />
-</p>
+    <p style="text-align: centre">
+    <img src="https://cloud.githubusercontent.com/assets/1565857/16693331/9bd380d6-44e9-11e6-98cf-8671216ca6d4.png" />
+    </p>
 
-([see here](https://get.slack.help/hc/en-us/articles/214908388-Using-Do-Not-Disturb-in-Slack))
+    ([see here](https://get.slack.help/hc/en-us/articles/214908388-Using-Do-Not-Disturb-in-Slack))
 
-In a further moderately revealing UX choice, it is not possible to go into permanent Do Not Disturb mode. 23.5 hours per day is is the best you can do. It's fine to leave a small 11:30PM - 12:00AM chink in your armor, since you should either be asleep or negotiating with your captors for your release at this time. Perma-Do Not Disturb is preferable to turning off notifications entirely, since you want people to be able to reach you quickly if they really need to.
+    In a further moderately revealing UX choice, it is not possible to go into permanent Do Not Disturb mode. 23.5 hours per day is is the best you can do. It's fine to leave a small 11:30PM - 12:00AM chink in your armor, since you should either be asleep or negotiating with your captors for your release at this time. Perma-Do Not Disturb is preferable to turning off notifications entirely, since you want people to be able to reach you quickly if they really need to.
 
 2. Remove notifications from the Slack dock icon
 
-<p style="text-align: centre">
-<img src="https://cloud.githubusercontent.com/assets/1565857/16693460/1763a316-44ea-11e6-87b8-6313d360bbeb.png" />
-</p>
+    <p style="text-align: centre">
+    <img src="https://cloud.githubusercontent.com/assets/1565857/16693460/1763a316-44ea-11e6-87b8-6313d360bbeb.png" />
+    </p>
 
-([see here](http://appsliced.co/ask/how-do-i-disable-the-red-badge-dock-alerts-in-os-x))
+    ([see here](http://appsliced.co/ask/how-do-i-disable-the-red-badge-dock-alerts-in-os-x))
 
-Even if you have turned off desktop notifications, you’ll still be tabbing through different applications whilst you do your actual work, and I defy you to ignore a "5" in a red circle for longer than 7 seconds. Turning icon notifications off entirely is not possible in the Slack app, so you’ll have to do it in the OS X notifications center.
+    Even if you have turned off desktop notifications, you’ll still be tabbing through different applications whilst you do your actual work, and I defy you to ignore a "5" in a red circle for longer than 7 seconds. Turning icon notifications off entirely is not possible in the Slack app, so you’ll have to do it in the OS X notifications center.
 
 3. Build your own protective shield
 
