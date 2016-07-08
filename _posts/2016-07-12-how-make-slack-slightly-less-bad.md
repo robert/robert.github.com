@@ -2,13 +2,13 @@
 title: How to make Slack less bad
 published: false
 ---
-Slack claim to be in the business of “making your working life simpler, more pleasant, and more productive”[LINK]. We’re about to be cynical, so let’s acknowledge that this is probably at least partly true. 
+Slack claim to be in the business of "[making your working life simpler, more pleasant, and more productive](https://slack.com/)". We’re about to be cynical, so let’s acknowledge that this is probably at least partly true. 
 
-Then let’s acknowledge that they are actually in the much more profitable business of making money and driving product usage by belching out a cataclysm of urgent red circles and desktop alerts and mobile notifications. We should also note that they will be in this business until the not-too-distant day when every single office worker is either face down in a pool of blood at their desk or rocking back and forth in a county asylum muttering “Slackbot told me to do it”.
+Then let’s acknowledge that they are actually in the much more profitable business of making money and driving product usage by belching out a cataclysm of urgent red circles and desktop alerts and mobile notifications. We should also note that they will be in this business until the not-too-distant day when every single office worker is either face down in a pool of blood at their desk or rocking back and forth in a county asylum muttering "Slackbot told me to do it".
 
 ## Facebook for work
 
-Yammer, tibbr and Chatter[LINKS] present themselves as Facebook for work. Facebook At Work[LINK] presents itself as Facebook for work. However, none of these products are actually Facebook for work. Slack is. Slack packages up the things that other people do and presents them in a way that compels you to keep reading and searching and clicking and creating more content of your own. Slack is ninety-five percent extremely dull, but seems more interesting than it really is because you know the people involved. Slack is mostly a sea of irrelevant drudgery, but occasionally surprises you with the delicious and variable reward of Shit Going Down. You open up Slack to answer a specific message or check a specific point of information, and then wake up twenty minutes later knee-deep in things you don’t really care about feeling like you just ate six donuts. Slack shouts at you with exciting red numbers, and you love it for this. This is all familiar to you.
+[Yammer](https://www.yammer.com/), [tibbr](http://www.tibbr.com/) and [Chatter](http://www.salesforce.com/chatter/overview/) present themselves as Facebook for work. [Facebook At Work](https://work.fb.com/) presents itself as Facebook for work. However, none of these products are actually Facebook for work. Slack is. Slack packages up the things that other people do and presents them in a way that compels you to keep reading and searching and clicking and creating more content of your own. Slack is ninety-five percent extremely dull, but seems more interesting than it really is because you know the people involved. Slack is mostly a sea of irrelevant drudgery, but occasionally surprises you with the delicious and variable reward of Shit Going Down. You open up Slack to answer a specific message or check a specific point of information, and then wake up twenty minutes later knee-deep in things you don’t really care about feeling like you just ate six donuts. Slack shouts at you with exciting red numbers, and you love it for this. This is all familiar to you.
 
 [Image comparing FB notifications and Slack notifications]
 
@@ -18,7 +18,7 @@ To be clear, if you are having a deliberate and hard-earned break from whatever 
 
 ## Don’t tell anyone but I actually quite like meetings and emails
 
-Slack claims to reduce the number of meetings you have. A survey of 461 Slack owners and administrators[LINK] estimated that Slack had reduced the total number of meetings that they had by an average of 25.1% (±4.53 margin of error with 95% confidence).
+Slack claims to reduce the number of meetings you have. A [survey of 461 Slack owners and administrators](https://slack.com/results) estimated that Slack had reduced the total number of meetings that they had by an average of 25.1% (±4.53 margin of error with 95% confidence).
 
 A quick digression to pick on a marketing page minutia: this addition of an error margin and confidence interval is tiresome integritywashing. Slack knows that the reader knows that any survey results a company publishes about itself are pointless and should be ignored at all costs. Presumably by publishing the mathematical uncertainties they hope to convince the reader that they are not like the other companies, and that they are instead being evenhanded and scientific. However, as they are well aware, the primary uncertainty in the 25.1% number is not the sample size, or anything else that can be communicated by statistical analysis. The primary uncertainty is the fact that the data are all imaginary numbers made up by Slack owners and administrators who invented them based on nothing. Or at least I can only assume they are - the page wisely stops short of a methodology section. This means that the error margin and confidence interval are completely useless for evaluating the data, and their only possible function is to misleadingly increase the perceived Scienceyness of the survey.
 
@@ -44,7 +44,11 @@ To do Slack’s work for them and add in the features that they inexplicably mis
 
 1. Turn on Do Not Disturb mode from 12:00AM to 11:30PM everyday
 
-[Screenshot]
+<p style="text-align: centre">
+<img src="https://cloud.githubusercontent.com/assets/1565857/16693331/9bd380d6-44e9-11e6-98cf-8671216ca6d4.png" />
+</p>
+
+([see here](https://get.slack.help/hc/en-us/articles/214908388-Using-Do-Not-Disturb-in-Slack))
 
 In a further moderately revealing UX choice, it is not possible to go into permanent Do Not Disturb mode. 23.5 hours per day is is the best you can do. It's fine to leave a small 11:30PM - 12:00AM chink in your armor, since you should either be asleep or negotiating with your captors for your release at this time. Perma-Do Not Disturb is preferable to turning off notifications entirely, since you want people to be able to reach you quickly if they really need to.
 
