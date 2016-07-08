@@ -2,7 +2,7 @@
 title: How to make Slack less bad
 published: false
 ---
-Slack claim to be in the business of "[making your working life simpler, more pleasant, and more productive](https://slack.com/)". We’re about to be cynical, so let’s acknowledge that this is probably at least partly true.
+Slack claim to be in the business of "[making your working life simpler, more pleasant, and more productive](https://slack.com/)". We’re about to be cynical, so let’s acknowledge that this claim is probably at least partly true.
 
 Then let’s acknowledge that they are actually in the much more profitable business of making money and driving product usage by belching out a cataclysm of urgent red circles and desktop alerts and mobile notifications. We should also note that they will be in this business until the not-too-distant day when every single office worker is either face down in a pool of blood at their desk or rocking back and forth in a county asylum muttering "Slackbot told me to do it".
 
