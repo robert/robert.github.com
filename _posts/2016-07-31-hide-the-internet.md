@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Take back your time
+title: Hide the internet
 published: false
 ---
 When Facebook takes [fifty minutes of your day](http://www.nytimes.com/2016/05/06/business/facebook-bends-the-rules-of-audience-engagement-to-its-advantage.html), emails are crack and watching any kind of realtime feed is more fun than all but the most avant garde forms of sex, how is anyone meant to feel like they are in control on the information superhighway?
