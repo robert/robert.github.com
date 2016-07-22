@@ -10,7 +10,9 @@ Then let’s acknowledge that they are actually in the much more profitable busi
 
 [Yammer](https://www.yammer.com/), [tibbr](http://www.tibbr.com/) and [Chatter](http://www.salesforce.com/chatter/overview/) present themselves as Facebook for work. [Facebook At Work](https://work.fb.com/) presents itself as Facebook for work. However, none of these products are actually Facebook for work. Slack is. Slack packages up the things that other people type and presents them in a way that compels you to keep reading and searching and clicking and creating more typing of your own. Slack is ninety-five percent extremely dull, but seems more interesting than it really is because you know the people involved. Slack is mostly a sea of irrelevance, but occasionally surprises you with the delicious and variable reward of Shit Going Down. You open up Slack to answer a specific message or check a specific point of information, and then wake up twenty minutes later knee-deep in things you don’t really care about feeling like you just ate six donuts. Slack shouts at you with exciting red numbers, and you love it for this. This is all familiar to you.
 
-[Image comparing FB notifications and Slack notifications]
+<p style="text-align: centre">
+<img src="https://cloud.githubusercontent.com/assets/1565857/17063917/97166eae-4fee-11e6-9b37-b68d98e07fa3.png" />
+</p>
 
 Everything bad about Slack is fundamentally Slack’s fault. Slack’s sane default for a new user is to play a sound and send a desktop notification every time anything happens anywhere. There is no way to simply turn off the screaming red circle on the dock icon. There is no way to simply fold away the sidebar so you can focus on whatever it is you are trying to do. These UI nitpicks help us understand Slack’s conception of the Good Life. Fine tune controls on the level of noise each channel is allowed to make give the illusion of control and serenity, but, to go directly and without shame to the cigarette company analogies, what we’ve got is Marlboro Lights when what we really need is some way to stop smoking.
 
