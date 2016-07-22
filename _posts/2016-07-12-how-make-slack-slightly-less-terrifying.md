@@ -68,8 +68,10 @@ To do Slack’s work for them and add in the features that they inexplicably mis
 
 3. Build your own protective shield
 
-[Screenshot]
+    <p style="text-align: centre">
+    <img src="https://cloud.githubusercontent.com/assets/1565857/17064172/1447b206-4ff0-11e6-9ea6-2435d9910a19.png" />
+    </p>
 
-Despite your best efforts, you may still catch a hypnotic glimpse of an unread channel whilst tabbing between windows. Slack has no "neutral" mode that you can go into when you don’t want to be distracted, but you can make a decent substitute by creating your own Slack team and logging into that on the same machine as your main one. You can press Cmd-1 when you want to turn off the spigot of noise, and Cmd-2 when you want to flick it back on again. It takes a bit of training to get yourself to remember to do this, but it's surprisingly restful once you do.
+    Despite your best efforts, you may still catch a hypnotic glimpse of an unread channel whilst tabbing between windows. Slack has no "neutral" mode that you can go into when you don’t want to be distracted, but you can make a decent substitute by creating your own Slack team and logging into that on the same machine as your main one. You can press Cmd-1 when you want to turn off the spigot of noise, and Cmd-2 when you want to flick it back on again. It takes a bit of training to get yourself to remember to do this, but it's surprisingly restful once you do.
 
 When I’m getting a dopamine rush for workplace chatter, I can’t help but feel that something has gone quite wrong. That said, a company making an enterprise product that people are kind of scared of is probably doing very well. It’s relevant. No one is scared of a fax machine anymore.
