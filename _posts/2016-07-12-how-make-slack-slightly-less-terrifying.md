@@ -57,7 +57,7 @@ To do Slack’s work for them and add in the features that they inexplicably mis
 2. Remove notifications from the Slack dock icon
 
     <p style="text-align: centre">
-    <img src="https://cloud.githubusercontent.com/assets/1565857/16693460/1763a316-44ea-11e6-87b8-6313d360bbeb.png" />
+    <img src="https://cloud.githubusercontent.com/assets/1565857/17063601/fad75626-4fec-11e6-9aec-231d3de7e61f.png" />
     </p>
 
     ([see here](http://appsliced.co/ask/how-do-i-disable-the-red-badge-dock-alerts-in-os-x))
