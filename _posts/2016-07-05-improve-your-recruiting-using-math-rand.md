@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Improve your recruiting using Math.rand
-custom_meta: You can be unprejudiced whilst still being erratic. And when making decisions in a system that is hard to measure and is made up of a small number events (like, say, hiring), noise and volatility work for you, not against.
+custom_meta: You can be unprejudiced whilst still being erratic. And when making decisions in a system that is hard to measure and is made up of a small number of events (like, say, hiring), noise and volatility work for you, not against.
 ---
-Hiring is hard and everyone screws it up all the time. Often it feels like the best an interviewer can hope for is to eliminate bias and prejudice and at least make the same mistakes for everyone. However (explanation and caveats to follow), the opposite of bias is not consistency. You can be unprejudiced whilst still being erratic. And when making decisions in a system that is hard to measure and is made up of a small number events (like, say, hiring), noise and volatility work for you, not against.
+Hiring is hard and everyone screws it up all the time. Often it feels like the best an interviewer can hope for is to eliminate bias and prejudice and at least make the same mistakes for everyone. However (explanation and caveats to follow), the opposite of bias is not consistency. You can be unprejudiced whilst still being erratic. And when making decisions in a system that is hard to measure and is made up of a small number of events (like, say, hiring), noise and volatility work for you, not against.
 
 In this post I will show how you can use a random number generator to de-homogenize your hiring mistakes. You will find out how to build a stronger team without having to actually get any better at evaluating potential hires. You will see the magic of Randomness-Driven Recruiting.
 
