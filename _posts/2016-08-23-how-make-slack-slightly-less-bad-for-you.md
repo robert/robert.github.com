@@ -1,5 +1,5 @@
 ---
-title: How to make Slack less terrifying
+title: How to make Slack less bad for you
 custom_meta: Slack claim to be in the business of "making your working life simpler, more pleasant, and more productive". We’re about to be cynical, so let’s acknowledge that this claim is probably at least partly true.
 ---
 Slack claim to be in the business of "[making your working life simpler, more pleasant, and more productive](https://slack.com/)". We’re about to be cynical, so let’s acknowledge that this claim is probably at least partly true.
