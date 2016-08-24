@@ -11,7 +11,7 @@ Then let’s acknowledge that they are actually in the much more profitable busi
 
 [Yammer](https://www.yammer.com/), [tibbr](http://www.tibbr.com/) and [Chatter](http://www.salesforce.com/chatter/overview/) present themselves as Facebook for work. [Facebook At Work](https://work.fb.com/) presents itself as Facebook for work. However, none of these products are actually Facebook for work. Slack is. Slack packages up the things that other people type and presents them in a way that compels you to keep reading and searching and clicking and creating more typing of your own. Slack is ninety-five percent extremely dull, but seems more interesting than it really is because you know the people involved. Slack is mostly a sea of irrelevance, but occasionally surprises you with the delicious and variable reward of Shit Going Down. You open up Slack to answer a specific message or check a specific point of information, and then wake up twenty minutes later knee-deep in things you don’t really care about feeling like you just ate six donuts. Slack shouts at you with exciting red numbers, and you love it for this. This is all familiar to you.
 
-<p style="text-align: centre">
+<p style="text-align: center">
 <img src="https://cloud.githubusercontent.com/assets/1565857/17063917/97166eae-4fee-11e6-9b37-b68d98e07fa3.png" />
 </p>
 
@@ -49,7 +49,7 @@ To do Slack’s work for them and add in the features that they inexplicably mis
 
 1. Turn on Do Not Disturb mode from 12:00AM to 11:30PM everyday
 
-    <p style="text-align: centre">
+    <p style="text-align: center">
     <img src="https://cloud.githubusercontent.com/assets/1565857/16693331/9bd380d6-44e9-11e6-98cf-8671216ca6d4.png" />
     </p>
 
@@ -69,7 +69,7 @@ To do Slack’s work for them and add in the features that they inexplicably mis
 
 3. Build your own protective shield
 
-    <p style="text-align: centre">
+    <p style="text-align: center">
     <img src="https://cloud.githubusercontent.com/assets/1565857/17064172/1447b206-4ff0-11e6-9ea6-2435d9910a19.png" />
     </p>
 
