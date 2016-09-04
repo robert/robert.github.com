@@ -7,7 +7,7 @@ Matches of Magic are won and lost by your ability to read your opponent’s soul
 
 However, you can also be completely outplayed by an unimaginative, straightforward opponent whose only advantage over you is a keen understanding of a few subtle rules interactions. Losing these matches is completely avoidable, and so here are 10 ways that you can instead be the one using the mighty power of precision and exactitude to destroy all who stand against you. These tactics are guaranteed to reduce the number of times you find yourself lying in a gutter at 0 life thinking “I didn’t know you could do that."
 
-Credit for all of these finesses goes to the numerous people who have beaten me with them, and the people who beat them with them, and the people who beat them, and so on and so forth until probably the only people I actually have to thank are Jon Finkel[LINK] and God.
+Credit for all of these finesses goes to the numerous people who have beaten me with them, and the people who beat them with them, and the people who beat them, and so on and so forth until probably the only people I actually have to thank are [Jon Finkel](https://en.wikipedia.org/wiki/Jon_Finkel) and God.
 
 ## Finessing with “you may"
 
@@ -200,29 +200,12 @@ Them: “(Dammit, wasted a card for nothing)"
 
 Be careful though. In the above example, if your opponent had had a Woodcutter’s Grit that they could have use to respond to your Murder, you would have wasted your Murder AND your Ghoulcaller’s Accomplice would have died. In this case, this is unfortunate but not actually a huge disaster. But if you had been gambling with something more valuable, like a Duskwatch Recruiter, this would be something of a disaster.
 
-
-
 SUMMARY: when you plan on removing an attacker (or blocker), give your opponent as many chances as possible to waste their tricks before pulling the trigger
 
 THINK ABOUT THIS WHEN: you have a way to kill an opponent’s creature during combat and you are pretty sure it is going to work
 
 ## Conclusion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-A “rules lawyer” is someone who knows all the letters of the law but doesn’t care about the spirit. They seize on honest mistakes, spin legal traps and quietly shove you into them when all you wanted to do was somehow get a card from your hand onto the battlefield.
+A "rules lawyer" is someone who knows all the letters of the law but doesn’t care about the spirit. They seize on honest mistakes, spin legal traps and quietly shove you into them when all you wanted to do was somehow get a card from your hand onto the battlefield.
 
 However, there is a world of difference between rules lawyering and simply knowing your rights. None of these tips involve messing with your opponent; you’re just exploring and using the full depth of the game. I for one am looking forward to the next time I get annihilated by something I didn’t even know was possible.
-
