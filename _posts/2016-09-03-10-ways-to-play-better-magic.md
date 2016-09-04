@@ -86,7 +86,8 @@ THINK ABOUT THIS WHEN: you have a creature with double-strike
 
 You have a Wildfield Scarecrow that you intend to sacrifice at the end of your opponent’s turn. Your opponent has a Faithbearer Paladin.
 
-
+![Wildfield Scarecrow](https://cloud.githubusercontent.com/assets/1565857/18232163/c4e3fe48-727e-11e6-8c36-64b0fc016670.png)
+![Faithbearer Paladin](https://cloud.githubusercontent.com/assets/1565857/18232164/c5b25068-727e-11e6-95a5-95d298c6e86a.png)
 
 They attack with their Paladin, and you block. You sacrifice the Scarecrow before damage is dealt, and during the damage step the lifelink-ing Paladin finds that there is no longer anything there for it to deal damage to. Because the Paladin deals 0 damage, your opponent gains 0 life.
 
@@ -98,7 +99,8 @@ THINK ABOUT THIS WHEN: you have creatures with sacrifice abilities, and your opp
 
 You have a first-striking Thalia, Heretic Cathar. They have a deathtouch-ing Rancid Rats. You don’t need to worry about their Rats killing your Thalia if you attack. She will deal her first strike damage, the Rats will die, and they won’t be around to use their deathtouch during normal damage. Thalia will live.
 
-
+![Thalia, Heretic Cathar](https://cloud.githubusercontent.com/assets/1565857/18232165/c8c2ebb4-727e-11e6-9ec6-ec176ba712d2.png)
+![Rancid Rats](https://cloud.githubusercontent.com/assets/1565857/18232166/c9d73762-727e-11e6-8d50-41624a7f31ca.png)
 
 SUMMARY: creatures with first-strike can kill creatures with deathtouch before they have a chance to touch them
 
@@ -118,7 +120,7 @@ A common example is when you want to attack your opponent. The wrong way to do t
 You: “I’ll attack with everyone."
 Them: “Woah, that sounds terrifying. Before you declare attacks I’ll play Expose Evil and tap down your two biggest creatures."
 
-
+![Expose Evil](https://cloud.githubusercontent.com/assets/1565857/18232178/ff012cb8-727e-11e6-8603-9960173851e1.png)
 
 You tipped your plan to your opponent, and they were able to use this information to play a defensive spell that they might not have thought to play otherwise. Better is:
 
@@ -156,7 +158,10 @@ When you are the defending player, you get to wait and see what tricks the attac
 
 Your opponent is attacking with an Exultant Cultist. They have 1 card in hand. You have an untapped Ghoulcaller’s Accomplice and a Borrowed Malevolence with 1 Swamp untapped. You would be fine with trading off, but if possible you would like to use your Borrowed Malevolence to save your Accomplice.
 
-
+![Exultant Cultist](https://cloud.githubusercontent.com/assets/1565857/18232182/0f74d392-727f-11e6-8273-3be8e44c31ef.png)
+![Ghoulcaller's Accomplice](https://cloud.githubusercontent.com/assets/1565857/18232183/109f819a-727f-11e6-8458-96e7a83f22f2.png)
+![Borrowed Malevolence](https://cloud.githubusercontent.com/assets/1565857/18232184/12479b9a-727f-11e6-9fe8-7e5cfe969237.png)
+![Strength of Arms](https://cloud.githubusercontent.com/assets/1565857/18232185/13a668d6-727f-11e6-80c0-ab60920d7668.png)
 
 Bad:
 
@@ -187,7 +192,9 @@ A variation on this strategy arises when you have a removal spell that will flat
 
 Your opponent is attacking with a Noose Constrictor and has 2 cards in their hand. You have an untapped Ghoulcaller’s Accomplice and a Murder in your hand.
 
-
+![Noose Constrictor](https://cloud.githubusercontent.com/assets/1565857/18232460/fe2779ae-7284-11e6-893c-3576e7a2657a.png)
+![Ghoulcaller's Accomplice](https://cloud.githubusercontent.com/assets/1565857/18232461/ff002ab0-7284-11e6-85af-e6c966f3d2f0.png)
+![Murder](https://cloud.githubusercontent.com/assets/1565857/18232462/00024204-7285-11e6-905e-7fe974a34944.png)
 
 You intend to Murder the Noose Constrictor. Bad:
 
@@ -202,6 +209,9 @@ You: “OK, now I’ll Murder your Constrictor."<br/>
 Them: “(Dammit, wasted a card for nothing)"
 
 Be careful though. In the above example, if your opponent had had a Woodcutter’s Grit that they could have use to respond to your Murder, you would have wasted your Murder AND your Ghoulcaller’s Accomplice would have died. In this case, this is unfortunate but not actually a huge disaster. But if you had been gambling with something more valuable, like a Duskwatch Recruiter, this would be something of a disaster.
+
+![Woodcutter's Grit](https://cloud.githubusercontent.com/assets/1565857/18232467/1b57b91c-7285-11e6-926c-7aae98c5955c.png)
+![Duskwatch Recruiter](https://cloud.githubusercontent.com/assets/1565857/18232468/1d3585a2-7285-11e6-9c66-068d61b3b10d.png)
 
 SUMMARY: when you plan on removing an attacker (or blocker), give your opponent as many chances as possible to waste their tricks before pulling the trigger
 
