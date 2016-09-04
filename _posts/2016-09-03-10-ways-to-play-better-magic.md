@@ -87,7 +87,7 @@ THINK ABOUT THIS WHEN: you have a creature with double-strike
 You have a Wildfield Scarecrow that you intend to sacrifice at the end of your opponent’s turn. Your opponent has a Faithbearer Paladin.
 
 ![Wildfield Scarecrow](https://cloud.githubusercontent.com/assets/1565857/18232163/c4e3fe48-727e-11e6-8c36-64b0fc016670.png)
-![Faithbearer Paladin](https://cloud.githubusercontent.com/assets/1565857/18232164/c5b25068-727e-11e6-95a5-95d298c6e86a.png)
+![Faithbearer Paladin](https://cloud.githubusercontent.com/assets/1565857/18232485/5af396fe-7285-11e6-9b1e-a81236b96dff.png)
 
 They attack with their Paladin, and you block. You sacrifice the Scarecrow before damage is dealt, and during the damage step the lifelink-ing Paladin finds that there is no longer anything there for it to deal damage to. Because the Paladin deals 0 damage, your opponent gains 0 life.
 
@@ -99,7 +99,7 @@ THINK ABOUT THIS WHEN: you have creatures with sacrifice abilities, and your opp
 
 You have a first-striking Thalia, Heretic Cathar. They have a deathtouch-ing Rancid Rats. You don’t need to worry about their Rats killing your Thalia if you attack. She will deal her first strike damage, the Rats will die, and they won’t be around to use their deathtouch during normal damage. Thalia will live.
 
-![Thalia, Heretic Cathar](https://cloud.githubusercontent.com/assets/1565857/18232165/c8c2ebb4-727e-11e6-9ec6-ec176ba712d2.png)
+![Thalia, Heretic Cathar](https://cloud.githubusercontent.com/assets/1565857/18232476/40749d82-7285-11e6-8760-0f416288b16f.png)
 ![Rancid Rats](https://cloud.githubusercontent.com/assets/1565857/18232166/c9d73762-727e-11e6-8d50-41624a7f31ca.png)
 
 SUMMARY: creatures with first-strike can kill creatures with deathtouch before they have a chance to touch them
