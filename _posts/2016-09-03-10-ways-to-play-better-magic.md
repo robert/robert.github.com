@@ -57,7 +57,7 @@ THINK ABOUT THIS WHEN: your opponent is playing cards with abilities that can on
 You have a 6/6 Kessig Direwsine, and your opponent has 3 1/1 devil tokens that each deal 1 damage to a creature or player when they die.
 
 ![Kessig Direswine](https://cloud.githubusercontent.com/assets/1565857/18232143/94333e76-727e-11e6-850c-95a0db827c2e.png)
-![Devil Token](https://cloud.githubusercontent.com/assets/1565857/18232146/961cde04-727e-11e6-99e3-711bf97d9d1d.png)
+<img src='https://cloud.githubusercontent.com/assets/1565857/18232146/961cde04-727e-11e6-99e3-711bf97d9d1d.png' style='height: 312px;' />
 
 You attack with your Direswine. Your opponent triple-blocks with all 3 devils. Their plan is for all 3 devils to die, then for each devil to deal 1 damage to your Direswine as it dies. This will be exactly enough to kill it, which would be a shame for you.
 
