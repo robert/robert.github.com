@@ -130,21 +130,21 @@ The same applies to every other transition. Don’t just unilaterally declare bl
 
 If the defending player is playing correctly, they will be waiting for you to either do something or pass priority before revealing their own plays (see below). You should therefore be clear when you are not passing priority. I like saying “No effects”. A perfectly executed combat step might look something like:
 
-—MAIN PHASE---
-Attacker: “Combat?"
-—DECLARE ATTACKERS STEP--
-Defender: “I’ll use Sigardian Priest to tap down your Wretched Gryff."
-A: “Sure. Combat?"
-D: “Yep"
-A: “I’ll attack with Tireless Tracker."
-—DECLARE BLOCKERS STEP--
-D: “Blocks?"
-A: “Yep."
-D: “I’ll block with Sanitarium Skeleton."
-—DAMAGE STEP--
-A: “Sure. No effects."
-D: “No effects. Damage - the Skeleton dies."
-—MAIN PHASE 2--
+---MAIN PHASE---<br/>
+Attacker: “Combat?"<br/>
+---DECLARE ATTACKERS STEP--<br/>
+Defender: “I’ll use Sigardian Priest to tap down your Wretched Gryff."<br/>
+A: “Sure. Combat?"<br/>
+D: “Yep"<br/>
+A: “I’ll attack with Tireless Tracker."<br/>
+---DECLARE BLOCKERS STEP---<br/>
+D: “Blocks?"<br/>
+A: “Yep."<br/>
+D: “I’ll block with Sanitarium Skeleton."<br/>
+—DAMAGE STEP--<br/>
+A: “Sure. No effects."<br/>
+D: “No effects. Damage - the Skeleton dies."<br/>
+---MAIN PHASE 2---
 <More Magic happens>
 
 ### Combat as the defending player
@@ -157,21 +157,21 @@ Your opponent is attacking with an Exultant Cultist. They have 1 card in hand. Y
 
 Bad:
 
-You: “I’ll block with the Accomplice and play Borrowed Malevolence to give it +1/+1. Your Cultist dies and…"
-Them: “I’ll play Strength of Arms to give it +2/+2.
+You: “I’ll block with the Accomplice and play Borrowed Malevolence to give it +1/+1. Your Cultist dies and…"<br/>
+Them: “I’ll play Strength of Arms to give it +2/+2.<br/>
 You: “Dammit."
 
 Your Accomplice dies and you wasted a Borrowed Malevolence. Much better is to make sure your opponent declares whether or not they want to play any tricks:
 
-You: “I’ll block with the Accomplice.” <pause>
-Them: “I’ll play Strength of Arms."
+You: “I’ll block with the Accomplice.” <pause><br/>
+Them: “I’ll play Strength of Arms."<br/>
 You: “(Guess I’ll save my Borrowed Malevolence then)"
 
 Or:
 
-You: “I’ll block with the Accomplice.” <pause>
-Them: “No effects."
-You: “(They could still have a trick that they didn’t want to play, but probably not) I’ll play Borrowed Malevolence to give my Accomplice +1/+1."
+You: “I’ll block with the Accomplice.” <pause><br/>
+Them: “No effects."<br/>
+You: “(They could still have a trick that they didn’t want to play, but probably not) I’ll play Borrowed Malevolence to give my Accomplice +1/+1."<br/>
 Them: “OK, my Cultist dies."
 
 Sometimes they will have been holding back a trick and will blow you out anyway, but you still gave yourself the best chance of success.
@@ -188,14 +188,14 @@ Your opponent is attacking with a Noose Constrictor and has 2 cards in their han
 
 You intend to Murder the Noose Constrictor. Bad:
 
-You: "I’ll Murder your Noose Constrictor."
+You: "I’ll Murder your Noose Constrictor."<br/>
 Them: “OK, it’s dead"
 
 Better:
 
-You: “I’ll block…Noose Constrictor with Ghoulcaller’s Accomplice."
-Them: “I’ll discard a Forest to give the Constrictor +1/+1 so it doesn’t die."
-You: “OK, now I’ll Murder your Constrictor."
+You: “I’ll block…Noose Constrictor with Ghoulcaller’s Accomplice."<br/>
+Them: “I’ll discard a Forest to give the Constrictor +1/+1 so it doesn’t die."<br/>
+You: “OK, now I’ll Murder your Constrictor."<br/>
 Them: “(Dammit, wasted a card for nothing)"
 
 Be careful though. In the above example, if your opponent had had a Woodcutter’s Grit that they could have use to respond to your Murder, you would have wasted your Murder AND your Ghoulcaller’s Accomplice would have died. In this case, this is unfortunate but not actually a huge disaster. But if you had been gambling with something more valuable, like a Duskwatch Recruiter, this would be something of a disaster.
