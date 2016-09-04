@@ -119,9 +119,9 @@ Them: “Woah, that sounds terrifying. Before you declare attacks I’ll play Ex
 
 You tipped your plan to your opponent, and they were able to use this information to play a defensive spell that they might not have thought to play otherwise. Better is:
 
-You: “Combat?"
-Them: “Uhhh…sure."
-You: “OK, I’ll attack with everyone."
+You: “Combat?"<br/>
+Them: “Uhhh…sure."<br/>
+You: “OK, I’ll attack with everyone."<br/>
 Them: (Dang it, should have played Expose Evil)
 
 The same applies to every other transition. Don’t just unilaterally declare blockers; say “blocks?” and wait for confirmation that this is OK. Or “I’ll block…” and wait a second or two to give your opponent a chance to stop you.
