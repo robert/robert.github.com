@@ -13,11 +13,11 @@ Credit for all of these finesses goes to the numerous people who have beaten me 
 
 Somberwald Stag reads “When Somberwald Stag enters the battlefield, you may have it fight target creature you don’t control."
 
-
+![Somberwald Stag](https://cloud.githubusercontent.com/assets/1565857/18232132/4c9253ea-727e-11e6-90b4-fa039e26949c.png)
 
 Prey Upon reads “Target creature you control fights target creature you don’t control."
 
-
+![Prey Upon](https://cloud.githubusercontent.com/assets/1565857/18232133/4ffd0c0a-727e-11e6-9364-595f1e4d5a47.png)
 
 Prey Upon is vulnerable to getting blown out by a counter-trick. Somberwald Stag is not.
 
@@ -35,7 +35,8 @@ THINK ABOUT THIS WHEN: you are playing cards with “you may” clauses where yo
 
 You have a 6/6 Kessig Direswine and a 3/3 Inspiring Captain that has been enchanted with Bound by Moonsilver. You have a Galvanic Bombardment in your hand. Your opponent has no creatures and 1 card in their hand. It is during their first main phase.
 
-
+![Bound by Moonsilver](https://cloud.githubusercontent.com/assets/1565857/18232135/55b2b604-727e-11e6-8e42-1a182c3abbc4.png)
+![Galvanic Bombardment](https://cloud.githubusercontent.com/assets/1565857/18232136/56d9a664-727e-11e6-9cc4-f4c882e5c1f6.png)
 
 They want to be able to cast a crappy creature, then sacrifice it to move the Bound by Moonsilver from your Captain to your Direswine. You want to force them to sacrifice a land if they want to move it.
 
@@ -43,7 +44,7 @@ If they cast a creature without an enter the battlefield trigger, then you can�
 
 However, if they cast a Topplegeist, then when it resolves its enter the battlefield ability will trigger.
 
-
+![Topplegeist](https://cloud.githubusercontent.com/assets/1565857/18232142/91bdbaea-727e-11e6-977a-ec6d01991680.png)
 
 Your opponent will still have priority, but this time the stack will not be empty and they will not be able to use Bound by Moonsilver, since it is not a time at which they can cast a sorcery. If they pass priority then you can cast Galvanic Bombardment on the now-resolved Topplegeist, killing it before your opponent has a chance to sacrifice it.
 
@@ -55,7 +56,8 @@ THINK ABOUT THIS WHEN: your opponent is playing cards with abilities that can on
 
 You have a 6/6 Kessig Direwsine, and your opponent has 3 1/1 devil tokens that each deal 1 damage to a creature or player when they die.
 
-
+![Kessig Direswine](https://cloud.githubusercontent.com/assets/1565857/18232143/94333e76-727e-11e6-850c-95a0db827c2e.png)
+![Devil Token](https://cloud.githubusercontent.com/assets/1565857/18232146/961cde04-727e-11e6-99e3-711bf97d9d1d.png)
 
 You attack with your Direswine. Your opponent triple-blocks with all 3 devils. Their plan is for all 3 devils to die, then for each devil to deal 1 damage to your Direswine as it dies. This will be exactly enough to kill it, which would be a shame for you.
 
@@ -71,7 +73,8 @@ THINK ABOUT THIS WHEN: your opponent multi-blocks with a creature with an on-dea
 
 You have a Blood Mist and a Bloodmad Vampire. Your opponent has nothing.
 
-
+![Bloodmad Vampire](https://cloud.githubusercontent.com/assets/1565857/18232156/abd32168-727e-11e6-924e-99e011071fb8.png)
+![Blood Mist](https://cloud.githubusercontent.com/assets/1565857/18232157/ac995bc6-727e-11e6-9cf7-39c5cffd3be5.png)
 
 You move to combat, using Blood Mist to give your Vampire double-strike, and attack with your Vampire. During the first-strike damage step, your 4/1 Vampire will deal 4 first-strike damage to your opponent, triggering its ability and giving it a +1/+1 counter. It is now a 5/2. During the normal damage step it will deal 5 damage to your opponent, triggering its ability again and giving it another +1/+1 counter. You end combat with a 6/3 Bloodmad Vampire that has dealt 9 damage. If you weren’t paying attention you might have only called the trigger once, instead ending combat with a 5/2 Vampire that has only dealt 8 damage.
 
