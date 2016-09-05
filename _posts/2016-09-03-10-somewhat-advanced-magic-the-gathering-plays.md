@@ -9,7 +9,7 @@ However, precision of execution and a keen understanding of the rules will crush
 
 Credit for all of the below finesses goes to the numerous people who have beaten me with them, and the people who beat them with them, and the people who beat them, and so on and so forth until probably the only people I actually have to thank are [Jon Finkel](https://en.wikipedia.org/wiki/Jon_Finkel) and God.
 
-## Finessing with “you may"
+## Understanding “you may"
 
 Somberwald Stag reads “When Somberwald Stag enters the battlefield, you may have it fight target creature you don’t control."
 
