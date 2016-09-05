@@ -143,14 +143,14 @@ A: “Sure. Combat?"<br/>
 D: “Yep"<br/>
 A: “I’ll attack with Tireless Tracker."<br/>
 ---DECLARE BLOCKERS STEP---<br/>
-D: <pause>“Blocks?"<br/>
+D: **pause**“Blocks?"<br/>
 A: “Yep."<br/>
 D: “I’ll block with Sanitarium Skeleton."<br/>
 —DAMAGE STEP--<br/>
 A: “Sure. No effects."<br/>
 D: “No effects. Damage - the Skeleton dies."<br/>
 ---MAIN PHASE 2---
-<More Magic happens>
+**More Magic happens**
 
 ## Combat as the defending player
 
@@ -172,13 +172,13 @@ You: “Dammit."
 
 Your Accomplice dies and you wasted a Borrowed Malevolence. Much better is to make sure your opponent declares whether or not they want to play any tricks:
 
-You: “I’ll block with the Accomplice.” <pause><br/>
+You: “I’ll block with the Accomplice.” **pause**<br/>
 Them: “I’ll play Strength of Arms."<br/>
 You: “(Guess I’ll save my Borrowed Malevolence then)"
 
 Or:
 
-You: “I’ll block with the Accomplice.” <pause><br/>
+You: “I’ll block with the Accomplice.” **pause**<br/>
 Them: “No effects."<br/>
 You: “(They could still have a trick that they didn’t want to play, but probably not) I’ll play Borrowed Malevolence to give my Accomplice +1/+1."<br/>
 Them: “OK, my Cultist dies."
