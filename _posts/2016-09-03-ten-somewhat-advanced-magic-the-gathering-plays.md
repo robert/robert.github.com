@@ -1,5 +1,5 @@
 ---
-title: 10 somewhat advanced Magic: The Gathering plays
+title: 10 somewhat advanced Magic&#58; The Gathering plays
 layout: post
 tags: Magic
 ---
