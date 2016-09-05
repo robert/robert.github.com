@@ -1,7 +1,7 @@
 ---
 title: 10 somewhat advanced Magic: The Gathering plays
 layout: post
-published: true
+tags: Magic
 ---
 Matches of Magic are won and lost by your ability to read your opponent’s soul, figure out what it is planning and what cards it has, then plan and execute a beautiful, multi-turn strategy that completely annihilates that stupid soul once and for all.
 
