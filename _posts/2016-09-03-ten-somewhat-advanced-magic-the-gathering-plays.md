@@ -152,7 +152,7 @@ D: “No effects. Damage - the Skeleton dies."<br/>
 ---MAIN PHASE 2---
 <More Magic happens>
 
-### Combat as the defending player
+## Combat as the defending player
 
 When you are the defending player, you get to wait and see what tricks the attacking player has during each phase before having to decide whether you want to play any tricks of your own. This can be a powerful weapon if you use it correctly. Many interactions are lost by the person who blinks first.
 
@@ -187,7 +187,7 @@ Sometimes they will have been holding back a trick and will blow you out anyway,
 
 SUMMARY: As the defending player, make sure you find out whether your opponent wants to play any spells before playing any of your own.
 
-### Killing an attacker
+## Killing an attacker
 
 This is particularly important when you have a removal spell that will kill an attacker before you get to the damage step. It might seem like it doesn’t matter when you play your spell, since their creature is going to die whatever happens. But this can be an excellent opportunity to extract some additional value.
 
