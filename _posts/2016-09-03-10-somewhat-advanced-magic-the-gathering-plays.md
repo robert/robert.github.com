@@ -5,7 +5,7 @@ published: false
 ---
 Matches of Magic are won and lost by your ability to read your opponent’s soul, figure out what it is planning and what cards it has, then plan and execute a beautiful, multi-turn strategy that completely annihilates that stupid soul once and for all.
 
-However, precision of execution and a keen understanding of the subtleties of the rules will crush beautiful strategy every time. Here are 10 ways that you can also use the mighty power of exactitude to destroy all who stand against you. These tactics are guaranteed to reduce the number of times you find yourself lying in a gutter at 0 life thinking “I didn’t know you could do that."
+However, precision of execution and a keen understanding of the rules will crush beautiful strategy every time. Here are 10 ways that you can also use the mighty power of exactitude to destroy all who stand against you. These tactics are guaranteed to reduce the number of times you find yourself lying in a gutter at 0 life thinking “I didn’t know you could do that."
 
 Credit for all of the below finesses goes to the numerous people who have beaten me with them, and the people who beat them with them, and the people who beat them, and so on and so forth until probably the only people I actually have to thank are [Jon Finkel](https://en.wikipedia.org/wiki/Jon_Finkel) and God.
 
