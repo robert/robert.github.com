@@ -1,13 +1,13 @@
 ---
-title: 10 ways to play better Magic
+title: 10 somewhat advanced Magic: The Gathering plays
 layout: post
 published: false
 ---
 Matches of Magic are won and lost by your ability to read your opponent’s soul, figure out what it is planning and what cards it has, then plan and execute a beautiful, multi-turn strategy that completely annihilates that stupid soul once and for all.
 
-However, you can also be completely outplayed by an unimaginative, straightforward opponent whose only advantage over you is a keen understanding of a few subtle rules interactions. Losing these matches is completely avoidable, and so here are 10 ways that you can instead be the one using the mighty power of precision and exactitude to destroy all who stand against you. These tactics are guaranteed to reduce the number of times you find yourself lying in a gutter at 0 life thinking “I didn’t know you could do that."
+However, precision of execution and a keen understanding of the subtleties of the rules will crush beautiful strategy every time. Here are 10 ways that you can also use the mighty power of exactitude to destroy all who stand against you. These tactics are guaranteed to reduce the number of times you find yourself lying in a gutter at 0 life thinking “I didn’t know you could do that."
 
-Credit for all of these finesses goes to the numerous people who have beaten me with them, and the people who beat them with them, and the people who beat them, and so on and so forth until probably the only people I actually have to thank are [Jon Finkel](https://en.wikipedia.org/wiki/Jon_Finkel) and God.
+Credit for all of the below finesses goes to the numerous people who have beaten me with them, and the people who beat them with them, and the people who beat them, and so on and so forth until probably the only people I actually have to thank are [Jon Finkel](https://en.wikipedia.org/wiki/Jon_Finkel) and God.
 
 ## Finessing with “you may"
 
@@ -19,11 +19,11 @@ Prey Upon reads “Target creature you control fights target creature you don’
 
 ![Prey Upon](https://cloud.githubusercontent.com/assets/1565857/18232133/4ffd0c0a-727e-11e6-9364-595f1e4d5a47.png)
 
-Prey Upon is vulnerable to getting blown out by a counter-trick. Somberwald Stag is not.
+Prey Upon is vulnerable to getting blown out by a counter-trick. Somberwald Stag is not. Let’s see why.
 
-You cast Prey Upon, targeting your 3/3 Inspiring Captain and your opponent’s 2/3 Bygone Bishop. You plan on this killing their Bishop and leaving your Captain alive. Your opponent casts Strength of Arms, giving their Bishop +2/+2 and making it a 4/5. Now your Prey Upon resolves, and the 4/5 Priest kills your 3/3 Captain and survives. Your have 2-for-1ed yourself and your plans are in ruins.
+You cast Prey Upon, targeting your 3/3 Inspiring Captain and your opponent’s 2/3 Bygone Bishop. You hope that this will kill their Bishop and leave your Captain alive. Your opponent casts Strength of Arms, giving their Bishop +2/+2 and making it a 4/5. Now your Prey Upon resolves, and the 4/5 Priest kills your 3/3 Captain and survives. Your have 2-for-1ed yourself and are probably screwed.
 
-Now consider the Stag. You cast a 4/3 Somberwald Stag. It enters the battlefield, and you target your opponent's 2/3 Bygone Bishop with its trigger. Your opponent again casts Strength of Arms, and their Bishop again becomes a 4/5. However, the Stag’s ability reads “you may”, and whilst you choose the target when the ability goes on the stack, you only decide whether the fight actually happens when the ability resolves. You can therefore simply chose not to fight the Bishop. The Bishop survives, but so does your Stag.
+Now consider the Stag. You cast a 4/3 Somberwald Stag. It enters the battlefield, and you target your opponent's 2/3 Bygone Bishop with its trigger. Your opponent again casts Strength of Arms, and their Bishop again becomes a 4/5. However, the Stag’s ability reads “you may have it fight”, and whilst you choose the target when the ability goes on the stack, you only decide whether the fight actually happens when the ability resolves. You can therefore simply chose not to fight the Bishop. The Bishop survives, but so does your Stag.
 
 If the Stag’s ability was worded something like “When Somberwald Stag enters the battlefield, you may choose target creature. Somberwald Stag fights that creature,” then you would not be able to jack out after the Strength of Arms is cast.
 
@@ -40,9 +40,9 @@ You have a 6/6 Kessig Direswine and a 3/3 Inspiring Captain that has been enchan
 
 They want to be able to cast a crappy creature, then sacrifice it to move the Bound by Moonsilver from your Captain to your Direswine. You want to force them to sacrifice a land if they want to move it.
 
-If they cast a creature without an enter the battlefield trigger, then you can’t stop them from sacrificing it to move the Bound by Moonsilver. Once the Constrictor resolves, the stack will be empty and your opponent will have priority. They can then sacrifice the Constrictor as planned.
+If they cast a creature without an enter the battlefield trigger, then you can’t stop them from sacrificing it to move the Bound by Moonsilver. Once the creature resolves, the stack will be empty and your opponent will have priority. They can then sacrifice the creature as planned.
 
-However, if they cast a Topplegeist, then when it resolves its enter the battlefield ability will trigger.
+However, if they cast, for example, a Topplegeist, then when it resolves its enter the battlefield ability will trigger.
 
 ![Topplegeist](https://cloud.githubusercontent.com/assets/1565857/18232142/91bdbaea-727e-11e6-977a-ec6d01991680.png)
 
@@ -61,9 +61,9 @@ You have a 6/6 Kessig Direwsine, and your opponent has 3 1/1 devil tokens that e
 
 You attack with your Direswine. Your opponent triple-blocks with all 3 devils. Their plan is for all 3 devils to die, then for each devil to deal 1 damage to your Direswine as it dies. This will be exactly enough to kill it, which would be a shame for you.
 
-However, you are not actually obliged to kill all of the devils. When they triple-block, you “order" their blockers. This is the order in which you will deal damage to the blockers. During the damage step you will first assign damage to devil #1. Once you have assigned this blocker enough damage to kill it, you may start to assign damage to devil #2. Once you have assigned devil #2 enough damage to kill it as well, you may start to assign damage to devil #3.
+However, you are not actually obliged to kill all of the devils. When your opponent triple-blocks, you “order" the blockers. This is the order in which you will deal damage to the blockers. During the damage step you will first assign damage to devil #1. Once you have assigned this blocker enough damage to kill it, you may start to assign damage to devil #2. Once you have assigned devil #2 enough damage to kill it as well, you may start to assign damage to devil #3.
 
-The key word here is “may”. Usually you will assign blockers the minimum amount of damage required to kill them so that you can kill the other blockers as well. However, in this scenario you can instead choose to assign 3 damage to devil #1, 3 damage to devil #2, and then 0 damage to devil #3. Devils #1 and #2 will die, but devil #3 will live. The devils can therefore only deal a total of 5 damage to your Direswine, and it will survive.
+Once again, the key word here is “may”. Usually you will assign blockers the minimum amount of damage required to kill them so that you can kill the other blockers as well. However, in this scenario you can instead choose to assign 3 damage to devil #1, 3 damage to devil #2, and then 0 damage to devil #3. Devils #1 and #2 will die, but devil #3 will live. The devils can therefore only deal a total of 5 damage to your Direswine, and it will survive.
 
 SUMMARY: consider your options when assigning combat damage, especially when dealing with creatures with death triggers
 
@@ -73,8 +73,8 @@ THINK ABOUT THIS WHEN: your opponent multi-blocks with a creature with an on-dea
 
 You have a Blood Mist and a Bloodmad Vampire. Your opponent has nothing.
 
-![Bloodmad Vampire](https://cloud.githubusercontent.com/assets/1565857/18232156/abd32168-727e-11e6-924e-99e011071fb8.png)
 ![Blood Mist](https://cloud.githubusercontent.com/assets/1565857/18232157/ac995bc6-727e-11e6-9cf7-39c5cffd3be5.png)
+![Bloodmad Vampire](https://cloud.githubusercontent.com/assets/1565857/18232156/abd32168-727e-11e6-924e-99e011071fb8.png)
 
 You move to combat, using Blood Mist to give your Vampire double-strike, and attack with your Vampire. During the first-strike damage step, your 4/1 Vampire will deal 4 first-strike damage to your opponent, triggering its ability and giving it a +1/+1 counter. It is now a 5/2. During the normal damage step it will deal 5 damage to your opponent, triggering its ability again and giving it another +1/+1 counter. You end combat with a 6/3 Bloodmad Vampire that has dealt 9 damage. If you weren’t paying attention you might have only called the trigger once, instead ending combat with a 5/2 Vampire that has only dealt 8 damage.
 
@@ -93,7 +93,7 @@ They attack with their Paladin, and you block. You sacrifice the Scarecrow befor
 
 SUMMARY: creatures with lifelink don’t gain their controller any life if there is nothing for them to damage
 
-THINK ABOUT THIS WHEN: you have creatures with sacrifice abilities, and your opponent benefits from messing with them
+THINK ABOUT THIS WHEN: you have creatures with sacrifice abilities, and your opponent benefits from it being alive
 
 ## First strike can trump deathtouch
 
@@ -113,7 +113,7 @@ The combat phase is the most interactive part of Magic, and you should take care
 * Before first strike damage is dealt
 * Before normal damage is dealt
 
-Often there will be no spells cast in any of these steps, and combat will be a simple battle of power and toughness. But you should be sure not to speed ahead to the next step and reveal your plans prematurely. Make sure you are being clear when you intend to proceed, giving your opponent enough time to stop you if they have some tricks.
+Often there will be no spells cast in any of these steps, and combat will be a simple battle of power and toughness. But you should be sure to move through each step methodically, and to not speed ahead to the next step and reveal your plans prematurely. Make sure you are being clear when you intend to proceed, giving your opponent enough time to stop you if they have some tricks.
 
 A common example is when you want to attack your opponent. The wrong way to do this is:
 
@@ -133,7 +133,7 @@ The same applies to every other transition. Don’t just unilaterally declare bl
 
 ### Combat as the attacking player
 
-If the defending player is playing correctly, they will be waiting for you to either do something or pass priority before revealing their own plays (see below). You should therefore be clear when you are not passing priority. I like saying “No effects”. A perfectly executed combat step might look something like:
+If the defending player is playing correctly, they will be waiting for you to either do something or pass priority before revealing their own plays (see below). You should therefore be clear when you don’t have any tricks and are passing priority to them. I like saying “No effects”. A perfectly executed combat step might look something like:
 
 ---MAIN PHASE---<br/>
 Attacker: “Combat?"<br/>
@@ -143,7 +143,7 @@ A: “Sure. Combat?"<br/>
 D: “Yep"<br/>
 A: “I’ll attack with Tireless Tracker."<br/>
 ---DECLARE BLOCKERS STEP---<br/>
-D: “Blocks?"<br/>
+D: <pause>“Blocks?"<br/>
 A: “Yep."<br/>
 D: “I’ll block with Sanitarium Skeleton."<br/>
 —DAMAGE STEP--<br/>
@@ -188,7 +188,7 @@ SUMMARY: As the defending player, make sure you find out whether your opponent w
 
 ### Killing an attacker
 
-A variation on this strategy arises when you have a removal spell that will flat-out deal with an attacker.
+This is particularly important when you have a removal spell that will kill an attacker before you get to the damage step. It might seem like it doesn’t matter when you play your spell, since their creature is going to die whatever happens. But this can be an excellent opportunity to extract some additional value.
 
 Your opponent is attacking with a Noose Constrictor and has 2 cards in their hand. You have an untapped Ghoulcaller’s Accomplice and a Murder in your hand.
 
@@ -203,12 +203,12 @@ Them: “OK, it’s dead"
 
 Better:
 
-You: “I’ll block…Noose Constrictor with Ghoulcaller’s Accomplice."<br/>
+You: “I’ll block Noose Constrictor with Ghoulcaller’s Accomplice."<br/>
 Them: “I’ll discard a Forest to give the Constrictor +1/+1 so it doesn’t die."<br/>
 You: “OK, now I’ll Murder your Constrictor."<br/>
 Them: “(Dammit, wasted a card for nothing)"
 
-Be careful though. In the above example, if your opponent had had a Woodcutter’s Grit that they could have use to respond to your Murder, you would have wasted your Murder AND your Ghoulcaller’s Accomplice would have died. In this case, this is unfortunate but not actually a huge disaster. But if you had been gambling with something more valuable, like a Duskwatch Recruiter, this would be something of a disaster.
+Be careful though. In the above example, if your opponent had had a Woodcutter’s Grit that they could have use to respond to your Murder, you would have wasted your Murder AND your Ghoulcaller’s Accomplice would have died. This would be unfortunate for sure, but not a disaster. On the other hand, if you had been gambling with something more valuable, like a Duskwatch Recruiter, this would be nothing less than a tragedy.
 
 ![Woodcutter's Grit](https://cloud.githubusercontent.com/assets/1565857/18232467/1b57b91c-7285-11e6-926c-7aae98c5955c.png)
 ![Duskwatch Recruiter](https://cloud.githubusercontent.com/assets/1565857/18232468/1d3585a2-7285-11e6-9c66-068d61b3b10d.png)
@@ -221,4 +221,4 @@ THINK ABOUT THIS WHEN: you have a way to kill an opponent’s creature during co
 
 A "rules lawyer" is someone who knows all the letters of the law but doesn’t care about the spirit. They seize on honest mistakes, spin legal traps and quietly shove you into them when all you wanted to do was somehow get a card from your hand onto the battlefield.
 
-However, there is a world of difference between rules lawyering and simply knowing your rights. None of these tips involve messing with your opponent; you’re just exploring and using the full depth of the game. I for one am looking forward to the next time I get annihilated by something I didn’t even know was possible.
+However, there is a world of difference between rules lawyering and simply knowing your rights. None of these tips involve messing with your opponent; you’re just exploring and using the full depth of the game in the ways that its creators intended. I for one am looking forward to the next time I get annihilated by something I didn’t even know was possible.
