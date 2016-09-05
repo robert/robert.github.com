@@ -117,7 +117,7 @@ Often there will be no spells cast in any of these steps, and combat will be a s
 
 A common example is when you want to attack your opponent. The wrong way to do this is:
 
-You: “I’ll attack with everyone."
+You: “I’ll attack with everyone."<br/>
 Them: “Woah, that sounds terrifying. Before you declare attacks I’ll play Expose Evil and tap down your two biggest creatures."
 
 ![Expose Evil](https://cloud.githubusercontent.com/assets/1565857/18232178/ff012cb8-727e-11e6-8603-9960173851e1.png)
@@ -159,7 +159,7 @@ When you are the defending player, you get to wait and see what tricks the attac
 Your opponent is attacking with an Exultant Cultist. They have 1 card in hand. You have an untapped Ghoulcaller’s Accomplice and a Borrowed Malevolence with 1 Swamp untapped. You would be fine with trading off, but if possible you would like to use your Borrowed Malevolence to save your Accomplice.
 
 ![Exultant Cultist](https://cloud.githubusercontent.com/assets/1565857/18232182/0f74d392-727f-11e6-8273-3be8e44c31ef.png)
-![Ghoulcaller's Accomplice](https://cloud.githubusercontent.com/assets/1565857/18232183/109f819a-727f-11e6-8458-96e7a83f22f2.png)
+![Ghoulcaller's Accomplice](https://cloud.githubusercontent.com/assets/1565857/18232183/109f819a-727f-11e6-8458-96e7a83f22f2.png)<br/>
 ![Borrowed Malevolence](https://cloud.githubusercontent.com/assets/1565857/18232184/12479b9a-727f-11e6-9fe8-7e5cfe969237.png)
 ![Strength of Arms](https://cloud.githubusercontent.com/assets/1565857/18232185/13a668d6-727f-11e6-80c0-ab60920d7668.png)
 
