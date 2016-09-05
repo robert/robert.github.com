@@ -159,7 +159,8 @@ When you are the defending player, you get to wait and see what tricks the attac
 Your opponent is attacking with an Exultant Cultist. They have 1 card in hand. You have an untapped Ghoulcaller’s Accomplice and a Borrowed Malevolence with 1 Swamp untapped. You would be fine with trading off, but if possible you would like to use your Borrowed Malevolence to save your Accomplice.
 
 ![Exultant Cultist](https://cloud.githubusercontent.com/assets/1565857/18232182/0f74d392-727f-11e6-8273-3be8e44c31ef.png)
-![Ghoulcaller's Accomplice](https://cloud.githubusercontent.com/assets/1565857/18232183/109f819a-727f-11e6-8458-96e7a83f22f2.png)<br/>
+![Ghoulcaller's Accomplice](https://cloud.githubusercontent.com/assets/1565857/18232183/109f819a-727f-11e6-8458-96e7a83f22f2.png)
+<br/>
 ![Borrowed Malevolence](https://cloud.githubusercontent.com/assets/1565857/18232184/12479b9a-727f-11e6-9fe8-7e5cfe969237.png)
 ![Strength of Arms](https://cloud.githubusercontent.com/assets/1565857/18232185/13a668d6-727f-11e6-80c0-ab60920d7668.png)
 
