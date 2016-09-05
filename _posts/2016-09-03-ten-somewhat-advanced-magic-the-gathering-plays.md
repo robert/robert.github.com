@@ -149,7 +149,7 @@ D: “I’ll block with Sanitarium Skeleton."<br/>
 —DAMAGE STEP--<br/>
 A: “Sure. No effects."<br/>
 D: “No effects. Damage - the Skeleton dies."<br/>
----MAIN PHASE 2---
+---MAIN PHASE 2---<br/>
 (((More Magic happens)))
 
 ## Combat as the defending player
