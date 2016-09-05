@@ -93,7 +93,7 @@ They attack with their Paladin, and you block. You sacrifice the Scarecrow befor
 
 SUMMARY: creatures with lifelink don’t gain their controller any life if there is nothing for them to damage
 
-THINK ABOUT THIS WHEN: you have creatures with sacrifice abilities, and your opponent benefits from it being alive
+THINK ABOUT THIS WHEN: you have a creature with sacrifice abilities, and your opponent benefits from it being alive
 
 ## First strike can trump deathtouch
 
