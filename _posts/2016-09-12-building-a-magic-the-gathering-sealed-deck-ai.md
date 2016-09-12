@@ -2,7 +2,6 @@
 title: Building a Magic&#58; The Gathering sealed deck AI
 layout: post
 tags: Magic
-published: false
 ---
 As far as I know, there are no good Magic the Gathering AIs. For the time being you are almost definitely a better Magic player than [Deepmind](https://deepmind.com). Nonetheless, if a huge metal cuboid in a trench coat and dark glasses ever asks whether you have a Standard deck with you, tell it that you aren’t into Pokemon and run for the hills.
 
@@ -174,3 +173,4 @@ It’s conceivable that an AI trained on the aggregate of all the top players wo
 ---
 
 <i>I’m going to re-run this analysis for future sets, and investigate how much variation in difficulty between them there actually is. If that sounds interesting to you then hit the subscribe button below.</i>
+<i>If you'd like the SQLite database that I used to run these analyses then email me for a copy.</i>
