@@ -173,4 +173,5 @@ It’s conceivable that an AI trained on the aggregate of all the top players wo
 ---
 
 <i>I’m going to re-run this analysis for future sets, and investigate how much variation in difficulty between them there actually is. If that sounds interesting to you then hit the subscribe button below.</i>
+<br/>
 <i>If you'd like the SQLite database that I used to run these analyses then email me for a copy.</i>
