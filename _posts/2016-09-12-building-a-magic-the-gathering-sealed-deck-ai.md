@@ -6,7 +6,7 @@ published: false
 ---
 As far as I know, there are no good Magic the Gathering AIs. For the time being you are almost definitely a better Magic player than [Deepmind](https://deepmind.com). Nonetheless, if a huge metal cuboid in a trench coat and dark glasses ever asks whether you have a Standard deck with you, tell it that you aren’t into Pokemon and run for the hills.
 
-In this essay we’re going to talk about how to make a simple AI for building sealed decks. We’re going to analyze data from 280 Eldritch Moon sealed pools that went either 4-1 or 5-0 in [recent MTGO tournaments](http://magic.wizards.com/en/content/deck-lists-magic-online-products-game-info), and use this data and our AI to reason about what makes a sealed format "easy" or "hard". This will both make you a better limited player and keep you safe when the inevitable coup by mecha-Finkel comes.
+In this essay we’re going to analyze data from 280 Eldritch Moon sealed pools that went either 4-1 or 5-0 in [recent MTGO tournaments](http://magic.wizards.com/en/content/deck-lists-magic-online-products-game-info), and use this data to design a sealed deck building AI. We will then use this data and our AI to reason about what makes a sealed format "easy" or "hard". This will both make you a better limited player and keep you safe come the inevitable ascendancy of mecha-Finkel.
 
 ## Meet Lucille
 
