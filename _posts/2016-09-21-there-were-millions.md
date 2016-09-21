@@ -1,6 +1,7 @@
 ---
 title: There were millions
 layout: indented_post
+tags: [Stories]
 ---
 Vance was awake and counting his sins. Moonlight dappled his face through the expensive glass ceiling. It rippled through the rest of this top floor apartment; light and dark but always cold blue.
 
