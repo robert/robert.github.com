@@ -3,6 +3,7 @@ title: There were millions
 layout: indented_post
 tags: [Stories]
 ---
+<br/>
 Vance was awake and counting his sins. Moonlight dappled his face through the expensive glass ceiling. It rippled through the rest of this top floor apartment; light and dark but always cold blue.
 
 Vance counted the stars. There were ten. He counted the moons. Three tonight; one slipped behind a cloud. Vance wondered if he should move to a moon, leave his planetary troubles behind. Radiance needed people to watch their warehouses, and he’d always been good with robots. He could bring them down from the inside, once he’d dug himself in and saved up enough money and got the day’s orders out. He’d always been good with stories too.
