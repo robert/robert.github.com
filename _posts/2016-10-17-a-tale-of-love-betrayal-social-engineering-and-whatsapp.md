@@ -25,7 +25,11 @@ You notice that WhatsApp recently released [WhatsApp Web](https://web.whatsapp.c
 </p>
 You figure that the WhatsApp server probably generates a unique ID of some kind, and then A) sends it to your laptop and B) stores it for later. Your laptop turns this ID into a QR code. Then when you scan the QR code using WhatsApp on your phone, you are effectively saying to the WhatsApp servers "hey, please log me in on the laptop that has the unique ID contained in this QR code."
 
-Because of WhatsApp’s end-to-end encryption, your laptop then actually retrieves your messages directly from your phone, not from any central WhatsApp servers. WhatsApp does not centrally store your messages anywhere. They are saved only on the devices of WhatsApp users. You assume that your laptop generates some kind of public/private key pair and sends the public key to your phone. Your phone uses this to encrypt your messages, and sends these encrypted messages to your laptop via the WhatsApp servers. Since the encryption was negotiated by your devices directly, no one at WhatsApp has any way of reading the messages passing through their systems, no matter how nicely the FBI asks them. This is why web.whatsapp.com only works when your phone is connected to the internet. It’s probably a little more complex than this, but this feels close enough.
+Because of WhatsApp’s end-to-end encryption, your laptop then actually retrieves your messages directly from your phone, not from any central WhatsApp servers. WhatsApp does not centrally store your messages anywhere. They are saved only on the devices of WhatsApp users.
+
+You assume that your laptop generates some kind of public/private key pair and sends the public key to your phone. Your phone uses this to encrypt your messages, and sends these encrypted messages to your laptop via the WhatsApp servers. Since the encryption was negotiated by your devices directly, no one at WhatsApp has any way of reading the messages passing through their systems, no matter how nicely the FBI asks them.
+
+This is why web.whatsapp.com only works when your phone is connected to the internet. It’s probably a little more complex than this, but this feels close enough.
 <p style='text-align: center;'>
   <img src="/images/whatsapp2.jpg" />
 </p>
