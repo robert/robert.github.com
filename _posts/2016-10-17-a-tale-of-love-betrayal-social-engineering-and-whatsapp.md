@@ -100,7 +100,7 @@ end
 
 You deploy it to Heroku and retreat to the privacy of your bedroom to conduct some testing.
 
-You gingerly place your laptop on one side of the room and boot up the server and the Chrome extension. You watch as the QR codes from web.whatsapp.com are sent to your server. You open up https://nothingtoseehere.herokuapp.com/images/latest on your work laptop on the other side of the room. It shows the same QR code as your personal laptop. You pull out your phone, open WhatsApp and scan the QR code from the app open on your work laptop. Your WhatsApp messages appear on your personal laptop on the other side of the room. You let out a bloodcurdling victory yodel.
+You gingerly place your laptop on one side of the room and boot up the server and the Chrome extension. You watch as the QR codes from web.whatsapp.com are sent to your server. You open up https://nothingtoseehere.herokuapp.com/images/latest on your work laptop on the other side of the room. It shows the same QR code as your personal laptop. You pull out your phone, open WhatsApp and scan the QR code from the app open on your work laptop. Your WhatsApp messages appear on your personal laptop on the other side of the room. You let out a bloodcurdling victory screech.
 
 You spend the rest of the evening apologizing to your neighbors for waking their 4 month-old triplets.
 
@@ -141,7 +141,7 @@ You spend a few more minutes describing just how delightful the whole experience
 
 You can see the individual, beautiful bits and bytes flying through the air. You can almost reach out and touch them.
 
-Steve’s messages appear on your screen. You let out another bloodcurdling victory yodel that you try and disguise as a violent cough, with partial success.
+Steve’s messages appear on your screen. You let out another bloodcurdling victory screech that you try and disguise as a violent cough, with partial success.
 
 ## Act 5: Aftermath
 
