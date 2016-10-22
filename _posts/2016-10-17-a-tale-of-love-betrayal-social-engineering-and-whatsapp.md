@@ -29,7 +29,7 @@ Because of WhatsApp’s end-to-end encryption, your laptop then actually retriev
 <p style='text-align: center;'>
   <img src="/images/whatsapp2.jpg" />
 </p>
-This is all interesting to know, but unless you can [Man-In-The-Middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) Steve whilst he’s logging in, it doesn’t directly help you. You are distracted by a wry chuckle and a snort from your friend’s half of the couch. "Agatha just…don’t worry," he quips. You hadn’t asked.
+This is all interesting to know, but unless you can [Man-In-The-Middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) Steve whilst he’s logging in, it doesn’t directly help you. You are distracted by a wry chuckle and a snort from your friend’s half of the couch. "Agatha just...oh you wouldn't get it," he quips. You hadn’t asked.
 
 ## Act 2: Epiphany
 
