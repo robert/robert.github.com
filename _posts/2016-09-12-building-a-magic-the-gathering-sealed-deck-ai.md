@@ -1,5 +1,6 @@
 ---
 title: Building a Magic&#58; The Gathering sealed deck AI
+custom_title: Building a Magic The Gathering sealed deck AI
 layout: post
 tags: Magic
 ---
