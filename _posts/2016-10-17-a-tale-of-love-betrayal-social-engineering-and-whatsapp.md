@@ -157,7 +157,9 @@ It is for Steve’s own good that you begin to educate Agatha on the kinds of di
 
 ## Act 6: The future
 
-You decide to build on your hard work, and you extend the Chrome extension that runs on your laptop. Now whenever it gets logged in to someone’s WhatsApp account, it serializes and saves the session data from your browser's localStorage to some other kind of persistent storage. This session data contains the keys that reauthenticate your laptop to WhatsApp when you refresh the page; it’s how "Remember Me" works. This means that in theory if you save the keys for a session with a WhatsApp account, clear localStorage, then later load the keys back into your browser at your leisure, you should be logged in as that account again. This allows you to leave your laptop running and build up a library of sessions for as many WhatsApp accounts as you can trick your way into.
+You have sworn revenge on a surprisingly large number of people over the years, so you decide to extend your hard work and build up a library of sessions for as many WhatsApp accounts as you can trick your way into.
+
+You extend the Chrome extension that runs on your laptop. Now whenever it gets logged in to someone’s WhatsApp account, it serializes and saves the session data from your browser's localStorage to some other kind of persistent storage. This session data contains the keys that reauthenticate your laptop to WhatsApp when you refresh the page; it’s how "Remember Me" works. This means that in theory if you save the keys for a session with a WhatsApp account, clear localStorage, then later load the keys back into your browser at your leisure, you should be logged in as that account again. This allows you to leave your laptop running, send out more phishing emails, and build up a big bag of phish whose lives you can take over.
 
 You save the data like so:
 
