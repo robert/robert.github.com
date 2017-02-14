@@ -2,7 +2,7 @@
 layout: post
 title: Notes from Rep. Jackie Speier's Town Hall
 ---
-Like many, I find it hard to be tremendously enthused by the 2017 Democratic Party. But in this day and age, if anyone is leading a hall of some hundreds in a fiery pro-choice, anti-wall sermon then I’m much more likely to stamp my feet and cheer than ask how they intend to reverse their party’s economic abandonment of the working class. Which I suppose is a good summary of how the Democratic Party got to where it is today.
+Like many, I find it hard to be tremendously enthused by the 2017 Democratic Party. But in this day and age, if anyone is leading a hall of some hundreds in a fiery pro-choice, anti-wall sermon then I’m much more likely to stamp my feet and cheer than ask how they intend to reverse their party’s economic abandonment of the working class. Which I suppose is a good explanation of how the Democratic Party got to where it is today.
 
 ### The same but better
 
