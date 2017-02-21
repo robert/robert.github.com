@@ -1,7 +1,6 @@
 ---
-title: Technically a bug in Instagram
+title: A small, security-adjacent bug in Instagram
 layout: post
-published: false
 ---
 # Summary
 
@@ -16,7 +15,7 @@ However, instead of informing a target that "your email address has been changed
 # How to use this bug in your own hacking practise
 
 * Gain access to target’s Instagram account, either by gaining access to their device or their Instagram password (this is admittedly the hardest step)
-* Update the email address associated with target’s Instagram account to an email address controlled by you. As described above, they will receive a nonsensical notification about their email address being updated to itself
+* Update the email address associated with target’s Instagram account to an email address controlled by you. As described above, they will receive a nonsensical notification about their email address being updated to itself. There is a good chance that they will ignore it
 * Use the Instagram "Forgot your password?" flow to send yourself a password reset email. The target will receive no notification that their password has been updated, although all of their current sessions will be invalidated and they will be logged out.
 
 You have now gained total control of the target’s Instagram account, without clearly tipping off your target . To further reduce the chance of being discovered, you could delay resetting the target's password until you want to lock them out of the account entirely, since it is only this step that causes them to be forcibly logged out from their current sessions. When this happens they will find that they are unable to log back in, and will have no choice but to confront the cataclysmic disaster that has befallen them. And contact Instagram support.
@@ -45,7 +44,7 @@ scala> "cooldude123@gmail.com" == "cooldude123@gmail.com"
 res0: Boolean = true
 ```
 
-It was only when I went to reset the password a few hours later, just to be on the safe side, and was informed that a notification email had been sent to v******@b****.me (this is not my email address) that I realized that I had been owned.
+It was only when I went to reset the password a few hours later, just to be on the safe side, and was informed that a notification email had been sent to `v******@b****.me` (this is not my email address) that I realized that I had been owned.
 
 The Instagram account itself was 7 years old, unused and basically meaningless to me, but for completeness I emailed Instagram support to try and regain control of the account, and then started investigating why the email update notification I had received had not showed the email address of the attacker. I was hoping for something interesting like an edge case when two updates are made in quick succession, or when an empty update is made, or when the new email address includes a + symbol, or whatever. However, I quickly found out that there’s just a bug in the email template that prints the old email twice, which made me feel much less clever.
 
@@ -65,4 +64,4 @@ I like to think that this was a planned and ingenious choice on the part of the 
 * 2017-02-07 - Facebook reply saying that this is not a security vulnerability
 * 2017-02-07 - Replied to Facebook saying that I think it is and can I have a bug bounty please
 * 2017-02-08 - Facebook insist that it is not (probably correctly) and close the ticket
-* 2017-02-10 - Blog post published
+* 2017-02-20 - Blog post published
