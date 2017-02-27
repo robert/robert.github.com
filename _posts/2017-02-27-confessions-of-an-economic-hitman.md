@@ -1,9 +1,13 @@
---
+---
 title: Confessions of an Economic Hitman
 layout: post
 published: false
 tags: [Book Reviews]
---
+---
+<p align="center">
+<img src="/images/ceh.jpg" />
+</p>
+
 Confessions of an Economic Hitman is a book about the author's enormous, gargantuan, monumental flaws and the roiling turmoil he went through in coming to terms with them. It is a book about the economic cyanide force-fed to the developing word by the US government, the IMF and the rest of what author John Perkins calls “the corporatocracy”. Perkins describes how he personally used to encourage developing countries to accept enormous loans in order to pay US companies to overhaul their infrastructure. Deliberately over-enthusiastic economic forecasts from companies like Chas T. Main, Perkins’s former employer, make the deals look like once in a lifetime opportunities. However, the promised benefits never materialize. The countries are inevitably unable to repay their loans, at which point the lenders (typically the IMF, US government or US banks) kindly offer to renegotiate terms in exchange for neoliberal reform and a Sword of Damocles. The rulers of these countries typically become rich, whilst their country is ruined.
 
 I am very prepared to believe in the existence of a global order as described by Perkins. His claims line up well with those made in books like David Harvey’s A Brief History of Neoliberalism, and you don’t have to scrape away very much realpolitik from the current status quo before you get to some bona fide bullshit. However, I am already much less credulous when it comes to his personal part in it. Perkins is embarrassingly focussed on convincing the reader that he is really cool. Much of this amounts to something one might call “shithead-bragging” - yes I was a total shithead, but I was really, really good at it. Jordan Belfort (the "Wolf of Wall Street") showed that given enough charisma and tut-tut-able excess this can still make for a great story. But Perkins instead comes across as an mid-sized cog desperate to convince you that in actuality he was one of the most incredible cogs that the machine had ever seen.
