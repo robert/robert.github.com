@@ -1,7 +1,6 @@
 ---
-title: Confessions of an Economic Hitman
+title: Confessions of an Economic Hitman - a review
 layout: post
-published: false
 tags: [Book Reviews]
 ---
 <p align="center">
