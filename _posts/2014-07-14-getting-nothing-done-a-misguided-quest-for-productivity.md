@@ -2,6 +2,7 @@
 layout: post
 title: Getting Nothing Done&#58; a misguided quest for productivity
 weight: 0
+tags: [Productivity]
 blurb: In which our hero is driven temporarily insane for several years by a rabid need to be productive.
 hn: 8096791
 ---
