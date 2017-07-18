@@ -1,7 +1,6 @@
 ---
 title: Reverse engineering LogicPro synth files
 layout: post
-published: false
 ---
 I really like files. Most programs running on your computer probably store at least some information in files. And the great thing about files is that you, the humble user, can really jam your fingers into them and wiggle them around if you have a mind to. You might be able to modify a file to jump yourself forward 10 levels, migrate your data from a crappy piece of software to a better one, or turn something a funny color. This lets you feel like a badass pirate hacker without having to go to the terrifying trouble of actually breaking any laws.
 
