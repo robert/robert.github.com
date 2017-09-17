@@ -1,5 +1,5 @@
 ---
-title: How to read better
+title: How to read
 layout: post
 tags: [Productivity]
 published: false
