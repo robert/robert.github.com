@@ -21,7 +21,7 @@ Learning comes from repetition, but books are long and verbose and not designed 
 To try and get more reps in, I think that books should be read in two phases:
 
 1. Read and annotate the book in a way that makes it easy to scan and digest once you have finished
-2. Once you have finished the book, make a "writeup". This involves summarizing the book,  doing further research and making flashcards (using Anki[LINK])
+2. Once you have finished the book, make a "writeup". This involves summarizing the book,  doing further research and making flashcards (using [Anki][https://ankiweb.net])
 
 <p align="center">
 <img src="/images/anki0.PNG" width=200 />
