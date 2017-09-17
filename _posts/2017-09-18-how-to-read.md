@@ -24,8 +24,8 @@ To try and get more reps in, I think that books should be read in two phases:
 2. Once you have finished the book, make a "writeup". This involves summarizing the book,  doing further research and making flashcards (using Anki[LINK])
 
 <p align="center">
-<img src="/images/anki0.PNG" />
-<img src="/images/anki1.PNG" />
+<img src="/images/anki0.PNG" width=100 />
+<img src="/images/anki1.PNG" width=100 />
 </p>
 
 The writeup usually takes between one and four hours, and it serves three functions:
