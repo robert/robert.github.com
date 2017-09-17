@@ -25,7 +25,6 @@ To try and get more reps in, I think that books should be read in two phases:
 
 <p align="center">
 <img src="/images/anki0.PNG" width=200 />
-<img src="/images/anki1.PNG" width=200 />
 </p>
 
 The writeup usually takes between one and four hours, and it serves three functions:
@@ -135,6 +134,10 @@ After this, go back through your list of "Questions", researching each one and m
 > Everyone should keep a pile of aphorisms lying around - you never know when you’ll need one.
 
 > \- Robert Heaton
+
+<p align="center">
+<img src="/images/anki1.PNG" width=200 />
+</p>
 
 # Conclusion
 
