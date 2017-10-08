@@ -1,5 +1,5 @@
 ---
-title: WhatsApp Tracker
+title: Using WhatsApp to track friends and strangers
 layout: post
 tags: [Security]
 ---
