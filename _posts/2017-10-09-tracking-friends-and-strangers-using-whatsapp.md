@@ -1,5 +1,5 @@
 ---
-title: Using WhatsApp to track friends and strangers
+title: Tracking friends and strangers using WhatsApp
 layout: post
 tags: [The Adventures of Steve Steveington]
 published: false
