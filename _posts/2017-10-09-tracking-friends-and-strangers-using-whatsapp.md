@@ -18,6 +18,7 @@ WhatsApp does have some privacy settings. Users can chose whether to display the
 Monitoring Steve Steveington on WhatsApp presents a different set of challenges to monitoring him on Facebook. Facebook sends data to your browser using straightforward HTTP requests that you can easily write a program to mimic. However, WhatsApp communicates with your browser using a much more complex Web Sockets-based protocol. You like to think of yourself as more of a generalist engineer, and something as esoteric and silly as Web Sockets falls outside of your definition of generalist. You decide instead to write a Chrome extension to watch and record the contents of your web.whatsapp.com activity. You manage to do this in 4 lines of Javascript.
 
 ```
+// NOTE - Requires jQuery
 setInterval(function() {
   var lastSeen = $('.pane-header .chat-body .emojitext').last().text();
   console.log(Math.floor(Date.now() / 1000) + ", " + lastSeen);
