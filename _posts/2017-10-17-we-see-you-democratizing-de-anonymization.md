@@ -3,6 +3,8 @@ title: WeSeeYou - Democratizing De-Anonymization
 layout: post
 tags: [Security]
 og_image: https://robertheaton.com/images/weseeyouheader.jpg
+og_image_width: 1300
+og_image_height: 612
 ---
 Hi everyone, thanks for coming. My name is Hobert Reaton, founder and CEO of WeSeeYou, the most powerful online user happiness and de-anonymization tool on the market today. Before I begin, has everyone signed one of our NDAs? Fantastic, fantastic.
 
