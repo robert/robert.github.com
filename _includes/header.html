@@ -7,11 +7,18 @@ var pageTitle = "{{ page.title }}" || "Home"
 <meta property="og:image" content="{{ page.og_image }}"/>
 <meta property="og:image:width" content="{{ page.og_image_width }}" />
 <meta property="og:image:height" content="{{ page.og_image_height }}" />
+
+<meta name="twitter:image" content="{{ page.og_image }}" />
 {% else %}
 <meta property="og:image" content="http://robertheaton.com/images/icon.png"/>
 <meta property="og:image:width" content="300" />
 <meta property="og:image:height" content="300" />
+
+<meta name="twitter:image" content="http://robertheaton.com/images/icon.png" />
 {% endif %}
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@RobJHeaton" />
 
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport' />
 <meta content='text/html; charset=utf-8' http-equiv='content-type' />
@@ -19,18 +26,29 @@ var pageTitle = "{{ page.title }}" || "Home"
 {% if page.date %}
 <meta content='{{ site.url }}{{ page.url }}' property='og:url' />
 <meta property="og:type" content='article'/>
+
 {% if page.custom_title %}
 <meta property="og:title" content='{{ page.custom_title | strip_html | trim | escape }} | {{ site.name }}'/>
+
+<meta name="twitter:title" content="{{ page.custom_title | strip_html | trim | escape }} | {{ site.name }}" />
 {% else %}
 <meta property="og:title" content='{{ page.title | strip_html | trim | escape }} | {{ site.name }}'/>
+
+<meta name="twitter:title" content="{{ page.title | strip_html | trim | escape }} | {{ site.name }}" />
 {% endif %}
+
   {% if page.custom_meta %}
   <meta property="og:description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
   <meta property="description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
+
+  <meta name="twitter:description" content="{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}" />
   {% else %}
   <meta property="og:description" content='{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}'/>
   <meta property="description" content='{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}'/>
+
+  <meta name="twitter:description" content="{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}" />
   {% endif %}
+
 {% else %}
 <meta content='{{ site.url }}' property='og:url' />
 <meta property="og:type" content='blog'/>
