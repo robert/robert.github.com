@@ -2,7 +2,6 @@
 title: WeSeeYou - Democratizing De-Anonymization
 layout: post
 tags: [Security]
-displayed: true
 og_image: https://robertheaton.com/images/weseeyouheader.jpg
 ---
 Hi everyone, thanks for coming. My name is Hobert Reaton, founder and CEO of WeSeeYou, the most powerful online user happiness and de-anonymization tool on the market today. Before I begin, has everyone signed one of our NDAs? Fantastic, fantastic.
@@ -17,7 +16,7 @@ You’re wide open with your users; you tell them which member of Arcade Fire wo
 
 We at WeSeeYou are on a mission to democratize access to universal user de-anonymization. Want to know when a celebrity or other top influencer is contemplating a purchase? Want to watch the activity of friendly or unfriendly journalists as they browse your news? Want to know when Donald Trump reads your article? Want to nudge your prices up and down just a shade depending on the depth of your visitor’s pockets? Or do you just want to know the name of the person on the other side of the screen? WeSeeYou will tell you. And today I’m going to show you how.
 
-## WeSeeYou
+## Pay close attention to what people say
 
 People may not want to talk to you, but they sure talk to each other a lot. They write Tweets, blog posts, reviews on Amazon, answers on Stack Overflow, articles, comments on articles, comments on comments on articles. They use text, gifs, images, videos, gifs, gifs, more gifs.
 
@@ -39,7 +38,7 @@ Our server calculates the user’s fingerprint and sends the result back to our 
 
 I should note that the EFF have shown that browser fingerprints often change every few days, as users update or otherwise mess around with their browser settings. However, most people who share one link typically share many more, and we are developing some very promising algorithms to combine similar fingerprints for users who look like they might be the same person.
 
-## 2. In the background
+## 2. What we do is in the background
 
 Now that WeSeeYou knows that one (and only one) of your users has viewed the URL `news.com/green-eggs-reportedly-delicious-with-ham-asdf2498sfdkujsxd69142`, we go searching the internet and see if anyone shares this unique URL. We scrape the entire internet looking for your URL, with a particular focus on blogs, forums, news articles, Reddit and government websites. We are constantly crawling Twitter, Google Plus, LinkedIn, and all of the other major walled gardens. Whenever we find it, we save the connection between the URL and the person who posted it, and shoot you a webhook or email with what we’ve found.
 
