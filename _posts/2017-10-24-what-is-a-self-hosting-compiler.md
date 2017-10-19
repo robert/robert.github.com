@@ -2,15 +2,17 @@
 title: What is a self-hosting compiler?
 layout: post
 tags: [Programming]
-displayed: false
+displayed: true
 ---
 "What language is the Coffeescript compiler written in?" I asked my brilliant, witty and insightful colleague Grzegorz Kossakowski. "The Coffeescript compiler is written in Coffeescript," he replied. Since this statement is clearly stupid, I denounced him as a liar and an idiot and took back all of the nice things I had said about him.
 
 After I had calmed down and paid for his jacket to be dry-cleaned, Greg was nice enough to explain self-hosting, a technique that really does allow the Coffeescript compiler to be written in Coffeescript. I used this information to create Gluby, an asinine new programming language that also has a self-hosted compiler. It is syntactically identical to Ruby, except instead of writing `=`, you write the actual word `EQUALS`. You can't write the actual word `EQUALS` anywhere else in your program otherwise it will break. This essay explains self-hosting and introduces v0.1 of Gluby.
 
-[DOODLE OF GLORP CODE]
+<p align="center">
+<img src="/images/glorpcode.jpg" />
+</p>
 
-# What self-hosting actually means
+# What is a self-hosting compiler?
 
 Whilst it's delightful mystifying to say that Coffeescript is written in Coffeescript, in my view it's also a little misleading. To be more precise but less obtuse, Coffeescript v6 is written in Coffeescript v5, v7 is written in v6, v8 is written in v7 and so on and so forth until we arrive at the singularity and are no longer dependent on this mortal realm or Javascript in any form.
 
@@ -24,7 +26,9 @@ In order for a language to be made self-hosting, it must first be capable of act
 
 Once a language has been made sufficiently powerful, you simply use it to reimplement its compiler. This compiler is no different to any other program that the language may have been used for. It takes input and produces output, and it just so happens that the input is a source file for that very language, and the output is something that a computer can run.
 
-[PIC]
+<p align="center">
+<img src="/images/glorppython.jpg" />
+</p>
 
 You then use the old compiler to compile your new one, and now you can throw away the old compiler in the original implementation language forever. You have new source code and a new runnable version of the compiler, so you have no need for the old versions any more. You can continue to swing up the ladder by writing a new version of the language using the current version, compiling it using the current version, and then throwing the current version away forever too.
 
@@ -82,6 +86,10 @@ File.open(input_filename, "r") do |input_f|
   end
 end
 ```
+
+<p align="center">
+<img src="/images/glorpglorp.jpg" />
+</p>
 
 ### v2 - written in Gluby v1
 
