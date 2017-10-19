@@ -9,7 +9,7 @@ displayed: true
 After I had calmed down and paid for his jacket to be dry-cleaned, Greg was nice enough to explain self-hosting, a technique that really does allow the Coffeescript compiler to be written in Coffeescript. I used this information to create Gluby, an asinine new programming language that also has a self-hosted compiler. It is syntactically identical to Ruby, except instead of writing `=`, you write the actual word `EQUALS`. You can't write the actual word `EQUALS` anywhere else in your program otherwise it will break. This essay explains self-hosting and introduces v0.1 of Gluby.
 
 <p align="center">
-<img src="/images/glorpcode.jpg" />
+<img src="/images/glubycode.jpg" width="500"/>
 </p>
 
 # What is a self-hosting compiler?
@@ -27,7 +27,7 @@ In order for a language to be made self-hosting, it must first be capable of act
 Once a language has been made sufficiently powerful, you simply use it to reimplement its compiler. This compiler is no different to any other program that the language may have been used for. It takes input and produces output, and it just so happens that the input is a source file for that very language, and the output is something that a computer can run.
 
 <p align="center">
-<img src="/images/glorppython.jpg" />
+<img src="/images/glubypython.jpg" />
 </p>
 
 You then use the old compiler to compile your new one, and now you can throw away the old compiler in the original implementation language forever. You have new source code and a new runnable version of the compiler, so you have no need for the old versions any more. You can continue to swing up the ladder by writing a new version of the language using the current version, compiling it using the current version, and then throwing the current version away forever too.
@@ -88,7 +88,7 @@ end
 ```
 
 <p align="center">
-<img src="/images/glorpglorp.jpg" />
+<img src="/images/glubygluby.jpg" />
 </p>
 
 ### v2 - written in Gluby v1
