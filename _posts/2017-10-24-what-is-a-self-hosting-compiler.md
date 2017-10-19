@@ -22,7 +22,7 @@ The process of creating a self-hosting compiler begins with a compiler implement
 
 v0 of the Gluby compiler is a Python program that reads a `.gl` file and turns it into a `.glc` file by replacing all of the instances of the word `EQUALS` with actual `=` signs. The programmer can then execute this compiled Gluby file using the Ruby interpreter.
 
-In order for a language to be made self-hosting, it must first be capable of actually writing compilers. It will probably need to be able to build and manipulate abstract syntax trees, which is by no means straightforward. Gluby sidesteps this issue vie wholesale theft all of Ruby's features and syntax, but since Coffeescript was developing an entirely new syntax it had to build out its functionality the hard way and actually re-implement things like classes, loops and if-statements.
+In order for a language to be made self-hosting, it must first be capable of actually writing compilers. It will probably need to be able to build and manipulate abstract syntax trees, which is by no means straightforward. Gluby sidesteps this issue via wholesale theft all of Ruby's features and syntax, but since Coffeescript was developing an entirely new syntax it had to build out its functionality the hard way and actually re-implement things like classes, loops and if-statements.
 
 Once a language has been made sufficiently powerful, you simply use it to reimplement its compiler. This compiler is no different to any other program that the language may have been used for. It takes input and produces output, and it just so happens that the input is a source file for that very language, and the output is something that a computer can run.
 
