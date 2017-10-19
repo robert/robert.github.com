@@ -2,7 +2,7 @@
 title: What is a self-hosting compiler?
 layout: post
 tags: [Programming]
-displayed: true
+displayed: false
 ---
 "What language is the Coffeescript compiler written in?" I asked my brilliant, witty and insightful colleague Grzegorz Kossakowski. "The Coffeescript compiler is written in Coffeescript," he replied. Since this statement is clearly stupid, I denounced him as a liar and an idiot and took back all of the nice things I had said about him.
 
