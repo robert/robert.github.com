@@ -2,7 +2,6 @@
 title: What is a self-hosting compiler?
 layout: post
 tags: [Programming]
-displayed: false
 ---
 "What language is the Coffeescript compiler written in?" I asked my brilliant, witty and insightful colleague Grzegorz Kossakowski. "The Coffeescript compiler is written in Coffeescript," he replied. Since this statement is clearly stupid, I denounced him as a liar and an idiot and took back all of the nice things I had said about him.
 
@@ -16,7 +15,7 @@ After I had calmed down and paid for his jacket to be dry-cleaned, Greg was nice
 
 Whilst it's delightful mystifying to say that Coffeescript is written in Coffeescript, in my view it's also a little misleading. To be more precise but less obtuse, Coffeescript v6 is written in Coffeescript v5, v7 is written in v6, v8 is written in v7 and so on and so forth until we arrive at the singularity and are no longer dependent on this mortal realm or Javascript in any form.
 
-The process of creating a self-hosting compiler begins with a compiler implementation in a language that already exists. Coffeescript was originally written in Ruby. The Scala compiler is also self-hosting, and its was originally was written in a long-forgotten language called Pizza. The first version of your new compiler needs to parse your source files (written in your new language) and turn them into something that your computer can execute.
+The process of creating a self-hosting compiler begins with a compiler implementation in a language that already exists. Coffeescript was originally written in Ruby. The Scala v2 compiler is also self-hosting, and its v1 was was [written in Java](https://github.com/scala/scala/commit/4177daab2f54bdb20c71f623296a8bb32616fd12). The first version of your new compiler needs to be able to parse your source files (written in your new language) and turn them into something that your computer can execute.
 
 # How I made Gluby self-hosting
 
