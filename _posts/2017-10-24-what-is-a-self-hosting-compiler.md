@@ -5,7 +5,7 @@ tags: [Programming]
 ---
 "What language is the Coffeescript compiler written in?" I asked my brilliant, witty and insightful colleague Grzegorz Kossakowski. "The Coffeescript compiler is written in Coffeescript," he replied. Since this statement is clearly stupid, I denounced him as a liar and an idiot and took back all of the nice things I had said about him.
 
-After I had calmed down and paid for his jacket to be dry-cleaned, Greg was nice enough to explain self-hosting, a technique that really does allow the Coffeescript compiler to be written in Coffeescript. I used this information to create Gluby, an asinine new programming language that also has a self-hosted compiler. It is syntactically identical to Ruby, except instead of writing `=`, you write the actual word `EQUALS`. You can't write the actual word `EQUALS` anywhere else in your program otherwise it will break. This essay explains self-hosting and introduces v0.1 of Gluby.
+After I had calmed down and paid for his jacket to be dry-cleaned, Greg was nice enough to explain self-hosting, a technique that really does allow the Coffeescript compiler to be written in Coffeescript. A self-hosting compiler is one that can compile its own source code. I used this information to create Gluby, an asinine new programming language that also has a self-hosted compiler. It is syntactically identical to Ruby, except instead of writing `=`, you write the actual word `EQUALS`. You can't write the actual word `EQUALS` anywhere else in your program otherwise it will break. This essay explains self-hosting and introduces v0.1 of Gluby.
 
 <p align="center">
 <img src="/images/glubycode.jpg" width="500"/>
