@@ -43,7 +43,7 @@ var pageTitle = "{{ page.title }}" || "Home"
 
   <meta name="twitter:description" content="{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}" />
   {% else %}
-  {% assign description = page.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' | strip_html | strip |  truncatewords: 30 %}
+  {% assign description = page.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' | strip_html | strip |  truncatewords: 90 %}
 
   <meta property="og:description" content='{{ description }}'/>
   <meta property="description" content='{{ description }}'/>
