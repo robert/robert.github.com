@@ -43,10 +43,12 @@ var pageTitle = "{{ page.title }}" || "Home"
 
   <meta name="twitter:description" content="{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}" />
   {% else %}
-  <meta property="og:description" content='{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}'/>
-  <meta property="description" content='{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}'/>
+  {% assign description = page.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' | strip_html | strip |  truncatewords: 30 %}
 
-  <meta name="twitter:description" content="{{ page.content | strip_html | strip_newlines | truncate: 200 | escape }}" />
+  <meta property="og:description" content='{{ description }}'/>
+  <meta property="description" content='{{ description }}'/>
+
+  <meta name="twitter:description" content="{{ description }}" />
   {% endif %}
 
 {% else %}
