@@ -2,7 +2,6 @@
 title: A zero-knowledge proof for the existence of God
 layout: post
 tags: [Stories, Security]
-published: false
 og_image: https://robertheaton.com/images/hatgraph.jpg
 og_image_width: 1300
 og_image_height: 612
