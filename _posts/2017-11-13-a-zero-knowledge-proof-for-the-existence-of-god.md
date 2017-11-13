@@ -5,6 +5,8 @@ tags: [Stories, Security]
 og_image: https://robertheaton.com/images/hatgraph.jpg
 og_image_width: 1300
 og_image_height: 612
+redirect_from:
+  - /2017/11/13/a-zero-knowlege-proof-for-the-existence-of-god/
 ---
 Judeo-Christian God was in trouble. The latest polls were in, and belief in him was down, especially amongst the key millennial demographic. He needed to come up with a punchy viral marketing campaign to regain control of the conversation.
 
