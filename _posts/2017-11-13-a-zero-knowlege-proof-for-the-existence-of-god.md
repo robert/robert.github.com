@@ -1,8 +1,11 @@
 ---
 title: A zero-knowledge proof for the existence of God
 layout: post
-published: false
 tags: [Stories, Security]
+published: false
+og_image: https://robertheaton.com/images/hatgraph.jpg
+og_image_width: 1300
+og_image_height: 612
 ---
 Judeo-Christian God was in trouble. The latest polls were in, and belief in him was down, especially amongst the key millennial demographic. He needed to come up with a punchy viral marketing campaign to regain control of the conversation.
 
@@ -37,6 +40,10 @@ His disciple/mind-zombie, whose name was Darryl, kidnapped Otekah Wendleton and 
 Otekah Wendleton was not impressed. I can solve sudoku and I never go to McDonalds since I object to the inhumane way in which they treat their chickens. The thing with the wall was definitely neat but it's really not enough to make me believe in Judeo-Christian God.
 
 OK OK, we’re just warming up, said Judeo-Christian God via Darryl the Mind-Zombie. He unrolled a huge, blank parchment across the floor of the warehouse. Draw an arbitrary graph of nodes and edges joining them, he boasted, and I will devise a way to color these nodes using only three colors, such that no two nodes of the same color are joined by an edge. Otekah Wendleton figured that the quickest way for her to get home was to co-operate with the strange man with the assault rifle, and so obediently drew an arbitrary graph. Once she had finished she began to cuss him out, but suddenly everything went dark and chloroformy.
+
+<p align="center">
+<img src="/images/hatgraph.jpg" />
+</p>
 
 When she awoke, every node on the graph was covered by a black hat. Under each of these hats I have placed a colored cube, said Darryl the Mind-Zombie. You may select two adjacent hats connected by an edge. I will reveal the cubes under those hats and you will see that they are indeed not of the same color! Otekah Wendleton selected two adjacent hats. Darryl the Mind-Zombie triumphantly hurled them across the room. Underneath, one cube was red, the other blue. Everything went dark again for Otekah Wendleton.
 
