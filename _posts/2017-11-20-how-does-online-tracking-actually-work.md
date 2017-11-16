@@ -1,6 +1,8 @@
 ---
 title: How does online tracking actually work?
-published: true
+layout: post
+tags: [Tracking]
+published: false
 ---
 The online tracking industry is both horrifying and begrudgingly impressive. No human being wants to give trackers any of their data. No one wants trackers to know which websites they've been looking at, what their email address is and which other devices also belong to them. Browser developers are shutting down some of the more underhanded monitoring techniques, and some state regulators are starting to draw some hard frontiers to the wild-west of online tracking.
 
@@ -12,7 +14,7 @@ In order to understand online tracking, we first need to properly understand its
 
 ## What is a cookie?
 
-A cookie is a small text file created by your browser and stored on your device. When you visit a website, your browser sends it a message known as an *HTTP request*. The website responds to your browser's message with both the content you asked for and any cookies it would like your browser to save. Your browser saves the cookies and notes the domain of the website that they belong to. It then appends a website's cookie data to every future request that it makes to that website's domain (subject to a set of security rules that prevent the contents from leaking to other parties[LINK]). Modern websites use cookies for two main purposes - keeping you logged in and tracking your behavior.
+A cookie is a small text file created by your browser and stored on your device. When you visit a website, your browser sends it a message known as an *HTTP request*. The website responds to your browser's message with both the content you asked for and any cookies it would like your browser to save. Your browser saves the cookies and notes the domain of the website that they belong to. It then appends a website's cookie data to every future request that it makes to that website's domain (subject to a set of security rules that prevent the contents from [leaking to other parties](https://www.nczonline.net/blog/2009/05/12/cookies-and-security/)). Modern websites use cookies for two main purposes - keeping you logged in and tracking your behavior.
 
 ## How websites use cookies to log you in
 
@@ -29,7 +31,7 @@ Without a mechanism like the cookie, you would have to enter your username and p
 <img src="/images/cookies-my-fb-cookies.jpg" />
 </p>
 
-Here’s a picture of the cookies set on my laptop by Facebook.com. I’ve taken great, extreme, paranoid care to blur out their actual contents. Your login cookies aren’t just a handy reminder of the fact that you are logged in; they are fundamentally what it means to be logged in. If you copied my cookies and saved them on your computer (which is not hard - remember, they are just text files), then as far as Facebook is concerned, you are me. This is why your browser has to make sure not to expose your cookies to the wrong people - knowing my cookies is like cloning my ID card. Stealing the contents of a victim's cookies is known as a cookie tossing attack [LINK to Tinder post].
+Here’s a picture of the cookies set on my laptop by Facebook.com. I’ve taken great, extreme, paranoid care to blur out their actual contents. Your login cookies aren’t just a handy reminder of the fact that you are logged in; they are fundamentally what it means to be logged in. If you copied my cookies and saved them on your computer (which is not hard - remember, they are just text files), then as far as Facebook is concerned, you are me. This is why your browser has to make sure not to expose your cookies to the wrong people - knowing my cookies is like cloning my ID card. Stealing the contents of a victim's cookies is known as [a cookie tossing attack](https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/).
 
 ## How websites use cookies to track you
 
@@ -43,11 +45,11 @@ If a website requires its users to log in then they can easily be identified by 
 <img src="/images/cookies-login-tracking.jpg" />
 </p>
 
-Even websites that do not require users to log in to any systems (such as news sites, shops or blogs) can still collect this kind of behavioral data. They can still set a cookie on your device when you first load the website, containing a randomly generated ID (eg. `arewoiufjlknbvjksdf`). Your browser will append this cookie and the ID inside it to every request it sends to their domain, just as it did for the logged-in session ID cookie. The website can therefore use this ID to link together your activity in a similar way to that of a logged-in user. They won't know your name or email address or any of your personal identifiable information (unless they use some questionable but perfectly plausible tricks [LINK]), but they will know that everything you do on the site was done by the same person. They can use this information for almost any purpose they like, from improving their site to massaging prices [LINK to http://time.com/4899508/flight-search-history-price/].
+Even websites that do not require users to log in to any systems (such as news sites, shops or blogs) can still collect this kind of behavioral data. They can still set a cookie on your device when you first load the website, containing a randomly generated ID (eg. `arewoiufjlknbvjksdf`). Your browser will append this cookie and the ID inside it to every request it sends to their domain, just as it did for the logged-in session ID cookie. The website can therefore use this ID to link together your activity in a similar way to that of a logged-in user. They won't know your name or email address or any of your personal identifiable information (unless they put in a bit more work), but they will know that everything you do on the site was done by the same person. They can use this information for almost any purpose they like, from improving their site to [massaging prices](http://time.com/4899508/flight-search-history-price/).
 
 ## How third-party tracking tools use cookies
 
-In practice, websites usually track non-logged in users in using external, third-party software like Google Analytics[LINK] or AdRoll[LINK]. These specialized trackers are typically much more powerful and easier to manage than handling tracking in-house, and come in two main flavors: single- and multi-website trackers. Single-website trackers (like Google Analytics) keep the data of each of their client websites siloed and isolated from each other. This makes them less powerful but better for consumer privacy, as the tracker is unable to join up a user's activity on different websites.
+In practice, websites usually track non-logged in users in using external, third-party software like [Google Analytics](https://analytics.google.com) or [AdRoll](https://www.adroll.com/). These specialized trackers are typically much more powerful and easier to manage than handling tracking in-house, and come in two main flavors: single- and multi-website trackers. Single-website trackers (like Google Analytics) keep the data of each of their client websites siloed and isolated from each other. This makes them less powerful but better for consumer privacy, as the tracker is unable to join up a user's activity on different websites.
 
 By contrast, multi-website trackers (like AdRoll) roll up and share users’ activity across all of their clients (and beyond). They are therefore much more powerful, with many rather discomforting integrations with other data stores that can help websites learn more about otherwise anonymous users. They are also, in this author’s humble and understated opinion, a consumer privacy disaster zone.
 
@@ -95,10 +97,10 @@ That any company is able to build up a rich picture of their online behavior sho
 
 ## Conclusion
 
-Most browsers now have a built-in option to simply block third-party cookies. This prevents the particular strain of cookie-based cross-website tracking described above. However, as cookies become an increasingly fragile and unreliable tracking mechanism, many trackers are switching to cookieless ways of implementing the same basic structure. These methods include exploiting your browser’s cache[LINK], fingerprinting your device[LINK] and using Etags[LINK].
+Most browsers now have a built-in option to simply block third-party cookies. This prevents the particular strain of cookie-based cross-website tracking described above. However, as cookies become an increasingly fragile and unreliable tracking mechanism, many trackers are switching to cookieless ways of implementing the same basic structure. These methods include [exploiting your browser’s cache](https://robertheaton.com/2014/01/20/cookieless-user-tracking-for-douchebags/), [fingerprinting your device](https://panopticlick.eff.org/) and [using exploiting your browser's cache again](https://lucb1e.com/rp/cookielesscookies/).
 
 If you want to increase your privacy online, you should start by installing an adblocker. Adblockers are important, not because they block ads, but because they block the snooping that goes into selling and serving them. Most adblockers (such as uBlockOrigin) block requests from your browser to domains known to belong to trackers, and further restrict the types of cookies that domains can set. There’s nothing finer than a completely unpersonalized ad, or at least one only personalized to a website's broad audience segment.
 
 Even ad blockers don’t keep you private on the internet by any stretch of the imagination. Third-party trackers have plenty of options for circumventing their protections, and whether they use them or not is primarily dependent on state regulation and their PR team's appetite for risk. First-parties still see everything that you do, and the only way to avoid sending a first-party any information is to close your laptop. Using a VPN or even Tor goes a long way to prevent unintentional leakage of your location or identity information, but as long as you use Facebook, Facebook is going to know a lot about you.
 
-I’m going to be writing a lot more on the subject of online tracking; if you'd like to know more about what advertisers know about you then you should subscribe to my newsletter[LINK] and follow me on Twitter[LINK].
+I’m going to be writing a lot more on the subject of online tracking; if you'd like to know more about what advertisers know about you then you should sign up below and get these essays sent to you via email.
