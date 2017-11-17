@@ -7,7 +7,7 @@ The online tracking industry is both horrifying and begrudgingly impressive. No 
 
 But online advertisers still seem to know an awful lot about what you’ve been looking at.
 
-Trackers don't need any special technology to siphon off this data. They simply exploit the edge-cases of how the internet delivers information, in often fascinating ways. Learning how they work teaches you a lot about the guts of the internet, which parts of your data are actually at stake, and how to mount an athletic defense. Finely-targeted online advertising still pays for many of the best and worst websites on the internet, and it's not going anywhere.
+Trackers don't need any special technology to siphon off this data. They simply exploit the edge-cases of how the internet delivers information, in often fascinating ways. Learning how trackers work teaches you a lot about the guts of the internet, which parts of your data are actually at stake, and how to mount an athletic defense. Finely-targeted online advertising still pays for many of the best and worst websites on the internet, and it's not going anywhere.
 
 In order to understand online tracking, we first need to properly understand its primary, oft-misunderstood tool: cookies.
 
