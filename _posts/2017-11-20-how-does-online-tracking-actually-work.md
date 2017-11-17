@@ -5,7 +5,7 @@ tags: [Tracking]
 ---
 The online tracking industry is both horrifying and begrudgingly impressive. No human being wants to give trackers any of their data. No one wants trackers to know which websites they've been looking at, what their email address is or which other devices also belong to them. Browser developers are shutting down some of the more underhanded monitoring techniques, and some state regulators are starting to draw some hard frontiers to the wild-west of online tracking.
 
-But online advertisers still seem to know a lot about what you’ve been looking at.
+But online advertisers still seem to know an awful lot about what you’ve been looking at.
 
 Trackers don't need any special technology to siphon off this data. They simply exploit the edge-cases of how the internet delivers information, in often fascinating ways. Learning how they work teaches you a lot about the guts of the internet, which parts of your data are actually at stake, and how to mount an athletic defense. Finely-targeted online advertising still pays for many of the best and worst websites on the internet, and it's not going anywhere.
 
