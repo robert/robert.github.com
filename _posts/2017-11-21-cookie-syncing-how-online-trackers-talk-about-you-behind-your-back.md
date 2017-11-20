@@ -2,7 +2,6 @@
 title: Cookie syncing - how online trackers talk about you behind your back
 layout: post
 tags: [Tracking]
-published: false
 ---
 As you journey around the internet, your data and activity is sprayed into a spectacular and discomforting number of tracking companies. Your clicks pass through tools with names like retargeters, demand-side platforms, supply-side platforms, ad exchanges, audience matchers, data management platforms, data marketplaces, data onboarders, device graphs, and of course, crammed into a tiny corner, the actual website that you believe you are visiting and interacting with.
 
@@ -18,25 +17,23 @@ Consider the first visit you ever made to NewsFromQuestionableSources.com. Suppo
 
 First, ClickClickClick assigns you a tracking ID. To help do this, NewsFromQuestionableSources.com loads some of ClickClickClick's Javascript, which instructs your browser to send an HTTP ping to ClickClickClick.com’s tracking URL. As with [normal, unsynced tracking](https://robertheaton.com/2017/11/20/how-does-online-tracking-actually-work/), the ClickClickClick server generates a unique ID, returns this ID to your browser, and instructs your browser to save it in a cookie.
 
----
+<p align="center">
+<img src="/images/cookie-syncing-main.jpg" />
+</p>
 
 However, this response from ClickClickClick also instructs your browser to redirect the request it just made over to AdOrgy's cookie-syncing URL, with the ClickClickClick ID that it just generated appended to the end as a URL parameter. It does this by returning a `302` status code and a new `Location` header, indicating a redirect, instead of the more normal `200` status code, indicating success.
 
----
-
 When it receives this redirected request, the AdOrgy server generates its own unique ID. Crucially, it also saves to its database the link between this ID and the ClickClickClick ID it sees in the request URL. As usual, it returns the ID to your browser and instructs it to save the ID in another cookie. To complete the circle, the AdOrgy response instructs your browser to redirect the request a second time, back to ClickClickClick cookie-sync URL, with the AdOrgy ID appended as a URL parameter. ClickClickClick saves the link between the two IDs, and the cookie sync is done. Both ClickClickClick and AdOrgy now know the ID that the other has assigned this user, and are free to swap data about them behind the scenes.
-
----
-
-Here's an example of cookie syncing in action on [TheGuardian.com](https://theguardian.com). I chose TheGuardian.com in order to show that cookie syncing is truly a mainstream technique, and that even venerable lefty newspapers with relatively robust subscriber bases need to maximize ad revenue.
 
 <p align="center">
 <img src="/images/cookie-syncing-1.jpg" />
 </p>
 
+Here's an example of cookie syncing in action on [TheGuardian.com](https://theguardian.com). I chose TheGuardian.com in order to show that cookie syncing is truly a mainstream technique, and that even venerable lefty newspapers with relatively robust subscriber bases need to maximize ad revenue.
+
 When I visit TheGuardian.com in search of a thoughtful hot take, the first request in the cookie syncing samba is sent to CasaleMedia (ssum-sec.casalemedia.com), a tracker of some sort. CasaleMedia responds to thes rquest with several cookies (the important one containing my new tracking ID has the value `Wg9smdHM4WsAAGz0I9oAAAC2`), and redirects the request to another tracker called KRXD (beacon.krxd.net). The KRXD URL has my CasaleMedia tracking ID clearly attached to the end. KRXD now know what ID CasaleMedia have assigned me.
 
-The redirected request to KRXD does not actually get re-redirected back to CasaleMedia. This means that KRXD know the ID that CasaleMedia have assigned me, but not vice versa. This could be a deliberate feature of their business agreement; it is alsop possible that KRXD send the ID that they have assigned me over to CasaleMedia elsewhere in the page load.
+The redirected request to KRXD does not actually get re-redirected back to CasaleMedia. This means that KRXD know the ID that CasaleMedia have assigned me, but not vice versa. This could be a deliberate feature of their business agreement; it is also possible that KRXD send the ID that they have assigned me over to CasaleMedia elsewhere in the page load.
 
 <p align="center">
 <img src="/images/cookie-syncing-lots.jpg" />
