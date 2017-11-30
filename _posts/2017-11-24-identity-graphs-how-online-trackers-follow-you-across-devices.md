@@ -1,7 +1,6 @@
 ---
 title: Identity Graphs - how online trackers follow you across devices
 layout: post
-published: false
 ---
 You are in a grimy, pungent bar with your good friend, Wendy Wrigglesworth. It is the perfect place to explain your idea for a killer prank on your worse and more annoying friend, Steve Steveington. You've been hearing a lot about tools that online advertisers use to link together your behavior across your phone, laptop, work laptop, XBox and work XBox. The ad industry calls them "identity graphs". You think that you and Wendy should create your own identity graph, use it to link together Steve Steveington’s devices, and then show him a carefully targeted series of ads across all his devices. Your plan gets a bit more vague and hard to follow after that, but it sounds like the Stevester ends up spending his upcoming birthday try to navigate a Kafka-esque maze of traumatizing fake birthday parties before he is finally allowed to see his family for a short, awkward dinner.
 
@@ -13,7 +12,7 @@ Disappointed but not defeated, you email Wendy Wrigglesworth a few links about i
 
 ---
 
-## A roundabout introduction to Identity Graphs
+## Wendy's introduction to Identity Graphs
 
 As I think I’ve told you before (Wendy says), I live in a one-bed in the last real neighborhood in New York. I’m not going to tell you where this neighborhood in case you come and gentrify it. Whilst I was moving in I heard my neighbors shouting their wi-fi password across their apartment, so now I just borrow their internet instead of paying for my own. My apartment is cheap, huge and extremely tastefully decorated, and so over the years several guys I’ve had the misfortune of dating have invited themselves to move in with me. I usually charge them for half of next-door's internet connection. Those darn cable companies, always putting up the rates. It’s not the most ethical side of my life, but they usually turn out to be deadbeat wastrels who don’t end up paying for anything, so I don’t feel too bad.
 
@@ -29,9 +28,15 @@ Once an identity graph has correctly partitioned a tricky thicket of devices bel
 
 Today’s multi-screen consumer will often see an ad for a product on one device, do further research on another, and actually buy the product on yet another. This makes it hard for advertisers to know that their original ad was what caused the eventual purchase. It's hard for them to know if they are any good at their jobs, and this leads to a huge amount of existential angst in the online marketing community.
 
+<p align="center">
+<img src="/images/device-graph-before.jpg" />
+</p>
+
 To solve this problem, tracking companies build identity graphs. An identity graph consists of a web of devices and ownership links between them. Advertisers can use an identity graph to see that the user who just bought some acai berries on their laptop had previously seen five banner ads for them on their phone and tablet.
 
-PIC
+<p align="center">
+<img src="/images/device-graph-after.jpg" />
+</p>
 
 Vanilla single-device online trackers assign your device a persistent ID, store it on your device (usually in a cookie) and use it to track your behavior. I read a really good summary of how they work pitched at just the right level of technical detail, [I’ll send you the link](https://robertheaton.com/2017/11/20/how-does-online-tracking-actually-work/). By contrast, whilst multi-device trackers start by assigning and tracking IDs in the same way, they add an additional layer of intelligence to attempt to link together IDs of devices that belong to the same person.
 
