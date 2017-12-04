@@ -6,7 +6,7 @@ og_image: https://robertheaton.com/images/cookies-my-fb-cookies.jpg
 og_image_width: 1300
 og_image_height: 612
 ---
-The online tracking industry is both horrifying and begrudgingly impressive. No human being wants to give trackers any of their data. No one wants trackers to know which websites they've been looking at, what their email address is or which other devices also belong to them. Browser developers are shutting down some of the more underhanded monitoring techniques, and some state regulators are starting to draw some hard frontiers to the wild-west of online tracking.
+The online tracking industry is both horrifying and begrudgingly impressive. No human being wants to give trackers any of their data. No one wants trackers to know which websites they've been looking at, what their email address is or which other devices also belong to them. Browser developers are shutting down some of the more underhanded monitoring techniques, and some state regulators are starting to draw some hard frontiers for the wild-west of online tracking.
 
 But online advertisers still seem to know an awful lot about what you’ve been looking at.
 
