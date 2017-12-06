@@ -31,7 +31,7 @@ You sign in to web.whatsapp.com on your old laptop which still works except you 
 <img src="/images/whatsapptrackersleep.jpg" />
 </p>
 
-The conniving rogue has been playing you for a fool. You are disappointed but not surprised. You confront him with your evidence. Harsh words and exchanged and not taken back. The 5km charity walk team disbands in a cloud of acrimony and recrimination.
+The conniving rogue has been playing you for a fool. You are disappointed but not surprised. You confront him with your evidence. Harsh words are exchanged and not taken back. The 5km charity walk team disbands in a cloud of acrimony and recrimination.
 
 With even more time on your hands than ever before, you go just a bit mad and start monitoring any and every phone number you can find. You start to build up a detailed record of your accountant's sleep patterns. You wonder what it is that she gets up to until two am every Wednesday. You build some interesting graphs of the WhatsApp usage patterns of some of your exes. You wonder what it is that causes them to send so many messages during some weeks, but almost none during others. One of your friends plays squash with Vanilla Ice and has his phone number. You investigate and it turns out that Vanilla has never adjusted his WhatsApp privacy settings. Also the dude NEVER seems to go to sleep. You're dying to know whether your friends Lara and Tara are secretly dating. You can't help but write multi-variate cross-correlation software that shows a striking alignment between their WhatsApp usage patterns.
 
