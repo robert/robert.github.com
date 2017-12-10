@@ -227,4 +227,4 @@ However, there is a world of difference between rules lawyering and simply knowi
 
 ---
 
-*If you enjoyed this post, then I guarantee you will also enjoy "[Another 10  somewhat advanced Magic: The Gathering plays](https://robertheaton.com/2017/12/09/another-ten-somewhat-advanced-magic-the-gathering-plays/)".*
+*If you enjoyed this post, then I guarantee you will also enjoy "[Another 10  somewhat advanced Magic: The Gathering plays](https://robertheaton.com/2017/12/09/another-ten-somewhat-advanced-magic-the-gathering-plays/)". And if you have any advanced plays of your own that I've missed, [let me know!](https://twitter.com/robjheaton)*
