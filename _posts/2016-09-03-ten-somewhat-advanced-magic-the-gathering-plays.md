@@ -224,3 +224,7 @@ THINK ABOUT THIS WHEN: you have a way to kill an opponent’s creature during co
 A "rules lawyer" is someone who knows all the letters of the law but doesn’t care about the spirit. They seize on honest mistakes, spin legal traps and quietly shove you into them when all you wanted to do was somehow get a card from your hand onto the battlefield.
 
 However, there is a world of difference between rules lawyering and simply knowing your rights. None of these tips involve messing with your opponent; you’re just exploring and using the full depth of the game in the ways that its creators intended. I for one am looking forward to the next time I get annihilated by something I didn’t even know was possible.
+
+---
+
+*If you enjoyed this post, then I guarantee you will also enjoy "[Another 10  somewhat advanced Magic: The Gathering plays](https://robertheaton.com/2017/12/09/another-ten-somewhat-advanced-magic-the-gathering-plays/)".*

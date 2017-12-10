@@ -145,3 +145,7 @@ Note that this only works if there is a creature with first strike involved in c
 I have described these 11 situations as "somewhat advanced plays". But most of them are actually nothing more than properly understanding some of the more offbeat rules of Magic. This understanding allows you to see the value in lines of play that a less experienced player might have missed, and helps you make sure that you don't allow your opponents to misapply the rules to their advantage, accidentally or otherwise.
 
 The rules of Magic say that you aren't obliged to point out your opponent's triggers, especially in competitive events. If your opponent forgets to gain 1 life from Soul Warden whenever a creature comes into play, that's their loss. But you *are* obliged to attempt to administer the game according to your best understanding of the rules. If the only creature in play is your Frost Walker and you cast an Atzocan Archer, don't wait for your opponent to point out that you need to target and kill your own creature. Don't try and delay ordering blockers in order to extract information, and don't try and claim end step triggers you aren't technically entitled to. Use your deep understanding of the rules to make better plays than your opponent. Don't use it to dupe them.
+
+---
+
+*If you enjoyed this post, then I guarantee you will also enjoy "[10 somewhat advanced Magic: The Gathering plays](https://robertheaton.com/2016/09/03/ten-somewhat-advanced-magic-the-gathering-plays/)".*
