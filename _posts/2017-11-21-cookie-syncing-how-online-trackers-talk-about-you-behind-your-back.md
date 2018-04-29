@@ -1,7 +1,7 @@
 ---
 title: Cookie Syncing - how online trackers talk about you behind your back
 layout: post
-tags: [Tracking]
+tags: [Online Tracking]
 ---
 As you journey around the internet, your data and activity is sprayed into a spectacular and discomforting number of tracking companies. Your clicks pass through tools with names like retargeters, demand-side platforms, supply-side platforms, ad exchanges, audience matchers, data management platforms, data marketplaces, data onboarders, device graphs, and of course, crammed into a tiny corner, the actual website that you believe you are visiting and interacting with.
 

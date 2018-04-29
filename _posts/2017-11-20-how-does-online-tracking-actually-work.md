@@ -1,7 +1,7 @@
 ---
 title: How does online tracking actually work?
 layout: post
-tags: [Tracking]
+tags: [Online Tracking]
 og_image: https://robertheaton.com/images/cookies-my-fb-cookies.jpg
 og_image_width: 1300
 og_image_height: 612

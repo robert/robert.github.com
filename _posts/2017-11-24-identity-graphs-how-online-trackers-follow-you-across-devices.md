@@ -1,6 +1,7 @@
 ---
 title: Identity Graphs - how online trackers follow you across devices
 layout: post
+tags: [Online Tracking]
 ---
 You are in a grimy, pungent bar with your good friend, Wendy Wrigglesworth. It is the perfect place to explain your idea for a killer prank on your worse and more annoying friend, Steve Steveington. You've been hearing a lot about tools that online advertisers use to link together your behavior across your phone, laptop, work laptop, Xbox and work Xbox. The ad industry calls them "identity graphs". You think that you and Wendy should create your own identity graph, use it to link together Steve Steveington’s devices, and then show him a carefully targeted series of ads across all his devices. Your plan gets a bit more vague and hard to follow after that, but it sounds like the Stevester ends up spending his upcoming birthday try to navigate a Kafka-esque maze of traumatizing fake birthday parties before he is finally allowed to see his family for a short, awkward dinner.
 
