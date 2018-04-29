@@ -2,6 +2,7 @@
 title: "Re: All of the regrettable social media posts you have ever written"
 layout: post
 tags: [The Adventures of Steve Steveington, Online Tracking]
+published: false
 ---
 To my good friend, Steve Steveington,
 
