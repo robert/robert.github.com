@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cookieless user tracking for douchebags
-tags: [Security, Tracking]
+tags: [Security, Online Tracking]
 ---
 Cookies are the go-to mechanism for online user tracking. A cookie is essentially a tiny text file stored by your browser, so a website using a cookie to store a unique tracking ID for you can easily see that the user who searched for articles about UK Auditing Standards is the same user who later searched for articles about Really Quite Morally Troubling Monkey Porn (you disgust me). This doesn't even require you to log into anything, but fortunately your actual identity is therefore, in general, still a secret. Google Analytics collects such anonymised user data through <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage" target="_blank">a slightly more involved cookie structure</a>, but the principle is the same. Admission: I track visitor numbers using GA, but only for personal vanity.
 

@@ -1,7 +1,7 @@
 ---
 title: WeSeeYou - Democratizing De-Anonymization
 layout: post
-tags: [Security, Tracking]
+tags: [Security, Online Tracking]
 og_image: https://robertheaton.com/images/weseeyouheader.jpg
 og_image_width: 1300
 og_image_height: 612
