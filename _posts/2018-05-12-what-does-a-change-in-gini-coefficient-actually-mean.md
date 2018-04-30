@@ -19,6 +19,16 @@ To help improve my intuition about the Gini coefficient, I've plotted some graph
 
 Note that a flat line would mean a completely equal society.
 
+<p align="center">
+<img src="/images/gini-poorest-to-richest.jpg" width="700" />
+<img src="/images/gini-poorest-to-everyone.jpg" width="700" />
+<img src="/images/gini-everyone-to-rich.jpg" width="700" />
+</p>
+
 I believe that these stylized graphs show that increases in Gini Coefficient of 0.01 and above are important and likely to have tangible consequences that must be mitigated. This is especially true if a significant portion of the income share transfer to the rich is borne by the poorest, rather than the middle class. When an increase in Gini Coefficient is effected by an income share transfer from the poorest quintile to the richest, a bump in Gini Coefficient of 0.01 corresponds to a transfer in income share of 0.25% of the total income of the country. In the US, where the poorest quintile start with only 8.35% of the total income, this is a 3% drop in their income share.
 
 This cannot be dismissed as noise or the cost of doing more business. In order for such a hypothetical decrease in the poor’s share of total income to be judged to be an acceptable cost for an increase in growth, there had better be a truly edible expansion of the overall pie and a fully potable rise in trickle-down wealth. Without any countervailing measures, it could constitute a real hit for low-income people who are likely already struggling, and it doesn't take many 3% squeezes before the situation becomes truly ruinous. It seems to me that an increase in Gini Coefficient of 0.01 can be both statistically and culturally significant. An increase of 0.05 is likely to be profound, and an increase of 0.1 society-warping.
+
+Code: [https://gist.github.com/robert/7eee027244f81523e57b1f3df32cb6a2](https://gist.github.com/robert/7eee027244f81523e57b1f3df32cb6a2)<br/>
+Data: [World Bank](http://databank.worldbank.org/data/reports.aspx?source=world-development-indicators)
+
