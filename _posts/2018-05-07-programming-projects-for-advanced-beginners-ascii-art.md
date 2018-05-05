@@ -3,9 +3,13 @@ title: Programming projects for advanced beginners - ASCII art
 layout: post
 published: false
 ---
-This is a programming project for Advanced Beginners. If you've completed all the introductory tutorials and short exercises you can find, but are struggling to find medium-sized projects to develop your program design skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. You can do it in whichever programming language you happen to be learning, and if you get stuck I'll do whatever I can to help you out.
+This is a programming project for Advanced Beginners. If you've completed all the introductory tutorials and short exercises you can find, but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. You can do it in whichever programming language you happen to be learning, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/RobJHeaton) or Skype.
 
-You're going to write a program to turn any image on your hard drive into ASCII-art. ASCII is a primitive but heart-stoppingly beautiful art form first developed by the Sumerians in 4000BCE. It is created by printing characters to your terminal so as to recreate the contours of a source image. The best modern ASCII-art can expect to fetch as many as 10,000 retweets at auction.
+<p align="center">
+<img src="/images/example-ascii.gif" />
+</p>
+
+You're going to write a program to turn images into ASCII-art. ASCII is a primitive but beautiful art form first developed by the Sumerians in 4000BCE. It is created by printing characters to your terminal so as to recreate the contours of a source image. The best modern ASCII-art can expect to fetch as many as 10,000 retweets at auction.
 
 <p align="center">
 <img src="/images/ascii-sumer.jpg" />
@@ -17,7 +21,7 @@ Once you finish, there are several extension project. In these you will build on
 
 If you get stuck (defined as making zero progress for 30 minutes), you can get some inspiration from my example project here[LINK]. I've written it in Python, but I've also tried to avoid using any Python-specific constructs. It should therefore be a useful reference regardless of which language you are using. If your code looks different from mine, don't worry! There are many ways to structure this project. If the project brief contains any terms that you haven't seen before then my apologies, that's my fault. You should just ask Google to explain what I failed to.
 
-If you get completely stuck (defined as making zero progress for 60 minutes), take a break and come back later with a clear mind. If you would like to, send me an [email](mailto:robqheaton@gmail.com) or a [Tweet](https://twitter.com/RobJHeaton) and I'll do my absolute best to try and help you over the bump.
+If you get completely stuck (defined as making zero progress for 60 minutes), take a break and come back later with a clear mind. If you would like to, send me an [email](mailto:robqheaton@gmail.com) or a [Tweet](https://twitter.com/RobJHeaton) and I'll do my level best to try and help you over the bump.
 
 <p align="center">
 <img src="/images/ascii-good-luck.jpg" />
@@ -44,7 +48,7 @@ First, find and install an image processing library. Which library you choose wi
 * For Javascript, try [CamanJS](http://camanjs.com/)
 * For other languages, have a look for an [ImageMagick wrapper](https://www.imagemagick.org/script/develop.php), or just have a Google and see what most other people use
 
-Once you've found and installed a library, start by using it to simply read your image file. It will only take 1 or 2 lines of code to load your image and print its height and width, but doing so will ensure you've got your image processing library installed correctly, and help you get familiar with its documentation.
+Once you've found and installed a library, start by using it to simply read your image file. It will only take 1 or 2 lines of code to load your image and print its height and width, but doing so will ensure you've got the library installed correctly, and help you get familiar with its documentation.
 
 At the end of this section, your program should print output that looks something like:
 
@@ -57,7 +61,7 @@ Image size: 640 x 480
 
 In image processing libraries a pixel in a JPEG image is represented by a *tuple*, a data structure conceptually very similar to a list or array. Each tuple contains 3 numbers between 0 and 255 that describe the amount of Red, Green and Blue in a pixel (for example `(76, 54, 121)`). Red, green and blue are the primary colors of light, and in the right proportions can be combined to create every single other color in existence.
 
-The next step after loading your image is therefore to read all the tuples representing all of your image's pixels, and store them in a 2-dimensionsional array (also known as a *matrix*). There are many other data structures you could store them in if you wanted. But a 2-dimensional array is particularly suitable for working with grid data like your matrix of pixels.
+The next step after loading your image is therefore to read all the tuples representing all of your image's pixels, and store them in a 2-dimensionsional array (an arrary where each element is itself an array, also known as a *matrix*). There are many other data structures you could store them in if you wanted. But a 2-dimensional array is particularly suitable for working with grid data like your matrix of pixels.
 
 ```
 # A 2-dimensional array of pixels:
@@ -73,9 +77,10 @@ The next step after loading your image is therefore to read all the tuples repre
 With your pixel data in a 2-dimensional array, you will be able to access the data at a given x, y co-ordinate as `pixel_matrix[x][y]`, and you will be able to iterate through it using something like:
 
 ```
-for row in pixel_matrix:
-    for pixel in row:
+for x in len(pixel_matrix):
+    for y in len(pixel_matrix[x]):
         # Do something to each pixel
+        pixel = pixel_matrix[x][y]
 ```
 
 Some image processing libraries may already have a ready-made method that loads your image's pixels into a 2-dimensional array for you. If your library has a method like this, use it! If not, piece together the methods it does have, and remember that Google knows a lot about topics like "python pillow 2-d pixel array".
@@ -85,8 +90,7 @@ At the end of this section, your program should print extra output that looks so
 ```
 Successfully constructed pixel matrix!
 Pixel matrix size: 640 x 480
-Pixel value at position (142, 381): (14, 207, 68)
-Iterating through and printing out every single pixel in the image:
+Iterating through pixel contents:
 (255, 255, 255)
 (10, 64, 172)
 # … and so on for many thousands of lines.
@@ -112,31 +116,36 @@ At the end of this section, your program should print extra output that looks so
 ```
 Successfully constructed brightness matrix!
 Brightness matrix size: 640 x 480
-Brightness at position (142, 381): 68
+Iterating through pixel brightnesses:
+68
+12
+# etc...
 ```
 
 # 4. Convert brightness numbers to ASCII characters
 
-You've constructed a matrix of brightnesses for each pixel. Now you can convert this brightness matrix to an *ASCII character matrix*. Each element of the brightness matrix is a single number representing a brightness; each corresponding element of the ASCII character matrix is a single ASCII character that will represent this brightness when printed to the terminal. You can experiment with different ways to map brightnesses to characters, but a good place to start is the string below. The characters in it are ordered from thinnest to boldest; darkest to lightest for white text on a dark terminal background.
+You've constructed a matrix of brightnesses for each pixel. Now you can convert this brightness matrix to an *ASCII character matrix*. Each element of the brightness matrix is a single number representing a brightness; each corresponding element of the ASCII character matrix is a single ASCII character that will represent this brightness when printed to the terminal. You can experiment with different ways to map brightnesses to characters, but a good place to start is the string below. The characters in it are ordered from thinnest to boldest, which means darkest to lightest for white text on a dark terminal background.
 
 ```
 "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
 ```
 
-For each number in your brightness matrix, map it to the appropriate character on the above scale and store it in the ASCII matrix. A brightness of 0 should map to `\``, and a brightness of 255 should map to `$`. Mapping brightnesses in between to the correct character will require just a dash of maths.
+For each number in your brightness matrix, map it to the appropriate character on the above scale and store it in the ASCII matrix. A brightness of 0 should map to `` ` ``, and a brightness of 255 should map to `$`. Mapping brightnesses in between to the correct character will require just a dash of maths.
 
-It may help your thinking to make the numbers involved a bit rounder. Imagine that the brightnesses are on a scale from 0 to 100, and that you are mapping these brightnesses to 20 characters. A brightness of 50 would map to character 10. A brightness of 60 would map to character number 12. What character number should a brightness of 30 map to? What about 75? What about 20? What's the formula you're using to work these out? Write it down in a comment, don't worry about converting it to code yet.
+It may help your thinking to make the numbers involved a bit rounder. Imagine that the brightnesses are on a scale from 0 to 100, and that you are displaying these brightnesses using 20 characters. A brightness of 50 would map to character 10. A brightness of 60 would map to character number 12. What character number should a brightness of 30 map to? What about 75? What about 20? What's the formula you're using to work these out? Write it down in a comment, don't worry about converting it to code yet.
 
-What if you make the brightnesses weird, non-divisible numbers? You can't map a brightness onto character number 9.8. So what character number should a brightness of 49 map to? What about 52? What about 87? What's the logic you're using to work these out? Write it down in a comment as well. How could you express the entire formula in code? Will it still work when you're working with a brightness scale of 0 to 255 and 70 characters? (hint - yes)
+What if you make the brightnesses weird, non-divisible numbers? You can't map a brightness onto character number 9.8. So what's the best character number for a brightness of 49 map to? What about 52? What about 87? What's the logic you're using to work these out? Write it down in a comment as well. How could you express the entire formula in code? Will it still work when you're working with a brightness scale of 0 to 255 and 70 characters? (hint - yes)
 
 At the end of this section, your program should print extra output that looks something like:
 
 ```
 Successfully constructed ASCII matrix!
 ASCII matrix size: 640 x 480
-Character at position (142, 381): Q
-Character at position (42, 591): #
-Character at position (338, 23): }
+Iterating through pixel ASCII characters:
+Q
+#
+}
+# etc...
 ```
 
 # 5. Print your ASCII art!
@@ -157,7 +166,7 @@ A normal photograph is thousands of pixels in height and width. You have nowhere
 
 The solution is to add some code to shrink your image before you build your initial pixel matrix. All sensible image processing libraries should have a way to resize an image before converting it to pixels - have a look in your library's documentation. Use trial and error to work out the largest image that you can display on your terminal.
 
-After pausing to pat yourself on the back, send me an email with what you found easy, what you found confusing, whether you got stuck anywhere, and what you'd like more explanation of in the future. If there's anything you'd find helpful to go over in person over Skype, please let me know. I'm trying to understand how to make advanced-beginner projects like this as useful as possible, and there's a very high probability we'll be able to find some time to talk. After sending that email (seriously, send it), compose yourself and venture boldly into the extensions section.
+After pausing to pat yourself on the back, send me an email with what you found easy, what you found confusing, whether you got stuck anywhere, and what you'd like more explanation of in the future. If there's anything you'd find helpful to go over in person over Skype, please let me know. I'm going to be making more advanced-beginner projecs like this, and I'd like to understand how to make them as useful as possible. After sending that email (seriously, send it) and signing up for my mailing list at the bottom of this page (do that too), compose yourself and venture boldly into the extensions section.
 
 # Extensions
 
@@ -174,13 +183,15 @@ Research how to change the color of the text that prints to your terminal. There
 Add a setting to your program that can be set to either "average", "min_max" (`(max(R, G, B) + min(R, G, B)) / 2` - see section 3) or "luminosity" (`0.21 R + 0.72 G + 0.07 B`), and use if-statements to select the appropriate brightness mapping depending on what it is set to.
 
 ## 3. Add the option to invert all the brightnesses, so dark becomes light and light becomes dark
-Requires some thought and a tiny bit of maths. Here are some example mappings. What is the general rule? How can you implement this in code?
+Requires some thought and a tiny bit of maths. Here are how some pixel brightnesses will be changed by an inversion:
 
 * 0 => 255
 * 255 => 0
 * 200 => 55
 * 55 => 200
 * 120 => 135
+
+What is the general rule? How can you implement this in code?
 
 <p align="center">
 <img src="/images/ascii-zebras.jpg" />
@@ -198,6 +209,6 @@ Finally, wire the pieces together. Update your code to run imagesnap to save an 
 ## 5. Print your ASCII art in glorious color
 If you've got this far then you probably don't need any pointers, although you're going to get some anyway. Printing your image in color will require you to refactor a lot of your existing code, since up until now you've been throwing away color information when you convert your pixel matrix into an intensity matrix.
 
-You don't have to print the entire image in color. You could add some subtle artsy accents for pixels that are almost entirely Red, Blue or Green (for example pixels with the values (240, 3, 10), (13, 226, 18) or (0, 0, 255)) and print the rest in black and white. Or choose pixels colors based on a flag overlay, whilst keeping the brightnesses of the underlying image. The only limits are your imagination and the very real constraints of attempting to paint using a computer terminal that was only ever designed to handle data input and output.
+You don't have to print the entire image in color. You could add some subtle artsy accents on pixels that are almost entirely Red, Blue or Green (for example pixels with the values (240, 3, 10), (13, 226, 18) or (0, 0, 255)) and print the rest in black and white. Or choose pixels colors based on a flag overlay, whilst keeping the brightnesses of the underlying image. The only limits are your imagination and the very real constraints of attempting to paint using a computer terminal that was only ever designed to handle data input and output.
 
 <PIC of rainbow flag picture>
