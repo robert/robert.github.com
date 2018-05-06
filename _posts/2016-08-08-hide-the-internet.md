@@ -54,8 +54,8 @@ This gives you an out when you decide that you really would like to spend a bit 
 
 <i>
 To hide distracting parts of the internet for yourself:
+</i>
 
 * Download Stylish for [Chrome](https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/stylish/) 
 * Install some or all of the above styles from [here](https://userstyles.org/users/331645)
 * If you would like to hide additional sites, you can either create new style with the rule `body {display: none}` to hide everything, or (advanced) use [the developer tools](https://developer.chrome.com/devtools#dom-and-styles) to hide only that part of the site that is causing you problems
-<i>
