@@ -5,7 +5,7 @@ published: false
 ---
 > Hopefully this will be the life hack that makes her love me again.
 
-I’m a smug person. I'm extremely keen for you to know that I don’t have the Facebook app installed on my phone. And that I almost never look at my Twitter feed. Also I don’t sleep with my phone next to my bed; I have this really smart rule of no screens an hour before lights out. Plus I try never to check my emails before eight am at the earliest. And whilst I did recently complete Skyrim on the PS4, I was very efficient about it and zipped through in only a little over 50 hours of play time, which might sound like a lot but is actually very quick compared to most people. And, despite all this effort and smugness, I still frequently get sucked into watching a very large number of YouTube videos that I didn’t actually want to watch and will probably not be putting on my CV.  
+I’m a smug person. I'm extremely keen for you to know that I don’t have the Facebook app installed on my phone. And that I almost never look at my Twitter feed. Also I don’t sleep with my phone next to my bed and I have this really smart rule of no screens an hour before lights out. Plus I try never to check my emails before eight am at the earliest. And whilst I did recently complete Skyrim on the PS4, I was very efficient about it and zipped through in only a little over 50 hours of play time, which might sound like a lot but is actually very quick compared to most people. And, despite all this effort and smugness, I still frequently get sucked into watching a very large number of YouTube videos that I didn’t actually want to watch and will probably not be putting on my CV.  
 
 No one sets out to see how many YouTube videos they can watch in a day. Nonetheless, this metric is the primary driver of YouTube employee happiness during bonus season, which makes it hard to feel that YouTube is fully on your side. I don’t like many of the behaviors that YouTube is incentivized to nudge me into. I don’t believe that recommended videos, comments and video annotations are designed to help me realize my conception of the good life, and anecdotally I know that many other people feel the same way. People say that willpower is a finite resource, and some of these people include footnotes to actual social-scientific studies. I am fully aware that no video is ever quite as earth-shattering as its title claims, but what if that extremely attractive person in the screengrab is actually in the video this time?
 
@@ -33,7 +33,7 @@ One day, after having trekked about half-way along the treacherous Road of Recom
 <img src="/images/youtube-katy-perry-after.jpg" />
 </p>
 
-These rules:
+These CSS rules:
 
 * Hide the suggested videos in the sidebar
 * Hide suggested videos at the end of a video
@@ -45,7 +45,7 @@ These rules:
 * Hide homepage videos
 * And in the extreme version, hide all homepage content at all except a search bar
 
-Removing the sections of websites that don’t serve your goals makes the internet a more relaxing place. Building your own removal rules requires only a basic knowledge of CSS and the Chrome debugger, and installing my YouTube tweaks for yourself via the [Stylish Chrome extension](https://userstyles.org/styles/159555/distraction-free-youtube) doesn’t require knowing anything about anything. If you liked this then you should also check out my [previous attempts to turn down online noise](/2016/08/08/hide-the-internet/), and [let me know](https://twitter.com/robjheaton) if you have any other ideas for websites that need some moderation imposed on them.
+Removing the sections of websites that don’t serve your goals makes the internet a more relaxing place, and installing my YouTube tweaks for yourself via the [Stylish Chrome extension](https://userstyles.org/styles/159555/distraction-free-youtube) doesn’t require knowing anything about CSS or internet browsers. If you like the alterations then you should also check out my [previous attempts to turn down online noise](/2016/08/08/hide-the-internet/), and [let me know](https://twitter.com/robjheaton) if you have any other ideas for websites that need some moderation imposed on them.
 
 ---
 
