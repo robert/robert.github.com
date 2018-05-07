@@ -1,6 +1,7 @@
 ---
 title: Making YouTube less bad for you using CSS
 layout: post
+og_image: https://robertheaton.com/images/youtube-pokemon-after.jpg
 ---
 > Hopefully this will be the life hack that makes her love me again.
 
