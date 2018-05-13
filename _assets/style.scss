@@ -177,7 +177,6 @@ ul.posts {
 
 section.info {
   width: 49%; 
-  font-size: 13px;
   a { line-height: 2.4em; }
   &:not(:last-of-type) { margin-right: 1%; }
   @include inline-block;
