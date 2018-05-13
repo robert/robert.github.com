@@ -221,8 +221,8 @@ section.navigation {
 section.share-links {
   text-align: center;
   border-top: 1px dotted #ddd;
-  border-bottom: 1px dotted #ddd;
-  padding: 20px 0 10px; margin: 20px 0;
+  padding: 20px 0 0px;
+  margin: 20px 0;
   .button { 
     @include inline-block;
     vertical-align: top;
