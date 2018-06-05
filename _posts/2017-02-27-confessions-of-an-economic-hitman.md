@@ -1,7 +1,7 @@
 ---
 title: Confessions of an Economic Hitman - a review
 layout: post
-tags: [Book Reviews]
+tags: [Book Reviews, Economics]
 ---
 <p align="center">
 <img src="/images/ceh.jpg" />
