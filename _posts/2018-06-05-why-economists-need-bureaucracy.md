@@ -1,7 +1,7 @@
 ---
 title: Why economists need bureaucracy
 layout: post
-labels: [Economics]
+tags: [Economics]
 ---
 Ask an economist "how should the world be run?" and their first reaction will be one of surprise. They’ve written several decades-worth of papers on how the world should be run, but no one’s ever actually asked them before. After recomposing themselves they’ll probably start talking about interest rates and externality-internalizing market mechanisms, but they’ll be lying. An economist’s true utopia is a world of arbitrary and rigidly enforced bureaucracy.
 
