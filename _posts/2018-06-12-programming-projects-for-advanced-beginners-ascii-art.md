@@ -1,7 +1,6 @@
 ---
 title: Programming projects for advanced beginners - ASCII art
 layout: post
-published: false
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory tutorials and short exercises you can find, but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. You can do it in whichever programming language you happen to be learning, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/RobJHeaton) or Skype.
 
@@ -19,7 +18,7 @@ The initial project is broken up into 5 sections. You won't actually generate an
 
 Once you finish, there are several extension project. In these you will build on top of your ASCII-art generator to add glorious technicolor to your pictures, make a Facebook-style flag-overlay, and even build an ASCII-webcam to replace Apple's Photobooth.
 
-If you get stuck (defined as making zero progress for 30 minutes), you can get some inspiration from my example project here[LINK]. I've written it in Python, but I've also tried to avoid using any Python-specific constructs. It should therefore be a useful reference regardless of which language you are using. If your code looks different from mine, don't worry! There are many ways to structure this project. If the project brief contains any terms that you haven't seen before then my apologies, that's my fault. You should just ask Google to explain what I failed to.
+If you get stuck (defined as making zero progress for 30 minutes), you can get some inspiration from [my example project](https://gist.github.com/robert/b0b14b1fd4a5feb2b45ab3ce049f5707). I've written it in Python, but I've also tried to avoid using any Python-specific constructs. It should therefore be a useful reference regardless of which language you are using. If your code looks different from mine, don't worry! There are many ways to structure this project. If the project guide contain any terms that you haven't seen before then apologies, that's my fault. Just ask Google to explain.
 
 If you get completely stuck (defined as making zero progress for 60 minutes), take a break and come back later with a clear mind. If you would like to, send me an [email](mailto:robqheaton@gmail.com) or a [Tweet](https://twitter.com/RobJHeaton) and I'll do my level best to try and help you over the bump.
 
@@ -31,7 +30,13 @@ If you get completely stuck (defined as making zero progress for 60 minutes), ta
 
 # 0. Choose an image
 
-A JPEG image is a grid of pixels. In your ASCII art, you're going to represent each of these pixels using an ASCII character. Assuming you're using white text on a dark terminal background, dark pixels will be represented by small characters like `.`, which leave lots of dark terminal background exposed. Bright pixels will be represented by dense characters like `$`, which instead fill up the screen with white text.
+A JPEG image is a grid of pixels. If you zoom in enough then you can see them.
+
+<p align="center">
+<img src="/images/ascii-pixellated-pineapple.jpg" />
+</p>
+
+In your ASCII art, you're going to represent each of these pixels using an ASCII character. Assuming you're using white text on a dark terminal background, dark pixels will be represented by small characters like a dot (`.`), which leave lots of dark terminal background exposed. Bright pixels will be represented by dense characters like `$`, which instead fill up the screen with white text.
 
 Choose the first image that you want to convert into ASCII art. For reasons that will become apparent, it's good to start with an image around 640x480 pixels in size. Here's a picture of a pineapple hanging out on a beach that you might like to use.
 
@@ -41,7 +46,7 @@ Choose the first image that you want to convert into ASCII art. For reasons that
 
 # 1. Read your image and print its height and width in pixels
 
-First, find and install an image processing library. Which library you choose will depend on your language, but now that we are in the year 2017, most libraries should have good installation instructions. If they don't and you have trouble then it's not your fault - just move on and try another library.
+First, find and install an image processing library. Which library you choose will depend on your language, but now that we are in the year 2018, most libraries should have good installation instructions. If they don't and you have trouble then it's not your fault - just move on and try another library.
 
 * For Python I've used [Pillow](https://python-pillow.org/) and found it very pleasant 
 * For Ruby, [MiniMagick](https://github.com/minimagick/minimagick) looks good
@@ -79,8 +84,8 @@ With your pixel data in a 2-dimensional array, you will be able to access the da
 ```
 for x in len(pixel_matrix):
     for y in len(pixel_matrix[x]):
-        # Do something to each pixel
         pixel = pixel_matrix[x][y]
+        # Now do something with the pixel...
 ```
 
 Some image processing libraries may already have a ready-made method that loads your image's pixels into a 2-dimensional array for you. If your library has a method like this, use it! If not, piece together the methods it does have, and remember that Google knows a lot about topics like "python pillow 2-d pixel array".
@@ -94,7 +99,7 @@ Iterating through pixel contents:
 (255, 255, 255)
 (10, 64, 172)
 # … and so on for many thousands of lines.
-# Delete or comment this code out once you've established that it works
+# Delete or comment this debugging code out once you've established that it works
 ```
 
 # 3. Convert the *RGB tuples* of your pixels into single brightness numbers
@@ -130,9 +135,9 @@ You've constructed a matrix of brightnesses for each pixel. Now you can convert 
 "`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
 ```
 
-For each number in your brightness matrix, map it to the appropriate character on the above scale and store it in the ASCII matrix. A brightness of 0 should map to `` ` ``, and a brightness of 255 should map to `$`. Mapping brightnesses in between to the correct character will require just a dash of maths.
+For each number in your brightness matrix, map it to the appropriate character on the above scale and store it in the ASCII matrix. A brightness of 0 should map to a delicate backtick (`` ` ``), and a brightness of 255 should map to big stocky dollar sign (`$`).
 
-It may help your thinking to make the numbers involved a bit rounder. Imagine that the brightnesses are on a scale from 0 to 100, and that you are displaying these brightnesses using 20 characters. A brightness of 50 would map to character 10. A brightness of 60 would map to character number 12. What character number should a brightness of 30 map to? What about 75? What about 20? What's the formula you're using to work these out? Write it down in a comment, don't worry about converting it to code yet.
+Mapping brightnesses in between 0 and 255 to the correct character will require a dash of maths. It may help your thinking to pretend that the numbers involved are a bit rounder. Imagine that the brightnesses are on a scale from 0 to 100, and that you are displaying these brightnesses using 20 characters. A brightness of 50 would map to character 10. A brightness of 60 would map to character number 12. What character number should a brightness of 30 map to? What about 75? What about 20? What's the formula you're using to work these out? Write it down in a comment, don't worry about converting it to code yet.
 
 What if you make the brightnesses weird, non-divisible numbers? You can't map a brightness onto character number 9.8. So what's the best character number for a brightness of 49 map to? What about 52? What about 87? What's the logic you're using to work these out? Write it down in a comment as well. How could you express the entire formula in code? Will it still work when you're working with a brightness scale of 0 to 255 and 70 characters? (hint - yes)
 
@@ -166,7 +171,7 @@ A normal photograph is thousands of pixels in height and width. You have nowhere
 
 The solution is to add some code to shrink your image before you build your initial pixel matrix. All sensible image processing libraries should have a way to resize an image before converting it to pixels - have a look in your library's documentation. Use trial and error to work out the largest image that you can display on your terminal.
 
-After pausing to pat yourself on the back, send me an email with what you found easy, what you found confusing, whether you got stuck anywhere, and what you'd like more explanation of in the future. If there's anything you'd find helpful to go over in person over Skype, please let me know. I'm going to be making more advanced-beginner projecs like this, and I'd like to understand how to make them as useful as possible. After sending that email (seriously, send it) and signing up for my mailing list at the bottom of this page (do that too), compose yourself and venture boldly into the extensions section.
+After pausing to pat yourself on the back, [send me an email](mailto:robqheaton@gmail.com) with what you found easy, what you found confusing, whether you got stuck anywhere, and what you'd like more explanation of in the future. If there's anything you'd find helpful to go over in person over Skype, please let me know. I'm going to be making more advanced-beginner projecs like this, and I'd like to understand how to make them as useful as possible. After sending that email (seriously, send it) and signing up for my mailing list at the bottom of this page (do that too), compose yourself and venture boldly into the extensions section.
 
 # Extensions
 
