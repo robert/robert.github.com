@@ -45,7 +45,7 @@ These CSS rules:
 * Hide homepage videos
 * And in the extreme version, hide all homepage content at all except a search bar
 
-Removing the sections of websites that don’t serve your goals makes the internet a more relaxing place, and installing my YouTube tweaks for yourself via the [Stylish Chrome extension](https://userstyles.org/styles/159555/distraction-free-youtube) doesn’t require knowing anything about CSS or internet browsers. If you like the alterations then you should also check out my [previous attempts to turn down online noise](/2016/08/08/hide-the-internet/), and [let me know](https://twitter.com/robjheaton) if you have any other ideas for websites that need some moderation imposed on them.
+Removing the sections of websites that don’t serve your goals makes the internet a more relaxing place. Installing my YouTube tweaks for yourself via the [Stylish Chrome extension](https://userstyles.org/styles/159555/distraction-free-youtube) doesn’t require knowing anything about CSS or internet browsers. If you like the alterations then you should also check out my [previous attempts to turn down online noise](/2016/08/08/hide-the-internet/), and [let me know](https://twitter.com/robjheaton) if you have any other ideas for websites that need some moderation imposed on them.
 
 ---
 
