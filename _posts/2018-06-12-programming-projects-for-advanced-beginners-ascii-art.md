@@ -1,6 +1,7 @@
 ---
 title: Programming projects for advanced beginners - ASCII art
 layout: post
+og_image: https://robertheaton.com/images/example-ascii.gif
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory tutorials and short exercises you can find, but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. You can do it in whichever programming language you happen to be learning, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/RobJHeaton) or Skype.
 
