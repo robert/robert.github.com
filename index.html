@@ -9,11 +9,10 @@ title: Robert Heaton
       <li>
         <a href="{{ post.url }}">
           {{ post.title }}
-          <br />
-          <small class="muted" data-time="{{ post.date }}">
-            {{ post.date | date_to_string }}
-          </small>
         </a>
+        <small class="muted">
+          {{ post.date | date_to_string }}
+        </small>
       </li>
     {% endfor %}
   </ul>
@@ -27,9 +26,8 @@ title: Robert Heaton
           <li>
             <a href="{{ post.url }}">
               {{ post.title }}
-              <br/>
-            <small class="muted">{{ post.blurb }}</small>
             </a>
+            <small class="muted">{{ post.blurb }}</small>
           </li>
         {% endif %}
       {% endfor %}
