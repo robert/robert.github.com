@@ -2,16 +2,14 @@
   {% if page.previous %}
     <div class="pull-left">
       <a href="{{ page.previous.url }}" id="next">
-        <i class='icon-angle-left'></i>
-        <span>{{page.previous.title}}</span>
+        <span>&lt; {{page.previous.title}}</span>
       </a>
     </div>
   {% endif %}
   {% if page.next %}
     <div class="pull-right">
       <a href="{{page.next.url}}" id="prev">
-        <span>{{page.next.title}}</span>
-        <i class='icon-angle-right'></i>
+        <span>{{page.next.title}} &gt;</span>
       </a>
     </div>
   {% endif %}
