@@ -2,6 +2,7 @@
 title: How to read
 layout: post
 tags: [Productivity]
+og_image: https://robertheaton.com/images/how-to-read-cover.jpg
 ---
 Five years ago I realized that I remembered almost nothing about most books that I read. I was reading all kinds of non-fiction - pop-psychology, pop-economics, pop-sociology, you name it - and felt like quite the polymath auto-didact. But one day, after I had finished blathering at a friend about how much I had enjoyed Thinking, Fast and Slow, they asked for a quick summary of the book’s overall thesis. I thought for a while, mumbled something about System 1 and System 2 and how I had only really read it for background knowledge, and adroitly changed the subject. As I was falling asleep that night it occurred to me that calling yourself an auto-didact doesn’t mean you actually know anything.
 
