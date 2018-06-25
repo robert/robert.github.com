@@ -2,17 +2,20 @@
 title: How to read
 layout: post
 tags: [Productivity]
-published: false
 ---
-Five years ago I realized that I remembered almost nothing about most books that I read. I was reading all kinds of non-fiction - pop-psychology, pop-economics, pop-sociology, you name it - and felt like quite the polymath auto-didact. But one day, after I had finished blathering at a friend about how much I had enjoyed Thinking, Fast and Slow, they asked for a quick summary of the book’s overall thesis. I thought for a while, mumbled something about System 1 and System 2 and how it was more of a high-level overview of the field, and adroitly changed the subject. As I was falling asleep that night it occurred to me that calling yourself an auto-didact doesn’t mean you actually know anything.
+Five years ago I realized that I remembered almost nothing about most books that I read. I was reading all kinds of non-fiction - pop-psychology, pop-economics, pop-sociology, you name it - and felt like quite the polymath auto-didact. But one day, after I had finished blathering at a friend about how much I had enjoyed Thinking, Fast and Slow, they asked for a quick summary of the book’s overall thesis. I thought for a while, mumbled something about System 1 and System 2 and how I had only really read it for background knowledge, and adroitly changed the subject. As I was falling asleep that night it occurred to me that calling yourself an auto-didact doesn’t mean you actually know anything.
+
+<p align="center">
+<img src="/images/readingbook1.jpg" />
+</p>
 
 People laugh about how they don’t remember anything they learned in school. If you went to college then you probably haven’t used anything you learned there for quite some time, and have rationalized those years as something between a valuable lesson in learning how to think and a stupid but required passport to professionalism. I know that Pauli had an Exclusion Principle, but I could not tell you anything about who he was excluding or why. We generally seem to be OK with this.
 
 As adults we read non-fiction books because they are fun, and because we want to know and remember the things inside them. However, it’s not surprising that we don’t remember much about what we read. Learning comes from repetition, and few people have occasion to think about capital-income ratios after finishing Capital In The Twenty-First Century. Even fewer spend much time immersed in black holes post-A Brief History of Time.
 
-One completely valid way to deal with this fact is to decide that you are fine with it. Reading Manufacturing Consent is an enjoyable experience and worth doing for its own sake; you don’t want to be viewing all of your leisure activities through the lens of a strict cost-benefit analysis. You don’t care how much of Judge Judy you remember, and Noam Chomsky doesn’t get any special treatment. I should clarify that I have not actually read any books by Noam Chomsky, and I chose him as an example for reasons of intellectual signaling.
+One completely valid way to deal with this fact is to decide that you are fine with it. Reading Manufacturing Consent is an enjoyable experience and worth doing for its own sake; you don’t want to be viewing all of your leisure activities through the lens of a strict cost-benefit analysis. You don’t care how much of Judge Judy you remember, and Noam Chomsky doesn’t get any special treatment. I should note that I have not actually read any books by Noam Chomsky, and I chose him as an example for reasons of intellectual signaling.
 
-I'm currently trying to learn a lot about economics. I care a lot about this project, and find it sufficiently compelling that I’m willing to spend my limited reading time for it in a way that optimizes for learning over fun. I’ve evolved a system to help me remember more of what I read. It’s proven quite successful, and has won me such plaudits as "Where did you regurgitate all that from?" and "Well someone clearly just read 'What’s the Matter With Kansas'". It’s obviously completely made up and not the result of years of (or indeed any) scientific verification, but I have found it to be effective. Here’s a brief summary.
+I'm currently trying to learn a lot about economics. I care a lot about this project, and find it sufficiently compelling that I’m willing to spend my limited reading time for it in a way that optimizes for learning over fun. I’ve evolved a system to help me remember more of what I read. It’s proven quite successful, and has won me such plaudits as "Where did you regurgitate all that from?" and "Well someone clearly just read 'Why Nations Fail'". It’s obviously completely made up and not the result of years of (or indeed any) scientific verification, but I have found it to be effective. Here’s a brief summary.
 
 # The basic idea
 
@@ -21,10 +24,10 @@ Learning comes from repetition, but books are long and verbose and not designed 
 To try and get more reps in, I think that books should be read in two phases:
 
 1. Read and annotate the book in a way that makes it easy to scan and digest once you have finished
-2. Once you have finished the book, make a "writeup". This involves summarizing the book,  doing further research and making flashcards (using [Anki][https://ankiweb.net])
+2. Once you have finished the book, make a "writeup". This involves summarizing the book,  doing further research and making flashcards (using [Anki](https://ankiweb.net))
 
 <p align="center">
-<img src="/images/anki0.PNG" width=200 />
+  <img src="/images/anki0.PNG" />
 </p>
 
 The writeup usually takes between one and four hours, and it serves three functions:
@@ -51,6 +54,10 @@ I find that I can answer these questions using a small set of symbols:
   <tr>
     <th>?</th>
     <td>add this point as a flashcard during the writeup after doing some extra research</td>
+  </tr>
+  <tr>
+    <th>r?</th>
+    <td>Research this more</td>
   </tr>
   <tr>
     <th>*</th>
@@ -95,10 +102,6 @@ In addition, write your own longform sentences in the margins, with big arrows p
 
 These handwritten notes force you to engage more with what you are reading and will form the basis of the Summary section of your writeup. Finally, at the end of each chapter, flip back through   it and scribble down a quick outline of what was in it. Don’t stop a reading session at the end of a chapter without writing the summary - if you don’t do it straightaway then you never will.
 
-<p align="center">
-<img src="/images/readingbook1.jpg" />
-</p>
-
 Once you have finished the book and are armed with symbols, sentences, summaries and some understanding of what you have just read, you are ready to begin consolidating your new knowledge in the writeup.
 
 # 2. The writeup
@@ -113,10 +116,10 @@ Begin your writeup with a template. I use one with headings for:
 * Questions
 * My thoughts
 
-Start by reading reviews and making brief notes on them. Next, thumb through the book and sweep up all of the annotations that you left for yourself. The bulk of this should be a stream of consciousness summary (written in the "Summary" section), guided by the points in the book that you either put a big * next to or wrote out yourself in longhand in the margins. You can distinguish between notes that are coming straight from the text and those that are your interpretation of it by adding an arrow (=>) at the start of any line where it is you who is talking. Use quotation marks to signify a point that the author makes but that you don’t agree with. You can add chapter headings and the occasional page number to help map from your notes back to the relevant section of the book if you ever need to.
+Start by reading reviews and making brief notes on them. Next, thumb through the book and sweep up all of the annotations that you left for yourself. The bulk of this should be a stream of consciousness summary (written in the "Summary" section), guided by the points in the book that you either put a big * next to or wrote out yourself in longhand in the margins. I distinguish between notes that are coming straight from the text and those that are my interpretation of it by adding an arrow (=>) before the latter. I use quotation marks to signify a point that the author makes but that I don’t necessarilly agree with. You can add chapter headings and the occasional page number to help map from your notes back to the relevant section of the book if you ever need to.
 
 > "These affluent Democrats do not give a damn about inequality except as an election year slogan" (p92)
-
+>
 > => This is SUCH a strong statement - how does he know?
 
 As well as writing a Summary, you should:
@@ -132,11 +135,11 @@ As well as writing a Summary, you should:
 After this, go back through your list of "Questions", researching each one and making more flash cards. If you feel so moved then you can finish with a stream of consciousness of your overall reaction to the book in the "Thoughts" section. I also like to copy the list of "Quotes" into a master list of nice snippets, with a note of where they came from.
 
 > Everyone should keep a pile of aphorisms lying around - you never know when you’ll need one.
-
+>
 > \- Robert Heaton
 
 <p align="center">
-<img src="/images/anki1.PNG" width=200 />
+<img src="/images/anki1.PNG" />
 </p>
 
 # Conclusion
