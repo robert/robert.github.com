@@ -1,5 +1,5 @@
 ---
-title: "\"Stylish\" browser extension tracks every website you visit"
+title: "\"Stylish\" browser extension steals your browser history"
 layout: post
 tags: [Productivity]
 ---
