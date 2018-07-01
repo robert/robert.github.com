@@ -1,5 +1,5 @@
 ---
-title: Stylish browser extension tracks every website you visit
+title: "\"Stylish\" browser extension tracks every website you visit"
 layout: post
 tags: [Productivity]
 ---
