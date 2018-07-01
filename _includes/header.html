@@ -9,15 +9,17 @@ var pageTitle = "{{ page.title }}" || "Home"
 <meta property="og:image:height" content="{{ page.og_image_height }}" />
 
 <meta name="twitter:image" content="{{ page.og_image }}" />
+<meta name="twitter:card" content="summary_large_image"></meta>
+
 {% else %}
-<meta property="og:image" content="http://robertheaton.com/images/icon.png"/>
+<meta name="twitter:card" content="summary"></meta>
+<meta property="og:image" content="https://robertheaton.com/images/icon.png"/>
 <meta property="og:image:width" content="300" />
 <meta property="og:image:height" content="300" />
 
-<meta name="twitter:image" content="http://robertheaton.com/images/icon.png" />
+<meta name="twitter:image" content="https://robertheaton.com/images/icon.png" />
 {% endif %}
 
-<meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@RobJHeaton" />
 
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport' />
@@ -63,7 +65,7 @@ var pageTitle = "{{ page.title }}" || "Home"
 <!-- <link href='/stylesheets/reset.css' rel='stylesheet' type='text/css' /> -->
 <!-- <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' /> -->
 <!-- <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' /> -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css' />
 <link rel="shortcut icon" href="/images/fav.png"/>
 <style>
 @charset "UTF-8";
