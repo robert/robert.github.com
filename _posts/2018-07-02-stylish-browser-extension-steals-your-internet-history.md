@@ -1,7 +1,10 @@
 ---
 title: "\"Stylish\" browser extension steals all your internet history"
 layout: post
-tags: [Productivity]
+tags: [Online Tracking]
+og_image: https://robertheaton.com/images/stylish-google.com.jpg
+og_image_width: 1568
+og_image_height: 924
 ---
 Before it became a covert surveillance tool disguised as an outstanding browser extension, [Stylish](https://userstyles.org) really was an outstanding browser extension. It bestowed upon its users nothing less than the power to change the appearance of the internet. Its extensive bank of user-made skins gave bright websites a dark background, undid disliked UI changes, and added manga pictures to everything that wasn't a manga picture already. I spent many wonderful hours in its simple CSS editor, [hiding the distracting parts of the web](/2016/08/08/hide-the-internet/) whilst unknowingly being spied on}. Facebook news feed - gone. Twitter news feed - gone. Personal browsing history - gone. Quality of life and unexplained ennui - up and down respectively.
 
