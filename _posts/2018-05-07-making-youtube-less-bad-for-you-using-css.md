@@ -2,6 +2,7 @@
 title: Making YouTube less bad for you using CSS
 layout: post
 og_image: https://robertheaton.com/images/youtube-pokemon-after.jpg
+tags: [Productivity]
 ---
 > Hopefully this will be the life hack that makes her love me again.
 
@@ -13,7 +14,7 @@ I’m sure that someone somewhere has searched YouTube for “hilray emilas”, 
 
 One day, after having trekked about half-way along the treacherous Road of Recommended Videos that takes you all the way from Davids Frum through Duke, I stood up, had a long shower, and decided to make having positive interactions with YouTube use up much less willpower. I put together some [Stylus CSS rules](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) to remove the bits of YouTube that I don't believe have my best interests at heart, which it turns out is pretty much all of it except search results and actual videos.
 
-NOTE - make sure you use Styl*us* and not Styl*ish*, a similar browser extension. Stylish is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-steals-your-browser-history).
+NOTE - make sure you use Styl*us* and not Styl*ish*, a similar browser extension. Stylish is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-steals-your-internet-history).
 
 ## Before
 
@@ -55,5 +56,5 @@ Removing the sections of websites that don’t serve your goals makes the intern
 To hide the distracting parts of YouTube for yourself:
 </i>
 
-* Download Stylus for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us). NOTE: do NOT download Styl*ish*, a similar extension. It is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-steals-your-browser-history).
+* Download Stylus for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us). NOTE: do NOT download Styl*ish*, a similar extension. It is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-steals-your-internet-history).
 * Copy this [YouTube style](https://userstyles.org/styles/159555/distraction-free-youtube)

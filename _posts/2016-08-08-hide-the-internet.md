@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Hide the internet
+tags: [Productivity]
 ---
 When Facebook takes [fifty minutes of your day](http://www.nytimes.com/2016/05/06/business/facebook-bends-the-rules-of-audience-engagement-to-its-advantage.html), emails are crack and watching any kind of realtime feed is more fun than all but the most avant garde forms of sex, how is anyone meant to feel like they are in control on the information superhighway?
 
@@ -12,7 +13,7 @@ On the other hand, there are times when you, being of sound mind and body, genui
 
 You just need to be able to get in, do what you want to do and then get the hell out of Dodge without being waylaid by articles written from viewpoints that you are politically sympathetic to but will have forgotten completely come the morning. You need to ignore the parts of the page that are nothing more than a thin plastic tarp over a bottomless void, leaving only the predictable, old-fashioned widgets that enable you to have a specific plan and then click a button to execute that plan. “Dear Grandma, it was my birthday yesterday, where the fuck are my presents? Hope you are well. SEND. QUIT." If the page is all bottomless void then you need to be able to insert some additional safety ropes around the entire thing, so that you only enter when you have a trained support team ready to drag you out.
 
-Enter Stylus. Stylus is a browser extension for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us) that allows you to manipulate a webpage’s [CSS](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/What_is_CSS) into doing your bidding, rather than that of the organization that sent you the page. (NOTE: you should NOT use Styl*ish*, a similar browser extension. It is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-steals-your-browser-history))
+Enter Stylus. Stylus is a browser extension for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us) that allows you to manipulate a webpage’s [CSS](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/What_is_CSS) into doing your bidding, rather than that of the organization that sent you the page. (NOTE: you should NOT use Styl*ish*, a similar browser extension. It is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-steals-your-internet-history))
 
 CSS is essentially the rules that tell your browser how to display a page. If you change the rules to say that a particular part of the page should be hidden, then your browser will hear and obey. It is straightforward to hide the Facebook newsfeed:
 
@@ -58,6 +59,6 @@ This gives you an out when you decide that you really would like to spend a bit 
 To hide distracting parts of the internet for yourself:
 </i>
 
-* Download Stylus for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us). NOTE: do NOT download Styl*ish*, a similar extension. It is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-steals-your-browser-history).
+* Download Stylus for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us). NOTE: do NOT download Styl*ish*, a similar extension. It is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-steals-your-internet-history).
 * Copy some or all of the above styles from [here](https://userstyles.org/users/331645)
 * If you would like to hide additional sites, you can either create new style with the rule `body {display: none}` to hide everything, or (advanced) use [the developer tools](https://developer.chrome.com/devtools#dom-and-styles) to hide only that part of the site that is causing you problems
