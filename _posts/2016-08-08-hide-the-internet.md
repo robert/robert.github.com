@@ -12,7 +12,9 @@ On the other hand, there are times when you, being of sound mind and body, genui
 
 You just need to be able to get in, do what you want to do and then get the hell out of Dodge without being waylaid by articles written from viewpoints that you are politically sympathetic to but will have forgotten completely come the morning. You need to ignore the parts of the page that are nothing more than a thin plastic tarp over a bottomless void, leaving only the predictable, old-fashioned widgets that enable you to have a specific plan and then click a button to execute that plan. “Dear Grandma, it was my birthday yesterday, where the fuck are my presents? Hope you are well. SEND. QUIT." If the page is all bottomless void then you need to be able to insert some additional safety ropes around the entire thing, so that you only enter when you have a trained support team ready to drag you out.
 
-Enter Stylish. Stylish is a browser extension for [Chrome](https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/stylish/) that allows you to manipulate a webpage’s [CSS](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/What_is_CSS) into doing your bidding, rather than that of the organization that sent you the page. CSS is essentially the rules that tell your browser how to display a page. If you change the rules to say that a particular part of the page should be hidden, then your browser will hear and obey. It is straightforward to hide the Facebook newsfeed:
+Enter Stylus. Stylus is a browser extension for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us) that allows you to manipulate a webpage’s [CSS](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started/What_is_CSS) into doing your bidding, rather than that of the organization that sent you the page. (NOTE: you should NOT use Styl*ish*, a similar browser extension. It is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-tracks-every-website-you-visit/))
+
+CSS is essentially the rules that tell your browser how to display a page. If you change the rules to say that a particular part of the page should be hidden, then your browser will hear and obey. It is straightforward to hide the Facebook newsfeed:
 
 <p align="center">
 <img src="https://cloud.githubusercontent.com/assets/1565857/15089699/b6e9eeac-13be-11e6-8ead-9c8bb74820aa.png" />
@@ -56,6 +58,6 @@ This gives you an out when you decide that you really would like to spend a bit 
 To hide distracting parts of the internet for yourself:
 </i>
 
-* Download Stylish for [Chrome](https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/stylish/) 
-* Install some or all of the above styles from [here](https://userstyles.org/users/331645)
+* Download Stylus for [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne?hl=en) or [Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us). NOTE: do NOT download Styl*ish*, a similar extension. It is spyware that [steals and sells all your browsing history](/2018/07/02/stylish-browser-extension-tracks-every-website-you-visit/).
+* Copy some or all of the above styles from [here](https://userstyles.org/users/331645)
 * If you would like to hide additional sites, you can either create new style with the rule `body {display: none}` to hide everything, or (advanced) use [the developer tools](https://developer.chrome.com/devtools#dom-and-styles) to hide only that part of the site that is causing you problems
