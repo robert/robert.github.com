@@ -15,9 +15,8 @@
           {% if page.hn %}
             <a href="https://news.ycombinator.com/item?id={{ page.hn }}" target="_blank">Discussion on Hacker News</a>
           {% endif %}
-          <hr />
-          {% include social_links.html %}
 					{% include rss.html %}
+          {% include social_links.html %}
           {% include related_posts.html %}
           {% include recent_posts.html %}
         </section>
