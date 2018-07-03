@@ -2,7 +2,7 @@
 title: "\"Stylish\" browser extension steals all your internet history"
 layout: post
 tags: [Online Tracking]
-og_image: https://robertheaton.com/images/stylish-google.jpg
+og_image: https://robertheaton.com/images/stylish-prev.png
 og_image_width: 1568
 og_image_height: 924
 ---
