@@ -1,5 +1,7 @@
 ---
 title: I went to Skyrim, once
+redirect_from:
+  - /2018/07/09/i-went-to-skyrim-once
 layout: post
 tags: [Productivity]
 og_image: https://robertheaton.com/images/skyrim-landscape.jpg
