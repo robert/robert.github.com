@@ -4,23 +4,20 @@
     {% include header.html %}
   </head>
   <body>
-    <div id="fb-root"></div>
     {% include navbar.html %}
-    <div class='container'>
-      <div class='site'>
-        <section class='post blogpost'>
-          <h1 class='subject'><a href="{{page.url}}">{{ page.title }}</a></h1>
-          <div class='date muted'>{{ page.date | date_to_string }}</div>
-          {{ content }}
-          {% if page.hn %}
-            <a href="https://news.ycombinator.com/item?id={{ page.hn }}" target="_blank">Discussion on Hacker News</a>
-          {% endif %}
-					{% include rss.html %}
-          {% include social_links.html %}
-          {% include related_posts.html %}
-          {% include recent_posts.html %}
-        </section>
-      </div>
+    <div class='container site'>
+      <section class='post blogpost'>
+        <h1 class='subject'><a href="{{page.url}}">{{ page.title }}</a></h1>
+        <div class='date muted'>{{ page.date | date_to_string }}</div>
+        {{ content }}
+        {% if page.hn %}
+          <a href="https://news.ycombinator.com/item?id={{ page.hn }}" target="_blank">Discussion on Hacker News</a>
+        {% endif %}
+        {% include rss.html %}
+        {% include social_links.html %}
+        {% include related_posts.html %}
+        {% include recent_posts.html %}
+      </section>
     </div>
     {% include footer.html %}
   </body>
