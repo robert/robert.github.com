@@ -5,7 +5,6 @@ redirect_from:
 layout: post
 tags: [Productivity]
 og_image: https://robertheaton.com/images/skyrim-landscape.jpg
-hidden: true
 ---
 When I played the Elder Scrolls III: Morrowind, I was an elven archer. For god’s sake never be an elven archer, in any part of your life. It’s much less glamorous than in the movies.
 
