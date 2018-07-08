@@ -1,5 +1,5 @@
 ---
-title: How Tinder keeps your location (a bit) private
+title: How Tinder keeps your exact location (a bit) private
 layout: post
 tags: [The Adventures of Steve Steveington, Online Tracking]
 og_image: https://robertheaton.com/images/tinder-map.jpg
@@ -63,3 +63,5 @@ The next morning Steve Steveington presents you with one of the two matching "Co
 As you fall asleep that night you wonder what happens to Tinder's co-ordinate grid at the North Pole...
 
 TO BE CONTINUED
+
+*[The code used in this post is all on Github](https://github.com/robert/tinder-locations)*. Please do let me know if you have any questions or find any mistakes!
