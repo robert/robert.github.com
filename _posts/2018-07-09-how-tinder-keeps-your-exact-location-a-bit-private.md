@@ -10,7 +10,7 @@ But beneath this shiny and disreputable exterior lies turmoil. You suspect that 
 
 You've lived in Silicon Valley for long enough to know the kind of cutthroat villainy that goes on when large sums of money and user data are at stake. Steve Steveington and his weird grimace could be doing anything out there. He's probably trying to convince your investors to squeeze you out. You think that Peter Thiel will back you up, but aren't so sure about Aunt Martha. You have to find out where Steve is going.
 
-Fortunately, the Stevester is an avid Tinder user. The Tinder app tracks its users' locations in order to tell potential matches how far away they are from each other. This enables them to make rational decisions about whether it's really worth traveling 8 miles to see a 6, 6.5 tops when they've got a tub of ice cream in the fridge and work the next morning. Tinder knows exactly where Steve is going. And if you can find the right exploit, soon you will too.
+Fortunately, the Stevester is an avid Tinder user. The Tinder app tracks its users' locations in order to tell potential matches how far away they are from each other. This enables users to make rational decisions about whether it's really worth traveling 8 miles to see a 6, 6.5 tops when they've got a tub of ice cream in the fridge and work the next morning. Tinder knows exactly where Steve is going. And if you can find the right exploit, soon you will too.
 
 You scour the online literature to find inspiration from Tinder's past location privacy vulnerabilities. There are several to choose from. In 2013, it was discovered that [the Tinder servers sent potential matches' exact co-ordinates to the Tinder app](https://qz.com/106731/tinder-exposed-users-locations/). The app used these co-ordinates internally to calculate distances between users, and did not display them in the interface. However, an attacker could easily intercept their own network traffic, inspect the raw data, and reveal their target's exact location. When the issue was discovered, Tinder quietly stopped sending precise co-ordinates to their app and [denied the possibility that the vulnerability was either avoidable or bad](https://qz.com/106731/tinder-exposed-users-locations/).
 
@@ -62,6 +62,6 @@ The next morning Steve Steveington presents you with one of the two matching "Co
 
 As you fall asleep that night you wonder what happens to Tinder's co-ordinate grid at the North Pole...
 
-TO BE CONTINUED
+TO BE CONTINUED...
 
-*[The code used in this post is all on Github](https://github.com/robert/tinder-locations)*. Please do let me know if you have any questions or find any mistakes!
+*[The code used in this post is all on Github](https://github.com/robert/tinder-locations). Please do let me know if you have any questions or find any mistakes!*
