@@ -1,7 +1,7 @@
 ---
 title: "Re: All those regrettable posts that you thought were gone"
 layout: post
-tags: [The Adventures of Steve Steveington, Online Tracking]
+tags: [The Steve Steveington Chronicles, Online Tracking]
 custom_meta: To my good friend, Steve Steveington. Thank you for your email advising me of my impending doom and destruction. I’m sorry that it’s taken me so long to reply. Work has been crazy.
 ---
 To my good friend, Steve Steveington,
