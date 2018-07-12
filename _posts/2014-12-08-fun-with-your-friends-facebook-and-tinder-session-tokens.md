@@ -6,7 +6,7 @@ redirect_from:
 hn: 8758196
 weight: 2
 blurb: Hacking for love and vengeance.
-tags: [The Adventures of Steve Steveington]
+tags: [The Steve Steveington Chronicles]
 ---
 <h3>The Setup</h3>
 

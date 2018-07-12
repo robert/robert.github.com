@@ -1,7 +1,7 @@
 ---
 title: Tracking friends and strangers using WhatsApp
 layout: post
-tags: [The Adventures of Steve Steveington, Online Tracking]
+tags: [The Steve Steveington Chronicles, Online Tracking]
 ---
 You and your good buddy, Steve Steveington, are in training for an arduous charity walk. You signed up together on the spur of the moment and pledged to hold each other accountable whilst you got in shape for the big day. However, you have developed reason to suspect that Steve Steveington is losing his commitment to the plan and is staying up until the early hours of the morning partying at nightclubs or playing Call of Duty. This is unacceptable - if he falls behind because he didn't take your training program seriously then you're not going to be the one to drag him round the punishing 5km course.
 
