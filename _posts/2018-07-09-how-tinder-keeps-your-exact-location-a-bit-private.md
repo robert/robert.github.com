@@ -15,15 +15,15 @@ Fortunately, the Stevester is an avid Tinder user. The Tinder app tracks its use
 
 You scour the online literature to find inspiration from Tinder's past location privacy vulnerabilities. There are several to choose from. In 2013, it was discovered that [the Tinder servers sent potential matches' exact co-ordinates to the Tinder phone app](https://qz.com/106731/tinder-exposed-users-locations/). The app used these co-ordinates internally to calculate distances between users, and did not display them in the interface. However, an attacker could easily intercept their own network traffic, inspect the raw data, and reveal their target's exact location. When the issue was discovered, Tinder quietly stopped sending precise co-ordinates to their app and [denied the possibility that the vulnerability was either avoidable or bad](https://qz.com/106731/tinder-exposed-users-locations/).
 
-<img src="/images/tinder-json.jpg" />
+<img src="/images/tinder-json.jpg" alt="Tinder API response including exact location" />
 
 Tinder tried to fix this vulnerability by calculating distances on their servers instead of in their app. Now the network messages sent from server to app contained only these pre-calculated distances, with no actual locations. However, Tinder carelessly sent these distances as exact, unrounded numbers with a robust 15 decimal places of precision.
 
-<img src="/images/tinder-json2.jpg" />
+<img src="/images/tinder-json2.jpg" alt="Tinder API response including exact distance" />
 
 This new oversight allowed [sneaky researchers to once again pinpoint a target's exact location](http://blog.includesecurity.com/2014/02/how-i-was-able-to-track-location-of-any.html) using a different, trilateration exploit. The researchers sent 3 spoofed location updates to Tinder to jump themselves around the city. At each new location they asked Tinder how far away their target was. Finally they drew 3 circles on a map, with centers equal to the spoofed locations and radii equal to the distances that they got back from Tinder. The point at which these circles intersected was their target's location, to a reported accuracy of 30 meters.
 
-<img src="/images/tinder-trilateration.jpg" />
+<img src="/images/tinder-trilateration.jpg" alt="Example of Tinder Trilateration" />
 
 Tinder inwardly sighed, wished that people would just leave it alone, and quietly fixed the vulnerability, properly this time. Tinder now only ever sends your phone pre-rounded distances, in miles, with zero decimal places of precision. It's still possible to use the above trilateration procedure to locate a target to within a mile or so. But in the densely populated city of San Francisco, this won't tell you anything useful about where Steve Steveington is committing his dastardly subterfuge.
 
@@ -35,27 +35,27 @@ You leap into action. You borrow Wilson's phone for testing whilst he's in the b
 
 But something is wrong. Night falls, dinnertime passes, and you still haven't re-located Wilson. You can get close-ish, but no cigar-ish. The circles sometimes come tantalizingly close to intersecting, but are more often unable to reach any useful consensus about where Wilson is. You start to despair - Steve Steveington could right this second be signing a new deal with Peter Thiel and Aunt Martha. He could have already updated your company LinkedIn page to make you an "Advisor" or an "Associate" or "vice-CEO". The library closes, and you relocate to the supply closet. Wilson keeps calling his phone, but your unpaid trial period staff never rat you out. You briefly contemplate giving them jobs.
 
-<img src="/images/tinder-trilateration-fail.jpg" />
+<img src="/images/tinder-trilateration-fail.jpg" alt="Example of Tinder trilateration gone wrong" />
 
 Frustrated, you take a step back. You bump your head on a low shelf. After extricating yourself from an avalanche of cleaning products, you contemplate the possibility that your assumptions might be wrong. Maybe Tinder is doing something more elaborate than calculating exact distances and rounding then. You grab a snack from the library employee fridge to help you think. You stop drawing circles and you start shuffling along lines that rake across Wilson's true location, dropping a single pin whenever your distance from him changes.
 
 Shortly after 1am, everything becomes clear.
 
-<img src="/images/tinder-map.jpg" />
+<img src="/images/tinder-map.jpg" alt="Placing pins in a map based on Tinder distances" />
 
 Tinder is now so committed to privacy that it has burst the surly bonds of conventional geometry. It has cast aside Euclid. It has no need for [the Haversine Formula](https://en.wikipedia.org/wiki/Haversine_formula). Instead, when calculating distances between matches, Tinder introduces 2 new innovations.
 
 First and most important, it divides the city up into grid squares, very roughly 1 mile by 1 mile in size. When calculating the distance between an attacker and a target, it snaps the location of the target to the center of their current grid square. It then calculates and returns the approximate distance between the attacker *and this snapped location*.
 
-<img src="/images/tinder-grid-snap.jpg" />
+<img src="/images/tinder-grid-snap.jpg" alt="Tinder snaps users' locations to a grid" />
 
 Second, it calculates distances using what appears to be an entirely custom formula. To calculate the distance between an attacker and a target, it overlays a map of rough, pre-determined distances, and centres it on the target's grid square. It looks up the attacker's position in the overlay, and returns the corresponding distance. For normal, Euclidean distance calculations, this overlay would be a set of concentric circles.
 
-<img src="/images/tinder-circles.jpg" />
+<img src="/images/tinder-circles.jpg" alt="The real distance would use an overlay of concentric circles" />
 
 However, Tinder uses an overlay that starts out as concentric squares that start to develop some strange rounding on their corners as they get further away from the target.
 
-<img src="/images/tinder-squares.jpg" />
+<img src="/images/tinder-squares.jpg" alt="Tinder uses an overlay of concentric squares with rounded corners" />
 
 Amongst other things, this means that Tinder often returns distances that are a little bit wrong. You suspect that the corner-rounding is to prevent distances between users who are due North-East of each other from becoming *too* wrong.
 
@@ -69,7 +69,7 @@ The next morning Steve Steveington presents you with one of the two matching "Co
 
 As you fall asleep that night you wonder what happens to Tinder's co-ordinate grid at the North Pole...
 
-<img src="/images/tinder-north-pole.jpg" />
+<img src="/images/tinder-north-pole.jpg" alt="What happens to Tinder's co-ordinate grid at the North Pole?" />
 
 > [Image source](https://www.jasondavies.com/maps/rotate/)
 
