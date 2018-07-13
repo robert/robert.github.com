@@ -1,9 +1,6 @@
 <meta name="google-site-verification" content="nEy67q46N_E4keArl5x0pv_hCQQ_jh0vUFe57wyR3Eg" />
-<!-- All the meta tags in the world -->
 {% if page.og_image %}
 <meta property="og:image" content="{{ page.og_image }}"/>
-<!-- <meta property="og:image:width" content="{{ page.og_image_width }}" /> -->
-<!-- <meta property="og:image:height" content="{{ page.og_image_height }}" /> -->
 
 <meta name="twitter:image" content="{{ page.og_image }}" />
 <meta name="twitter:card" content="summary_large_image"></meta>
@@ -11,8 +8,6 @@
 {% else %}
 <meta name="twitter:card" content="summary"></meta>
 <meta property="og:image" content="https://robertheaton.com/images/icon.png"/>
-<!-- <meta property="og:image:width" content="300" /> -->
-<!-- <meta property="og:image:height" content="300" /> -->
 
 <meta name="twitter:image" content="https://robertheaton.com/images/icon.png" />
 {% endif %}
@@ -22,46 +17,42 @@
 <meta content='width=device-width, initial-scale=1.0, user-scalable=no' name='viewport' />
 <meta content='text/html; charset=utf-8' http-equiv='content-type' />
 <meta property='og:site_name' content='Robert Heaton' />
+
 {% if page.date %}
-<meta content='{{ site.url }}{{ page.url }}' property='og:url' />
-<meta property="og:type" content='article'/>
+  <meta content='{{ site.url }}{{ page.url }}' property='og:url' />
+  <meta property="og:type" content='article'/>
 
-{% if page.custom_title %}
-<meta property="og:title" content='{{ page.custom_title | strip_html | trim | escape }} | {{ site.name }}'/>
+  {% if page.custom_title %}
+    <meta property="og:title" content='{{ page.custom_title | strip_html | trim | escape }} | {{ site.name }}'/>
 
-<meta name="twitter:title" content="{{ page.custom_title | strip_html | trim | escape }} | {{ site.name }}" />
-{% else %}
-<meta property="og:title" content='{{ page.title | strip_html | trim | escape }} | {{ site.name }}'/>
-
-<meta name="twitter:title" content="{{ page.title | strip_html | trim | escape }} | {{ site.name }}" />
-{% endif %}
-
-  {% if page.custom_meta %}
-  <meta property="og:description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
-  <meta property="description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
-
-  <meta name="twitter:description" content="{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}" />
+    <meta name="twitter:title" content="{{ page.custom_title | strip_html | trim | escape }} | {{ site.name }}" />
   {% else %}
-  {% assign description = page.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' | strip_html | strip |  truncatewords: 90 %}
+    <meta property="og:title" content='{{ page.title | strip_html | trim | escape }} | {{ site.name }}'/>
 
-  <meta property="og:description" content='{{ description }}'/>
-  <meta property="description" content='{{ description }}'/>
-
-  <meta name="twitter:description" content="{{ description }}" />
+    <meta name="twitter:title" content="{{ page.title | strip_html | trim | escape }} | {{ site.name }}" />
   {% endif %}
 
-{% else %}
-<meta content='{{ site.url }}' property='og:url' />
-<meta property="og:type" content='blog'/>
-<meta property="og:title" content='{{ site.name | escape }}'/>
-<meta property="og:description" content='{{ site.description | escape }}'/>
-<meta property="description" content='{{ site.description | escape }}'/>
-{% endif %}
-<!-- All the meta tags in the world -->
+  {% if page.custom_meta %}
+    <meta property="og:description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
+    <meta name="description" content='{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}'/>
 
-<!-- <link href='/stylesheets/reset.css' rel='stylesheet' type='text/css' /> -->
-<!-- <link href='/stylesheets/style.css' rel='stylesheet' type='text/css' /> -->
-<!-- <link href='/stylesheets/syntax.css' rel='stylesheet' type='text/css' /> -->
+    <meta name="twitter:description" content="{{ page.custom_meta | strip_html | strip_newlines | truncate: 200 | escape }}" />
+  {% else %}
+    {% assign description = page.excerpt | newline_to_br | strip_newlines | replace: '<br />', ' ' | strip_html | strip |  truncatewords: 90 %}
+
+    <meta property="og:description" content='{{ description }}'/>
+    <meta name="description" content='{{ description }}'/>
+
+    <meta name="twitter:description" content="{{ description }}" />
+  {% endif %}
+{% else %}
+  <meta content='{{ site.url }}' property='og:url' />
+  <meta property="og:type" content='blog'/>
+  <meta property="og:title" content='{{ site.name | escape }}'/>
+  <meta property="og:description" content='{{ site.description | escape }}'/>
+  <meta name="description" content='{{ site.description | escape }}'/>
+{% endif %}
+
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css' />
 <link rel="shortcut icon" href="/images/fav.png"/>
 <style>
