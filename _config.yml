@@ -8,3 +8,5 @@ feedburner_id: robertheaton
 future: true
 gems:
   - jekyll-redirect-from
+  - jekyll-paginate
+paginate: 20
