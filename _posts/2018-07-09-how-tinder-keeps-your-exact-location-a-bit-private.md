@@ -5,15 +5,15 @@ tags: [The Steve Steveington Chronicles, Online Tracking]
 og_image: https://robertheaton.com/images/tinder-map.jpg
 published: false
 ---
-You and your good buddy, Steve Steveington, are the co-founders and co-CEOs of an online tracking company. You started the company less than a year ago in order to commercialize [a WhatsApp metadata leak that you discovered](/2017/10/09/tracking-friends-and-strangers-using-whatsapp/). You could both sorely use some co-leadership training, but the venture capital and poorly-pseudonymized personal data are still flowing as freely as ever. You've built the company into a powerful and precariously employed team of 65 assorted interns, work experience kids, Task Rabbits and unpaid trial workers. You recently moved into an exquisite new office in the 19th Century Literature section of the San Francisco Public Library, and your reputation in the online marketing sector is flourishing. You've been featured prominently in numerous listicles of the shadiest and best ways to improve your e-commerce conversion rates.
+You and your good buddy, Steve Steveington, are the co-founders and co-CEOs of an online tracking company. You started the company less than a year ago in order to commercialize [a WhatsApp metadata leak that you discovered](/2017/10/09/tracking-friends-and-strangers-using-whatsapp/). You could both sorely use some co-leadership training, but you've still managed to grow the company into a powerful and precariously employed team of 65 assorted interns, work experience kids, Task Rabbits and unpaid trial workers. You recently moved into an exquisite new office in the 19th Century Literature section of the San Francisco Public Library, and your reputation in the online marketing sector is flourishing. You've been featured prominently in numerous listicles of the shadiest and best ways to improve your e-commerce conversion rates.
 
 But beneath this glossy and disreputable exterior lies turmoil. You suspect that Steve Steveington, your good buddy, co-founder and co-CEO, is plotting against you. He keeps darting out of the library at odd times, for hours on end. When you ask him where he's going he makes a weird grimace that he probably thinks is a malevolent smile and tells you not to worry. You've ordered the librarians to tail him several times, but they are all terrible at fieldcraft.
 
 You've lived in Silicon Valley for long enough to know the kind of cutthroat villainy that goes on when large sums of money and user data are at stake. Steve Steveington and his weird grimace could be doing anything out there. He's probably trying to convince your investors to squeeze you out. You think that Peter Thiel will back you up, but aren't so sure about Aunt Martha. You have to find out where Steve is going.
 
-Fortunately, the Stevester is an avid Tinder user. The Tinder app tracks its users' locations in order to tell potential matches how far away they are from each other. This enables users to make rational decisions about whether it's really worth traveling 8 miles to see a 6, 6.5 tops, when they've got a tub of ice cream in the fridge and work the next morning. Tinder knows exactly where Steve is going. And if you can find the right exploit, soon you will too.
+Fortunately, the Stevester is an avid Tinder user. The Tinder app tracks its users' locations in order to tell potential matches how far away they are from each other. This enables users to make rational decisions about whether it's really worth traveling 8 miles to see a 6, 6.5 tops, when they've also got a tub of ice cream in the fridge and work the next morning. Tinder knows exactly where Steve is going. And if you can find the right exploit, soon you will too.
 
-You scour the online literature to find inspiration from Tinder's past location privacy vulnerabilities. There are several to choose from. In 2013, it was discovered that [the Tinder servers sent potential matches' exact co-ordinates to the Tinder phone app](https://qz.com/106731/tinder-exposed-users-locations/). The app used these co-ordinates internally to calculate distances between users, and did not display them in the interface. However, an attacker could easily intercept their own network traffic, inspect the raw data, and reveal their target's exact location. When the issue was discovered, Tinder quietly stopped sending precise co-ordinates to their app and [denied the possibility that the vulnerability was either avoidable or bad](https://qz.com/106731/tinder-exposed-users-locations/).
+You scour the online literature to find inspiration from Tinder's past location privacy vulnerabilities. There are several to choose from. In 2013, it was discovered that [the Tinder servers sent potential matches' exact co-ordinates to the Tinder phone app](https://qz.com/106731/tinder-exposed-users-locations/). The app internally used these co-ordinates to calculate distances between users, and did not display them in the interface. However, an attacker could easily intercept the Tinder network traffic on its way to their phone, inspect the raw data, and reveal a target's exact location. When the issue was discovered, Tinder quietly stopped sending precise co-ordinates to their app and [denied the possibility that the vulnerability was either avoidable or bad](https://qz.com/106731/tinder-exposed-users-locations/).
 
 <img src="/images/tinder-json.jpg" alt="Tinder API response including exact location" />
 
@@ -25,9 +25,9 @@ This new oversight allowed [sneaky researchers to once again pinpoint a target's
 
 <img src="/images/tinder-trilateration.jpg" alt="Example of Tinder Trilateration" />
 
-Tinder inwardly sighed, wished that people would just leave it alone, and quietly fixed the vulnerability, properly this time. Tinder now only ever sends your phone pre-rounded distances, in miles, with zero decimal places of precision. It's still possible to use the above trilateration procedure to locate a target to within a mile or so. But in the densely populated city of San Francisco, this won't tell you anything useful about where Steve Steveington is committing his dastardly subterfuge.
+Tinder inwardly sighed, wished that people would just leave it alone, and quietly fixed the vulnerability, properly this time. Tinder now only ever sends your phone distances that are pre-rounded, in miles, with zero decimal places of precision. It's still possible to use the above trilateration procedure to locate a target to within a mile or so. But in the densely populated city of San Francisco, this won't tell you anything useful about where Steve Steveington is committing his dastardly subterfuge.
 
-On Friday afternoon, Steve Steveington and his weird grimace once again sneak out to commit various deeds in undisclosed locations. You have to find out where he's going before it's too late. You barricade yourself in your private office, in the reading room on the 4th floor. After fifteen minutes of deep breathing and even deeper thought, you hatch the beginnings of a plan to resuscitate the Tinder trilateration exploit and work out where the Stevenator is going.
+On Friday afternoon, Steve Steveington and his weird grimace sneak out once again to commit various deeds in undisclosed locations. You have to find out where he's going before it's too late. You barricade yourself in your private office, in the reading room on the 4th floor. After fifteen minutes of deep breathing and even deeper thought, you hatch the beginnings of a plan to resuscitate the Tinder trilateration exploit and work out where the Stevenator is going.
 
 Suppose that the Tinder now calculates exact distances on its servers, rounds them to the nearest integer, and then send these rounded numbers to your phone. You could start a new attack in the same way as the trilateration researchers. You could spoof a Tinder location update and ask Tinder how far away your target is. Tinder might say "8 miles", which on its own is of little use to you. But you could then start shuffling north, pixel-by-pixel, with each step asking Tinder again how far away your target is. "8 miles" it might say. "8 miles, 8 miles, 8 miles, 8 miles, 7 miles." If your assumptions about Tinder's approximation process are correct, then the point at which it flips from responding with "8 miles" to "7 miles" is the point at which your target is exactly 7.5 miles away. If you repeat this process 3 times and draw 3 circles, you've got trilateration again.
 
@@ -49,11 +49,11 @@ First and most important, it divides the city up into grid squares, very roughly
 
 <img src="/images/tinder-grid-snap.jpg" alt="Tinder snaps users' locations to a grid" />
 
-Second, it calculates distances using what appears to be an entirely custom formula. To calculate the distance between an attacker and a target, it overlays a map of rough, pre-determined distances, and centres it on the target's grid square. It looks up the attacker's position in the overlay, and returns the corresponding distance. For normal, Euclidean distance calculations, this overlay would be a set of concentric circles.
+Second, it calculates distances using what appears to be an entirely custom formula. To calculate the distance between an attacker and a target, it takes a map of rough, pre-determined distances, and overlays it on the centre of the target's grid square. It looks up the attacker's position in the overlay, and returns the corresponding distance. For normal, Euclidean distance calculations, this overlay would be a set of concentric circles.
 
 <img src="/images/tinder-circles.jpg" alt="The real distance would use an overlay of concentric circles" />
 
-However, Tinder uses an overlay that starts out as concentric squares that start to develop some strange rounding on their corners as they get further away from the target.
+However, Tinder appears to use an overlay of concentric squares that start to develop some strange rounding on their corners as they get further away from the target.
 
 <img src="/images/tinder-squares.jpg" alt="Tinder uses an overlay of concentric squares with rounded corners" />
 
@@ -61,7 +61,7 @@ Amongst other things, this means that Tinder often returns distances that are a 
 
 Grid-snapping is the key innovation in Tinder's approach. It means that Tinder will always return the same distance if a target is located anywhere within a given grid square. Your shuffling trilateration exploit will not work, and indeed if Tinder has implemented grid-snapping correctly, no purely distance-based exploit can ever work. There is no way to find a target's location with any more precision than knowing that they are somewhere in one of Tinder's (roughly) 1 mile by 1 mile grid squares. Even this coarse-grained snooping should give Tinder users pause for thought. But it actually feels like about as much privacy as you can reasonably expect from an app whose main feature is that it tells strangers approximately where you are.
 
-You aren't actually sure why Tinder uses its odd, rounded square distance metric. As long as user locations are snapped to a grid, Tinder could continue to use the normal Euclidean distance with no loss of privacy. Perhaps it's simply that the new metric is faster to calculate, and despite what Gordon Moore promised us, computers aren't free yet. Nonetheless, this all adds up to Tinder being secure - in this very specific respect - and you being screwed.
+You aren't actually sure why Tinder uses its odd, rounded square overlay. As long as user locations are snapped to a grid, Tinder could continue to use the normal Euclidean distance with no loss of privacy. Perhaps it's simply that the new metric is faster to calculate, and despite what Gordon Moore promised us, computers aren't free yet. Nonetheless, this all adds up to Tinder being secure - in this very specific respect - and you being screwed.
 
 The library is pitch black apart from the green glow of the photocopier. You sadly but diligently clean up after yourself. You tidy the supply closet and toss Wilson's phone into the library's industrial shredder. You leave by the front entrance, ignoring the wailing alarms, and hail a taxi. You don't have any cash on you, but the driver doesn't know that until you duck-and-roll out of the door at the traffic lights a few blocks before your apartment.
 
@@ -69,7 +69,9 @@ The next morning Steve Steveington presents you with one of the two matching "Co
 
 As you fall asleep that night you wonder what happens to Tinder's co-ordinate grid at the North Pole...
 
-<img src="/images/tinder-north-pole.jpg" alt="What happens to Tinder's co-ordinate grid at the North Pole?" />
+<p style="text-align: center">
+<img src="/images/tinder-north-pole.jpg" alt="What happens to Tinder's co-ordinate grid at the North Pole?" width="400" />
+</p>
 
 > [Image source](https://www.jasondavies.com/maps/rotate/)
 
