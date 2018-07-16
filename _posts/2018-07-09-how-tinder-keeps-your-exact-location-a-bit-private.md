@@ -2,7 +2,7 @@
 title: How Tinder keeps your exact location (a bit) private
 layout: post
 tags: [The Steve Steveington Chronicles, Online Tracking]
-og_image: https://robertheaton.com/images/tinder-map.jpg
+og_image: https://robertheaton.com/images/tinder-map-prev.jpg
 ---
 You and your good buddy, Steve Steveington, are the co-founders and co-CEOs of an online tracking company. You started the company less than a year ago in order to commercialize [a WhatsApp metadata leak that you discovered](/2017/10/09/tracking-friends-and-strangers-using-whatsapp/). You could both sorely use some co-leadership training, but you've still managed to grow the company into a powerful and precariously employed team of 65 assorted interns, work experience kids, Task Rabbits and unpaid trial workers. You recently moved into an exquisite new office in the 19th Century Literature section of the San Francisco Public Library, and your reputation in the online marketing sector is flourishing. You've been featured prominently in numerous listicles of the shadiest and best ways to improve your e-commerce conversion rates.
 
