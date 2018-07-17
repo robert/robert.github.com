@@ -1,5 +1,7 @@
 ---
 title: How Tinder keeps your exact location (a bit) private
+redirect_from:
+  - /2018/07/09/how-tinder-keeps-your-exact-location-a-bit-private/
 layout: post
 tags: [The Steve Steveington Chronicles, Online Tracking]
 og_image: https://robertheaton.com/images/tinder-map-prev.jpg
