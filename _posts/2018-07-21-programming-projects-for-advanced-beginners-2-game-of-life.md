@@ -5,16 +5,18 @@ tags: [Programming Project for Advanced Beginners]
 og_image: https://robertheaton.com/images/tinder-map.jpg
 published: false
 ---
-This is a programming project for Advanced Beginners. If you've completed all the introductory tutorials and short exercises you can find, but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. You can do it in whichever programming language you happen to be learning, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/RobJHeaton) or Skype.
+This is a programming project for Advanced Beginners. If you've completed all the introductory tutorials and short exercises you can find, but are not sure how to continue developing your skills, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. You can do it in whichever programming language you happen to be learning, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/RobJHeaton) or Skype.
 
 You're going to build the famous and fascinating system known as "Conway's Game of Life". This will not be easy, but I guarantee that you will succeed. And once you're finished you can create exquisite gifs of your work to share with your friends and extended family.
 
-<img src="/images/gol-intro.gif" alt="The Game of Life" />
+<img src="/images/gol-intro-2.gif" alt="The Game of Life" />
+
+> This is what it will look like
 
 Throughout the course of the project, you will learn:
 
-* How to structure larger programs
-* How to speed up development by breaking big projects down into manageable chunks and milestones
+* How to structure large programs
+* How to break big projects down into manageable chunks and milestones
 * How to write automated tests so that your computer verifies that your code is correct for you
 
 If you get stuck (defined as making zero progress for 30 minutes), you can get some inspiration from [my example project](https://gist.github.com/robert/5100dfffe8afbb04b560dd0fff184753). I've written it in Python, but I've also tried to avoid using any Python-specific constructs. It should therefore be a useful reference regardless of which language you are using. If your code looks different from mine, then as long as it works don't worry! There are usually many different ways to solve the same problem.
@@ -67,9 +69,9 @@ Sadly, changing the rules of Life does not allow you to change the rules of life
 
 ## Milestones
 
-Big projects are easier to work on if you break them up into small, testable pieces. This allows you to focus on doing one, manageable thing at a time instead of constantly jumping around and working on hundreds of lines of code all at once. You can then build your large, complex program out of simpler pieces that you have tested and that you trust. This isn't cheating, it's just good technique.
+Big projects are easier to work on if you break them up into small, testable pieces. This allows you to focus on doing one, manageable thing at a time. You can then build your large, complex program out of simpler pieces that you have tested and that you trust. This isn't cheating, it's just good technique.
 
-You wouldn't try to build every part of an entire house all at once. Instead you'd build the foundations, check that they work, build the walls, check that they work. At this point my knowledge of how to build an actual house breaks down, but I think that the principle is clear.
+You wouldn't try to build every part of an entire house all at once. You'd break it down and plan it out. You'd build the foundations, check that they work, build the walls, check that they work. At this point my knowledge of how to build an actual house breaks down, but I think that the principle is clear.
 
 A good set of milestones for this project could be:
 
@@ -85,9 +87,9 @@ Then some extensions:
 
 Milestones can even be broken down into smaller milestones. Say you're trying to calculate the next board state. How about starting by simply calculating the next state of a single cell, and making absolutely sure that that works? Once you've the logic for a single cell worked out, you can start looking at how to apply it to every other cell as well. Once again, not cheating, just good technique. We'll talk more about milestones throughout the project.
 
-# 1. Build a data structure to store the board state
+# 1. Store the board state
 
-The ultimate goal of this milestone is to create a function called `random_state`. This function will take in 2 arguments - your board's width and its height. It will return a board state in which every cell has been randomly initialized to either `ALIVE` (represented by a 1) or `DEAD` (represented by a 0).
+The ultimate goal of this milestone is to create a function called `random_state`. This function will take in 2 arguments - your board's width and its height. It will return a board state in which every cell has been randomly initialized to either `ALIVE` (represented by a 1) or `DEAD` (represented by a 0). In Life these random patterns are known as "Soups", and they are the quickest way for us to start producing interesting output.
 
 The Life world is a 2-D grid. Regardless of language, 2-D grids are almost always represented in code using a list of lists:
 
@@ -112,7 +114,7 @@ board_state[4][1]
 
 Let's break this milestone down further. We are faced with at least 2 challenges - working out how to create a board of the right size, and working out how to randomly initialize each cell to either `0` or `1` (dead or alive). Let's tackle these problems separately.
 
-Even though we eventually want to write a `random_state` function, let's start by writing a simpler `dead_state` function. Like `random_state`, `dead_state` will accept 2 arguments - a width and a height. It will also return a board, width by height in size. However, unlike `random_state`, every cell in this board will be initialized to `0`. Give this a go. Use Google as much as you need to. Break it down into even smaller steps if that helps.
+Even though we eventually want to write a `random_state` function, let's start by writing a simpler `dead_state` function. Like `random_state`, `dead_state` will accept 2 arguments - a width and a height. It too will return a board, width by height in size. However, unlike `random_state`, every cell in this board will be initialized to `0`. Give this a go. Use Google as much as you need to. Break it down into even smaller steps if that helps.
 
 Test your program out by printing a dead state to the terminal. It will probably look quite ugly, but that's OK.
 
@@ -120,7 +122,7 @@ Test your program out by printing a dead state to the terminal. It will probably
 width = 5
 height = 5
 print dead_state(width, height)
-[[0,0,0,0,0], [0,0,0,0,0], .... # etc...
+=> [[0,0,0,0,0], [0,0,0,0,0], .... # etc...
 ```
 
 Once your `dead_state` function is working, you've already written half of `random_state`! You can use `dead_state` at the start of `random_state` to create the 2-D grid data-structure, and then all that's left is to randomize the state of each cell.
@@ -157,10 +159,11 @@ You can already print your board to your terminal using your language's standard
 In this milestone we're going to write a `render` function. It will take 1 argument - a board state, just like those returned by the `dead_state` and `random_state` functions. The `render` function will format the board state and print it to the terminal.
 
 ```
-# ### # ##   #
-## ## ##    #
-## ###    #   #
-# etc...
+-----------------
+|# ### # ##   # |
+|## ## ##    #  |
+|## ###    #   #|
+|etc...         |
 ```
 
 You can use whatever characters (or even colors) you like to represent dead and live cells. As always, think about how you can break this task up into smaller pieces. Start by printing only the first row. How can you build on this to print the whole board?
@@ -172,14 +175,14 @@ a_dead_state = dead_state(20, 30)
 render(a_dead_state)
 
 a_random_state = random_state(20, 30)
-render(random_state)
+render(a_random_state)
 ```
 
 Make sure that they look reasonable. Are they the right height and width? Do they have roughly the number of alive and dead cells you would expect? You may need to zoom out on your terminal (using Ctrl+- or Cmd+-) in order to be able to see the full width and height of the board.
 
 ## 3. Calculate the next state of the board
 
-We've created the initial Life board and we've built the tools that we need to observe it. Now we're ready to set it in motion. In this milestone we're going to write a `next_board_state` function. It will take 1 argument - an initial board state. It will use this to calculate and return the next board state, according to the rules of Life that we saw in the introduction:
+We've created the initial Life board and we've built the tools that we need to observe it. Now we're ready to set it in motion. In this milestone we're going to write a `next_board_state` function. It will take 1 argument - an initial board state. It will use this argument to calculate and return the next board state, according to the rules of Life that we saw in the introduction:
 
 1. Any live cell with 0 or 1 live neighbors becomes dead, because of underpopulation
 1. Any live cell with 2 or 3 live neighbors stays alive, because their neighborhood is just right
@@ -188,37 +191,41 @@ We've created the initial Life board and we've built the tools that we need to o
 
 Spend some time thinking about how to structure this milestone. What are the different challenges? Could you break them up into smaller pieces? Very roughly, how might your code look?
 
-I've given you 4 hints to help you get over some gotchas that might trip you up - testing, storing the new board state, iterating over the board, and dealing with cells on the edges. They're there to help you if you get stuck, but if you don't need them then don't read them!
+I've given you 4 hints to help you get over some gotchas that might trip you up: testing, storing the new board state, iterating over the board, and dealing with cells on the edges. They're there to help you if you get stuck, but if you don't need them then don't read them!
 
 Once your `next_board_state` function passes all of your tests (see Hint 0) and looks sensible when you use `render` to print its results, you're ready to go on to the final part of Life.
 
 ### Hint 0 - Testing
 
-The `next_board_state` function is much harder to test by eye than our previous functions. It was obvious when `dead_state` and `render` were working - could you see the board, and were the cells all dead? It's much less clear whether every aspect of your `next_board_state` logic is correct. If you start with an initial board state of:
+The `next_board_state` function is much harder to test by eye than our previous functions. It was obvious when `dead_state` and `render` were working - could you see the board, and were all the cells dead? It's much less clear whether every aspect of your `next_board_state` logic is correct. If you start with an initial board state of:
 
 ```
-##  #
- ##
- #  #
-## #
-#####
+-------
+|##  #|
+| ##  |
+| #  #|
+|## # |
+|#####|
+-------
 ```
 
 And get back a new board state of:
 
 ```
-###
-  ##
-   #
-
-#  ##
+-------
+|###  |
+|  ## |
+|   # |
+|     |
+|#  ##|
+-------
 ```
 
 Is this correct? It looks reasonable. But should that cell in the middle of the second row definitely be alive? What about the one on the right edge of the fifth row? We could recalculate every cell by hand and check that they match our program's output, but that's no way to spend your precious limited time on this earth.
 
 The best and most systematic way to tackle this testing teaser is to write "unit tests". Unit tests are small snippets of code that take your program for an automatic test drive. They programmatically verify that your functions return the right outputs when given certain inputs, and makes sure that they don't throw any unexpected errors.
 
-For example, here are some Life unit tests:
+For example, here are some Life unit tests. The first test makes sure that dead cells with no live neighbors stay dead. The second makes sure that dead cells with exactly 3 live neighbors come alive:
 
 ```
 from game_of_life import next_board_state
@@ -275,11 +282,11 @@ if __name__ == "__main__":
         print actual_next_state2
 ```
 
-If your `next_board_state` function is correct then these tests will print out `PASSED 1`, `PASSED 2`, etc. And if the tests discover a bug in `next_board_state`, they will fail and print the unexpected result. You can then update your code, re-run the tests, and verify that you fixed the bug without accidentally breaking something else.
+If your `next_board_state` function is correct then these tests will print out `PASSED 1`, `PASSED 2`, etc. And if they discover a bug in `next_board_state`, they will fail and print the unexpected result. You can then update your code, re-run the tests, and verify that you fixed the bug without accidentally breaking something else.
 
 Few people would claim that unit tests are the most exciting part of programming. Nonetheless, they are extremely important. They make your code more reliable, easier to work with, and much, much easier to test. Of course, your tests are only as useful as you make them. The more tests you have, the fewer bugs will slip through your testing.
 
-Copy the example tests above into a separate file, and import your main program file. Now you have 2 programs that you can run. You have the main program that runs Life, and you have the test suite that checks that your main program is behaving itself. If you're having trouble with cross-file imports, you can also just copy the unit tests into your main program file and comment them out when you don't want to run them. This isn't ideal, but it's much better than jumping out of a window because you can't get your `require` statement to work.
+Copy the example tests above into a separate file, and import the necessary code from your main program file. Now you have 2 programs that you can run. You have the main program that runs Life, and you have the test suite that checks that your main program is behaving itself. If you're having trouble with cross-file imports, you can also just copy the unit tests into your main program file and comment them out when you don't want to run them. This isn't ideal, but it's much better than jumping out of a window because you can't get your `require` statement to work.
 
 Try writing some more test cases. How could you check that dead cells come back to life when they have exactly 3 live neighbors? How could you make sure that everything works as expected for cells on the edges of the board and in the corners? If you ever manually find a bug that wasn't caught by your test suite then add a test that would have caught it to make sure it never comes back.
 
@@ -306,8 +313,9 @@ new_state = dead_state(width, height)
 Then when you calculate the next state of a cell, you update its value in `new_state`, leaving `initial_state` untouched and available for use in future calculations.
 
 ```
-# We've worked out that cell (x, y) should becomes dead. Let's
-# therefore update its value in `new_state` (this is fine!).
+# We've worked out that cell (x, y) should become
+# dead. Let's therefore update its value in
+# `new_state` (this is fine!).
 new_state[x][y] = 0
 ```
 
@@ -357,7 +365,13 @@ First we need to initialize our starting state. Second, we need to pass this sta
 
 And after each iteration of our infinite loop, we need to use our `render` function to print the new board state to the terminal. This won't overwrite the board state that was printed to your terminal in the last iteration - we're simply appending more output. But each state will flash by so fast that it will look like a fancy, auto-updating UI.
 
-Once you have this working, you will have built Life! Congratulations. Spend a few hours staring at its hypnotic beauty, and then proceed to the extensions section, where you can load in some of the patterns that Life experts have discovered, and change the rules of Life.
+Once you have this working, you will have built Life! Congratulations, that was not easy. Spend a few hours staring at its hypnotic beauty.
+
+### Final task - say hi!
+
+If you've successfully made it this far then I'd love to know! I’m going to be making more advanced-beginner projects like this, and I’d like to understand how to make them as useful as possible. Please [send me an email](mailto:robqheaton@gmail.com) to tell me about your sucess or ask any questions you have, either about this project or programming in general. I'd love to hear from you. You can also sign up for my mailing list at the bottom of this page to find out when I publish more advanced-beginner projects. I'm planning on writing at least 1 per month.
+
+Once you've [sent me a quick message](mailto:robqheaton@gmail.com), it's time to move on to Life's extensions.
 
 ## 5. Load from a file
 
@@ -443,9 +457,8 @@ If you do need to edit more than your `next_board_state` function in order to im
 * Research and implement [Brian's Brain](https://en.wikipedia.org/wiki/Brian%27s_Brain)
 * Research and implement [Day and Night](https://en.wikipedia.org/wiki/Day_and_Night_(cellular_automaton))
 * Make a command line tool that allows the user to choose which of your cellular automa they would like to run
-* Implement the terminal UI using `curses`
+* Implement the terminal UI using [`curses`](https://docs.python.org/3/howto/curses.html)
 * Make your board rainbow colored
-* Learn more about cellular automata and come up with your own extensions
-** ADD
-** LINKS
-** HERE
+* There's an incredible amount of research available on Cellular Automata. Get Googling and come up with your own extensions
+
+> I'm going to be writing more advanced-beginner programming projects like this one. Subscribe to my newsletter to get updates when new projects are published.
