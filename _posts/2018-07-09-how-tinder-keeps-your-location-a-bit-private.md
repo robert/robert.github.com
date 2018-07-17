@@ -26,7 +26,7 @@ This new oversight allowed [sneaky researchers to once again pinpoint a target's
 
 <img src="/images/tinder-trilateration.jpg" alt="Example of Tinder Trilateration" />
 
-Tinder's inwardly sighed, wished that people stop asking them to do work all the time, and quietly fixed the vulnerability for real. Tinder now only ever sends your phone distances that are pre-rounded, in miles, with zero decimal places of precision. It's still possible to use the above trilateration procedure to locate a target to within a mile or so. But in the densely populated city of San Francisco, this won't tell you anything useful about where Steve Steveington is committing his dastardly subterfuge.
+Tinder's security team sighed, wished that people would stop asking them to do work all the time, and quietly fixed the vulnerability for real. Tinder now only ever sends your phone distances that are pre-rounded, in miles, with zero decimal places of precision. It's still possible to use the above trilateration procedure to locate a target to within a mile or so. But in the densely populated city of San Francisco, this won't tell you anything useful about where Steve Steveington is committing his dastardly subterfuge.
 
 On Friday afternoon, Steve Steveington and his weird grimace sneak out once again to commit various deeds in undisclosed locations. You have to find out where he's going before it's too late. You barricade yourself in your private office, in the library reading room on the 4th floor. After fifteen minutes of deep breathing and even deeper thought, you hatch the beginnings of a plan to resuscitate the Tinder trilateration exploit and work out where the Stevenator is going.
 
