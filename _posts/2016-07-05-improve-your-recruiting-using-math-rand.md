@@ -51,7 +51,7 @@ However, AppCo is now extremely highly leveraged on the opinions and leanings of
 
 If AppCo is confident that it can select a hiring committee that will make perfect decisions every single time then it should feel completely comfortable taking this risk. But then it should also get out of whatever business it is currently in and instead sell its services as an infallible hiring oracle, charging $100,000 per decision. If, on the other hand, AppCo is not possessed of any such mystical corporate seers, and is also scared that their interview process may be housing other unidentified, systematic mistakes, then it should step directly through the looking glass and embrace Randomness-Driven Recruiting.
 
-## Randomness-Drive Recruiting
+## Randomness-Driven Recruiting
 
 As far as I know, every company everywhere assigns candidates a binary thumb pointing up or down. They may be uncertain whether their decision is correct, but they bravely make it anyway. This means that small mistakes in evaluation can tip candidates from a yes to a no or a no to a yes, with no hope for redemption. If AppCo interviewers unconsciously ding everyone whose code is messy but fast down a few rungs, they may *accidentally* end up with a team containing no one who can prototype a new feature in a small window of time.
 
