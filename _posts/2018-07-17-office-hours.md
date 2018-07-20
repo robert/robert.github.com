@@ -30,7 +30,7 @@ Send me an email at [robqheaton@gmail.com](robqheaton@gmail.com) with a few sent
 
 ## What do I get out of this?
 
-I'm working on a series of "Programming Projects for Advanced Beginners" to help people make the difficult leap from beginner to intermediate programmer. This jump is hard enough when you have a background in maths, lots of free time, and experienced programmers around to talk to. It can be absolutely diabolical if you don't. I want to make these projects as useful as possible, and the biggest part of doing that is talking to as many people working on this challenge as I can. I've written one so far - on [ASCII Art](/2018/06/12/programming-projects-for-advanced-beginners-ascii-art/) - and am working on a second on [The Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).
+I'm working on a series of "Programming Projects for Advanced Beginners" to help people make the difficult leap from beginner to intermediate programmer. This jump is hard enough when you have a background in maths, lots of free time, and experienced programmers around to talk to. It can be absolutely diabolical if you don't. I want to make these projects as useful as possible, and the biggest part of doing that is talking to as many people working on this challenge as I can. I've written two so far, on [ASCII Art](/2018/06/12/programming-projects-for-advanced-beginners-ascii-art/) and [The Game of Life](/2018/07/20/project-2-game-of-life/).
 
 I'm also just a friendly guy who has had lots of people help him over the years.
 

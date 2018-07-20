@@ -1,9 +1,8 @@
 ---
-title: "Programming Projects for Advanced Beginners #2 - Game of Life"
+title: "Programming Projects for Advanced Beginners #2: Game of Life"
 layout: post
-tags: [Programming Project for Advanced Beginners]
+tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/tinder-map.jpg
-published: false
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory tutorials and short exercises you can find, but are not sure how to continue developing your skills, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. You can do it in whichever programming language you happen to be learning, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/RobJHeaton) or Skype.
 
@@ -16,7 +15,7 @@ You're going to build the famous and fascinating system known as "Conway's Game 
 Throughout the course of the project, you will learn:
 
 * How to structure large programs
-* How to break big projects down into manageable chunks and milestones
+* How to break down projects down into manageable chunks and milestones
 * How to write automated tests so that your computer verifies that your code is correct for you
 
 If you get stuck (defined as making zero progress for 30 minutes), you can get some inspiration from [my example project](https://gist.github.com/robert/5100dfffe8afbb04b560dd0fff184753). I've written it in Python, but I've also tried to avoid using any Python-specific constructs. It should therefore be a useful reference regardless of which language you are using. If your code looks different from mine, then as long as it works don't worry! There are usually many different ways to solve the same problem.
@@ -25,11 +24,11 @@ If you get completely stuck (defined as making zero progress for 60 minutes), ta
 
 Let's begin.
 
-## Game of Life
+## Introduction to Life
 
 Game of Life  (or just "Life") is not really a game. There's no winning or losing or destroying your opponent mentally and spiritually. Life is a "cellular automaton" - a system of cells that live on a grid, where they live, die and evolve according to the rules that govern their world.
 
-Life's simple, elegant rules give rise to astonishingly complex emergent behavior. It is played on a 2-D grid. Each square in the grid contains a cell, and each cell starts the game as either "alive" or "dead". Play proceeds in rounds. During a round, each cell looks at its 8 immediate neighbors and counts up the number of them that are currently alive.
+Life's simple, elegant rules give rise to astonishingly complex emergent behavior. It is played on a 2-D grid. Each square in the grid contains a cell, and each cell starts the game as either "alive" or "dead". Play proceeds in rounds. During each round, each cell looks at its 8 immediate neighbors and counts up the number of them that are currently alive.
 
 <p style="text-align: center">
 <img src="/images/gol-moore.png" alt="The Moore Neighborhood" />
@@ -38,7 +37,7 @@ Life's simple, elegant rules give rise to astonishingly complex emergent behavio
 The cell then updates its own liveness according to 4 rules:
 
 1. Any live cell with 0 or 1 live neighbors becomes dead, because of underpopulation
-1. Any live cell with 2 or 3 live neighbors stays alive, because their neighborhood is just right
+1. Any live cell with 2 or 3 live neighbors stays alive, because its neighborhood is just right
 1. Any live cell with more than 3 live neighbors becomes dead, because of overpopulation
 1. Any dead cell with exactly 3 live neighbors becomes alive, by reproduction
 
@@ -63,13 +62,13 @@ Here's a Life Rube Goldberg Machine that is more technologically advanced than y
 
 And here's a [wonderful forum](http://www.conwaylife.com/forums/) where adventurers search for more Life gold dust.
 
-In this project we're going to build a Game of Life that runs in your terminal. You'll be able to create your own Puffers and Gosper Glider Guns, as well as Pulsars, Lightweight Spaceships, and Toads. You'll be able to generate random worlds and see how they evolve. You'll also be able to tweak the rules of Life and see what happens. Maybe you'll change the life and death thresholds, or add entirely new states (zombie cells that eat their neighbors?), or just turn the board rainbow-colored.
+In this project we're going to build a Game of Life that runs in your terminal. You'll create your own Pulsars and Gosper Glider Guns, as well as Puffers, Lightweight Spaceships, and Toads. You'll generate random worlds and watch them evolve. And you'll tweak the rules of Life and see what happens. Maybe you'll change the life and death thresholds, or add entirely new states (zombie cells that eat their neighbors?), or just turn the board rainbow-colored.
 
 Sadly, changing the rules of Life does not allow you to change the rules of life. But it will make you a more experienced and proficient programmer.
 
 ## Milestones
 
-Big projects are easier to work on if you break them up into small, testable pieces. This allows you to focus on doing one, manageable thing at a time. You can then build your large, complex program out of simpler pieces that you have tested and that you trust. This isn't cheating, it's just good technique.
+Big projects are easier to work on if you break them up into small, testable chunks. This allows you to focus on doing one, manageable thing at a time. You can then build your large, complex program out of simpler pieces that you have tested and that you trust. This isn't cheating, it's just good technique.
 
 You wouldn't try to build every part of an entire house all at once. You'd break it down and plan it out. You'd build the foundations, check that they work, build the walls, check that they work. At this point my knowledge of how to build an actual house breaks down, but I think that the principle is clear.
 
@@ -83,13 +82,14 @@ A good set of milestones for this project could be:
 Then some extensions:
 
 5. Save interesting starting positions to files and add the ability to reload them into your Life
-6. Change the rules of Life
+6. Improve the User Interface
+7. Change the rules of Life
 
-Milestones can even be broken down into smaller milestones. Say you're trying to calculate the next board state. How about starting by simply calculating the next state of a single cell, and making absolutely sure that that works? Once you've the logic for a single cell worked out, you can start looking at how to apply it to every other cell as well. Once again, not cheating, just good technique. We'll talk more about milestones throughout the project.
+Milestones can even be broken down into smaller milestones. Say you're trying to calculate the next board state. How about starting by simply calculating the next state of a single cell, and making absolutely sure that that works? Then, once you've the logic for a single cell worked out, you can start looking at how to apply this logic to every other cell as well. Once again, not cheating, just good technique. We'll talk much more about milestones throughout the project.
 
-# 1. Store the board state
+## 1. Store the board state
 
-The ultimate goal of this milestone is to create a function called `random_state`. This function will take in 2 arguments - your board's width and its height. It will return a board state in which every cell has been randomly initialized to either `ALIVE` (represented by a 1) or `DEAD` (represented by a 0). In Life these random patterns are known as "Soups", and they are the quickest way for us to start producing interesting output.
+The ultimate goal of the first milestone is to create a function called `random_state`. This function will take in 2 arguments - your board's width and its height. It will return a board state in which every cell has been randomly initialized to either `ALIVE` (represented by a 1) or `DEAD` (represented by a 0). In Life these random patterns are known as "Soups", and they are the quickest way for us to start producing interesting output.
 
 The Life world is a 2-D grid. Regardless of language, 2-D grids are almost always represented in code using a list of lists:
 
@@ -136,7 +136,7 @@ def random_state(width, height):
     # to either 0 or 1
 ```
 
-A common way to randomize choices like this is to take advantage of your language's built-in random number generator (RNG) library. You can use the RNG library to produce a random number between 0.0 and 1.0, and then pass this number through if-statements in order to decide whether your cell is dead or alive. For example, this code snippet initializes `cell_state` to 0 or 1, with a 50% probability of each.
+A common way to randomize choices like this is to take advantage of your language's built-in random number generator (RNG) library. You can use an RNG library to produce a random number between 0.0 and 1.0, and then pass this number through if-statements in order to decide whether your cell is dead or alive. For example, this code snippet initializes `cell_state` to 0 or 1, with a 50% probability of each.
 
 ```
 random_number = random.random()
@@ -178,20 +178,20 @@ a_random_state = random_state(20, 30)
 render(a_random_state)
 ```
 
-Make sure that they look reasonable. Are they the right height and width? Do they have roughly the number of alive and dead cells you would expect? You may need to zoom out on your terminal (using Ctrl+- or Cmd+-) in order to be able to see the full width and height of the board.
+Make sure that they look reasonable. Are they the right height and width? Do they have roughly the number of alive and dead cells you would expect? You may need to zoom out on your terminal (using Ctrl+- or Cmd+-) in order to see the full width and height of the board.
 
 ## 3. Calculate the next state of the board
 
-We've created the initial Life board and we've built the tools that we need to observe it. Now we're ready to set it in motion. In this milestone we're going to write a `next_board_state` function. It will take 1 argument - an initial board state. It will use this argument to calculate and return the next board state, according to the rules of Life that we saw in the introduction:
+We've created the initial Life board and we've built the tools that we need to observe it. Now we're ready to set it in motion. In this milestone we're going to write a `next_board_state` function. It will take 1 argument - an initial board state. It will then use this argument to calculate and return the next board state, according to the rules of Life that we saw in the introduction:
 
 1. Any live cell with 0 or 1 live neighbors becomes dead, because of underpopulation
-1. Any live cell with 2 or 3 live neighbors stays alive, because their neighborhood is just right
+1. Any live cell with 2 or 3 live neighbors stays alive, because its neighborhood is just right
 1. Any live cell with more than 3 live neighbors becomes dead, because of overpopulation
 1. Any dead cell with exactly 3 live neighbors becomes alive, by reproduction
 
 Spend some time thinking about how to structure this milestone. What are the different challenges? Could you break them up into smaller pieces? Very roughly, how might your code look?
 
-I've given you 4 hints to help you get over some gotchas that might trip you up: testing, storing the new board state, iterating over the board, and dealing with cells on the edges. They're there to help you if you get stuck, but if you don't need them then don't read them!
+Below are 4 hints to help you get over some gotchas that might trip you up: testing, storing the new board state, iterating over the board, and dealing with cells on the edges. They're there to help you if you get stuck, but if you don't need them then don't read them!
 
 Once your `next_board_state` function passes all of your tests (see Hint 0) and looks sensible when you use `render` to print its results, you're ready to go on to the final part of Life.
 
@@ -284,11 +284,11 @@ if __name__ == "__main__":
 
 If your `next_board_state` function is correct then these tests will print out `PASSED 1`, `PASSED 2`, etc. And if they discover a bug in `next_board_state`, they will fail and print the unexpected result. You can then update your code, re-run the tests, and verify that you fixed the bug without accidentally breaking something else.
 
-Few people would claim that unit tests are the most exciting part of programming. Nonetheless, they are extremely important. They make your code more reliable, easier to work with, and much, much easier to test. Of course, your tests are only as useful as you make them. The more tests you have, the fewer bugs will slip through your testing.
+Few people would claim that unit tests are the most exciting part of programming. Nonetheless, they are extremely important. They make your code more reliable, easier to work with, and much, much easier to verify. Of course, your tests are only as useful as you make them. The more tests you have, the fewer bugs will slip past you.
 
-Copy the example tests above into a separate file, and import the necessary code from your main program file. Now you have 2 programs that you can run. You have the main program that runs Life, and you have the test suite that checks that your main program is behaving itself. If you're having trouble with cross-file imports, you can also just copy the unit tests into your main program file and comment them out when you don't want to run them. This isn't ideal, but it's much better than jumping out of a window because you can't get your `require` statement to work.
+Copy the example tests above into a separate file, and import the necessary functions from your main program file. Now you have 2 programs that you can run. You have the main program that runs Life, and you have the test suite that checks that your main program is behaving itself. If you're having trouble with cross-file imports, you can also just copy the unit tests into your main program file and comment them out when you don't want to run them. This isn't ideal, but it's much better than throwing yourself out of a window because you can't get your `import` statement to work.
 
-Try writing some more test cases. How could you check that dead cells come back to life when they have exactly 3 live neighbors? How could you make sure that everything works as expected for cells on the edges of the board and in the corners? If you ever manually find a bug that wasn't caught by your test suite then add a test that would have caught it to make sure it never comes back.
+Try writing some more test cases. How could you check that live cells die when they have more than 3 live neighbors? How could you make sure that everything works as expected for cells on the edges of the board and in the corners? If you ever manually find a bug that wasn't caught by your test suite, add a test that would have caught it to make sure it never comes back.
 
 # Hint 1 - How to store the new state?
 
@@ -369,13 +369,13 @@ Once you have this working, you will have built Life! Congratulations, that was 
 
 ### Final task - say hi!
 
-If you've successfully made it this far then I'd love to know! I’m going to be making more advanced-beginner projects like this, and I’d like to understand how to make them as useful as possible. Please [send me an email](mailto:robqheaton@gmail.com) to tell me about your sucess or ask any questions you have, either about this project or programming in general. I'd love to hear from you. You can also sign up for my mailing list at the bottom of this page to find out when I publish more advanced-beginner projects. I'm planning on writing at least 1 per month.
+If you've successfully made it this far then I'd love to know! I’m going to be making more advanced-beginner projects like this, and I’d like to understand how to make them as useful as possible. Please [send me an email](mailto:robqheaton@gmail.com) to tell me about your achievement. I'd love to hear from you. You can also sign up for my mailing list at the bottom of this page to find out when I publish more advanced-beginner projects. I'm planning on writing at least 1 per month.
 
-Once you've [sent me a quick message](mailto:robqheaton@gmail.com), it's time to move on to Life's extensions.
+Once you've [sent me that quick message](mailto:robqheaton@gmail.com), it's time to move on to Life's extensions.
 
 ## 5. Load from a file
 
-We're in the extensions section now, so you're going to get even fewer pointers than before.
+We're in the big leagues now, so you're going to get even fewer pointers than before.
 
 So far we've been running "soups". A soup is a random Life pattern that (usually) explodes in a burst of pixellated fireworks and then gradually fades out. But if all we do is make random soups, we'll never get to see any of intricate patterns carefully designed and discovered by generations of Life devotees. In this extension exercise, you're going to write the initial states of patterns into text files, load them into your program, and use them to create intelligently designed Life.
 
@@ -449,7 +449,7 @@ Or even a different neighborhood of your own invention?
 
 You should only need to edit your `next_board_state` function in order to implement a new set of Life rules. You should be able to reuse your `render` and `load_board_state` functions, as well as your infinite loop code. However, don't *actually* edit your `next_board_state` function. Instead, make new functions with names that describe their rules, for example `next_board_state_with_zombies`. This way you'll build up a library of functions that can run all kinds of different weird and wonderful cellular automata.
 
-If you do need to edit more than your `next_board_state` function in order to implement a new ruleset, try to restructure your code so that you don't. Have a look at my example code if that helps[LINK]. The practice of splitting your code into cleanly separated pieces that you can mix and match and reuse is a known as *modularity*. In our Life implementation, we have individual components for generating new boards (`dead_state` and `random_state`), loading boards from files (`load_board_state`), calculating the next board state (`next_board_state`), printing the board to the terminal (`render`), and looping the game forever (everything else). This separation of responsibilities makes it easier to understand how your program is structured, and makes it easier to update a component without breaking any of the others. We'll talk about this much more in future projects.
+If you do need to edit more than your `next_board_state` function in order to implement a new ruleset, try to restructure your code so that you don't. Have a look at [my example code](https://gist.github.com/robert/5100dfffe8afbb04b560dd0fff184753) if that helps. The practice of splitting your code into cleanly separated pieces that you can mix and match and reuse is a known as *modularity*. In our Life implementation, we have individual components for generating new boards (`dead_state` and `random_state`), loading boards from files (`load_board_state`), calculating the next board state (`next_board_state`), printing the board to the terminal (`render`), and looping the game forever (everything else). This separation of responsibilities makes it easier to understand how your program is structured, and makes it easier to update a component without breaking any of the others. We'll talk about this much more in future projects.
 
 ## 7. Even more extensions
 
