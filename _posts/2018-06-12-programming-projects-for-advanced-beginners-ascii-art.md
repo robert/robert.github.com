@@ -1,5 +1,5 @@
 ---
-title: Programming Projects for Advanced Beginners #1: ASCII art
+title: "Programming Projects for Advanced Beginners #1: ASCII art"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/ascii-speed.jpg
