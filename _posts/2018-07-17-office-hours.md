@@ -14,6 +14,7 @@ We can cover any topic that you like. Some example things I think I could help w
 * A specific concept doesn't make sense and you'd like to talk it over
 * You're working on a project, you're stuck, and you'd like to get unstuck
 * You're trying to decide what to learn about or work on next
+* You'd like to review the code of one of your projects
 * You just want to talk about programming
 * The sky's the limit
 
