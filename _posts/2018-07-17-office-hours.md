@@ -2,6 +2,8 @@
 title: I'm doing Office Hours
 layout: post
 tags: [Programming Projects for Advanced Beginners]
+redirect_from:
+  - /office-hours
 ---
 I'm going to start holding weekly Office Hours for people who want to get better at computer programming. These will be sessions of up to an hour over Skype where I'll try to answer your questions and help you over any stumbling blocks you've hit in your projects or learning.
 
