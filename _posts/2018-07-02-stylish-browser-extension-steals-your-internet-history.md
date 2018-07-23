@@ -63,3 +63,5 @@ It's not news that browser extensions can be a security nightmare. It's not even
 </p>
 
 There's a check box in the Stylish control panel that claims to disable tracking, although SimilarWeb helpfully enable it by default. It does appear to work, at least until the next change to Stylish's [2,000-word privacy policy](https://userstyles.org/login/policy) or 3,000-word Terms and Conditions. However, Stylish is no longer a well-meaning product with your best interests at heart. If you use and like Stylish, please uninstall it and switch to an alternative like [Stylus](https://www.ghacks.net/2017/05/16/stylus-is-a-stylish-fork-without-analytics/), an offshoot from the good old version of Stylish that works in much the same way, minus the spyware.
+
+*UPDATE 2018-07-23: 2 days after publication of this post, Stylish was removed from the Chrome and Firefox stores. 3 weeks later, a new version is back in the Firefox store. [You shouldn't use this version either](/2018/07/23/no-you-shouldnt-use-the-new-version-of-stylish/).*
