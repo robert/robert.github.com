@@ -4,6 +4,8 @@ layout: post
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/stylish2-no-entry.jpg
 ---
+*UPDATE 2018-07-23: Stylish v3.1.5 has also been yanked from the Firefox add-on store. This is for the best.*
+
 2 days after I published '["Stylish" browser extension steals all your internet history](/2018/07/02/stylish-browser-extension-steals-your-internet-history/)', Stylish was pulled from the Chrome and Firefox stores. The story echoed around parts of the internet for a few days, my name was misspelled on several right-wing British news websites, and I felt that I'd helped make the world a fractionally better place. However, Stylish v3.1.5 is now back in the Firefox add-on store, and it's bigger and better and more technically compliant than ever.
 
 Will SimilarWeb (the adtech company that owns Stylish) try to sneak in more underhanded tracking in the future? I don't see why not. Can we trust them? In my opinion, no. But thanks to the open source Stylish clone "[Stylus](https://addons.mozilla.org/en-US/firefox/addon/styl-us/)", these aren't even questions that need resolving. If you want to change the way that the internet looks, just use Stylus. It is functionally identical to Stylish, apart from the facts that it has never contained any spyware, and is not owned by a company that makes its money by selling your data.
