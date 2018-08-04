@@ -1,6 +1,7 @@
 ---
-title: "Building a TCP proxy: part 1"
+title: "How to build a TCP proxy #1: Intro"
 layout: post
+published: false
 ---
 I was trying to attack the user-location features of several dating apps. I wanted to see whether it was possible to reverse engineer the position of a target user by spoofing thousands of requests to the app (so far - ["yes but only to the nearest mile"](/2018/07/09/how-tinder-keeps-your-location-a-bit-private/)).  I pretended that each request was sent from a different location in the target's neighborhood, and each time I asked the app how far away the target was. I combined the results using maths and ingenuity to try and shake out an exact location.
 
