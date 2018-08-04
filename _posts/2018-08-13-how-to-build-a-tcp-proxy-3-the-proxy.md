@@ -9,9 +9,9 @@ The first version of our TCP proxy will not be capable of handling TLS encryptio
 
 ## 0. How our proxy will work
 
-In part 2, we decided that we would design our proxy to only proxy TCP connections that were intended for a single, target domain. When your phone wants to make a TCP connection with this target domain, it asks our fake DNS server from part 2 for that domain's IP address. Our DNS server tells a small lie and responds with the local IP address of your laptop. Your phone takes this response at face value, and happily attempts to make a TCP connection with your laptop. Right now your laptop has no idea what to do with this request and so drops it on the floor. This is where our proxy comes in.
+In part 2, we decided that we would design our proxy to only proxy TCP connections that were intended for a single, target hostname. When your phone wants to make a TCP connection with this target hostname, it asks our fake DNS server from part 2 for that hostname's IP address. Our DNS server tells a small lie and responds with the local IP address of your laptop. Your phone takes this response at face value, and happily attempts to make a TCP connection with your laptop. Right now your laptop has no idea what to do with this request and so drops it on the floor. This is where our proxy comes in.
 
-Our proxy will run on your laptop and listen for incoming TCP connections on port 80 (by convention, the unencrypted HTTP port). When it receives one, presumably from your smartphone, it will first make another TCP connection, this time with our target domain's remote server. Second, it will take any data that it receives over the connection with your smartphone, and re-send it over its new connection with the remote server. Third, it will listen for response data coming back from the server. Fourth and finally, it will relay this response data back to your smartphone, completing the 4-step loop. Your smartphone will be able to talk to the remote server as normal, taking only a slight detour via our proxy.
+Our proxy will run on your laptop and listen for incoming TCP connections on port 80 (by convention, the unencrypted HTTP port). When it receives one, presumably from your smartphone, it will first make another TCP connection, this time with our target hostname's remote server. Second, it will take any data that it receives over the connection with your smartphone, and re-send it over its new connection with the remote server. Third, it will listen for response data coming back from the server. Fourth and finally, it will relay this response data back to your smartphone, completing the 4-step loop. Your smartphone will be able to talk to the remote server as normal, taking only a slight detour via our proxy.
 
 <img src="/images/tcp-3-big-picture.png" />
 
@@ -19,19 +19,19 @@ Let's take a closer look at each stage of this 4-step loop: from smartphone, to 
 
 ### 0.1 Phone to Laptop
 
-The first stage is almost completely taken care of by our DNS server from the previous section of the project. Your phone has already been tricked into sending its TCP connections for our target domain to your laptop, and all that remains is to ensure that our proxy receives them safely.
+The first stage is almost completely taken care of by our DNS server from the previous section of the project. Your phone has already been tricked into sending its TCP connections for our target hostname to your laptop, and all that remains is to ensure that our proxy receives them safely.
 
 ### 0.2 Laptop to Remote Server
 
 When your phone makes a TCP connection with our proxy, our proxy makes a second TCP connection with the remote server. Our proxy sits in the middle of these two TCP connections, managing data-flow between them.
 
-As we've seen in parts 1 and 2 of this project, this raises an important question. Our proxy needs to send the data that it receives from your phone to the appropriate remote server. But how does it know this remote server's domain or IP address? The TCP layer doesn't have any mechanisms for telling proxies where data should ultimately be routed to. The HTTP layer does - the `Host` HTTP header and `CONNECT` requests - but these are of no use to us, since we want our proxy to work for all TCP-based protocols, not just HTTP.
+As we've seen in parts 1 and 2 of this project, this raises an important question. Our proxy needs to send the data that it receives from your phone to the appropriate remote server. But how does it know this remote server's hostname or IP address? The TCP layer doesn't have any mechanisms for telling proxies where data should ultimately be routed to. The HTTP layer does - the `Host` HTTP header and `CONNECT` requests - but these are of no use to us, since we want our proxy to work for all TCP-based protocols, not just HTTP.
 
-This is a real problem, and we've already decided to solve it by cheating a little. We'll assume that we only want to proxy requests that your phone sends to a single "target domain", and we'll hardcode that domain's IP address into our proxy. Every piece of data that our proxy receives from your phone will be sent to this hardcoded address.
+This is a real problem, and we've already decided to solve it by cheating a little. We'll assume that we only want to proxy requests that your phone sends to a single "target hostname", and we'll hardcode that hostname's IP address into our proxy. Every piece of data that our proxy receives from your phone will be sent to this hardcoded address.
 
-This simplification is very reasonable. If we're trying to reverse engineer TargetApp's TCP API, then we are probably only interested in requests sent to `targetapp.com`. It will actually be useful if requests for other domains bypass our proxy and continue to work as normal.
+This simplification is very reasonable. If we're trying to reverse engineer TargetApp's TCP API, then we are probably only interested in requests sent to `targetapp.com`. It will actually be useful if requests for other hostnames bypass our proxy and continue to work as normal.
 
-We should take care to configure our DNS server from part 2 to only spoof DNS responses for this same target domain. For all other domains our DNS server should make a real DNS request, and respond to your phone with the domain's real IP address. Otherwise you might accidentally send sensitive data to the wrong remote server.
+We should take care to configure our DNS server from part 2 to only spoof DNS responses for this same target hostname. For all other hostnames our DNS server should make a real DNS request, and respond to your phone with the hostname's real IP address. Otherwise you might accidentally send sensitive data to the wrong remote server.
 
 ### 0.3 Server to Laptop
 
@@ -203,7 +203,7 @@ Finally, when the `ProxyToServerProtocol` receives data back from the remote ser
 
 ## 3. Testing our proxy
 
-Since we have not yet implemented TLS support for our proxy, we need to test our proxy using a website that does not have HTTPS enabled. I recommend nonhttps.com, a handy development domain that, as promised, does not use HTTPS.
+Since we have not yet implemented TLS support for our proxy, we need to test our proxy using a website that does not have HTTPS enabled. I recommend nonhttps.com, a handy development hostname that, as promised, does not use HTTPS.
 
 Before you begin testing, make sure that:
 
