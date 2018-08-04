@@ -8,7 +8,7 @@ However, we aren't satisfied. We want our proxy to be capable of dealing with en
 
 # 0. Things fall apart
 
-Let's send our non-TLS enabled proxy an HTTPS request and watch as everything goes wrong. Change the domain in our DNS server to `google.com`. Change the domain in our proxy to `google.com` as well, and set the port that it listens and sends on to `443` (by convention, the HTTPS port). Set your phone's DNS server to be your laptop's local IP address, then start up our DNS server and TCP proxy.
+Let's send our non-TLS enabled proxy an HTTPS request and watch as everything goes wrong. Change the target hostname in our DNS server to `google.com`. Change the hostname in our proxy to `google.com` as well, and set the port that it listens and sends on to `443` (by convention, the HTTPS port). Set your phone's DNS server to be your laptop's local IP address, then start up our DNS server and TCP proxy.
 
 Visit `google.com` on your phone. Google very sensibly insists on being served over HTTPS, and when your phone's browser finds out that our proxy doesn't understand TLS it will immediately give up and close its TCP connection. It will display an error.
 
@@ -28,13 +28,13 @@ In our code from part 3, our proxy listened for incoming TCP connections from yo
 
 `listenSSL` helpfully handles the low-level mechanics of handshakes and decryption for us. But in order to do this, it needs to be passed a *TLS certificate*. As we will see, TLS certificates are easy enough for us to create, but harder for us to get right.
 
-Servers use TLS certificates to verify their identity. Your phone will refuse to do a TLS handshake with our proxy unless the *Common Name* on our certificate matches the domain that your phone believes it is talking to. Our next step will therefore be to generate and use our own TLS certificate, with its Common Name set to the domain of our target app (for now let's stick with `google.com`).
+Servers use TLS certificates to verify their identity. Your phone will refuse to do a TLS handshake with our proxy unless the *Common Name* on our certificate matches the hostname that your phone believes it is talking to. Our next step will therefore be to generate and use our own TLS certificate, with its Common Name set to the hostname of our target app (for now let's stick with `google.com`).
 
 This might sound strange at first. The whole point of TLS is that when a server presents a client with a certificate for `google.com`, the client can be quite certain that it is talking to the real Google and not some dastardly man-in-the-middle. I wouldn't describe us as dastardly exactly, but if we can generate a certificate for `google.com` from the comfort of our own home then surely this can't bode well for the security of TLS?
 
-However, clients like your phone check more than a certificate's domain when verifying its validity. They also check its "cryptographic signature". A cryptographic signature is a seal of approval attached to a certificate by some third party. This third party is usually a "Root Certificate Authority" (CA). CAs are (hopefully) secure and trustworthy organizations whose job it is to issue and sign TLS certificates. It is no exaggeration to say that they are collectively responsible for the integrity of encryption on the internet. Before issuing one of its customer with a certificate for a domain, a CA does due diligence to verify that the customer is indeed this domain's real owner.
+However, clients like your phone check more than a certificate's hostname when verifying its validity. They also check its "cryptographic signature". A cryptographic signature is a seal of approval attached to a certificate by some third party. This third party is usually a "Root Certificate Authority" (CA). CAs are (hopefully) secure and trustworthy organizations whose job it is to issue and sign TLS certificates. It is no exaggeration to say that they are collectively responsible for the integrity of encryption on the internet. Before issuing one of its customer with a certificate for a domain or hostname, a CA does due diligence to verify that the customer is indeed this name's real owner.
 
-Once the CA is satisfied, it generates a certificate (and private key) for the domain, and appends a cryptographic signature. This signature encodes a statement of the form "Verisign asserts that this certificate belongs to the true owner of `google.com`". The CA creates the signature by using its private key to encrypt the certificate's contents. A client can verify that the signature is valid by decrypting the signature using the CA's public key, and confirming that the decrypted text matches the text of the certificate. Since the signature could not have been generated without access to the CA's private key - which they hopefully keep extremely secret and secure - it is safe to assume that the CA endorses the contents of the certificate, and that the bearer (or more accurately, the organization in possession of the corresponding private key) is the true owner of the domain.
+Once the CA is satisfied, it generates a certificate (and private key) for the name, and appends a cryptographic signature. This signature encodes a statement of the form "Verisign asserts that this certificate belongs to the true owner of `google.com`". The CA creates the signature by using its private key to encrypt the certificate's contents. A client can verify that the signature is valid by decrypting the signature using the CA's public key, and confirming that the decrypted text matches the text of the certificate. Since the signature could not have been generated without access to the CA's private key - which they hopefully keep extremely secret and secure - it is safe to assume that the CA endorses the contents of the certificate, and that the bearer (or more accurately, the organization in possession of the corresponding private key) is the true owner of the domain or hostname.
 
 Airlines only trust passports signed by countries that they trust (as the people of the no-longer-sovereign nation of Robertopia discovered the hard way). In the same way, clients like your phone only trust TLS certificates that have been signed by a CA that they trust. Your phone decides which CAs to trust using a hard-coded list of CAs that have been approved by your phone's manufacturer. For example, [the list of trusted CAs pre-loaded into iOS11 is available online](https://support.apple.com/en-us/HT208125).
 
@@ -46,7 +46,7 @@ Since this all sounds like a lot of work, we'll do something easier. We'll still
 
 When our proxy presents your phone with its freshly signed `google.com` certificate, your phone will see that it is endorsed by "Robert's Trusty Certificate Corp". It will check its internal list of trusted CAs and see that this splendid and reputable outfit is on there. It will happily accept our certificate for `google.com` as valid, and continue negotiating a TLS session before beginning to send its TCP traffic.
 
-Note that anyone who got hold of our homemade CA's private key would be able to use it to sign their own certificates for any domain they wanted. In the eyes of your phone (and your phone only), these certificates would be legitimate and trustworthy. An attacker would be able to use them to perform their own man-in-the-middle attack against you, allowing them to read your encrypted traffic. You should be very careful to keep your CA's private key safe on your laptop. You should also be sure to remove its public key from your phone's list of root CAs as soon as you are done with this project.
+Note that anyone who got hold of our homemade CA's private key would be able to use it to sign their own certificates for any hostname they wanted. In the eyes of your phone (and your phone only), these certificates would be legitimate and trustworthy. An attacker would be able to use them to perform their own man-in-the-middle attack against you, allowing them to read your encrypted traffic. You should be very careful to keep your CA's private key safe on your laptop. You should also be sure to remove its public key from your phone's list of root CAs as soon as you are done with this project.
 
 Once we have generated a TLS certificate that your phone will trust, we can pass it into our proxy via `listenSSL`. `twisted` will handle the rest for us, and our proxy will then be TLS-enabled.
 
@@ -54,7 +54,7 @@ Once we have generated a TLS certificate that your phone will trust, we can pass
 
 We need to:
 
-* Generate a TLS certificate for the domain that we are trying to proxy for
+* Generate a TLS certificate for our target app's hostname
 * Install our root CA's public key as one of the trusted authorities on your phone
 * Generate a root CA public/private key pair and use the private key to sign this TLS certificate
 * Pass this certificate into `twisted`'s `listenSSL` function and use it to listen for incoming connections
@@ -89,7 +89,7 @@ There are fancier and less manual ways to install our root CA's certificate on y
 
 # 2.4 Listen, SSL
 
-We now have everything we need for a TLS-enabled, man-in-the-middle, TCP proxy. We need to update our proxy's startup script to create a certificate for our target domain (let's use `google.com` for testing). We need to sign it using our CA. Then we need to pass the signed certificate into our proxy so that it can present it to you phone.
+We now have everything we need for a TLS-enabled, man-in-the-middle, TCP proxy. We need to update our proxy's startup script to create a certificate for our target hostname (let's use `google.com` for testing). We need to sign it using our CA. Then we need to pass the signed certificate into our proxy so that it can present it to you phone.
 
 ```
 import time
@@ -401,7 +401,7 @@ Before testing our proxy out, make sure that:
 
 * Your DNS spoofing script is pointing at google.com
 * Your smartphone has its DNS server set to be your laptop's IP address, like in [part 2](/2018/08/13/how-to-build-a-tcp-proxy-2-dns-spoofing)
-* Your TCP proxy script is pointing at `www.google.com` (the `www` is important to make sure the TLS certificate has the right domain)
+* Your TCP proxy script is pointing at `www.google.com` (the `www` is important to make sure the TLS certificate has the right hostname)
 * Your TCP proxy script is set to listen and send on port 443
 
 Then start the DNS spoofing script, start the TCP proxy script, and visit google.com on your phone. You should see the unencrypted plaintext of your HTTP request and response appear in the logs of your proxy!
@@ -422,7 +422,7 @@ It's been an arduous and well-written journey, but you're now able to proxy and 
 
 This was a much harder challenge than building a proxy that can only handle HTTP requests. Since we wanted to be able to proxy any TCP stream, not just HTTP requests, we couldn't make use of any of your phone's built-in HTTP proxy functionality. If you want to proxy HTTP requests from your smartphone via your laptop, all you have to do is connect the devices to the same network, tell your phone's proxy to use your laptop's IP address as a proxy, start Burp Suite, and you're immediately in business.
 
-Life was much harder for us. We had to mess with the very fabric of how directions are given on the internet. We spoofed the responses to DNS requests sent by your phone. This tricked your phone into making TCP connections intended for the target domain with your laptop instead. We forwarded any data that your laptop received on this connection on to the target domain's server, and forwarded any response data from the server back to your smartphone. Your smartphone was none the wiser about what had happened.
+Life was much harder for us. We had to mess with the very fabric of how directions are given on the internet. We spoofed the responses to DNS requests sent by your phone. This tricked your phone into making TCP connections intended for the target hostname with your laptop instead. We forwarded any data that your laptop received on this connection on to the target hostname's server, and forwarded any response data from the server back to your smartphone. Your smartphone was none the wiser about what had happened.
 
 We also added TLS support. We did this by creating our own Certificate Authority and installing its public key on your smartphone. We used its private key to sign TLS certificates that we had generated, and we used these certificates to negotiate TLS sessions between your phone and your laptop. When we were done we removed our CA's public key from your phone's list of trusted CAs (*didn't we?*), because we are paranoid security experts and we don't want to get man-in-the-middle-d for real.
 

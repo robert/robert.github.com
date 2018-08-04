@@ -3,7 +3,7 @@ title: "How to build a TCP proxy #2: DNS spoofing"
 layout: post
 published: false
 ---
-This is part 2 of a 4-part project to build a generic TCP proxy, capable of handling any TCP-based protocol, not just HTTP. In this part we're going to build a fake DNS server that runs on your laptop. We will configure your smartphone to use this fake DNS server whenever it needs to resolve a domain to an IP address. When your smartphone sends a DNS request to your laptop, asking for the IP address of our target app's domain (say, `targetapp.com`), our server will lie. Instead of returning the real IP address of our target domain, it will return the local IP address of your laptop.
+This is part 2 of a 4-part project to build a generic TCP proxy, capable of handling any TCP-based protocol, not just HTTP. In this part we're going to build a fake DNS server that runs on your laptop. We will configure your smartphone to use this fake DNS server whenever it needs to resolve a hostname to an IP address. When your smartphone sends a DNS request to your laptop, asking for the IP address of our target app's hostname (say, `targetapp.com`), our server will lie. Instead of returning the real IP address of our target hostname, it will return the local IP address of your laptop.
 
 Your smartphone will trust our server's response, and will believe that the correct address for `targetapp.com` is your laptop's local IP. Whenever your smartphone wants to send `targetapp.com` some data, it will send it to your laptop, instead of the real TargetApp's servers. This will complete the first of the 4 hops that your smartphone's data must make through our proxy, described in more detail below in section 1.
 
@@ -25,7 +25,7 @@ Next, find your laptop's local IP address by running a terminal command like `if
 
 Now find your smartphone's DNS settings page. Here you can change the DNS server that your smartphone sends its DNS requests to. Update the DNS server IP address to be your laptop's local IP address, which we just found. Try visiting a few websites and using a few apps - you should find that none of them work. I promise that this is progress.
 
-Your smartphone has stopped functioning because it has started sending all its DNS requests to your laptop. Since your laptop has no idea what to do with these requests, it is dropping them on the floor without responding. This means that your smartphone is unable to resolve domain names to IP addresses. Whilst it is still technically connected to the internet, we've broken one of its primary mechanisms for working out how to use it. Routing on the internet is done using IP addresses, not domains. The internet backbone has no idea how to get to `targetapp.com`, any more than your taxi driver knows how to get to `Tiffany's house`.
+Your smartphone has stopped functioning because it has started sending all its DNS requests to your laptop. Since your laptop has no idea what to do with these requests, it is dropping them on the floor without responding. This means that your smartphone is unable to resolve hostname to IP addresses. Whilst it is still technically connected to the internet, we've broken one of its primary mechanisms for working out how to use it. Routing on the internet is done using IP addresses, not hostnames. The internet backbone has no idea how to get to `targetapp.com`, any more than your taxi driver knows how to get to `Tiffany's house`.
 
 ## 1.2 View DNS requests on your laptop
 
@@ -33,7 +33,7 @@ Your smartphone has stopped functioning because it has started sending all its D
 
 We've successfully broken your phone. I have claimed that this is good news, because it shows that your phone has started sending its DNS requests to your laptop. Let's check that I'm right. We can use a "packet sniffer" to inspect your laptop's network traffic and look for your phone's doomed DNS requests. We can confirm that they are indeed being sent to your laptop, and that your laptop currently isn't sending your phone back any DNS responses.
 
-Open up Wireshark on your laptop, and run it using the filter term `udp port 53`. DNS requests are sent over the UDP protocol on port 53, and this will screen out network traffic we aren't interested in. Before we get your phone involved, let's do a basic check that everything is working. On your laptop, visit a website, any website. You should see a DNS request and response for this website's domain appear in Wireshark. This is your laptop making its own DNS request to a real DNS server, so that it can send the HTTP request for (say) `robertheaton.com` from your browser to the correct IP address.
+Open up Wireshark on your laptop, and run it using the filter term `udp port 53`. DNS requests are sent over the UDP protocol on port 53, and this will screen out network traffic we aren't interested in. Before we get your phone involved, let's do a basic check that everything is working. On your laptop, visit a website, any website. You should see a DNS request and response for this website's hostname appear in Wireshark. This is your laptop making its own DNS request to a real DNS server, so that it can send the HTTP request for (say) `robertheaton.com` from your browser to the correct IP address.
 
 <p style='text-align: center'>
   <img src="/images/tcp-2-wireshark-dns-request.png" style="width: 75%" />
@@ -50,7 +50,7 @@ Open up Wireshark on your laptop, and run it using the filter term `udp port 53`
 
 If this doesn't work at first then try a few other websites as well. If you've visited `robertheaton.com` recently then your laptop may have cached the DNS response it received.
 
-Now let's view your phone's DNS requests. First, let's adjust the Wireshark filter. The `udp port 53` filter shows both DNS requests sent *to* and *by* your laptop. Let's tighten it to show only requests sent *to* your laptop, by your phone. Update your Wireshark filter to `udp port 53 && dst $YOUR_LAPTOPS_IP`. On your smartphone (with your laptop still set as its DNS server), visit another website (again, you may have to try a few times because of DNS caching). You should see a DNS request for this website's domain appear in Wireshark, with its UDP packet "destination IP" field set to your laptop. If you do, then this confirms that your phone is talking to your laptop - this is a great breakthrough! However, there will not yet be a corresponding DNS response. This is because we haven't yet told your laptop what it should actually do when it receives a UDP packet on port 53.
+Now let's view your phone's DNS requests. First, let's adjust the Wireshark filter. The `udp port 53` filter shows both DNS requests sent *to* and *by* your laptop. Let's tighten it to show only requests sent *to* your laptop, by your phone. Update your Wireshark filter to `udp port 53 && dst $YOUR_LAPTOPS_IP`. On your smartphone (with your laptop still set as its DNS server), visit another website (again, you may have to try a few times because of DNS caching). You should see a DNS request for this website's hostname appear in Wireshark, with its UDP packet "destination IP" field set to your laptop. If you do, then this confirms that your phone is talking to your laptop - this is a great breakthrough! However, there will not yet be a corresponding DNS response. This is because we haven't yet told your laptop what it should actually do when it receives a UDP packet on port 53.
 
 Before we start work on educating your laptop, let's take a second look at this interaction from a different angle using Netcat.
 
@@ -66,7 +66,7 @@ sudo ncat -nluvvv 53
 
 in a terminal. This command needs to be run as `sudo` because it is listening on a low-numbered, sensitive port.
 
-Now when you try to visit a website on your smartphone, you should see a DNS request printed out on your laptop's terminal. Since the request is not designed for easy human reading, it will mostly look like garbled nonsense. However, you should still be able to make out the domain of the website you are trying to visit, somewhere amidst the gibberish.
+Now when you try to visit a website on your smartphone, you should see a DNS request printed out on your laptop's terminal. Since the request is not designed for easy human reading, it will mostly look like garbled nonsense. However, you should still be able to make out the hostname of the website you are trying to visit, somewhere amidst the gibberish.
 
 <p style='text-align: center'>
   <img src="/images/tcp-2-ncat-output.png" />
@@ -123,9 +123,9 @@ To send a DNS response back to your phone, run:
 sudo ncat -nluvvv --keep-open --exec "/usr/bin/python /PATH/TO/THE/SCRIPT.py" 53
 ```
 
-Make sure your smartphone's DNS server is still set to be your laptop, as above. Visit a website *other than* `robertheaton.com` (or the domain in the response that you copied from Wireshark) on your smartphone - you should find that it still does not work. This is because your smartphone asked your laptop a question like "what is the IP address of facebook.com?", and your laptop sent back the non sequitur response "robertheaton.com is at IP address 104.18.32.191". Since the request and response domains don't match up, your smartphone ignores the response altogether. 
+Make sure your smartphone's DNS server is still set to be your laptop, as above. Visit a website *other than* `robertheaton.com` (or the hostname in the response that you copied from Wireshark) on your smartphone - you should find that it still does not work. This is because your smartphone asked your laptop a question like "what is the IP address of facebook.com?", and your laptop sent back the non sequitur response "robertheaton.com is at IP address 104.18.32.191". Since the request and response hostnames don't match up, your smartphone ignores the response altogether. 
 
-The sole domain that our crude DNS server *will* work for is none other than the most important website on the internet, robertheaton.com. Visit robertheaton.com on your smartphone and you should see it load as normal, in all its striking yet understated glory. This is because "robertheaton.com is at IP address 104.18.32.191" is only a useful answer when the question is "what is the IP address of robertheaton.com?"
+The sole hostname that our crude DNS server *will* work for is none other than the most important website on the internet, robertheaton.com. Visit robertheaton.com on your smartphone and you should see it load as normal, in all its striking yet understated glory. This is because "robertheaton.com is at IP address 104.18.32.191" is only a useful answer when the question is "what is the IP address of robertheaton.com?"
 
 ### 2. Making the real DNS server
 
@@ -142,7 +142,7 @@ import dns.resolver
 import scapy.all as scapy
 import netifaces as ni
 
-def handle_packet_fn(iface, spoof_ip, spoof_domains):
+def handle_packet_fn(iface, spoof_ip, spoof_hostnames):
     def handle_packet(packet):
         ip = packet.getlayer(scapy.IP)
         udp = packet.getlayer(scapy.UDP)
@@ -154,9 +154,9 @@ def handle_packet_fn(iface, spoof_ip, spoof_domains):
                 print("queried_host is None, dropping request")
                 return
 
-            # If the queried_host is one of the domains we want to
+            # If the queried_host is one of the hostnames we want to
             # spoof, return the spoof_ip.
-            if queried_host in spoof_domains:
+            if queried_host in spoof_hostnames:
                 print("!!!! Spoofing DNS request for %s by %s !!!!"
                         % (queried_host, ip.src))
                 resolved_ip = spoof_ip
@@ -209,13 +209,13 @@ def _get_local_ip(iface):
     return ni.ifaddresses(iface)[ni.AF_INET][0]['addr']
 
 
-def run(iface, local_ip, sniff_filter, spoof_domains):
+def run(iface, local_ip, sniff_filter, spoof_hostnames):
     print("#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#")
     print("-#-#-#-#-#-RUNNING DNS SPOOFER-#-#-#-#-#-")
     print("#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#")
     print("Interface:\t\t\t%s" % iface)
     print("Resolving to IP:\t\t%s" % local_ip)
-    print("Spoof domains:\t\t%s" % ', '.join(spoof_domains))
+    print("Spoof hostnames:\t\t%s" % ', '.join(spoof_hostnames))
     print("BPF sniff filter:\t\t%s" % sniff_filter)
     print("")
     print("Waiting for DNS requests...")
@@ -224,7 +224,7 @@ def run(iface, local_ip, sniff_filter, spoof_domains):
 
     scapy.sniff(iface=iface,
                 filter=sniff_filter,
-                prn=handle_packet_fn(iface, local_ip, spoof_domains))
+                prn=handle_packet_fn(iface, local_ip, spoof_hostnames))
 
 
 IFACE= 'en0'
@@ -232,15 +232,15 @@ local_ip = _get_local_ip(IFACE)
 # The local IP of your phone
 client_ip = '192.168.42.74'
 
-SPOOF_DOMAINS = ['nonhttps.com', 'www.nonhttps.com']
+SPOOF_HOSTNAMES = ['nonhttps.com', 'www.nonhttps.com']
 SNIFF_FILTER = "udp port 53 && dst %s && src %s" % (local_ip, client_ip)
 
-run(IFACE, local_ip, SNIFF_FILTER, SPOOF_DOMAINS)
+run(IFACE, local_ip, SNIFF_FILTER, SPOOF_HOSTNAMES)
 ```
 
 Once you have started the DNS server, make sure that your smartphone's DNS server is still set to be your laptop, as above. Visit a few websites on your smartphone and look back at your terminal - you should see DNS requests coming in from your smartphone and being logged by our DNS server.
 
-The default behavior of our server is to reply with your laptop's local IP address if the request is for our target domain (currently set in the script to be `nonhttps.com`), and to respond truthfully for all others. It finds out this truth, where necessary, by using the domain in the request to make its own DNS request, this time to a real DNS server. I've hard-coded it to use Google's DNS server at `8.8.8.8`. Once the real DNS server has performed a real DNS lookup, it sends a real DNS response back to our fake server. Our server reads the real IP address contained within this real response, and inserts this IP address into its own DNS response to your smartphone's original DNS request. Having constructed its response, it sends it back to your phone. This means that your phone is once again able to correctly resolve domain names to IP addresses, for all domains other than our target. Its internet should have just come back up, apart from for our current target, `nonhttps.com`.
+The default behavior of our server is to reply with your laptop's local IP address if the request is for our target hostname (currently set in the script to be `nonhttps.com`), and to respond truthfully for all others. It finds out this truth, where necessary, by using the hostname in the request to make its own DNS request, this time to a real DNS server. I've hard-coded it to use Google's DNS server at `8.8.8.8`. Once the real DNS server has performed a real DNS lookup, it sends a real DNS response back to our fake server. Our server reads the real IP address contained within this real response, and inserts this IP address into its own DNS response to your smartphone's original DNS request. Having constructed its response, it sends it back to your phone. This means that your phone is once again able to correctly resolve hostnames to IP addresses, for all hostnames other than our target. Its internet should have just come back up, apart from for our current target, `nonhttps.com`.
 
 Let's verify this. Visit `nonhttps.com` on your smartphone. You should see our DNS server log that it has spoofed the DNS response, and has returned the local IP address of your laptop.
 
@@ -266,14 +266,14 @@ Now that our DNS server is working, let's take a closer look at its code.
 
 Our server watches all packets going through your laptop's wi-fi interface using `scapy`. `scapy` is a very low-level library. It gives you a lot of powerful tools, but it also requires that you pick them up and use them yourself. To start our server, we pass `scapy` a filter expression (`udp port 53 && dst $YOUR_LAPTOPS_LOCAL_IP && src $YOUR_PHONES_LOCAL_IP`) and a callback function. Whenever `scapy` sees a packet that matches this filter (almost certainly containing a DNS request), it runs the callback function, passing in the contents of the packet as an argument.
 
-The callback function's job is to build a DNS response and send it back to your smartphone. This response tells your smartphone the resolved IP address for the domain in its DNS request. If the DNS request was for our target domain, we use your laptop's local IP address. If it was not, the callback function makes its own, real DNS request to a real DNS server. It reads the real IP off of the real response, and sends this IP address back to your smartphone.
+The callback function's job is to build a DNS response and send it back to your smartphone. This response tells your smartphone the resolved IP address for the hostname in its DNS request. If the DNS request was for our target hostname, we use your laptop's local IP address. If it was not, the callback function makes its own, real DNS request to a real DNS server. It reads the real IP off of the real response, and sends this IP address back to your smartphone.
 
-The DNS response must also contain the correct domain and DNS request ID so that your smartphone can match the response to its original request. As we saw in our experiments with netcat, getting these fields wrong causes your smartphone to ignore our DNS response. Unlike our primitive netcat script, our DNS server dynamically reads the domain and request ID off of the DNS request, and sets them correctly in the response.
+The DNS response must also contain the correct hostname and DNS request ID so that your smartphone can match the response to its original request. As we saw in our experiments with netcat, getting these fields wrong causes your smartphone to ignore our DNS response. Unlike our primitive netcat script, our DNS server dynamically reads the hostname and request ID off of the DNS request, and sets them correctly in the response.
 
 Finally, not only do we have to manually construct our DNS response from scratch, we also have to construct the IP packet that will transport it. In particular, we need to specify the IP packet's source and destination IP addresses, to make sure that it gets routed safely to your smartphone. We do this by setting the response IP packet's source to be the request IP packet's destination, and vice-versa.
 
 # 4. Conclusion
 
-In this section of the project we configured your smartphone to send its DNS requests to your laptop. We built a fake DNS server that enabled your laptop to respond to these DNS requests with spoofed responses. These responses contained your laptop's local IP address if the request was for our target domain, and the domain's real IP address otherwise. Your smartphone started trying to make its TCP connections with your laptop for our target domain, but continued functioning as normal for all others.
+In this section of the project we configured your smartphone to send its DNS requests to your laptop. We built a fake DNS server that enabled your laptop to respond to these DNS requests with spoofed responses. These responses contained your laptop's local IP address if the request was for our target hostname, and the hostname's real IP address otherwise. Your smartphone started trying to make its TCP connections with your laptop for our target hostname, but continued functioning as normal for all others.
 
 In the next 2 sections, we will build a TCP server that runs on your laptop and listens for these incoming TCP connections from your smartphone. This server will print out and save the contents of these requests, forward them to their intended destination, and handle TLS encryption and decryption. Then we'll have the generic TCP proxy that we've always dreamed of.
