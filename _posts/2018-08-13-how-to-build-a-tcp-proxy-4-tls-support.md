@@ -1,6 +1,7 @@
 ---
 title: "How to build a TCP proxy #4: TLS support"
 layout: post
+published: false
 ---
 This is the final part of a 4-part project to build a generic TCP proxy. This proxy will be capable of handling any TCP-based protocol, not just HTTP. In part 3 we finished building a TCP proxy that can handle unencrypted protocols. We used this proxy to intercept and inspect plaintext HTTP requests sent by your phone, and it worked beautifully.
 
