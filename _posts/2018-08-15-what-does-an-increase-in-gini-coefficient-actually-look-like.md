@@ -1,6 +1,7 @@
 ---
 layout: post
 title: What does a 0.01 increase in the Gini Coefficient actually look like?
+tags: [Economics]
 ---
 The Gini Coefficient, a common measurement of inequality, is both extremely simple and completely unintuitive. A country's Gini Coefficient is a single number between 0 and 1, where 0 corresponds to a society in which everybody earns the exact same amount, and 1 corresponds to a dystopian hellscape in which Mark Zuckerberg gets everything. The values in-between get rather more difficult to describe. A country with a Gini Coefficient of 0.4 is "like, very unequal but still basically functional", and a country with a Gini of 0.45 is best described as "a bit more unequal than that other country I just mentioned. Basically like Peru, according to the latest World Bank figures. Have you been to Peru? Me neither."
 
