@@ -1,5 +1,5 @@
 ---
-title: "\""Stylish\" is back, and you still shouldn't use it"
+title: "\"Stylish\" is back, and you still shouldn't use it"
 layout: post
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/stylish2-no-entry.jpg
