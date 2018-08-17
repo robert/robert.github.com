@@ -1,10 +1,10 @@
 ---
-title: "Stylish" is back, and you still shouldn't use it
+title: "\""Stylish\" is back, and you still shouldn't use it"
 layout: post
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/stylish2-no-entry.jpg
 redirect_from:
-  - /2018/07/23/no-you-shouldnt-use-the-new-version-of-stylish/
+  - /2018/07/23/no-you-shouldnt-use-the-new-version-of-stylish
 ---
 2 days after I published '["Stylish" browser extension steals all your internet history](/2018/07/02/stylish-browser-extension-steals-your-internet-history/)', Stylish was pulled from the Chrome and Firefox stores. The story echoed around parts of the internet for a few days, my name was misspelled on several right-wing British news websites, and I felt that I'd helped make the world a fractionally better place. However, Stylish v3.1.8 is now back in the Firefox add-on store, and it's bigger and better and more technically compliant than ever.
 
