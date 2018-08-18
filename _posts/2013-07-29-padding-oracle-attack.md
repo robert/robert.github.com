@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Padding Oracle Attack - why crypto is terrifying
+title: The Padding Oracle Attack
 bestof: true
 tags: [Security]
 ---

@@ -1,5 +1,5 @@
 ---
-title: Identity Graphs - how online trackers follow you across devices
+title: Identity Graphs: how online trackers follow you across devices
 layout: post
 tags: [Online Tracking]
 ---
