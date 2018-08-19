@@ -1,5 +1,5 @@
 ---
-title: Let's grow the Richmond: SB827
+title: "Let's grow the Richmond: SB827"
 layout: post
 ---
 > *A version of this piece originally appeared in the [Richmond Review](https://sfrichmondreview.com/2018/03/03/letter-to-the-editor-3/)*
