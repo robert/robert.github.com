@@ -1,5 +1,5 @@
 ---
-title: Cookie Syncing: how online trackers talk about you behind your back
+title: "Cookie Syncing: how online trackers talk about you behind your back"
 layout: post
 tags: [Online Tracking]
 ---
