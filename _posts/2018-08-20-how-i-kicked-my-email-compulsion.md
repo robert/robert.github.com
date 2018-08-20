@@ -1,6 +1,8 @@
 ---
 title: How I kicked my email compulsion
 layout: post
+tags: [Productivity]
+og_image: http://localhost:4000/images/email-compulsion-whiteboard.png
 ---
 One of the sadder things that I have witnessed occurred at gate 10 of San Francisco Airport. I was sitting patiently by the desk, waiting for the 17:37 Virgin Atlantic Flight VS019 to London Heathrow. A man in a hoodie sat down next to me and took out his laptop. Once I had exhausted my equanimity and phone battery I started snooping on what he was up to, letting my normally 20/20 eyes go slightly out of focus in order to preserve his privacy. I watched as he checked his Gmail account. No new emails. He checked another Gmail account. No new emails there either. He opened up a Microsoft Outlook inbox. Still nothing. He paused. He drummed his fingers on his trackpad. He switched back to the first Gmail account and started scrolling through his spam folder in search of some dumpster gold.
 
