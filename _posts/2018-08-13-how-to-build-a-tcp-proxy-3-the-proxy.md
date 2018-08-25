@@ -3,15 +3,15 @@ title: "How to build a TCP proxy #3: The Proxy"
 layout: post
 published: false
 ---
-This is part 3 of a 4-part project to build a generic TCP proxy. This proxy will be capable of handling any TCP-based protocol, not just HTTP. So far, the fake DNS server that we built in part 2 is tricking your smartphone into sending TCP data to your laptop. In this section we're going to build our actual TCP proxy server, and run it on your laptop. Its job will be to listen for data sent from your phone; forward it to the real, remote server; and finally forward any responses from the server back to your phone. In other words, act like a proxy.
+This is part 3 of a 4-part project to build a generic TCP proxy. This proxy will be capable of handling any TCP-based protocol, not just HTTP.
 
-The first version of our TCP proxy will not be capable of handling TLS encryption - this will be added in part 4. We will therefore test it by visiting HTTP (not HTTPS!) websites on your smartphone. We use HTTP for testing instead of some other TCP-based protocol because it's easier. All you have to do to get your phone to make an HTTP request is visit a website. Our proxy isn't "non-HTTP" - it's "non-HTTP-*specific*".
+So far, the fake DNS server that we built in part 2 is tricking your smartphone into sending TCP data to your laptop. In this section we're going to build our actual TCP proxy server, and run it on your laptop. Its job will be to listen for data sent from your phone; forward it to the real, remote server; and finally forward any responses from the server back to your phone. In other words, act like a proxy.
 
 ## 0. How our proxy will work
 
-In part 2, we decided that we would design our proxy to only proxy TCP connections that were intended for a single, target hostname. When your phone wants to make a TCP connection with this target hostname, it asks our fake DNS server from part 2 for that hostname's IP address. Our DNS server tells a small lie and responds with the local IP address of your laptop. Your phone takes this response at face value, and happily attempts to make a TCP connection with your laptop. Right now your laptop has no idea what to do with this request and so drops it on the floor. This is where our proxy comes in.
-
 Our proxy will run on your laptop and listen for incoming TCP connections on port 80 (by convention, the unencrypted HTTP port). When it receives one, presumably from your smartphone, it will first make another TCP connection, this time with our target hostname's remote server. Second, it will take any data that it receives over the connection with your smartphone, and re-send it over its new connection with the remote server. Third, it will listen for response data coming back from the server. Fourth and finally, it will relay this response data back to your smartphone, completing the 4-step loop. Your smartphone will be able to talk to the remote server as normal, taking only a slight detour via our proxy.
+
+We use HTTP for testing instead of some other TCP-based protocol because it's easier. To get your phone to make an HTTP request, all you have to do is visit a website. Our proxy isn't "non-HTTP" - it's "non-HTTP-*specific*". In addition, the first version of our TCP proxy will not be capable of handling TLS encryption. We will therefore have to take care to test using websites that use unecrypted HTTP, not HTTPS. We will add TLS support in part 4.
 
 <img src="/images/tcp-3-big-picture.png" />
 
