@@ -9,43 +9,37 @@ So far, the fake DNS server that we built in part 2 is tricking your smartphone 
 
 ## 0. How our proxy will work
 
-Our proxy will run on your laptop and listen for incoming TCP connections on port 80 (by convention, the unencrypted HTTP port). When it receives one, presumably from your smartphone, it will first make another TCP connection, this time with our target hostname's remote server. Second, it will take any data that it receives over the connection with your smartphone, and re-send it over its new connection with the remote server. Third, it will listen for response data coming back from the server. Fourth and finally, it will relay this response data back to your smartphone, completing the 4-step loop. Your smartphone will be able to talk to the remote server as normal, taking only a slight detour via our proxy.
+Our proxy will run on your laptop and listen for incoming TCP connections on port 80 (by convention, the unencrypted HTTP port). When it receives one, presumably from your smartphone, it will first make another TCP connection, this time with our target hostname's remote server. Second, it will take any data that it receives over the connection with your smartphone, and re-send it over its new connection with the remote server. Third, it will listen for response data coming back from the server. Fourth and finally, it will relay this response data back to your smartphone, completing a 4-step loop. Your smartphone will be able to talk to the remote server as normal, taking only a slight detour via our proxy.
 
-We use HTTP for testing instead of some other TCP-based protocol because it's easier. To get your phone to make an HTTP request, all you have to do is visit a website. Our proxy isn't "non-HTTP" - it's "non-HTTP-*specific*". In addition, the first version of our TCP proxy will not be capable of handling TLS encryption. We will therefore have to take care to test using websites that use unecrypted HTTP, not HTTPS. We will add TLS support in part 4.
+We will use HTTP for testing instead of some other TCP-based protocol because it's easier. To get your phone to make an HTTP request, all you have to do is visit a website. Our proxy isn't "non-HTTP" - it's "non-HTTP-*specific*". In addition, the first version of our TCP proxy will not be capable of handling TLS encryption. We will therefore have to take care to test using websites that use unecrypted HTTP, not HTTPS. We will add TLS support in part 4.
 
 <img src="/images/tcp-3-big-picture.png" />
 
-Let's take a closer look at each stage of this 4-step loop: from smartphone, to laptop, to remote server, and back again.
+Let's take a closer look at each stage of our 4-step loop: from smartphone, to laptop, to remote server, and back again.
 
 ### 0.1 Phone to Laptop
 
-The first stage is almost completely taken care of by our DNS server from the previous section of the project. Your phone has already been tricked into sending its TCP connections for our target hostname to your laptop, and all that remains is to ensure that our proxy receives them safely.
+The first step is almost completely taken care of by our DNS server from the previous section of the project. Your phone has already been tricked into sending its TCP connections for our target hostname to your laptop, and all that remains is to ensure that our proxy receives them safely.
 
 ### 0.2 Laptop to Remote Server
 
-When your phone makes a TCP connection with our proxy, our proxy makes a second TCP connection with the remote server. Our proxy sits in the middle of these two TCP connections, managing data-flow between them.
+The second step, from laptop to remote server, is handled by our proxy. When our proxy receives a TCP conection from your phone, it will turn around and initiate a second TCP connection, this time with the target remote server. It will then re-send any data that it receives from your phone to the remote server.
 
-As we've seen in parts 1 and 2 of this project, this raises an important question. Our proxy needs to send the data that it receives from your phone to the appropriate remote server. But how does it know this remote server's hostname or IP address? The TCP layer doesn't have any mechanisms for telling proxies where data should ultimately be routed to. The HTTP layer does - the `Host` HTTP header and `CONNECT` requests - but these are of no use to us, since we want our proxy to work for all TCP-based protocols, not just HTTP.
-
-This is a real problem, and we've already decided to solve it by cheating a little. We'll assume that we only want to proxy requests that your phone sends to a single "target hostname", and we'll hardcode that hostname's IP address into our proxy. Every piece of data that our proxy receives from your phone will be sent to this hardcoded address.
-
-This simplification is very reasonable. If we're trying to reverse engineer TargetApp's TCP API, then we are probably only interested in requests sent to `targetapp.com`. It will actually be useful if requests for other hostnames bypass our proxy and continue to work as normal.
-
-We should take care to configure our DNS server from part 2 to only spoof DNS responses for this same target hostname. For all other hostnames our DNS server should make a real DNS request, and respond to your phone with the hostname's real IP address. Otherwise you might accidentally send sensitive data to the wrong remote server.
+As we discussed in part 2, we will hardcode the hostname of the remote server that our proxy should make its second connection with. We will also take care to ensure that this hardcoded hostname matches the hardcoded hostname in our fake DNS server.
 
 ### 0.3 Server to Laptop
 
-Once our proxy has sent the remote server the data that it received from your smartphone, all that remains is to send any response data from the remote server back to your phone. In this third, server-to-laptop stage we will make sure that our proxy can receive response data from the remote server.
+Once our proxy has sent the remote server the data that it received from your smartphone, all that remains for it to do is to send the response data that it receives from the remote server back to your phone. In this third, server-to-laptop stage we will make sure that our proxy can receive response data from the remote server.
 
 ### 0.4 Laptop to Phone
 
-Finally, we will send this response data from our proxy back to your phone. Your phone will receive the data in exactly the same form as if it had been talking to the remote server directly, and it will assume that everything that just happened was completely normal.
+Finally, our proxy will send this response data back to your phone. Your phone will receive the data in exactly the same form as if it had been talking to the remote server directly, and it will assume that everything that just happened was completely normal.
 
 ## 1. Building our proxy
 
-I've built an example proxy using Python's `twisted` networking framework. I found that `twisted` gave the right amount of control over the innards of the proxy, whilst requiring very little boilerplate. In order to achieve this it introduces some of its own, new abstractions. These abstractions make my code very terse, but also a little cryptic for the uninitiated.
+I've written us an example proxy using Python's `twisted` networking framework. I found that `twisted` gave the right amount of control over the innards of the proxy, whilst requiring very little boilerplate. In order to achieve this it introduces some of its own, new abstractions. These abstractions make my code very terse, but also a little cryptic for the uninitiated.
 
-Twisted is built around "event-driven callbacks". This means that it automatically runs particular methods (or "callbacks") whenever a specific event occurs. The callbacks that we are interested in are `connectionMade` and `dataReceived`, both of which we define on a new class that inherits from `twisted`'s `Protocol`. `twisted` runs these callback methods for us whenever our protocol makes a new TCP connection or receives data on an existing connection. These are the only two hooks we need to make a TCP proxy.
+Twisted is designed around "event-driven callbacks". This means that it automatically runs particular methods (or "callbacks") whenever a specific event occurs. The events that we are interested in are "connection made" and "data received". We can tell `twisted` what to do when these events occur by defining a `Protocol` class with methods called `connectionMade` and `dataReceived`. When `twisted` sees a "connection made" event it will run our `connectionMade` method, and you can probably guess what it does when it sees a `dataReceived` event.
 
 Here's my code. It's followed by a more detailed explanation of the different components.
 
@@ -195,9 +189,13 @@ reactor.listenTCP(LISTEN_PORT, factory)
 reactor.run()
 ```
 
-`TCPProxyProtocol` is our primary `Protocol` class. It is directly responsible for communicating with your phone, but delegates communicating with the remote server to the `ProxyToServerProtocol` class. We initialize our proxy server by instantiating one of these `TCPProxyProtocol` objects, and telling `twisted` to use it to listen on port 80 - by convention, the unencrypted HTTP port. Next, nothing happens until your laptop receives a TCP connection on port 80 (presumably from your phone). When twisted sees this connection "event", it invokes the `connectionMade` callback on our `TCPProxyProtocol`. At this point our proxy has made a connection with your smartphone, and step 1 of our 4-step process is complete.
+Let's take a closer look at this code.
 
-`TCPProxyProtocol#connectionMade` constructs a new `ProxyToServerProtocol` object. It tells this new protocol to make a TCP connection with our target's remote server, the IP address of which we have passed into our proxy. This connection is once again made on port 80. If the `TCPProxyProtocol` receives any data from your phone before the `ProxyToServerProtocol` and the remote server have finished connecting, it adds the data to a buffer to make sure it doesn't get dropped. Once the connection is ready, `ProxyToServerProtocol` sends any data that the buffer has collected to the remote server. At this point our proxy has opened separate connections with both your smartphone and the remote server, and is sending data from your smartphone on to the remote server. Step 2 complete.
+`TCPProxyProtocol` is our central `Protocol` class. It handles communicating with your phone directly, and delegates communicating with the remote server to the `ProxyToServerProtocol` class. We initialize our proxy server by instantiating one of these `TCPProxyProtocol` objects, and telling `twisted` to use it to listen on port 80 - by convention, the unencrypted HTTP port. Next, nothing happens until your laptop receives a TCP connection on port 80 (presumably from your phone). When twisted sees this connection "event", it invokes the `connectionMade` callback on our `TCPProxyProtocol`. At this point our proxy has made a connection with your smartphone, and step 1 of our 4-step process is complete.
+
+Step 2, from proxy to remote server, is handled by the `ProxyToServerProtocol` class. When our `TCPProxyProtocol#connectionMade` method is called, it creates an instance of a `ProxyToServerProtocol`, and instructs this instance to connect to our target remote server on port 80.
+
+If our `TCPProxyProtocol` receives any data from your phone before the `ProxyToServerProtocol`'s connection to the remote server is complete, it adds the data to a buffer to make sure it doesn't get dropped. Once the connection is ready, `ProxyToServerProtocol` sends any data that the buffer has collected to the remote server. At this point our proxy has opened separate connections with both your smartphone and the remote server, and is sending data from your smartphone on to the remote server. Step 2 complete.
 
 Finally, when the `ProxyToServerProtocol` receives data back from the remote server, `twisted` invokes the  `ProxyToServerProtocol`'s own `dataReceived` callback. The code in this callback instructs the original `TCPProxyProtocol` to send the data that the `ProxyToServerProtocol` received from the remote server back to your phone. Steps 3 and 4 complete.
 
@@ -209,10 +207,10 @@ Before you begin testing, make sure that:
 
 * Your DNS spoofing script is pointing at nonhttps.com
 * Your smartphone has its DNS server set to be your laptop's IP address, as in part 2[LINK]
-* Your TCP proxy script is also pointing at nonhttps.com
+* Your TCP proxy script is  pointing at nonhttps.com
 * Your TCP proxy script is set to listen on port 80
 
-Then start both scripts and visit nonhttps.com on your phone. You should see your fake DNS server spoof the DNS request, returning the IP address of your laptop. You should then see your TCP proxy receive HTTP data from your smartphone, and log its contents to the terminal. Next, it should log the corresponding HTTP response that comes back from nonhttps.com. Finally, nonhttps.com should load in your phone's browser, as though nothing at all miraculous had just happened.
+Then start both scripts and visit nonhttps.com on your phone. You should see your fake DNS server spoof the DNS request and return the IP address of your laptop. You should then see your TCP proxy receive HTTP data from your smartphone, and log its contents to the terminal. Next, it should log the corresponding HTTP response that comes back from nonhttps.com. Finally, nonhttps.com should load in your phone's browser, as though nothing at all miraculous had just happened.
 
 <img src="/images/tcp-3-demo-1.png" />
 <img src="/images/tcp-3-demo-2.png" />

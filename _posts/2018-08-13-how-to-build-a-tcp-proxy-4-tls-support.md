@@ -1,9 +1,11 @@
 ---
-title: "How to build a TCP proxy #4: TLS support"
+title: "How to build a TCP proxy #4: Fake Certificate Authority"
 layout: post
 published: false
 ---
-This is the final part of a 4-part project to build a generic TCP proxy. This proxy will be capable of handling any TCP-based protocol, not just HTTP. In part 3 we finished building a TCP proxy that can handle unencrypted protocols. We used this proxy to intercept and inspect plaintext HTTP requests sent by your phone, and it worked beautifully.
+This is the final part of a 4-part project to build a generic TCP proxy. This proxy will be capable of handling any TCP-based protocol, not just HTTP.
+
+In part 3 we finished building a TCP proxy that can handle unencrypted protocols. We used this proxy to intercept and inspect plaintext HTTP requests sent by your phone, and it worked beautifully.
 
 However, we aren't satisfied. We want our proxy to be capable of dealing with encrypted traffic too. Right now, any application that demands a TLS-encrypted connection, such as a mobile browser connecting to an HTTPS-only website, will refuse to do business with our proxy. This is because our proxy has no idea how to perform any of the steps required to establish a secure connection, including presenting a TLS certificate and negotiating a TLS handshake.
 
