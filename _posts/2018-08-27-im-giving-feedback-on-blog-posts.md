@@ -2,6 +2,8 @@
 title: "I'm giving feedback on blog posts"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
+redirect_from:
+  - /blog-post-feedback
 ---
 If you've written a blog post and would like constructive feedback on it, [email it to me](robqheaton@gmail.com) and I'll give you some.
 
