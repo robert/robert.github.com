@@ -5,37 +5,49 @@ published: false
 ---
 This is the final part of a 4-part project to build a generic TCP proxy. This proxy will be capable of handling any TCP-based protocol, not just HTTP.
 
-In part 3 we finished building a TCP proxy that can handle unencrypted protocols. We used this proxy to intercept and inspect plaintext HTTP requests sent by your phone, and it worked beautifully.
+In part 3 we finished building a basic TCP proxy that can handle unencrypted protocols. We used this proxy to intercept and inspect plaintext HTTP requests sent by your phone, and it worked beautifully.
 
-However, we aren't satisfied. We want our proxy to be capable of dealing with encrypted traffic too. Right now, any application that demands a TLS-encrypted connection, such as a mobile browser connecting to an HTTPS-only website, will refuse to do business with our proxy. This is because our proxy has no idea how to perform any of the steps required to establish a secure connection, including presenting a TLS certificate and negotiating a TLS handshake.
+However, our proxy is still unable to handle data (like HTTPS) that your phone tries to send over a secure, TLS-encrypted connection. Any app on your phone that demands an encrypted connection, like a mobile browser connecting to an HTTPS-only website, will refuse to do business with our proxy. This is because we have not yet shown our proxy how to negotiate a TLS connection with your phone. 
 
-# 0. Things fall apart
+In this final part of the project, we're going to build a fake *Certificate Authority*. We will use it to show our proxy how to establish a TLS connection with your smartphone. We will also use it to convince your phone that it should trust our proxy, and that it should not be concerned that we don't have any *TLS certificates* that have been endorsed by a real Certificate Authority.
 
-Let's send our non-TLS enabled proxy an HTTPS request and watch as everything goes wrong. Change the target hostname in our DNS server to `google.com`. Change the hostname in our proxy to `google.com` as well, and set the port that it listens and sends on to `443` (by convention, the HTTPS port). Set your phone's DNS server to be your laptop's local IP address, then start up our DNS server and TCP proxy.
+Let's start by seeing for ourselves what goes wrong when our basic proxy tries to handle encrypted data.
 
-Visit `google.com` on your phone. Google very sensibly insists on being served over HTTPS, and when your phone's browser finds out that our proxy doesn't understand TLS it will immediately give up and close its TCP connection. It will display an error.
+## 0. What goes wrong
 
-Fortunately this is a very solvable problem. Let's teach our proxy to speak TLS.
+Let's send an HTTPS request to our non-TLS-enabled proxy, and see what breaks. Change the target hostname in our DNS server from part 2 to `google.com`. Change the hostname in our proxy from part 3 to `google.com` as well, and set the port that it listens and sends on to `443` (by convention, the HTTPS port). Set your phone's DNS server to be your laptop's local IP address (as in parts 2 and 3), then start up both our DNS server and TCP proxy.
+
+Visit `google.com` on your phone. When we performed this trick in part 3 with `nonhttps.com`, the heist went off without a hitch. Your phone's browser sent its unencrypted request for `nonhttps.com` to our proxy, and our proxy forwarded this request to `nonhttps.com` itself.
+
+However, Google very sensibly insists on being served over HTTPS. When your phone's browser finds out that our proxy doesn't know how to negotiate a TLS connection, it will immediately give up and close the TCP connection with it. Your browser will display an error.
+
+Let's solve this problem. Let's teach our proxy to speak TLS.
 
 (If you haven't come across TLS before or would like a refresher, have a read of [my introduction to HTTPS](/2014/03/27/how-does-https-actually-work/))
 
-# 1. How to teach a proxy to speak TLS
+## 1. How to teach a proxy about TLS
 
-I'm not going to tell you what we need to do in order to add TLS-support to our proxy. Instead, we'll figure out out the list of challenges that need solving together. We'll work backwards, starting with the current state of our proxy from part 3. This will help us see exactly why each step is necessary, and what would happen if we left it out.
+We're going to start by working out the list of challenges that we need to solve. We'll start with the current state of our proxy, and work backwards. This will help us see exactly why each step is necessary, and what would happen if we left it out.
 
 ## 1.1 Listen, SSL
 
-In our code from part 3, our proxy listened for incoming TCP connections from your phone using the `listen` method of the `twisted` Python networking library. Conveniently, `twisted` also has a `listenSSL` method (TLS used to be called SSL, and the 2 acronyms are often used interchangeably). Both `listen` and `listenSSL` sit and wait for incoming TCP connections. But whereas `listen` immediately starts accepting application-layer data (like an HTTP request) as soon as a TCP connection is established, `listenSSL` first attempts to perform a TLS handshake with the client. Only once this handshake has been completed successfully does `listenSSL` start accepting (now encrypted) application-layer data. Let's therefore start by changing our proxy to use `listenSSL` instead of `listen`.
+We'll have to make some updates to our proxy's code.
+
+In our code from part 3, our proxy listened for incoming TCP connections from your phone using the `listen` method of the `twisted` Python networking library. `twisted` also has a `listenSSL` method, which also listens and waits for incoming TCP connections. TLS used to be called SSL, and the 2 acronyms are often used interchangeably.
+
+The `listen` and `listenSSL` methods are quite similar. However, they differ in how they proceed after they have established a TCP connection with a client. `listen` immediately starts accepting application-layer data (like an HTTP request). However, before `listenSSL` accepts any application-layer data, it first attempts to perform a TLS handshake with the client. Only once this handshake has been successfully completed does `listenSSL` start accepting (now encrypted) application-layer data.
+
+We're going to need to use `listenSSL` instead of `listen`. But there's more to this change than just adding `SSL` to the end of our method call and declaring victory.
 
 ## 1.2 TLS certificates
 
-`listenSSL` helpfully handles the low-level mechanics of handshakes and decryption for us. But in order to do this, it needs to be passed a *TLS certificate*. As we will see, TLS certificates are easy enough for us to create, but harder for us to get right.
+Conveniently, `listenSSL` will handle the low-level, algorithmic mechanics of TLS handshakes and decryption for us. But in order to do this, it needs to be passed a *TLS certificate* as one of its arguments. As we will see, TLS certificates are easy enough for us to create, but harder for us to get right.
 
-Servers use TLS certificates to verify their identity. Your phone will refuse to do a TLS handshake with our proxy unless the *Common Name* on our certificate matches the hostname that your phone believes it is talking to. Our next step will therefore be to generate and use our own TLS certificate, with its Common Name set to the hostname of our target app (for now let's stick with `google.com`).
+Servers use TLS certificates to prove their identity. Your phone will refuse to do a TLS handshake with our proxy unless the *Common Name* on our certificate matches the hostname that your phone believes it is talking to. Our next step will therefore be to generate and use our own TLS certificate, with its Common Name set to the hostname of our target app (for now let's stick with `google.com`).
 
 This might sound strange at first. The whole point of TLS is that when a server presents a client with a certificate for `google.com`, the client can be quite certain that it is talking to the real Google and not some dastardly man-in-the-middle. I wouldn't describe us as dastardly exactly, but if we can generate a certificate for `google.com` from the comfort of our own home then surely this can't bode well for the security of TLS?
 
-However, clients like your phone check more than a certificate's hostname when verifying its validity. They also check its "cryptographic signature". A cryptographic signature is a seal of approval attached to a certificate by some third party. This third party is usually a "Root Certificate Authority" (CA). CAs are (hopefully) secure and trustworthy organizations whose job it is to issue and sign TLS certificates. It is no exaggeration to say that they are collectively responsible for the integrity of encryption on the internet. Before issuing one of its customer with a certificate for a domain or hostname, a CA does due diligence to verify that the customer is indeed this name's real owner.
+However, clients like your phone check more than a certificate's hostname when verifying its validity. They also check its "cryptographic signature". A cryptographic signature is a seal of approval attached to a certificate by some third party. This third party is usually a "Root Certificate Authority" (CA). CAs are secure and trustworthy organizations whose job it is to issue and sign TLS certificates. It is no exaggeration to say that they are collectively responsible for the integrity of encryption on the internet. Before issuing one of its customer with a certificate for a domain or hostname, a CA does due diligence to verify that the customer is indeed this name's real owner.
 
 Once the CA is satisfied, it generates a certificate (and private key) for the name, and appends a cryptographic signature. This signature encodes a statement of the form "Verisign asserts that this certificate belongs to the true owner of `google.com`". The CA creates the signature by using its private key to encrypt the certificate's contents. A client can verify that the signature is valid by decrypting the signature using the CA's public key, and confirming that the decrypted text matches the text of the certificate. Since the signature could not have been generated without access to the CA's private key - which they hopefully keep extremely secret and secure - it is safe to assume that the CA endorses the contents of the certificate, and that the bearer (or more accurately, the organization in possession of the corresponding private key) is the true owner of the domain or hostname.
 
