@@ -1,13 +1,18 @@
 ---
-title: "How to build a TCP proxy #3: The Proxy"
+title: "How to build a TCP proxy #3: Proxy Server"
 layout: post
-published: false
 ---
+> Previously:
+>
+> [Part 1: Intro](/2018/08/31/how-to-build-a-tcp-proxy-1)
+>
+> [Part 2: Fake DNS Server](/2018/08/31/how-to-build-a-tcp-proxy-2)
+
 This is part 3 of a 4-part project to build a generic TCP proxy. This proxy will be capable of handling any TCP-based protocol, not just HTTP.
 
 So far, the fake DNS server that we built in part 2 is tricking your smartphone into sending TCP data to your laptop. In this section we're going to build our actual TCP proxy server, and run it on your laptop. Its job will be to listen for data sent from your phone; forward it to the real, remote server; and finally forward any responses from the server back to your phone. In other words, act like a proxy.
 
-## 0. How our proxy will work
+## 0. How our proxy server will work
 
 Our proxy will run on your laptop and listen for incoming TCP connections on port 80 (by convention, the unencrypted HTTP port). When it receives one, presumably from your smartphone, it will first make another TCP connection, this time with our target hostname's remote server. Second, it will take any data that it receives over the connection with your smartphone, and re-send it over its new connection with the remote server. Third, it will listen for response data coming back from the server. Fourth and finally, it will relay this response data back to your smartphone, completing a 4-step loop. Your smartphone will be able to talk to the remote server as normal, taking only a slight detour via our proxy.
 
@@ -37,48 +42,53 @@ Finally, our proxy will send this response data back to your phone. Your phone w
 
 ## 1. Building our proxy
 
-I've written us an example proxy using Python's `twisted` networking framework. I found that `twisted` gave the right amount of control over the innards of the proxy, whilst requiring very little boilerplate. In order to achieve this it introduces some of its own, new abstractions. These abstractions make my code very terse, but also a little cryptic for the uninitiated.
+I've written us an example proxy using Python's `twisted` networking framework. I found that `twisted` gave the right amount of control over the innards of the proxy, whilst requiring very little boilerplate. In order to achieve this it introduces some of its own, new abstractions. These abstractions make `twisted` code very terse, but also a little cryptic for the uninitiated.
 
-Twisted is designed around "event-driven callbacks". This means that it automatically runs particular methods (or "callbacks") whenever a specific event occurs. The events that we are interested in are "connection made" and "data received". We can tell `twisted` what to do when these events occur by defining a `Protocol` class with methods called `connectionMade` and `dataReceived`. When `twisted` sees a "connection made" event it will run our `connectionMade` method, and you can probably guess what it does when it sees a `dataReceived` event.
+Twisted is designed around "event-driven callbacks". This means that it automatically runs particular methods (or "callbacks") whenever a specific event occurs. The events that we are interested in are "connection made" and "data received". We can tell `twisted` what to do when these events occur by defining a `Protocol` class with methods called `connectionMade` and `dataReceived`. When `twisted` sees a "connection made" event it runs our `connectionMade` method, and you can probably guess what it does when it sees a "data received" event.
 
 Here's my code. It's followed by a more detailed explanation of the different components.
 
-```
-# See TODO - LINK to get the utils file
-import utils
+[(This code is also on GitHub)](https://github.com/robert/how-to-build-a-tcp-proxy/blob/master/tcp_proxy.py)
 
+{% highlight python %}
 from twisted.internet import protocol, reactor
 from twisted.internet import ssl as twisted_ssl
 import dns.resolver
-
+import netifaces as ni
+ 
 # Adapted from http://stackoverflow.com/a/15645169/221061
 
 class TCPProxyProtocol(protocol.Protocol):
     """
-    TCPProxyProtocol listens for TCP connections from a client (eg. a
-    phone) and forwards them on to a specified destination (eg. an app's API
-    server) over a second TCP connection, using a ProxyToServerProtocol.
+    TCPProxyProtocol listens for TCP connections from a
+    client (eg. a phone) and forwards them on to a
+    specified destination (eg. an app's API server) over
+    a second TCP connection, using a ProxyToServerProtocol.
+
+    It assumes that neither leg of this trip is encrypted.
     """
     def __init__(self):
         self.buffer = None
         self.proxy_to_server_protocol = None
-
+ 
     def connectionMade(self):
         """
-        Called by twisted when a client connects to the proxy. Makes an
-        connection from the proxy to the server to complete the chain.
+        Called by twisted when a client connects to the
+        proxy. Makes an connection from the proxy to the
+        server to complete the chain.
         """
         print("Connection made from CLIENT => PROXY")
         proxy_to_server_factory = protocol.ClientFactory()
         proxy_to_server_factory.protocol = ProxyToServerProtocol
         proxy_to_server_factory.server = self
-
-        reactor.connectTCP(DST_IP, DST_PORT, proxy_to_server_factory)
-
+ 
+        reactor.connectTCP(DST_IP, DST_PORT,
+                           proxy_to_server_factory)
+ 
     def dataReceived(self, data):
         """
-        Called by twisted when the proxy receives data from the client. Sends
-        the data on to the server.
+        Called by twisted when the proxy receives data from
+        the client. Sends the data on to the server.
 
         CLIENT ===> PROXY ===> DST
         """
@@ -90,32 +100,35 @@ class TCPProxyProtocol(protocol.Protocol):
             self.proxy_to_server_protocol.write(data)
         else:
             self.buffer = data
-
+ 
     def write(self, data):
         self.transport.write(data)
-
-
+ 
+ 
 class ProxyToServerProtocol(protocol.Protocol):
     """
-    ProxyToServerProtocol connects to a server over TCP. It sends the server data
-    given to it by an TCPProxyProtocol, and uses the TCPProxyProtocol to
-    send data that it receives back from the server on to a client.
+    ProxyToServerProtocol connects to a server over TCP.
+    It sends the server data given to it by an
+    TCPProxyProtocol, and uses the TCPProxyProtocol to
+    send data that it receives back from the server on
+    to a client.
     """
 
     def connectionMade(self):
         """
-        Called by twisted when the proxy connects to the server. Flushes any
-        buffered data on the proxy to server.
+        Called by twisted when the proxy connects to the
+        server. Flushes any buffered data on the proxy to
+        server.
         """
         print("Connection made from PROXY => SERVER")
         self.factory.server.proxy_to_server_protocol = self
         self.write(self.factory.server.buffer)
         self.factory.server.buffer = ''
-
+ 
     def dataReceived(self, data):
         """
-        Called by twisted when the proxy receives data from the server. Sends
-        the data on to to the client.
+        Called by twisted when the proxy receives data
+        from the server. Sends the data on to to the client.
 
         DST ===> PROXY ===> CLIENT
         """
@@ -124,7 +137,7 @@ class ProxyToServerProtocol(protocol.Protocol):
         print(FORMAT_FN(data))
         print("")
         self.factory.server.write(data)
-
+ 
     def write(self, data):
         if data:
             self.transport.write(data)
@@ -133,14 +146,16 @@ class ProxyToServerProtocol(protocol.Protocol):
 def _noop(data):
     return data
 
+def get_local_ip(iface):
+    ni.ifaddresses(iface)
+    return ni.ifaddresses(iface)[ni.AF_INET][0]['addr']
 
 FORMAT_FN = _noop
-
 
 LISTEN_PORT = 80
 DST_PORT = 80
 DST_HOST = "nonhttps.com"
-local_ip = utils.get_local_ip('en0')
+local_ip = get_local_ip('en0')
 
 # Look up the IP address of the target
 print("Querying DNS records for %s..." % DST_HOST)
@@ -151,7 +166,7 @@ for r in a_records:
 print("")
 assert(len(a_records) > 0)
 
-# The target may have multiple IP addresses - we
+# THe target may have multiple IP addresses - we
 # simply choose the first one.
 DST_IP = a_records[0].address
 print("Choosing to proxy to %s" % DST_IP)
@@ -168,17 +183,20 @@ Dst hostname:\t%s
 Listen port:\t%d
 Local IP:\t%s
 """ % (DST_IP, DST_PORT, DST_HOST, LISTEN_PORT, local_ip))
-
+ 
 print("""
 Next steps:
 
-1. Make sure you are spoofing DNS requests from the device you are trying to
-proxy request from so that they return your local IP (%s).
-2. Make sure you have set the destination and listen ports correctly (they should
-generally be the same).
-3. Use the device you are proxying requests from to make requests to %s and
-check that they are logged in this terminal.
-4. Look at the requests, write more code to replay them, fiddle with them, etc.
+1. Make sure you are spoofing DNS requests from the
+device you are trying to proxy request from so that they
+return your local IP (%s).
+2. Make sure you have set the destination and listen ports
+correctly (they should generally be the same).
+3. Use the device you are proxying requests from to make
+requests to %s and check that they are logged in this
+terminal.
+4. Look at the requests, write more code to replay them,
+fiddle with them, etc.
 
 Listening for requests on %s:%d...
 """ % (local_ip, DST_HOST, local_ip, LISTEN_PORT))
@@ -187,11 +205,11 @@ factory = protocol.ServerFactory()
 factory.protocol = TCPProxyProtocol
 reactor.listenTCP(LISTEN_PORT, factory)
 reactor.run()
-```
+{% endhighlight %}
 
-Let's take a closer look at this code.
+Let's take a closer look at this code. You might find it useful to open [the code on GitHub](https://github.com/robert/how-to-build-a-tcp-proxy/blob/master/tcp_proxy.py).
 
-`TCPProxyProtocol` is our central `Protocol` class. It handles communicating with your phone directly, and delegates communicating with the remote server to the `ProxyToServerProtocol` class. We initialize our proxy server by instantiating one of these `TCPProxyProtocol` objects, and telling `twisted` to use it to listen on port 80 - by convention, the unencrypted HTTP port. Next, nothing happens until your laptop receives a TCP connection on port 80 (presumably from your phone). When twisted sees this connection "event", it invokes the `connectionMade` callback on our `TCPProxyProtocol`. At this point our proxy has made a connection with your smartphone, and step 1 of our 4-step process is complete.
+`TCPProxyProtocol` is our main `Protocol` class. It handles communicating with your phone, and delegates communicating with the remote server to the `ProxyToServerProtocol` class. We initialize our proxy server by instantiating one of these `TCPProxyProtocol` objects, and telling `twisted` to use it to listen on port 80 - by convention, the unencrypted HTTP port. Next, nothing happens until your laptop receives a TCP connection on port 80 (presumably from your phone). When twisted sees this "connection made" event, it invokes the `connectionMade` callback on our `TCPProxyProtocol`. At this point our proxy has made a connection with your smartphone, and step 1 of our 4-step process is complete.
 
 Step 2, from proxy to remote server, is handled by the `ProxyToServerProtocol` class. When our `TCPProxyProtocol#connectionMade` method is called, it creates an instance of a `ProxyToServerProtocol`, and instructs this instance to connect to our target remote server on port 80.
 
@@ -227,3 +245,5 @@ If this doesn't work then its time for some debugging.
 Now you can proxy any TCP request that doesn't use TLS encryption. Even though we have been testing using HTTP requests for simplicity, notice that nowhere in our code do we even mention HTTP. We see only a generic, TCP-transported stream of bytes that can have any structure and use any application protocol that it likes.
 
 All that remains is for us to make our proxy capable of handling TCP requests that *do* use TLS encryption. That's in the fourth and final section of this project.
+
+Read on - [Part 3: Fake Certificate Authority](/2018/08/31/how-to-build-a-tcp-proxy-4)
