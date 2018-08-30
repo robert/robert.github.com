@@ -1,6 +1,7 @@
 ---
 title: "How to build a TCP proxy #2: Fake DNS Server"
 layout: post
+tags: [How to build a TCP proxy]
 ---
 > Previously:
 >
