@@ -2,6 +2,7 @@
 title: "How to build a TCP proxy #1: Intro"
 layout: post
 tags: [How to build a TCP proxy]
+og_image: https://robertheaton.com/images/tcp-1-full-layout.png
 redirect_from:
   - /2018/08/13/how-to-build-a-tcp-proxy-1-intro
 ---
