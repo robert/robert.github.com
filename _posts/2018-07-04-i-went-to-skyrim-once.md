@@ -3,7 +3,7 @@ title: I went to Skyrim, once
 redirect_from:
   - /2018/07/09/i-went-to-skyrim-once
 layout: post
-tags: [Productivity]
+tags: [Computer Games, Productivity]
 og_image: https://robertheaton.com/images/skyrim-landscape.jpg
 ---
 When I played the Elder Scrolls III: Morrowind, I was an elven archer. For god’s sake never be an elven archer, in any part of your life. It’s much less glamorous than in the movies.
