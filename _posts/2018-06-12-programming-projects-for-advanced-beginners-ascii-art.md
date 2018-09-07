@@ -18,7 +18,7 @@ You're going to write a program to turn images into ASCII-art. ASCII is a primit
 
 The initial project is broken up into 5 sections. You won't actually generate an ASCII picture until the end of step 5 (it will be worth the wait, I promise), so at the end of each section there's a block of intermediate output that you should print and verify. Make sure that it looks "sensible" before going onto the next section - bite-size verification of small parts of your code is very important for making sure that you're on the right track.
 
-Once you finish, there are several extension project. In these you will build on top of your ASCII-art generator to add glorious technicolor to your pictures, make a Facebook-style flag-overlay, and even build an ASCII-webcam to replace Apple's Photobooth.
+Once you finish, there are several extension projects. In these you will build on top of your ASCII-art generator to add glorious technicolor to your pictures, make a Facebook-style flag-overlay, and even build an ASCII-webcam to replace Apple's Photobooth.
 
 If you get stuck (defined as making zero progress for 30 minutes), you can get some inspiration from [my example project](https://gist.github.com/robert/b0b14b1fd4a5feb2b45ab3ce049f5707). I've written it in Python, but I've also tried to avoid using any Python-specific constructs. It should therefore be a useful reference regardless of which language you are using. If your code looks different from mine, don't worry! There are many ways to structure this project. If the project guide contain any terms that you haven't seen before then apologies, that's my fault. Just ask Google to explain.
 
