@@ -56,7 +56,7 @@ Of course, it did. Stylish's session cookie is scoped to `*.userstyles.org`, so 
 
 # Conclusion
 
-It's not news that browser extensions can be a security nightmare. It's not even enough to trust an extension's current, benevolent owner. Even the benevolent have to make a buck eventually, and quiet sales to organizations like SimpleWeb are not uncommon. SimilarWeb claims that they need to track every single website Stylish's users visit in order to recommend them styles for the current webpage. This is a solution in search of a flimsy justification. If this were all they were doing then they would only need to send themselves the current page's domain, not the full URL. And it doesn't even begin to explain why they also need to scrape and send themselves your actual Google search results from your browser window.
+It's not news that browser extensions can be a security nightmare. It's not even enough to trust an extension's current, benevolent owner. Even the benevolent have to make a buck eventually, and quiet sales to organizations like SimilarWeb are not uncommon. SimilarWeb claims that they need to track every single website Stylish's users visit in order to recommend them styles for the current webpage. This is a solution in search of a flimsy justification. If this were all they were doing then they would only need to send themselves the current page's domain, not the full URL. And it doesn't even begin to explain why they also need to scrape and send themselves your actual Google search results from your browser window.
 
 <p style="text-align: center;">
 	<img src="/images/stylish-google.jpg" />
