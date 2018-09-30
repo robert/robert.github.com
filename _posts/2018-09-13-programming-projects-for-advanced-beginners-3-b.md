@@ -2,18 +2,17 @@
 title: "Programming Projects for Advanced Beginners #3B: Tic-Tac-Toe AI"
 layout: post
 tags: [Computer Games]
-published: false
 og_image: https://robertheaton.com/images/the-witness-landscape.jpg
 ---
 This is the second and final part of our quest to build an unbeatable, perfect Tic-Tac-Toe AI. In [part 1](/2018/09/13/programming-projects-for-advanced-beginners-3) we wrote a Tic-Tac-Toe engine that allowed two human players to play against each other. In part 2, we're going to use the *minimax algorithm* to build a flawless AI.
 
-We're first going to warm up by writing some simpler AIs that choose their moves using if-statements and rules of thumb. We'll build out the connective layer between our existing Tic-Tac-Toe engine and our new computer players, and test it out using these smaller, simpler algorithms. Once we've built and verified this generic infrastructure we'll be ready to give our total focus to our final goal: making a perfect Tic-Tac-Toe AI.
+First we're going to warm up by writing some simpler AIs that choose their moves using if-statements and rules of thumb. We'll take this opportunity to build out the code that connects our computer players to our existing Tic-Tac-Toe enginer. Once we've built and verified this generic infrastructure we'll be ready to give our total focus to our final goal: making a perfect Tic-Tac-Toe AI.
 
 As with all my projects, I'm going to leave all of the difficult work to you and throw you right in at the deep-end. But I'll also give you gentle reminders on how to swim, as well as some new tips on swimming best practices. If you do get completely stuck then I've written some example code[LINK]. You can always use it to get yourself back in the right lane.
 
 ## Today's lesson - Interfaces
 
-We're going to write several different Tic-Tac-Toe AIs, each of which will employ different strategies of varying degrees of complexity. And we won't be the only ones doing this. We also want to be able to challenge your friends and family to a duel - your best AI against theirs. We want them to be able to build AIs on their own, and to be able to easily plug them into our Tic-Tac-Toe engine so that we can have a rumble. Then we want to crush their AIs and their spirits. And we will. Mark my words. We will crush them.
+We're going to write several different Tic-Tac-Toe AIs, each of which will employ different strategies of varying degrees of complexity. And we won't be the only ones doing this. All we mean by "a Tic-Tac-Toe AI" is a piece of code that takes in a Tic-Tac-Toe position and outputs a move. We also want to be able to challenge your friends and family to a duel - your best AI against theirs. We want them to be able to build AIs on their own, and to be able to easily plug them into our Tic-Tac-Toe engine so that we can have a rumble. Then we want to crush their AIs and their spirits. And we will. Mark my words. We will crush them.
 
 This raises an important question. We're going to be writing many different AIs. Your enemies are going to be writing AIs of their own too. How can we ensure that all of these algorithms are able to talk to each other? How can we ensure they they can all plug into our Tic-Tac-Toe engine, even though they were all developed independently and take completely different approaches to choosing their moves?
 
@@ -31,9 +30,32 @@ Poorly-designed interfaces are messy and hard to understand. Take the IRS. If yo
 
 ## Interfaces in code
 
-Interfaces are everywhere in code too. Every function is an interface - "you give me X and Y and I'll return Z". It's very possible and very useful for multiple functions to have identical interfaces. A movie recommender could have different functions that each use different techniques to recommend movies. They could all have the interface "you give me the list of movies that a user liked, and I'll return the 3 movies that I think they should watch next." One function could look for movies with similar names to those that the user liked. Another could be looking for movies that were liked by other users with similar tastes. And a final one could always return `["Con Air", "Con Air", "Con Air"]`, because there is no better movie than "Con Air". Even though all of these functions do extremely different things behind the scenes, they all conform to the same interface. This makes it very easy for the movie recommender to add and combine new algorithms.
+Interfaces are everywhere in code too. Every function is an interface - "you give me X and Y and I'll return Z". It's very possible and very useful for multiple functions to have identical interfaces.
 
-We are going to specify our own interface that specifies how our Tic-Tac-Toe engine and Tic-Tac-Toe AIs communicate with each other. We'll decree that an AI should be a function that accepts 2 arguments - a board and the ID of the side whose move it is (`O` or `X`). The function should return the co-ordinates of the square that the AI would like to play in. As long as the function conforms to this interface - "you give me a board and an ID and I'll give you back a co-ordinate" - we can easily plug it into our engine, without our engine needing to know anything about how it works behind the scenes. The function can decide on its move in any way it likes, using anything from a neural network to a Twitter poll to a complex system of levers and pulleys. In this project we'll write AI functions that calculate their moves using stacks of if-statements, human decisions, and the elegant and unbeatable *minimax algorithm*. However, these are all *implementation details* that our engine won't have to know or care about.
+For example, imagine that you're building a system that makes personalized movie recommendations. You want your system to be diverse and imaginative, and so you want it to have several different methods of generating recommendations.
+
+You could construct your system out of functions that each use different techniques to recommend movies, but all conform to the same interface. This interface could be something like "you give me the list of movies that a user liked, and I'll return the 3 movies that I think they should watch next." One function could look for movies with similar names to those that the user liked. Another could be looking for movies that were liked by other users with similar tastes. And a final one could always return `["Con Air", "Con Air", "Con Air"]`, because there is no better movie than "Con Air". Even though all of these functions do extremely different things behind the scenes, they all conform to the same interface. And because they all conform to the same interface, new recommendation algorithms can be dropped in and swapped out, with no new custom code required to plug them in.
+
+```
+# By using "first-class functions", we
+# can just add our new recommender functions
+# to this list
+recommender_functions = [
+  similar_names,
+  similar_tastes,
+  con_air
+]
+for f in recommender_functions:
+  print f(user_favorite_movies)
+
+# => ["American Beauty", "American Beauty 2", "Quest for Beauty"]
+# => ["Aladdin", "Frozen", "Wall-E"]
+# => ["Con Air", "Con Air", "Con Air"]
+```
+
+We are going to specify our own interface that defines how our Tic-Tac-Toe engine and Tic-Tac-Toe AIs communicate with each other. Right now our engine has sections of code that take care of printing the board, checking for wins, checking for draws, alternating sides, checking for legal moves, and getting moves from the human players. We will keep almost all of this code the same; the only change we will make is to swap out the section that gets moves from humans and replace it with an AI.
+
+We'll decree that an AI function should accept 2 arguments - a board and the ID of the side whose move it is (`O` or `X`). The function should return the co-ordinates of the square that the AI would like to play in. As long as the function conforms to this interface - "you give me a board and an ID and I'll give you back a co-ordinate" - we can easily plug it into our engine, without our engine needing to know anything about how it works behind the scenes. The function can decide on its move in any way it likes, using anything from a neural network to a Twitter poll to a complex system of levers and pulleys. In this project we'll write AI functions that calculate their moves using stacks of if-statements, human decisions, and the elegant and unbeatable *minimax algorithm*. However, these are all *implementation details* that our engine won't have to know or care about.
 
 In some programming languages, like Java and Go, `interface` is a special language keyword with a specific meaning. We are using the word in a more general sense. In many languages, like Python and Ruby, you don't have to write any code that officially "declares" an interface. You just tell other programmers who want to add new components to your system how everything works, and what interfaces they need to conform to. If they do then everything will Just Work.
 
@@ -179,7 +201,7 @@ This is just an experiment to see how much effect different rules and optimizati
 
 ## 6. Building a perfect AI
 
-I used to play in a lot of chess tournaments. They were played in vast, hushed halls, with no sound other than the gentle clacks of knights moving to F3. If you wanted to post-mortem your game after you had finished, there was usually a small analysis room off to the side. In here triumphant victors and grumpy losers pored over the past, trying to show how smart they had been or work out what they could have done better. The air was always saturated with a gentle hubbub of "if I go there, she goes there; but if she goes there, I go *there*!" Players were looking at all the possible moves that they could have made in a position, and for each move trying to find their opponent's best response. For each best response they tried to find the best counter-response, and so on and so forth until the game had ended or the result was no longer in doubt. This is roughly how the minimax algorithm works, except we're going to use computers to do it perfectly and much, much faster.
+I used to play in a lot of chess tournaments. They were played in vast, hushed halls, with no sound other than the gentle clacks of knights moving to F3. If you wanted to post-mortem your game after you had finished, there was usually a small analysis room off to the side. In here triumphant victors and grumpy losers pored over the past, trying to show how smart they had been or work out what they could have done better. The air was always saturated with a gentle hubbub of "if I go there, she goes there; but if she goes there, I go *there*!" Players were looking at all the possible moves that they could have made in a position, and for each move trying to find their opponent's best response. For each best response they tried to find the best counter-response, and so on and so forth until the game had ended or the result was no longer in doubt. Assuming that your opponent will play optimally and trying to find the best responses to their best responses is pretty much how the minimax algorithm works. The only difference is that we're going to use computers to do it perfectly and much, much faster.
 
 To begin the minimax algorithm, our AI will build a tree of all 250,000 possible games of Tic-Tac-Toe.
 
@@ -221,7 +243,7 @@ We need a general rule that can score all non-terminal positions, not just those
 
 Our AI will score non-terminal positions by working out what the outcome would be if both players finished the game by playing perfect Tic-Tac-Toe, and assign the position a score corresponding to that outcome. Sounds sensible enough. But this brings us right back to the very question that we are trying to solve - *how* exactly does one play perfect Tic-Tac-Toe? Don't worry, we're getting closer.
 
-Minimax requires our AI to walk along the branches of its Tic-Tac-Toe tree, propagating concrete scores from the terminal positions on the leaves up to more uncertain-looking early-game positions. Let's try some examples. What score should our AI, playing as X, give this position?
+Minimax requires our AI to walk along the branches of its Tic-Tac-Toe tree, propagating concrete scores from the terminal positions on the leaves up to more uncertain-looking early-game positions. Let's try some examples. It's X's turn to play. What score should our AI, playing as X, give this position?
 
 <img src="/images/ttt2-x-force-win.png" />
 
