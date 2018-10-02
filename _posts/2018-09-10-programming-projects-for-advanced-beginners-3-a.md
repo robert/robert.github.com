@@ -3,6 +3,7 @@ title: "Programming Projects for Advanced Beginners #3a: Tic-Tac-Toe AI"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/the-witness-landscape.jpg
+published: false
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory programming tutorials you can find and want to start sharpening your skills on something bigger, this project is for you. You'll get thrown in at the deep end. But you'll also get gentle reminders on how to swim, as well as some new tips on swimming best practices. You can do it using any programming language you like, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/robjheaton) or Skype.
 
