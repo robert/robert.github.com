@@ -1,9 +1,8 @@
 ---
-title: "Programming Projects for Advanced Beginners #3: Tic-Tac-Toe AI"
+title: "Programming Projects for Advanced Beginners #3a: Tic-Tac-Toe AI"
 layout: post
-tags: [Computer Games]
+tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/the-witness-landscape.jpg
-published: false
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory programming tutorials you can find and want to start sharpening your skills on something bigger, this project is for you. You'll get thrown in at the deep end. But you'll also get gentle reminders on how to swim, as well as some new tips on swimming best practices. You can do it using any programming language you like, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/robjheaton) or Skype.
 
@@ -29,9 +28,9 @@ Let's try breaking down our Tic-Tac-Toe AI project into easily bashable pieces. 
 
 * Build a Tic-Tac-Toe game or "engine" that allows human players to play against each other
 * Plug AIs into our Tic Tac Toe engine
-* Repeatedly play AIs against each other to see which is the best
+* Repeatedly play AIs against each other to see which of them is the best
 
-This is a reasonable start. "Build a Tic-Tac-Toe engine" is a smaller task than "build a perfect Tic-Tac-Toe AI". It's already much easier to think about. But it's still too big for my liking. Fortunately, we don't have to get the chunks perfectly sized first time round. We can keep chipping away at them until we have a pile of well-formed tasks that are each small enough to start work on.
+This is a reasonable start. "Build a Tic-Tac-Toe engine" is a smaller task than "build a perfect Tic-Tac-Toe AI". It's already much easier to think about. But it's still too big for my liking. Fortunately, we don't have to get the chunks perfectly sized first time round. We can keep chipping away at them until we have a pile of well-formed tasks that are each small enough to start working on.
 
 ### Code skeletons
 
@@ -41,13 +40,13 @@ One way to start breaking down a big program is to make a rough sketch of its hi
 <img src="/images/tictactoe-code-skeleton.png" />
 </p>
 
-You will often find that writing a skeleton helps to tame a project that had previously seemed daunting and unapproachable. Once you've broken off a few pieces and have realized that they aren't as spooky as you first thought - "well if I want to make Tic-Tac-Toe then I'll obviously need a 3x3 board of some sort" - it becomes much easier to keep breaking off more pieces until there's nothing that needs doing left.
+You will often find that writing a skeleton helps to tame a project that had previously seemed daunting and unapproachable. Once you've broken off a few pieces and have realized that they aren't as spooky as you first thought - "well if I want to make Tic-Tac-Toe then I'll obviously need a 3x3 board of some sort" - it becomes much easier to keep breaking off more pieces until there's nothing left to do.
 
-When you're writing a skeleton and you come to a medium-sized piece of logic, like "figure out whether someone has won the game", don't spend too much time worrying about how to flesh it out. A task like this is a perfectly sized "milestone" that we can work on properly later. For now, write a placeholder function to come back to later (in this case, something like `get_winner`). Think briefly about the *interface* of this function - the arguments it will need, and the data it will return.
+When you're writing a skeleton and you come to a medium-sized piece of logic like "figure out whether someone has won the game", don't spend too much time worrying about how to flesh it out. A task like this is a perfectly sized "milestone" that we can work on properly later. For now, write a placeholder function to come back to (in this case, something like `get_winner`). Think briefly about the *interface* of this function - the arguments it will need, and the data it will return.
 
 ### A code skeleton for Tic-Tac-Toe
 
-Let's try sketching out a skeleton for our Tic-Tac-Toe engine. Before reading any further, spend a few minutes sketching one on your own. If you're having trouble, start by making a list of as many of the individual challenges involved in making a Tic-Tac-Toe game as you can. Don't worry about arranging them or putting them in an order. You could also try temporarily forgetting about code completely, and [draw a flow chart](https://www.draw.io/) or picture that describes the rules for playing Tic-Tac-Toe.
+Let's try sketching out a skeleton for our Tic-Tac-Toe engine. Before reading any further, spend a few minutes sketching one on your own. If you're having trouble, start by making a list of as many of the individual challenges involved in making a Tic-Tac-Toe game as you can. Don't worry about arranging them or putting them in an order. You could also try temporarily forgetting about code completely, and [draw a flow chart](https://www.draw.io/) that describes the rules for playing Tic-Tac-Toe.
 
 <p style="text-align: center">
 <img src="/images/tictactoe-flowchart.png" />
@@ -101,15 +100,15 @@ Looking over this skeleton, I notice that it is made up of about 6 main componen
 * `get_winner`
 * `is_board_full`
 
-Now *these* are some well-sized chunks of work. We can work on each of them in almost total isolation, without having to worry about the others. When we're calculating whether our game has a winner yet (`get_winner`), we can completely forget about how it is actually played (`get_move`, `make_move`). Once we've finished writing each of these components and have glued them together, we'll have finished our Tic-Tac-Toe engine too. After all, if you take the right body parts, stitch them to each other and apply electricity, you've got yourself a fully-functional Frankenstein's monster.
+Now *these* are some well-sized chunks of work. We can work on each of them in almost total isolation, without having to worry about the others. When we're calculating whether our game has a winner yet (`get_winner`), we can completely forget about how it is actually played (`get_move`, `make_move`). Once we've finished writing each of these components and have glued them all together, we'll have finished our Tic-Tac-Toe engine. After all, if you take the right body parts, stitch them onto each other and apply electricity, you've got yourself a fully-functional Frankenstein's monster.
 
-Our initial task list is neither exhaustive nor binding. When writing a big program you will always encounter new problems that you didn't anticipate. You will always change your mind about how to arrange several limbs of your skeleton. But adaptation becomes much easier when you have an actual plan that you can adapt. We will use the above task list as "milestones" - checkpoints that allow us to constantly verify that we are on the right track.
+Our initial task list is neither exhaustive nor binding. When writing a big program you will always encounter new problems that you didn't anticipate. You will always change your mind about how to arrange several limbs of your skeleton, but adaptation becomes much easier when you have an actual plan that you can adapt. We will use the above task list as "milestones" - checkpoints that allow us to constantly verify that we are on the right track.
 
 ### Run code frequently
 
-We're going to run our code very frequently - at an absolutely minimum once every time we complete a milestone. This will make bugs easy to locate and destroy, because there will be very few places in which they can hide. If our program is broken, but was working 10 minutes ago, then I'll bet you pesos to pizza that there's a bug holed up in the couple of lines we wrote during those fateful 10 minutes.
+We're going to run our code very frequently; at an absolute minimum once every time we complete a milestone. This will make bugs easy to locate and destroy, because there will be very few places in which they can hide. If our program is broken, but was working 10 minutes ago, then I'll bet you pesos to pizza that there's a bug holed up in the couple of lines we wrote during those fateful 10 minutes.
 
-We could instead write hundreds of lines of code in one go before finally running our program once and crossing our fingers. But whilst high-risk moments of truth make for a good movie, they make for terrible software. In a good software development process, the hero (that's you) tests their work frequently. They use a small-steps approach in order to uncover bugs quickly. They have a better understanding of the internals of their code because of this, and can frequently adjust and course-correct their plans. They might not produce a thrilling box office hit, but they will ensure that the software that powers the box office actually works.
+We could instead write hundreds of lines of code in one go before finally running our program once and crossing our fingers. But whilst high-risk moments of truth make for a good movie, they make for terrible software. In a good development process, the hero (that's you) tests their work frequently. They use a small-steps approach in order to uncover bugs quickly. They have a better understanding of the internals of their code because of this, and can frequently adjust and course-correct their plans. They might not produce a thrilling box office hit, but they will ensure that the software that powers the box office actually works.
 
 ## Building a Tic-Tac-Toe engine
 
@@ -119,7 +118,7 @@ Remember that if you ever need a hint, [I've written an example program](https:/
 
 ### 1. Representing the board
 
-We're going to start by making a "data structure" that stores the state of the game board. Tic-Tac-Toe is played on a 3x3 grid, and in code grids are often represented using nested lists, or "lists of lists". If you haven't come across this idea before, read the explanation of lists of lists in [part 1 of my Game of Life project](https://robertheaton.com/2018/07/20/project-2-game-of-life/).
+We're going to start by making a "data structure" that stores the state of the game board. Tic-Tac-Toe is played on a 3x3 grid, and in code, grids are often represented using nested lists, or "lists of lists". If you haven't come across this idea before, read the explanation of lists of lists in [part 1 of my Game of Life project](https://robertheaton.com/2018/07/20/project-2-game-of-life/).
 
 ```
 [
@@ -129,7 +128,7 @@ We're going to start by making a "data structure" that stores the state of the g
 ]
 ```
 
-Each element in our list-of-lists will represent a square on the board. We will need to be able to represent the 3 possible states a square can have - O, X and empty. I suggest representing O and X using the characters `O` and `X`, and an empty square using `None` or `nil` or however it is that your programming language represents "nothing".
+Each element in our list-of-lists will represent a square on the board. In each sqaure we will need to be able to represent the 3 possible states - O, X and empty. I suggest representing O and X using the characters `O` and `X`, and an empty square using `None` or `nil` or however it is that your programming language represents "nothing".
 
 Your first task is to write a `new_board` function that takes in 0 arguments and returns an empty, 3x3 grid. Test that your function works with a simple print-statement.
 
@@ -146,7 +145,7 @@ Basic print-statements are fine for debugging, but our players deserve something
 <img src="/images/tictactoe-output.png" />
 </p>
 
-Write a `render` function that takes in 1 argument - a Tic-Tac-Toe board - and prints it to the terminal. This function does not need to return anything. You can format the board however you like; I found it useful to add co-ordinate markers around the edge to make it easier for human players to reference specific squares.
+Write a `render` function that takes in 1 argument - a Tic-Tac-Toe board - and prints it to the terminal. This function does not need to return anything. You can format the board however you like; I personally found it useful to add co-ordinate markers around the edge to make it easier for human players to reference specific squares.
 
 Test your `render` function by using it to print some dummy boards. Construct these boards by generating an empty board using `new_board` and adding moves to it manually.
 
@@ -172,7 +171,13 @@ Now that we've got a board and a way to display it, we're ready to start playing
 
 In this milestone we're going to work out how to ask our human players to input their moves. Because we understand the extreme power of focussing on one thing at a time, we're *not* yet going to worry about using these moves to update the board. Once again, this temporary shortcut is not cheating.
 
-We could ask our players to input their moves in many different formats. I like asking for X and Y co-ordinates, because this maps well onto our grid data structure. But you could also assign each square a number from 1 to 9, or assign them a word or a letter.
+We could ask our players to input their moves in many different formats. I like asking for X and Y co-ordinates, because this maps well onto our grid data structure. But you could also assign each square a number from 1 to 9, or a word, or a letter.
+
+```
+1 O 3
+4 X 6
+O 8 9
+```
 
 The decision of how to ask our users for input is very low-stakes, and it doesn't matter much if we change our minds later. This is not because user interfaces aren't important - they are a vital part of a useful, functional program. Rather, the decision of how to ask our users for input is very low stakes because it is so easy for us to change, even if we've already finished the rest of our program. If we do change our minds then we should only have to update the section of our code that asks our players for input. The other components of our program should not have to care about this change. Once we have turned a player's input into a move co-ordinate, the code that uses this co-ordinate to update the board shouldn't have to know or concern itself with where the co-ordinate came from. This is a concept known as *modularity* - more on which in future projects.
 
@@ -214,7 +219,7 @@ The answer is that `make_move` will need 3 arguments:
 
 * The board
 * The co-ordinates of the move
-* The player who is making the move (so that `make_move` knows whether to insert a `O` or a `X` into the board)
+* The player who is making the move (so that `make_move` knows whether to insert an `O` or an `X` into the board)
 
 ### Return values and mutation
 
@@ -235,25 +240,27 @@ make_move(board, (1, 1), 'X')
 # `board` has been mutated directly to add an 'X' at (1,1)
 ```
 
-You should usually be wary of *mutating* a function's arguments. Mutation can be surprising and unexpected, and make for subtle, hard-to-diagnose bugs. It's often much clearer to leave a function's arguments unchanged, and instead return new data representing a new state.
+You should usually be wary of *mutating* a function's arguments. Mutation can be surprising and unexpected, and can make for subtle, hard-to-diagnose bugs. It's often much clearer to leave a function's arguments unchanged, and to instead return new data representing a new state.
 
-However, in this situation I believe that mutation is an appropriate design choice. It makes our code a little shorter, and the idea that `make_move` physically changes the board that it is given makes intuitive sense, since this is what happens in real life. `make_move` is only used in one place in our program, and once again, this decision will be easy for us to change in the future if we need to. The stakes are very low.
+Mutation can sometimes be a defensible design choice. However, having seen the future, I know that this project will be easier if we steer clear of it. We should leave the board that `make_move` is given untouched, and return a brand new one instead.
+
+When I was writing the first version of my code for this project, I wrote `make_move` using mutation. It took me a while to discover the problems with this decision, but, thanks to modularity, once I did I was able to come back and change my design with very little invasive surgery.
 
 If the idea of *mutation* doesn't make sense yet, don't worry. It's a subtle concept, and a thorough understanding of it is not necessary for this project.
 
-You're now ready to write a `make_move` function that takes in 3 arguments - the board, the move co-ordinates, and the player making the move. It should mutate the board that it is given, and return nothing.
+You're now ready to write a `make_move` function that takes in 3 arguments - the board, the move co-ordinates, and the player making the move. It should not mutate the board that it is given, and should return a new board, with the new move made.
 
-Test it out by using it to make some moves.
+Test your work by making some moves.
 
 ```
 board = new_board()
 
 move_coords_1 = (2, 0)
-make_move(board, move_coords_1, "X")
+board = make_move(board, move_coords_1, "X")
 render(board)
 
 move_coords_2 = (1, 1)
-make_move(board, move_coords_2, "O")
+board = make_move(board, move_coords_2, "O")
 render(board)
 ```
 
@@ -265,8 +272,8 @@ How does your `make_move` function deal with the following situation? How *shoul
 board = new_board()
 
 move_coords = (2, 0)
-make_move(board, move_coords, "X")
-make_move(board, move_coords, "O")
+board = make_move(board, move_coords, "X")
+board = make_move(board, move_coords, "O")
 => ???
 ```
 
@@ -283,7 +290,7 @@ while True:
     else:
         print "Invalid move, try again"
 
-make_move(board, move_coords, player)
+board = make_move(board, move_coords, player)
 ```
 
 `make_move` still freaks out if we give it bad input, but we've added some extra code to ensure that we don't.
@@ -294,8 +301,8 @@ Update your `make_move` function to raise an exception if it's given an illegal 
 board = new_board()
 
 move_coords = (2, 0)
-make_move(board, move_coords, "X")
-make_move(board, move_coords, "X")
+board = make_move(board, move_coords, "X")
+board = make_move(board, move_coords, "X")
 => Exception: "Can't make move (2, 0), square already taken!"
 ```
 
@@ -310,7 +317,7 @@ So far we have written several functions that together can:
 
 Let's join these components up to make a prototype program that allows the `O` and `X` players to take alternate moves until the board fills up. When the board fills up the program will probably crash. This is fine.
 
-This is not the dummy's approach to software development. I'm not blowing smoke at you - "you're only an advanced beginner, it's OK if your program crashes sometimes and doesn't do everything that they're meant to." My own version of Tic-Tac-Toe started life as an incomplete program that broke a lot. Then I kept working on it, one feature and a few lines at a time, until it was complete and had stopped breaking.
+This is not the dummy's approach to software development. I'm not blowing smoke at you - "you're only an advanced beginner, it's OK if your programs crash sometimes and don't do everything that they're meant to." My own version of Tic-Tac-Toe started life as an incomplete program that broke a lot. Then I kept working on it, adding one feature and a few lines at a time, until it had stopped breaking and was complete.
 
 Start by looking back at our code skeleton from the introduction. Pick out the bits that you need, and plug in our actual-code-so-far. You'll notice that we haven't yet written any code that will alternate moves between `O` and `X` - see if you can write this yourself. There are several reasonable ways to do it, and [my example code is there if you need it](https://github.com/robert/tictactoe-ai/blob/master/tictactoe.py).
 
@@ -377,7 +384,7 @@ Once you've completed these final tasks, compose yourself and venture boldly int
 
 ## Extensions
 
-This section contains several extension projects that build on top of our Tic-Tac-Toe code so far. Pick and choose the ones that you like the look of, and feel free to come up with your own, entirely new ones. Because these are extension projects, I'll be giving you far fewer tips and pointers. Instead, be your own guide and walk yourself through them using the techniques and strategies that we used to build our main Tic-Tac-Toe game. Start by breaking up the tasks into small pieces. Work on one piece at a time and run your code as often as you can. Don't be afraid of writing test code that you quickly throw away and don't be afraid of writing programs that only do 50, 25, or even 1 percent of what you want them to eventually be capable of.
+This section contains several extension projects that build on top of our Tic-Tac-Toe code so far. Pick and choose the ones that you like the look of, and dream up your own, entirely new ones. Because these are extension projects, I'll be giving you far fewer tips and pointers. Instead, you should be your own guide and walk yourself through them using the techniques and strategies that we used to build our main Tic-Tac-Toe game. Start by breaking up the tasks into small pieces. Work on one piece at a time and run your code as often as you can. Don't be afraid of writing test code that you quickly throw away, and don't be afraid of writing programs that only do 50, 25, or even 1 percent of what you want them to eventually be capable of.
 
 Before starting work on the extensions, save a copy of your code. We're going to need it for the next section of the main project - "Making a perfect TicTacToe AI". You can save a copy by either duplicating the file, or using "`git`" to check out a new branch. Both approaches are totally fine, and don't feel bad if you haven't come across `git` before.
 

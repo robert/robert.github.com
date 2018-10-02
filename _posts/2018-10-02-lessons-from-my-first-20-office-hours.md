@@ -3,7 +3,6 @@ title: "Lessons from my first 20 office hours"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/office-hours.png
-published: false
 ---
 The three most enjoyable activities in the world are playing Skyrim; a second thing that my wife says I'm not allowed to blog about; and talking knowledgeably about something you are good at.
 
@@ -104,4 +103,4 @@ In the meantime I'm going to start making live-ish coding videos in which I work
 
 If you're now thinking "you know, I bet I could start doing office hours too", then I'd strongly encourage you to do so. It might feel like the height of arrogance, but my therapist insists that it's actually profound generosity. I tend to think it's a bit of both. Either way, the really beautiful and comforting part is that if no one signs up then no one will ever know. I'm going to write another post in the next few weeks with some more suggestions on how to get started.
 
-Finally, if none of this post has put you off and you'd like to spend up to an hour talking about life, the universe, and programming, then [I'd love to hear from you](/office-hours).
+Finally, if you'd like to spend up to an hour talking about life, the universe, and programming, then [I'd love to hear from you](/office-hours).
