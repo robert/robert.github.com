@@ -14,7 +14,7 @@ I had expected that most people would be looking for help taming unruly web apps
 
 ## Who I've spoken to
 
-If I'm going to spend my time talking to strangers then I want this time to be as useful as possible. I'd like to talk with people who are most likely to benefit from a chat, which I think means people without many pre-existing connections in the technology industry. Someone who already has an aunt and a few friends-of-friends who work at Mozilla should probably just talk to them, especially if they're all more experienced and socially competent than me. But if someone else doesn't have that kind of ready-made network, then maybe I can be of some small help.
+If I'm going to spend my time talking to strangers then I want this time to be as useful as possible. I'd like to talk with people who are most likely to benefit from a chat, which I think means people without many pre-existing connections in the technology industry. Someone who already has an aunt and a few friends-of-friends who work at Mozilla should probably just talk to them, especially if they're all more experienced and socially competent than me. But if someone else doesn't have that kind of ready-made network then maybe I can be of some small help.
 
 I wrote in my original blog post that I'm particularly interested in talking to people from groups that are underrepresented in the technology industry. This was partly virtue signaling; partly a micro-attempt to increase the quantity of justice in the world; and partly because my understanding is that people from these groups are less likely to know other people in the industry, and may therefore have more to gain from a conversation.
 
@@ -78,7 +78,7 @@ And there's always "what do *you* think you should do?" This might be the only q
 
 ## How I have felt
 
-I'm self-confident enough to offer hour-long advice sessions to strangers, but nowhere near self-confident enough to not feel anxious about it. I'm constantly a little worried that someone will show up, expecting to be blown away by an outright genius, and be visibly surprised and dismissive when they realize that I'm only a mid-table mastermind. Of course, this hasn't happened yet, and I've almost managed to internalize the fact that if it ever does happen then it's not really my fault. I reassure myself by remembering that I've always at least Successfully Met Expectations in my performance reviews. If I'm not an expert on a topic then I try to cheerily admit it. I find that the more cheerful I can be the less embarrassed I feel.
+I'm self-confident enough to offer hour-long advice sessions to strangers, but nowhere near self-confident enough to not feel anxious about it. I'm constantly a little worried that someone will show up, expecting to be blown away by an outright genius, and be visibly surprised and dismissive when they realize that I'm only a mid-table mastermind. Of course, this hasn't happened yet, and I've almost managed to internalize the fact that if it ever does happen then it's not really my fault. I reassure myself by remembering that I've always at least Successfully Met Expectations in my performance reviews. If I'm not an expert on a topic then I try to cheerily admit it. I find that the more cheery I can be the less embarrassed I feel.
 
 ## Good advice that I have given
 
