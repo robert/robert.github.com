@@ -4,7 +4,7 @@ layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/office-hours.png
 ---
-The three most enjoyable activities in the world are playing Skyrim; a second thing that my wife says I'm not allowed to blog about; and talking knowledgeably about something you are good at.
+The three most enjoyable activities in the world are [playing Skyrim](/2018/07/04/i-went-to-skyrim-once/); a second thing that my wife says I'm not allowed to blog about; and talking knowledgeably about something you are good at.
 
 3 months ago, I began [offering open office hours](/2018/07/17/office-hours/) to anyone who wanted to talk about programming. I've since spent 20 hours with 20 excellent people, and have found the experience both enjoyable and extremely challenging.
 
