@@ -114,7 +114,7 @@ We could instead write hundreds of lines of code in one go before finally runnin
 
 We're now ready to grind down our first, appropriately-sized milestone - making the Tic-Tac-Toe board.
 
-Remember that if you ever need a hint, [I've written an example program](https://github.com/robert/tictactoe-ai/blob/master/tictactoe.py) that you can take inspiration from.
+Remember that if you ever need a hint, [I've written an example program](https://github.com/robert/tictactoe-ai/tree/master/part1) that you can take inspiration from.
 
 ### 1. Representing the board
 
@@ -319,7 +319,7 @@ Let's join these components up to make a prototype program that allows the `O` a
 
 This is not the dummy's approach to software development. I'm not blowing smoke at you - "you're only an advanced beginner, it's OK if your programs crash sometimes and don't do everything that they're meant to." My own version of Tic-Tac-Toe started life as an incomplete program that broke a lot. Then I kept working on it, adding one feature and a few lines at a time, until it had stopped breaking and was complete.
 
-Start by looking back at our code skeleton from the introduction. Pick out the bits that you need, and plug in our actual-code-so-far. You'll notice that we haven't yet written any code that will alternate moves between `O` and `X` - see if you can write this yourself. There are several reasonable ways to do it, and [my example code is there if you need it](https://github.com/robert/tictactoe-ai/blob/master/tictactoe.py).
+Start by looking back at our code skeleton from the introduction. Pick out the bits that you need, and plug in our actual-code-so-far. You'll notice that we haven't yet written any code that will alternate moves between `O` and `X` - see if you can write this yourself. There are several reasonable ways to do it, and [my example code is there if you need it](https://github.com/robert/tictactoe-ai/tree/master/part1).
 
 Once you've got your sort-of-Tic-Tac-Toe program working, you're ready to move on.
 
@@ -370,7 +370,7 @@ Then there's only one thing left to do.
 
 Not all games of Tic-Tac-Toe end in a victory. If both players are evenly matched then a game may end in a hard-fought draw. Figure out how to add this logic to your program.
 
-Since this is the final piece of this project, that's all the advice I'll give you. Walk yourself through the problem step-by-step. [Check my example code](https://github.com/robert/tictactoe-ai/blob/master/tictactoe.py) if you get stuck.
+Since this is the final piece of this project, that's all the advice I'll give you. Walk yourself through the problem step-by-step. [Check my example code](https://github.com/robert/tictactoe-ai/tree/master/part1) if you get stuck.
 
 ### 8. Keep testing
 
