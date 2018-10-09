@@ -4,7 +4,7 @@ layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/the-witness-landscape.jpg
 ---
-This is the second and final part of our quest to build an unbeatable, perfect Tic-Tac-Toe AI. In [part 1](/2018/09/13/programming-projects-for-advanced-beginners-3) we wrote a Tic-Tac-Toe engine that allowed two human players to play against each other. In part 2, we're going to use the *minimax algorithm* to build a flawless AI.
+This is the second and final part of our quest to build an unbeatable, perfect Tic-Tac-Toe AI. [In part 1](/2018/10/09/programming-projects-for-advanced-beginners-3-a/) we wrote a Tic-Tac-Toe engine that allowed two human players to play against each other. In part 2, we're going to use the *minimax algorithm* to build a flawless AI.
 
 First we're going to warm up by writing some simpler AIs that choose their moves using if-statements and rules of thumb. As we do this we'll build out the code that connects our computer players to our existing Tic-Tac-Toe engine. Once we've got our warmup AIs working and have written and verified this generic infrastructure we'll be ready to give our total focus to our final goal: making a perfect Tic-Tac-Toe AI.
 
