@@ -380,7 +380,7 @@ Keep testing your Tic-Tac-Toe engine by playing practice games against yourself 
 
 You now have a fully-working, bug-free Tic-Tac-Toe engine. Congratulations! After pausing to pat yourself on the back, [send me an email to let me know that you've finished](mailto:robqheaton@gmail.com)! I'd love to hear from you. Have a go at my other programming projects for advanced beginners as well - [ASCII art](/2018/06/12/programming-projects-for-advanced-beginners-ascii-art/) and [Game of Life](/2018/07/20/project-2-game-of-life/). Most importantly, sign up for my mailing list (see the bottom of the page) to find out when the next part of this project is released and you can start work on your unbeatable Tic-Tac-Toe AI.
 
-Once you've completed these final tasks, compose yourself and venture boldly into the extensions section.
+Once you've completed these final tasks, compose yourself and venture boldly into the extensions section below, or [straight on to part 2](/2018/10/09/programming-projects-for-advanced-beginners-3-b/).
 
 ## Extensions
 
@@ -412,4 +412,4 @@ Keep track of players and their results. Use a database to store match results, 
 
 Running a networked Tic Tac Toe league may feel like taking things Tic Tac Toe too far. But networks and league tables are not specific to Tic Tac Toe. In a future project we're going to build the game "Tron" (like from the movie). Tic Tac Toe is fun, but Tron is awesome. You'll be able to reuse a lot of your networking and results-tracking code from your Tic Tac Toe in your Tron. 
 
-See you in part 2, where we'll ruin the noble game of Tic Tac Toe by building an AI that plays it perfectly.
+[See you in part 2](/2018/10/09/programming-projects-for-advanced-beginners-3-b/), where we'll ruin the noble game of Tic Tac Toe by building an AI that plays it perfectly.
