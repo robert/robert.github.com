@@ -271,6 +271,8 @@ We've already shown that the state if X plays in square 3 has a score of 0. We c
 
 The scores of the terminal states are the source of all knowledge. Our AI spreads this knowledge using the minimax algorithm; from the ends (or *leaves*) of the tree, all the way up to the very start of the game. It uses the scores from the terminal states (call them, say, level 0) to calculate scores for states one move earlier (level 1). It uses these level 1 state scores to calculate level 2 state scores, level 2 to calculate level 3 and so on.
 
+[This image is a very good explanation of minimax.](https://cdn-images-1.medium.com/max/2000/1*VG79nxl-mJQrsp6p3q79qA.png)
+
 ### Writing the minimax algorithm
 
 Let's rewrite the above 10 paragraphs as pseudo-code. The code will make use of a technique known as *recursion*: a function that calls itself, possibly many times in a row. Recursion is nothing special or magical - it's just code - but it can be hard to reason about if you haven't come across it before. Google "recursion fibonnaci sequence" if you'd like a more detailed introduction.
