@@ -8,7 +8,7 @@ This is the second and final part of our quest to build an unbeatable, perfect T
 
 First we're going to warm up by writing some simpler AIs that choose their moves using if-statements and rules of thumb. As we do this we'll build out the code that connects our computer players to our existing Tic-Tac-Toe engine. Once we've got our warmup AIs working and have written and verified this generic infrastructure we'll be ready to give our total focus to our final goal: making a perfect Tic-Tac-Toe AI.
 
-As with all my projects, I'm going to leave all of the difficult work to you and throw you right in at the deep-end. But I'll also give you gentle reminders on how to swim, as well as some new tips on swimming best practices. If you do get completely stuck then I've written some example code[LINK]. You can always use it to point yourself back in the right direction.
+As with all my projects, I'm going to leave all of the difficult work to you and throw you right in at the deep-end. But I'll also give you gentle reminders on how to swim, as well as some new tips on swimming best practices. If you do get completely stuck then [I've written some example code](https://github.com/robert/tictactoe-ai/tree/master/part2). You can always use it to point yourself back in the right direction.
 
 ## Today's lesson - Interfaces
 
@@ -352,7 +352,7 @@ In the pseudo-code above, the 2 phases are actually interleaved with each other.
 
 #### It's time to act
 
-Write a perfect tic-tac-toe AI called `minimax_ai`. Re-read this section if and inevitably when you need to refresh some of the details. Google "minimax" and "tic-tac-toe minimax" and read other takes on the algorithm. My example code is there if you get truly stuck.
+Write a perfect tic-tac-toe AI called `minimax_ai`. Re-read this section if and inevitably when you need to refresh some of the details. Google "minimax" and "tic-tac-toe minimax" and read other takes on the algorithm. [My example code is there if you get truly stuck](https://github.com/robert/tictactoe-ai/tree/master/part2).
 
 Tic-Tac-Toe is a simple game, but playing through every single possible game is still a lot of work, even for a modern, powerful computer. It can take over 10-20s for minimax to decide on a move at the very start of the game. In the extensions section, we'll look at how to use *caching* to speed up the execution of our program by approximately 10x. To save yourself some time in the meantime, start by testing your AI using late game states. In particular, test with late game states where there are some moves that are clearly bad and some that are clearly good. Make sure that your AI only ever chooses the good ones.
 
