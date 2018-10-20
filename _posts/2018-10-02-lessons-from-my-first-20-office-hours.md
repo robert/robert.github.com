@@ -1,7 +1,7 @@
 ---
 title: "Lessons from my first 20 office hours"
 layout: post
-tags: [Programming Projects for Advanced Beginners]
+tags: [Office Hours]
 og_image: https://robertheaton.com/images/office-hours.png
 ---
 The three most enjoyable activities in the world are [playing Skyrim](/2018/07/04/i-went-to-skyrim-once/); a second thing that my wife says I'm not allowed to blog about; and talking knowledgeably about something you are good at.

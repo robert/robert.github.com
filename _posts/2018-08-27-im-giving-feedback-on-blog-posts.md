@@ -1,7 +1,7 @@
 ---
 title: "I'm giving feedback on blog posts"
 layout: post
-tags: [Programming Projects for Advanced Beginners]
+tags: [Office Hours]
 redirect_from:
   - /blog-post-feedback
 ---

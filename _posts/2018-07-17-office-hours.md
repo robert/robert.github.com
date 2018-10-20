@@ -1,7 +1,7 @@
 ---
 title: I'm doing Office Hours
 layout: post
-tags: [Programming Projects for Advanced Beginners]
+tags: [Office Hours]
 redirect_from:
   - /office-hours
 ---
