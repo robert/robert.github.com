@@ -2,7 +2,7 @@
 title: "Programming Projects for Advanced Beginners #3b: Tic-Tac-Toe AI"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_image: https://robertheaton.com/images/the-witness-landscape.jpg
+og_image: https://robertheaton.com/images/ttt-dalek.png
 ---
 This is the second and final part of our quest to build an unbeatable, perfect Tic-Tac-Toe AI. [In part 1](/2018/10/09/programming-projects-for-advanced-beginners-3-a/) we wrote a Tic-Tac-Toe engine that allowed two human players to play against each other. In part 2, we're going to use the *minimax algorithm* to build a flawless AI.
 
