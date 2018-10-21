@@ -17,7 +17,7 @@ published: false
 
 "I Might Be Spartacus allows you to sell your own data online. We are reshaping the global market in data to give you more power, money, and privacy. We allow you to lie to companies about your data, tell them that you are lying, and have them still happily and rationally pay you for your lies. We do all of this using a branch of mathematics known as "Differential Privacy".
 
-"Why is our work so important? Think about what happens when I give a company data about me. What happens when a company knows what type of car I drive, how many siblings I have, what my salary is? I run risks; a lot of risks. I run the risk that the company will be hacked and my data will be stolen. I run the risk that the company will resell my data without my permission. I run the risk that Netflix will make fun of me on Twitter. And I run the risk that I move society one step closer to a dystopian nightmare future in which everything is foreseen, nothing is new, and free will is exposed as an illusion surrounding computation.
+"Why is our work so important? Think about what happens when I give a company my data. What happens when a company knows what type of car I drive, how many siblings I have, what my salary is? I run real risks, and a lot of them. I run the risk that the company will be hacked and my data will be stolen. I run the risk that the company will resell my data without my permission. I run the risk that Netflix will make fun of me on Twitter. And I run the risk that I move society one step closer to a dystopian nightmare future in which everything is foreseen, nothing is new, and free will is exposed as an illusion surrounding computation.
 
 <img src="/images/spartacus-tweet.png" />
 
