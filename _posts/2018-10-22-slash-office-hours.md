@@ -9,7 +9,7 @@ I'm not a teacher or an expert. I'm also not a lawyer or a doctor or a real engi
 
 Nonetheless, 3 months ago I added an `/office-hours` page to my blog. On it I offered to talk about programming for an hour with anyone who thought that that sounded interesting. I've since spent 20 hours with 20 excellent people, and, at least for me, [the experience has been delightful](/2018/10/02/lessons-from-my-first-20-office-hours).
 
-I think it would be great if more people, you included, made `/office-hours` pages and offered office hours of their own. In this post I'll talk about why. I'll also give a few administrative tips, and some suggestions on what and what not to talk about. Finally, I'll provide some aerial cover that might come in handy if you're as afraid as I am of imaginary people accusing you of being an arrogant narcissist.
+I think it would be great if more people, you included, made `/office-hours` pages and offered office hours of their own. In this post I'll talk about why, give a few administrative tips, and offer some suggestions for what and what not to talk about. Finally, I'll provide some aerial cover that might come in handy if you're as afraid as I am of imaginary people accusing you of being an arrogant narcissist.
 
 I've had it pointed out that this is all easy for me to say, but that things can all get rather hard if you're part of a group whose skills and knowledge are often not respected as much as they should be. They can get even harder if you can never be certain that someone really does want to talk about micro-services and not what a nice girl like you is doing in a place like this. I don't know what to do about any of this, but I do acknowledge that it's real.
 
