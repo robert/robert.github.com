@@ -9,7 +9,7 @@ published: false
 
 <img src="/images/spartacus-talk-show.png" />
 
-*"My guest tonight is Hobert Reaton, founder of "I Might Be Spartacus", a company that he claims "helps people safely sell their own data online." He previously founded WeSeeYou, a nauseating adtech company, so I recommend that you remain skeptical of him of him until the end of this seven minute segment. Hobert, welcome to the show."*
+*"My guest tonight is Hobert Reaton, founder of "I Might Be Spartacus", a company that he claims "helps people safely sell their own data online." He also previously founded [WeSeeYou, a nauseating adtech company](/2017/10/17/we-see-you-democratizing-de-anonymization/), so I recommend that you remain skeptical of him of him until the end of this seven minute segment. Hobert, welcome to the show."*
 
 "Thanks Martina, it's great but already kind of uncomfortable to be here."
 
