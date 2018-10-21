@@ -3,7 +3,6 @@ title: "/office-hours"
 layout: post
 tags: [Office Hours]
 og_image: https://robertheaton.com/images/office-hours.png
-published: false
 ---
 I'm not a teacher or an expert. I'm also not a lawyer or a doctor or a real engineer who actually works with physical material or a Jesus Christ dad I know you're disappointed in me but can't we drop it for just one day?
 
