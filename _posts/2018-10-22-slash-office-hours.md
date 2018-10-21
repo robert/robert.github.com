@@ -11,7 +11,7 @@ Nonetheless, 3 months ago I added an `/office-hours` page to my blog. On it I of
 
 I think it would be great if more people, you included, made `/office-hours` pages and offered office hours of their own. In this post I'll talk about why, give a few administrative tips, and offer some suggestions for what and what not to talk about. Finally, I'll provide some aerial cover that might come in handy if you're as afraid as I am of imaginary people accusing you of being an arrogant narcissist.
 
-I've had it pointed out that this is all easy for me to say, but that things can all get rather hard if you're part of a group whose skills and knowledge are often not respected as much as they should be. They can get even harder if you can never be certain that someone really does want to talk about micro-services and not what a nice girl like you is doing in a place like this. I don't know what to do about any of this, but I do acknowledge that it's real.
+I've had it pointed out that this is all easy for me to say, but it gets much harder if you're part of a group whose skills and knowledge are often not respected as much as they should be. It can get even harder if you can never be certain that someone really does want to talk about micro-services and not what a nice girl like you is doing in a place like this. I don't know what to do about any of these problems, but I do acknowledge that they're there.
 
 ## Why do office hours?
 
