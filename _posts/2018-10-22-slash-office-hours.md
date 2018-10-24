@@ -4,7 +4,7 @@ layout: post
 tags: [Office Hours]
 og_image: https://robertheaton.com/images/slash-office-hours-cover.png
 ---
-I'm not a teacher or an expert. I'm also not a lawyer or a doctor or a real engineer who actually works with physical material or a Jesus Christ dad I know you're disappointed in me but can't we drop it for just one day?
+I'm not a teacher or an expert. I'm also not a lawyer or a doctor or a real engineer who actually works with physical material or Jesus Christ dad I know you're disappointed in me but can't we drop it for just one day?
 
 Nonetheless, 3 months ago I added an `/office-hours` page to my blog. On it I offered to talk about programming for an hour with anyone who thought that that sounded interesting. I've since spent 20 hours with 20 excellent people, and, at least for me, [the experience has been delightful](/2018/10/02/lessons-from-my-first-20-office-hours).
 
