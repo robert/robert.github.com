@@ -3,19 +3,18 @@ title: "I Might Be Spartacus: a differential privacy marketplace"
 layout: post
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/spartacus-talk-show.png
-published: false
 ---
 *"Welcome to The Talk Show with me, Martina Martingale.*
 
 <img src="/images/spartacus-talk-show.png" />
 
-*"My guest tonight is Hobert Reaton, founder of "I Might Be Spartacus", a company that he claims "helps people safely sell their own data online." He also previously founded [WeSeeYou, a nauseating adtech company](/2017/10/17/we-see-you-democratizing-de-anonymization/), so I recommend that you remain skeptical of him of him until the end of this seven minute segment. Hobert, welcome to the show."*
+*"My guest tonight is Hobert Reaton, founder of "I Might Be Spartacus", a company that he claims "helps people safely sell their own data online." He also previously founded [WeSeeYou, a nauseating adtech company](/2017/10/17/we-see-you-democratizing-de-anonymization/), so I recommend that you remain skeptical of him until the end of this seven minute segment. Hobert, welcome to the show."*
 
 "Thanks Martina, it's great but already kind of uncomfortable to be here."
 
 *"Tell me about I Might Be Spartacus."*
 
-"I Might Be Spartacus allows you to sell your own data online. We are reshaping the global market in data to give you more power, money, and privacy. We allow you to lie to companies about your data, tell them that you are lying, and have them still happily and rationally pay you for your lies. We do all of this using a branch of mathematics known as "Differential Privacy".
+"I Might Be Spartacus allows you to sell your own data online. We are reshaping the global data marketplace to give you more power, money, and privacy. We allow you to lie to companies about your data, tell them that you are lying, and have them still happily and rationally pay you for your lies. We do all of this using a branch of mathematics known as "Differential Privacy".
 
 "Why is our work so important? Think about what happens when I give a company my data. What happens when a company knows what type of car I drive, how many siblings I have, what my salary is? I run real risks, and a lot of them. I run the risk that the company will be hacked and my data will be stolen. I run the risk that the company will resell my data without my permission. I run the risk that Netflix will make fun of me on Twitter. And I run the risk that I move society one step closer to a dystopian nightmare future in which everything is foreseen, nothing is new, and free will is exposed as an illusion surrounding computation.
 
@@ -33,7 +32,7 @@ published: false
 
 "You then use our platform to strike deals to sell your data to companies. The prices you charge will depend on the data you are selling and the company you are selling it to. Maybe I'll give the US Federal Reserve my food consumption data on the cheap to help them calculate accurate inflation figures, but charge Facebook through the nose for the exact same information.
 
-"But price is be the only variable in these negotiations. I Might Be Spartacus's big breakthrough is to allow you to set not just the price of the data that you sell, but also its precision. The question you have to answer is not "Do I trust company X with data Y?" The world is more complex than that. What you really have to work out is "*how much* do I trust company X with data Y?" This is where 'Differential Privacy' comes in.
+"But price is not the only variable in these negotiations. I Might Be Spartacus's big breakthrough is to allow you to set not just the price of the data that you sell, but also its precision. The question you have to answer is not "Do I trust company X with data Y?" The world is more complex than that. What you really have to work out is "*how much* do I trust company X with data Y?" This is where 'Differential Privacy' comes in.
 
 "Differential Privacy is commonly used in social science research when researchers want to ask subjects about embarrassing or illegal activity. Suppose that I wanted to study the prevalence of heroin use in talk show studio audiences. I could interview members of your audience and straight up ask them 'have you used heroin in the last week?' However, anyone who had used heroin in the last week might reasonably be afraid that if they said 'yes' then I would turn them in to the police or their employer. I wouldn't, for what it's worth, but they have no reason to trust me.
 
@@ -42,6 +41,8 @@ published: false
 * Flip 2 coins, and don't show me the outcomes
 * If the first coin came up heads, truthfully answer the question 'have you used heroin in the last week?'
 * If the first coin came up tails, look at the second coin. If the second coin came up heads, reply 'yes', regardless of what the true answer to the question is. If it came up tails, reply 'no'.'
+
+<img src="/images/spartacus-tree.png" />
 
 "Here, I brought some slides to help."
 
