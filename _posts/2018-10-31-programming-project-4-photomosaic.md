@@ -15,7 +15,7 @@ Unlike most other advanced beginner projects, a photomosaic creator is an extrem
 
 ## The Plan
 
-As in all Programming Projects for Advanced Beginners, we'll build our program out of small components and intermediate milestones that we can test and verify individually. If these are new concepts to you then you can either take a quick detour and work through my previous programming projects (here's [#1][proj-1], [#2][proj-2] and [#3][proj-3a]), or push ahead with this project and pick things up as you go along.
+As in all Programming Projects for Advanced Beginners, we'll build our program out of small components and intermediate milestones that we can test and verify individually. If small components and intermediate milestones are new concepts to you then you can either take a quick detour and work through my previous programming projects (here's [#1][proj-1], [#2][proj-2] and [#3][proj-3a]), or push ahead with this project and pick things up as you go along.
 
 We'll start by sketching out a brief plan, and then get right on to coding. Before reading any further, spend a few minutes drawing up a plan of your own. What should we work on first? What about after that? What sub-problems will we need to solve? What intermediate milestones can we use to make sure we're heading in the right direction? How can we test each milestone individually, even if we haven't yet finished the entire program?
 
@@ -32,15 +32,17 @@ Before I describe the plan that I came up with, let's agree on some terminology 
 <img src="/images/mosaic-terminology.png" />
 *[Photo credit](https://www.youtube.com/watch?v=q3--aifqRJA)*
 
+We'll also refer frequently to *image processing libraries*. An image processing library is a pre-written set of tools for loading and working with images. Almost every programming language has one (or several); have a look at section 1 of my [ASCII art project][proj-1] for more advice on getting one set up.
+
 For my plan I've come up with 7 steps:
 
 1. Use an image processing library to load an input image into your code. Paste your input image into a new output image. Mess around with it - rotate it, resize it, add a caption, and generally get familiar with your image processing library.
-2. Divide the input image into squares, and calculate the average color of each square
-3. A quick diversion - create an output image out of squares of these average colors. This will be a pixellated version of your input image!
-4. Find an initial set of 100 source images. Write a script that crops them all to squares and saves the cropped versions
-5. Calculate the average color of each source image
-6. For each section of the input image, find the source image with the closest average color
-7. Paste each of these source images into the output image in the appropriate location. You have a photomosaic!
+1. Divide the input image into squares, and calculate the average color of each square
+1. A quick diversion - create an output image out of squares of these average colors. This will be a pixellated version of your input image!
+1. Find an initial set of 100 source images. Write a script that crops them all to squares and saves the cropped versions
+1. Calculate the average color of each source image
+1. For each section of the input image, find the source image with the closest average color
+1. Paste each of these source images into the output image in the appropriate location. You have a photomosaic!
 
 Here's a map of the system we're aiming for:
 
@@ -67,7 +69,7 @@ Express yourself. Think of this as finger-painting in code. There's no right or 
 
 # 2. Divide and calculate
 
-Next, divide your image up into squares, around 50x50 pixels in size, and for each square calculate the average color.
+Next, divide your image up into squares, around 50x50 pixels in size, and for each square calculate the average color. Keep in mind that we're going to reuse this code for calculating the average color of our source images too.
 
 Image processing libraries load images as an array (or sometimes an "array of arrays") of pixels. Each pixel is represented as an *RGB tuple*, a group of 3 numbers between 0 and 255 that represent the amount of red, green and blue in the pixel. Red, green and blue are the primary colors of light, and in the right proportions can be combined to create every single other color in existence. 
 
@@ -111,7 +113,7 @@ Now we'll turn our attention to our source images. These are the small pictures 
 
 First, find an initial set of source images. A copy of the `Photos` directory on your computer is perfect. Alternatively Kaggle, a machine learning competition platform, has some [good data sets of pictures of flowers, volcanoes and honey bees](https://www.kaggle.com/datasets?sortBy=relevance&group=featured&search=image). Image processing is slow, so start with a small selection of 100 or so. We'll add more once we've tuned our code's performance.
 
-Since we're dividing our input image up into squares, we'll need our source images to be squares too. Write a new script, separate from what you've written so far, that crops your source images down to squares. Trim each image to the size of its smallest dimension. If an image is 1200x800 pixels in size, crop it to 800x800. If it is 500x750, crop it to 500x500. Your script should save the cropped images in a new directory.
+Since we're dividing our input image up into squares, we'll need our source images to be squares too. Write a new script, separate from what you've written so far, that crops your source images down to squares. Trim each image to a square, where each side is the size of the original image's shortest side. For example, if an image is 1200x800 pixels, crop it to 800x800. If it is 500x750, crop it to 500x500. Your script should save the cropped images in a new directory.
 
 # 5. Process the source images
 
