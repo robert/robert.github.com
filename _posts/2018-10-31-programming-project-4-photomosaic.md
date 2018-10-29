@@ -265,4 +265,4 @@ Adapt our cache to work with our new fine-detail code. Try increasing the number
 [proj-3b]: /2018/10/09/programming-projects-for-advanced-beginners-3-b/
 [my-twitter]: https://twitter.com/robjheaton
 [my-email]: mailto:robqheaton@gmail.com
-[example-project]: TODO
+[example-project]: https://github.com/robert/photomosaic
