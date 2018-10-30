@@ -3,6 +3,8 @@ title: "I Might Be Spartacus: a differential privacy marketplace"
 layout: post
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/spartacus-talk-show.png
+redirect_from:
+  - /2018/10/27/i-might-be-spartacus-a-differential-privacy-marketplace/
 ---
 *"Welcome to The Talk Show with me, Martina Martingale.*
 
