@@ -1,5 +1,5 @@
 ---
-title: "Programming Projects for Advanced Beginners #4: Photomosaic"
+title: "Programming Projects for Advanced Beginners #4: Photomosaics"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/mosaic-me.png
