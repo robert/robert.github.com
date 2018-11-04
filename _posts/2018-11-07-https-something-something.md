@@ -1,5 +1,5 @@
 ---
-title: "HTTPS SOMETHING SOMETHING"
+title: "HTTPS in the real world"
 layout: post
 tags: [HTTPS]
 og_image: https://robertheaton.com/images/https-intro.png
@@ -7,11 +7,9 @@ published: false
 ---
 In cryptogaphy, trust is mathematically provable. Everything else is just faith.
 
-When you begin reading any introductory explanation of HTTPS, you are quickly whisked away to an alien planet inhabited by a savage society. On this world the entire population knows at least the basics of offensive computer networking, and coffee shop wi-fi connections are overflowing with attackers trying to steal each others' Facebook passwords.
+When you begin reading [any introductory explanation of HTTPS](/2014/03/27/how-does-https-actually-work/), you are quickly whisked away to an alien planet inhabited by a savage society. On this world the entire population knows at least the basics of offensive computer networking, and coffee shop wi-fi connections are overflowing with attackers trying to steal each others' Facebook passwords. Desperately holding these attackers at bay are nothing more than the raw power of HTTPS and a handful of Root Certificate Authorities run by incorruptible treefolk who live in the mountains.
 
 <img src="/images/https-intro.png" />
-
-Desperately holding these attackers at bay are nothing more than the raw power of HTTPS and a handful of incorruptible treefolk who live in the mountains and run the Root Certificate Authorities that ground HTTPS. The world of the HTTPS introduction has a few redeeming features - not even the most dastardly of its hackers would ever think of stealing a private key - but it's mostly a land of unrelenting scum and villainy.
 
 The world of the HTTPS introduction makes no claims to reality. It exists only to highlight how incredible it is that an attacker can capture every single packet of HTTPS data that your browser exchanges with Facebook, and yet still have no idea what your password is. It shows just how powerful a system can be when you combine computers with incorruptible treefolk who live in the mountains, and how even just a tiny bit of total, no-questions-asked faith in a central authority can go a long way.
 
@@ -39,7 +37,7 @@ A TLS certificate is a completely self-contained passport. Its signature can be 
 
 Since TLS was designed without a central verification authority, it was also designed without a central "un-verification" authority. If your private key gets compromised then this doesn't somehow stop the mathematics that went into its signature from being correct.
 
-Un-verication or "certificate revocation" is challenging, and has been for decades. The first attempt at a process for disavowing certificates was the Certificate Revocation Log (CRL) system. A CRL is a monolithic list of revoked certificates, maintained by CAs. When a certificate owner wants to revoke a certificate (perhaps because they believe it has been compromised), they inform CRL operators, who add this revocation to their logs. When a browser wants to know whether a mathematically valid certificate is still faith-worthy, it checks the certificate against a CRL. If the browser finds the certificate on the CRL then it knows that the certificate has been disavowed by its owner. The browser can calmly freak out and drop the connection. This process does work, and is in principle entirely reasonable. However, as the number of revoked certificates grows bigger and bigger, downloading and checking a CRL becomes slower and slower and less and less practical.
+Un-verification or "certificate revocation" is challenging, and has been for decades. The first attempt at a process for disavowing certificates was the Certificate Revocation Log (CRL) system. A CRL is a monolithic list of revoked certificates, maintained by CAs. When a certificate owner wants to revoke a certificate (perhaps because they believe it has been compromised), they inform CRL operators, who add this revocation to their logs. When a browser wants to know whether a mathematically valid certificate is still faith-worthy, it checks the certificate against a CRL. If the browser finds the certificate on the CRL then it knows that the certificate has been disavowed by its owner. The browser can calmly freak out and drop the connection. This process does work, and is in principle entirely reasonable. However, CRLs are not updated frequently, and as the number of revoked certificates grows bigger and bigger, downloading and checking a CRL becomes slower and slower and less and less practical.
 
 The Online Certificate Status Protocol (OCSP) is an attempt to scale certificate revocation. Instead of asking a CRL server for the entire list of revoked certificates, a browser asks a certificate's designated OCSP server the simple question "has certificate X been revoked?" The server quickly replies "yes" or "no", and the browser proceeds accordingly.
 
@@ -57,7 +55,9 @@ Certificate revocation is a crucial tool for responding to key compromises. Howe
 
 ### Key rotation
 
-Certificate expiration and rotation can reduce the fallout of a key compromise Your certificate's expiry date is recorded in a field on the certificate. After its expiry date, browsers will consider it just as untrustworthy as a certificate that is unsigned or clearly forged. If an attacker steals the private key for a certificate that expires in 5 years time, then that's 5 years of future traffic to your website that they can decrypt if they can keep their breach undetected. If they silently steal the private key for a certificate that expires in 3 months then that's still very bad, but at least in 3 months time their fun will automatically expire. Setting short expiry periods does require you to replace and rotate your certificates frequently, but doing so can be made very straightforward with the right tools.
+Certificate expiration and rotation can reduce the fallout of a key compromise.
+
+Your certificate's expiration date is recorded in a field on the certificate. After its expiry date, browsers will consider it just as untrustworthy as a certificate that is unsigned or clearly forged. If an attacker steals the private key for a certificate that expires in 5 years time, then that's 5 years of future traffic to your website that they can decrypt if they can keep their breach undetected. If they silently steal the private key for a certificate that expires in 3 months then that's still very bad, but at least in 3 months time their fun will automatically expire. Setting short expiry periods does require you to replace and rotate your certificates frequently, but doing so can be made very straightforward with the right tools.
 
 ## Complication 2: A CA's private key may not stay private
 
@@ -107,6 +107,8 @@ A CTL is a public log of public certificates. There are many CTLs: Google runs s
 
 Domain owners can now monitor CTLs for newly issued certificates on their domain that they don't recognize. They can do this either by downloading the (completely public) data and sifting through it themselves, or by using a service like [crt.sh](https://crt.sh/) to sift through it for them. If they see a certificate that they don't recognize, they can freak out, try to get it revoked, and try to get the CA that signed it into trouble.
 
+CTLs do have unfortunate side-effects. Services like crt.sh are not only useful tools for domain owners, but for attackers too. Attackers can search crt.sh for all certificates for subdomains of a particular website, and can scour this list for less well-known and perhaps less protected targets. For example, `test-sandbox.acmecorp.com` might be running experimental and insecure code, and might contain a backdoor into the main `acmecorp.com` infrastructure.
+
 Since CTLs mean more work and more scrutiny for CAs, we might expect them to decline or accidentally forget to play along. To force CAs to comply, browsers refuse to trust TLS certificates without at least 2 valid signatures from CTL operators. If a CA tries to evade scrutiny by not submitting a new certificate to 2 CTLs, they will not have 2 valid CTL signatures that they can append to it. Without these signatures the certificate will not be trusted by browsers and so will be useless.
 
 It is important that the CTLs are accurate and immutable. It should not be possible for a CTL operator to remove a certificate from their log, or to rewrite history to post-date additional certificates. CTL operators prove that their CTLs are immutable and append-only by storing them as a Merkle Tree, the same data structure behind most blockchains. A Merkle Tree is a tree in which each node contains a cryptographic hash of the contents of its children. If a child were removed or added then the hashes of a significant portion of the tree would need to be recomputed in order for the tree to remain valid. Such a change would be quickly noticed by the organizations watching and verifying the CTL, and the CTL is therefore protected against being tampered with by its operator.
@@ -119,12 +121,16 @@ There are actually quite a lot of people watching the watchmen. The final PKI co
 
 One purpose of the PKI system is to make incompetence as unprofitable as possible for CAs. The more visibility the rest of the world has into the actions of a CA, the more effort the CA is forced to spend on making sure that all of these actions are correct.
 
-In addition, domain owners are highly incentivized to help CAs in their quest to avoid certificate mis-issuance. For a domain owner, the consequences of a mis-issued certificate are somewhere between hours of tedious hassle and company-destroying data breach. Domain owners can therefore help CAs by setting a Certificate Authority Authorization (CAA) DNS record.
+In addition, domain owners are highly incentivized to help CAs in their quest to avoid certificate mis-issuance. For a domain owner, the consequences of a mis-issued certificate are somewhere between many hours of tedious hassle and a hideous data breach. Domain owners can therefore help CAs by setting a Certificate Authority Authorization (CAA) DNS record.
 
 A domain's CAA record lists the CAs that are allowed to issue certificates for the domain. If a CA is asked to generate a certificate for a domain, it should first check that domain's CAA record. If the CA does not see itself in that record, it should assume that the customer is up to no good and decline to issue them a certificate. Once again, there is no way of verifying that a CA actually checks the CAA record or that they abide by it, but it is nonetheless a smart and simple way to reduce the attack surface and number of opportunities for unintended foolishness.
 
 <img src="/images/https-caa.png" />
 
-## CONCLUSION
+## In conclusion
 
-BLAH BLAH BLAH BLAH BLAH END
+Alice and Bob live in the world of the HTTPS introduction. Alice has a TLS certificate issued by a reputable Certificate Authority. So does Bob. Alice keeps her private key safe. Bob does too. Alice and Bob use their certificates to verify each other's identities and encrypt their communication. Despite the best efforts of Eve and all of the other attackers that live in Alice and Bob's world, the mathematics of TLS keeps their communication safe.
+
+The real world is much messier. Sometimes Certificate Authorities screw up. Sometimes private keys get compromised. And sometimes even the systems that are meant to alert people to these problems are interfered with. The world of the HTTP introduction doesn't have these problems, but the real world is plagued by them.
+
+TLS promises the inhabitants of any world extremely strong security guarantees. But this security would remain purely theoretical if it weren't for strong Public Key Infrastructure. TLS provides security on an insecure network. PKI provides security on an insecure world.
