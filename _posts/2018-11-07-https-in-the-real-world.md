@@ -131,6 +131,6 @@ A domain's CAA record lists the CAs that are allowed to issue certificates for t
 
 Alice and Bob live in the world of the HTTPS introduction. Alice has a TLS certificate issued by a reputable Certificate Authority. So does Bob. Alice keeps her private key safe. Bob does too. Alice and Bob use their certificates to verify each other's identities and encrypt their communication. Despite the best efforts of Eve and all of the other attackers that live in Alice and Bob's world, the mathematics of TLS keeps their communication safe.
 
-The real world is much messier. Sometimes Certificate Authorities screw up. Sometimes private keys get compromised. And sometimes even the systems that are meant to alert people to these problems are interfered with. The world of the HTTP introduction doesn't have these problems, but the real world is plagued by them.
+The real world is much messier. Sometimes Certificate Authorities screw up. Sometimes private keys get compromised. And sometimes even the systems that are meant to alert people when these things happen are interfered with. The world of the HTTP introduction doesn't have these problems, but the real world is plagued by them.
 
-TLS promises the inhabitants of any world extremely strong security guarantees. But this security would remain purely theoretical if it weren't for strong Public Key Infrastructure. TLS provides security on an insecure network. PKI provides security on an insecure world.
+TLS promises the inhabitants of any world extremely strong security guarantees. But this security would remain purely theoretical if it weren't for robust Public Key Infrastructure. TLS provides security on an insecure network. PKI provides security on an insecure world.
