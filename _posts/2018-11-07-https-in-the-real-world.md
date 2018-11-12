@@ -109,6 +109,8 @@ Domain owners can now monitor CTLs for newly issued certificates on their domain
 
 CTLs do have unfortunate side-effects. Services like crt.sh are useful tools not only for domain owners, but for attackers too. Attackers can search crt.sh for all certificates for subdomains of a particular website, and can scour this list for less well-known and perhaps less protected targets. For example, I'm sure that `www.dewey-lfs.vip.facebook.com` is perfectly well-secured, but I bet that it's not watched quite as closely as the main `facebook.com` infrastructure.
 
+<img src="/images/https-ctl-example.png" />
+
 [(Source query)](https://crt.sh/?q=%25.facebook.com)
 
 Since CTLs mean more work and more scrutiny for CAs, we might expect them to decline or accidentally forget to play along. To force CAs to comply, browsers refuse to trust TLS certificates without at least 2 valid signatures from CTL operators. If a CA tries to evade scrutiny by not submitting a new certificate to 2 CTLs, they will not have 2 valid CTL signatures that they can append to it. Without these signatures the certificate will not be trusted by browsers and so will be useless.
