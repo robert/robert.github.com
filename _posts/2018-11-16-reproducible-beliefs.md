@@ -3,7 +3,6 @@ title: Reproducible beliefs
 layout: post
 tags: [Studying]
 og_image: https://robertheaton.com/images/beliefs-title.png
-published: false
 ---
 If I find a belief that I can't account for, I usually assume that it came from a marketer at Pepsi. This would explain why I find brown acid so refreshing, and why I believe so strongly in Kendall Jenner's ability to bring clarity and soda to even the most fractious of conflicts.
 
@@ -11,7 +10,7 @@ If I find a belief that I can't account for, I usually assume that it came from 
 <img src="/images/beliefs-kj.jpg" />
 </p>
 
-As grateful as I am to Pepsi for the free education and life-affirming fizzy drinks, I do prefer to know where my beliefs came from. I'd ideally like them to be completely *reproducible*. I'd like to have a list of all the things I believe, together with the books, conversations, and other sources that made me believe them. I'd like to be able to take a blank human, feed them my sources, and have them come to the same conclusions that I did. I spend a lot of time trying to [capture and arrange information from books that I have read](/2018/06/25/how-to-read/). Reproducible beliefs are a lot of the reason why.
+As grateful as I am to Pepsi for the free education and life-affirming fizzy drinks, I do prefer to know where my beliefs came from. I'd ideally like them to be completely *reproducible*. I'd like to have a list of all the things I believe, together with the books, conversations, and other sources that have made me believe them. I'd like to be able to take a blank human, feed them my sources, and have them come to the same conclusions that I have. I spend a lot of time trying to [capture and arrange information from books that I have read](/2018/06/25/how-to-read/). My desire for reproducible beliefs is a big part of why.
 
 It's possible that "reproducible beliefs" is just a seven-dollar-fifty way of saying "`citation needed`", but I think there's more to it than that. The idea of reproducibility crops up in a lot of other places too, and is especially popular in software engineering. For example, I used to work on Machine Learning (ML) Infrastructure. My team built the tools used by data scientists to train ML models. Our holy grail, and the holy grail of any ML-Infra team, was to eventually build a *reproducible training pipeline*. If the legends are true, such a pipeline would record the exact datasets and configuration options used to train a model. When re-run with those same datasets and configuration options, it would deterministically re-produce the exact same model as it did the first time.
 
@@ -39,7 +38,7 @@ Reproducible builds save the day, protecting both users and maintainers. A proje
 
 Reproducible builds prevent other people from duping you. Reproducible beliefs do too. The claim "I believe that corporation tax should be abolished because of this 2015 speech by the Dalai Lama" can be easily verified and debunked (I assume, I haven't watched the speech myself). "I believe that corporation tax should be abolished because of some stuff I've read" cannot.
 
-Reproducible beliefs also protect you from duping yourself. If your beliefs are truly reproducible then you should re-derive those same beliefs every time you go back over their source material. If, on the other hand, you re-watch the Dalai Lama's speech on fiscal policy and come to the conclusion that his arguments aren't actually as persuasive as you first thought, you know that your beliefs need re-evaluating. (once again, I haven't watched this speech, which is fine because it's obviously not real anyway)
+Reproducible beliefs also protect you from duping yourself. If your beliefs are truly reproducible then you should re-derive those same beliefs every time you go back over their source material. If, on the other hand, you re-watch the Dalai Lama's speech on fiscal policy and find his arguments less persuasive than you remember, you know that your beliefs need re-evaluating. (once again, I haven't watched this speech, which is fine because it's obviously not real anyway)
 
 A final fringe benefit of reproducible beliefs is that if you get hit by Bourne Identity-style amnesia then you don't have to re-calculate what you think about gun control laws. You simply re-read all of the recorded inputs into your reproducible beliefs, and you'll quickly regenerate your old conclusions as though nothing had happened.
 
