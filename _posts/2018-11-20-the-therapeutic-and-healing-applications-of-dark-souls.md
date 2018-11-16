@@ -1,14 +1,18 @@
 ---
 title: The therapeutic and healing properties of Dark Souls
-layout: post
+layout: indented_post
 tags: [Computer Games]
 og_image: https://robertheaton.com/images/snake-intro.png
-published: false
+published: true
 ---
 "Last week we were talking about your relationship with your brother. Have you managed to get in touch with him?"
+
 "I haven't. I think it's going to take a while. But this week I'd like to talk about something different, if that's OK?"
+
 "This is your time Chad. What would you like to talk about?"
+
 "Well, yesterday I completed Dark Souls 2, and it stirred up a lot of complex emotions."
+
 "Excuse me?"
 
 ---
@@ -22,9 +26,13 @@ I would have expected this lack of narrative to bother me, but it was actually a
 ---
 
 "So Dark Souls is a game about nothing where you kill things for no reason?"
+
 "Yes."
+
 "Does that remind you of-"
+
 "Please don't."
+
 "OK. Carry on."
 
 ---
@@ -42,7 +50,9 @@ Dark Souls made me see how speed-running might be fun. Usually I don't play the 
 ---
 
 "This all sounds very similar to your relationship with your-"
+
 "I think you're right, but I don't want to get into that right now."
+
 "I understand. Carry on."
 
 ---
@@ -56,7 +66,9 @@ I just want to be given a set menu and have "normal" be the right choice. It's k
 ---
 
 "Have you talked about this with your brother?"
+
 "No - I don't think he's into video games. Or at least, five years ago he wasn't."
+
 "OK. Just keep that in mind."
 
 ---
@@ -74,10 +86,17 @@ It's hard to blame people who invade your game - they're just trying to make a b
 ---
 
 "Do you not think that some people are just bastards and are trying to make a worse life for you because they enjoy it?"
+
 "I suppose - like the current president, am I right? High five."
- [The high five is declined]
+
+[The high five is declined]
+
 "Thank you, but I vote Republican."
+
 "Seriously?"
+
 "I might look like a quintessential metropolitan liberal elite, but behind the pile of old *New Yorker*s in my waiting room I'm a rural Republican. I grew up in a conservative, evangelical part of Kansas; my parents were deeply involved in Operation Rescue. That's not the kind of thing you cast off lightly. Between us my partner and I make a little over two million dollars a year, and we'd prefer to give as little of that to the government as possible. I'm a core, moderate Republicans who wants a conservative Supreme Court, and whilst I don't like him it's going to take more than Donald Trump to change that. Anyway, you were talking about video games?"
+
 "No, I think I was done actually."
+
 "Oh look, we're out of time."
