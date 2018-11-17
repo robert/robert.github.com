@@ -9,7 +9,7 @@ This is a programming project for Advanced Beginners. If you've completed all th
 
 ## Press start to play
 
-In this project you're going to build the classic game "Snake". In Snake, the player pilots a snake around a grid, trying to eat items and avoid crashing into walls or their own tail. Each time the snake eats an item, its body gets longer. Eventually it eats so many items and its body gets so long that it fills up the entire world. Death becomes inescapable, and the player is suffocated beneath their own success and greed.
+In this project you're going to build the classic game "Snake". In Snake, the player pilots a snake around a grid, trying to eat apples and avoid crashing into walls or their own tail. Each time the snake eats an apple, its body gets longer. Eventually it eats so many apples and its body gets so long that it fills up the entire world. Death becomes inescapable, and the player is suffocated beneath their own success and greed.
 
 <p style="text-align: center">
 <img src="/images/snake-example.gif" />
@@ -35,15 +35,15 @@ Before we write a single line of code, we have a lot of design decisions to make
 
 Done? OK. That was the bait; now it's time for for the switch. We'll get to all of your no doubt first-rate ideas eventually, but our first version of Snake is going to be a frill-free environment. It will run in the terminal; the player will have to press "enter" every time they want to make a move; and there will definitely not be a 2-player mode, at least not at first. Once we've got this prototype working then we'll let loose and build out of the advanced features that you just came up with, but we're going to begin by taking things one slither at a time.
 
-This is the first Programming Project for Advanced Beginners in which I'm going to recommend that you use Object-Oriented Programming (OOP). Remember, you never *have* to use OOP. Any code written with objects and classes can also be written without them. But I'm recommending OOP for this project because I foresee that it is going to become long and complex, and I believe that the extra structure that OOP brings will be invaluable.
+This is the first Programming Project for Advanced Beginners in which I'm going to recommend that you use *Object-Oriented Programming* (OOP). If you haven't come across OOP before, you have several options. First, you can go back to my previous PPABs and work through them using non-OOP instead. Second, you can go to Google and get familiar with the core concepts behind OOP before continuing with this project. Finally, you can push on and pick things up as you go along. All of these approaches are valid.
 
- If you haven't come across OOP before then you have several options. First, you can go back to my previous PPABs and work through them using non-OOP instead. Second, you can go to Google and get familiar with the core concepts behind OOP before continuing with this project. Finally, you can push on and pick things up as you go along. All of these approaches are valid.
+Remember, you never *have* to use OOP. Any code written with objects and classes can also be written without them. But I'm recommending OOP for this project because I foresee that it is going to become long and complex, and I believe that the extra structure that OOP brings will be invaluable. We'll be able to group related functionality and data together into different classes, which will be much easier to work with than a single big ol' pile of methods.
 
 ## Fear and paralysis
 
 Before we begin, I'd like to say a few words on fear and paralysis.
 
-It's often said that software design has no rules, only principles, and the principles of OOP design could fill more pages than a complete guide to infinite loops. All of these principles can be invaluable tools for writing great software, but they also come inextricably bundled with a bumper-pack of novel ways in which to worry that you're doing it wrong. This makes it more critical than ever that you remember Principle 0: don't get paralyzed by the fear of makking a mistork.
+It's often said that software design has no rules, only principles. The principles of OOP design could fill more pages than a complete guide to infinite loops. All of these principles can be invaluable tools for writing great software, but they also come inextricably bundled with a bumper-pack of novel ways in which to worry that you're doing it wrong. This makes it more critical than ever that you remember Principle 0: don't get paralyzed by the fear of makking a mistork.
 
 *(See?)*
 
@@ -57,20 +57,20 @@ Do the best you can with the tools you have available, and keep making forward p
 
 ## The Plan
 
-As with all PPABs, we'll tackle this project one small milestone at a time. We'll check that our program behaves as we expect after each section, and we'll be constantly vigilant for bugs at all times, not just at the end. I've broken up building our Snake prototype into 6 steps:
+As with all Programming Projects for Advanced Beginners, we'll tackle this project one small milestone at a time. We'll check that our program behaves as we expect after each milestone, and we'll be constantly vigilant for bugs at all times, not just at the end. I've broken up building our Snake prototype into 6 steps:
 
-1. Set up our 3 main classes - `Snake`, `Item`, and Game
+1. Set up our 3 main classes - `Snake`, `Apple`, and `Game`
 2. Render an empty board
-3. Initialize a snake and render it in the baord
+3. Initialize a snake and render it in the board
 4. Let the player pilot their snake
 5. Work out when the player has died
-6. Add items to the board and let the player eat them
+6. Add apples to the board and let the player eat them
 
 Let's begin.
 
 ## 1. Set up our classes
 
-Start by sketching out placeholders for our classes. We'll begin with 3 - `Snake`, `Item`, and `Game`. We'll fill them in with some actual logic in later steps.
+Start by sketching out placeholders for our classes. We'll begin with 3 - `Snake`, `Apple`, and `Game`. We'll fill them in with some actual logic in later steps.
 
 ```
 # This is *pseudo-code* - translate its logic to
@@ -78,7 +78,7 @@ Start by sketching out placeholders for our classes. We'll begin with 3 - `Snake
 class Snake {
 }
 
-class Item {
+class Apple {
 }
 
 class Game {
@@ -87,9 +87,9 @@ class Game {
 
 The purpose of a class is often expressed in terms of what it is and is not *responsible* for. For example, our `Snake` class will be responsible for very little. Its job will be to store data about where our snake is and which direction it is heading, and very little else. It will not be responsible for keeping track of how many points the player has. It will not be responsible for printing anything to the terminal. It will not even be responsible for working out when the snake has bashed into itself and died.
 
-Our `Item` class will be responsible for even less than our `Snake`. All it will store is an item's location on the board. You could argue that `Item` doesn't even need to be a class, and that the item's location could just be a simple variable inside `Game`. I personally think it's still good to have an `Item` class - partly for consistency with the fact that we have a `Snake` class, and partly because I can easily see us adding more properties to `Item`, for example making each item worth a variable number of points.
+Our `Apple` class will be responsible for even less than our `Snake`. All it will store is an apple's location on the board. You could argue that `Apple` doesn't even need to be a class, and that the apple's location could just be a simple variable inside `Game`. I personally think it's still good to have an `Apple` class - partly for consistency with the fact that we have a `Snake` class, and partly because I can easily see us adding more properties to `Apple`, for example making each apple worth a variable number of points.
 
-All of the responsibility for actually executing the game will be pushed into our `Game` class. This is where we'll get input from the player, display the board, keep track of point totals, and manage everything else that our program does. As our program gets longer and more complex, we'll start breaking parts of `Game`'s functionality off into new classes. Maybe we'll have a `Renderer` that will be responsible for displaying the game state. We might also want a `Player` class that takes charge of asking the player (or maybe an AI) for their next move. We might even want a `Board` class, dedicated to managing the positions of our `Snake`s and `Item`s.
+All of the responsibility for actually executing the game will be pushed into our `Game` class. This is where we'll get input from the player, display the board, keep track of point totals, and manage everything else that our program does. As our program gets longer and more complex, we'll start breaking parts of `Game`'s functionality off into new classes. Maybe we'll have a `Renderer` that will be responsible for displaying the game state. We might also want a `Player` class that takes charge of asking the player (or maybe an AI) for their next move. We might even want a `Board` class, dedicated to managing the positions of our `Snake`s and `Apple`s.
 
 However, we don't have to add any of these finesses until they're actually needed, which won't be until the extensions section of this project. We'll start by keeping things simple and putting all of our logic in our single `Game` class. We'll use our visions for the future to group together pieces of related logic, making them easy to break off into separate classes when the time comes. 
 
@@ -97,7 +97,7 @@ However, we don't have to add any of these finesses until they're actually neede
 
 Next let's work on displaying the board. This will give us a nicely-formatted way to inspect the state of our program, and will make debugging the rest of our code much easier.
 
-We need to start by setting the height and width of our board. Add `height` and `width` as arguments to the *constructor* to our `Game` class. Add a `render` method. This will eventually print our game state to the terminal. For now, simply have it print out the game's height and the width. Test it out.
+We need to start by setting the height and width of our board. Add `height` and `width` as arguments of our `Game` class's *constructor* method. Add a `render` method. This will eventually print our game state to the terminal. For now, simply have it print out the game's height and the width. Test it out.
 
 ```
 # Pseudo-code:
@@ -105,12 +105,12 @@ We need to start by setting the height and width of our board. Add `height` and 
 class Game {
   def initialize(height, width) {
     self.height = height
-    Self.width = width
+    self.width = width
   }
 
   def render() {
-    Print "Height: " + self.height
-    Print "Width: " + self.width
+    print "Height: " + self.height
+    print "Width: " + self.width
   }
 }
 
@@ -121,7 +121,7 @@ game.render()
 # Width: 20
 ```
 
-Once this is working, we can work on actually rendering the board. Rendering will happen in 2 phases. In phase 1, we'll construct a 2-D matrix (a list of lists, discussed at length in PPAB's #1, #3 and #4) of the state of each square. Since we don't yet have a snake, to start with all squares will be empty. Every value in our matrix will therefore be `None` or `nil` or whatever your language calls it:
+Once this is working, we can work on actually rendering the board. Rendering will happen in 2 phases. In phase 1, we'll construct a 2-D matrix (a list of lists, discussed at length in PPAB's [#1][proj-1], [#3][proj-3a] and [#4][proj-4] if you could use an introduction or refresher) of the state of each square. Since we don't yet have a snake, to start with all squares will be empty. Every value in our matrix will therefore be `None` or `nil` or whatever your language calls it:
 
 ```
 [
@@ -236,7 +236,7 @@ class Snake {
   }
 
   def head() {
-    Return self.body[-1]
+    return self.body[-1]
   }
 }
 ```
@@ -325,18 +325,16 @@ You can decide which rule you want to use. You could even give the player the op
 
 ## 6. Feed the snake
 
-The goal of every snake is the same - to eat as many items as possible before crashing into itself. Of course, the more items a snake eats, the longer it gets, and the longer it gets, the more likely it is to crash into itself. There's an allegory about the perils of greed in there somewhere.
+The goal of every snake is the same - to eat as many apples as possible before crashing into itself. Of course, the more apples a snake eats, the longer it gets, and the longer it gets, the more likely it is to crash into itself. There's an allegory about the perils of greed in there somewhere.
 
-At the beginning of our game, place an item on the board in a random location. When the snake's head runs over the item and eats it, give the player a point. Remove the item, place another one in a new location, and make the snake's body 1 square longer.
-
-[PICS of snake growing]
+At the beginning of our game, place an apple on the board in a random location. When the snake's head runs over the apple and eats it, give the player a point. Remove the apple, place another one in a new location, and make the snake's body 1 square longer.
 
 Don't try to do everything at once - whenever I do this I almost end up achieving nothing. Break the task into smaller chunks, and make sure each chunk works before moving onto the next one. For example
 
-* At the start of the game, generate an item in a random location. Render it on the board
-* When the player eats an item, remove it and generate a new item in a new random location
-* When the player eats an item, extend their body by 1 square
-* When the player eats an item, increment their score by 1
+* At the start of the game, generate an apple in a random location. Render it on the board
+* When the player eats an apple, remove it and generate a new apple in a new random location
+* When the player eats an apple, extend their body by 1 square
+* When the player eats an apple, increment their score by 1
 * When the player dies, tell them how many points they scored
 
 Then we're done.
@@ -349,13 +347,22 @@ Here are your 4 next steps:
 
 * Tackle the extension section below
 * Complete my other Programming Projects for Advanced Beginners - ASCII art, Game of Life, Tic-Tac-Toe AI, and Photomosaics
-* Send me an email to let me know about your success. I'd love to know what you liked and didn't like about the project, and any ideas you have for making the next one better
+* [Send me a message](/about) to let me know about your success. I'd love to know what you liked and didn't like about the project, and any ideas you have for making the next one better
 * Sign up for my newsletter at the bottom of this page to find out about new projects as they are published
 
 Once again, congratulations!
 
 ## Extension - follow your dreams
 
-In the introduction to this project I asked you to come up with a list of ideas for features to add to our Snake game. Now that our prototype is complete, it's time to bring those ideas to reality. "Can I have multiple items?" Yes. "Can it be 2 player?" Uh-huh. "Can I make the board a maze?" You're the boss. If you see another Snake game with an idea that you like, steal it. If you think of another game you'd like to implement in the terminal, go right ahead.
+In the introduction to this project I asked you to come up with a list of ideas for features to add to our Snake game. Now that our prototype is complete, it's time to bring those ideas to reality. "Can I have multiple apples?" Yes. "Can it be 2 player?" Uh-huh. "Can I make the board a maze?" You're the boss. If you see another Snake game with an idea that you like, steal it. If you think of another game you'd like to implement in the terminal, go right ahead.
 
 Try making the display better. Look into UI tools for your language and make a desktop app, or research the `curses` library and how you can use it to make terminal applications that don't require pressing `Enter` after every action.
+
+[proj-1]: /2018/06/12/programming-projects-for-advanced-beginners-ascii-art/
+[proj-2]: /2018/07/20/project-2-game-of-life/
+[proj-3a]: /2018/10/09/programming-projects-for-advanced-beginners-3-a/
+[proj-3b]: /2018/10/09/programming-projects-for-advanced-beginners-3-b/
+[proj-4]: /2018/11/03/programming-project-4-photomosaics/
+[my-twitter]: https://twitter.com/robjheaton
+[my-email]: mailto:robqheaton@gmail.com
+[example-project]: https://github.com/robert/photomosaic
