@@ -5,6 +5,7 @@ tags: [Studying]
 og_image: https://robertheaton.com/images/beliefs-title.png
 redirect_from:
   - /2018/11/16/reproducible-beliefs
+  - /2018/11/16/reproducible-beliefs/
 ---
 If I find a belief that I can't account for, I usually assume that it came from a marketer at Pepsi. This would explain why I find brown acid so refreshing, and why I believe so strongly in Kendall Jenner's ability to bring clarity and soda to even the most fractious of conflicts.
 
