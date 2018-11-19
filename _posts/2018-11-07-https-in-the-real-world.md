@@ -5,7 +5,7 @@ tags: [HTTPS]
 og_image: https://robertheaton.com/images/https-intro.png
 published: false
 ---
-In cryptogaphy, trust is mathematically provable. Everything else is just faith.
+In cryptography, trust is mathematically provable. Everything else is just faith.
 
 When you begin reading [any introductory explanation of HTTPS](/2014/03/27/how-does-https-actually-work/), you are quickly whisked away to an alien planet inhabited by a savage society. On this world the entire population knows at least the basics of offensive computer networking, and coffee shop wi-fi connections are overflowing with attackers trying to steal each others' Facebook passwords. Desperately holding these attackers at bay are nothing more than the raw power of HTTPS and a handful of Root Certificate Authorities run by incorruptible treefolk who live in the mountains.
 
