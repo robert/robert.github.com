@@ -15,9 +15,9 @@ og_image: https://robertheaton.com/images/dark-souls-cover.png
 
 "Excuse me?"
 
----
-
 <img src="/images/dark-souls-cover.png" />
+
+---
 
 I completed Dark Souls 2 - that's the number 'two'. It's a video game; in many ways your standard action-RPG affair. You run around stabbing things or setting them on fire. You level up, you find bigger swords and more madcap flames, and eventually you win.
 
