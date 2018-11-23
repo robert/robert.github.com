@@ -19,6 +19,8 @@ og_image: https://robertheaton.com/images/dark-souls-cover.png
 
 ---
 
+<br/>
+
 I completed Dark Souls 2 - that's the number 'two'. It's a video game; in many ways your standard action-RPG affair. You run around stabbing things or setting them on fire. You level up, you find bigger swords and more madcap flames, and eventually you win.
 
 The story of the game is…actually I'm not sure what the story is, apart from you keep stabbing things until the game tells you that you have stabbed enough and can put down your sword. The world is saved somehow, and it's time to get back to the real world and those quarterly reports you promised your mum. The cliche of good story writing is to "show, not tell". Dark Souls's approach is more like "not show, not tell, go fuck yourself". I'm told that there's a huge amount of lore lurking in the background if you take the time to decipher or read it on Wikipedia, but I'm still not even halfway through the Voynich Manuscript so I'm not going to do that.
