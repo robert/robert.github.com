@@ -1,9 +1,8 @@
 ---
-title: The therapeutic and healing properties of Dark Souls
+title: The therapeutic properties and applications of Dark Souls
 layout: indented_post
 tags: [Computer Games]
-og_image: https://robertheaton.com/images/snake-intro.png
-published: false
+og_image: https://robertheaton.com/images/dark-souls-cover.png
 ---
 <br/>
 "Last week we were talking about your relationship with your brother. Have you managed to get in touch with him?"
