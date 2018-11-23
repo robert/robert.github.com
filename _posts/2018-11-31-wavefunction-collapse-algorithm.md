@@ -3,6 +3,7 @@ title: The Wavefunction Collapse Algorithm explained very clearly
 layout: post
 tags: [Computer Games]
 og_image: https://robertheaton.com/images/snake-intro.png
+published: false
 ---
 The Wavefunction Collapse Algorithm is a procedural generation technique for riffing on examples. It takes an archetypical input, and produces randomly-generated outputs along the same lines.
 
