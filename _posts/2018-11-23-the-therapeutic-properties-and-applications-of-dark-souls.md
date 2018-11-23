@@ -9,7 +9,7 @@ og_image: https://robertheaton.com/images/dark-souls-cover.png
 
 "I haven't. I think it's going to take a while. But this week I'd like to talk about something different, if that's OK?"
 
-"This is your time Chad. What would you like to talk about?"
+"This is your time Dianne. What would you like to talk about?"
 
 "Well, yesterday I completed Dark Souls 2, and it stirred up a lot of complex emotions."
 
