@@ -136,10 +136,10 @@ We have made a world (or an error).
 
 ## Beyond the Even Simpler Tiled Model
 
-Now that you understand the Even Simpler Tiled Model, you're ready to climb the ladder of power and complexity. Start with the Simple Tiled Model, which we touched on at the start of this post, then move on to the full Overlapping Model. In an Overlapping Model, tiles or pixels can influence each other from further away than jsut adjacent. If you're into this kind of thing (and it's fine if you're not) `ExUtumno` notes that the Simple Tiled Model is analagous to an order-1 Markov chain, and more complex models are like those of higher order.
+Now that you understand the Even Simpler Tiled Model, you're ready to climb the ladder of power and complexity. Start with the Simple Tiled Model, which we touched on at the start of this post, then move on to the full Overlapping Model. In an Overlapping Model, tiles or pixels influence each other from further away. If you're into this kind of thing (and it's fine if you're not) `ExUtumno` notes that the Simple Tiled Model is analagous to an order-1 Markov chain, and more complex models are like those of higher order.
 
-Wavefunction Collapse can accomodate additional constraints, like "this tile must be sea", or "this pixel must be red", or "there can only be one monster in the output." This is discussed in the main project's README. You can also investigate the performance optimizations made in full implementations. There's no need to recalculate every square's entropy on every iteration, and information propagation throughout the wavefunction can be made substantially faster. These considerations become more important the larger your output image becomes.
+Wavefunction Collapse can accomodate additional constraints, like "this tile must be sea", or "this pixel must be red", or "there can only be one monster in the output." This is discussed in the [main project's README][wfc-home]. You can also investigate the performance optimizations made in the full implementation. There's no need to recalculate every square's entropy on every iteration, and information propagation throughout the wavefunction can be made substantially faster. These considerations become more important the larger your output image becomes.
 
-Now that Wavefunction Collapse is in your toolbox, consider reaching for it the next time you're planning a wedding or procedurally generating a world.
+Wavefunction Collapse is a pleasing and powerful tool to have in your toolbox. Next time you're planning a wedding or procedurally generating a world, keep it in mind.
 
 [exutumno-twitter]: https://twitter.com/exutumno
