@@ -5,6 +5,7 @@ tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/mosaic-me-small.png
 redirect_from:
   - /2018/11/03/programming-project-4-photomosaic/
+  - /2018/11/03/programming-project-4-photomosaic
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory programming tutorials you can find and want to sharpen your skills on something bigger, this project is for you. You'll get thrown in at the deep end. But you'll also get gentle reminders on how to swim, as well as some new tips on swimming best practices. You can do it using any programming language you like, and if you get stuck I've written [some example code that you can take inspiration from][example-project].
 
