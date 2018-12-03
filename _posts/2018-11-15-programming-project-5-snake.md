@@ -3,9 +3,10 @@ title: "Programming Projects for Advanced Beginners #5: Snake"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/snake-intro.png
-published: false
 ---
-This is a programming project for Advanced Beginners. If you've completed all the introductory programming tutorials you can find and want to sharpen your skills on something bigger, this project is for you. You'll get thrown in at the deep end. But you'll also get gentle reminders on how to swim, as well as some new tips on swimming best practices. You can do it using any programming language you like, and if you get stuck I've written some example code[LINK] that you can take inspiration from.
+This is a programming project for Advanced Beginners. If you've completed all the introductory programming tutorials you can find and want to sharpen your skills on something bigger, this project is for you. You'll get thrown in at the deep end. But you'll also get gentle reminders on how to swim, as well as some new tips on swimming best practices. You can do it using any programming language you like, and if you get stuck I've written some [example code][example-code] that you can take inspiration from.
+
+[example-code]: https://github.com/robert/snake
 
 ## Press start to play
 
@@ -35,7 +36,7 @@ Before we write a single line of code, we have a lot of design decisions to make
 
 Done? OK. That was the bait; now it's time for for the switch. We'll get to all of your no doubt first-rate ideas eventually, but our first version of Snake is going to be a frill-free environment. It will run in the terminal; the player will have to press "enter" every time they want to make a move; and there will definitely not be a 2-player mode, at least not at first. Once we've got this prototype working then we'll let loose and build out of the advanced features that you just came up with, but we're going to begin by taking things one slither at a time.
 
-This is the first Programming Project for Advanced Beginners in which I'm going to recommend that you use *Object-Oriented Programming* (OOP). If you haven't come across OOP before, you have several options. First, you can go back to my previous PPABs and work through them using non-OOP instead. Second, you can go to Google and get familiar with the core concepts behind OOP before continuing with this project. Finally, you can push on and pick things up as you go along. All of these approaches are valid.
+This is the first Programming Project for Advanced Beginners in which I'm going to recommend that you use *Object-Oriented Programming* (OOP). If you haven't come across OOP before, you have several options. First, you can go back to [the][proj-1] [previous][proj-2] [PPABs][proj-3a] and work through without using OOP for now. Second, you can go to Google and get familiar with the core concepts behind OOP before continuing with this project. Finally, you can push on and pick things up as you go along. All of these approaches are valid.
 
 Remember, you never *have* to use OOP. Any code written with objects and classes can also be written without them. But I'm recommending OOP for this project because I foresee that it is going to become long and complex, and I believe that the extra structure that OOP brings will be invaluable. We'll be able to group related functionality and data together into different classes, which will be much easier to work with than a single big ol' pile of methods.
 
@@ -43,7 +44,7 @@ Remember, you never *have* to use OOP. Any code written with objects and classes
 
 Before we begin, I'd like to say a few words on fear and paralysis.
 
-It's often said that software design has no rules, only principles. The principles of OOP design could fill more pages than a complete guide to infinite loops. All of these principles can be invaluable tools for writing great software, but they also come inextricably bundled with a bumper-pack of novel ways in which to worry that you're doing it wrong. This makes it more critical than ever that you remember Principle 0: don't get paralyzed by the fear of makking a mistork.
+It's often said that software design has no rules, only principles. The principles of OOP design could fill more pages than a complete guide to infinite loops. These principles can all be invaluable tools for writing great software, but they come inextricably bundled with a bumper-pack of novel ways in which to worry that you're doing it wrong. This makes it more critical than ever that you remember Principle 0: don't get paralyzed by the fear of makking a mistork.
 
 *(See?)*
 
@@ -73,7 +74,7 @@ Let's begin.
 Start by sketching out placeholders for our classes. We'll begin with 3 - `Snake`, `Apple`, and `Game`. We'll fill them in with some actual logic in later steps.
 
 ```
-# This is *pseudo-code* - translate its logic to
+# This is *pseudo-code* - translate it into
 # whatever language you are using.
 class Snake {
 }
@@ -95,7 +96,7 @@ However, we don't have to add any of these finesses until they're actually neede
 
 ## 2. Render an empty board
 
-Next let's work on displaying the board. This will give us a nicely-formatted way to inspect the state of our program, and will make debugging the rest of our code much easier.
+Now let's work on displaying the board. This will give us a nicely-formatted way to inspect the state of our program, and will make debugging the rest of our code much easier.
 
 We need to start by setting the height and width of our board. Add `height` and `width` as arguments of our `Game` class's *constructor* method. Add a `render` method. This will eventually print our game state to the terminal. For now, simply have it print out the game's height and the width. Test it out.
 
@@ -160,7 +161,7 @@ class Game {
   }
 
   def render() {
-    Matrix = self.board_matrix()
+    matrix = self.board_matrix()
     # TODO: print the matrix
     # for row in matrix:
     #   ...
@@ -228,7 +229,7 @@ class Snake {
   }
 
   def take_step(position) {
-    self.body = self.body[1:-1] + [position]
+    self.body = self.body[1:] + [position]
   }
 
   def set_direction(direction) {
@@ -301,7 +302,7 @@ We'll turn this into a constantly updating game display in the same way as we di
 
 Give this a go. Accept input from the player and use it to move our snake around the board. Make sure you test your code rigorously. Verify you can slither right into every corner without causing an `Array index out of bound!` error. Think about what should happen if a snake is heading `UP`, and the player presses the key for `DOWN`. I personally like just ignoring their bamboozling command, but you might prefer to handle it differently.
 
-If the player crashes into their own body, the laws of the universe say that they should die. But for now, allow the player to glide through themselves without coming to any harm. For a brief, fleeting second, let the player be immortal.
+If the player crashes into their own body, the laws of the universe say that they should die. But for now, allow the player to glide through themselves without coming to any harm. For a fleeting second, let the player be immortal.
 
 <p style="text-align: center">
 <img src="/images/snake-cross.png" />
@@ -329,7 +330,7 @@ The goal of every snake is the same - to eat as many apples as possible before c
 
 At the beginning of our game, place an apple on the board in a random location. When the snake's head runs over the apple and eats it, give the player a point. Remove the apple, place another one in a new location, and make the snake's body 1 square longer.
 
-Don't try to do everything at once - whenever I do this I almost end up achieving nothing. Break the task into smaller chunks, and make sure each chunk works before moving onto the next one. For example
+Don't try to do everything at once - whenever I do this I almost always end up achieving nothing. Break the task into smaller chunks, and make sure each chunk works before moving onto the next one. For example
 
 * At the start of the game, generate an apple in a random location. Render it on the board
 * When the player eats an apple, remove it and generate a new apple in a new random location
@@ -346,7 +347,7 @@ You now have a fully functional world. Snakes are born. They eat, they grow. If 
 Here are your 4 next steps:
 
 * Tackle the extension section below
-* Complete my other Programming Projects for Advanced Beginners - ASCII art, Game of Life, Tic-Tac-Toe AI, and Photomosaics
+* Complete my other Programming Projects for Advanced Beginners - [ASCII art][proj-1], [Game of Life][proj-2], [Tic-Tac-Toe AI][proj-3a], and [Photomosaics][proj-4]
 * [Send me a message](/about) to let me know about your success. I'd love to know what you liked and didn't like about the project, and any ideas you have for making the next one better
 * Sign up for my newsletter at the bottom of this page to find out about new projects as they are published
 
