@@ -48,7 +48,7 @@ Here are 39 ways to make your blog more entertaining to read and more pleasurabl
 <li>Inclusion and diversity level 0 is extremely easy and requires almost no work.</li>
 <li>If you need a quick name for a generic fictional character, consider using one from a culture or gender that you usually wouldn't. Even if you don't believe that representation in the media matters, you've surely got to concede that there's still a chance that it might, and that the cost of sometimes calling your imaginary computer programmers Julianna is zero.</li>
 <li>"They" is a great word for referring to an unspecified person of an unspecified gender.</li>
-<li>Alternatively, if your piece is long enough and has enough distinct examples, you can also alternate between "he" and "she" and toss a coin to see who goes first.</li>
+<li>Alternatively you can also alternate between "he" and "she" and toss a coin to see who goes first.</li>
 <li>Don't be mean about the poor or homeless or uneducated. <i>Southpark</i> and <i>It's Always Sunny in Philadelphia</i> seem to be able to get away with it, but I don't exactly know how and I don't think you should trust yourself to walk their line without falling into a pit of problematicism.</li>
 <li>I have decided that I am comfortable with robust but essentially amiable blasphemy.</li>
 </ol>
