@@ -2,8 +2,7 @@
 title: A blogging style guide
 layout: post
 tags: [Writing]
-og_image: https://robertheaton.com/images/snake-intro.png
-published: false
+og_image: https://robertheaton.com/images/style-guide-keyboard.jpg
 ---
 Here are 39 ways to make your blog more entertaining to read and more pleasurable to write.
 
@@ -14,6 +13,8 @@ Here are 39 ways to make your blog more entertaining to read and more pleasurabl
 3. There's a three-way tradeoff between establishing credibility, being honest when you aren't an expert, and sounding like a douche. For example: "No, I didn't go to writing school. I learned my trade at the University of Life, the School of Hard Knocks, and the physics department at St Catherine's College, Oxford University."
 4. If you must self-deprecate then do so in a way that leaves you with a bit of confidence. For example: "Of course, there are many other, much better style guides on the internet than this one, and if you really care about finding and honing your voice then you should just read <i>Elements of Style</i> by Strunk and White. But you're not reading Strunk and White right now, you're reading Robert Heaton. You might even have already read Strunk and White, and yet you still have questions, so let's just continue shall we?"
 5. If you still have reservations about your qualifications to write a piece then state them once at the top, maybe once more at the bottom, and in between forget about them.
+
+<img src="/images/style-guide-keyboard.jpg" />
 
 ### Framing
 
