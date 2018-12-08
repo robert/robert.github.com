@@ -2,22 +2,25 @@
 title: Programming Projects for Advanced Beginners
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_image: https://robertheaton.com/images/snake-intro.png
-published: false
+og_image: https://robertheaton.com/images/ppab-cover.
 ---
-In a few, very specific ways, being a beginner programmer is easy. Everything is new; you learn at least ten fresh things every day; and you slice through coding exercises as though they were made of butter instead of bytes.
+<p style="text-align: center">
+<img src="/images/ppab-cover.png" />
+</p>
 
-But then eventually, without really noticing it, you morph into an *advanced beginner*. You become acutely aware that there's more to life than 10-line brainteasers, even if those brainteasers are often really quite complex. You start looking for bigger things to practice on, but everything is either too big or too small or too hard or too easy. You trip, fall, and begin tumbling gently down the mountain of optimism into the valley of despair. On your way earthward you note that a valley implies a distant but visible edge, and that describing the advanced beginner period as a valley of despair kind of feels like describing the Pacific Ocean as a valley of water.
+In a few, very specific ways, being a beginner programmer is easy. Everything is new and exciting; you're learning at least ten fresh things every day; and you're slicing through coding exercises as though they were made of butter instead of bytes.
 
-Folk wisdom says that the best way to progress is to work on projects, and this folk wisdom is entirely correct. But what should these projects be? Further folk wisdom says that a good place to start is building tools to solve your own problems, like a recipe planner or an exercise tracker. But what if your only real problem is that you aren't yet as skilled a programmer as you would like to be? Even once you do find a plausible project idea, it can still be difficult to know whether it is actually achievable and well-matched to your current experience level. Is facial recognition hard? What about drawing bike routes on Google Maps? Finally, even if you do somehow manage to find a project that is both compelling and suitable, it's still all too easy to get completely, irrevocably stuck. These problems do get easier with experience, but it doesn't matter whether the chicken or the egg comes first when you don't even know how to get to the farmers' market.
+But then eventually, without really noticing it, you morph from being a beginner into an *advanced beginner*. You become acutely aware that there's more to life than 10-line brainteasers, even if some of those brainteasers are getting really quite complex. You start looking for bigger things to practice on, but everything is either too big or too small or too hard or too easy. You trip, fall, and begin tumbling gently down the mountain of optimism into the valley of despair. On your way earthward you muse that a "valley" implies a distant but visible edge, and that describing the advanced beginner period as a valley of despair kind of feels like describing the Pacific Ocean as a valley of water.
+
+Folk wisdom says that the best way to progress is to work on projects, and this folk wisdom is entirely correct. But what should these projects be? Further folk wisdom says that a good place to start is by building tools to solve your own problems, like a recipe planner or an exercise tracker. But what if your only real problem is that you aren't yet as skilled a programmer as you would like to be? Even once you do find a plausible project idea, it can still be difficult to know whether it is actually achievable and well-matched to your current experience level. Is facial recognition hard? What about drawing bike routes on Google Maps? Finally, even if you do somehow manage to find a project that is both compelling and suitable, it's still all too easy to get completely, irrevocably stuck. These challenges do get easier to overcome with experience, but it doesn't matter whether the chicken or the egg comes first when you don't even know how to get to the farmers' market.
 
 ## Programming Projects for Advanced Beginners
 
-To help you through the valley (and I promise it is just a valley), I've been writing a series of blog posts called *Programming Projects for Advanced Beginners*. This collection of guided projects helps you write complex programs that play games, paint pictures, and run artificial intelligences. The primary goal of the series is to strike a balance between steering you through the swampland on the valley floor, and allowing you to discover a path for yourself - even if that means that you get submerged in hopefully-not-toxic algae a few times. The projects can be completed in any language, and people have sent me versions that they've written in C++, Ruby, Java, and Python.
+To help you through the valley (and I promise it is just a valley), I've been writing a series of blog posts called *Programming Projects for Advanced Beginners*. They're a collection of guided projects in which you write complex programs that play games, paint pictures, and run artificial intelligences. The primary goal of the series is to strike a balance between steering you through the swampland of the valley of despair and allowing you to discover a path for yourself - even if that means that you get submerged in hopefully-not-toxic algae a few times. The projects can be completed in any language, and people have sent me versions that they've written in C++, Ruby, Java, and Python.
 
 The first half of each project is broken up into bite-size milestones. At the start of each milestone we discuss what we want to achieve; why we want to achieve it; and how we can test that what we've done is correct. You then program the milestone on your own, although I've written reference code that you can refer to if you get completely stuck. At the end of the first half of a project, you will have built a fully functional core system that produces ASCII art images, plays Tic-Tac-Toe, or runs the Game of Life.
 
-The second half is where you venture into the jungle solo, with little more than a couple of suggestions, a packed lunch, and a vague reminder to watch out for crocodiles. But by this point you'll be quite familiar with the surrounding terrain, thanks to all the work we did together during the first half. You'll be able to build a wide range of elegant extensions on top of our solid base from half one. Before long you'll be coming up with your own extensions and your own projects, and at that point you won't need me at all.
+The second half is where you venture into the jungle solo, with little more than a couple of suggestions, a packed lunch, and a vague reminder to watch out for crocodiles. By this point you'll be quite familiar with the surrounding terrain, thanks to all the work we did together during the first half. You'll be able to build a wide range of elegant extensions on top of our solid base from half one. Before long you'll be coming up with your own extensions and your own projects, and at that point you won't need me at all.
 
 These projects use almost no external libraries, which means no tedious troubleshooting or trawling through esoteric documentation that doesn't teach you any of the general principles of computer programming that you signed up for. Trawling and troubleshooting are still unfortunately skills that you will need to develop at some point, but they're not the way to get yourself feeling inspired and creative. They can wait until later.
 
@@ -69,7 +72,7 @@ So far I've written 5 Programming Projects for Advanced Beginners, with several 
 
 ## Action
 
-Choose the project that interests you the most, and give it a shot. Whether you finish it in a frenetic frenzy or stumble on an ambiguous sentence and give up, let me know (via email or Twitter). If any part was unclear then I'll clarify it for you and use your feedback to make the project better, and if you've managed to finish them all then I'll know that I should really hurry up and publish project #6.
+Choose the project that interests you the most, and give it a shot. Whether you finish it in a frenetic frenzy or stumble on an ambiguous sentence and give up, let me know (via [email][email] or [Twitter][twitter]). If any part was unclear then I'll clarify it for you and use your feedback to make the project better, and if you've managed to finish them all then I'll know that I should really hurry up and publish project #6.
 
 Good luck!
 
@@ -80,4 +83,6 @@ Good luck!
 [proj-3a]: /2018/10/09/programming-projects-for-advanced-beginners-3-a/
 [proj-3b]: /2018/10/09/programming-projects-for-advanced-beginners-3-b/
 [proj-4]: /2018/11/03/programming-project-4-photomosaics/
-[proj-5]: TODO
+[proj-5]: /2018/12/02/programming-project-5-snake
+[email]: /about
+[twitter]: https://twitter.com/robjheaton
