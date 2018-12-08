@@ -2,7 +2,7 @@
 title: Programming Projects for Advanced Beginners
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_image: https://robertheaton.com/images/ppab-cover.
+og_image: https://robertheaton.com/images/ppab-cover.png
 ---
 <p style="text-align: center">
 <img src="/images/ppab-cover.png" />
