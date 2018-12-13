@@ -59,7 +59,7 @@ Here are 39 ways to make your blog more entertaining to read and more pleasurabl
 <li>Don't let a joke get in the way of your point. You're not writing a standup routine, you're explaining your position on Brexit. I suspect that if you are in fact writing a standup routine then this principle applies double.</li>
 <li>If something sounds like the kind of joke or pseudo-joke you might see on an advert for car insurance, reconsider it.</li>
 <li>It's better to be clear than funny.</li>
-<li>It's entertaining to poke fun at the downsides and pomposities of capitalism without denying the fact that strengthened property rights appear to have been responsible for much of humanity's progress in the last century or two.</li>
+<li>It's entertaining to poke fun at the downsides and pomposities of capitalism without necessarily denying the fact that strengthened property rights appear to have been responsible for much of humanity's progress in the last century or two.</li>
 </ol>
 
 ### Metaphors
