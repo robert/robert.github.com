@@ -3,9 +3,8 @@ title: The Wavefunction Collapse Algorithm explained very clearly
 layout: post
 tags: [Computer Games]
 og_image: https://robertheaton.com/images/snake-intro.png
-published: false
 ---
-The Wavefunction Collapse Algorithm teaches your computer how to riff. It takes an archetypical input and produces procedurally-generated outputs that look like it.
+The Wavefunction Collapse Algorithm teaches your computer how to riff. The algorithm takes in an archetypical input, and produces procedurally-generated outputs that look like it.
 
 <img src="/images/wfc-examples.png" />
 *([Source][unity-wfc])*
@@ -20,13 +19,13 @@ It is most commonly used to create images, but is also capable of building [town
 [poetry]: https://github.com/mewo2/oisin
 [wfc-home]: https://github.com/mxgmn/WaveFunctionCollapse
 
-Wavefunction Collapse is very independent, and needs almost no outside help or instruction. You feed it an example of the vibe you're going for, and it figures everything else out for itself. Despite this, it is surprisingly simple. It doesn't use any neural networks, random forests, or anything else that sounds like machine learning. This makes it very clean and intuitive once you get the idea.
+Wavefunction Collapse is a very independent-minded algorithm, and needs almost no outside help or instruction. You feed it an example of the vibe you're going for, and it figures everything else out for itself. Despite this self-sufficiency, it is surprisingly simple. It doesn't use any neural networks, random forests, or anything else that sounds like machine learning. This makes it very clean and intuitive once you get the idea.
 
-Most implementations and explanations of Wavefunction Collapse are of a full, performance-optimized version of the algorithm. These are of course important and necessary, but can be challenging to make sense of from a standing start. This post gives you a boost up by describing a constrained version of Wavefunction Collapse that I've named an *Even Simpler Tiled Model*. I've also put an [example implementation of an ESTM on Github][estm-github]. The code is inefficient and slow, but very readable and well commented. Once you fully understand the technology behind an ESTM, explanations of more advanced versions of the algorithm should start to click into place too.
+Most implementations and explanations of Wavefunction Collapse are of a full, performance-optimized version of the algorithm. These are of course important and necessary, but can be challenging to make sense of from a standing start. This post keeps things clear and simple by focussing on a constrained version of Wavefunction Collapse that I've named an *Even Simpler Tiled Model*. I've also put an [example implementation of an ESTM on Github][estm-github]. The code is inefficient and slow, but very readable and well commented. Once you fully understand the technology behind an ESTM, explanations of more advanced versions of the algorithm should start to click into place too. If you want to understand the Wavefunction Collapse Algorithm, this is the place to start.
 
-[estm-github]: TODO
+[estm-github]: https://github.com/robert/wavefunction-collapse
 
-Let's start with a story.
+Let's begin with a story.
 
 ## Wedding
 
@@ -70,11 +69,11 @@ Let's start our exploration of real Wavefunction Collapse by considering a simpl
 
 ## Simple Tiled Model
 
-In a Simple Tiled Model, input and output images are built out of a small number of pre-defined tiles, and each square in the output image is affected and constrained only by its 4 immediate neighbors. For example, suppose we are generating random worlds for a top-down, 2-D game. We might have tiles for land, coast, sea and mountains, and we might have rules like "mountains can go next to land", "land can go next to coast", and "sea can go next to other sea".
+In a Simple Tiled Model, input and output images are built out of a small number of pre-defined tiles, and each square in the output image is affected and constrained only by its 4 immediate neighbors. For example, suppose we are generating random worlds for a top-down, 2-D game. We might have tiles for land, coast, and sea, and we might have rules like "coast can go next to sea", "land can go next to coast", and "sea can go next to other sea".
 
 <img src="/images/wfc-tiles.png" />
 
-A *Simple Tiled Model* accounts for its tiles' symmetry, rotation, and orientation. For example, it ensures that sea tiles are only ever placed on the correct side of a coast tile.
+A *Simple Tiled Model* accounts for its tiles' symmetry and rotation. For example, land can go next to coast, but only in the correct orientation.
 
 <img src="/images/wfc-orientation.png" />
 
@@ -92,13 +91,13 @@ The rules for an Even Simpler Tiled Model specify which tiles may be placed next
 
 If you want `SEA` tiles to be permitted to the `RIGHT` as well as the `LEFT` of `COAST` tiles then you'll need additional rules: `(SEA, COAST, RIGHT)` and `(COAST, SEA, LEFT)`.
 
-Remember that we don't have to list all of these rules ourselves. Wavefunction Collapse can produce the ruleset for an Even Simpler Tile Model by parsing an example input image and compiling a list of all the 3-tuples that it contains.
+As I mentioned earlier, we don't have to create the list of all of these rules ourselves. Wavefunction Collapse can produce the ruleset for an Even Simpler Tile Model by parsing an example input image and compiling a list of all the 3-tuples that it contains.
 
 <img src="/images/wfc-tuples.png" />
 
 By inspecting the above example image, an Even Simpler Tiled Model observes that sea tiles can only go below or to the side of coast tiles, or anywhere next to other sea tiles. It also notes that coast tiles can go to the side of land, sea or other coast tiles, but only above sea tiles and below land ones. It makes no attempt to infer any more complex rules, like "sea tiles must be adjacent to at least one other sea tile" or "every island must contain at least one land tile". No tile exerts any influence over which types of tile may or may not be placed 2 or more squares away from it. This is like a wedding plan model in which the only type of rule is "X may sit next to Y".
 
-When analyzing the example iamge, we also need to record the frequency at which each tile appears. We will later use these numbers as weights when deciding which square's wavefunction to collapse, and when choosing which tile to assign to a square when it is being collapsed.
+When using our to analyze the input image, we also need to record the frequency at which each of its tiles appears. We will later use these numbers as weights when deciding which square's wavefunction to collapse, and when choosing which tile to assign to a square when it is being collapsed.
 
 Once we know the rules that our output image must adhere to, we are ready to build and collapse our output image's wavefunction.
 
@@ -107,15 +106,16 @@ Once we know the rules that our output image must adhere to, we are ready to bui
 As in our seating plan example, we start the collapsing process with a wavefunction in which every square in our output image is in a superposition of every type of tile.
 
 <img src="/images/wfc-land-superposition.png" />
-TODO: remove mountain
 
-We start by choosing the square whose wavefunction we will collapse. In our wedding planning example we made this choice randomly. However, as `ExUtumno` has observed, this isn't how humans tend to approach these kinds of problems. Instead, they look for the squares with the lowest *entropy*. Entropy is a measurement of uncertainty and disorder. In general, a square with high entropy is one with lots of possible tiles in its wavefunction. Which tile it will eventually collapse to is still very uncertain. By contrast, a square with low entropy is one with few possible tiles remaining in its wavefunction. Which tile it will eventually collapse to is already very constrained.
+We start by choosing the square whose wavefunction we will collapse. In our wedding planning example we made this choice randomly. However, as `ExUtumno` has observed, this isn't how humans tend to approach these kinds of problems. Instead, they look for the squares with the lowest *entropy*. Entropy is a measurement of uncertainty and disorder. In general, a square with high entropy is one with lots of possible tiles remaining in its wavefunction. Which tile it will eventually collapse to is still very uncertain. By contrast, a square with low entropy is one with few possible tiles remaining in its wavefunction. Which tile it will eventually collapse to is already very constrained.
 
 For example, in an Even Simpler Tile Model, a square with no information from its surrounding squares is completely unconstrained and is still able to be any tile. It therefore has very high entropy. But a square with several of its surrounding squares already collapsed might only have 2 tiles that it can possibly take on.
 
 <img src="/images/wfc-entropy.png" />
 
-Even though this square's wavefunction has not been fully collapsed, it is still somewhat constrained, and therefore has a lower *entropy*. It is these low-entropy, restricted tiles that humans tend to focus on when working on Wavefunction Collapse-like problems manually. Even if you're not rigorously using Wavefunction Collapse to design your wedding seating plan, you will still tend to focus on the areas of the plan that already have the most strictures. You don't put Dwayne on Table 1, Seat 5, then arbitrarily leap over to putting Kathy on Table 7 (which is currently empty). Instead you seat Dwayne, then figure out who can sit next to him, then who can go next to them, and so on. I haven't seen this written anywhere else, but my intuition says that following this *minimal entropy heuristic* probably results in fewer *contradictions* than randomly choosing squares to collapse.
+Even though the wavefunction of the centre square in the above diagram has not been fully collapsed, we do know that it can't be a land tile. It has still been somewhat constrained, and therefore has a lower *entropy* than the square in the top right, which can still be either land, sea, or coast.
+
+It is low-entropy, restricted tiles that humans tend to focus on when working on Wavefunction Collapse-like problems manually. Even if you're not rigorously using Wavefunction Collapse to design your wedding seating plan, you will still tend to focus on the areas of the plan that already have the most strictures. You don't put Dwayne on Table 1, Seat 5, then arbitrarily leap over to putting Kathy on Table 7 (which is currently empty). Instead you seat Dwayne, then figure out who can sit next to him, then who can go next to them, and so on. I haven't seen this written anywhere else, but my intuition says that following this *minimal entropy heuristic* probably results in fewer *contradictions* than randomly choosing squares to collapse.
 
 The entropy formula used in Wavefunction Collapse is *Shannon Entropy*. It makes use of the tile weights that we parsed from the input image in the previous step:
 
@@ -130,15 +130,15 @@ shannon_entropy_for_square =
 
 Once we've found the square in our wavefunction with the lowest entropy, we collapse its wavefunction. We do this by randomly choosing one of the tiles still available to the square, weighted by the tile weights that we parsed from the example input. We use the weights because they give us a more realistic output image. Suppose that a square's wavefunction says that it can either be land or coast. We don't necessarily want to chose each option 50% of the time. If our input image contains more land tiles than coast tiles, we will want to reflect this bias in our output images too. We achieve this by using simple, global weights. If our example image contained `20` land tiles and `10` coast ones, we will collapse our square to land `2/3` of the time and coast the other `1/3`.
 
-We propagate the consequences of our choice through the rest of our output's wavefunction ("if that tile is sea then this one can't be land, which means that this one can't be mountain"). Once all the after-tremors have quietened down we repeat this process, using the minimal entropy heuristic to choose which tile to collapse next. We repeat this collapse-propagate loop until either our output's wavefunction is completely collapsed and we can return a result, or we reach a contradiction and return an error.
+We propagate the consequences of our choice through the rest of our output's wavefunction ("if that tile is sea then this one can't be land, which means that this one can't be coast"). Once all the after-tremors have quietened down we repeat this process, using the minimal entropy heuristic to choose which tile to collapse next. We repeat this collapse-propagate loop until either our output's wavefunction is completely collapsed and we can return a result, or we reach a contradiction and return an error.
 
 We have made a world (or an error).
 
 ## Beyond the Even Simpler Tiled Model
 
-Now that you understand the Even Simpler Tiled Model, you're ready to climb the ladder of power and complexity. Start with the Simple Tiled Model, which we touched on at the start of this post, then move on to the full Overlapping Model. In an Overlapping Model, tiles or pixels influence each other from further away. If you're into this kind of thing (and it's fine if you're not) `ExUtumno` notes that the Simple Tiled Model is analagous to an order-1 Markov chain, and more complex models are like those of higher order.
+Now that you understand the Even Simpler Tiled Model, you're ready to climb the ladder of power and complexity. Start with the Simple Tiled Model, which we touched on at the start of this post, then move on to the full Overlapping Model. In an Overlapping Model, tiles or pixels influence each other from further away. If you're into this kind of thing `ExUtumno` notes that the Simple Tiled Model is analagous to an order-1 Markov chain, and more complex models are like those of higher order.
 
-Wavefunction Collapse can accomodate additional constraints, like "this tile must be sea", or "this pixel must be red", or "there can only be one monster in the output." This is discussed in the [main project's README][wfc-home]. You can also investigate the performance optimizations made in the full implementation. There's no need to recalculate every square's entropy on every iteration, and information propagation throughout the wavefunction can be made substantially faster. These considerations become more important the larger your output image becomes.
+Wavefunction Collapse can even accomodate additional constraints, like "this tile must be sea", or "this pixel must be red", or "there can only be one monster in the output." This is discussed in the [main project's README][wfc-home]. You can also investigate the performance optimizations made in the full implementation. There's no need to recalculate every square's entropy on every iteration, and information propagation throughout the wavefunction can be made substantially faster. These considerations become more important the larger your output image becomes.
 
 Wavefunction Collapse is a pleasing and powerful tool to have in your toolbox. Next time you're planning a wedding or procedurally generating a world, keep it in mind.
 
