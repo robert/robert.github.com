@@ -2,7 +2,7 @@
 title: The Wavefunction Collapse Algorithm explained very clearly
 layout: post
 tags: [Computer Games]
-og_image: https://robertheaton.com/images/snake-intro.png
+og_image: https://robertheaton.com/images/wfc-terminal.png
 ---
 The Wavefunction Collapse Algorithm teaches your computer how to riff. The algorithm takes in an archetypical input, and produces procedurally-generated outputs that look like it.
 
