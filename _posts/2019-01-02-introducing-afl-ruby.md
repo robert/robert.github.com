@@ -2,12 +2,14 @@
 title: "Introducing afl-ruby: fuzz your Ruby programs using afl"
 layout: post
 tags: []
-og_image: https://robertheaton.com/images/wfc-terminal.png
+og_image: https://robertheaton.com/images/afl-ruby-cover.png
 published: false
 ---
-American Fuzzy Lop ([afl][afl-home]) is a popular fuzzer, traditionally used to find bugs in C and C++ code. [python-afl][python-afl] and [aflgo][aflgo] have adapted it for use with python and go, and now [afl-ruby][afl-ruby] (written by [Richo Healey][richo], with contributions from myself) allows you to use afl to fuzz Ruby programs too.
+American Fuzzy Lop ([afl][afl-home]) is a popular fuzzer, traditionally used to find bugs in C and C++ code. [python-afl][python-afl] and [aflgo][aflgo] have adapted afl for use with python and go, and now [afl-ruby][afl-ruby] (written by [Richo Healey][richo], with contributions from myself) allows you to use afl to fuzz Ruby programs too.
 
 Here's how it works.
+
+<img src="/images/afl-ruby-cover.png" />
 
 [afl-home]: http://lcamtuf.coredump.cx/afl/
 [python-afl]: https://github.com/jwilk/python-afl
@@ -19,7 +21,7 @@ Here's how it works.
 
 ### 1. Write a harness for your code
 
-Fuzzing any program requires a fuzz harness that can be invoked by afl. You'll need to write a harness that:
+Fuzzing any piece of code requires a harness program that can be invoked by afl. You'll need to write a harness that:
 
 * Initializes the [afl forkserver][afl-forkserver] using `AFL.init`
 * Wraps the fuzzable piece of your harness in an `AFL.with_exceptions_as_crashes { ... }` block
@@ -30,34 +32,20 @@ Fuzzing any program requires a fuzz harness that can be invoked by afl. You'll n
 For example:
 
 ```ruby
-def byte
+def next_byte
   $stdin.read(1)
 end
 
-def c
-  r if byte == 'r'
-end
-
-def r
-  s if byte == 's'
-end
-
-def s
-  h if byte == 'h'
-end
-
-def h
-  raise "Crashed"
-end
+def c; r() if next_byte() == 'r'; end
+def r; s() if next_byte() == 's'; end
+def s; h() if next_byte() == 'h'; end
+def h; raise "Crashed"; end
 
 require 'afl'
-
-unless ENV['NO_AFL']
-  AFL.init
-end
+AFL.init unless ENV['NO_AFL']
 
 AFL.with_exceptions_as_crashes do
-  c if byte == 'c'
+  c() if next_byte() == 'c'
   exit!(0)
 end
 ```
@@ -85,8 +73,6 @@ Afl-ruby is not yet available on Ruby gems, so you'll need to clone and build it
 
 Afl finds the crash in the above example program in about 30 seconds on my laptop. Inspecting the `queue/` directory shows the points along the way at which afl realized it had found an interesting new branch.
 
-[PIC of queue]
-
 ## Technical discussion
 
 Afl was originally written to be used against C and C++ targets. How can it be adapted for use with Ruby, Python, and go? In order to answer this question, we'll need to spend a few paragraphs understanding how afl works.
@@ -97,11 +83,11 @@ The execution path of your program is not available to afl by default. In order 
 
 Afl instruments C and C++ programs by requiring them to be compiled with one of its custom compilers (`afl-clang`, `afl-gcc`, `afl-clang-fast`, or their C++ equivalents). These custom compilers inject afl's instrumentation into the necessary locations in your program, but otherwise compile it as normal. Then, whenever it executes an instrumented line of code, your program writes information about the line's number and filename to a *shared memory segment*. This memory segment is shared with the afl process that is fuzzing your program, which means that the afl can see how different test case affects the internal behavior of your program.
 
-[PIC of the system]
+<img src="/images/afl-ruby-overview.png" />
 
-Crucially, this approach to instrumentation means that the `afl-fuzz` command doesn't need to "know" anything about C or C++. When invoking `afl-fuzz`, you pass it the shell command that it should use to invoke your program. `afl-fuzz` then runs your program by shelling out to it, feeds it test cases via `stdin`, and reads information about its execution path directly from its shared memory segment. These are all completely language agnostic processes.
+A crucial consequence of this approach to instrumentation is that the `afl-fuzz` command doesn't actually need to "know" anything about C or C++. When invoking `afl-fuzz`, you pass it the shell command that it should use to invoke your program. `afl-fuzz` then runs your program by shelling out to it, feeds it test cases via `stdin`, and reads information about its execution path directly from its shared memory segment. These are all completely language agnostic processes. Since afl doesn't know or care how data gets into the shared memory segment, we can adapt it to work with a new language by re-implementing its instrumentation in that language.
 
-This means that much of the work needed to adapt afl to new languages (like Ruby) is in adding instrumentation that writes execution path data to afl's shared memory segment. Many languages allow you to hook into their compiler or interpreter. For its part, Ruby has [`TracePoint`][tracepoint], a module in its standard library that allows us to register callbacks that run whenever the Ruby interpreter performs a particular action, such as running a line of code, entering a function, or returning from one. Afl-ruby uses `TracePoint` to register a callback that writes out information about executed files and line numbers to afl's shared memory segment.
+This typically requires a little rooting around in internals, searching for any tools that your language provides for hooking into its compiler or interpreter. For its part, Ruby has [`TracePoint`][tracepoint], a module in its standard library that allows us to register callbacks that run whenever the Ruby interpreter performs a particular action, such as running a line of code, entering a function, or returning from one. Afl-ruby uses `TracePoint` to register a callback that writes out information about executed files and line numbers to afl's shared memory segment.
 
 [tracepoint]: https://ruby-doc.org/core-2.5.0/TracePoint.html
 
@@ -111,14 +97,14 @@ For now afl-ruby only invokes this callback [when a new function is entered][new
 
 ## Differences and similarities between Ruby and C
 
-There are two main differences between the businesses of fuzzing Ruby and C programs. The first is in the type of bug that you can expect or hope to find. The most common bugclasses that fuzzing shakes out of low-level programs are those related to memory-mismanagement, like overflows, underflows, and segfaults. Fuzzers are more likely than humans to hammer programs with 1024 letter "A"s followed by a null byte, and so are more likely to find any bugs that doing so might reveal.
+There are two main differences between the businesses of fuzzing Ruby and C programs. The first is in the bugclasses that you can expect or hope to find. Most of the bugs that fuzzing shakes out of low-level programs are related to memory-mismanagement, like overflows, underflows, and segfaults. This is probably because fuzzers are more likely than humans to hammer programs with 1024 letter "A"s followed by a null byte, and so are more likely to find any bugs that doing so might reveal.
 
-Ruby is a higher-level language than both C and C++, and so is less vulnerable to this kind of low-level goof. It's certainly possible that a `nil` might sneak into a place where a `nil` was not expected, but to find interesting bugs in Ruby code you will likely want to make more use of property-based-testing-style assertions. These are business logic statements that should always be true for every execution of your program, for example "money in should always equal money out" or "non-admins should never perform an admin action". After invoking the main body of your program, you can add if-statements to verify that these statements are indeed true. For example:
+Ruby is a higher-level language than both C and C++, and so is less vulnerable to this kind of low-level goof. It's certainly possible that a `nil` might sneak into a place where a `nil` is not meant to be, but to find interesting bugs in Ruby code you will likely want to make more use of property-based-testing-style assertions. These are business logic statements that should always be true for every execution of your program, for example "money in should always equal money out" or "non-admins should never perform an admin action". After invoking the main body of your program, you can add if-statements to verify that these statements are indeed true. For example:
 
 ```ruby
 AFL.init
 AFL.with_exceptions_as_crashes do
-  run_my_program()
+  money_in, money_out = run_my_program()
   if money_in != money_out
     raise "Money in should always equal money out!"
   end
@@ -129,7 +115,7 @@ end
 
 [assertions]: https://github.com/mirrorer/afl/blob/2fb5a3482ec27b593c57258baae7089ebdc89043/docs/life_pro_tips.txt#L100-L101
 
-Second - Ruby is very slow, at least when compared to C and C++. Even the trivial example harness at the start of this post only reached 100 execs/second on my laptop, compared to real C programs that comfortably hit one or two thousand. You can either wait longer for your results, or look into a distributed fuzzer like [`roving`][roving], also originally built by Richo Healey and developed further by me as part of my work at Stripe.
+Second - Ruby is very slow, at least when compared to C and C++. Even the trivial example harness at the start of this post only reached 100 execs/second on my laptop, compared to C programs that comfortably hit one or two thousand. You can either wait longer for your results, or look into a distributed fuzzer like [`roving`][roving], also originally built by Richo Healey and developed further by me as part of my work at Stripe.
 
 [roving]: https://github.com/richo/roving
 
