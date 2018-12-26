@@ -1,7 +1,7 @@
 ---
 title: "Introducing afl-ruby: fuzz your Ruby programs using afl"
 layout: post
-tags: []
+tags: [Fuzzing, Security]
 og_image: https://robertheaton.com/images/afl-ruby-cover.png
 published: false
 ---
