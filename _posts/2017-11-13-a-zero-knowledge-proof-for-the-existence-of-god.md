@@ -30,7 +30,7 @@ Two bandits cross paths in a dark forest. The moon is behind a cloud; they can�
 
 The notion of a zero-knowledge proof was first proposed in the 1980s by three researchers at MIT, who may or may not also have been bandits. They considered how bandits (and others) could prove statements like “I know the password” or “I have solved this sudoku” to other bandits they didn’t trust, without revealing any extra details like what the password is, or what the actual sudoku solution they’ve found is. The bandit verifying the statement learns nothing new, other than the fact that the statement is true. They are therefore completely unable to re-prove the statement to a third-party, meaning that they can’t get into the camp, and they can’t steal sudoku solutions they didn’t come up with themselves.
 
-This sounded perfect. Never showing Otekah Wrigglesworth the actual solutions to the impossible problems would also reduce the chance of her brain exploding. Being omniscient, Judeo-Christian God had a hard time understanding the fundamental concept behind zero-knowledge proofs, but being omniscient he also managed to figure it out after reading a few blog post.
+This sounded perfect. Never showing Otekah Wrigglesworth the actual solutions to the impossible problems would also reduce the chance of her brain exploding. Being omniscient, Judeo-Christian God had a hard time understanding the fundamental concept behind zero-knowledge proofs, but being omniscient he also managed to figure it out after reading a few blog posts.
 
 ----
 
