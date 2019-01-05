@@ -2,23 +2,24 @@
 title: "Third-party dream cookies"
 layout: indented_post
 tags: [Online Tracking]
-og_image: https://robertheaton.com/images/afl-ruby-cover.png
-published: false
+og_image: https://robertheaton.com/images/dream-cookie-cover.png
 ---
 <br/>
 It's yet another night.
 
-Your good friend, Wendy Wrigglesworth, is having the most harrowing nightmares of her life. They have made her terrified of even setting foot in the bedroom portion of her studio apartment, and have forced her to decamp to the living room portion. This morning, after hours of futile tossing and turning, Wendy finally falls into a shallow, restless sleep.
+<img src="/images/dream-cookie-cover.png" />
 
-She lands in the same dream as yesterday's night, and the night before that. She's in a vast museum. It's bright, ugly and bursting with visitors. Exhibits jostle for position in the most prominent, high traffic locations. Here's one about Brexit. Here's one about the top ten reasons not to drink paint. No one in the museum sees or hears each other. Below each exhibit is a void and a megaphone. Angry patrons seize the megaphones and scream about their hatred of the exhibit, the museum or, most often, themselves. The void thanks them for their contribution.
+Your good friend, Wendy Wrigglesworth, is having the most harrowing nightmares of her life. They have made her terrified of even setting foot in the bedroom side of her studio apartment, and have forced her to decamp to the living room corner. This morning, after hours of futile tossing and turning, Wendy finally falls into a shallow, restless sleep.
+
+She lands in the same dream as yesterday's night, and the night before that. She's in a vast museum. It's bright, ugly and bursting with visitors. Exhibits jostle for position in the most prominent, high traffic locations. Here's one about Brexit. Here's one about the ten least controversial episodes of *Friends*. No one in the museum sees or hears each other. Below each exhibit is a void and a megaphone. Angry patrons seize the megaphones and scream about their hatred of the exhibit, the museum or, most often, themselves. The void thanks them for their contribution.
 
 Wendy dislikes the museum. It's trite and boring, and she can't remember how she got there. But there's still something oddly compelling about it, and she finds it very hard to look away. Out of curiosity, she walks over to an exhibit that promises to tell her which Spice Girl she is (it's a trick question - she is not actually a member of the Spice Girls).
 
 A robot the size of a can of coke floats down from the ceiling. "Hello Wendy!" it says. "I heard that you like power drills! Would you like to buy this power drill?" Wendy is perturbed - she does indeed like power drills, but who told the robot? "No, please just leave me alone," she says, tired and grumpy even inside her dream. The robot flashes its lights to indicate understanding. "I'm sorry! I didn't realize!" It pauses. "Would you like to buy this knock-off Harry Potter figurine?"
 
-Wendy's perturbation deepens. She had been looking for off-brand Hermionish dolls only yesterday.  "No, I don't want any of your stuff." "Are you sure? We really think you do, and we know an awful lot about you." Pause. "What about this carrot? We selected it to match your exact taste!" "Jesus Christ no, just leave me alone, forget about me!"
+Wendy's perturbation deepens. She had been looking for off-brand Hermionish dolls only yesterday.  "No, I don't want any of your stuff." "Are you sure? We really think you do, and we know an awful lot about you." Pause. "What about these sleeping pills?" "Jesus Christ no, just leave me alone, forget about me!"
 
-"It's quite alright Wendy, this personalized advertising service is free of charge and no bother at all!" "I don't think you're understanding what I'm saying." "I'm hearing you loud and clear. Don't worry, we're all working on making your experience even more bespoke and consistent as we speak." Wendy deletes her cookies and the museum flickers.
+"It's quite alright Wendy, this personalized advertising service is free of charge and no bother at all!" "I don't think you're understanding what I'm saying." "I'm hearing you loud and clear, don't worry. We're all working on making your experience even more bespoke and consistent as we speak." Wendy deletes her dream cookies and the museum flickers.
 
 The robot reboots. "Hello! What's your name?" "Thanks but I'm really just here for the Spice Girls quiz." "Great! Here, have a tracking cookie! Complementary and on the house!" "Absolutely not." "If you don't take it then many of your favorite news outlets will go out of business!" "Oh god damn it, go on then." "Wendy! Great to see you again! Would you like to finally buy that power drill?" Wendy screams and her alarm goes off.
 
@@ -30,31 +31,31 @@ Malcolm Malcolmsberry, psychotherapist, takes a long chew of the left arm of his
 
 ----
 
-It's the next night. Wendy gets home at two am from a particularly ghoulish day at work and is blackout drunk within half an hour. She finds herself in the same museum, with the same robot, talking about the same power drill. The robot looks somehow more powerful than the day before. When it all gets too much, Wendy deletes her cookies again. The museum flickers and the robot reboots, but it barely misses a beat.
+It's the next night. Wendy gets home at two am from a particularly ghoulish day at work and is blackout drunk within half an hour. She finds herself in the same museum, with the same robot, talking about the same power drill. The robot looks somehow more powerful than the day before. When its aggressive blathering becomes too much, Wendy deletes her dream cookies again. The museum flickers and the robot reboots, but it barely misses a beat.
 
 "Hi Wendy! We've only got one unlicensed Harry Potter figurine left, you should buy it!" "How is this possible?" says Wendy, backing away. "How do you still know who I am?" "Of course I know who you are Wendy! And a good thing too, otherwise you might have missed out on our last Rong Weasely! Did I mention that there's only one left?" Wendy screams, but her alarm isn't scheduled to go off for another three hours. She turns and runs, but the robot floats after her. "Season 5 of Lost on DVD!" Wendy spots a fire escape. "Discount psychotherapists specializing in technology-induced malaise!" She dives through the exit, but lands awkwardly and cracks her skull on the floor. She is knocked out dream cold.
 
 There is no Inception.
 
-Wendy regains dream consciousness. She slowly looks around. The robot that had been pursuing her is nowhere to be seen. She's in another museum. It's much smaller than the first, but rather more tastefully decorated. Nothing flashes, and nothing is neon. Just nice, calming pastels. She spots a longform exhibit about the opioid crisis. As she walks over to it, another robot drifts down from the ceiling. It's clunkier and more awkward than the first, about the size of a wine bottle. "Hello! What's your name? What kind of stuff do you like? Would you like a tracking cookie?" Wendy breathes a sigh of relief and tells it to go float into a lake. It's good to be somewhere where nobody knows your preferences.
+Wendy regains dream consciousness. She slowly looks around. The robot that had been pursuing her is nowhere to be seen. She's in another museum. It's much smaller than the first, but rather more tastefully decorated. Nothing flashes, and nothing is neon. Just nice, calming pastels. She spots a longform exhibit about the opioid crisis. As she walks over to it, another robot drifts down from the ceiling. It's clunkier and more awkward than the first, about the size of a wine bottle. "Hello! What's your name? What kind of stuff do you like? Would you like a tracking cookie? Please?" Wendy breathes a sigh of relief and tells it to go float into a lake. It's good to be somewhere where nobody knows your preferences.
 
 As she wakes up, images of the chase in the first museum flash before her blurry eyes. She has to know what happened back there.
 
 ----
 
-"I deleted my cookies Malcolm! And it still knew who I was! How did it do that?"
+"I deleted my cookies Malcolm! And the robot still knew who I was! How did it do that?"
 
 Malcolm Malcolmsberry takes another long chew of the left arm of his glasses. A big chunk breaks off in his mouth. He pretends to cough and hides the shards of glasses down the side of his leather armchair. "It must be using an Evercookie."
 
 "What's an Evercookie?"
 
-"An Evercookie is a piece of data replicated in as many storage mechanisms and caches in your browser as possible. It stores your tracking ID in a normal cookie, a flash cookie, HTML5's session, local and global storage, and many other places. If you clear any of these stores, the Evercookie uses the information in the other stores to regenerate itself."
+"An Evercookie is a piece of data replicated in as many of your browser's storage mechanisms and caches as it can worm its way into. The Evercookie stores your tracking ID in a normal cookie, a flash cookie, HTML5's session, local and global storage, and many other places. If you clear any of these stores, the Evercookie uses the information in the other stores to regenerate itself."
 
 "So when I deleted my dream cookies…"
 
-"...the Evercookie simply retrieved your tracking ID from one of the tens of other places it had stored it instead. Did you check your cookies before you left the museum?"
+"...the Evercookie simply retrieved your tracking ID from one of the tens of other places it had stored it instead. Did you check your dream cookies before you left the museum?"
 
-"Of course I didn't, who does that?"
+"Of course I didn't."
 
 "Next time, follow the instructions on this pamphlet. I strongly suspect you will see that your cookie was respawned."
 
@@ -72,7 +73,7 @@ When Wendy gets home she procrastinates on the internet in the bath. She falls a
 
 There's wickedness for the resting.
 
-As always, the floating spam robot in the first museum recognizes her instantly. She knows that she can't outrun it, but she does her best to ignore it. She keeps her eyes to the floor, blocking out the spam robot, and focuses on finding the exit. She walks straight through the ethereal forms of thousands of other museum goers, but none of them notice.  She makes it safely to the second, tasteful museum, and slams the door behind her.
+As always, the floating spam robot in the first museum recognizes her instantly. She knows that she can't outrun it, but she does her best to ignore it. She keeps her eyes to the floor, blocking out the spam robot, and focuses on finding the exit. She walks straight through the ethereal forms of thousands of other museum goers, but none of them notice.  She makes it safely to the second, more tasteful museum, and slams the door behind her.
 
 She walks over to the longform exhibit about the opioid crisis. The second museum's robot glides up behind her. "Hello Wendy! My friends told me that you like power drills! Would you like to buy this power drill?" Wendy screams. It can't be. How does this museum suddenly know who she is too? She has only been here once before, and she never told it anything about herself or her interest in DIY. She tries deleting her cookies. "How about this knock-off Harry Potter figurine? Genuine Fakeo Malfoy!" Nothing left to do but run.
 
@@ -84,7 +85,7 @@ Suddenly "Hello! What's your name?" She stops dead, panting. "You don't know who
 
 "I can't take this any more Malcolm. What's happening to me? How does everyone know who I am?"
 
-Malcolm Malcolmsberry has started wearing contact lenses. He gnaws on the end of his pen. "It's impossible to say for sure without scanning the insides of the tracking companies. It could be [cookie syncing][cookie-syncing]. Perhaps an [identity graph][identity-graph]. Or maybe [browser fingerprinting][we-see-you], your IP address, or just spooky chance."
+Malcolm Malcolmsberry has started wearing contact lenses. He gnaws on the end of his pen. "It's impossible to say for sure without scanning the insides of the tracking companies. It could be [cookie syncing][cookie-syncing]. Perhaps an [identity graph][identity-graph]. Or maybe [browser fingerprinting][we-see-you]; your IP address; or just spooky chance."
 
 [cookie-syncing]: /2017/11/21/cookie-syncing-how-online-trackers-talk-about-you-behind-your-back
 [identity-graph]: /2017/11/24/identity-graphs-how-online-trackers-follow-you-across-devices
@@ -102,4 +103,4 @@ Malcolm Malcolmsberry has started wearing contact lenses. He gnaws on the end of
 
 ----
 
-Wendy leaves Malcolm's office. She swears off of online retail for good. She buys some over-the-counter medication from a major national pharmacy. The pharmacy sells her loyalty card data to a large online data broker. The system continues to work.
+Wendy leaves Malcolm's office. She swears off of online retail for good. She buys some over-the-counter stress medication from a major national pharmacy. The pharmacy sells her loyalty card data to a large online data broker. The system continues to work.
