@@ -7,24 +7,26 @@ published: false
 ---
 Your good friend, Kate Kateberry, used to work as a technological consultant to dictators. She travelled the world, teaching repulsive regimes the value of a good wi-fi surveillance network. She built them systems that collected the wi-fi signals emitted by their subjects' smartphones and that used this data to track their entire population's locations in real-time. Her clients used her work to keep their dissidents downtrodden and to show them precisely targeted online ads for consumer goods.
 
-<img src="/images/wifi-map.png" />
+<p style="text-align: center">
+<img src="/images/wifi-protestor.png" />
+</p>
 
 A few months ago, after one pang of conscience too many manifested itself as a serious heart episode, Kate retired from the despot-device-tracking business. Nowadays she only uses her powers for good, and occasionally for pranks on sufficiently deserving victims.
 
-Which brings us to your good friend and mortal enemy, Steve Steveington.
+Which brings us to your mutual friend and mortal enemy, Steve Steveington.
 
-After [many][fb] [years][whatsapp1] [of][whatsapp2] [trading][re] [gentle][tinder], good-natured pranks, the Stevester has gone too far. He managed to convince you that he had an inside line to Hobert Reaton, serial sketchy adtech entrepreneur and founder of both [WeSeeYou][we-see-you] and [I Might Be Spartacus][spartacus]. Steve led you to believe that Hobert was starting a new company that made electric cars equipped with extremely invasive driver behavior tracking. Hobert was looking for wise, thoughtful investors interested in making huge, guaranteed, and immediate returns on their life savings.
+After [many][fb] [years][whatsapp1] [of][whatsapp2] [trading][re] [gentle][tinder], good-natured pranks, this time the Stevester has gone too far. He managed to convince both you and Kate that Hobert Reaton (serial sketchy adtech entrepreneur and founder of both [WeSeeYou][we-see-you] and [I Might Be Spartacus][spartacus]) was starting a new company, and was looking for thoughtful investors interested in making huge, guaranteed, and immediate returns on their life savings.
 
 [we-see-you]: https://robertheaton.com/2017/10/17/we-see-you-democratizing-de-anonymization/
 [spartacus]: https://robertheaton.com/2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/
 
-Of course you jumped at the opportunity, just like any normal person would. Only after your wire transfer had cleared did Steve reveal that it had all been a ruse. The bank account to which you had just sent your last dollar did not actually belong to *SpyCar Inc*. It was in fact the general fund of the North Korean government. Your money is gone forever, and you will almost certainly be indicted by the Federal government for sanctions breaking.
+As you now know, this was nothing more than a ruse, designed to trick you and Kate into transferring all of your money to the general fund of the North Korean government. You are now both almost entirely broke, and Kate has been indicted by the Federal government for economic sanctions breaking. The two of you have sworn a terrible revenge on the Steveington responsible for your downfalls.
 
-You are quite peeved.
+At first Kate just wants to kill him - keep things simple. You try to explain to her that [that's][fb] [not][whatsapp1] [how][whatsapp2] [you][re] [normally][tinder] handle these kinds of things. Eventually you compromise.
 
-Unfortunately for Steve, your enthusiasm for *SpyCar Inc.* was infectious, and you also persuaded Kate Kateberry to plow her entire investment portfolio into this dumb deal. When she finds out the truth she is furious, and swears a terrible vengeance on the Steveington responsible.
+You will not kill Steve - for now - but you will turn his life into a real-world Truman Show. You will set up a city-wide array of wi-fi monitoring devices called [Pineapples][pineapple]. You will combine them with Kate's world-class knowledge of privacy vulnerabilities in the wi-fi protocol in order to track Steve and his smartphone's every move. You will follow him as he shambles from his home, to work, back home, and then hopefully onward to somewhere embarrassing and ideally illegal. You will broadcast these movements live at `thesteveingtonshow.com`. If all goes well then the show will become a cult hit and Steve a world-wide laughing stock. You will then reveal to him what terrible revenge you have wrought over coffee and bagels. You will fund the venture through an illegal gambling operation based on Steve's life and by selling weird, inappropriate merchandise with his stupid face on it.
 
-At first Kate just wants to kill Steve - keep things simple. You try to explain to her that [that's][fb] [not][whatsapp1] [how][whatsapp2] [you][re] [normally][tinder] handle these kinds of things. You were thinking that maybe you could trick him into buying a DVD he didn't really want, or at the absolute most into sawing off his own leg.
+[pineapple]: https://www.wifipineapple.com/
 
 [fb]: https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/
 [whatsapp1]: https://robertheaton.com/2016/10/22/a-tale-of-love-betrayal-social-engineering-and-whatsapp/
@@ -32,21 +34,21 @@ At first Kate just wants to kill Steve - keep things simple. You try to explain 
 [re]: https://robertheaton.com/2018/05/01/re-all-those-regrettable-posts-that-you-thought-were-gone/
 [tinder]: https://robertheaton.com/2018/07/09/how-tinder-keeps-your-location-a-bit-private/
 
-Eventually you compromise. You will not kill Steve - for now - but you will turn his life into a real-world Truman Show. You will set up a city-wide array of wi-fi monitoring devices called [Pineapples][pineapple]. You will combine them with Kate's world-class knowledge of privacy vulnerabilities in the wi-fi protocol in order to track Steve and his smartphone's every move. You will follow him as he shambles from his home, to work, back home, and then hopefully onward to somewhere embarrassing and ideally illegal. You will broadcast these movements live at `thesteveingtonshow.com`. If all goes well then the show will become a cult hit and Steve a world-wide laughing stock. You can then reveal to him what terrible revenge you have wrought over coffee and bagels. You will fund the venture through an illegal gambling operation based on Steve's life and by selling weird, inappropriate merchandise with his stupid face on it.
-
-[pineapple]: https://www.wifipineapple.com/
-
 Before you start nailing down the technical details of the Steveington Show, the Katester runs you through a brief history of wi-fi-based tracking attacks and how she used them during her consulting years. After she has outlined the first few attacks, you quietly pull out your battered iPhone 4, still running an unpatched, unsupported version of iOS7, and gingerly put it into airplane mode.
 
 ## An introduction to wi-fi
 
-In order for Steve's smartphone to use wi-fi, it needs to maintain an up-to-date list of nearby wireless networks that it can connect to. It seeks out nearby networks in the same way as overnight visitors to your house do - by constantly and repeatedly shouting "HEY HEY ARE THERE ANY WI-FI NETWORKS AROUND HERE I CAN GET ON?". Steve's smartphone spews out this demand every couple of seconds in the form of a *probe request*. When a wi-fi router receives one of these requests it responds with its own *probe response*, which contains its network name or *SSID* (eg. `StarbucksGuest`) and other metadata. Steve's smartphone picks up the probe response, and adds the SSID to the list of available networks that it displays to its insipid, witless user. There is a further sequence of call-and-response messages that Steve's smartphone exchanges with a router in order to actually connect to it, but we need not be concerned with them here.
+In order to identify and connect to each other, wi-fi enabled devices like smartphones need to belch out an enormous amount of near-continuous chatter. Wireless communication is intrinsically public and interceptable, and so some amount of information leakage is unavoidable. This makes the wi-fi protocol fraught with potential privacy pitfalls.
+
+To start with, smartphones need to maintain an up-to-date list of nearby wireless networks that they can connect to. They seek out nearby networks in the same way as overnight visitors to your house do - by constantly and repeatedly shouting "HEY HEY ARE THERE ANY WI-FI NETWORKS AROUND HERE I CAN GET ON?". A smartphone spews out this demand every couple of seconds in the form of a *probe request*. When a wi-fi router receives one of these requests it responds with its own *probe response*, which contains its network name or *Service Set Identifier* (eg. `StarbucksGuest`) and other metadata. The smartphone picks up the probe response, and adds the service set identifier (SSID) to the list of available networks that it displays to its user. There is a further sequence of call-and-response messages that the smartphone exchanges with a router in order to actually connect to it, but we need not be concerned with them here.
 
 <p style="text-align: center">
 <img src="/images/wifi-settings.jpg" width="500" />
 </p>
 
-This is all an enormous amount of easily-interceptible chatter for a portable device to belch out, and since wireless communication is inherently public and interceptable, some amount of information leakage is unavoidable. Short of disabling a device's wi-fi mode altogether, there is no good way to prevent trackers from noticing that a device is nearby, or even from using *triangulation* to locate said device to within a few meters of accuracy. They key battle in wi-fi privacy is therefore not whether users can go completely undetected, but whether they can remain anonymous. Can they blend into the crowd and prevent their activities from different times and spaces from being linked together into a much more detailed, holistic, and troubling profile?
+Request probes are intended for routers, but can be picked up by anything or anyone. Short of disabling a device's wi-fi mode altogether, there is no good way to prevent trackers from hoovering up request probes and using them detect when a device is nearby. There isn't even any good way to prevent them from using *triangulation* (see below) to locate a device to within a few meters of accuracy.
+
+The key battle in wi-fi privacy is therefore not whether users can go completely undetected, but whether they can remain anonymous. Can they blend into the crowd and prevent their activities from different times and spaces from being linked together into a much more detailed, holistic, and troubling profile?
 
 <img src="/images/wifi-mac-address.png" />
 
@@ -70,15 +72,21 @@ This made Kate Kateberry's job of identifying and tracking individuals and their
 
 ## 2. Tracking devices by their MAC address, part 2
 
-Academics were the first to consider - or at least the first to care about - the privacy implications of portable devices that squawk out a unique identifier every couple of seconds. Researchers began pestering the smartphone industry to improve, and in 2014 Apple announced that iOS8 would be the first mobile operating system to perform *MAC address randomization*. iOS8 devices would still include a MAC address with their request probes, but it would be a randomly generated one that changed every few minutes. This would prevent trackers from following an individual for more than a short period at a time, at which point their device would abruptly change its MAC address and melt back into the crowd. However, this was far from the end of the story. Here's Kate:
+Academics were the first to consider - or at least the first to care about - the privacy implications of portable devices that squawk out a unique identifier every couple of seconds. Researchers began pestering the smartphone industry to improve, and in 2014 Apple announced that iOS8 would be the first mobile operating system to perform *MAC address randomization*. iOS8 devices would still include a MAC address with their request probes, but it would be a randomly generated one that changed every few minutes. This would prevent trackers from following an individual for more than a short period at a time, as devices would frequently rotate their MAC addresses and melt back into the crowd. However, this was far from the end of the story. Here's Kate:
 
-"My first job after the release of iOS8 was for an industry group of Las Vegas casinos. They wanted to use wi-fi-based tracking to build a shared list of Blackjack card-counters and their MAC addresses. Known nogoodniks often show up to casinos in deep disguise. The casinos wanted a system that used cheaters' chattering smartphones to uncover their true identity.
+"My first job after the release of iOS8 was for an industry group of Las Vegas casinos. They wanted to use wi-fi-based tracking to build a shared list of Blackjack card-counters and their MAC addresses. Known nogoodniks often show up to casinos in deep disguise. The casinos wanted a system that used cheaters' chattering smartphones to uncover their true identities.
 
 <img src="/images/wifi-casino.png" />
 
 "MAC address randomization certainly made my task harder. Fortunately, even devices performing MAC address randomization for their probe requests still switch back to using their real MAC address once they have connected to a network. I therefore did whatever it took to convince casino patrons to connect to a wi-fi network controlled by a casino. I insulated the casinos from cell reception, forcing gamblers to connect to the `FreeCasinoWifi` network if they wanted to talk to the outside world. I set up fake *Evil Twin* networks that looked like common nationwide networks like `Verizon Wi-Fi`. If a patron's phone had ever previously connected to `Verizon Wi-Fi` then it would automatically try to re-connect to my Evil Twin, inadvertently revealing its real MAC address.
 
-"Whenever casino security identified a new card-counter, they used my tracking system to skim the grifter's MAC address and added it to the industry blocklist. If the swindler's smartphone ever set foot in a casino again then an alert fired and the gentleman and the lady in the ginger wigs were swiftly escorted off the premises.
+"Whenever casino security identified a new card-counter, they used my tracking system to skim the grifter's MAC address and added it to the industry blocklist. My system matched a MAC address to a person using a technique called *triangulation*.
+
+"To perform triangulation, I distributed multiple wireless access points (APs) throughout the casino. Whenever a customer's smartphone emitted a wi-fi message, the message was picked up by each AP at fractionally different times, depending on the smartphone's distance from the AP. I compared these times, calculated the differences, and used them to deduce the location of the smartphone and match it to a person.
+
+<img src="/images/wifi-triangulation.png" />
+
+"If a swindler's smartphone ever set foot in a casino again then an alert fired and the gentleman and the lady in the ginger wigs were swiftly escorted off the premises.
 
 "I enjoyed this job."
 
@@ -94,9 +102,11 @@ Just like normal probes, targeted probes were transmitted every few seconds, in 
 
 <img src="/images/wifi-wardrive.png" />
 
-What's more, given enough SSIDs, a tracker could create an *SSID fingerprint* that would often uniquely identify a single device. Very few devices have connected to all 3 of `steve-steveington-home`, `UC_BERKELEY_GUEST` and `SONIC-3991_3`. This makes this short list of SSIDs a very powerful personal identifier, even in the face of defensive MAC address randomization. Suppose that a tracker picks up 3 targeted probe requests addressed to the above 3 networks. Later that day it sees 3 more probe requests, addressed to the same 3 networks, but this time on the other side of the city. It's pesos to pizza that all of these probe requests came from the same device. This would allow the tracker to link the 2 wi-fi sessions into the same target profile, without needing to know anything about the target device's MAC address. Kate continues:
+What's more, given enough SSIDs, a tracker could create an *SSID fingerprint* that would often uniquely identify a single device. Very few devices have connected to all 3 of `steve-steveington-home`, `UC_BERKELEY_GUEST` and `SONIC-3991_3`. This makes this short list of SSIDs a very powerful personal identifier, even in the face of defensive MAC address randomization. Suppose that a tracker picks up 3 targeted probe requests addressed to the above 3 networks. Later that day it sees 3 more probe requests, addressed to the same 3 networks, but this time on the other side of the city. It's pesos to pizza that all of these probe requests came from the same device. This would allow the tracker to link the 2 wi-fi sessions into the same target profile, without needing to know anything about the target device's MAC address.
 
-"My good buddy, Prithi Prithibeta, and I were in training for an arduous charity walk. However, I developed reason to suspect that she was losing her commitment to the training program I had drawn up. I had a hunch that she was staying out far too late at the hospital instead of getting the 8 hours of sleep that my program demanded. So, after one of our training sessions, I secretly installed a wi-fi monitoring device outside her apartment.
+Around 2014, the privacy implications of targeted probe requests started to become widely publicized and understood. Most new devices therefore stopped sending them. Kate has this to add:
+
+"In 2012 my good buddy, Dr. Prithi Prithibeta, and I were in training for an arduous charity walk. However, I developed reason to suspect that she was losing her commitment to the training program I had drawn up. I had a hunch that she was staying out far too late performing 'life-saving surgeries' at the hospital instead of getting the 8 hours of sleep that my program demanded. So, after one of our training sessions, I secretly installed a wi-fi monitoring device outside her apartment.
 
 "Prithi lives with 8 roommates, each of whom owns several phones, laptops and Xboxes. These machines all pummeled my monitoring equipment with numerous fists of noisy chatter. Nonetheless, picking out the telltale fingerprint of Prithi's phone using the long list of previously-seen SSIDs that it broadcasted was trivial. As soon as I picked up simultaneous probe requests addressed to `new_york_general`, `prithibeta-family` and `XFINITY-18819`, I knew that Prithi and her smartphone had returned home. When I analyzed the data, I saw that she was indeed staying out performing surgeries well into the early hours of the morning, in direct contravention of the strict requirements of my training program. I was disappointed but not surprised. I confronted her with my evidence. Harsh words were exchanged and not taken back, and our charity walk team disbanded. I have no regrets."
 
@@ -106,14 +116,14 @@ When the privacy implications of targeted request probes became widely appreciat
 
 For example, *Information Elements* (IEs) are pieces of additional information that a device can send to a router when connecting to it. IEs can include helpful information about a device's country, its power constraints, and any vendor-specific properties that might be relevant. The purpose of IEs is to improve communication between a device and a network. However, IEs come in such a wide range of different types and values that very few devices share the exact same combination. This means that the list of IEs that a device advertises can be used as another form of near-unique fingerprint, in much the same way as the list of network SSIDs that a device has previously connected to.
 
-[Empirical studies have shown][ie-study] that IE fingerprints are somewhat less unique than those created from SSIDs or internet browser settings (see the [EFF's Panopticlick project][panopticlick]). It appears that some devices *do* advertise the exact same set of IEs, and so have the exact same IE fingerprint. However, even devices in the same location with the same IE fingerprint can often be de-duplicated using the *ordered sequence numbers* that they increment and append to each successive probe request. Kate doesn't have the time to go into this in detail, but she does have this to add:
+[Empirical studies have shown][ie-study] that IE fingerprints are somewhat less unique than those created from SSIDs or internet browser settings (see the [EFF's Panopticlick project][panopticlick]). It appears that some devices *do* advertise the exact same set of IEs, and so have the exact same IE fingerprint. However, even devices in the same location with the same IE fingerprint can often be de-duplicated using the *ordered sequence numbers* that they increment and append to each successive probe request. Kate doesn't have the time to go into this in detail, but she does have this anecdote to add:
 
 [ie-study]: http://papers.mathyvanhoef.com/asiaccs2016.pdf
 [panopticlick]: https://panopticlick.eff.org/
 
 "I once did a contract for a major big-box electronics retailer. Customers would often come agonizingly close to buying a big-ticket item, but eventually leave with their money still in their pocket. The higher-ups at [redacted] wanted to know who these people were and how to contact them so that they could target them with a follow-up firestorm of online ads.
 
-"I built [redacted] a state-of-the-art system that tracked customer movements throughout their stores using a multi-layered synthesis of techniques. We started by trying to follow them using their device's MAC address. We fell back to SSID fingerprinting if their device was performing MAC address randomization, and we fell back further to IE fingerprinting if their device wasn't advertising its previously connected networks.
+"I built [redacted] a state-of-the-art system that tracked customer movements throughout their stores using triangulation and a multi-layered synthesis of tracking techniques. We started by trying to follow them using their device's MAC address. We fell back to SSID fingerprinting if their device was performing MAC address randomization, and we fell back further to IE fingerprinting if their device wasn't advertising its previously connected networks.
 
 "Once we had locked onto a customer's device, we did whatever we could to get their email address. We had generous in-store promotions that required email addresses for participation, plus big incentives to swipe loyalty cards. When a target non-buyer swiped their card in order to receive their 50 [Redacted] Club Points as a thank you for visiting, we used our wi-fi tracking system to link their loyalty account to their smartphone. We looked at the path they had taken through the store, and checked where they had been vacillating.
 
