@@ -75,19 +75,19 @@ Afl finds the crash in the above example program in about 30 seconds on my lapto
 
 ## Technical discussion
 
-Afl was originally written to be used against C and C++ targets. How can it be adapted for use with Ruby, Python, and go? In order to answer this question, we'll need to spend a few paragraphs understanding how afl works.
+Afl was originally written to be run against C and C++ targets. In order to understand how it can it be adapted for use with Ruby, Python, and go, we'll need to spend a few paragraphs understanding how afl works.
 
 Afl observes how different test cases change the execution path of your program, and uses this information to skillfully generate further interesting test cases. For example, afl might notice that if it twiddles the 10th byte of a test case *just so* then it triggers a new branch of a switch-statement inside your program. It will remember this useful nugget, and use it to design new test cases that continue to explore this uncharted section of your program.
 
 The execution path of your program is not available to afl by default. In order to get this information, afl needs to augment your program with additional instrumentation that records (a representative sample of) the files and line numbers that get executed.
 
-Afl instruments C and C++ programs by requiring them to be compiled with one of its custom compilers (`afl-clang`, `afl-gcc`, `afl-clang-fast`, or their C++ equivalents). These custom compilers inject afl's instrumentation into the necessary locations in your program, but otherwise compile it as normal. Then, whenever it executes an instrumented line of code, your program writes information about the line's number and filename to a *shared memory segment*. This memory segment is shared with the afl process that is fuzzing your program, which means that the afl can see how different test case affects the internal behavior of your program.
+Afl instruments C and C++ programs by requiring them to be compiled with one of its custom compilers (`afl-clang`, `afl-gcc`, `afl-clang-fast`, or their C++ equivalents). These custom compilers compile your program as normal, but also inject afl's instrumentation code. Then, whenever it executes an instrumented line of code, your program writes information about the line's number and filename to a *shared memory segment*. This memory segment is shared with the afl process that is fuzzing your program, which means that the afl can see how different test case affects the internal behavior of your program.
 
 <img src="/images/afl-ruby-overview.png" />
 
-A crucial consequence of this approach to instrumentation is that the `afl-fuzz` command doesn't actually need to "know" anything about C or C++. When invoking `afl-fuzz`, you pass it the shell command that it should use to invoke your program. `afl-fuzz` then runs your program by shelling out to it, feeds it test cases via `stdin`, and reads information about its execution path directly from its shared memory segment. These are all completely language agnostic processes. Since afl doesn't know or care how data gets into the shared memory segment, we can adapt it to work with a new language by re-implementing its instrumentation in that language.
+A crucial consequence of this approach to instrumentation is that the `afl-fuzz` command doesn't actually need to "know" anything about C or C++. When invoking `afl-fuzz`, you pass afl the shell command that it should use to invoke your program. `afl-fuzz` then runs your program by shelling out to it, feeds your program test cases via `stdin`, and reads information about your program's execution path directly from its shared memory segment. These are all completely language agnostic processes. Since afl doesn't know or care how data gets into the shared memory segment, we can adapt it to work with a new language by re-implementing its instrumentation in that language.
 
-This typically requires a little rooting around in internals, searching for any tools that your language provides for hooking into its compiler or interpreter. For its part, Ruby has [`TracePoint`][tracepoint], a module in its standard library that allows us to register callbacks that run whenever the Ruby interpreter performs a particular action, such as running a line of code, entering a function, or returning from one. Afl-ruby uses `TracePoint` to register a callback that writes out information about executed files and line numbers to afl's shared memory segment.
+This typically requires a little rooting around in internals, searching for tools that allow us to hooking into the new language's compiler or interpreter. Ruby has [`TracePoint`][tracepoint], a module in the standard library that allows us to register callbacks that run whenever the Ruby interpreter performs a particular action, such as running a line of code, entering a function, or returning from one. Afl-ruby uses `TracePoint` to register a callback that writes out information about executed files and line numbers to afl's shared memory segment.
 
 [tracepoint]: https://ruby-doc.org/core-2.5.0/TracePoint.html
 
@@ -95,11 +95,11 @@ For now afl-ruby only invokes this callback [when a new function is entered][new
 
 [new-function]: https://github.com/richo/afl-ruby/blob/a56684bf1271eff07604cea2dd7448d0572b47f2/lib/afl.rb#L17-L19
 
-## Differences and similarities between Ruby and C
+## Differences and similarities between fuzzing Ruby and C
 
-There are two main differences between the businesses of fuzzing Ruby and C programs. The first is in the bugclasses that you can expect or hope to find. Most of the bugs that fuzzing shakes out of low-level programs are related to memory-mismanagement, like overflows, underflows, and segfaults. This is probably because fuzzers are more likely than humans to hammer programs with 1024 letter "A"s followed by a null byte, and so are more likely to find any bugs that doing so might reveal.
+There are two main differences between the businesses of fuzzing Ruby and C programs. The first is in the bugclasses that you can expect or hope to find. Most of the bugs that fuzzing shakes out of low-level programs are related to memory-mismanagement, such as overflows, underflows, and segfaults. This is probably because fuzzers are more likely than humans to hammer programs with 1024 letter "A"s followed by a null byte, and so are more likely to find any bugs that doing so might reveal.
 
-Ruby is a higher-level language than both C and C++, and so is less vulnerable to this kind of low-level goof. It's certainly possible that a `nil` might sneak into a place where a `nil` is not meant to be, but to find interesting bugs in Ruby code you will likely want to make more use of property-based-testing-style assertions. These are business logic statements that should always be true for every execution of your program, for example "money in should always equal money out" or "non-admins should never perform an admin action". After invoking the main body of your program, you can add if-statements to verify that these statements are indeed true. For example:
+Ruby is a higher-level language than both C and C++, and so is less vulnerable to this kind of low-level goof. To find interesting bugs in Ruby code you will likely want to make more use of property-based-testing-style assertions. These are business logic statements that should always be true for every execution of your program, for example "money in should always equal money out" or "non-admins should never perform an admin action". After invoking the main body of your program, you can add if-statements to verify that these statements are indeed true. For example:
 
 ```ruby
 AFL.init
@@ -111,7 +111,7 @@ AFL.with_exceptions_as_crashes do
 end
 ```
 
-`lcamtuf`, the creator of afl, discusses this approach briefly in [the afl docs][assertions].
+`lcamtuf`, the creator of afl, discusses this approach briefly in [the afl docs][assertions]. It's also possible that you made a pure programming error and allowed a `nil` to sneak into a place where a `nil` was never meant to be, but business-logic assertions are likely to be where you'll find the juiciest bugs.
 
 [assertions]: https://github.com/mirrorer/afl/blob/2fb5a3482ec27b593c57258baae7089ebdc89043/docs/life_pro_tips.txt#L100-L101
 
