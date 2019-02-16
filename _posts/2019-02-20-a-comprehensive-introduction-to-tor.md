@@ -2,12 +2,12 @@
 title: "A comprehensive introduction to Tor"
 layout: post
 tags: [Security]
-og_image: https://robertheaton.com/images/afl-ruby-cover.png
+og_image: https://robertheaton.com/images/tor-cover.png
 published: false
 ---
 Person X is a pro-democracy activist who lives in an anti-democratic country. She uses the internet to communicate with other activists and human rights watchdogs. Person X is not her real name, but that's OK because she's not a real person either. The government controls her country's only Internet Service Provider, and it uses this power to run a very effective online censorship and spying program. The internet is a dangerous place for Person X.
 
-[PIC of something]
+<img src="/images/tor-cover.png" />
 
 The first time that Person X used the internet to communicate with her fellow activists, she did so using unencrypted HTTP. The government was monitoring her network traffic, and was able to record the websites that she visited, the passwords that she used, and the messages that she sent. Once the government had seen enough, they arrested Person X and threw her in jail for reeducation. They also used her passwords to impersonate her online, and were able to destroy the activist cell that she had been a part of.
 
