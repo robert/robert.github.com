@@ -3,7 +3,6 @@ title: "Introducing afl-ruby: fuzz your Ruby programs using afl"
 layout: post
 tags: [Fuzzing, Security]
 og_image: https://robertheaton.com/images/afl-ruby-cover.png
-published: false
 ---
 American Fuzzy Lop ([afl][afl-home]) is a popular fuzzer, traditionally used to find bugs in C and C++ code. [python-afl][python-afl] and [aflgo][aflgo] have adapted afl for use with python and go, and now [afl-ruby][afl-ruby] (written by [Richo Healey][richo], with contributions from myself) allows you to use afl to fuzz Ruby programs too.
 
@@ -52,7 +51,7 @@ end
 
 ### 2. Patch afl
 
-Next you'll need to apply a tiny patch to afl itself - for quick instructions see [the afl-ruby README][afl-ruby-readme-patch-afl]. The patch comments out afl's check that the target you give it has been instrumented properly. This fiddle is necessary because afl was not built to expect targets written in Ruby.
+Next you'll need to apply a tiny patch to afl itself - for quick instructions see [the afl-ruby README][afl-ruby-readme-patch-afl]. The patch comments out afl's check that the target you give it has been instrumented properly. We are still going to instrument your code, but in a different way to how afl normally does it. See below for more details.
 
 [afl-ruby-readme-patch-afl]: https://github.com/richo/afl-ruby#3-patch-afl
 
@@ -81,7 +80,7 @@ Afl observes how different test cases change the execution path of your program,
 
 The execution path of your program is not available to afl by default. In order to get this information, afl needs to augment your program with additional instrumentation that records (a representative sample of) the files and line numbers that get executed.
 
-Afl instruments C and C++ programs by requiring them to be compiled with one of its custom compilers (`afl-clang`, `afl-gcc`, `afl-clang-fast`, or their C++ equivalents). These custom compilers compile your program as normal, but also inject afl's instrumentation code. Then, whenever it executes an instrumented line of code, your program writes information about the line's number and filename to a *shared memory segment*. This memory segment is shared with the afl process that is fuzzing your program, which means that the afl can see how different test case affects the internal behavior of your program.
+Afl instruments C and C++ programs by requiring them to be compiled with one of its custom compilers (`afl-clang`, `afl-gcc`, `afl-clang-fast`, or their C++ equivalents). These custom compilers compile your program as normal, but also inject afl's instrumentation. Then, whenever your program executes an instrumented line of code, it also writes information about the line's number and filename to a *shared memory segment*. This memory segment is shared with the afl process that is fuzzing your program, which means that the afl can see how different test case affects the internal behavior of your program.
 
 <img src="/images/afl-ruby-overview.png" />
 
@@ -99,7 +98,9 @@ For now afl-ruby only invokes this callback [when a new function is entered][new
 
 There are two main differences between the businesses of fuzzing Ruby and C programs. The first is in the bugclasses that you can expect or hope to find. Most of the bugs that fuzzing shakes out of low-level programs are related to memory-mismanagement, such as overflows, underflows, and segfaults. This is probably because fuzzers are more likely than humans to hammer programs with 1024 letter "A"s followed by a null byte, and so are more likely to find any bugs that doing so might reveal.
 
-Ruby is a higher-level language than both C and C++, and so is less vulnerable to this kind of low-level goof. To find interesting bugs in Ruby code you will likely want to make more use of property-based-testing-style assertions. These are business logic statements that should always be true for every execution of your program, for example "money in should always equal money out" or "non-admins should never perform an admin action". After invoking the main body of your program, you can add if-statements to verify that these statements are indeed true. For example:
+Ruby is a higher-level language than both C and C++, and so is less vulnerable to this kind of low-level goof. That doesn't mean there aren't plenty of errors waiting to be found though. Can users make your program throw an exception? Is it possible for a `nil` sneak into a place where a `nil` is not meant to be?
+
+You'll also likely want to make more use of property-based-testing-style assertions. These are business logic statements that should always be true for every execution of your program, for example "money in should always equal money out" or "non-admins should never perform an admin action". After invoking the main body of your program, you can add if-statements to verify that these statements are indeed true. For example:
 
 ```ruby
 AFL.init
