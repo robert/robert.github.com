@@ -52,13 +52,13 @@ afl-fuzz \
   -- /path/to/ruby harness.rb
 ```
 
-The project of writing our afl wrapper will be composed of two tasks. The first will be to implement the `afl_init` function spiked in the pseudo-code above. This function will need to mimic the way in which afl's `__AFL_INIT` function handles C/C++ programs:
+The project of writing our afl wrapper will be composed of two tasks. The first will be to implement the `afl_init` function spiked in the pseudo-code above. This function will need to mimic the functionality of afl's `__AFL_INIT`:
 
 * Initialize the shared memory segment that our program will share with afl
 * Loop forever, forking off child processes that run test cases by executing the rest of the fuzz harness
 * Report the exit statuses of these child processes to the forkserver
 
-Our `afl_init` will look something like the following pseudo-code: 
+This function will therefore look something like the following pseudo-code: 
 
 ```
 def afl_init()
@@ -124,7 +124,7 @@ def afl_init()
 end
 ```
 
-Once we have implemented `afl_init`, our second task will be to add instrumentation to our wrapper. This instrumentation will write information about our harness program's execution path to the shared memory segment that we initialized in `afl_init`. This is usually the job of `afl-clang` and afl's other special C and C++ compilers, but we're working with *&lt;insert your language here&gt;* so those are of no use to us. Afl uses the instrumentation information to deduce how your program's execution path is affected by the test cases it feeds it.
+Once we have implemented `afl_init`, our second task will be to add instrumentation. This instrumentation will write information about our harness program's execution path to the shared memory segment that we initialized in `afl_init`. This is usually the job of `afl-clang` and afl's other special C and C++ compilers, but we're working with *&lt;insert your language here&gt;* so those are of no use to us. Afl uses instrumentation information to deduce how your program's execution path is affected by the test cases it feeds it.
 
 Let's look at how afl and afl-ruby tackle the challenges of managing the forkserver and execution path instrumentation, and how we can tackle them in your language too.
 
@@ -140,7 +140,7 @@ afl-fuzz \
   -- /path/to/php test.php
 ```
 
-You will probably see an error like `No instrumentation detected`. Unfortunately for us, afl checks for instrumentation by searching through the contents of its target program for a magic string. This check will be difficult for us to pass, and the easiest way for us to get around it will be to edit and rebuild afl itself to comment it out. Afl-ruby comes with [a git patch][afl-patch] that you can download and `git apply`, or you can make the change yourself in your text editor:
+You will probably see an error like `No instrumentation detected`. Unfortunately for us, afl checks for instrumentation by searching through the contents of its target binary program (in this example, the PHP intepreter) for a magic string. This check will be difficult for us to pass, and the easiest way for us to get around it will be to edit and rebuild afl itself to comment it out. Afl-ruby has [a git patch][afl-patch] that you can download and `git apply`, or you can make the change yourself in your text editor:
 
 [afl-patch]: https://github.com/richo/afl-ruby/blob/a56684bf1271eff07604cea2dd7448d0572b47f2/afl-fuzz.c.patch
 
@@ -149,7 +149,7 @@ git clone git@github.com:mirrorer/afl.git
 cd ./afl
 git checkout -b comment-out-checks
 
-# ...edit and comment out code as needed...
+# ...edit and comment out afl checks as needed...
 
 git commit -m "Comment out target checks"
 make install
@@ -166,7 +166,7 @@ You can leave this step until later if you prefer.
 
 ## 1. Initialize afl's shared memory
 
-We'll start by attaching our program to afl's shared memory segment. This is where we will write information about our program's execution path.
+We'll start by attaching our program to afl's shared memory segment. This is where afl expects us to write information about our program's execution path.
 
 First, we will get the segment's address in memory. Afl writes this address to the [`__AFL_SHM_ID` environment variable][afl-env-var], which we should be able to read without any trouble. Next, once we have the segment's address, we can use the `shmat` syscall to attach it to our program's memory space. Finally, we will store the address returned by `shmat` in a variable so that we can use it later to write execution path data to the shared memory segment.
 
@@ -249,7 +249,7 @@ In afl's deferred forkserver mode, our main process doesn't run test cases. Inst
 
 <img src="/images/afl-harnesses-forking.png" />
 
-Here's the explanatory pseudo-code from the introduction, reproduced without the comments:
+Here's the pseudo-code from the introduction, reproduced without the comments:
 
 ```ruby
 def afl_init()
@@ -310,11 +310,11 @@ VALUE afl__init_forkserver(void) {
 
 [afl-ruby-test-forksrv]: https://github.com/richo/afl-ruby/blob/a56684bf1271eff07604cea2dd7448d0572b47f2/ext/afl/afl.c#L80-L91
 
-Try this yourself.
+Try to replicate this functionality in your language too.
 
 ### Forking new processes
 
-We will fork child processes using the `fork` syscall (or your language's wrapper around it). This call creates a new child process that is an almost-exact (as far as we are concerned) copy of its parent. The only difference between parent and child is that in the child the call to `fork` returns 0, whereas in the parent it returns the new child's process ID.
+We will fork child processes using the `fork` syscall (or your language's wrapper around it). This call creates a new child process that is an almost-exact copy of its parent. The only material difference between parent and child is that in the child the call to `fork` returns 0, whereas in the parent it returns the new child's process ID.
 
 We can use this difference to distinguish between parent and child processes:
 
@@ -404,7 +404,7 @@ To get and report information about our program's execution path, we will need t
 
 If you have the choice then it will probably be easier to add runtime hooks to your language's interpreter than to modify its compiler, but you should feel happy using any approach that is available.
 
-We will use our hooks to write information about our program's execution path to afl's shared memory segment. We can't explicitly record the filename and line number of every line of code that is executed, because this would quickly get intractable for a program with thousands of files and millions of lines. Instead, when an "interesting" line of code runs (more on which below), we will increment a counter at a memory address given by a simple function of the current and previously recorded files and line numbers. The resulting *bitmap* can't be mapped back into an exact execution path, but afl is still smart enough to notice and interpret differences in bitmaps between different test cases.
+We will use our hooks to write information about our program's execution path to afl's shared memory segment. We can't explicitly record the filename and line number of every line of code that is executed, because this would quickly get intractable for a program with thousands of files and millions of lines. Instead, when an "interesting" line of code runs (more on which below), we will increment a counter at a memory address given by a simple function of the current and previously recorded files and line numbers. The resulting *bitmap* can't be mapped back into an exact execution path, but afl can still use it to notice and interpret differences in execution paths between different test cases.
 
 We may get some collisions - two different lines of code that map to the same memory location and increment the same counter. But afl's claim and bet is that as long as there aren't too many of them, these collisions won't materially impact its efficacy.
 
