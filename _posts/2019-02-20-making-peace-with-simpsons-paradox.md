@@ -27,9 +27,7 @@ Treatment B was a complete success. You were happy, but haunted by the impossibl
 
 "This is just Simpson's Paradox," Steveington says, brusquely. "The maths behind it is insanely boring. It's just a mathematical fact that all of the following inequalities can be true simultaneously." He scrawls some barely legible equations on a food-stained napkin:
 
-```
-
-```
+<img src="/images/simpsons-napkin.png" />
 
 "The only thing that I find interesting about Simpson's Paradox is why people are always so surprised by it in the first place. It really shows how unintuitive and unhelpful statistics can be without a story to explain them. Take your kidney stone situation. I can tell you for certain that Dr. Beta was right, and Treatment B is simply the better treatment in all situations. The reason I am so confident about this is because I know the narrative behind the numbers.
 
