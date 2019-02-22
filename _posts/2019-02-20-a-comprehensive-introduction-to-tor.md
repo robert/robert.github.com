@@ -13,7 +13,7 @@ Person X is a pro-democracy activist who lives in an anti-democratic country. Sh
 
 The first time that Person X used the internet to communicate with her fellow activists, she did so using unencrypted HTTP. The government was monitoring her network traffic, and was able to record the websites that she visited, the passwords that she used, and the messages that she sent. The government used her passwords to impersonate her online, and were able to destroy the activist cell that she had been a part of. Once the government had seen enough, they arrested Person X and threw her in jail for reeducation.
 
-Person X did not learn much about the dangers of freedom while she was in jail. However, she did learn a lot about encryption and HTTPS. When she was released she joined a new activist group, and she started making sure to only communicate with her new comrades over encrypted HTTPS. Of course, the government and secret police were still monitoring Person X's network, but thanks to HTTPS they could no longer read the contents of any of her messages. However, they could still see the IP addresses of the servers that she was accessing, thanks to her IP packet headers. They noticed that many of these IP addresses belonged to servers known to be hosting seditious material, and began blocking her access to them. Snooping on Person X's browsing destinations also alerted the government to the existence of several new activist servers that it hadn't previously known about.
+Person X did not learn much about the dangers of freedom while she was in jail. However, she did learn a lot about encryption and HTTPS. When she was released she joined a new activist group, and she started making sure to only communicate with her new comrades over encrypted HTTPS. Of course, the government and secret police were still monitoring Person X's network, but thanks to HTTPS they could no longer read the contents of any of her messages. However, they could still read her IP packet headers, and see the IP addresses of the servers that she was accessing. They noticed that many of these IP addresses belonged to servers known to be hosting seditious material, and began blocking her access to them. Snooping on Person X's browsing destinations also alerted the government to the existence of several new activist servers that it hadn't previously known about.
 
 Person X was frustrated and alone. Then one day a friend told here about the Tor network, and snuck her a USB stick containing a copy of the Tor browser. Person X started to use Tor to browse the internet, and was able to securely access banned websites once again. Even though the government had not stopped monitoring Person X's internet connection, Tor prevented them from seeing the IP addresses of the servers that she was accessing. The government no longer knew whether Person X was accessing harmless distractions that might help keep her downtrodden, or whether she was back to her old, troublemaking ways.
 
@@ -27,19 +27,19 @@ Admittedly Tor is also very useful for people interested in buying and selling g
 
 ## Introduction - Tor isn't magic
 
+Tor nodes communicate over the same cables as everyone else. There's no secret skein of clandestine, dark-web fibre that only Julian Assange has the password for. Tor also uses the same servers, the same TCP/IP protocol, and the same encryption algorithms as the normal internet does. Tor provides private connections over the public internet using misdirection.
+
 The most common way that people access the Tor network is through the Tor browser. The Tor browser looks and feels just like any other modern web browser. But whereas Chrome and Firefox send their internet traffic directly to the websites requested by the user, the Tor browser sends it traffic via the Tor network.
 
-The Tor network is a web of 8000 or so (as of January 2019) servers, run and maintained by volunteers. Some of these volunteers are individuals; some are universities; some are companies. And even though they don't publicize this fact, some are almost certainly government intelligence agencies and other organizations interested in attacking the Tor network. However, even though this type of subterfuge is absolutely something for Tor to be concerned about, it is not a particularly existential problem. As we will see, so long as the fraction of Tor nodes controlled by adversaries stays low, the network remains secure.
+The Tor network is [a web of 6500 or so](https://metrics.torproject.org/networksize.html) (as of February 2019) servers called *relay nodes* (or just *relays*), all run and maintained by volunteers. Some of these volunteers are individuals; some are universities; some are companies. And even though they don't publicize this fact, some are almost certainly government intelligence agencies and other organizations interested in attacking the Tor network. However, even though this type of subterfuge is absolutely something for Tor to be concerned about, it is not a particularly existential problem. As we will see, so long as the fraction of Tor relay nodes controlled by adversaries stays low, the network remains secure.
 
 There's nothing special about Tor nodes or Tor traffic. Tor nodes are just normal computers connected to the normal internet that happen to be running a piece of software called `tor`. The Tor network is just what you get when these nodes start talking to each other. You can use the Tor network to access the normal internet, or special "onion sites" that are only accessible via Tor. In this post we're only going to look at how Tor accesses the normal internet. Onion sites are a fascinating story for another day.
 
-Tor nodes even communicate over the same cables as everyone else. There's no secret skein of clandestine, dark-web fibre that only Julian Assange has the password for. Instead, Tor provides private connections over the public internet using misdirection.
-
-## Tor keeps you safe from snoopers
+## Tor uses misdirection to keep you safe from snoopers
 
 When you visit a website using a normal web browser, your computer makes a direct TCP connection with the website's server. Anyone monitoring your internet connection (or that of the server) could trivially inspect your IP packet headers, discover the IP addresses of both you and the server, and deduce that you were communicating with each other. So long as you and the server were communicating using encrypted HTTPS, the snooper wouldn't be able to read the actual contents of your messages. But - as Person X knows all too well - sometimes even just knowing *who* you are communicating with is all the information an adversary needs.
 
-By contrast, when you visit a website using the Tor browser, your computer never communicates with the website's server directly. Instead, the Tor browser constructs a twisty path through a random set of 3 Tor nodes, and sends your data via this *circuit*. The browser starts by sending your data to the first (or *guard*) node in the circuit. The guard node sends your data on to the second (or *middle*) node. The middle node sends your data on to the third (or *exit*) node, and finally the exit node sends your data to the website's server. If the server wants to send a response back to you then it sends it to the exit node, and the Tor network takes care of propagating the response back along the circuit.
+By contrast, when you visit a website using the Tor browser, your computer never communicates with the website's server directly. Instead, the Tor browser constructs a twisty path through a random set of 3 Tor nodes, and sends your data via this *circuit*. The browser starts by sending your data to the first (or *guard*) node in the circuit. The guard node sends your data on to the second (or *middle*) node. The middle node sends your data on to the third (or *exit*) node, and finally the exit node sends your data to the website's server. If the server wants to send a response back to you then it sends back over its connection with your exit node. Your exit node and the rest of the Tor network take care of propagating the response back along the circuit.
 
 <img src="/images/tor-network.png" />
 
@@ -49,11 +49,11 @@ All that a snooper watching your internet connection can see is traffic going to
 
 ## Tor keeps you safe from the Tor network
 
-What if an attacker gave up on eavesdropping, and instead set up a Tor relay node of their own? After all, if you can't beat ‘em, join their decentralized network. You don't need to prove your identity or good character in order to run a Tor node, and the attacker could almost certainly keep their true intentions secret for a long time. The attacker's new node would eventually become an accepted part of the network, and Tor users would start using it as part of their circuits. It's therefore not enough for Tor to protect its users from external eavesdroppers; it also has to protect them from other participants in the Tor network.
+What if an attacker gave up on eavesdropping, and instead set up a Tor relay node of their own? After all, if you can't beat ‘em, join their decentralized network. You don't need to prove your identity or good character in order to run a Tor relay, and the attacker could almost certainly keep their true intentions secret for a long time. The attacker's new relay would eventually become an accepted part of the network, and Tor users would start using it as part of their circuits. It's therefore not enough for Tor to protect its users from external eavesdroppers; it also has to protect them from other participants in the Tor network.
 
-This is not a theoretical threat. There almost certainly exist Tor nodes run by organizations that wish the network harm. However, so long as the fraction of Tor nodes controlled by adversaries remains low and manageable, Tor remains statistically secure.
+This is not a theoretical threat. There almost certainly exist Tor relay nodes run by organizations that wish the network harm. However, so long as the fraction of Tor relay nodes controlled by adversaries remains low and manageable, Tor remains statistically secure.
 
-Tor's definition of security is that no one (apart from the Tor end-user) is able to discover the IP addresses of both the origin and destination of a Tor circuit. If this property holds, Tor is secure, even if traffic sometimes flows through nodes controlled by an adversary. If traffic flows through an adversary-controlled node, but does not help this adversary learn the IP addresses of both the origin and destination of a Tor circuit, then the Tor Foundation simply thanks the adversary for their generous donation of bandwidth to the network.
+Tor's definition of security is that no one (apart from the Tor end-user) is able to discover the IP addresses of both the origin and destination of a Tor circuit. If this property holds, Tor is secure, even if traffic sometimes flows through relay nodes controlled by an adversary. If traffic flows through an adversary-controlled relay, but does not help this adversary learn the IP addresses of both the origin and destination of a Tor circuit, then the Tor Foundation simply thanks the adversary for their generous donation of bandwidth to the network.
 
 Let's see how Tor keeps its users safe from the Tor network itself. Let's look at what happens when Alice uses Tor to browse `topsecret.com`, and consider what each node in her circuit knows about her.
 
@@ -65,13 +65,13 @@ Finally, the exit node knows that someone is using Tor to browse `topsecret.com`
 
 All of this means that if Alice builds a circuit that passes through a single adversary-controlled node, she remains entirely safe. This is an impressive property that makes attacking the Tor network difficult, but it is not the end of the story. If Alice gets unlucky and chooses adversary-controlled nodes for both her guard and her exit nodes, she is back in danger of being deanonymized. We'll look more at this later.
 
-## Can't nodes snoop on each other?
+## Can't relay nodes snoop on each other?
 
 Suppose that Alice chooses an adversary-controlled guard node. What if this malicious guard node peaked at Alice's traffic before forwarding it on to the middle node? What if it read the routing instructions - including the end-server's IP address - that were only intended to be read by the nodes further down Alice's circuit? Wouldn't this allow the guard node to discover the IP addresses of both Alice and the server she is communicating with, thereby breaking Tor?
 
 <img src="/images/tor-evil-guard.png" />
 
-It would not. Tor prevents its nodes from snooping on each other's instructions in this way by wrapping its payloads in multiple layers of TLS encryption. The inventor of this approach decided that this looked a bit like the layers of an onion, and this is where the name "Tor" or "The Onion Router" comes from. The analogy is a little tenuous if you ask me, but it makes for a whimsical logo.
+It would not. Tor prevents its relay nodes from snooping on each other's instructions in this way by wrapping its payloads in multiple layers of TLS encryption. The inventor of this approach decided that this looked a bit like the layers of an onion, and this is where the name "Tor" or "The Onion Router" comes from. The analogy is a little tenuous if you ask me, but it makes for a whimsical logo.
 
 When a Tor client constructs a circuit, it negotiates TLS sessions with each of the nodes it has chosen for its circuit using the nodes' TLS certificates and public keys (see below for more details on this process). The outcome of each TLS session negotiation is a symmetric encryption key, known only to the client and the node. In particular, thanks to TLS's impressive security properties, none of the other nodes in the circuit know the symmetric keys of the others.
 
@@ -87,7 +87,7 @@ The guard node forwards the doubly-encrypted payload to the middle node. The mid
 
 The middle node forwards the singly-encrypted payload to the exit node. The exit node peels off the final layer of Tor's encryption, and sends the fully decrypted payload to the remote server on the other end of the Tor circuit. Tor's work is now complete. Hopefully the client and the server are using a further layer of encryption so that not even the exit node can read their actual plaintext messages. This could simply be an HTTPS connection, negotiated over the Tor circuit. However, this is up to the client and remote server to sort out, and is outside of the scope of Tor.
 
-These multiple layers of encryption help to ensure that no node in the circuit knows the identity of both sides of the connection.
+These multiple layers of encryption help to ensure that no relay node in the circuit knows the identity of both sides of the connection.
 
 ## The different between Tor and a VPN
 
@@ -125,7 +125,7 @@ Let's start at the beginning, and look at how your Tor daemon chooses the 3 node
 
 ## Directory nodes
 
-The state of the Tor network is tracked and publicized by a group of 9 trusted servers - known as *directory nodes* - each of which is controlled by a different person or organization. Having 9 independent nodes provides redundancy if any of them ever go down, as well as distributing trust more widely if any of them ever get compromised.
+The state of the Tor network is tracked and publicized by a group of 9 trusted servers - known as *directory nodes* - each of which is controlled by a different person or organization. Having 9 independent nodes provides redundancy if any of them ever go down, as well as distributing trust more widely if any of them ever get compromised. The integrity of the Tor network relies heavily on the honesty and correctness of the directory nodes, and so making the network resilient to at least a partial compromise is critical.
 
 When a Tor participant (either a client or a node) wants to know the current state of the network, it asks a directory node. Directory nodes are kept up to date on the latest network news by the relays themselves, which send each directory node a notification whenever they come online or update their settings. Whenever a directory node receives such a notification it updates its personal opinion of the current state of the Tor network.
 
@@ -155,7 +155,7 @@ Next the client extends its circuit a second and final time, this time to the ex
 
 ### Should you rely on randomness?
 
-The Tor client chooses the nodes in its circuits randomly. However, in principle it could make these choices using any process it wanted. This begs the question; could you form better, more secure circuits by choosing nodes deliberately instead of randomly?
+The Tor client chooses the relay nodes in its circuits randomly. However, in principle it could make these choices using any process it wanted. This begs the question; could you form better, more secure circuits by choosing relay nodes deliberately instead of randomly?
 
 For example, one of the useful properties of using Tor is how it muddies jurisdictional waters by routing traffic across national borders. Should you therefore choose our nodes to ensure that we cross as many borders as possible? Should you choose them so that you enter and exit the Tor network in a friendly jurisdiction, or one other than the one in which we live?
 
@@ -165,23 +165,21 @@ In general the answer to these kinds of questions is no, unless you have a parti
 
 When a Tor client starts up for the first time, it chooses a small, random set of guard nodes. Then, for the next few months, it makes sure that each circuit it constructs uses one of these pre-selected nodes as its guard node. It still chooses new middle and exit nodes for each circuit.
 
-This may sound counter-intuitive. Surely it would be better for Tor to reuse nothing, erase everything, and completely switch up its circuits as often as possible? The justification for guard pinning lies in Tor's specific threat model. Tor assumes that it may only take one opening for an attacker to work out who you are and who you are talking to. This means that a single vulnerable circuit is almost as bad as a hundred. Tor therefore doesn't try to minimize the average, expected number of vulnerable circuits that you will construct. Instead, it minimizes the probability that you will ever construct one or more vulnerable circuits.
+This may sound counter-intuitive. Surely it would be better for Tor to reuse nothing, erase everything, and completely switch up its circuits as often as possible? The justification for guard pinning lies in Tor's specific threat model. Tor assumes that it may only take one opening for an attacker to work out who you are and who you are talking to. Since a single vulnerable circuit can be ruinous, Tor doesn't try to minimize the average, expected number of vulnerable circuits that you will construct. Instead, through guard pinning, it tries to minimize the probability that you will ever construct one or more vulnerable circuits.
 
 Guard pinning does not change the average, expected number of vulnerable circuits that you will construct. However, this is not the metric that Tor is trying to optimize. Guard pinning increase the chance that none of your circuits will be compromised (if you pin to good guard nodes). It also increases the chance that a large number of your circuits will be compromised (if you pin to bad guard nodes), but Tor assumes that this outcome is not *that* much worse than a single circuit being compromised. Statistically bunching up your vulnerable circuits therefore keeps you safer. On average.
 
-You can read more about the subtleties of guard pinning on [the Tor Project website](https://www.torproject.org/docs/faq#EntryGuards).
+Because your guard node is especially critical to the security and reliability of your Tor connection, only relays that have volunteered for and earned the *guard flag* may be used as guards. You can read more about the subtleties of guards and pinning on [the Tor Project website](https://www.torproject.org/docs/faq#EntryGuards).
 
 ### Bridge nodes
 
-The complete, up-to-date list of Tor relay nodes is public and available for anyone to download from a directory node. Tor clients use this list to select the nodes that will form their circuits.
-
-However, adversaries can query directory nodes too. Even if a repressive state has given up on cracking Tor, it can still try to censor and block its use. The state can query a directory node for a list of active Tor relays, watch its country's internet pipes, and identify people who are sending their traffic via a relay. The state can censor and block Tor traffic, and/or visit massive retribution upon its users. TorProject.org notes that "using Tor is legal in almost all countries", but they don't call them repressive states for nothing.
+If a repressive state isn't able to crack Tor, it might instead try to block it. The complete, up-to-date list of Tor relay nodes is public and available for anyone to download from a directory node. The state can query a directory node for a list of active Tor relays, and censor all traffic sent to them. TorProject.org notes that "using Tor is legal in almost all countries", but they don't call them repressive states for nothing.
 
 Tor tries to help its users circumvent the censors and hide the fact that they are using Tor through an additional type of node called a *bridge node*. A bridge node is essentially a proxy into the Tor network. A Tor user sends their traffic to the bridge node, which forwards their traffic onto the user's chosen guard node. Circuit construction and exchange of data with the remote server continue as normal, but with one additional hop via a bridge node.
 
 <img src="/images/tor-bridge.png" />
 
-Unlike relay nodes, the full list of bridge nodes is never published. This makes it difficult for censors to maintain a complete list of them, and therefore difficult for them to completely seal off their country from the Tor network. Tor users can ask to be sent the IP addresses of a handful of bridge nodes by emailing blah@blork.com. If the censors identify and block a bridge node, users can simply rotate onto another one.
+Unlike relay nodes, the full list of bridge nodes is never published. This makes it difficult for censors to maintain a complete list of them, and therefore difficult for them to completely seal off their country from the Tor network. Tor users can ask to be sent the IP addresses of a handful of bridge nodes by [emailing bridges@bridges.torproject.org from a Gmail, Yahoo, or Riseup email address](https://www.torproject.org/docs/bridges.html.en#FindingMore). If the censors identify and block a bridge node, users can simply rotate onto another one.
 
 Looking at packet destinations is not the only way in which censors can identify Tor traffic, however. They can also analyze the the traffic's shape and volume. This analysis is made difficult by the fact that traffic between Tor nodes is always encrypted using TLS - traffic sent over an established TLS session looks identical whether it is being sent over Tor or not. However, the way in which Tor establishes a TLS session is subtly different to the way in which a non-Tor browser establishes one. A government censor could monitor its country's internet; watch for the telltale signs of a Tor TLS session being established; block the connection when it sees one; and add the bridge server to a watchlist. Tor developers are countering with systems that disguise Tor traffic and make it look more like vanilla HTTPS. These systems are known as "pluggable transports".
 
@@ -189,10 +187,10 @@ Looking at packet destinations is not the only way in which censors can identify
 
 ## In conclusion
 
-Tor isn't bulletproof, but neither does it claim to be. Even though it keeps its users extremely anonymous against all except the most motivated of adversaries, Sybil attacks, confirmation attacks, and sheer bad luck can still ruin these users' otherwise bullet-free day.
+Tor isn't bulletproof, but it is very open about this fact. It keeps its users extremely anonymous against all except the most motivated of adversaries, but Sybil attacks, confirmation attacks, and sheer bad luck can still ruin these users' otherwise bullet-free day.
 
 The Tor browser is about as usable as it can be, given its privacy and security requirements. Anonymity and misdirection are fine words in the abstract, but they can be quite inconvenient when they have to be implemented on a real network. Requests sent through Tor are slow. Websites don't remember who you are, even when it would actually be kind of useful if they did. Your search results aren't personal- or local-ized, and you have to click that stupid cookie law thing every single time you visit a website.
 
-I personally don't use Tor. I draw my convenience-privacy tradeoff line at a normal browser with several layers of adblockers and other privacy tools. I understand that this means that my ISP can see which websites I visit. However, my current ISP is Sonic Internet, whose marketing is bubbly and self-righteous enough to make me assume that they probably (hopefully) aren't doing anything too nefarious. 
+Since I don't have to evade any censors, I personally don't use Tor. I draw my convenience-privacy tradeoff line at a normal browser with several layers of adblockers and other privacy tools. I understand that this means that my ISP can see which websites I visit. However, my current ISP is Sonic Internet, whose marketing is bubbly and self-righteous enough to make me assume that they probably (hopefully) aren't doing anything too nefarious. 
 
-The first thing they teach you in kindergarten is "trust no one". But maybe even they'd agree that spreading your trust across three independent Tor relay operators is also OK.
+I'm still glad that people like Person X have Tor. The first thing they teach you in kindergarten is "trust no one". But maybe even they'd agree that spreading your trust across three independent Tor relay operators is probably OK too.
