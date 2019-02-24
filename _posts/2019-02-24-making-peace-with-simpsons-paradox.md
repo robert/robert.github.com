@@ -3,7 +3,6 @@ title: "Making peace with Simpson's Paradox"
 layout: post
 tags: [Economics]
 og_image: https://robertheaton.com/images/simpsons-graph3.png
-published: false
 ---
 Two years ago you were diagnosed with a kidney stone. You went to see your town's most famous kidney doctor, Dr. Alpha. She explained that you had two options - Treatment A or Treatment B. She recommended Treatment A, and justified her choice with a detailed data table.
 
