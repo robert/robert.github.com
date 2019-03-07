@@ -46,9 +46,6 @@ body {
 [data-more] div.more-body {
   display: none; }
 
-strong, b {
-  font-weight: normal; }
-
 header {
   *zoom: 1;
   padding-bottom: 20px;

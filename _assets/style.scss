@@ -19,8 +19,6 @@ body {
   div.more-body { display: none; }
 }
 
-strong, b { font-weight: normal; }
-
 header {
   @include clearfix;
   padding-bottom: 20px;
