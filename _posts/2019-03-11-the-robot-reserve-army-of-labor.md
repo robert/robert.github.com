@@ -2,7 +2,8 @@
 title: "The Robot Reserve Army of Labor"
 layout: post
 tags: [Economics]
-og_image: https://robertheaton.com/images/rocket-league-cover.png
+og_image: https://robertheaton.com/images/robot-army-cover.png
+published: false
 ---
 > Below is an extract from my application to be Chair of the US Federal Reserve. Unfortunately I got neither the job nor a response. Several PhD economists have since told me that the central conclusion of my application is entirely wrong. They used words like "efficiency wage theory" and sent me a lot of empirical evidence that refuted my claims. I have nonetheless elected to publish my work because it's still kind of thought-provoking and contains some good gags.
 
@@ -17,6 +18,8 @@ og_image: https://robertheaton.com/images/rocket-league-cover.png
 ## 3.1 Robot Reserve Army of Labor
 
 Wyatt used to sell tickets at New York's Grand Central train station. As he tells it, he was very good at his job. "I really got to know my regular customers," he says. "I could always tell when someone was having a good day, and when they were miserable and needed cheering up. I took pride in helping people get to where they needed to be, both physically and spiritually."
+
+<img src="/images/robot-army-cover.png" />
 
 Despite - or perhaps because of - his attentiveness, Wyatt eventually lost his job to an automated ticket machine. This was 10 years ago. He has not worked since. "I want to work," he says, "but nobody needs me. I feel useless."
 
