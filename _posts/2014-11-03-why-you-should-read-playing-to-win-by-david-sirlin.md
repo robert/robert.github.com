@@ -3,7 +3,7 @@ title: Why you should read Playing to Win by David Sirlin
 layout: post
 redirect_from:
   - /2014/11/02/playing-to-win-by-david-sirlin/
-tags: [Book Reviews, Computer Games]
+tags: [Computer Games, Book Reviews]
 ---
 <p style="text-align: center">
   <img style="width:200px" src="/images/ptw.jpg" /> 
