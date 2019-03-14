@@ -3,6 +3,7 @@ title: "ROBERT: trustworthy, replicable randomness for RCTs"
 layout: post
 tags: [Economics]
 og_image: https://robertheaton.com/images/rct-cover.png
+published: false
 ---
 All you need in order to run a Randomized Controlled Trial (RCT) is a few willing participants and a good source of randomness. With only these simple ingredients you can arbitrarily give half of your participants something that might be good; give the other nothing; and then watch and measure how things turn out. Your results are free from bias and confounding, thanks to the cleansing power of randomness.
 
