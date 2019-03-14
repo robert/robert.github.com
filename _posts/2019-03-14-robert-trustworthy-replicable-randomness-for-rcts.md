@@ -94,4 +94,4 @@ ROBERT allows researchers running RCTs to generate trustworthy, tamper-proof, re
 
 I'd argue that ROBERT is even backwards-compatible, and meets the Cochrane Collaboration's [current guidelines for acceptable RCT randomness](https://handbook-5-1.cochrane.org/chapter_8/8_9_2_1_adequate_methods_of_sequence_generation.htm). So if you're running an RCT and need a replicable, trustworthy source of randomness, give ROBERT a go.
 
-*Here's a simple script that implements a basic version of ROBERT. Pull requests welcomed.*
+*Here's a [simple script that implements a basic version of ROBERT](https://github.com/robert/robert-for-rcts). Pull requests welcomed.*
