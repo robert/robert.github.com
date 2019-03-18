@@ -1,5 +1,5 @@
 ---
-title: "ROBERT: trustworthy, replicable randomness for RCTs"
+title: "ROBERT: prove that your randomized trial really was random"
 layout: post
 tags: [Economics]
 og_image: https://robertheaton.com/images/rct-cover.png
