@@ -7,7 +7,7 @@ published: false
 ---
 > Below is an extract from my application to be Chair of the US Federal Reserve. Unfortunately I got neither the job nor a response.
 >
-> Several PhD economists have since told me that the central conclusion of my application was entirely wrong. I have nonetheless elected to publish my work because it's still kind of thought-provoking and contains some good gags.
+> Several PhD economists have since told me that the central claim of my application was entirely wrong. I have nonetheless elected to publish my work because it's still kind of thought-provoking and contains some good gags.
 
 ----
 
