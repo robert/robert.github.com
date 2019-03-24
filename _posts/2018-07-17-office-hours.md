@@ -9,7 +9,7 @@ I'm going to start holding weekly Office Hours for people who want to get better
 
 ## Why should you sign up?
 
-I think that these sessions will be most useful for "Advanced Beginners" - people who have grasped the basic fundamentals of writing and running code, and are now trying to make the leap to designing and building more complex programs. But regardless of what stage you are at, if you think that spending some time talking about programming would be useful then I'd love to hear from you.
+I think that these sessions will be most useful for ["Advanced Beginners"](/programming-projects-for-advanced-beginners) - people who have grasped the basic fundamentals of writing and running code, and are now trying to make the leap to designing and building more complex programs. But regardless of what stage you are at, if you think that spending some time talking about programming would be useful then I'd love to hear from you.
 
 We can cover any topic that you like. Some example things I think I could help with include:
 
@@ -32,7 +32,7 @@ Send me an email at [robqheaton@gmail.com](robqheaton@gmail.com) with a few sent
 
 ## What do I get out of this?
 
-I'm working on a series of "Programming Projects for Advanced Beginners" to help people make the difficult leap from beginner to intermediate programmer. This jump is hard enough when you have a background in maths, lots of free time, and experienced programmers around to talk to. It can be absolutely diabolical if you don't. I want to make these projects as useful as possible, and the biggest part of doing that is talking to as many people working on this challenge as I can. I've written two so far, on [ASCII Art](/2018/06/12/programming-projects-for-advanced-beginners-ascii-art/) and [The Game of Life](/2018/07/20/project-2-game-of-life/).
+I'm working on a series of ["Programming Projects for Advanced Beginners"](/programming-projects-for-advanced-beginners) to help people make the difficult leap from beginner to intermediate programmer. This jump is hard enough when you have a background in maths, lots of free time, and experienced programmers around to talk to. It can be absolutely diabolical if you don't. I want to make these projects as useful as possible, and the biggest part of doing that is talking to as many people working on this challenge as I can..
 
 I'm also just a friendly guy who has had lots of people help him over the years.
 
