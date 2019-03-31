@@ -3,7 +3,6 @@ title: "The Robot Reserve Army of Labor"
 layout: post
 tags: [Economics]
 og_image: https://robertheaton.com/images/robot-army-cover.png
-published: false
 ---
 > Below is an extract from my application to be Chair of the US Federal Reserve. Unfortunately I got neither the job nor a response.
 >
@@ -27,11 +26,11 @@ Despite - or perhaps because of - his attentiveness, Wyatt lost his job to an au
 
 Of course, Wyatt is not useless. In addition to the inherent dignity and worth possessed by all people, regardless of their employment status, he has been doing an outstanding job as a sergeant in Marx's *Reserve Army of Labor*. The pay is meagre and the advancement prospects are non-existent, but his work is vital to the smooth functioning of the economy.
 
-The job of Wyatt and his colleagues in the Reserve Army of Labor is to keep workers' pay demands and therefore inflation in check. We all want high wages and broad prosperity for an expanding middle class. But wage increases that are not accompanied by an increase in productivity will tend to cause inflation. If there is more money chasing the same amount of goods, prices will rise in rough proportion to wages, offsetting workers' gains. What's more, if inflation gets too high, the resulting market distortions can cause severe confusion and harm to the economy. Nonetheless, it is still individually rational for workers to demand as much money as they think they can get away with. Wyatt and the rest of his army keep them in check by threatening, implicitly or explicitly, to undercut them.
+The job of Wyatt and his colleagues in the Reserve Army of Labor is to keep workers' pay demands and therefore inflation in check. We all want high wages and broad prosperity for an expanding middle class. But wage increases that are not accompanied by an increase in productivity will tend to cause inflation. If there is more money chasing the same amount of goods, prices will rise in rough proportion to wages, offsetting workers' gains. What's more, if inflation gets too high, the resulting market distortions may cause severe confusion and harm to the economy. Nonetheless, it is still individually rational for workers to demand wages that are as high as they think they can get away with. The unpaid job of Wyatt and the rest of his unemployed army is to keep these workers in check by threatening, implicitly or explicitly, to undercut them.
 
-It is of course appalling that Wyatt and millions of others are sacrificed on the altar of economic stability. We can talk about retraining and migration all we want, but this doesn't change the fact that even the strongest economy will self-destruct unless it is paid a permanent tribute of several percent of its workforce. When economists talk about "full employment", they don't mean that everyone has a job. They mean that as many people have jobs as is safe without angering the economy. What happens to the unlucky 3-5% is left as an exercise for the reader.
+It is of course appalling that Wyatt and millions of others are sacrificed on the altar of economic stability. We can talk about retraining and migration all we want, but this doesn't change the fact that even the strongest economy will self-destruct unless it is paid a permanent tribute of several percent of its workforce. When economists talk about "full employment", they don't mean that everyone has a job. They mean that as many people have jobs as is safe without angering the economy. What happens to the other 3-5% is left as an exercise for the reader.
 
-When the unemployment rate gets too low and inflation starts to creep up, the Fed typically raises interest rates in order to choke off the boom. Raising rates decreases borrowing and investment to safe levels, but at the cost of increasing unemployment. This policy would be inhumane if it weren't the only one available.
+The Fed uses monetary policy to keep the reserve army well-staffed. When the unemployment rate gets too low and inflation starts to creep up, the Fed typically raises interest rates in order to choke off the boom. Raising rates decreases borrowing and investment to safe levels, but at the cost of increasing unemployment. This policy would be inhumane if it weren't the only one available.
 
 Stop the presses. Then restart them at full capacity - truly full capacity. We have an alternative.
 
