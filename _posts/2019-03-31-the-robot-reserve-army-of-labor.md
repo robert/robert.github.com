@@ -16,7 +16,7 @@ og_image: https://robertheaton.com/images/robot-army-cover.png
 
 ----
 
-## 3.1 Robot Reserve Army of Labor
+## 3.1 The Robot Reserve Army of Labor
 
 Wyatt used to sell tickets at New York's Grand Central train station. As he tells it, he was very good at his job. "I really got to know my regular customers," he says. "I could always tell when someone was having a good day, and when they were miserable and needed cheering up. I took pride in helping people get to where they needed to be, both physically and spiritually."
 
