@@ -15,3 +15,76 @@ steve_steveington:
       url: /2019/01/15/a-brief-history-of-wi-fi-privacy-vulnerabilities/
     - title: "Third-party dream cookies"
       url: /2019/01/27/third-party-dream-cookies/
+
+online_tracking:
+  title: Online tracking
+  posts:
+    - title: '"Stylish" browser extension steals all your internet history'
+      url: /2018/07/02/stylish-browser-extension-steals-your-internet-history/
+    - title: "How does online tracking actually work?"
+      url: /2017/11/20/how-does-online-tracking-actually-work/
+    - title: "Cookie Syncing: how online trackers talk about you behind your back"
+      url: /2017/11/21/cookie-syncing-how-online-trackers-talk-about-you-behind-your-back/
+    - title: "Identity Graphs: how online trackers follow you across devices"
+      url: /2017/11/24/identity-graphs-how-online-trackers-follow-you-across-devices/
+    - title: "WeSeeYou: Democratizing Deanonymization"
+      url: /2017/10/17/we-see-you-democratizing-de-anonymization/
+    - title: "I Might Be Spartacus: a differential privacy marketplace"
+      url: /2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/
+
+https:
+  title: HTTPS
+  posts:
+    - title: "How does HTTPS actually work?"
+      url: /2014/03/27/how-does-https-actually-work/
+    - title: "HTTPS in the real world"
+      url: /2018/11/28/https-in-the-real-world/
+    - title: "The SSL FREAK vulnerability explained"
+      url: /2015/04/06/the-ssl-freak-vulnerability/
+
+computer_games:
+  title: Computer games
+  posts:
+    - title: "I went to Skyrim, once"
+      url: /2018/07/04/i-went-to-skyrim-once/
+    - title: "The therapeutic properties and applications of Dark Souls"
+      url: /2018/11/23/the-therapeutic-properties-and-applications-of-dark-souls/
+    - title: "What playing The Witness will teach my kid about problem solving"
+      url: /2018/09/07/what-playing-the-witness-will-teach-my-kid/
+    - title: "How to get to Silver in Rocket League 1v1s"
+      url: /2019/03/07/how-to-get-to-silver-in-rocket-league-1-v-1/
+
+learning_programming:
+  title: Learning programming
+  posts:
+    - title: "Programming Projects for Advanced Beginners: Intro"
+      url: /programming-projects-for-advanced-beginners
+    - title: "Programming Projects for Advanced Beginners #1: ASCII art"
+      url: /2018/06/12/programming-projects-for-advanced-beginners-ascii-art/
+    - title: "Programming Projects for Advanced Beginners #2: Game of Life"
+      url: /2018/07/20/project-2-game-of-life/
+    - title: "Programming Projects for Advanced Beginners #3a: Tic-Tac-Toe AI"
+      url: /2018/10/09/programming-projects-for-advanced-beginners-3-a/
+    - title: "Programming Projects for Advanced Beginners #4: Photomosaics"
+      url: /2018/11/03/programming-project-4-photomosaics/
+    - title: "Programming Projects for Advanced Beginners #5: Snake"
+      url: /2018/12/02/programming-project-5-snake/
+    - title: "What beginner's mind is really like"
+      url: /2019/03/25/what-beginners-mind-is-really-like/
+
+economics:
+  title: Economics
+  posts:
+    - title: "Why economists need bureaucracy"
+      url: /2018/06/05/why-economists-need-bureaucracy/
+    - title: "ROBERT: prove that your randomized trial really was random"
+      url: /2019/03/17/robert-prove-that-your-randomized-trial-really-was-random/
+    - title: "Making peace with Simpson's Paradox"
+      url: /2019/02/24/making-peace-with-simpsons-paradox/
+    - title: "The Robot Reserve Army of Labor"
+      url: /2019/03/31/the-robot-reserve-army-of-labor/
+
+office_hours:
+  title: Office Hours
+  posts:
+    - title: "I'm doing office hours"
