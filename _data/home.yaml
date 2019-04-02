@@ -112,7 +112,7 @@ programming:
     - title: "Migrating bajillions of database records at Stripe"
       url: /2015/08/31/migrating-bajillions-of-database-records-at-stripe/
     - title: "Code review without your glasses"
-        url: /2014/06/20/code-review-without-your-eyes/
+      url: /2014/06/20/code-review-without-your-eyes/
 
 office_hours:
   title: Office Hours
