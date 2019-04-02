@@ -3,15 +3,10 @@ layout: index
 title: Robert Heaton
 ---
 <style>
-.home {
-  display: flex;
-}
 .topic-box {
-  flex: 1;
-  width: 42%;
-  float: left;
-  margin-right: 17px;
   margin-bottom: 17px;
+  padding-top: 1px;
+  padding-bottom: 5px;
   padding-left: 17px;
   padding-right: 17px;
   background: #f0f1f2;
@@ -19,11 +14,11 @@ title: Robert Heaton
 .topic-box ul {
   padding-inline-start: 20px;
 }
-@media screen and (max-width: 650px) {
-  .topic-box {
-    width: 90%;
-  }
+.home-img img {
+  max-width: 100%;
+  margin-bottom: 17px;
 }
+
 </style>
 <div id="home">
   <div class="topic-box">
@@ -37,6 +32,10 @@ title: Robert Heaton
         </li>
       {% endfor %}
     </ul>
+  </div>
+
+  <div class="home-img">
+    <img src="/images/https-intro.png" />
   </div>
 
   <div class="topic-box">
@@ -63,6 +62,10 @@ title: Robert Heaton
         </li>
       {% endfor %}
     </ul>
+  </div>
+
+  <div class="home-img">
+    <img src="/images/dark-souls-cover.png" />
   </div>
 
   <div class="topic-box">
@@ -92,9 +95,82 @@ title: Robert Heaton
   </div>
 
   <div class="topic-box">
+    <h2>{{ site.data.home.productivity.title }}</h2>
+    <ul>
+      {% for post in site.data.home.productivity.posts %}
+        <li>
+          <a href="{{post.url}}">
+            {{ post.title}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="home-img">
+    <img src="/images/mosaic-me-small.png" />
+  </div>
+
+  <div class="topic-box">
     <h2>{{ site.data.home.economics.title }}</h2>
     <ul>
       {% for post in site.data.home.economics.posts %}
+        <li>
+          <a href="{{post.url}}">
+            {{ post.title}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="topic-box">
+    <h2>{{ site.data.home.office_hours.title }}</h2>
+    <ul>
+      {% for post in site.data.home.office_hours.posts %}
+        <li>
+          <a href="{{post.url}}">
+            {{ post.title}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="topic-box">
+    <h2>{{ site.data.home.life_advice.title }}</h2>
+    <ul>
+      {% for post in site.data.home.life_advice.posts %}
+        <li>
+          <a href="{{post.url}}">
+            {{ post.title}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="home-img">
+    <img src="/images/robot-army-cover.png" />
+  </div>
+
+  <div class="topic-box">
+    <h2>{{ site.data.home.stories.title }}</h2>
+    <ul>
+      {% for post in site.data.home.stories.posts %}
+        <li>
+          <a href="{{post.url}}">
+            {{ post.title}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="topic-box">
+    <h2>{{ site.data.home.programming.title }}</h2>
+    <ul>
+      {% for post in site.data.home.programming.posts %}
         <li>
           <a href="{{post.url}}">
             {{ post.title}}

@@ -72,6 +72,22 @@ learning_programming:
     - title: "What beginner's mind is really like"
       url: /2019/03/25/what-beginners-mind-is-really-like/
 
+productivity:
+  title: Work and Productivity
+  posts:
+    - title: "Lessons from a Silicon Valley job search"
+      url: /2014/03/07/lessons-from-a-silicon-valley-job-search/
+    - title: "How to value your startup stock options"
+      url: /2015/11/02/how-to-value-your-startup-stock-options/
+    - title: "Talk: Traits of Successful Software Developers"
+      url: /2018/08/21/traits-of-successful-software-developers/
+    - title: "Getting Nothing Done: a misguided quest for productivity"
+      url: /2014/07/14/getting-nothing-done-a-misguided-quest-for-productivity/
+    - title: "How to make Slack less bad for you"
+      url: /2016/08/23/how-make-slack-slightly-less-bad-for-you/
+    - title: "How I kicked my email compulsion"
+      url: /2018/08/20/how-i-kicked-my-email-compulsion/
+
 economics:
   title: Economics
   posts:
@@ -84,7 +100,56 @@ economics:
     - title: "The Robot Reserve Army of Labor"
       url: /2019/03/31/the-robot-reserve-army-of-labor/
 
+programming:
+  title: Programming odds and ends
+  posts:
+    - title: "How to build a TCP proxy"
+      url: /2018/08/31/how-to-build-a-tcp-proxy-1/
+    - title: "The Padding Oracle Attack"
+      url: /2013/07/29/padding-oracle-attack/
+    - title: "Introducing Afl-Ruby: fuzz your Ruby programs using afl"
+      url: /2019/02/16/introducing-afl-ruby/
+    - title: "Migrating bajillions of database records at Stripe"
+      url: /2015/08/31/migrating-bajillions-of-database-records-at-stripe/
+
 office_hours:
   title: Office Hours
   posts:
     - title: "I'm doing office hours"
+      url: /2018/07/17/office-hours/
+    - title: "Lessons from my first 20 office hours"
+      url: /2018/10/02/lessons-from-my-first-20-office-hours/
+    - title: "/office-hours"
+      url: /2018/10/22/slash-office-hours/
+
+life_advice:
+  title: "Unrequested life advice"
+  posts:
+    - title: "Why you should be vegetarian"
+      url: /2014/04/18/why-you-should-be-vegetarian/
+    - title: "A beginners' guide to funemployment"
+      url: /2014/06/02/a-beginners-guide-to-funemployment/
+    - title: "How to read"
+      url: /2018/06/25/how-to-read/
+    - title: "A blogging style guide"
+      url: /2018/12/06/a-blogging-style-guide/
+    - title: "Tales from a San Francisco housing search"
+      url: /2014/10/25/tales-from-a-san-francisco-housing-search/
+    - title: "10 somewhat advanced Magic: The Gathering plays"
+      url: /2016/09/03/ten-somewhat-advanced-magic-the-gathering-plays/
+
+stories:
+  title: "Stories"
+  posts:
+    - title: "A day at The Free Market"
+      url: /2015/11/30/a-day-at-the-free-market/
+    - title: "In context"
+      url: /2016/04/09/in-context/
+    - title: "There were millions"
+      url: /2016/09/21/there-were-millions/
+    - title: "A zero-knowledge proof for the existence of God"
+      url: /2017/11/13/a-zero-knowledge-proof-for-the-existence-of-god/
+    - title: "What's the worst word you'd say to beat your in-laws at Boggle?"
+      url: /2017/10/27/whats-the-worst-word-youd-say-to-beat-your-in-laws-at-boggle/
+    - title: "She wanted to do something better"
+      url: /2018/07/28/she-wanted-to-do-something-better/
