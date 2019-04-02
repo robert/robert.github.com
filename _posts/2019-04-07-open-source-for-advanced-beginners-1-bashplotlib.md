@@ -3,7 +3,6 @@ title: "Open Source for Advanced Beginners #1: bashplotlib"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/robot-army-cover.png
-published: false
 ---
 I've found an accessible open source project, and have written 7 detailed feature requests for it. Your task is to read the project's code, understand it, and write these features.
 
@@ -82,13 +81,17 @@ Let's begin.
 
 `bashplotlib` displays its graph titles in a moderately nice-looking box:
 
+<p style="text-align: center">
 <img src="/images/bpl-ok-title.png" />
+</p>
 
 ### Task
 
 Let's make these titles a bit more eye-catching. The way that the box edges smash into each other in the corners is too harsh. Let's replace the corners with plus-signs so that the lines merge nicely with each other instead.
 
+<p style="text-align: center">
 <img src="/images/bpl-cool-title.png" />
+</p>
 
 ### Tips
 
@@ -114,7 +117,9 @@ Done it? Congratulations! Keep going; add further embellishments as your persona
 * If the title is longer than the width of the graph, truncate it and add ellipses (`…`) instead of overflowing.
 * Add 2 layers of edging, like so:
 
+<p style="text-align: center">
 <img src="/images/bpl-nicest-title.png" />
+</p>
 
 * Use your imagination! Make the title as elegant and beautiful as you can.
 
