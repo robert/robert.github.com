@@ -11,7 +11,7 @@ We're going to be working with [`bashplotlib`](https://github.com/glamp/bashplot
 
 <img src="/images/bpl-examples.png" />
 
-We're going to make `bashplotlib`'s graphs look more attractive; add automated *unit tests*; and even add an entirely new graph type. We'll learn how to search through a new codebase; when and when not to worry about code duplication; and how to safely change the way that a program is structured. After each task I've written [*pull requests*](https://help.github.com/en/articles/about-pull-requests) (PRs) on GitHub to show you how I would do it. These PRs are there to help you out if you get stuck and to allow you to compare notes once you're done.
+We're going to make `bashplotlib`'s graphs look more attractive; add automated *unit tests*; and even add an entirely new graph type. We'll learn how to search through a new codebase; when and when not to worry about code duplication; and how to safely change the way that a program is structured. After each task I've written [*pull requests*](https://help.github.com/en/articles/about-pull-requests) (PRs) on GitHub to show you what I would do. You can use these PRs to help you out if you get stuck and to compare notes once you're done.
 
 This is the first project in the "Open Source for Advanced Beginners" series. I've written more about why and how I think this series will help you go from Advanced Beginner to Beginning Advanced [here](/TODO).
 
@@ -21,16 +21,18 @@ Before we begin, let's do some quick setup.
 
 I've [forked](https://help.github.com/en/articles/fork-a-repo) the `bashplotlib` [repo](https://stackoverflow.com/a/2917421) and put it on [my GitHub account](https://github.com/robert/bashplotlib). I did this so that no one else can sneak in and implement the 7 features in this project before you've had a chance to. By the time you read this, the code in the main `bashplotlib` repo may have changed significantly, but my fork will stay exactly the same forever.
 
-### Fork your own version of `bashplotlib` on GitHub
+To set up `bashplotlib` on your computer:
+
+### Task A: Fork your own version of `bashplotlib` on GitHub
 
 *(optional but recommended)*
 
 I recommend that you fork your own version of my fork. This will allow you to practice using git to [push](https://help.github.com/en/articles/pushing-to-a-remote) your work back up to GitHub, and will also allow you to show the world what you've been working on. If you can't or don't want to do this then you can skip to step 3 and clone my version of `bashplotlib` directly. Don't worry about breaking anything; GitHub wouldn't let you mess up my version even if you wanted to. To fork your own `bashplotlib` repo:
 
-1. If you don't have a GitHub account, create one. Follow [GitHub's instructions for linking your computer to your account](https://help.github.com/en/articles/caching-your-github-password-in-git).
+1. If you don't have a GitHub account, create one. Follow [GitHub's instructions for linking your computer to your account](https://help.github.com/en/articles/caching-your-github-password-in-git). When following the instructions, note that we're going to do our cloning using HTTPS, not SSH.
 2. Go to <https://github.com/robert/bashplotlib> and click "Fork". This will create your own copy of the `bashplotlib` repo.
 
-### Clone `bashplotlib`
+### Task B: Clone `bashplotlib`
 
 To [clone](https://help.github.com/en/articles/cloning-a-repository) `bashplotlib` and copy the files onto your computer:
 
@@ -43,12 +45,12 @@ To [clone](https://help.github.com/en/articles/cloning-a-repository) `bashplotli
     If you can't get cloning to work, despite having wasted your whole goddamn afternoon trying, you can download the code as a standard zip file by clicking on the <em>Clone or download</em> button on <a href="https://github.com/robert/bashplotlib">https://github.com/robert/bashplotlib</a>.</li>
 </ol>
 
-### Set up a scratch file
+### Task C: Set up a scratch file
 
 The rigorous best practice for working with Python libraries is to use a tool called `virtualenv`. If you want to try setting it up then you can follow the instructions [here](https://docs.python-guide.org/dev/virtualenvs/), but for now I recommend saving yourself the potential frustration and heartache of installing a new tool and following these simpler and perfectly valid steps instead:
 
 <ol start="5">
-  <li>In your terminal, <code>cd</code> into the new directory you just created with your clone operation (eg. <code>cd ./bashplotlib</code>)</li>
+  <li>In your terminal, <code>cd</code> into the new directory you just created by your clone operation (eg. <code>cd ./bashplotlib</code>)</li>
   <li>Make a scratch Python file. The name isn't important; <code>scratch.py</code> is fine.</li>
   <li>Copy this code into it:
 <pre class="highlight"><code><span class="c"># scratch.py</span>
@@ -71,7 +73,7 @@ The rigorous best practice for working with Python libraries is to use a tool ca
     <span class="n">title</span><span class="p">)</span>
 </code></pre>
   </li>
-  <li>Run this code with <code>python scratch.py</code>. If this prints out a nice scatterplot then your setup is complete and you're ready to take on the world. If it doesn't work then congratulations, you get to practice your debugging skills to try and figure out why. Send me a <a href="/about">message</a> if you get stuck.</li>
+  <li>Run this code with the command <code>python ./scratch.py</code>. If the command prints a scatterplot then your setup is complete and you're ready to take on the world. If something goes wrong then congratulations, you get to practice your debugging skills to try and figure out what. Send me a <a href="/about">message</a> if you get stuck.</li>
 </ol>
 
 Let's begin.
@@ -80,25 +82,25 @@ Let's begin.
 
 `bashplotlib` displays its graph titles in a moderately nice-looking box:
 
-<img src="/images/bpl-title-box.png" />
+<img src="/images/bpl-ok-title.png" />
 
 ### Task
 
 Let's make these titles a bit more eye-catching. The way that the box edges smash into each other in the corners is too harsh. Let's replace the corners with plus-signs so that the lines merge nicely with each other instead.
 
-[PIC]
+<img src="/images/bpl-cool-title.png" />
 
 ### Tips
 
 Open `bashplotlib/scatterplot.py` and have a look around. Where is the code that prints the title box?
 
-Once you've found the box-printing code, you'll see that it uses a function that is defined in another file in the `bashplotlib` project. Use your text editor's "Find in project" (or similar) feature to work out which file, and locate the function's code. (Hint - if you want to find where a Python function is defined, search for `"def my_function_name"` instead of just `my_function_name`)
+Once you've found the box-printing code, you'll see that it uses a function that is defined in another file in the `bashplotlib` project. Which file? Use your text editor's "Find in project" (or similar) feature, and locate the function's code. (Hint - if you want to find where a Python function is defined, search for `"def my_function_name"` instead of just `my_function_name`)
 
-Once you believe you've found the box-generating function, make sure that you really are in the right place by changing some of the function's code. For example, change the function so that the sides of the box are displayed using the `^` character instead of the `|`. Run your scratch file (`cd` to the root of the `bashplotlib` project and run `python ./scratch.py`), and make sure that the output is what you expect to be. If it is, you know you're in the right place. If it isn't, work out why.
+Once you believe you've found the box-generating function, make sure that you really have found it by changing some of the function's code. For example, change the function so that the sides of the box are displayed using the `^` character instead of the `|`. Run your scratch file (`cd` to the root of the `bashplotlib` project and run `python ./scratch.py`), and make sure that the output is what you expect to be. If it is, you know you're in the right place. If it isn't, work out why.
 
 Now that you've found the piece of code that builds the title box, you're ready to change it so that it puts plus-signs in the box's corners. Go ahead.
 
-Make sure that you don't accidentally break anything in the process. For example, make sure that the title box stays the same width as the graph, and that the text inside the box stays centered. If we had *unit tests* then we wouldn't have to worry about accidentally breaking anything. Unfortunately we don't have any unit tests yet, although we are going to write some in section 4 of this project. For now you'll just have to be extra careful and manually check your work.
+Make sure that you don't accidentally break anything in the process. For example, make sure that the title box stays the same width as the graph, and that the text inside the box stays centered. If we had *unit tests* then we wouldn't have to worry about accidentally breaking anything. We're going to write some unit tests in section 4 of this project, but unfortunately we don't have any yet. For now you'll just have to be extra careful and manually check your work.
 
 ### How I did it
 
@@ -112,7 +114,7 @@ Done it? Congratulations! Keep going; add further embellishments as your persona
 * If the title is longer than the width of the graph, truncate it and add ellipses (`…`) instead of overflowing.
 * Add 2 layers of edging, like so:
 
-[PIC]
+<img src="/images/bpl-nicest-title.png" />
 
 * Use your imagination! Make the title as elegant and beautiful as you can.
 
@@ -128,7 +130,7 @@ Let's add the ability to optionally pass in titles for the x- and y-axes of scat
 <img src="/images/bpl-axis-titles-example.png" />
 </p>
 
-In addition, let's add `--xtitle` and `--ytitle` options to the command line interface at the bottom of the `scatterplot.py` file too so that the command line tool can use them too.
+In addition, let's add `--xtitle` and `--ytitle` options to the command line interface at the bottom of the `scatterplot.py` file so that the command line tool can use them too.
 
 ### Tips
 
@@ -175,7 +177,7 @@ When I was working on this feature myself, I realized that I had to actually wor
 
 ### Extensions
 
-Allow users to hide these new axes by passing in an optional `hide_zero_axes` flag into the `plot_scatter` function and the command line interface. 0-axes should be displayed by default, so the default value for this parameter should be `False`.
+Allow users to hide these new axes if they pass an optional `hide_zero_axes` argument into the `plot_scatter` function. 0-axes should be displayed by default, so the default value for this argument should be `False`.
 
 ## 4. Make the library "testable" and write some tests
 
@@ -199,15 +201,15 @@ else:
     print(result)
 ```
 
-You might also write other tests that make sure that `sum_digits` also works correctly for other types of number, like negative numbers, decimals, and the number 0.
+You might also write other tests that make sure that `sum_digits` works correctly for other types of number, like negative numbers, decimals, and the number 0.
 
-Unit tests make checking your code much quicker and more reliable - all you have to do is run your test file and make sure none of the tests fail. It also means that future people who work with your code (including yourself) will know how it's meant to behave, and will be less likely to accidentally break it.
+Unit tests make verifying the correctness of your code much quicker and more reliable - all you have to do is run your test file and make sure none of the tests fail. It also means that future people who work with your code (including yourself) will know how it's meant to behave, and will be less likely to accidentally break it.
 
 At Stripe, where I work, I would guess that the codebase has well over 10,000 tests. This means that anyone can add new features and update existing ones, without being unduly concerned that they will unwittingly destroy the company.
 
 ### Making `bashplotlib` "testable"
 
-`bashplotlib` does not currently have any tests. This is a perfectly reasonable choice by the author. Writing and maintaining tests takes time, and he probably felt that the library was small and experimental enough that he didn't want the bother. Nonetheless, adding tests would still make the library more reliable and easier to work with. When I was writing this project I [noticed and fixed a small bug](https://github.com/glamp/bashplotlib/pull/50), which would have been caught automatically if the library had had any tests.
+`bashplotlib` does not currently have any tests. This is a perfectly reasonable choice by the author. Writing and maintaining tests takes time, and he probably felt that the library was small and experimental enough that he didn't want the bother. Nonetheless, adding tests would make the library more reliable and easier to work with. While I was writing this project I [noticed and fixed a small bug](https://github.com/glamp/bashplotlib/pull/50), which would have been caught automatically if the library had had any tests.
 
 However, right now `bashplotlib` is not very "testable". A piece of code's "testability" is how easy it is to write tests for. There are many reasons why a piece of code might or might not be testable. `bashplotlib`'s main problem is that it prints all of its output to the terminal piece-by-piece. Automated tests for the current version of `bashplotlib` would have to somehow read in output that had previously been printed to the terminal. There are ways to do this (or something close to it), but they are somewhat complicated and fiddly. There is a better solution.
 
@@ -237,6 +239,9 @@ expected_result = """+--------...
 ...etc...
 |
 +--------..."""
+# Call `_plot_scatter` with the arguments that
+# you know will produce the `expected_result`
+# above.
 result = _plot_scatter(...arguments, etc...)
 
 if expected_result == result:
@@ -253,7 +258,7 @@ Think of as many edge-cases as you can, and write individual tests for them all.
 
 ### Tips
 
-I suggest that you tackle this task in the following steps:
+I suggest that you tackle this task using the following steps:
 
 * Change `_plot_scatter` so that it returns a string representing the graph, and doesn't print anything
 * Change `plot_scatter` so that it stores and prints the output of `_plot_scatter`
@@ -271,11 +276,11 @@ For another example of unit testing, see section 3 of [Programming Projects for 
 
 ### Extension
 
-Research `PyUnit`, a Python testing framework, and rewrite our tests with it. Although our hand-crafted if-statements are perfectly serviceable, most *test suites* are written using a testing framework (like `PyUnit`), which makes it easier to write, run, and debug tests.
+Research `PyUnit`, a Python testing framework, and rewrite our tests with it. Although our hand-crafted if-statements are perfectly serviceable, most *test suites* are written using a testing framework (like `PyUnit`), which makes writing, running, and debugging tests much easier.
 
 ## 5. Make histograms more stylish too
 
-So far all of our work has been on improving scatterplots. But `bashplotlib` can plot histograms too. Technically they're not actually histograms; the y-axis in `bashplotlib`'s graphs represents a raw count, whereas in a histogram the y-axis represents "probability density". "Bar charts" would be a more accurate word for what `bashplotlib` produces. But I think everyone still understands what it's getting at, so let's not say anything nasty on Twitter. For consistency I'm going to keep referring to them as "histograms".
+So far all of our work has been on improving scatterplots. But `bashplotlib` can plot histograms too. Technically they're not actually histograms; the y-axis in `bashplotlib`'s graphs represents a raw count, whereas in a histogram the y-axis represents "probability density". "Bar charts" would be a more accurate word for what `bashplotlib` produces. But I think everyone still understands what the library is getting at, so let's not say anything nasty on Twitter. For consistency I'm going to keep referring to them as "histograms".
 
 ### Task
 
@@ -289,9 +294,22 @@ To work on histograms, you'll have to call `plot_hist` from your `scratch.py` fi
 
 ### Tips
 
-We have a small problem - `box_text` currently assumes that you only want to print a single line inside your box, but our statistics are spread out over many. To solve this snafu, update `box_text` so that the argument it accepts is a *list* of strings, not just a single string. Have the function display each element of the list on a separate line, and surround all the lines with an ASCII box. To maintain compatibility with our existing code, update the places where `box_text` is used for displaying titles so that the titles are passed in as a single element list, like this:
+We have a small problem - `box_text` currently assumes that you only want to print a single line inside your box, but our statistics are spread out over many. To solve this snafu, update `box_text` so that the argument it accepts is a *list* of strings, not just a single string. Have the function display each element of the list on a separate line, and surround all the lines with an ASCII box. We'll then use it to create our stats box like so:
 
+```python
+center = ... # Defined earlier in the file
+summary_lines = [
+    "## Summary ##".center(center),
+    ("observations: %d" % n).center(center),
+    # ...etc...
+]
+print(box_text(summary_lines, center))
 ```
+
+
+To maintain compatibility with our existing code, update the places where `box_text` is used for displaying titles so that the titles are passed in as a single element list, like this:
+
+```python
 box_text([title])
 ```
 
@@ -338,7 +356,7 @@ Do the same thing that you did in task 2 - add optional titles to the x- and y-a
 
 You'll probably find that you repeat code between the `scatterplot.py` and `histogram.py` files. Repeating code like this should always make you feel a little bit uncomfortable, and should prompt you to consider ways to reduce or eliminate the duplication. That said, sometimes repeating code can be an entirely pragmatic choice.
 
-For this task, we could either try to wrap up our axis title code in some sort of `print_axis_title` function that lives in `utils/helpers.py`, or we could copy and paste and duplicate our code in both `scatterplot.py` and `histogram.py`. In this situation, I could personally go either way. On the one hand, it's always good to reduce repeated code. But on the other hand, it's not obvious to me that scatterplots and histograms will necessarily always and forever want to use the same logic for printing their axis labels. What happens if one of them wants to print some extra characters on the same line as the axis label? We'd probably have to add something convoluted like optional `extra_chars_left` and `extra_chars_right` parameters. Trying to combine two pieces of code that might not be as combine-able as they first appear can lead to some awkward constructs. Since the code for printing axis labels is relatively simple anyway, on this occasion I lean in favor of copying and pasting.
+In our situation, we could either try to wrap up our axis title code in some sort of `print_axis_title` function that lives in `utils/helpers.py`, or we could copy and paste and duplicate our code in both `scatterplot.py` and `histogram.py`. For this task, I could personally go either way. On the one hand, it's always good to reduce repeated code. But on the other hand, it's not obvious to me that scatterplots and histograms will always and forever want to use the same logic for printing their axis labels. For example, what happens if one of them wants to print some extra characters on the same line as the axis label? We'd probably have to add something convoluted like optional `extra_chars_left` and `extra_chars_right` parameters. Trying to combine two pieces of code that might not be as combine-able as they first appear can lead to some awkward approaches. Since the code for printing axis labels is relatively simple anyway, on this occasion I lean in favor of copying and pasting.
 
 I'm still glad that I thought about it though.
 
@@ -370,7 +388,7 @@ This will be very hard. Take inspiration from `histogram.py`, but not too much i
 
 * Copy and paste `histogram.py` into a new `horizontal_histogram.py` file
 * Make sure you can import `horizontal_histogram.py` and run its code in `scratch.py`. Test it by using it to draw some normal, still-vertical histograms
-* Think about which parts of the vertical histogram code you can reuse, and which parts will have to change. In general you'll be able to reuse the parts of the code that deal with transforming and bucketing the data, since the underlying data doesn't change (everything above line 140 or so). However, you will have to rewrite the parts that take the transformed data and display it as a graph (everything else). For now, don't worry about duplicating code.
+* Think about which parts of the vertical histogram code you can reuse, and which parts will have to change. In general you'll be able to reuse the parts of the code that deal with transforming and bucketing the data (everything above line 140 or so), since the underlying data doesn't change. However, you will have to rewrite the parts that take the transformed data and display it as a graph (everything below line 140). For now, use copy and paste liberally and don't worry about duplicating code.
 * Once you've got your horizontal histogram working, write some tests for it!
 
 ### How I did it
@@ -383,7 +401,7 @@ Pull out as much duplicated code as you can from vertical and horizontal histogr
 
 ## 8. Even more extensions
 
-* Calculate the "correlation" of scatter graphs using the "product moment correlation coefficient" algorithm and print it in a box below the plot. Research what this means. You can either look for an existing implementation of the algorithm and use that, or try to code it yourself from scratch.
+* Calculate the "correlation" of scatter graphs using the "product moment correlation coefficient" algorithm and print it in a box below the plot. Research what these words mean. You can either look for an existing implementation of the algorithm and use that, or try to code it yourself from scratch.
 * Calculate the "interquartile range" of histogram data and display it in the same box as the mean, median, standard deviation, etc.
 * Use ASCII techniques to connect the dots in scatter plots. You'll have to work out which points need to be joined together, calculate the gradient between them, and work out how best to connect them using ASCII characters.
 * Draw ASCII pie charts. Add a new `bashplotlib/pie_chart.py` file to put the logic in, and add a new `pie` command-line tool
