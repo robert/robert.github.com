@@ -3,6 +3,7 @@ title: "Open Source for Advanced Beginners #1: bashplotlib"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/robot-army-cover.png
+published: false
 ---
 I've found an accessible open source project, and have written 7 detailed feature requests for it. Your task is to read the project's code, understand it, and write these features.
 
