@@ -5,7 +5,9 @@ tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/robot-army-cover.png
 published: false
 ---
-I've found an accessible open source project, and have written 7 detailed feature requests for it. Your task is to read the project's code, understand it, and write these features.
+This is a project for advanced beginner programmers.
+
+Its goal is to help you make the leap from small practice exercises to complex, thorny programs like what you might encounter in your first future programming job. I've found an accessible open source library and have written 7 detailed feature requests for it. Your task is to read the library's code, understand it, and write these features. You’ll get plenty of guidance along the way, but not too much, and you’ll have to do all the difficult bits yourself. I've written more about why and how I think this project will help you go from Advanced Beginner to Beginning Advanced [here](/TODO).
 
 We're going to be working with [`bashplotlib`](https://github.com/glamp/bashplotlib), a Python library that displays ASCII graphs in the terminal. Created by Greg Lamp, it is small, approachable, and sensibly-written, whilst still having plenty of room for improvement in both its code and functionality.
 
@@ -13,15 +15,13 @@ We're going to be working with [`bashplotlib`](https://github.com/glamp/bashplot
 
 We're going to make `bashplotlib`'s graphs look more attractive; add automated *unit tests*; and even add an entirely new graph type. We'll learn how to search through a new codebase; when and when not to worry about code duplication; and how to safely change the way that a program is structured. After each task I've written [*pull requests*](https://help.github.com/en/articles/about-pull-requests) (PRs) on GitHub to show you what I would do. You can use these PRs to help you out if you get stuck and to compare notes once you're done.
 
-This is the first project in the "Open Source for Advanced Beginners" series. I've written more about why and how I think this series will help you go from Advanced Beginner to Beginning Advanced [here](/TODO).
-
 Before we begin, let's do some quick setup.
 
 ## Setup
 
-I've [forked](https://help.github.com/en/articles/fork-a-repo) the `bashplotlib` [repo](https://stackoverflow.com/a/2917421) and put it on [my GitHub account](https://github.com/robert/bashplotlib). I did this so that no one else can sneak in and implement the 7 features in this project before you've had a chance to. By the time you read this, the code in the main `bashplotlib` repo may have changed significantly, but my fork will stay exactly the same forever.
+I've "forked" (git's word for "made my own copy of") the `bashplotlib` [repo](https://stackoverflow.com/a/2917421) and put it on [my GitHub account](https://github.com/robert/bashplotlib). I did this so that no one else can sneak in and implement the 7 features in this project before you've had a chance to. By the time you read this, the code in the main `bashplotlib` repo may have changed significantly, but my fork will stay exactly the same forever.
 
-To set up `bashplotlib` on your computer:
+Here's how to get `bashplotlib` set up on your computer.
 
 ### Task A: Fork your own version of `bashplotlib` on GitHub
 
@@ -76,7 +76,7 @@ The rigorous best practice for working with Python libraries is to use a tool ca
   <li>Run this code with the command <code>python ./scratch.py</code>. If the command prints a scatterplot then your setup is complete and you're ready to take on the world. If something goes wrong then congratulations, you get to practice your debugging skills to try and figure out what. Send me a <a href="/about">message</a> if you get stuck.</li>
 </ol>
 
-Let's begin.
+Let's start small and get warmed up.
 
 ## 1. Make the title box more stylish
 
