@@ -5,7 +5,7 @@ steve_steveington:
       url: "/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/"
     - title: "A tale of love, betrayal, social engineering and WhatsApp"
       url: /2016/10/22/a-tale-of-love-betrayal-social-engineering-and-whatsapp/
-    - title: "Tracking friends and strangers using WhatsApp"
+    - title: "Tracking friends and strangers using WhatsApp"f
       url: "/2017/10/09/tracking-friends-and-strangers-using-whatsapp/"
     - title: "Re: all those regrettable posts that you thought were gone"
       url: :/2018/05/01/re-all-those-regrettable-posts-that-you-thought-were-gone/"
@@ -41,8 +41,8 @@ https:
       url: /2018/11/28/https-in-the-real-world/
     - title: "The SSL FREAK vulnerability explained"
       url: /2015/04/06/the-ssl-freak-vulnerability/
-    - title: "A comprehensive introduction to Tor"
-      url: /2019/04/06/a-comprehensive-introduction-to-tor
+    - title: "How does Tor work?"
+      url: /2019/04/06/how-does-tor-work
 
 computer_games:
   title: Computer games
