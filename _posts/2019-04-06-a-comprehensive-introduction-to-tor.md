@@ -1,8 +1,10 @@
 ---
-title: "A comprehensive introduction to Tor"
+title: "How does Tor work?"
 layout: post
 tags: [Security]
 og_image: https://robertheaton.com/images/tor-cover.png
+redirect_from:
+  - /2019/04/06/a-comprehensive-introduction-to-tor/
 ---
 The internet is a dangerous place for Person X.
 
