@@ -93,7 +93,7 @@ The middle node forwards the singly-encrypted payload to the exit node. The exit
 
 These multiple layers of encryption help to ensure that no relay node in the circuit knows the identity of both sides of the connection.
 
-## The different between Tor and a VPN
+## The difference between Tor and a VPN
 
 Compare a Tor circuit to a traditional VPN, another partially privacy-motivated piece of software. When you use a VPN, your computer sends all of your internet traffic to your VPN, and your VPN forwards it to the appropriate destinations. All your ISP or anyone watching your network ever sees is traffic heading from you to your VPN. They can't see inside your encrypted connection with your VPN, which means that they can't see which remote servers you are communicating with.
 
