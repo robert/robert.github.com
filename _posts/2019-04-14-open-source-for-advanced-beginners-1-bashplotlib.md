@@ -2,12 +2,11 @@
 title: "Open Source for Advanced Beginners #1: bashplotlib"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_image: https://robertheaton.com/images/robot-army-cover.png
-published: false
+og_image: https://robertheaton.com/images/osab-cover.png
 ---
 This is a project for advanced beginner programmers.
 
-Its goal is to help you make the leap from small practice exercises to complex, thorny programs like what you might encounter in your first future programming job. I've found an accessible open source library and have written 7 detailed feature requests for it. Your task is to read the library's code, understand it, and write these features. You’ll get plenty of guidance along the way, but not too much, and you’ll have to do all the difficult bits yourself. I've written more about why and how I think this project will help you go from Advanced Beginner to Beginning Advanced [here](/TODO).
+The goal of this project is to help you make the leap from small practice exercises to complex, thorny programs like what you might encounter in your first future programming job. I've found an accessible open source library and have written 7 detailed feature requests for it. Your task is to read the library's code, understand it, and write these features. You’ll get plenty of guidance along the way, but not too much, and you’ll have to do all the difficult bits yourself. I've written more about why and how I think this project will help you go from Advanced Beginner to Beginning Advanced [here](/open-source-for-advanced-beginners).
 
 We're going to be working with [`bashplotlib`](https://github.com/glamp/bashplotlib), a Python library that displays ASCII graphs in the terminal. Created by Greg Lamp, it is small, approachable, and sensibly-written, whilst still having plenty of room for improvement in both its code and functionality.
 
@@ -39,9 +38,9 @@ To [clone](https://help.github.com/en/articles/cloning-a-repository) `bashplotli
 <ol start="3">
   <li>In your terminal, <code>cd</code> to the directory you want to work in (eg. <code>cd ~/Documents/Programming</code>)</li>
   <li>If you forked your own version of <code>bashplotlib</code> in the previous section, clone it by running the command:
-    <pre>git clone git@github.com:$YOUR_GITHUB_NAME/bashplotlib.git</pre>
+    <pre>git clone https://github.com:$YOUR_GITHUB_NAME/bashplotlib.git</pre>
     If you didn't fork your own version, clone my version by running:
-    <pre>git clone git@github.com:robert/bashplotlib.git</pre>
+    <pre>git clone https://github.com:robert/bashplotlib.git</pre>
     If you can't get cloning to work, despite having wasted your whole goddamn afternoon trying, you can download the code as a standard zip file by clicking on the <em>Clone or download</em> button on <a href="https://github.com/robert/bashplotlib">https://github.com/robert/bashplotlib</a>.</li>
 </ol>
 
@@ -104,7 +103,7 @@ Once you believe you've found the box-generating function, make sure that you re
 
 Now that you've found the piece of code that builds the title box, you're ready to change it so that it puts plus-signs in the box's corners. Go ahead.
 
-Make sure that you don't accidentally break anything in the process. For example, make sure that the title box stays the same width as the graph, and that the text inside the box stays centered. If we had *unit tests* then we wouldn't have to worry about accidentally breaking anything. We're going to write some unit tests in section 4 of this project, but unfortunately we don't have any yet. For now you'll just have to be extra careful and manually check your work.
+Make sure that you don't accidentally break anything in the process. For example, make sure that the title box stays the same width as the graph, and that the text inside the box stays centered. If we had *unit tests* then we wouldn't have to worry about accidentally breaking anything, because our tests would tell us if we had. We're going to write some unit tests in section 4 of this project, but unfortunately we don't have any yet. For now you'll just have to be extra careful and manually check your work.
 
 ### How I did it
 
@@ -211,11 +210,11 @@ You might also write other tests that make sure that `sum_digits` works correctl
 
 Unit tests make verifying the correctness of your code much quicker and more reliable - all you have to do is run your test file and make sure none of the tests fail. It also means that future people who work with your code (including yourself) will know how it's meant to behave, and will be less likely to accidentally break it.
 
-At Stripe, where I work, I would guess that the codebase has well over 10,000 tests. This means that anyone can add new features and update existing ones, without being unduly concerned that they will unwittingly destroy the company.
+At Stripe, where I work, I would guess that the codebase has well over 10,000 tests, and maybe many more. This means that anyone can add new features and update existing ones, without being unduly concerned that they will unwittingly destroy the company.
 
 ### Making `bashplotlib` "testable"
 
-`bashplotlib` does not currently have any tests. This is a perfectly reasonable choice by the author. Writing and maintaining tests takes time, and he probably felt that the library was small and experimental enough that he didn't want the bother. Nonetheless, adding tests would make the library more reliable and easier to work with. While I was writing this project I [noticed and fixed a small bug](https://github.com/glamp/bashplotlib/pull/50), which would have been caught automatically if the library had had any tests.
+`bashplotlib` does not currently have any tests. This is a perfectly reasonable choice by the author. Writing and maintaining tests takes time, and he probably felt that the library was small and experimental enough that he didn't want the bother. Nonetheless, adding tests would make the library more reliable and easier to work with. While I was writing this project I noticed and fixed a small bug that would have been caught automatically if the library had had any tests.
 
 However, right now `bashplotlib` is not very "testable". A piece of code's "testability" is how easy it is to write tests for. There are many reasons why a piece of code might or might not be testable. `bashplotlib`'s main problem is that it prints all of its output to the terminal piece-by-piece. Automated tests for the current version of `bashplotlib` would have to somehow read in output that had previously been printed to the terminal. There are ways to do this (or something close to it), but they are somewhat complicated and fiddly. There is a better solution.
 
@@ -226,6 +225,13 @@ In this task we'll first make `bashplotlib` testable, and then we'll write tests
 We'll make `bashplotlib` "testable" by changing the `_plot_scatter` function so that it no longer *prints* the graph, but instead builds and returns the graph as a long string. The `plot_scatter` function (which calls `_plot_scatter`) will then be responsible for printing this long string to the terminal:
 
 ```python
+def _plot_scatter(...arguments, etc...)
+    graph = ""
+    # ...build a graph...
+    graph += "+---+etc"
+    # ...build the rest of the graph...
+    return graph
+
 def plot_scatter(...arguments, etc...)
     # ...process arguments...
     graph_text = _plot_scatter(...arguments, etc...)
@@ -296,11 +302,11 @@ So far all of our work has been on improving scatterplots. But `bashplotlib` can
 <img src="/images/bpl-stats-box.png" />
 </p>
 
-To work on histograms, you'll have to call `plot_hist` from your `scratch.py` file. Try to set this up yourself. If you get stuck, [here's one way to do it](TODO).
+To work on histograms, you'll have to call `plot_hist` from your `scratch.py` file. Try to set this up yourself.
 
 ### Tips
 
-We have a small problem - `box_text` currently assumes that you only want to print a single line inside your box, but our statistics are spread out over many. To solve this snafu, update `box_text` so that the argument it accepts is a *list* of strings, not just a single string. Have the function display each element of the list on a separate line, and surround all the lines with an ASCII box. We'll then use it to create our stats box like so:
+We have a small problem - `box_text` currently assumes that you only want to print a single line inside your box, but our statistics are spread out over multiple lines. To solve this snafu, update `box_text` so that the argument it accepts is a *list* of strings, not just a single string. Have the function display each element of the list on a separate line, and surround all the lines with an ASCII box. We'll then use the function to create our stats box like so:
 
 ```python
 center = ... # Defined earlier in the file
@@ -407,8 +413,8 @@ Pull out as much duplicated code as you can from vertical and horizontal histogr
 
 ## 8. Even more extensions
 
-* Calculate the "correlation" of scatter graphs using the "product moment correlation coefficient" algorithm and print it in a box below the plot. Research what these words mean. You can either look for an existing implementation of the algorithm and use that, or try to code it yourself from scratch.
-* Calculate the "interquartile range" of histogram data and display it in the same box as the mean, median, standard deviation, etc.
+* Calculate the "correlation" of scatter graphs using the "product moment correlation coefficient" algorithm and print it in a box below the plot. Research what these words mean. You can either look for an existing implementation of the algorithm and use that, or try to code it yourself from scratch (this involves a lot of very tricky but very interesting maths).
+* Calculate the "interquartile range" of histogram data and display it in the same box as the mean, median, standard deviation, etc. If you're not sure what that means, look it up!
 * Use ASCII techniques to connect the dots in scatter plots. You'll have to work out which points need to be joined together, calculate the gradient between them, and work out how best to connect them using ASCII characters.
 * Draw ASCII pie charts. Add a new `bashplotlib/pie_chart.py` file to put the logic in, and add a new `pie` command-line tool
 
@@ -416,4 +422,4 @@ Pull out as much duplicated code as you can from vertical and horizontal histogr
 
 You're done! Keep the momentum going - choose another open source project (use Google and [this list](https://github.com/vinta/awesome-python) for inspiration) and add experimental new features to it. Don't worry much about actually submitting your work to the main project (unless you want to) - your goal should be to understand and experiment with new projects, not to produce something polished and perfect and ready to be deployed to production servers. Alternatively, try tackling the [Programming Projects for Advanced Beginners series](/programming-projects-for-advanced-beginners/), where you build your own programs from scratch using a similar level of detailed (but not too detailed) guidance to that of this project.
 
-However much of this project you completed, I'd love to know about your successes and how you got on. Send me an email or a Tweet (with a link to your GitHub repo if you have one) and I'll send you back some insightful comments and a ASCII art trophy.
+I'd love to hear your feedback and find out how you got on. [Send me an email or a Tweet](/about) (with a link to your GitHub repo if you have one) and I'll send you back some insightful comments and a ASCII art trophy.
