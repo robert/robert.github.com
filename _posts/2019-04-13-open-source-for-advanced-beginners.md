@@ -5,6 +5,7 @@ tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/osab-cover-main.png
 redirect_from:
   - /open-source-for-advanced-beginners
+  - /open-source-for-advanced-beginners/
 ---
 The three most common pieces of almost-useful advice given to people learning programming are:
 

@@ -59,6 +59,10 @@ computer_games:
 learning_programming:
   title: Learning programming
   posts:
+    - title: "Open Source for Advanced Beginners: Intro"
+      url: /open-source-for-advanced-beginners/
+    - title: "Open Source for Advanced Beginners #1: bashplotlib"
+      url: /2019/04/14/open-source-for-advanced-beginners-1-bashplotlib/
     - title: "Programming Projects for Advanced Beginners: Intro"
       url: /programming-projects-for-advanced-beginners
     - title: "Programming Projects for Advanced Beginners #1: ASCII art"
