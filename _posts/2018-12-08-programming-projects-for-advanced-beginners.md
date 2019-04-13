@@ -80,6 +80,20 @@ Good luck!
 
 *You might also be interested in signing up for [my office hours](/office-hours), or for my newsletter (see below).*
 
+### Acclaim for Programming Projects for Advanced Beginners
+
+*"Just want you to know that I'm currently going through your "Programming Projects for Advanced Beginners" blog post series and it's been an awesome ride along the way!"*
+
+*"I just completed advanced beginners part-1 and it was wonderfully written project/blog. Thank you very much."*
+
+*"Really love how the blog post goes through the steps with explanation in code, thanks for sharing!"*
+
+*"I finished the ASCII project a few days ago, it was great. When is the next one coming out??"*
+
+*"I started with the Conway's Game of Life one and now I'm spending an hour or two each night putting together the tic tac toe game. Right now I'm building the board/turn sequence but I'm excited for the AI part…"*
+
+*"Holy moly, that link is amazing. The way he describes the situation is amazing, so well written and accurate."*
+
 [proj-1]: /2018/06/12/programming-projects-for-advanced-beginners-ascii-art/
 [proj-2]: /2018/07/20/project-2-game-of-life/
 [proj-3a]: /2018/10/09/programming-projects-for-advanced-beginners-3-a/
