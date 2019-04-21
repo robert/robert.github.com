@@ -2,7 +2,7 @@
 title: "Open Source for Advanced Beginners #1: bashplotlib"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_image: https://robertheaton.com/images/osab-cover.png
+og_image: https://robertheaton.com/images/osab-cover-main.png
 ---
 This is a project for advanced beginner programmers.
 
