@@ -2,7 +2,7 @@
 title: "Open Source for Advanced Beginners"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_image: https://robertheaton.com/images/osab-cover-main.png
+og_image: https://robertheaton.com/images/osab-cover.png
 redirect_from:
   - /open-source-for-advanced-beginners
   - /open-source-for-advanced-beginners/
