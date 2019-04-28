@@ -1,5 +1,5 @@
 ---
-title: "Skeptical advice for programming job seekers"
+title: "Skeptical advice for programming jobseekers"
 layout: post
 tags: [Office Hours]
 og_image: https://robertheaton.com/images/jobseekers-cover.png
