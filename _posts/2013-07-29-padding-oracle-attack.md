@@ -24,7 +24,7 @@ you would encrypt the first block of 16 characters using your chosen block ciphe
 In CBC encryption, each block of plaintext is XORed with the previous ciphertext block before being passed into the cipher. This interdependency between blocks means that each ciphertext block depends on all plaintext blocks processed up to that point. Changing the first character of the plaintext changes every single character of the ciphertext. According to Wikipedia it is "one of two block cipher modes recommended by Niels Ferguson and Bruce Schneier." It is a mean encryption.
 
 <img src="/images/cbc.png">
-(from <a target="_blank" href ="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29">Wikipedia</a>)
+(Image from <a target="_blank" href="https://privacycanada.net/">Privacy Canada</a>)
 
 ## How padding works (important!)
 
