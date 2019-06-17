@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Why you should be vegetarian
+tags: [Life]
 ---
 I’ve been vegetarian for 2 years. Most of my friends had already made the switch, and the resulting micro-zeitgeist began to pressure me to do so as well. I am nothing if not exceptionally susceptible to peer-pressure, so I started reading “<a href="http://www.amazon.co.uk/Animal-Liberation-Definitive-Classic-Movement/dp/0061711306" target="_blank">Animal Liberation</a>” by Peter Singer. As I neared the end I went to a Korean BBQ for a friend's birthday, where the waiter dumped a mountain of raw meat on the table for us to cook ourselves. Wrist-deep in recently deceased animal carcass I thought, “well this is pretty distasteful”, and haven’t eaten any meat since.
 
