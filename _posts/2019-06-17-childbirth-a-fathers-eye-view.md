@@ -2,6 +2,8 @@
 title: "Childbirth: a father's-eye view"
 layout: post
 tags: [Life]
+redirect_from:
+  - /2019/06/20/childbirth-a-fathers-eye-view/
 og_image: https://robertheaton.com/images/oscar-rob-cover.png
 ---
 "I have no idea who he is. He feels like a random baby sucking on my boob," said Gaby, my wife, ten minutes after the birth of our first child. I agreed with the sentiment, if not the specifics, but we still decided to give Oscar a bit longer before giving up and dumping him on his grandparents.
