@@ -3,6 +3,7 @@ title: I was 7 words away from being spear-phished
 layout: post
 tags: [Security]
 og_image: https://robertheaton.com/images/phish-cover.png
+published: false
 ---
 Three weeks ago I received a very flattering email from the University of Cambridge, asking me to judge the Adam Smith Prize for Economics:
 
