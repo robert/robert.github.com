@@ -7,15 +7,27 @@ published: false
 ---
 Three weeks ago I received a very flattering email from the University of Cambridge, asking me to judge the Adam Smith Prize for Economics:
 
-<img src="/images/phish-main1.png" />
+> Dear Robert,
+>
+> My name is Gregory Harris. I'm one of the Adam Smith Prize Organizers.
+> 
+> Each year we update the team of independent specialists who could assess the quality of the competing projects:
+http://people.ds.cam.ac.uk/grh37/awards/Adam_Smith_Prize
+>
+> Our colleagues have recommended you as an experienced specialist in this field.
+>
+> We need your assistance in evaluating several projects for Adam Smith Prize.
+>
+> Looking forward to receiving your reply.
+>
+> Best regards,
+> Gregory Harris
 
 I wouldn't say I'm an "expert" in economics exactly, but the university's request wasn't that surprising. I do have a subscription to The Economist, and I do understand - very roughly - how and why central banks set interest rates. I've read "Capital in the Twenty-First Century" and mostly got the gist of it. I've written a few blog posts that I've generously tagged as "economics", and perhaps there's a new discipline of computational economics that I might be able to shed some software industry insight onto. Overall it felt perfectly plausible that the organizers of the Adam Smith prize would want my perspective. I assumed that being a judge for the Adam Smith Prize would be a lot of work and would not be paid, but it would still be great fuel for the ole ego.
 
 All of this said, in my heart of hearts I knew that some wires had probably got crossed somewhere. There was no doubt a Professor Hobert Reaton at UC San Diego who was an expert in Heckscher-Ohlin trade theory, and who was patiently waiting for the chance to further his career through a Transatlantic collaboration. Nonetheless, I judged this a thread worth pulling and a mild fantasy worth entertaining.
 
-I reflexively did some basic security hygiene checks. The email was from an `@cam.ac.uk` email address. I hovered over the link in the email - `http://people.ds.cam.ac.uk/grh37/awards/Adam_Smith_Prize`.
-
-It pointed to the same URL that the email text claimed it did, and was located on a valid `cam.ac.uk` subdomain. It did strike me as a little odd that the page was hosted inside `gh327`'s personal directory instead of the main economics department's site; but hey, it's probably less bureaucracy that way. I clicked on the link and read a little about the history of the Adam Smith prize.
+I reflexively did some basic security hygiene checks. The email was from an `@cam.ac.uk` email address. I hovered over the link in the email - `http://people.ds.cam.ac.uk/grh37/awards/Adam_Smith_Prize`. It pointed to the same URL that the email text claimed it did, and was located on a valid `cam.ac.uk` subdomain. It did strike me as a little odd that the page was hosted inside `gh327`'s personal directory instead of the main economics department's site; but hey, it's probably less bureaucracy that way. I clicked on the link and read a little about the history of the Adam Smith prize.
 
 If "Gregory" had added just 7 extra words to this page, I would have been screwed. More on that later.
 
@@ -25,21 +37,46 @@ I remember thinking that Gregory's email seemed very curt and poorly phrased, an
 
 At the time I just thought he wasn't a very good writer.
 
-I sent Gregory back a short reply, expressing preliminary interest and asking for more information about who had recommended me.
+I sent Gregory a short reply, expressing preliminary interest and asking for more information.
 
-<img src="/images/phish-main2.png" />
+> Hi Gregory,
+>
+> Thanks for your email, I'm certainly interested. Could you tell me a bit more about what this would involve and who recommended me?
+>
+> Best,
+> Rob
 
 Gregory quickly replied - I was in!
 
-<img src="/images/phish-main3.png" />
+> Hi Rob,
+>
+> Thanks for prompt reply.
+>
+> Your candidacy is in the candidate list we received from the San Francisco State University.
+>
+> We'll send you the description of several projects and the list of questions and criteria to assess them. 
+>
+> I think the plan will be ready by mid-June.
+>
+> Best regards,
+> Gregory
 
 I started to feel like a bit of a huckster. I pictured Hobert Reaton sitting in his office in San Diego, all alone, wondering why no one wanted him to judge their competitions. I decided that I would share my reservations with my new friend Gregory, and be completely open about my skills and weaknesses. If he still wanted me to judge his competition then that wasn't my fault.
 
-<img src="/images/phish-main4.png" />
+> Hi Gregory,
+>
+> I'm starting to wonder if some wires have got crossed - I've read a few books by Paul Krugman, but aside from that have never studied or practiced economics. I'm a software engineer - this is my experience and education https://www.linkedin.com/in/robertjheaton/ . What do you think? Is there maybe another Robert Heaton in San Francisco who knows a bit more about economics?
+>
+> Rob
 
 However, Gregory agreed (rather quicker than I had hoped) that maybe a mistake had been made and that actually I wasn't of any use to him.
 
-<img src="/images/phish-main5.png" />
+> Hi Rob,
+>
+> Yeah, it may be a mistake. I'll consult with my colleagues and get back to you shortly.
+>
+> Best regards,
+> Gregory
 
 This was the last I ever heard from Gregory Harris. I thought nothing more of the exchange.
 
@@ -47,7 +84,9 @@ This was the last I ever heard from Gregory Harris. I thought nothing more of th
 
 On Friday I received an email from Coinbase:
 
-<img src="/images/phish-coinbase.png" />
+> Hi there,
+>
+> You may have recently received an email from individuals named Gregory Harris or Neil Morris, claiming to administer prize grants for the University of Cambridge. These are in fact fraudulent profiles, and belong to an advanced attacker attempting to deliver malware to your laptop...
 
 This made a lot of sense, when I thought about it.
 
@@ -65,7 +104,7 @@ Armed with legitimate-seeming identities, a Firefox 0-day, and an email list of 
 
 I'm not sure how the University of Cambridge fits into this story. I don't know whether "Gregory Harris" and "Neil Morris" are real people whose university accounts were compromised, or fake people created by someone who compromised the university computing system itself, or if I'm just completely misunderstanding what happened. I don't want to publicly pry too much into Gregory or Neil's online lives, just in case they are in fact real, but my strong suspicion is that they are fake. This is wild speculation, as is everything else that follows, so if you work in IT at the University of Cambridge then please don't hate me. Please do tell me more about what actually went on though.
 
-I haven't been able to find any online trace of either "Gregory Harris" or "Neil Morris", other than their alleged LinkedIn profiles. Once again, this is perfectly fine. Not everyone has to be on Instagram or write public Star Wars fan fiction. However, Gregory Harris's LinkedIn profile has recently been taken down - it still appears in Google searches, but is not available on LinkedIn. And while Morris's profile is still up, it sure looks like it's a fake.
+I haven't been able to find any online trace of either Gregory Harris or Neil Morris, other than their alleged LinkedIn profiles. Once again, this is perfectly fine. Not everyone has to be on Instagram or write public Star Wars fan fiction. However, Gregory Harris's LinkedIn profile has recently been taken down - it still appears in Google searches, but is not available on LinkedIn. And while Morris's profile is still up, it sure looks like it's a fake.
 
 Neil's profile looks reasonable enough at first glance.
 
@@ -81,12 +120,11 @@ To me, this is enough on its own to confirm my prior suspicions. But if we look 
 
 <img src="/images/phish-neil-edu.png" />
 
-* Neil's spent 7 years at secondary school. That's standard in the UK. But his final 2 years apparently overlapped with his first 2 years at university. That doesn't make much sense.
+* Neil spent 7 years at secondary school. That's standard in the UK. But his final 2 years apparently overlapped with his first 2 years at university. That doesn't make much sense.
 * Neil describes his pre-university education as "High School". We don't have "High School" in the UK - we call it "Secondary School". This might make sense if Neil was American, or trying to communicate with an American audience, but there's no indication that this is the case.
 
 <img src="/images/phish-neil-sec.png" />
 
-* I don't *think* that going from Postdoctoral Researcher to Research Grants Administrator is a common career path. I *think* that they're entirely different jobs. Not sure about this though.
 * Neil's LinkedIn cover photo is a stock photo of Cambridge University. I didn't think twice about this at first, but in light of all of the above, it strikes me as a little odd. Does he really love his university so much that he uses a stock photo of it in his professional profile? Not even a nice photo of his office that he took himself? It seems more likely to me that this is the work of someone trying to make a phony profile that oozes "I work at Cambridge University, nothing to see here".
 
 <img src="/images/phish-neil-cover.png" />
@@ -97,8 +135,8 @@ Neil, if you are real and this is your real LinkedIn profile then I am so sorry.
 
 I don't think that it was careless of me to click on the link in the phishing email. Browser 0-days that are exploited by a sub-domain of `cam.ac.uk` aren't in my personal threat model, and I think that this is sensible. Security always has to be balanced with pragmatism, and not everything can be GPG-signed by a web of trust that leads back to Bruce Schneier. My [Twitter DMs](https://twitter.com/RobJHeaton) are open for splenetic criticisms.
 
-Nonetheless, this episode has left me feeling incredibly uneasy. Even though my story ends safely, I still fell for a phishing attack hook, line, and sinker. It was blind chance that the attack vector was a 0-day for a piece of software that I don't use, rather than something more run-of-the-mill. After a few more back and forths I think I would have probably have enabled macros on any Microsoft Office documents that Gregory Harris sent me, and I might even have run code or binaries if he said it was part of someone's entry into the competition. As I mentioned I don't have any cryptocurrency to lose, but I sure do have money in my online banking accounts that I'd like to keep there.
+Nonetheless, this episode has left me feeling incredibly uneasy. Even though my story ends safely, I still fell for a phishing attack hook and line, if not sinker. It was blind chance that the attack vector was a 0-day for a piece of software that I don't use, rather than something more run-of-the-mill. After a few more back and forths I think I would have probably have enabled macros on any Microsoft Office documents that Gregory Harris sent me, and I might even have run code or binaries if he said it was part of someone's entry into the competition. As I mentioned I don't have any cryptocurrency to lose, but I sure do have money in my online banking accounts that I'd like to keep there.
 
-I don't have an exhaustive list of the morals of this story yet. I think the main one is that you should keep your guard up when communicating with internet people who you don't know, even if their email address and website domain look legit and their DKIM signatures check out. Also, remember that it's easy to overlook a large number of inconsistencies and oddities if you believe someone's underlying story. Now I think about it it's completely absurd that the *University of Cambridge* would ask me to judge *an economics competition*, and now I look back on Gregory Harris's email it is clearly not the work of someone skilled in online communication. But I wasn't thinking critically, and had been lulled into a false sense of security by that `@cam.ac.uk` email address.
+I don't have an exhaustive list of the morals of this story yet. I think the main one is that you should keep your guard up when communicating with internet people who you don't know, even if their email address and website domain look legit and their DKIM signatures check out. Also, remember that it's easy to overlook a large number of inconsistencies and oddities if you believe someone's underlying story, especially if this story makes you feel good. Now I think about it it's completely absurd that the *University of Cambridge* would ask me to judge *an economics competition*, and now I look back on Gregory Harris's email it is clearly not the work of someone skilled in online communication. But I wasn't thinking critically, and had been lulled into a false sense of security by that `@cam.ac.uk` email address.
 
 Oh, a final moral - think twice before you start humble-bragging (and brag-bragging) to far too many people that you've been asked to judge the Adam Smith Prize for Economics.
