@@ -109,6 +109,8 @@ economics:
 programming:
   title: Programming odds and ends
   posts:
+    - title: "I was 7 words away from being spear-phished"
+      url: /2019/06/24/i-was-7-words-away-from-being-spear-phished/
     - title: "How to build a TCP proxy"
       url: /2018/08/31/how-to-build-a-tcp-proxy-1/
     - title: "The Padding Oracle Attack"
