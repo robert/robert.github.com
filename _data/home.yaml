@@ -1,3 +1,29 @@
+best_of:
+  title: Best of
+  posts:
+    - title: "Tracking friends and strangers using WhatsApp"
+      url: "/2017/10/09/tracking-friends-and-strangers-using-whatsapp/"
+    - title: "How Tinder keeps your exact location (a bit) private"
+      url: /2018/07/09/how-tinder-keeps-your-location-a-bit-private/
+    - title: '"Stylish" browser extension steals all your internet history'
+      url: /2018/07/02/stylish-browser-extension-steals-your-internet-history/
+    - title: "HTTPS in the real world"
+      url: /2018/11/28/https-in-the-real-world/
+    - title: "I was 7 words away from being spear-phished"
+      url: /2019/06/24/i-was-7-words-away-from-being-spear-phished/
+    - title: "A beginners' guide to funemployment"
+      url: /2014/06/02/a-beginners-guide-to-funemployment/
+    - title: "Childbirth: a father's-eye view"
+      url: /2019/06/17/childbirth-a-fathers-eye-view/
+    - title: "Making peace with Simpson's Paradox"
+      url: /2019/02/24/making-peace-with-simpsons-paradox/
+    - title: "A zero-knowledge proof for the existence of God"
+      url: /2017/11/13/a-zero-knowledge-proof-for-the-existence-of-god/
+    - title: "Lessons from a Silicon Valley job search"
+      url: /2014/03/07/lessons-from-a-silicon-valley-job-search/
+    - title: "A beginners' guide to funemployment"
+      url: /2014/06/02/a-beginners-guide-to-funemployment/
+
 steve_steveington:
   title: The Steve Steveington Chronicles
   posts:

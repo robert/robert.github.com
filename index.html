@@ -22,9 +22,9 @@ title: Robert Heaton
 </style>
 <div id="home">
   <div class="topic-box">
-    <h2>{{ site.data.home.learning_programming.title }}</h2>
+    <h2>{{ site.data.home.best_of.title }}</h2>
     <ul>
-      {% for post in site.data.home.learning_programming.posts %}
+      {% for post in site.data.home.best_of.posts %}
         <li>
           <a href="{{post.url}}">
             {{ post.title}}
@@ -39,6 +39,19 @@ title: Robert Heaton
   </div>
 
   <div class="topic-box">
+    <h2>{{ site.data.home.learning_programming.title }}</h2>
+    <ul>
+      {% for post in site.data.home.learning_programming.posts %}
+        <li>
+          <a href="{{post.url}}">
+            {{ post.title}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="topic-box">
     <h2>{{ site.data.home.online_tracking.title }}</h2>
     <ul>
       {% for post in site.data.home.online_tracking.posts %}
@@ -49,6 +62,10 @@ title: Robert Heaton
         </li>
       {% endfor %}
     </ul>
+  </div>
+
+  <div class="home-img">
+    <img src="/images/wifi-casino.png" />
   </div>
 
   <div class="topic-box">
