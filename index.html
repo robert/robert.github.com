@@ -187,6 +187,19 @@ title: Robert Heaton
   </div>
 
   <div class="topic-box">
+    <h2>{{ site.data.home.parenthood.title }}</h2>
+    <ul>
+      {% for post in site.data.home.parenthood.posts %}
+        <li>
+          <a href="{{post.url}}">
+            {{ post.title}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="topic-box">
     <h2>{{ site.data.home.programming.title }}</h2>
     <ul>
       {% for post in site.data.home.programming.posts %}
