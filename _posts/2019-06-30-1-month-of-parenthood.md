@@ -1,9 +1,8 @@
 ---
-title: Port-scans and progressives: 1 month of parenthood
+title: Port-scans and progressiveness points: 1 month of parenthood
 layout: post
 tags: [Babies]
 og_image: https://robertheaton.com/images/oscar2-gardens.jpg
-published: false
 ---
 Gaby was alone with Oscar for their first night in the hospital. It was 3am, and she had just finished feeding him for the second time ever. She wanted to sing to him, but didn't know any baby songs. I had gone home, ill and exhausted. She improvised.
 
@@ -81,7 +80,7 @@ I'm still working out how to rebalance my life now that it has another person in
 
 So how does Oscar fit into all of this? Is that a socially acceptable way to phrase it? In the past month I've put the PlayStation and synthwave on hold, but I've also written over 10,000 words of blog posts. I'm acutely conscious that any time spent on my hobbies is time not spent with my son, and that he will never be twenty-five days old again. I'm equally conscious that any time spent on my hobbies is time that Gaby is obliged spend with Oscar in my stead. She says that this is all she wants to do for now, although once her maternity leave is over she will want to get back to the software engineering. She says that she feels loved and supported, and that she wants to help me to continue to pursue my dreams and hobbies. I do believe her when she says this, but I'm still nervous.
 
-My naive interpretation of modern parenting is that aggregate effort and responsibility should always be divided precisely down the middle. However, while I do think this is a good place to start, I don't really think it's where you need to end up. It's got to be better to start by talking about what your honest preferences are, how these can be traded off against each other, and how they tesselate with having a baby. Then you can design your lives accordingly, perhaps double- and triple-checking that the woman isn't getting the raw deal.
+My naive interpretation of modern parenting is that aggregate effort and responsibility should always be divided precisely down the middle. However, while I do think this is a good place to start, I don't really think it's where you need to end up. It's got to be better to start by talking about what your honest preferences are, how these can be traded off against each other, and how they tessellate with having a baby. Then you can design your lives accordingly, perhaps double- and triple-checking that the woman isn't getting the raw deal.
 
 Gaby says she has felt guilty for being "deeply, deeply grumpy" with me for long periods of time when she had been particularly sleep deprived. When she first told me about this I replied that in my opinion she hadn't been particularly grumpy at all. You can interpret this in several ways. I choose the flattering one.
 

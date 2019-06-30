@@ -165,8 +165,6 @@ office_hours:
 life_advice:
   title: "Unrequested life advice"
   posts:
-    - title: "Childbirth: a father's-eye view"
-      url: /2019/06/17/childbirth-a-fathers-eye-view/
     - title: "Why you should be vegetarian"
       url: /2014/04/18/why-you-should-be-vegetarian/
     - title: "A beginners' guide to funemployment"
@@ -179,6 +177,14 @@ life_advice:
       url: /2014/10/25/tales-from-a-san-francisco-housing-search/
     - title: "10 somewhat advanced Magic: The Gathering plays"
       url: /2016/09/03/ten-somewhat-advanced-magic-the-gathering-plays/
+
+parenthood:
+  title: "Parenthood"
+  posts:
+    - title: "Childbirth: a father's-eye view"
+      url: /2019/06/17/childbirth-a-fathers-eye-view/
+    - title: "Port scans and progressiveness points: 1 month of parenthood"
+      url: /2019/07/30/1-month-of-parenthood
 
 stories:
   title: "Stories"
