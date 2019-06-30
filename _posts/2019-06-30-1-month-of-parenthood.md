@@ -17,7 +17,7 @@ It doesn't sound any better when performed live, but I suppose it was better tha
 
 The next morning, still feeling like death, I came back to the hospital. I had planned on spending the day sniffling and watching speedruns of Super Mario 64, but Gaby was stuck in bed with both a baby and an urgent need to urinate. She needed my help.
 
-After I arrived, a very serious pediatrician came in to check that our baby was still working. He undressed Oscar, poked him a bit, then said he looked fine. We noticed that Oscar had crapped himself. Should he be changed? Probably, said the serious pediatrician. Apparently that wasn't part of his job. We carefully changed Oscar ourselves for the first time. It was a two person job; we didn't yet know that you can grab and lift both of a baby's ankles with one hand and clean up their faeces with the other.
+After I arrived, a very serious pediatrician came in to check that our baby was still working. He undressed Oscar, poked him a bit, then said he looked fine. We noticed that Oscar had crapped himself. Should he be changed? Probably, said the serious pediatrician. Apparently that wasn't part of his job. We carefully changed Oscar ourselves for the first time. It was a two person effort; we didn't yet know that you can grab and lift both of a baby's ankles with one hand and clean up their faeces with the other.
 
 Oscar was later reinspected by a much smilier pediatrician. Let's take a look at little...he began. His pager went off. He glanced at it. Actually, I'll be right back, he said. Fifteen minutes and presumably one emergency delivery later he returned. Anyway, where were we?
 
