@@ -1,7 +1,7 @@
 ---
 title: "Childbirth: a father's-eye view"
 layout: post
-tags: [Life, Babies]
+tags: [Babies, Life]
 redirect_from:
   - /2019/06/20/childbirth-a-fathers-eye-view/
 og_image: https://robertheaton.com/images/oscar-rob-cover.png
