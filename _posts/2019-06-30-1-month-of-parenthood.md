@@ -1,9 +1,11 @@
 ---
-title: "Port-scans and industrial fans: 1 month of parenthood"
+title: "Port scans and industrial fans: 1 month of parenthood"
 layout: post
 tags: [Babies]
 og_image: https://robertheaton.com/images/oscar2-gardens.jpg
 ---
+> [(Read part 1 first)](/2019/06/17/childbirth-a-fathers-eye-view/)
+
 Gaby was alone with Oscar for their first night in the hospital. It was 3am, and she had just finished feeding him for the second time ever. She wanted to sing to him, but didn't know any baby songs. I had gone home, ill and exhausted. She improvised.
 
 > Oscar, Oscar, who is my Oscar?<br/>
