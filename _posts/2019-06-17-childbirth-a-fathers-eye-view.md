@@ -114,6 +114,8 @@ When I returned with our pizza we were moved up to the postpartum ward. We alter
 
 We decided that I would go home to sleep and come back the next morning. Oscar would go into the nursery. Gaby couldn't really walk so she would stay where she was. We'd play the rest of our lives by ear.
 
+> [(Part 2)](/2019/06/30/1-month-of-parenthood/)
+
 <p style="text-align: center">
   <img src="/images/oscar-sleeping.jpg" />
 </p>
