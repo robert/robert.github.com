@@ -3,7 +3,6 @@ title: "How to write an afl wrapper for any language"
 layout: post
 tags: [Fuzzing, Security]
 og_image: https://robertheaton.com/images/afl-explanation-cover.png
-published: false
 ---
 Do you want to use [afl][afl-home] to fuzz a program written in a language other than C or C++? Is this language neither [python][python-afl], [go][aflgo], nor [ruby][afl-ruby], for which experimental afl wrappers are already available? Do you therefore want to write your own experimental afl wrapper for your language, resulting in a project that will almost certainly be entirely novel, unique, and worthy of a GitHub repo and a README?
 
