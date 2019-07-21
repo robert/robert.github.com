@@ -2,11 +2,13 @@
 title: How to man-in-the-middle your IOT devices
 layout: post
 tags: [Security]
-og_image: https://robertheaton.com/images/afl-explanation-cover.png
+og_image: https://robertheaton.com/images/iot-cover.png
+published: false
 ---
 My wife and I [recently had a baby boy](/2019/06/17/childbirth-a-fathers-eye-view/). In order to minimize the hit to our productivity, we rented him a Snoo. A Snoo is a smart-crib that rocks your baby to sleep and plays him soothing white noise. If it hears him getting grumpy, it ratchets up the speed and the volume to try and make him happy again.
 
-[PIC]
+<p style="text-align: center; ">
+<img src="/images/iot-cover.png" />
 
 For some reason, you have to control the Snoo from a smartphone app. I'd much prefer it if they ditched the whole internet of things angle and just gave me some buttons that I can press with my real-world fingers and don't stop working when my wi-fi goes down. I do feel like I'm from the future when I show my parents how I can wobble my baby using only my phone, but it's a future where no one has given much thought to exactly why the future is better than the past. Perhaps there's a use-case that I'm missing.
 
@@ -18,7 +20,9 @@ The rest of this post shows how you probe your own black-box internet of things 
 
 We're going to execute a "man-in-the-middle" attack against ourselves. This is where we intercept and inspect the online traffic going in and out of your IOT device. Your device probably talks to a server, to which it relays back instructions it has received from its user and asks what it should do next. Usually this communication travels directly from the device, to the server, and back. However, we're going to inject your laptop (the "man" in our tale) into the middle of this connection, and attempt to read the communication.
 
-[PIC of mitm]
+<p style="text-align: center; ">
+<img src="/images/iot-mitm.png" />
+</p>
 
 The man-in-the-middle technique is commonly used in order to snoop on the network activity of smartphone apps. Much has been written about this technique. For an introduction, see for example [the Burp Suite documentation](https://portswigger.net/burp/documentation/desktop/getting-started). Using the technique on your smartphone is easy because it is "proxy-aware". Much has also been written about proxies. For a very brief introduction, see [section 1 of my series on "How to build a TCP Proxy"](/2018/08/31/how-to-build-a-tcp-proxy-1/).
 
@@ -43,7 +47,7 @@ First, let's look at how to get your device to send its traffic via your laptop.
 Suppose that your device communicates over HTTP with a server that has the domain `robertheaton.com`. Your device can't just send requests to `robertheaton.com`, because the internet routing system doesn't understand domain names. All it understands are IP addresses. This means that before your device can send any traffic, it has to translate this domain into an IP address. It does so by sending a *DNS request* to a *DNS server*, asking "what is the IP address for the domain `robertheaton.com`?"
 
 <p style="text-align: center; ">
-<img src="/images/tcp-1-dns-intro.png" />
+<img src="/images/iot-dns-intro.png" />
 </p>
 
 Normally this request would go to a real DNS server, which would look up the domain (we don't need to go into exactly how), and respond "the IP address for `robertheaton.com` is `104.18.33.191`". Your device would then send its request directly to `231.8.77.142`, not going via your laptop in any way. This is not what we want to happen.
@@ -51,7 +55,7 @@ Normally this request would go to a real DNS server, which would look up the dom
 Instead, we will use your laptop to watch your network for DNS requests sent by your device, and quickly fire off our own DNS responses before the real DNS server has had a chance to respond. When your device asks "what is the IP address for the domain `robertheaton.com`?" we will reply "the IP address for `robertheaton.com` is `INSERT_YOUR_LAPTOPS_IP_ADDRESS_HERE`". Your device will see no reason to doubt this information, and so will obediently start sending its traffic to your laptop's IP address, instead of that of the real `robertheaton.com` server. Once your device's traffic hits your laptop we can intercept and forward it using a properly configured Burp Suite or similar.
 
 <p style="text-align: center; ">
-<img src="/images/tcp-1-full-layout.png" />
+<img src="/images/iot-dns-fake.png" />
 </p>
 
 Getting your laptop to watch for your device's DNS requests requires a little bit of work. In general, simply being on the same network as your device is not enough, since your laptop will by default mostly ignore packets that aren't explicitly addressed to it. One easy solution is to connect your laptop to a wired network, and configure it to share this internet connection over a new wi-fi network. When you do this, your laptop acts as a wi-fi network and router that other devices can connect to. We can then tell your IOT device to connect to your laptop's network. [Here's how to share an internet connection on OSX](https://support.apple.com/kb/ph25327?locale=en_US); similar functionality probably exists for your OS too.
