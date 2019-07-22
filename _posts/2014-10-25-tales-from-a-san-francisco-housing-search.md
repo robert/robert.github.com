@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Tales from a San Francisco housing search
+tags: [Life]
 ---
 This essay began life as "How to find a house in San Francisco", but this angle died when it became clear that I had no actual justification for any of the "advice" it contained. Despite this, much of what I had written still made for what felt like a good story, and so I’ve collected 9 of the thoughts and experiences that had the biggest impact on me whilst looking for somewhere to live in San Francisco. Reading them may not improve your life in any tangible way, but I hope that you may still be at least a little amused.
 
