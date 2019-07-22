@@ -3,6 +3,7 @@ title: "Maximizing profits and evaluating success as a Craigslist seller"
 layout: post
 tags: [Life]
 og_image: https://robertheaton.com/images/craig-cover.png
+published: false
 ---
 I've been hocking my family's treasured possessions on Craigslist. We're moving out of San Francisco, and where we're going we don't need  Herman Miller office chairs with broken central pistons. I completed my first sale three weeks ago, offloading some of my old Nintendo 64 games to what I hope is a good new home. When the buyer came to collect the games he gave me ten bucks more than the price we'd agreed, apparently because he thought I had fleeced myself so hard. I suppose I'm glad that he got a good deal, but I would have preferred it if at least a bit more of the transaction's surplus value had gone to me.
 
