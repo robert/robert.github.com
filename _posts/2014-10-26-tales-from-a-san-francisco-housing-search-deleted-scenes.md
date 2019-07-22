@@ -1,5 +1,6 @@
 ---
 layout: post
+tags: [Life]
 title: Tales from a San Francisco housing search (DELETED SCENES)
 ---
 *These are 3 bits that didn't make it into the main body of <a href="/2014/10/25/tales-from-a-san-francisco-housing-search" target="_blank">Tales from a San Francisco housing search</a>, but that I was too vain and insufficiently ruthless to just throw away. They are provided as-is and with no warranty.*
