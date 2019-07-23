@@ -5,7 +5,7 @@ tags: [Life]
 og_image: https://robertheaton.com/images/craig-cover.png
 published: false
 ---
-I've been hocking my family's treasured possessions on Craigslist. We're moving out of San Francisco, and where we're going we don't need  Herman Miller office chairs with broken central pistons. I completed my first sale three weeks ago, offloading some of my old Nintendo 64 games to what I hope is a good new home. When the buyer came to collect the games he gave me ten bucks more than the price we'd agreed, apparently because he thought I had fleeced myself so hard. I suppose I'm glad that he got a good deal, but I would have preferred it if at least a bit more of the transaction's surplus value had gone to me.
+I've been hocking my family's treasured possessions on Craigslist. We're moving out of San Francisco, and where we're going we don't need  Herman Miller office chairs with broken central pistons. I completed my first sale three weeks ago, offloading some of my old Nintendo 64 games to what I hope is a good new home. When the buyer came to collect the games he gave me ten bucks more than the price we'd agreed, apparently because he thought I had fleeced myself so hard. I suppose I'm glad that he got a good deal, but I would have preferred it if I'd captured at least a bit more of the transaction's surplus value.
 
 <img src="/images/craig-cover.png" />
 
@@ -17,7 +17,7 @@ Setting prices on Craigslist is difficult. It is particularly difficult for item
 
 Typically I've set my prices after a quick survey of existing ads and my gut, and hoped for the best.
 
-Once you post an ad, you are typically either inundated with enquirers who believe they have spotted an underpriced bargain, or completely ignored. In order to feel like you truly maximized your profits you really want to get one enquiry, a few days after you make the post, from someone asking if there's any chance you could possibly budge slightly on your asking price. This suggests that you set your price right at the top of the market's range, and probably couldn't have gone any higher. In my experience this rarely happens.
+Once you post your ad, you are typically either inundated with enquirers who believe they have spotted an underpriced bargain, or completely ignored. In order to feel like you truly maximized your profits you really want to get one enquiry, a few days after you make the post, from someone asking if there's any chance you could possibly budge slightly on your asking price. This suggests that you set your price right at the top of the market's range, and probably couldn't have gone any higher. In my experience this rarely happens.
 
 Getting inundated with enquiries is in some ways a nice problem to have, but it also means that you almost certainly underpriced your item. The pro-slash-dick-move in this situation is to quietly de-list your item and post it again after bumping the price by twenty-five percent. However, this doesn't feel like the honorable Craigslist behavior that I want to teach to my children. The even more pro- (and slightly more ethical-feeling) move is to set your initial price at the absolute limit of what you think anyone might conceivably pay, then repeatedly re-post it over the next few weeks, dropping the price by a few percent each time until someone bites. That's optimum salespersonship right there, but it's also a lot of work just to get an extra thirty bucks for your TV.
 
