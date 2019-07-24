@@ -5,28 +5,31 @@ tags: [Security]
 og_image: https://robertheaton.com/images/iot-cover.png
 published: false
 ---
-My wife and I [recently had a baby boy](/2019/06/17/childbirth-a-fathers-eye-view/). In order to minimize the hit to our productivity, we rented him a Snoo. A Snoo is a smart-crib that rocks your baby to sleep and plays him soothing white noise. If it hears him getting grumpy, it ratchets up the speed and the volume to try and make him happy again.
+My wife and I [recently had a baby boy](/2019/06/17/childbirth-a-fathers-eye-view/). Rave reviews and hopeful optimism outweighed our natural skepticism, and we rented him a Snoo. A Snoo is a smart-crib that rocks your baby to sleep and plays him soothing white noise. If it hears him getting grumpy, it ratchets up the speed and the volume to try to make him happy again.
 
 <p style="text-align: center; ">
 <img src="/images/iot-cover-cropped.png" />
+</p>
 
-For some reason, you have to control the Snoo from a smartphone app. I'd much prefer it if they ditched the whole internet of things angle and just gave me some buttons that I can press with my real-world fingers and don't stop working when my wi-fi goes down. I do feel like I'm from the future when I show my parents how I can wobble my baby using only my phone, but it's a future where no one has given much thought to exactly why the future is better than the past. Perhaps there's a use-case that I'm missing.
+For some reason, you have to control the Snoo from a smartphone app. I'd much prefer it if they ditched the whole internet-of-things angle and just gave me some buttons that I can press with my real-world fingers and that don't stop working when my wi-fi goes down. I do feel like I'm from the future when I show my parents how I can wobble my baby using only my phone, but it's a future where no one has given much thought to exactly why the future is better than the past. Perhaps there's a use-case that I'm missing.
 
-Nonetheless, I figured that if the Snoo people were going to make their crib wi-fi enabled then I might as well have some fun while Oscar wasn't using it. I went in search of security flaws in the crib that would allow me to take control of it and use it for my various nefarious schemes. I didn't find any particularly heinous vulnerabilities, but I did find a small *protocol downgrade* bug, which allowed me to force the Snoo to send some of its status data over unencrypted HTTP instead of HTTPS. This is not good, but I couldn't immediately see any way to convert this toehold into something that would materially help me with any of my villainous plans. I sent an email to the Snoo team describing the bug, and they patched it in their next firmware update.
+Nonetheless, I figured that if the Snoo people were going to make their crib wi-fi enabled then I might as well have some fun when Oscar wasn't using it. I went in search of security flaws in the crib that would allow me to take control of it and use it for my various nefarious schemes. I didn't find any particularly heinous vulnerabilities, but I did find a small *protocol downgrade* bug, which allowed me to force the Snoo to send some of its status data over unencrypted HTTP instead of HTTPS. This is not good, but I couldn't immediately see any way to convert this toehold into something that would materially help me with any of my villainous plans. I sent an email to the Snoo team describing the bug, and they patched it in their next firmware update.
 
 -----
 
 In order to probe the Snoo's behavior, I attempted to execute a *man-in-the-middle* attack against it. This technique, which we will discuss in more detail below, is most commonly used in order to snoop on the network activity of smartphone apps. However, in order to be used against internet of things (IOT) devices, it requires some creative adaptation. The rest of this post shows how you can probe your own black-box internet of things (IOT) devices, and go in search of bugs in them. The steps should work for almost any smart, internet-enabled device, be it a crib, a fridge, a bathroom, a lightbulb, or a sandwich.
 
-When man-in-the-middle-ing your IOT device, we will intercept and inspect the online traffic that goes in and out of it. This will allow us to understand, and potentially modify, how it works. Your device probably talks to a server, to which it relays back instructions it has received from its user and asks what it should do next. It is this connection that we are going to insert ourselves - using your laptop - into the middle of.
+When man-in-the-middle-ing your IOT device, we will intercept and inspect the online traffic that goes in and out of it. This will allow us to understand, and potentially modify, how it works. Your device probably talks to a server, to which it relays back analytics and instructions it has received from its user. It is this connection that we are going to insert ourselves - using your laptop - into the middle of.
 
 <p style="text-align: center; ">
 <img src="/images/iot-mitm.png" />
 </p>
 
-As mentioned above, the man-in-the-middle technique is commonly used in order to snoop on the network activity of smartphone apps. Much has already been written about this. For an introduction, see for example [the Burp Suite documentation](https://portswigger.net/burp/documentation/desktop/getting-started). Using the technique on your smartphone is easy because it is "proxy-aware". Much has also been written about proxies. For a very brief introduction, see [section 1 of my series on "How to build a TCP Proxy"](/2018/08/31/how-to-build-a-tcp-proxy-1/).
+As mentioned above, the man-in-the-middle technique is commonly used in order to snoop on the network activity of smartphone apps. Much has already been written about this process. For an introduction, see for example [the Burp Suite documentation](https://portswigger.net/burp/documentation/desktop/getting-started).
 
-Because it is proxy-aware, your smartphone has an option in its Settings menu that allows you to configure an HTTP proxy. If you do then your phone will automatically send all of its HTTP traffic via that proxy. You can use this setting to tell your phone to send all of its traffic via your laptop, where you can inspect and forward it using proxy tools like [Burp Suite](https://portswigger.net/burp) and [Charles](https://www.charlesproxy.com/).
+Using the technique on your smartphone is easy because it is "proxy-aware". Much has also been written about proxies. For a very brief introduction, see [section 1 of my series on "How to build a TCP Proxy"](/2018/08/31/how-to-build-a-tcp-proxy-1/).
+
+Because it is proxy-aware, your smartphone has an option in its Settings menu that allows you to configure an HTTP proxy. If you do then your phone will automatically send all of its HTTP traffic via that proxy. You can use this setting to tell your phone to send all of its HTTP traffic via your laptop, where you can inspect and forward it using proxy tools like [Burp Suite](https://portswigger.net/burp) and [Charles](https://www.charlesproxy.com/).
 
 <p style="text-align: center; ">
 <img src="/images/iot-iphone-proxy.png" />
@@ -38,7 +41,7 @@ This means that we need to get creative. We need to come up an alternative way t
 
 --------
 
-Before we go any further, a brief note about TLS. Unfortunately for us, if your device has implemented [the TLS protocol](/2014/03/27/how-does-https-actually-work/) correctly, its communication will be encrypted in a way that we can't decrypt. We'll talk more later about why, but I wanted to warn you about this possibility up front. Nonetheless, we'll never know whether your device has any TLS flaws until we look, and even if its implementation is cast iron, we'll still learn a thing or two about networking along the way.
+Before we go any further, a brief note about TLS. Unfortunately for us, if your device has implemented [the TLS protocol](/2014/03/27/how-does-https-actually-work/) correctly, its communication will be encrypted in a way that we can't decrypt. We'll talk more about why later, but I wanted to warn you about this possibility up front. Nonetheless, we'll never know whether your device has any TLS flaws until we look, and even if its implementation is cast iron, we'll still learn a thing or two about networking along the way.
 
 ------
 
@@ -60,12 +63,12 @@ Instead, we will use your laptop to watch your network for DNS requests sent by 
 
 ----
 
-So far, so good. However, actually getting your laptop to watch for your device's DNS requests will require some work. In general, simply being on the same network as your device is not enough, since your laptop will by default mostly ignore packets that aren't explicitly addressed to it. Fortunately, we have an easy solution to this problem. We will connect your laptop to a wired network, and configure it to share the wired network's internet connection over a new wi-fi network. When you do this, your laptop acts as a wi-fi network and router that other devices can connect to. We can then tell your IOT device to connect to your laptop's network. [Here's how to share an internet connection on OSX](https://support.apple.com/kb/ph25327?locale=en_US); similar functionality probably exists for your OS too.
+So far, so good. However, actually getting your laptop to watch for your device's DNS requests will require some work. In general, just being on the same network as your device is not enough, since your laptop will by default mostly ignore packets that aren't explicitly addressed to it. Fortunately, we have an easy solution to this problem. We will connect your laptop to a wired network, and configure your laptop to share the wired network's internet connection over a new wi-fi network. When you do this, your laptop acts as a wi-fi network and router that other devices can connect to. We can then tell your IOT device to connect to your laptop's network. [Here's how to share an internet connection on OSX](https://support.apple.com/kb/ph25327?locale=en_US); similar functionality probably exists for your OS too.
 
-Once your device is connected to your laptop's network, you will be able to use a tool like Wireshark to read all of the packets that your device sends to the rest of the world. This is because your laptop is now acting as your device's network router, and so your device's packets need to travel through your laptop in order to reach the public internet. This means that we can write programs that are triggered by your device's DNS requests, and fire back our own DNS responses. Using a library like [Python's `scapy`](https://scapy.net/), we can write a program to:
+Once your device is connected to your laptop's network, you will be able to use a tool like [Wireshark](https://www.wireshark.org/) to read all of the packets that your device sends to the rest of the world. This is because your laptop is now acting as your device's network router, and so your device's packets need to travel through your laptop in order to reach the public internet. This means that we can write programs that are triggered by your device's DNS requests, and fire back our own DNS responses. Using a library like [Python's `scapy`](https://scapy.net/), we can write a program to:
 
 * Watch for traffic coming from your device that is sent over UDP to port 53 (the transport protocol and port used for DNS)
-* When it sees traffic like this, assume it is a DNS request and attempt to read the requested domain out of it (eg. `api.fridges.com`
+* When it sees traffic like this, assume it is a DNS request and attempt to read the requested domain out of it (eg. `api.fridges.com`)
 * If the domain is the one we are trying to spoof, send back a response to your device saying "the IP address for `api.fridges.com` is INSERT_YOUR_LAPTOPS_IP_ADDRESS_HERE".
 * If the domain is not the one we are trying to spoof, do nothing
 
