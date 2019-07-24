@@ -1,7 +1,7 @@
 ---
 title: "Port scans and industrial fans: 1 month of parenthood"
 layout: post
-tags: [Babies]
+tags: [Babies, Life]
 og_image: https://robertheaton.com/images/oscar2-gardens.jpg
 ---
 > [(Read part 1 first)](/2019/06/17/childbirth-a-fathers-eye-view/)
