@@ -3,7 +3,6 @@ title: "Maximizing profits and evaluating success as a Craigslist seller"
 layout: post
 tags: [Life]
 og_image: https://robertheaton.com/images/craig-cover.png
-published: false
 ---
 I've been hocking my family's treasured possessions on Craigslist. We're moving out of San Francisco, and where we're going we don't need  Herman Miller office chairs with broken central pistons. I completed my first sale three weeks ago, offloading some of my old Nintendo 64 games to what I hope is a good new home. When the buyer came to collect the games he gave me ten bucks more than the price we'd agreed, apparently because he thought I had fleeced myself so hard. I suppose I'm glad that he got a good deal, but I would have preferred it if I'd captured at least a bit more of the transaction's surplus value.
 
@@ -13,7 +12,7 @@ Fueled by this failure, I've since devised a set of principles for maximizing pr
 
 ------
 
-Setting prices on Craigslist is difficult. It is particularly difficult for items with few direct comparators. If you're selling a boxset of The Wire then you can just look at what price everyone else is asking and add a few dollars for your nice-person fee. But if you're selling a couch then some couches are listed for a thousand bucks. Others are listed for ten. Our couch came from IKEA and is a few years old. We've taken pretty good care of it, although we have no way of proving this to anyone. Is three hundred about right? That person's only asking one-fifty, and their's looks kind of like ours.
+Setting prices on Craigslist is difficult. It is particularly difficult for items with few direct comparators. If you're selling a boxset of The Wire then you can just look at what price everyone else is asking and add a few dollars for your nice-person fee. But what if you're selling a couch? Some couches are listed for a thousand bucks. Others are listed for ten. Our couch came from IKEA and is a few years old. We've taken pretty good care of it, although we have no way of proving this to anyone. Is three hundred about right? That person's only asking one-fifty, and their's looks kind of like ours.
 
 Typically I've set my prices after a quick survey of existing ads and my gut, and hoped for the best.
 
