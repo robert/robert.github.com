@@ -73,7 +73,7 @@ So far I've written 5 Programming Projects for Advanced Beginners, with several 
 
 [Build a command line version of the classic game "Snake"][proj-5]. Convert it into a multi-player Tron game.
 
-## And introducing...[Programming Videos for Advanced Beginners](/2019/07/27/programming-videos-for-advanced-beginners-battleships/)
+## [6. And introducing...Programming Videos for Advanced Beginners](/2019/07/27/programming-videos-for-advanced-beginners-battleships/)
 
 <p style="text-align: center">
 <iframe width="600" height="400" src="https://www.youtube.com/embed/videoseries?list=PLw22WCqAVCN6EXylkzhtMwvgcLq4TrcQX" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
