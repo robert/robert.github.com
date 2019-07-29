@@ -85,6 +85,8 @@ computer_games:
 learning_programming:
   title: Learning programming
   posts:
+    - title: "Programming Videos for Advanced Beginners #1: Battleships"
+      url: /2019/07/27/programming-videos-for-advanced-beginners-battleships/
     - title: "Open Source for Advanced Beginners: Intro"
       url: /open-source-for-advanced-beginners/
     - title: "Open Source for Advanced Beginners #1: bashplotlib"
