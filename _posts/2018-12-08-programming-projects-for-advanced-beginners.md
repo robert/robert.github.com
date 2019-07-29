@@ -73,6 +73,14 @@ So far I've written 5 Programming Projects for Advanced Beginners, with several 
 
 [Build a command line version of the classic game "Snake"][proj-5]. Convert it into a multi-player Tron game.
 
+## And introducing...[Programming Videos for Advanced Beginners](/2019/07/27/programming-videos-for-advanced-beginners-battleships/)
+
+<p style="text-align: center">
+<iframe width="600" height="400" src="https://www.youtube.com/embed/videoseries?list=PLw22WCqAVCN6EXylkzhtMwvgcLq4TrcQX" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</p>
+
+The detail-oriented, step-by-step PPAB approach comes to the big screen. We make a terminal version of the boardgame "Battleships" and have a great time doing it.
+
 ## Action
 
 Choose the project that interests you the most, and give it a shot. Whether you finish it in a frenetic frenzy or stumble on an ambiguous sentence and give up, let me know (via [email][email] or [Twitter][twitter]). If any part was unclear then I'll clarify it for you and use your feedback to make the project better, and if you've managed to finish them all then I'll know that I should really hurry up and publish project #6.
