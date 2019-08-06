@@ -46,7 +46,9 @@ since this is the amount you would stand to make if you were able to sell your s
 
 # The Mobility Discount
 
-When you are paid in actual real-person cash, that is the end of the transaction. If you decide to leave tomorrow then you can hand in your notice, leave something heinous on your boss’s desk after everyone has gone home, and never think of it again. However, options complicate things. You will usually have 3 months from your leaving date in which to purchase your vested options at their strike price. If you do not purchase them within this time, you lose them. Depending on the specifics of your situation, the cost can easily run into the tens or hundreds of thousands of dollars, not to mention the tax burden at the end of the year (see below). This makes it very hard to leave a company where you have vested a significant amount of potentially valuable options. This is obviously a nice problem to have, but the loss of flexibility is a definite cost, and is another reason to decrease your valuation of your options.
+When you are paid in actual real-person cash, that is the end of the transaction. If you decide to leave tomorrow then you can hand in your notice, leave something heinous on your boss’s desk after everyone has gone home, and never think of it again. However, options complicate things. You will usually have an *exercise window* of 3 months from your leaving date in which to purchase your vested options at their strike price. If you do not purchase them within this time, you lose them. Depending on the specifics of your situation, the cost can easily run into the tens or hundreds of thousands of dollars, not to mention the tax burden at the end of the year (see below). This makes it very hard to leave a company where you have vested a significant amount of potentially valuable options. This is obviously a nice problem to have, but the loss of flexibility is a definite cost, and is another reason to decrease your valuation of your options.
+
+[I've written more about exercise windows here.](/2019/08/06/peeking-through-stock-option-exercise-windows/)
 
 # The Tax Discount
 

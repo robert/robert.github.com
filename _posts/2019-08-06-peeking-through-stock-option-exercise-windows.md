@@ -1,20 +1,28 @@
 ---
-title: What you should know about stock option exercise windows
+title: Peeking through stock option exercise windows
 layout: post
 tags: [Employment]
-published: false
+og_image: https://robertheaton.com/images/exercise-windows-cover.png
 ---
-> I wrote this post several years ago when I was doing some research into stock options, but never got round to publishing it. None of the research actually applies to me anymore, but I figured I'd publish the post anyway because it's got some good gags and might be useful to other people pondering similar questions.
+> I wrote this post several years ago when I was doing some research into stock options, but never got round to publishing it. None of the research actually applies to me anymore, but I figured I'd publish the post anyway because it's got some good gags and contains some useful information.
 >
-> Note that while I am a careful driver and a delight at dinner parties, I am most emphatically not a lawyer or an accountant.
+> Note that while I am a careful driver and a delight at dinner parties, I am most emphatically not a lawyer or an accountant. You should not taking anything I say at face value.
 
-Survivorship bias, tech boosterism and good old fashioned overoptimism mask the high-risk nature of most private technology companies. This can make life interesting for anyone who receives a significant portion of their compensation in the form of stock options. One of the mechanics most responsible for this unwelcome intrigue is the exercise window. Not understanding the difference between long- and short-term capital gains can leave you with a larger tax bill than you expected, but not understanding exercise windows can cause you to lose everything.
+The high-risk nature of most private technology companies is often masked by survivorship bias, boosterism, and good old-fashioned over-optimism. But risk still makes life confusing and easy to screw up for anyone who receives a significant portion of their compensation in the form of stock options.
+
+<p align="center">
+<img src="/images/exercise-windows-squash.png" />
+</p>
+
+One of the most important mechanics responsible for this unwelcome intrigue is the *exercise window*. Not understanding the difference between long- and short-term capital gains can leave you with a larger tax bill than you expected, but not understanding exercise windows can cause you to lose everything.
 
 ## What is an exercise window and why does it matter?
 
-An exercise window on an option grant means that when you leave the company, you have a set period of time in which to exercise the options and purchase the underlying shares. If you don't, you lose the options completely. However, exercising options in a private company can be prohibitively expensive. The US tax system requires you to *immediately* pay tax on any appreciation in the share's value between the time the grant was awarded and the time it was exercised. Shares in private companies are generally very illiquid - indeed, most option grants contain clauses prohibiting you from selling your shares at all. This means that you have to pay these taxes out of your own pocket, years before you are able to sell the shares (if you ever are).
+An exercise window on an option grant means that when you leave the company, you have a set period of time in which to exercise the options and purchase the underlying shares. If you don't, you lose the options completely.
 
-The industry default exercise window is 90 days. This means that a lot of people who leave their companies end up losing their options, since they can't afford the taxes that would be required to exercise them. On the other side of the fence, a lot of would-be leavers end up unhappily marking time until a sale of some kind allows them to do a *cashless exercise*.
+The reason that exercise windows are so important to understand is that exercising options in a private company can be prohibitively expensive, at least in the US. The IRS requires you to *immediately* pay tax on any appreciation in the value of the underlying shares between the time the grant was awarded and the time it was exercised. Shares in private companies are generally very illiquid - indeed, most option grants contain clauses prohibiting you from selling your shares at all. This means that you have to pay these taxes out of your own pocket, years before you are able to sell the shares, if indeed you ever are.
+
+The industry default exercise window is 90 days. This means that a lot of people who leave their companies end up losing their options, since they can't afford the taxes that would be required to exercise them. On the other side of the fence, a lot of would-be leavers end up unhappily marking time until their shares are liquidized by a sale of some kind.
 
 There's nothing intrinsically wrong with a company offering, or an employee signing, a contract saying that the employee will perform work in exchange for a combination of cash and stock options that have a 90-day exercise window. The employee should be sure that they understand that 90 days is not a long time. They should also consider the fact that liquidity events (like IPOs) are occurring later in companys' lifetimes than they used to, and that there is a good chance that the employee will want to go and do something else before their company gets there. But nothing inherently bad is happening.
 
@@ -40,9 +48,10 @@ I'm not sure how much of the current state of affairs is deliberate. There's an 
 
 On the other hand, whenever dollars and zeros are involved you should always at least consider the possibility that everything is the way it is because that's how the people who currently own the dollars and zeros would prefer it.
 
-An article on [the Triplebyte blog](https://triplebyte.com/blog/extending-stock-option-exercise-window-guide) suggests that new companies should offer ISOs that automatically convert to NSOs with a 10-year exercise window if not exercised within 90 days of leaving. The article also claims that existing companies with outstanding grants are entirely capable of extending the exercise windows on these grants, should they choose to do so. I have no idea if this is accurate, but I also have no reason or incentive to doubt it. It feels easy to castigate companies that decline to extend their employees' exercise windows. But I do have some sympathy for the (implicit or explicit) position that long-window grants are more valuable than those with short-windows, you should have read what you were signing, and why should we amend your contract to give you free money and not anyone else?
+An article on [the Triplebyte blog](https://triplebyte.com/blog/extending-stock-option-exercise-window-guide) suggests that new companies should offer *ISOs* that automatically convert to *NSOs* with a 10-year exercise window if not exercised within 90 days of leaving. The article also claims that existing companies with outstanding grants are entirely capable of extending the exercise windows on these grants, should they choose to do so. I have no idea if this is accurate, but I also have no reason or incentive to doubt it.
+
+It feels easy to castigate companies that decline to extend their employees' exercise windows. But I do have some intellectual sympathy for the (implicit or explicit) position that long-window grants are more valuable than those with short-windows, you should have read what you were signing, and why should we amend your contract to give you free money and not anyone else?
 
 ## The conclusion
 
 There are no doubt plenty of of people who have been saying all of this for years and can't understand how everyone else is only just noticing it. I now personally don't think I would join a company that only offered short-windowed stock options. I value flexibility very highly, and have no idea what price I should sell it for. So when looking for your next job you may want to negotiate a little harder, demand RSUs or death, and start asking more awkward questions.
-
