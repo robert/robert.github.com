@@ -22,6 +22,24 @@ title: Robert Heaton
 </style>
 <div id="home">
   <div class="topic-box">
+    <h2>Latest</h2>
+    <ul>
+      {% for post in site.posts | limit: 5 %}
+        <li>
+          {{ post.date | date_to_string }} -
+          <a href="{{post.url}}">
+            {{ post.title}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p>
+    <a href="/archive">(view all)</a>
+    </p>
+  </div>
+
+  <div class="topic-box">
     <h2>{{ site.data.home.best_of.title }}</h2>
     <ul>
       {% for post in site.data.home.best_of.posts %}
