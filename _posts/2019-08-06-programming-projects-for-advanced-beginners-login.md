@@ -2,27 +2,30 @@
 title: "Programming Projects for Advanced Beginners #6: User Authentication"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
+og_cover: https://robertheaton.com/images/login-cover.png
 published: false
 ---
 ### The story so far
 
-You and your good buddy, Steve Steveington, are starting a company together! It's a rip-off of Craigslist, but you'll also make money by using your own platform to run vicious scams. [You can read more about your plans here](/2019/08/05/real-world-programming-projects-for-advanced-beginners/)). 
+You and your good buddy, Steve Steveington, are starting a company together! It's a rip-off of Craigslist, but you'll also make money by using your own platform to run nefarious scams. [You can read more about your grand plans here](/2019/08/05/real-world-programming-projects-for-advanced-beginners/).
 
-You're going to be writing all the code for the service, and you're a little apprehensive about it. You've been learning programming for a while now, and have completed all of the beginner tutorials you can find. Your can select all of the strings in a list that contain an even number of upper-case letters in your sleep. But you're not sure how to keep getting better and learn the skills that you'll need to create Steveslist.
+You're going to be writing all the code for the product, and you're a little apprehensive about it. You've been learning programming for a while now, and have completed all of the beginner tutorials you can find. Your can take a list and select all of the strings that contain an even number of upper-case letters in your sleep. But you're not sure how to keep improving and how to learn the skills that you'll need to create Steveslist.
 
-Fortunately, you've discovered a great series called "Programming Projects for Advanced Beginners" by a guy called Reabert Horton (or something like that). The projects guide you through building some really nifty programs. But they aren't walkthroughs or how-tos. You get suggestions and pointers along the way, but have to design and write all of the actual code yourself. This means that you can complete the projects using whatever language you happen to be learning.
+<p>
+<img src="/images/login-cover.png" />
+</p>
 
-Even more fortunately, the new projects in the series are all about understanding the real-world patterns and programs that you'll need to build Steveslist. This includes APIs, databases, webhooks, queues, and much more.
+Fortunately, you've discovered a great series called "[Programming Projects for Advanced Beginners](/ppab)" by a guy called Reabert Horton (or something like that). The projects guide you through building some really nifty programs, like [the game Snake](/2018/12/02/programming-project-5-snake/) and [Conway's Game of Life](/2018/07/20/project-2-game-of-life/). But they aren't walkthroughs or how-tos. You can complete the projects using whatever language you happen to be learning. You get suggestions and pointers along the way, but have to design and write all of the actual code yourself.
 
-The first project in the new series is about building a secure user login system. You figure that you can use the techniques involved to authenticate the users of Steveslist and to store their credentials. You sit down at your computer and tell your unpaid intern to hold your calls.
+Even more fortunately, the new projects in the series are all about understanding the real-world patterns and programs that you'll need to build Steveslist. This includes APIs, databases, webhooks, queues, and much more. The first project in the new series is about building a secure user login system. You figure that you can use the techniques in the project to authenticate the users of Steveslist and to safely store their credentials. You sit down at your computer and tell your unpaid intern to hold your calls.
 
 The project goes a little something like this:
 
 -------
 
-We're going to write a program that asks its user for a username and password. If these credentials are valid, it prints a deep, dark secret. If not, it tells the user to get lost.
+We're going to write a program that asks its user for a username and password. If these credentials are valid, it prints a deep, dark secret. If not, it tells the user to get lost. This is conceptually very similar to what happens when a website asks a user for a username and password, and then only shows the people who are interested in buying their job-lot of off-brand toothpaste if the credentials are correct.
 
-This might sound easy. And it is - at first. But we're going add more and more features that get more and more complex, including using a database and an industry-standard security technique known as *password hashing* that minimizes the damage to our users if our passwords were to be stolen by hackers. In the project's "extensions" section we'll even look at using *two-factor authentication* with SMS or an authenticator app, in order to further increase our application's security. These are the methods employed by the online services that you use every day in order to keep their users' passwords safe.
+This might sound easy. And it is - at first. But we're going add more and more features that get more and more complex. We'll start storing our credentials in a database, instead of hard-coding them into a file. Then we'll make our program more secure by using an industry-standard security technique known as *password hashing*. This will minimizes the damage to our users if the contents of our database were to be stolen by hackers. In the project's "extensions" section we'll even look at using *two-factor authentication* with SMS or an authenticator app, in order to further increase our application's security. These too are the methods employed by the online services that you use every day in order to keep their users' passwords safe.
 
 So that we can focus on passwords, we're going to write our program as a command-line application that you run from a terminal, not as a web app. However, the strategies are equally applicable in any situation where passwords are required. Just pretend that the username and password are entered in a browser by a user on the other side of the world, rather than in your terminal. We'll look at porting our code to a web app in a future project.
 
@@ -48,7 +51,9 @@ Start by writing a program where you:
 
 Wrap the password-checking functionality inside a function called something like `is_valid_credentials`. This function should take 2 arguments: username and password. It should return true if the credentials are valid, and false if they are not. We're going to keep changing the way we validate credentials over the next few steps. Wrapping the code that does this inside a function will help minimize the impact of our changes on the rest of our code.
 
-[PIC of changes happening inside is_valid_credentials]
+<p>
+<img src="/images/login-is-valid-creds.png" />
+</p>
 
 If a user's credentials are invalid, this could either be because they gave you a username that doesn't exist, or because they gave you a valid username with the wrong password. It's generally considered bad security practice to allow users to distinguish between these situations. If someone is trying to hack into your users' accounts, you don't want to leak the fact that they have found a valid username. Sometimes this information can be essentially irrelevant, like in the case of Twitter, where all usernames are publicly visible already. But sometimes it can be a horrendous vulnerability, like in the case of secretive websites whose users might be extremely keen to hide the fact that they have signed up at all.
 
@@ -82,21 +87,29 @@ Now our login process can handle multiple users. That's great. However, we're vi
 
 This might sound impossible. If we want to be able to verify a password that a user gives us, surely we have no choice but to store their real password and check their submission against it? Miraculously, thanks to the power of *cryptographic hash functions*, we have a much, much safer alternative.
 
-A cryptographic hash function is a function that takes a piece of data (in our case, a password string) and turns it into a new string, *in a way that is close to impossible to reverse*. In other words, suppose that I take a password and pass it through a cryptographic hash function. I can happily give you the output of this hash function, and you will have no good way to use it to work out what the original password was. In a perfect cryptographic hash function, the only way to recover the original password from its hashed value is to loop through every possible password, calculate its hash value, and keep going until you get a match.
+A cryptographic hash function is a function that takes a piece of data (in our case, a password string) and turns it into a new string, *in a way that is close to impossible to reverse*. In other words, suppose that I take a password and pass it through a cryptographic hash function. I can happily give you the output of this hash function, and you will have no good way to use it to work out what the original password was.
 
-[PIC of aa, aaa, aaaa…]
+<p>
+<img src="/images/login-hash-diagram.png" />
+</p>
+
+In a perfect cryptographic hash function, the only way to recover the original password from its hashed value is to loop through every possible password, calculate its hash value, and keep going until you get a match.
+
+<p>
+<img src="/images/login-cracking.png" />
+</p>
 
 If your password is long enough and your hash function is secure enough, doing this would take too much time and money for it to be worth a hacker's while. This means that even if a hacker steals a database full of password hashes, they can't do anything useful with it.
 
-This is a fantastic property for a password storage system to have, which is why password hashing is an industry-standard practice. When you sign up to an online service and choose a password, the service should use a cryptographic hash function to calculate your password's hash value (or *hash*). It should write this hash to a database next to your username, and then immediately throw away your actual password. Then, when you come to log in again and submit your username and password, the company should calculate the hash of the password that you give them. It should compare this hashed value to the one it has stored for you in its database, and if they match, log you in.
+This is a fantastic property for a password storage system to have, which is why password hashing is an industry-standard practice. When you sign up to an online service and choose a password, the service should use a cryptographic hash function to calculate your password's hash value (or *hash*). It should write this hash to a database next to your username, and then immediately throw away your actual password. Then, when you come to log in again and submit your username and password, the company should calculate the hash of the password that you give them. It should compare this hashed value to the one it has stored for you in its database, and if they match, log you in. To make your password even harder to recover from its hash, they should also use a technique called [*salting*](https://en.wikipedia.org/wiki/Salt_(cryptography)), which we'll look at in the extensions section of this project.
 
-Some services have a "password reminder" feature where you click a button and they email you your password. Think about what this tells you about the way that they store you password in their database, and then delete your account with them immediately.
+Some services have a "password reminder" feature where you click a button and they email you your password. Think about what this tells you about the way that they store you password in their database. Then delete your account with them immediately.
 
 There are a few more nuances and extensions to password hashing, some of which we will look at in the extensions section of this project. But let's start by updating our login code to use a basic hashing strategy.
 
 ### Experimenting with hash functions
 
-First, let's experiment with some hash functions. Your language should have existing libraries that implement the common functions. Google for your language's libraries that implement the *MD5* and *SHA256* hash functions. Start a new program in a new file where you can experiment. Import your language's hash function libraries into this file (if necessary). Use them to compute and print the MD5 and SHA256 hashes of the string `steveslist`.
+First, let's experiment with some hash functions. Your language should have existing libraries that implement the common functions. We're going to experiment with two called *MD5* and *SHA256*. Google for your language's libraries that implement each of them. Start a new program in a new file where you can experiment. Import your language's hash function libraries into this file (if necessary). Use them to compute and print the MD5 and SHA256 hashes of the string `steveslist`.
 
 You may be told that you need to "convert your string to bytes" before you can hash it. This is your chance to practice Googling for new information. If you are also told that you need to choose an *encoding*, choose `UTF-8`, and if you need to choose an output format, choose *hexdigest*. Feel free to research what these words mean, but also feel free not to bother for now. If you get stuck, check out [my example code](https://github.com/robert/user-authentication) or [send me an email](/about).
 
@@ -132,9 +145,9 @@ Now that we've secured our passwords a bit better, let's look at alternative way
 
 ## 4. Store user credentials in a separate configuration file
 
-If someone wanted to re-use our program but with different passwords, they'd have to edit our source code. This would be a shame - we don't want other people to have to care about our source code. We only want them to have to care about *what* our program does, not *how*. We want to be able to separate our program's logic (validating credentials) from it's data (what those credentials actually are). This principle applies to all programs, not just those that deal with usernames and passwords.
+If someone wanted to re-use our program but with different passwords, they'd have to edit our source code. This would be a shame - we don't want other people to have to care about our source code. We only want them to have to care about *what* our program does, not *how*. To help with this, we want to be able to separate our program's logic (validating credentials) from its data (what those credentials actually are). This principle applies to all programs, not just those that deal with usernames and passwords.
 
-One common way to enforce this separation is to extract data (in our case, usernames and passwords) into *configuration* or *config* files. The program code loads and reads the config files, and uses the values in them as it runs. This means that in order to change our users' credentials, you only have to update the simple config file. You don't have to touch or even think about the file (or files) containing all the fiddly logic.
+One common way to enforce this separation is to extract data (in our case, usernames and passwords) into *configuration* or *config* files. Config files are structured files that store data, but don't contain any logic for how this data should be used. A program then loads and reads the config files, and uses the values in them as it runs. This means that in order to change our users' credentials, you only have to update the simple config file. You don't have to touch or even think about the file (or files) containing all the fiddly logic.
 
 Config files can be written in a wide range of *serialization formats*. A serialization format is a way of structuring data in a file so that a program can read it. Two of the most common serialization formats are JSON and YAML. Here's what they might look like in our case:
 
@@ -168,6 +181,8 @@ JSON:
 }
 ```
 
+We're going to use config files to store user credentials, but they're useful any time you have fixed values that you want to be able to, well, configure. This could be the number of points required to win a game, how many lives you have, or the maximum length of a message.
+
 Choose one of JSON or YAML and use it to write a config file containing at least 5 usernames and passwords. It doesn't matter which you choose: JSON and YAML look quite different, but are both able to represent almost any data you throw at them. Different people have different preferences, but no one would ever look down on you for choosing either of them. Or at least, if they did then they'd be an idiot.
 
 Once you've written a config file, load it into your program. Your language will almost certainly have built-in tools for doing this, such as Python's `yaml.safe_load(…)` and `json.load(…)`. Search Google for "load json from file $YOUR_LANGUAGE" and crib from the most promising-looking Stack Overflow answer.
@@ -185,7 +200,7 @@ The config file pattern is an extremely useful one to be familiar with. However,
 
 ## 5. Storing credentials in a database I - getting familiar with databases
 
-When I'm writing a first version of a program I often start by storing my data in config files, even if I know that I'm going to want to move it into a database soon. Files are quick and easy to get started with. You can view and edit them in your text editor, and you don't have to decide how you're going to structure your data up front. In theory you could store all your data in config files forever, and never use a database for anything. The only downside would be that your application would get slower and slower as you added more and more data and your files got larger and larger, until it turned into a black hole and swallowed the universe.
+When I'm writing a first version of a program I often start by storing my data in config files, even if I know that I'm going to want to move it into a database soon. Files are quick and easy to get started with. You can view and edit them in your text editor, and it's extremely easy to change their structure. In theory you could store all your data in config files forever, and never use a database for anything. The only downside would be that your application would get slower and slower as you added more and more data and your files got larger and larger, until it turned into a black hole and swallowed the universe.
 
 This is why in real-world applications data is usually stored in databases, where it's much easier and faster to query and update. We're therefore going to migrate our application to store its credentials in a database. The shape of our program will stay the same - ask the user for a username and password, hash the password, check these credentials against a data store. The only difference is that now this data store is a database, rather than a config file.
 
@@ -242,8 +257,6 @@ Once you've got it working, make some improvements:
 * Check whether the user's selected username is already taken. If it is, ask the user to choose a new one. Repeat until they choose an available username.
 * Research how to hide the user's password while they are typing so that snoopers can't see it. Try Googling `hide password text console $YOUR_LANGUAGE`.
 * Instead of hard-coding the database name into each program separately, write it in a config file and load it from there. Then if you want to change the database name, you'll only have to change it in one place.
-
-[PIC of hiding text]
 
 Now let's adapt our main login program to use a database. We've done most of the hard work, and this section will just be piecing together things that we already know. Once again, because of the way we have structured our code, the only thing we will need to change is the internals of our `is_valid_credentials` function. Everything else can stay the same. The new version of `is_valid_credentials` should:
 
