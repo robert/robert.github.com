@@ -55,3 +55,5 @@ It feels easy to castigate companies that decline to extend their employees' exe
 ## The conclusion
 
 There are no doubt plenty of of people who have been saying all of this for years and can't understand how everyone else is only just noticing it. I now personally don't think I would join a company that only offered short-windowed stock options. I value flexibility very highly, and have no idea what price I should sell it for. So when looking for your next job you may want to negotiate a little harder, demand RSUs or death, and start asking more awkward questions.
+
+*I've written a lot more about stock options in general [here](/2015/11/02/how-to-value-your-startup-stock-options/)*.
