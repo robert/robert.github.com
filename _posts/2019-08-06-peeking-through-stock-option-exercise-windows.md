@@ -8,7 +8,7 @@ og_image: https://robertheaton.com/images/exercise-windows-cover.png
 >
 > Note that while I am a careful driver and a delight at dinner parties, I am most emphatically not a lawyer or an accountant. You should not taking anything I say at face value.
 
-The high-risk nature of most private technology companies is often masked by survivorship bias, boosterism, and good old-fashioned over-optimism. But this risk still makes life confusing and easy to screw up for anyone who receives a significant portion of their compensation in the form of stock options.
+The high-risk nature of privately-held technology companies is often masked by survivorship bias, boosterism, and good old-fashioned over-optimism. But this risk still makes life confusing and easy to screw up for anyone who receives a significant portion of their compensation in the form of stock options.
 
 <p align="center">
 <img src="/images/exercise-windows-squash.png" />
