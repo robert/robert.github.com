@@ -2,7 +2,6 @@
 title: Real-World Programming Projects for Advanced Beginners
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-published: false
 ---
 It's official - you and [your good buddy, Steve Steveington](/2018/07/09/how-tinder-keeps-your-location-a-bit-private/), are starting a new company together! It's going to be a rip-off of Craigslist, but with lots of extra hidden fees.
 

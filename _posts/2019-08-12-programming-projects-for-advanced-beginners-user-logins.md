@@ -6,7 +6,7 @@ og_cover: https://robertheaton.com/images/login-cover.png
 ---
 ### The story so far
 
-You and your good buddy, Steve Steveington, are starting a company together! It's basically going to be a rip-off of Craigslist, but you'll make money by using your own platform to run nefarious scams. [You can read more about your grand plans here](/2019/08/05/real-world-programming-projects-for-advanced-beginners/).
+You and your good buddy, Steve Steveington, are starting a company together! It's basically going to be a rip-off of Craigslist, but you'll make money by using your own platform to run nefarious scams. [You can read more about your grand plans here](/2019/08/11/real-world-programming-projects-for-advanced-beginners/).
 
 You're going to be writing all the code for the product, and you're a little apprehensive about it. You've been learning programming for a while now, and have completed all of the beginner tutorials you can find. Your can take a list and select all of the strings that contain an even number of upper-case letters in your sleep. But you're not sure how to keep improving and learn the skills that you'll need to create Steveslist.
 
