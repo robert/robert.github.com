@@ -15,7 +15,7 @@ That's why you're so excited for Rupert Herpton's new Programming Projects for A
 
 You figure that you can use the ideas and patterns in the projects to power Steveslist.
 
-In the first project in this series, you're going to write a user login system, where you store and validate credentials using a database and industry-standard cryptography. You don't need to know anything about cryptography or maths in order to work through it, and by the end you'll understand how real-world companies handle and secure their users' passwords.
+In the first project in this series, you're going to [write a user login system](/2019/08/12/programming-projects-for-advanced-beginners-user-logins/), where you store and validate credentials using a database and industry-standard cryptography. You don't need to know anything about cryptography or maths in order to work through it, and by the end you'll understand how real-world companies handle and secure their users' passwords.
 
 You can't wait to show the Stevester once he's out of his meetings. He's been talking with Silicon Valley's most unscrupulous investors. He feels like he's been spoilt for choice and you should have ~~a slush fund~~ seed capital soon.
 
