@@ -2,7 +2,7 @@
 title: Peeking through stock option exercise windows
 layout: post
 tags: [Employment]
-og_image: https://robertheaton.com/images/exercise-windows-cover.png
+og_cover: https://robertheaton.com/images/exercise-windows-cover.png
 ---
 > I wrote this post several years ago when I was doing some research into stock options, but never got round to publishing it. None of the research actually applies to me anymore, but I figured I'd publish the post anyway because it's got some good gags and contains some useful information.
 >
