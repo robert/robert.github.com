@@ -2,7 +2,7 @@
 title: "Programming Projects for Advanced Beginners #6: User Logins"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_cover: https://robertheaton.com/images/login-cover.png
+og_image: https://robertheaton.com/images/login-cover.png
 ---
 ### The story so far
 
