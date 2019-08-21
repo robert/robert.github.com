@@ -39,9 +39,9 @@ Thinking in this way makes me anxious. Why do "you" get a say? We should figure 
 
 Time spent with your child is sublime and priceless, but it still has diminishing marginal returns.
 
-Even if I took Oscar for 50% of the day (which I don't), in truth Gaby retains baseline responsibility for him. Sure I take him off her hands every now and then, but it rarely feels like a true passing of the baton. I think this is in part an inevitable consequence of breastfeeding. During the day Gaby and her breasts are on a 3 hour leash, at absolute most. We do try bottle-feeding too. But it's harder work, Oscar doesn't like it as much, and Gaby has to remember to pump, which is work in itself.
+Even if I took Oscar for 50% of the day (which I don't), in truth Gaby retains baseline responsibility for him. Sure I take him off her hands every now and then, but it rarely feels like a true passing of the baton. I think this is in part an inevitable consequence of breastfeeding. During the day Gaby is on a 3 hour leash, at absolute most. We do try bottle-feeding too. But it's harder work, Oscar doesn't like it as much, and Gaby has to remember to pump, which is work in itself.
 
-Rather than fiddle with a day-to-day setup that mostly seems to be functioning well, we're instead working on better distributing responsibilities for broader baby decisions. Our other household duties usually get apportioned organically. I manage taxes, finances and immigration; Gaby manages food, cleaning and dentist appointments. Tasks are distributed tacitly according to skill and interest, with a nod to stereotypical gender roles.
+Rather than fiddle with a day-to-day setup that mostly seems to be functioning well, we're instead working on better distributing responsibilities for broader baby decisions. Our other household duties usually get apportioned organically. I manage taxes, finances, and immigration; Gaby manages food, cleaning, and dentist appointments. Tasks are distributed tacitly according to skill and interest, with a nod to stereotypical gender roles.
 
 We think that Oscar should be different. Gaby says that she doesn't care about the distribution of time-spent-with-baby, so long as we're all happy and in love with each other. However, she does care about having a conscious and equitable distribution of baby-decision-making. At the moment, most Oscar-related concerns by default fall through to her. This is partially logical, since she is off work and spends the most time with Oscar. But I also think that, unless we are deliberate about it, this time next year she'll still be the one who always has to work out when we're meant to start taking him to the dentist.
 
@@ -51,7 +51,7 @@ That said, I'd still find it easier to feel comfortable if the time-spent-with-b
 
 ------
 
-I keep assuming that Oscar will learn from all my mistakes. On reflection this is rather unlikely. Jeez, dad sure seems to find eye-contact difficult and this diminishes his effectiveness as an communicator. I'll be sure to work on that? Probably not.
+I keep assuming that Oscar will learn from all my mistakes. On reflection this is rather unlikely. Jeez, Dad sure seems to find eye-contact difficult and this diminishes his effectiveness as an communicator. I'll be sure to work on that? Probably not.
 
 I also keep assuming that Oscar is going to be more progressive than me. I suppose that this is likely, at least at any specific point in time, given the tendency of people's political leanings to slide to the right as they get older and they start to think about a comfortable retirement and a second home. Perhaps the only exception might be an inflection point at which old age and the specter of impending death start to make me uncharacteristically generous, and Oscar reconsider his support for a high rate of inheritance tax.
 
