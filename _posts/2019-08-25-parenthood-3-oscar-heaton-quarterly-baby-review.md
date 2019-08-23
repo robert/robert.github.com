@@ -51,7 +51,7 @@ That said, I'd still find it easier to feel comfortable if the time-spent-with-b
 
 ------
 
-I keep assuming that Oscar will learn from all my mistakes. On reflection this is rather unlikely. Jeez, Dad sure seems to find eye-contact difficult and this diminishes his effectiveness as an communicator. I'll be sure to work on that? Probably not.
+I keep assuming that Oscar will learn from all my mistakes. On reflection this is rather unlikely. Jeez, Dad sure seems to find eye-contact difficult and this diminishes his effectiveness as a communicator. I'll be sure to work on that? Probably not.
 
 I also keep assuming that Oscar is going to be more progressive than me. I suppose that this is likely, at least at any specific point in time, given the tendency of people's political leanings to slide to the right as they get older and they start to think about a comfortable retirement and a second home. Perhaps the only exception might be an inflection point at which old age and the specter of impending death start to make me uncharacteristically generous, and Oscar reconsider his support for a high rate of inheritance tax.
 
