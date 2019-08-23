@@ -73,7 +73,15 @@ So far I've written 5 Programming Projects for Advanced Beginners, with several 
 
 [Build a command line version of the classic game "Snake"][proj-5]. Convert it into a multi-player Tron game.
 
-## [6. And introducing...Programming Videos for Advanced Beginners](/2019/07/27/programming-videos-for-advanced-beginners-battleships/)
+## [6. User Logins][proj-5]
+
+<p style="text-align: center">
+<img src="/images/login-cover.png" />
+</p>
+
+[Starting from the absolute basics, learn how real-world companies authenticate their users and store their passwords safely in a database.](/2019/08/12/programming-projects-for-advanced-beginners-user-logins)
+
+## [7. And introducing...Programming Videos for Advanced Beginners](/2019/07/27/programming-videos-for-advanced-beginners-battleships/)
 
 <p style="text-align: center">
 <iframe width="600" height="400" src="https://www.youtube.com/embed/videoseries?list=PLw22WCqAVCN6EXylkzhtMwvgcLq4TrcQX" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
