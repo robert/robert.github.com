@@ -3,7 +3,6 @@ title: "Parenthood #3: Oscar Heaton, Quarterly Baby Review"
 layout: post
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/parenthood3-cover.jpg
-published: false
 ---
 Gaby had originally planned to be as pushy a parent as possible. However, now that she has Oscar she just wants him to be safe and happy and doesn't care if he's good or bad at anything. I mostly agree, but I do still hope that he has the good grace to show at least some flair for [Magic: The Gathering](/2016/09/03/ten-somewhat-advanced-magic-the-gathering-plays/) or [Rocket League](/2019/03/07/how-to-get-to-silver-in-rocket-league-1-v-1/).
 
