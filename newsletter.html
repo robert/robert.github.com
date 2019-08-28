@@ -1,0 +1,17 @@
+---
+layout: static
+title: Robert Heaton | Newsletter
+---
+{% include rss.html %}
+
+<p>
+You'll receive instant classics like:
+</p>
+
+{% for post in site.data.home.best_of.posts %}
+  <li>
+    <a href="{{post.url}}">
+      {{ post.title}}
+    </a>
+  </li>
+{% endfor %}

@@ -4,6 +4,9 @@ layout: post
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/parenthood3-cover.jpg
 ---
+> [(Read part 1 first)](/2019/06/17/childbirth-a-fathers-eye-view/)
+> [(Then read part 2)](/2019/06/30/1-month-of-parenthood/)
+
 Gaby had originally planned to be as pushy a parent as possible. However, now that she has Oscar she just wants him to be safe and happy and doesn't care if he's good or bad at anything. I mostly agree, but I do still hope that he has the good grace to show at least some flair for [Magic: The Gathering](/2016/09/03/ten-somewhat-advanced-magic-the-gathering-plays/) or [Rocket League](/2019/03/07/how-to-get-to-silver-in-rocket-league-1-v-1/).
 
 Of course Oscar can ultimately do anything that he wants as far as I'm concerned, so long as he's not a poet or a social conservative. He can be a right-wing low-tax ultra-free-marketeer if he must, but I will be pretty bummed out if he ever starts talking about the importance of defending traditional family values. I suppose that if he really, really likes writing free verse then I won't stand in his way, but I will be cutting out all the poetry from the New Yorker and replacing it with adverts for violent movies.
