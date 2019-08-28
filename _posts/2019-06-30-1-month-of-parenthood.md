@@ -94,4 +94,6 @@ I'm not sure when I should stop writing about Oscar. "Daaaaad stop blogging abou
 
 I didn't read any of the results, but I think I can retain my writing privileges until at least then. 
 
+[(Next: part 3)](/2019/08/25/parenthood-3-oscar-heaton-quarterly-baby-review/)
+
 <img src="/images/oscar2-observation.jpg" />
