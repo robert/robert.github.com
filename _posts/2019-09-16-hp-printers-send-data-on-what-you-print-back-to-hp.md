@@ -3,6 +3,7 @@ title: "HP printers send data on what you print back to HP"
 layout: post
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/hp-cover.png
+published: false
 ---
 Last week my in-laws politely but firmly asked me to set up their new HP printer. I protested that I'm completely clueless about that sort of thing, despite the fact that my job title is technically "software engineer". Still remonstrating, I was gently bundled into their study with an instruction pamphlet, a cup of tea, a promise to unlock the door once I'd printed everyone's passport forms, and a warning not to try the window because the roof tiles are *very* loose.
 
