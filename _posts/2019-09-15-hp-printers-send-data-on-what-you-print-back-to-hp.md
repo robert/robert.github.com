@@ -20,7 +20,7 @@ But it is only then, once the user has found the combination of "Next" and "Canc
 
 <img src="/images/hp-data-collection.png" />
 
-In summary, HP wants its printer to collect all kinds of data that a reasonable person would never expect it to. This includes metadata about your devices, as well as information about all the documents that you print, including timestamps, number of pages, and the application doing the printing (HP state that they do stop short of looking at the contents of your documents). ([From the HP privacy policy, linked to from the setup program:](https://web.archive.org/web/20190828162443/https://www8.hp.com/us/en/privacy/privacy.html))
+In summary, HP wants its printer to collect all kinds of data that a reasonable person would never expect it to. This includes metadata about your devices, as well as information about all the documents that you print, including timestamps, number of pages, and the application doing the printing (HP state that they do stop short of looking at the contents of your documents). [From the HP privacy policy, linked to from the setup program:](https://web.archive.org/web/20190828162443/https://www8.hp.com/us/en/privacy/privacy.html)
 
 > Product Usage Data – We collect product usage data such as pages printed, print mode, media used, ink or toner brand, file type printed (.pdf, .jpg, etc.), application used for printing (Word, Excel, Adobe Photoshop, etc.), file size, time stamp, and usage and status of other printer supplies. We do not scan or collect the content of any file or information that might be displayed by an application.
 >
