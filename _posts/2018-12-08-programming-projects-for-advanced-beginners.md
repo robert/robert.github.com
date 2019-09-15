@@ -73,7 +73,7 @@ So far I've written 5 Programming Projects for Advanced Beginners, with several 
 
 [Build a command line version of the classic game "Snake"][proj-5]. Convert it into a multi-player Tron game.
 
-## [6. User Logins][proj-5]
+## [6. User Logins](/2019/08/12/programming-projects-for-advanced-beginners-user-logins)
 
 <p style="text-align: center">
 <img src="/images/login-cover.png" />
