@@ -1,13 +1,12 @@
 ---
-title: "HP printers send data on what you print back to HP"
+title: "HP printers try to send data back to HP about your devices and what you print"
 layout: post
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/hp-cover.png
-published: false
 ---
-Last week my in-laws politely but firmly asked me to set up their new HP printer. I protested that I'm completely clueless about that sort of thing, despite the fact that my job title is technically "software engineer". Still remonstrating, I was gently bundled into their study with an instruction pamphlet, a cup of tea, a promise to unlock the door once I'd printed everyone's passport forms, and a warning not to try the window because the roof tiles are *very* loose.
+Last week my in-laws politely but firmly asked me to set up their new HP printer. I protested that I'm completely clueless about that sort of thing, despite my tax-return-job-title of "software engineer". Still remonstrating, I was gently bundled into their study with an instruction pamphlet, a cup of tea, a promise to unlock the door once I'd printed everyone's passport forms, and a warning not to try the window because the roof tiles are *very* loose.
 
-At first the setup process was so simple that even a computer programmer could do it. But then, after I had finished removing pieces of cardboard and blue tape from the various drawers of the machine, I noticed that the final step required you to download an app of some sort onto a phone or computer. This set off my crapware detector.
+At first the setup process was so simple that even a computer programmer could do it. But then, after I had finished removing pieces of cardboard and blue tape from the various drawers of the machine, I noticed that the final step required the downloading of an app of some sort onto a phone or computer. This set off my crapware detector.
 
 <img src="/images/hp-cover.png" />
 
@@ -17,23 +16,23 @@ Of course, in reality it was a way to try and get people to sign up for expensiv
 
 <img src="/images/hp-instant-ink.png" />
 
-But it is only then, once they have found the right combination of "Next" and "Cancel" buttons to escape from swamp of hard sells and bad deals, that the user is confronted with their biggest test: the "Data Collection Notice & Settings".
+But it is only then, once the user has found the combination of "Next" and "Cancel" buttons that lead out of the swamp of hard sells and bad deals, that they are confronted with their biggest test: the "Data Collection Notice & Settings".
 
 <img src="/images/hp-data-collection.png" />
 
-In summary, HP wants its printer to collect all kinds of data that a reasonable person would never expect it to. This includes metadata about your devices, as well as information about all the documents that you print, including timestamps, number of pages, and the application doing the printing (HP state that they do stop short of looking at the contents of your documents).
+In summary, HP wants its printer to collect all kinds of data that a reasonable person would never expect it to. This includes metadata about your devices, as well as information about all the documents that you print, including timestamps, number of pages, and the application doing the printing (HP state that they do stop short of looking at the contents of your documents). ([From the HP privacy policy, linked to from the setup program:](https://web.archive.org/web/20190828162443/https://www8.hp.com/us/en/privacy/privacy.html))
 
 > Product Usage Data – We collect product usage data such as pages printed, print mode, media used, ink or toner brand, file type printed (.pdf, .jpg, etc.), application used for printing (Word, Excel, Adobe Photoshop, etc.), file size, time stamp, and usage and status of other printer supplies. We do not scan or collect the content of any file or information that might be displayed by an application.
 >
 > Device Data – We collect information about your computer, printer and/or device such as operating system, firmware, amount of memory, region, language, time zone, model number, first start date, age of device, device manufacture date, browser version, device manufacturer, connection port, warranty status, unique device identifiers, advertising identifiers and additional technical information that varies by product.
 
-([source](https://web.archive.org/web/20190828162443/https://www8.hp.com/us/en/privacy/privacy.html))
+HP wants to use the data they collect for a wide range of purposes, the most eyebrow-raising of which is for serving targeted online ads. Note the last column in this ["Privacy Matrix"](http://www8.hp.com/us/en/pdf/privacy/HP_Privacy_Matrix.pdf), which states that "Product Usage Data" and "Device Data" (amongst many other types of data) are collected and shared with "service providers" for purposes of advertising.
 
-HP wants to use your data for a wide range of purposes, the most eyebrow-raising of which is for serving targeted online ads. HP delicately balances short-term profits with reasonable-man-ethics by only half-obscuring the checkboxes and language in this part of the setup.
+HP delicately balances short-term profits with reasonable-man-ethics by only half-obscuring the checkboxes and language in this part of the setup.
 
 <img src="/images/hp-opened.png" />
 
-Now it becomes clear - the job of this setup app is not only to sell expensive ink subscriptions; it's also to collect what apparently passes for informed consent in a court of law. I clicked the boxes to indicate "Jesus Christ no, obviously not, why would anyone ever knowingly consent to that given any alternative", and then spent 5 minutes Googling how to make sure that this setting was disabled. My research suggests that it's controlled by an item in the settings menu of the printer itself labelled "Store anonymous usage information". However, I don't think any reasonable person would think that the meaning of "Store anonymous usage information" includes "send analytics data back to HP's servers so that it can be used for targeted advertising", so either HP is being deliberately coy or there's another option that disables sending your data that I haven't found yet.
+At this point everything has become clear - the job of this setup app is not only to sell expensive ink subscriptions; it's also to collect what apparently passes for informed consent in a court of law. I clicked the boxes to indicate "Jesus Christ no, obviously not, why would anyone ever knowingly consent to that", and then spent 5 minutes Googling how to make sure that this setting was disabled. My research suggests that it's controlled by an item in the settings menu of the printer itself labelled "Store anonymous usage information". However, I don't think any reasonable person would think that the meaning of "Store anonymous usage information" includes "send analytics data back to HP's servers so that it can be used for targeted advertising", so either HP is being deliberately coy or there's another option that disables sending your data that I haven't found yet.
 
 I bet there's also a vigorous debate to be had over whether HP's definition of "anonymous" is the same as mine.
 
@@ -84,6 +83,6 @@ Plus, I really don't think that the onus should be on me to come up with waterti
 
 ---
 
-I don't think that "is it OK if we use your printing metadata for online advertising?" is a question that HP should even be asking. They already know the answer, and all they're really doing is giving people who have already paid them several hundred dollars for a cheap but functional printer the opportunity to make a mistake. Life is so much harder when you feel like you're in a constant cold war standoff with your otherwise perfectly useful gadgets. [The top of HP's privacy policy page reads](https://www8.hp.com/us/en/privacy/privacy.html) "HP recognizes that privacy is a fundamental human right and further recognizes the importance of privacy, security and data protection to our customers and partners worldwide." Which just goes to show that you should probably ignore everything that a company says that doesn't carry a specific and enforceable legal obligation.
+I don't think that "is it OK if we have your printer collect metadata about your devices and what you print, and then use it online advertising?" is a question that HP should even be asking. They already know the answer, and all they're really doing is giving people who have already paid them several hundred dollars for a cheap but functional printer the opportunity to make a mistake. Life is so much harder when you feel like you're in a constant cold war standoff with your otherwise perfectly useful gadgets. [The top of HP's privacy policy page reads](https://www8.hp.com/us/en/privacy/privacy.html) "HP recognizes that privacy is a fundamental human right and further recognizes the importance of privacy, security and data protection to our customers and partners worldwide." Which just goes to show that you should probably ignore everything that a company says that doesn't carry a specific and enforceable legal obligation.
 
-If pressed then I would have to concede that HP have at least made it possible for a moderately informed and motivated user (i.e. me) to work out the gist of what they are hoping to do with my data. They've fuzzed and camouflaged, but (as far as I can tell) they haven't lied, and I imagine that they've been careful not to do anything illegal. And at the end of the day, how else is a company meant to persuade users to part with data that they would never knowingly part with if they properly understood what was happening?
+If pressed then I would have to concede that HP have at least made it possible for a moderately informed and motivated user (i.e. me) to work out the gist of what they are hoping to do with my data. They've camouflaged, but (as far as I can tell) they haven't lied, and I imagine that they've been careful not to do anything illegal. And at the end of the day, how else is a company meant to persuade users to part with data that they would never knowingly part with if they properly understood what was happening?
