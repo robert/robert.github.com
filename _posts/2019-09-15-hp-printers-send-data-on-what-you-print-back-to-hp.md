@@ -26,7 +26,7 @@ In summary, HP wants its printer to collect all kinds of data that a reasonable 
 >
 > Device Data – We collect information about your computer, printer and/or device such as operating system, firmware, amount of memory, region, language, time zone, model number, first start date, age of device, device manufacture date, browser version, device manufacturer, connection port, warranty status, unique device identifiers, advertising identifiers and additional technical information that varies by product.
 
-HP wants to use the data they collect for a wide range of purposes, the most eyebrow-raising of which is for serving targeted online ads. Note the last column in this ["Privacy Matrix"](http://www8.hp.com/us/en/pdf/privacy/HP_Privacy_Matrix.pdf), which states that "Product Usage Data" and "Device Data" (amongst many other types of data) are collected and shared with "service providers" for purposes of advertising.
+HP wants to use the data they collect for a wide range of purposes, the most eyebrow-raising of which is for serving advertising. Note the last column in this ["Privacy Matrix"](http://www8.hp.com/us/en/pdf/privacy/HP_Privacy_Matrix.pdf), which states that "Product Usage Data" and "Device Data" (amongst many other types of data) are collected and shared with "service providers" for purposes of advertising.
 
 HP delicately balances short-term profits with reasonable-man-ethics by only half-obscuring the checkboxes and language in this part of the setup.
 
