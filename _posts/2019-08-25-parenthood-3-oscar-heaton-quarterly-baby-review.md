@@ -29,7 +29,7 @@ Maybe if Gaby and I get promoted a few more times then our fourth child's storie
 
 ----
 
-My and Gaby's employer (we work at the same company) gives us each 4 months parental leave. This makes Oscar a very expensive baby for them. Fortunately Stripe raised $245MM of funding at the end of last year and the snacks in the office just got upgraded, so I don't think Oscar is about to put the firm out of business. But it does make me see why many equality laws exclude small companies. Social justice can get pricey, and I imagine that it's easiest to fund it from a stable and healthy profit base, or whatever the Silicon Valley version of that is.
+My and Gaby's employer (we work at the same company) gives us each 4 months parental leave. This makes Oscar a very expensive baby for them. Fortunately Stripe raised $245MM of funding at the end of last year and the snacks in the office just got upgraded, so I don't think Oscar is about to put the firm out of business. But it does make me see why many equality laws exclude small companies. Social justice can get pricey, and I imagine that it's easiest to fund it from a stable and healthy profit base, or whatever the Silicon Valley equivalent is.
 
 ----
 
@@ -45,7 +45,7 @@ Even if I took Oscar for 50% of the day (which I don't), in truth Gaby retains b
 
 Rather than fiddle with a day-to-day setup that mostly seems to be functioning well, we're instead working on better distributing responsibilities for broader baby decisions. Our other household duties usually get apportioned organically. I manage taxes, finances, and immigration; Gaby manages food, cleaning, and dentist appointments. Tasks are distributed tacitly according to skill and interest, with a nod to stereotypical gender roles.
 
-We think that Oscar should be different. Gaby says that she doesn't care about the distribution of time-spent-with-baby, so long as we're all happy and in love with each other. However, she does care about having a conscious and equitable distribution of baby-decision-making. At the moment, most Oscar-related concerns by default fall through to her. This is partially logical, since she is off work and spends the most time with Oscar. But I also think that, unless we are deliberate about it, this time next year she'll still be the one who always has to work out when we're meant to start taking him to the dentist.
+We think that Oscar should be different. Gaby says that she doesn't care about the distribution of time-spent-with-baby, so long as we're all happy and in love with each other. However, she does care about having a conscious and equitable distribution of baby-decision-making. At the moment, most Oscar-related concerns by default fall through to her. This is partially logical, since she is off work and spends the most time with Oscar. But I also think that, unless we are deliberate about it, this time next year she'll still be the one who has to work out when we're meant to start taking him to the dentist.
 
 We're not entirely sure how best to distribute this work in a way that sticks, but we think that a Parenting Vision Google Doc and some Asana projects are a decent place to start. This all goes to show that "equal parenting" can mean many different things, and that it almost certainly isn't even the right thing to aim for. Perhaps all you can hope for is "happiness".
 
