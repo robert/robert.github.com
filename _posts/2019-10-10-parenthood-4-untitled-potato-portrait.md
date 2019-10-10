@@ -1,5 +1,5 @@
 ---
-title: "Parenthood #4: Untitled Portrait of a Potato"
+title: "Parenthood #4: Untitled Potato Portrait"
 layout: post
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/potato-np.png
