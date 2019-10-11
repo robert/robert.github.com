@@ -3,7 +3,6 @@ title: "Parenthood #4: Untitled Potato Portrait"
 layout: post
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/potato-np.png
-published: false
 ---
 For the first quarter of 2019 I worked as an intern at a charity called GiveWell. [GiveWell's mission](https://www.givewell.org/) is to "search for the charities that save or improve lives the most per dollar". A key part of their methodology for doing this is their "moral weights". These are the relative moral values that one assigns to the different good things that one could affect with one's dollars, such as saving the life of a newborn, saving the life of a five-year old, saving the life of an adult, or doubling one person's consumption for one year. Moral weights are a grisly notion at times, but what else are you going to do?
 
@@ -45,7 +44,7 @@ Now that I write the book's sins down I suppose that they aren't actually that b
 
 In my previous post I suggested that in the future Oscar might be a more attractive mate because he has dual-citizenship. I was reminded by several people that dual-citizenship isn't all fun and games and hookups, especially when one side of the dual is the USA. America demands that all her citizens file tax returns and reports on their bank accounts, even if they live abroad. Which is incredibly tedious for expats but a pretty great wheeze if you can get away with it because you're America.
 
-Gaby and I have nicknamed Oscar "Potato". We probably call him "Oscar" twenty percent of the time and "Potato" the other eighty. We're aware that we'll have to retire this nom de bébé soon. We have sworn never to reveal it to anyone, but I've secured an opt-out clause for this blog post and any movies or other media tie-ins based on it.
+Gaby and I have nicknamed Oscar "Potato". We call him Oscar when he can hear and Potato at all other times. We're aware that we will have to retire this nom de bébé soon. We have sworn never to reveal it to anyone, but I've secured an opt-out clause for this blog post and any movies or other media tie-ins based on it.
 
 ----
 
