@@ -4,6 +4,11 @@ layout: post
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/potato-np.png
 ---
+> [(Read part 1 first)](/2019/06/17/childbirth-a-fathers-eye-view/)
+> [(Then read part 2)](/2019/06/30/1-month-of-parenthood/)
+> [(Then part 3)](/2019/08/25/parenthood-3-oscar-heaton-quarterly-baby-review/)
+> (Then you may continue with this post)
+
 For the first quarter of 2019 I worked as an intern at a charity called GiveWell. [GiveWell's mission](https://www.givewell.org/) is to "search for the charities that save or improve lives the most per dollar". A key part of their methodology for doing this is their "moral weights". These are the relative moral values that one assigns to the different good things that one could affect with one's dollars, such as saving the life of a newborn, saving the life of a five-year old, saving the life of an adult, or doubling one person's consumption for one year. Moral weights are a grisly notion at times, but what else are you going to do?
 
 <img src="/images/potato-np.png" />
