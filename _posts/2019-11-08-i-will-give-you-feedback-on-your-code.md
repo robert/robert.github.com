@@ -51,7 +51,8 @@ If you're trying to choose between a couple of candidate projects, tend to prefe
     3. Copy and paste your code into an email and send it to me directly
 3. Fill out [this Google Form](https://docs.google.com/forms/d/1-faxhrm6eA8yMYIVnGPf37be4SZdhZn6ZjVjZKDngbM).
     1. If you don't want to fill out the form then you can [email me](/about) the same information instead
-4. I'll reply quickly to say hello and when you can expect a proper reply by
+
+Then I'll reply quickly to say hello and when you can expect a proper reply by.
  
 Don't delay - apply now. I'm going to reply to submissions in roughly the order I receive them, and it's only a matter of time before I get a new PlayStation. I'm looking forward to hearing from you.
 
