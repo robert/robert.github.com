@@ -1,5 +1,5 @@
 ---
-title: PTAB 1
+title: Rock, Paper, Scissors, Modulus Operator
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/iot-cover.png
