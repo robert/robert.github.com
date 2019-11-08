@@ -2,8 +2,9 @@
 title: "Programming Feedback for Advanced Beginners #0"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_image: https://robertheaton.com/images/iot-cover.png
-published: false
+og_image: https://robertheaton.com/images/pfab-cover.png
+redirect_from:
+  - /pfab0
 ---
 Welcome to week 0 of Programming Feedback for Advanced Beginners.
 
@@ -14,12 +15,16 @@ Most of all, I suggest small and big changes that the author could
 make in order to bring their program up to a professional standard.
 
 (To receive all future PFABs as soon as they're published,
-[subscribe by email](https://advancedbeginners.substack.com/subscribe) or [follow me on Twitter](https://twitter.com/robjheaton))
+[subscribe by email](https://advancedbeginners.substack.com/subscribe) or [follow me on Twitter](https://twitter.com/robjheaton).
+For the chance to have your code analyzed and featured in future a PFAB
+[read this][i-will-give-feedback])
+
+<img src="/images/pfab-cover.png" />
 
 ## This week's program
 
 This week's program was sent to me by my fine new friend, Matt Goodman.
-Matt's program is an implementation of "[Programming Projects for Advanced Beginners #6: User Logins](ppab6)".
+Matt's program is an implementation of "[Programming Projects for Advanced Beginners #6: User Logins][ppab6]".
 It's a command line application that allows its user to login to a (for now)
 imaginary backend system. Users can sign up by providing a username and password, and
 then sign back in later:
@@ -48,14 +53,14 @@ Hello rob, you have successfully logged in!
 
 The program stores user credentials in a database using some mild cryptography that
 you don't need to know anything about in order to follow this review. If you're interested
-then the technical details are explained in [the project brief](ppab6).
+then the technical details are explained in [the project brief][ppab6].
 
 The program is written in Python, but uses no specialized Python
 constructs. Both the code and my comments should be understandable
 and useful to anyone familiar with Ruby, JavaScript, Java, or any
 other modern program language.
 
-You can read Matt's original code [here](TODO) and my response edit [here](TODO).
+You can read Matt's original code [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/original.py) and my response edit [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/updated.py).
 Matt's code is a very capable start, but let's take a look at how
 he could kick it up a notch.
 
@@ -190,7 +195,7 @@ def sha256(pw):
 
 (NOTE to readers: you don't need to know anything about the details of `sha256` in
 order to understand the programming principles here. If you *would* like to know
-more about `sha256` then [the project brief](ppab6) has the scoop)
+more about `sha256` then [the project brief][ppab6] has the scoop)
 
 For brevity, I would combine these operations into 1 line:
 
@@ -250,7 +255,7 @@ if their passwords don't match then I'll ask them again, then I'll try to insert
 their input into the database, if that doesn't work then I'll repeat the whole process
 until it does, and I won't give you back anything."
 
-(read the code for Matt's original `register` function [here](TODO))
+(read the code for Matt's original `register` function [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/original.py#L59-L82))
 
 Because this function's contract is so fuzzy, it doesn't really help our code in any way
 other than shuffling it around the file a little. Let's look at how to tighten the function up,
@@ -351,11 +356,11 @@ loops back on itself.
 constraints like "exit the program after 3 failed attempts", and how annoying (albeit technically
 possible) it would be to add them to the recursive version.
 
-Have a look at my fully refactored `register` code [here](TODO).
+Have a look at my fully refactored `register` code [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/updated.py#L94-L112).
 
 ### `is_valid_credentials`
 
-Matt has another big function called [`is_valid_credentials`](TODO). Its job is to handle validating
+Matt has another big function called [`is_valid_credentials`](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/original.py#L85-L97). Its job is to handle validating
 users' passwords. Here's the original code - try to write down its contract in the form "you
 give me X, I'll do Y, and give you back Z".
 
@@ -374,6 +379,8 @@ def is_valid_credentials():
     else:
         print("Login failed. Username or password is incorrect.")
 ```
+
+([link](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/original.py#L85-L97))
 
 This is a trick question - the function doesn't really have an contract beyond
 "if you use me then I'll do a bunch of stuff". Let's see what how we can fix this.
@@ -419,7 +426,7 @@ case, input retrieval and input validation) we make this kind of change
 easier. We can leave the code that asks for input untouched, and update only the
 code that uses this input.
 
-Read my fully refactored `is_valid_credentials` code [here](TODO).
+Read my fully refactored `is_valid_credentials` code [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/updated.py#L68-L77).
 
 ## What have we learned today?
 
@@ -450,13 +457,13 @@ Furthermore:
 * To receive every single future PFAB as soon as it is published, [subscribe
 via email](https://advancedbeginners.substack.com/subscribe) or [follow me on Twitter](https://twitter.com/robjheaton).
 * For the chance to have your code
-featured in a future PFAB, [send it to me](pfab)! (you can do so entirely anonymously
+featured in a future PFAB, [send it to me][i-will-give-feedback]! (you can do so entirely anonymously
 if you wish).
 * If you're looking for inspiration for projects to work on,
-check out my [Programming Projects for Advanced Beginners](ppab) series.
+check out my [Programming Projects for Advanced Beginners][ppab] series.
 * [Send me feedback](/about) about what you found helpful or unhelpful and
 what you'd like to see more or less of.
 
 [ppab6]: https://robertheaton.com/2019/08/12/programming-projects-for-advanced-beginners-user-logins/
 [ppab]: https://robertheaton.com/ppab
-[pfab]: https://robertheaton.com/pfab
+[i-will-give-feedback]: https://robertheaton.com/feedback
