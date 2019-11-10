@@ -6,6 +6,8 @@ og_image: https://robertheaton.com/images/ttt-dalek.png
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory programming tutorials you can find and want to start sharpening your skills on something bigger, this project is for you. You'll get thrown in at the deep end. But you'll also get gentle reminders on how to swim, as well as some new tips on swimming best practices. You can do it using any programming language you like, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/robjheaton) or Skype.
 
+{% include pfab.html %}
+
 You're going to build artificial intelligences (AIs) that play Tic Tac Toe. You'll battle different algorithms against each other, challenge your friends to build their own, and ultimately develop an unbeatable, perfect Tic Tac Toe AI.
 
 You'll learn how to break down large, intimidating projects into smaller, manageable pieces. You'll learn how to separate your code into independent chunks that are each responsible for 1 thing. You'll learn how to solve problems using the simplest code you can get away with, and how to refactor your work to handle more complex problems as they emerge. You'll learn how to not feel bad when you write throwaway test code, and you'll learn to apply these invaluable principles to your future projects.

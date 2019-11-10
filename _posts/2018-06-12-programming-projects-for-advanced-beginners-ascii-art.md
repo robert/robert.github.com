@@ -6,6 +6,8 @@ og_image: https://robertheaton.com/images/ascii-speed.jpg
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory tutorials and short exercises you can find, but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. You can do it in whichever programming language you happen to be learning, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/RobJHeaton) or Skype.
 
+{% include pfab.html %}
+
 <p align="center">
 <img src="/images/example-ascii.gif" />
 </p>
@@ -175,6 +177,8 @@ The solution is to add some code to shrink your image before you build your init
 
 After pausing to pat yourself on the back, [send me an email](mailto:robqheaton@gmail.com) with what you found easy, what you found confusing, whether you got stuck anywhere, and what you'd like more explanation of in the future. If there's anything you'd find helpful to go over in person over Skype, please let me know. I'm going to be making more advanced-beginner projecs like this, and I'd like to understand how to make them as useful as possible. After sending that email (seriously, send it) and signing up for my mailing list at the bottom of this page (do that too), compose yourself and venture boldly into the extensions section.
 
+{% include pfab.html %}
+
 # Extensions
 
 In rough order of difficulty, with the easiest first:
@@ -217,5 +221,3 @@ Finally, wire the pieces together. Update your code to run imagesnap to save an 
 If you've got this far then you probably don't need any pointers, although you're going to get some anyway. Printing your image in color will require you to refactor a lot of your existing code, since up until now you've been throwing away color information when you convert your pixel matrix into an intensity matrix.
 
 You don't have to print the entire image in color. You could add some subtle artsy accents on pixels that are almost entirely Red, Blue or Green (for example pixels with the values (240, 3, 10), (13, 226, 18) or (0, 0, 255)) and print the rest in black and white. Or choose pixels colors based on a flag overlay, whilst keeping the brightnesses of the underlying image. The only limits are your imagination and the very real constraints of attempting to paint using a computer terminal that was only ever designed to handle data input and output.
-
-<PIC of rainbow flag picture>

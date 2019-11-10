@@ -22,3 +22,5 @@ We don't use any esoteric libraries, and instead focus on transferrable programm
 The response to my [Programming Projects for Advanced Beginners](/ppab) blog post series has been fantastic, and I made this video series to bring its same, detail-oriented approach to the big screen. I hope you enjoy it and I'd love to [hear any and all feedback](/about).
 
 [Watch Programming for Advanced Beginners: Battleships now](https://www.youtube.com/watch?v=XTr5OF9MRCg&list=PLw22WCqAVCN6EXylkzhtMwvgcLq4TrcQX).
+
+{% include pfab.html %}

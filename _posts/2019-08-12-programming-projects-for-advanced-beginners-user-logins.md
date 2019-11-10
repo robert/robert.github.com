@@ -16,7 +16,11 @@ You're going to be writing all the code for the product, and you're a little app
 
 Fortunately, you've discovered a great series called "[Programming Projects for Advanced Beginners](/ppab)" by a guy called Reabert Horton (or something like that). The projects guide you through building some really nifty programs, like [Snake](/2018/12/02/programming-project-5-snake/) and [Conway's Game of Life](/2018/07/20/project-2-game-of-life/). But they aren't walkthroughs or how-tos. You get suggestions and pointers along the way, but have to design and write all of the actual code yourself. You can complete the projects using whatever language you happen to be learning.
 
+{% include pfab.html %}
+
 Extra-fortunately, the new projects in the series are all about understanding the real-world patterns and programs that you'll need to build Steveslist. This includes APIs, databases, webhooks, queues, and much more. The first project is about building a secure user login system, and you figure that you can use the techniques in the project to authenticate the users of Steveslist and to safely store their credentials. You sit down at your computer and tell your unpaid intern to hold your calls.
+
+{% include pfab.html %}
 
 The project goes a little something like this:
 
@@ -279,3 +283,5 @@ In the future you can adapt the code you've written to work in a web app and use
 That's all coming in the next installment of Programming Projects for Advanced Beginners. I haven't finished writing it yet, but I think it's going to be a banger. To be notified when it's released, subscribe to the mailing list below or follow me [on Twitter](https://twitter.com/robjheaton).
 
 (If you want a quick extension to keep you going, try adding password validation. Require a minimum length, at least one number and letter, and at least one punctuation mark. Then add a password-reset function to your database-driven program. Then think of some extensions of your own)
+
+{% include pfab.html %}

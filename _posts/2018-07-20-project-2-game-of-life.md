@@ -6,6 +6,8 @@ og_image: https://robertheaton.com/images/gol-gosper-glider-gun-schematic.png
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory tutorials and short exercises you can find, but are not sure how to continue developing your skills, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. You can do it in whichever programming language you happen to be learning, and if you get stuck I'll help you out over [email](mailto:robqheaton@gmail.com), [Twitter](https://twitter.com/RobJHeaton) or Skype.
 
+{% include pfab.html %}
+
 You're going to build the famous and fascinating system known as "Conway's Game of Life". This will not be easy, but I guarantee that you will succeed. And once you're finished you can create exquisite gifs of your work to share with your friends and extended family.
 
 <img src="/images/gol-intro-2.gif" alt="The Game of Life" />
@@ -370,6 +372,8 @@ Once you have this working, you will have built Life! Congratulations, that was 
 ### Final task - say hi!
 
 If you've successfully made it this far then I'd love to know! I’m going to be making more advanced-beginner projects like this, and I’d like to understand how to make them as useful as possible. Please [send me an email](mailto:robqheaton@gmail.com) to tell me about your achievement. I'd love to hear from you. You can also sign up for my mailing list at the bottom of this page to find out when I publish more advanced-beginner projects. I'm planning on writing at least 1 per month.
+
+{% include pfab.html %}
 
 Once you've [sent me that quick message](mailto:robqheaton@gmail.com), it's time to move on to Life's extensions.
 

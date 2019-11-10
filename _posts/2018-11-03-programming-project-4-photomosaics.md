@@ -9,6 +9,8 @@ redirect_from:
 ---
 This is a programming project for Advanced Beginners. If you've completed all the introductory programming tutorials you can find and want to sharpen your skills on something bigger, this project is for you. You'll get thrown in at the deep end. But you'll also get gentle reminders on how to swim, as well as some new tips on swimming best practices. You can do it using any programming language you like, and if you get stuck I've written [some example code that you can take inspiration from][example-project].
 
+{% include pfab.html %}
+
 You may have come across photomosaics before - big pictures built out of thousands of other tiny pictures. In this project you're going to build a photomosaic creator.
 
 <img src="/images/mosaic-me.png" />
@@ -155,6 +157,8 @@ Once you've done all of that, here are your 4 next steps:
 * Sign up for my newsletter at the bottom of this page to find out about new projects as they are published
 
 Once again, congratulations!
+
+{% include pfab.html %}
 
 ## Extensions
 
