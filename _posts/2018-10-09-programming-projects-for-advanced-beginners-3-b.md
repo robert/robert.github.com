@@ -6,6 +6,8 @@ og_image: https://robertheaton.com/images/ttt-dalek.png
 ---
 This is the second and final part of our quest to build an unbeatable, perfect Tic-Tac-Toe AI. [In part 1](/2018/10/09/programming-projects-for-advanced-beginners-3-a/) we wrote a Tic-Tac-Toe engine that allowed two human players to play against each other. In part 2, we're going to use the *minimax algorithm* to build a flawless AI.
 
+{% include pfab.html %}
+
 First we're going to warm up by writing some simpler AIs that choose their moves using if-statements and rules of thumb. As we do this we'll build out the code that connects our computer players to our existing Tic-Tac-Toe engine. Once we've got our warmup AIs working and have written and verified this generic infrastructure we'll be ready to give our total focus to our final goal: making a perfect Tic-Tac-Toe AI.
 
 As with all my projects, I'm going to leave all of the difficult work to you and throw you right in at the deep-end. But I'll also give you gentle reminders on how to swim, as well as some new tips on swimming best practices. If you do get completely stuck then [I've written some example code](https://github.com/robert/tictactoe-ai/tree/master/part2). You can always use it to point yourself back in the right direction.
@@ -374,6 +376,8 @@ Once you're convinced that your AI is perfect, show it off to your family, frien
 If you’ve successfully made it this far then I’d love to know! I’m going to be making more advanced-beginner projects like this, and I’d like to understand how to make them as useful as possible. Please [send me an email](mailto:robqheaton@gmail.com) to tell me about your achievement, I’d love to hear from you. You can also sign up for my mailing list at the bottom of this page to find out when I publish more advanced-beginner projects. I’m planning on writing at least 1 per month.
 
 Once you’ve sent me that quick message, it’s time to move on to the extensions. They are even harder than the rest of the project, and come with even fewer pointers. Don't be afraid to spend a lot of time just thinking and sketching out brief, experimental snatches of code.
+
+{% include pfab.html %}
 
 ## Extensions
 

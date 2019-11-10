@@ -423,3 +423,6 @@ Pull out as much duplicated code as you can from vertical and horizontal histogr
 You're done! Keep the momentum going - choose another open source project (use Google and [this list](https://github.com/vinta/awesome-python) for inspiration) and add experimental new features to it. Don't worry much about actually submitting your work to the main project (unless you want to) - your goal should be to understand and experiment with new projects, not to produce something polished and perfect and ready to be deployed to production servers. Alternatively, try tackling the [Programming Projects for Advanced Beginners series](/programming-projects-for-advanced-beginners/), where you build your own programs from scratch using a similar level of detailed (but not too detailed) guidance to that of this project.
 
 I'd love to hear your feedback and find out how you got on. [Send me an email or a Tweet](/about) (with a link to your GitHub repo if you have one) and I'll send you back some insightful comments and a ASCII art trophy.
+
+{% include pfab.html %}
+<br/>

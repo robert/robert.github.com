@@ -68,3 +68,6 @@ Most of the above is, of course, unverified assertion, with not a single Randomi
 *"I started with the Conway's Game of Life one and now I'm spending an hour or two each night putting together the tic tac toe game. Right now I'm building the board/turn sequence but I'm excited for the AI part…"*
 
 *"Holy moly, that link is amazing. The way he describes the situation is amazing, so well written and accurate."*
+
+{% include pfab.html %}
+<br/>

@@ -8,6 +8,8 @@ This is a programming project for Advanced Beginners. If you've completed all th
 
 [example-code]: https://github.com/robert/snake
 
+{% include pfab.html %}
+
 ## Press start to play
 
 In this project you're going to build the classic game "Snake". In Snake, the player pilots a snake around a grid, trying to eat apples and avoid crashing into walls or their own tail. Each time the snake eats an apple, its body gets longer. Eventually it eats so many apples and its body gets so long that it fills up the entire world. Death becomes inescapable, and the player is suffocated beneath their own success and greed.
@@ -352,6 +354,8 @@ Here are your 4 next steps:
 * Sign up for my newsletter at the bottom of this page to find out about new projects as they are published
 
 Once again, congratulations!
+
+{% include pfab.html %}
 
 ## Extension - follow your dreams
 

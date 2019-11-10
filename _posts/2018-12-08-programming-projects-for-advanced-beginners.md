@@ -29,6 +29,8 @@ These projects use almost no external libraries, which means no tedious troubles
 
 The projects focus on methodology - breaking work down into manageable chunks and testing each chunk as you go. We talk about design patterns and techniques like modularity, interfaces, unit testing and caching, but with the aim of making you broadly aware of their existence rather than dwelling on the details. Our focus is on producing code that works, feeling great about it, and only then going back to see if we can tidy anything up.
 
+{% include pfab.html %}
+
 ## The projects
 
 So far I've written 5 Programming Projects for Advanced Beginners, with several more coming down the pipeline.
@@ -110,6 +112,9 @@ Good luck!
 *"I started with the Conway's Game of Life one and now I'm spending an hour or two each night putting together the tic tac toe game. Right now I'm building the board/turn sequence but I'm excited for the AI part…"*
 
 *"Holy moly, that link is amazing. The way he describes the situation is amazing, so well written and accurate."*
+
+{% include pfab.html %}
+<br/>
 
 [proj-1]: /2018/06/12/programming-projects-for-advanced-beginners-ascii-art/
 [proj-2]: /2018/07/20/project-2-game-of-life/
