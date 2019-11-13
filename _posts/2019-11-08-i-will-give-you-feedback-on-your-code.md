@@ -61,7 +61,7 @@ Furthermore:
 * If you know someone else who might want to take advantage of this offer then please do forward this post to them
 * If you like PFAB then you'll almost certainly also enjoy my [Programming Projects for Advanced Beginners](/ppab) series of semi-guided project ideas
  
-<h2><a name="faq">FAQ]</a></h2>
+<h2><a name="faq">FAQ</a></h2>
 
 ### Who am I?
 
