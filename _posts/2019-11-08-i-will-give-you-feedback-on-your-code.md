@@ -44,15 +44,13 @@ If you're trying to choose between a couple of candidate projects, tend to prefe
 
 ## How to send me your code:
 
-1. At the top of each file of your project, add a comment saying `// This code is made available under the Creative Commons Zero 1.0 License (https://creativecommons.org/publicdomain/zero/1.0)` (see the FAQ below for why). You can also add a single `LICENSE` file to the root directory of your project with the same text if that's easier.
-2. Put your code somewhere where you can share it with me. In order of preference:
-    1. Put your code on [GitHub](https://github.com). If you haven't used GitHub before then this will be a valuable educational experience in itself ([start here](https://lab.github.com/githubtraining/paths/first-day-on-github)). Either put your project in a "public repo" (preferred), or put it in a "private repo" and then invite me to it (my GitHub username is [@robert](https://github.com/robert)).
-    2. Put your code on [PasteBin](https://pastebin.com) or another text-sharing site
-    3. Copy and paste your code into an email and send it to me directly
-3. Fill out [this Google Form](https://docs.google.com/forms/d/1-faxhrm6eA8yMYIVnGPf37be4SZdhZn6ZjVjZKDngbM).
-    1. If you don't want to fill out the form then you can [email me](/about) the same information instead
+Email me at `robqheaton@gmail.com`. You can either:
 
-Then I'll reply quickly to say hello and when you can expect a proper reply by.
+* Include your code as an attachment(s)
+* Put it on [GitHub](https://github.com) and send me the link (if you haven't used GitHub before then [start here](https://lab.github.com/githubtraining/paths/first-day-on-github)
+* Put it on a text-sharing site like [PasteBin](https://pastebin.com) and send me the link
+
+In your email or in a comment at the top of your code files, please include the words "`This code is made available under the Creative Commons Zero 1.0 License (https://creativecommons.org/publicdomain/zero/1.0)`". This is to make sure that I'm legally allowed to write about your code - see the FAQ below for more details. Once I receive your email I'll reply quickly to say hello and when you can expect a proper reply by.
  
 Don't delay - apply now. I'm going to reply to submissions in roughly the order I receive them, and it's only a matter of time before I get a new PlayStation. I'm looking forward to hearing from you.
 
@@ -73,7 +71,7 @@ I [blog a lot](/) about programming, security, and a few other topics. I'm parti
 
 ## Can I guarantee that I will look at your code?
 
-No, since I have no idea what demand for this offer will be. I will try very hard though.
+No, since I have no idea what demand for this offer will be. However, so far I've been receiving about 1 submission per week, so the odds are extremely good.
 
 ## What is the Creative Commons Zero License and why do I ask that you add it?
 
