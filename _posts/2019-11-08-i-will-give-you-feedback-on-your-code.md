@@ -50,7 +50,7 @@ Email me at `robqheaton@gmail.com`. You can either:
 * Put it on [GitHub](https://github.com) and send me the link (if you haven't used GitHub before then [start here](https://lab.github.com/githubtraining/paths/first-day-on-github)
 * Put it on a text-sharing site like [PasteBin](https://pastebin.com) and send me the link
 
-In your email or in a comment at the top of your code files, please include the words "`This code is made available under the Creative Commons Zero 1.0 License (https://creativecommons.org/publicdomain/zero/1.0)`". This is to make sure that I'm legally allowed to write about your code - see the FAQ below for more details. Once I receive your email I'll reply quickly to say hello and when you can expect a proper reply by.
+In your email or in a comment at the top of your code files, please include the words "`This code is made available under the Creative Commons Zero 1.0 License (https://creativecommons.org/publicdomain/zero/1.0)`". This is to make sure that I'm legally allowed to write about your code - see the [FAQ](#faq) for more details. Once I receive your email I'll reply quickly to say hello and when you can expect a proper reply by.
  
 Don't delay - apply now. I'm going to reply to submissions in roughly the order I receive them, and it's only a matter of time before I get a new PlayStation. I'm looking forward to hearing from you.
 
@@ -61,19 +61,19 @@ Furthermore:
 * If you know someone else who might want to take advantage of this offer then please do forward this post to them
 * If you like PFAB then you'll almost certainly also enjoy my [Programming Projects for Advanced Beginners](/ppab) series of semi-guided project ideas
  
-# FAQ
+<h2><a name="faq">FAQ]</a></h2>
 
-## Who am I?
+### Who am I?
 
 I'm a software engineer at Stripe, a Silicon Valley financial technology company. I work on the security team, building tools and systems to detect and respond to cyberattacks.
 
 I [blog a lot](/) about programming, security, and a few other topics. I'm particularly interested in helping "advanced beginners" get through the yawning valley of despair that opens up when you realize that you understand the basics of programming but don't know how to keep getting better or what to do next. My most popular work is my "[Programming Projects for Advanced Beginners](/ppab)" series, a collection of semi-guided projects.
 
-## Can I guarantee that I will look at your code?
+### Can I guarantee that I will look at your code?
 
 No, since I have no idea what demand for this offer will be. However, so far I've been receiving about 1 submission per week, so the odds are extremely good.
 
-## What is the Creative Commons Zero License and why do I ask that you add it?
+### What is the Creative Commons Zero License and why do I ask that you add it?
 
 [The Creative Commons Zero (CC0) license](https://creativecommons.org/share-your-work/public-domain/cc0/) is a legal statement of how other people are allowed to use your code. Much open source code is distributed under it. The license says something like "this code is public domain and anyone can do anything they want with it. However, they can't imply that I endorse their actions, and if the code does something terrible then that's not my problem."
 
