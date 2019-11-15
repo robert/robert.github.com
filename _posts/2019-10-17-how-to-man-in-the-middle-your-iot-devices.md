@@ -1,9 +1,8 @@
 ---
-title: How to man-in-the-middle your IOT devices
+title: How to man-in-the-middle proxy your IOT devices
 layout: post
 tags: [Security]
 og_image: https://robertheaton.com/images/iot-cover.png
-published: false
 ---
 My wife and I [recently had a baby boy](/2019/06/17/childbirth-a-fathers-eye-view/). Rave reviews and hopeful optimism outweighed our natural skepticism, and we rented him a Snoo. A Snoo is a smart-crib that rocks your baby to sleep and plays him soothing white noise. If it hears him getting grumpy, it ratchets up the speed and the volume to try to make him happy again.
 
@@ -13,31 +12,31 @@ My wife and I [recently had a baby boy](/2019/06/17/childbirth-a-fathers-eye-vie
 
 For some reason, you have to control the Snoo from a smartphone app. I'd much prefer it if they ditched the whole internet-of-things angle and just gave me some buttons that I can press with my real-world fingers and that don't stop working when my wi-fi goes down. I do feel like I'm from the future when I show my parents how I can wobble my baby using only my phone, but it's a future where no one has given much thought to exactly why the future is better than the past. Perhaps there's a use-case that I'm missing.
 
-Nonetheless, I figured that if the Snoo people were going to make their crib wi-fi enabled then I might as well have some fun when Oscar wasn't using it. I went in search of security flaws in the crib that would allow me to take control of it and use it for my various nefarious schemes. I didn't find any particularly heinous vulnerabilities, but I did find a small *protocol downgrade* bug, which allowed me to force the Snoo to send some of its status data over unencrypted HTTP instead of HTTPS. Whilst this is not ideal, I couldn't immediately see any way to convert this toehold into something that would materially help me with any of my villainous plans. I sent an email to the Snoo team describing the bug. They were very pleasant and responsive, and told me they would fix it in their next firmware update.
+Nonetheless, I figured that if the Snoo people were going to make their crib wi-fi enabled then I might as well have some fun when Oscar wasn't using it. I went in search of security flaws in the crib that would allow me to take control of it and use it for my various nefarious schemes. I didn't find any particularly heinous vulnerabilities, but I did find a small *protocol downgrade* bug, which allowed me to force the Snoo to send some of its status data over unencrypted HTTP instead of HTTPS. Whilst this is certainly a problem, I couldn't immediately see any way to convert this toehold into something that would materially help me with any of my villainous plans. I sent an email to the Snoo team describing the bug. They were very pleasant and responsive, and told me they would fix it in their next firmware update.
 
-In this post we will look at how I was able to find this bug, and how you can use the same techniques to examine the behavior of your own IOT devices, be they cribs, fridges, lightbulbs, or exercise bikes. We'll learn a lot about TLS, DNS, TCP, and make a lot of beautiful memories along the way.
+In this post we will look at how I was able to find this bug, and how you can use the same techniques to examine the behavior of your own IOT devices, be they cribs, fridges, lightbulbs, or exercise bikes. We'll learn a lot about TLS, DNS, TCP, and make a lot of beautiful stories to tell our grandchildren along the way.
 
 -----
 
-In order to probe the Snoo's behavior, I had to attempt to execute a *man-in-the-middle* attack against it. This technique, which we will discuss in more detail below, is most commonly used in order to snoop on the network activity of smartphone apps. However, in order to be used against internet of things (IOT) devices, it requires some creative adaptation.
+In order to probe the Snoo's behavior, I had to attempt a *man-in-the-middle* attack against it. This technique, which we will discuss in more detail below, is most commonly used in order to snoop on the network activity of smartphone apps. However, in order to be used against internet of things (IOT) devices, it requires some creative adaptation.
 
-When man-in-the-middle-ing your IOT device, we will intercept and inspect the online traffic that goes in and out of it. This will allow us to understand, and potentially modify, how it works. Your device probably talks to a server, to which it relays back analytics and instructions it has received from its user. It is this connection that we are going to insert ourselves - using your laptop - into the middle of.
+When man-in-the-middle-ing a device, we intercept and inspect the online traffic that goes in and out of it. This allows us to understand, and potentially modify, how it works. Your IOT device probably talks to a server, to which it relays back analytics and instructions it has received from its user. It is this connection that we are going to insert ourselves - using your laptop - into the middle of.
 
 <p style="text-align: center; ">
 <img src="/images/iot-mitm.png" />
 </p>
 
-As mentioned above, the man-in-the-middle technique is commonly used in order to snoop on the network activity of smartphone apps. Much has already been written about this process. For an introduction, see for example [the documentation for Burp Suite](https://portswigger.net/burp/documentation/desktop/getting-started), a popular security testing tool.
+As mentioned above, the man-in-the-middle technique is most commonly used in order to snoop on the network activity of smartphone apps. Much has already been written about this process. For an introduction, see for example [the documentation for Burp Suite](https://portswigger.net/burp/documentation/desktop/getting-started), a popular security testing tool.
 
 Using the technique on your smartphone is easy because it is "proxy-aware". Much has also been written about proxies. For a very brief introduction, see [section 1 of my series on "How to build a TCP Proxy"](/2018/08/31/how-to-build-a-tcp-proxy-1/).
 
-Because it is proxy-aware, your smartphone has an option in its Settings menu that allows you to configure an HTTP proxy. If you do then your phone will automatically send all of its HTTP traffic via that proxy. You can use this setting to tell your phone to send all of its HTTP traffic via your laptop, where you can inspect and forward it using proxy tools like [Burp Suite](https://portswigger.net/burp) and [Charles](https://www.charlesproxy.com/).
+Because your smartphone is proxy-aware, it has a straightforward option in its Settings menu that allows you to configure it to use an HTTP proxy. If you do so then your phone will automatically send all of its HTTP traffic via that proxy. If you tell your phone to use your laptop as its proxy then you can inspect and massage its traffic using proxy tools like [Burp Suite](https://portswigger.net/burp) and [Charles](https://www.charlesproxy.com/).
 
 <p style="text-align: center; ">
 <img src="/images/iot-iphone-proxy.png" />
 </p>
 
-However, most black-box IOT devices don't give you the option to configure a proxy (probably for reasons of simplicity, rather than any particular desire for secrecy) and so this simple approach won't work for them. There's every chance that your device has the theoretical ability to use a proxy, but doesn't expose this functionality to its users. If you want to tear apart your smartfridge in search of a USB port so that you can talk directly to the embedded system then be my guest, but be aware that there's some chance that you'll end up with a rogue fridge that orders you `2^64` cartoons (that's a joke, not a typo) of almond milk every clock tick.
+However, most black-box IOT devices don't give you a similar option to configure a proxy (probably for reasons of simplicity, rather than any particular desire for secrecy) and so this simple approach won't work for them. There's every chance that your device has the theoretical ability to use a proxy, but doesn't expose this functionality to its users. If you want to tear apart your smartfridge in search of a USB port so that you can talk directly to the embedded system then be my guest, but be aware that there's some chance that you'll end up with a rogue fridge that orders you `2^64` cartoons (that's a joke, not a typo) of almond milk every clock tick.
 
 This means that we need to get creative. We need to come up an alternative way to ask your device to send its traffic via your laptop. Then we can intercept and inspect its traffic by correctly configuring the same proxy tools that you may have used for intercepting traffic from smartphones or desktop apps (like Burp or Charles). Tricking your device into sending its traffic via your laptop and correctly configuring a proxy tool are the two challenges standing between us and being able to snoop on your device. We will solve both of them in the rest of this post.
 
@@ -84,9 +83,9 @@ Even once you've got your DNS-spoofing script working, you may find that the rea
 
 How you solve this problem depends on whether your device is trying to do its DNS resolution by asking your laptop (in its capacity as a network router), or by asking a DNS server directly (like Google's server at IP address `8.8.8.8`). You can work out what your device is doing by looking at the `dst` field in Wireshark for the offending second DNS request.
 
-If your device is asking your laptop to do its DNS resolution then you can stop your laptop from responding by disabling DNS resolution on your laptop. Maybe there's a handy setting that can do this directly. Another option is to set the DNS server that your laptop forwards your device's DNS request to to be a server inside your local network that doesn't exist, like `192.168.0.200`. Make sure to use an IP address inside your local network (starting with `192,168.`) so that you don't start sending your DNS requests to some random computer on the internet. Doing this will cause the forwarded DNS request to fail, and so your laptop will not respond to your device with the correct IP address. This means that the only resolved IP address that your device sees will be the one that we explicitly fake. This is exactly what we want.
+If your device is asking your laptop to do its DNS resolution then you can stop your laptop from responding by disabling DNS resolution on your laptop. Maybe there's a handy setting that can do this directly. Another option is to set the DNS server that your laptop forwards your device's DNS request to to be a server inside your local network that doesn't exist, like `192.168.0.200`. Make sure to use an IP address inside your local network (starting with `192.168.`) so that you don't start sending your DNS requests to some random computer on the internet. Doing this will cause the forwarded DNS request to fail, and so your laptop will not respond to your device with the correct IP address. This means that the only resolved IP address that your device sees will be the one that we explicitly fake. This is exactly what we want.
 
-On the other hand, if your device is directly talking to a specific DNS server then you can use a tool like Linux's `iptables` or OSX's `pfctl` to block traffic from your laptop to that IP address. I won't go in to the details of this here, since Google has a lot more details available already.
+On the other hand, if your device is directly talking to a specific DNS server then you can use a tool like Linux's `iptables` or OSX's `pfctl` to block traffic from your laptop to that IP address. I won't go in to the details of this here, since Google has a lot of details available on these topics already.
 
 Once you have your device connected to a network shared by your laptop and you have your DNS-spoofing script working, your device will have been tricked into sending all of its internet traffic that relies on DNS resolution to your laptop. Since your laptop doesn't yet know what to do with this traffic, it will drop it on the floor and your device will not be able to contact its remote server. Your device will probably look like it is broken. Our next step is therefore to teach your laptop what to do with the traffic it receives.
 
