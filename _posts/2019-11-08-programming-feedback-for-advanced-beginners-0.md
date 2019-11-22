@@ -60,7 +60,7 @@ constructs. Both the code and my comments should be understandable
 and useful to anyone familiar with Ruby, JavaScript, Java, or any
 other modern program language.
 
-You can read Matt's original code [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/original.py) and my response edit [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/updated.py).
+You can read Matt's original code [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0-user-logins/original.py) and my response edit [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0-user-logins/updated.py).
 Matt's code is a very capable start, but let's take a look at how
 he could kick it up a notch.
 
@@ -255,7 +255,7 @@ if their passwords don't match then I'll ask them again, then I'll try to insert
 their input into the database, if that doesn't work then I'll repeat the whole process
 until it does, and I won't give you back anything."
 
-(read the code for Matt's original `register` function [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/original.py#L59-L82))
+(read the code for Matt's original `register` function [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0-user-logins/original.py#L59-L82))
 
 Because this function's contract is so fuzzy, it doesn't really help our code in any way
 other than shuffling it around the file a little. Let's look at how to tighten the function up,
@@ -356,11 +356,11 @@ loops back on itself.
 constraints like "exit the program after 3 failed attempts", and how annoying (albeit technically
 possible) it would be to add them to the recursive version.
 
-Have a look at my fully refactored `register` code [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/updated.py#L94-L112).
+Have a look at my fully refactored `register` code [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0-user-logins/updated.py#L94-L112).
 
 ### `is_valid_credentials`
 
-Matt has another big function called [`is_valid_credentials`](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/original.py#L85-L97). Its job is to handle validating
+Matt has another big function called [`is_valid_credentials`](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0-user-logins/original.py#L85-L97). Its job is to handle validating
 users' passwords. Here's the original code - try to write down its contract in the form "you
 give me X, I'll do Y, and give you back Z".
 
@@ -380,7 +380,7 @@ def is_valid_credentials():
         print("Login failed. Username or password is incorrect.")
 ```
 
-([link](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/original.py#L85-L97))
+([link](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0-user-logins/original.py#L85-L97))
 
 This is a trick question - the function doesn't really have an contract beyond
 "if you use me then I'll do a bunch of stuff". Let's see what how we can fix this.
@@ -426,7 +426,7 @@ case, input retrieval and input validation) we make this kind of change
 easier. We can leave the code that asks for input untouched, and update only the
 code that uses this input.
 
-Read my fully refactored `is_valid_credentials` code [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0/updated.py#L68-L77).
+Read my fully refactored `is_valid_credentials` code [here](https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/0-user-logins/updated.py#L68-L77).
 
 ## What have we learned today?
 
