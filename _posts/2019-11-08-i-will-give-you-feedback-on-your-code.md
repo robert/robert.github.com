@@ -16,6 +16,8 @@ This is partly because I'm a nice person whose PlayStation is broken, but mostly
 
 Some people might call this "building a community", others might call it "content marketing". I think that they're both correct and that we're all going to be winners here.
 
+(*[SUBSCRIBE to Programming Feedback for Advanced Beginners][mailing-list]*.)
+
 ## What feedback will you get?
  
 I'll suggest specific changes to your code and offer general feedback about what you may want to work on and how. This feedback might be:
