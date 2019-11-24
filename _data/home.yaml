@@ -1,3 +1,14 @@
+projects:
+  title: Projects I am working on
+  posts:
+    - title: "NEW: Programming Feedback for Advanced Beginners"
+      url: https://advancedbeginners.substack.com
+    - title: "Office hours"
+      url: /office-hours
+    - title: "Programming Projects for Advanced Beginners"
+      url: /ppab
+
+
 best_of:
   title: Best of
   posts:
