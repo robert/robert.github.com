@@ -21,8 +21,6 @@ best_of:
       url: /2017/11/13/a-zero-knowledge-proof-for-the-existence-of-god/
     - title: "Lessons from a Silicon Valley job search"
       url: /2014/03/07/lessons-from-a-silicon-valley-job-search/
-    - title: "A beginners' guide to funemployment"
-      url: /2014/06/02/a-beginners-guide-to-funemployment/
 
 steve_steveington:
   title: The Steve Steveington Chronicles
@@ -47,6 +45,8 @@ online_tracking:
   posts:
     - title: '"Stylish" browser extension steals all your internet history'
       url: /2018/07/02/stylish-browser-extension-steals-your-internet-history/
+    - title: "HP printers try to send data back to HP about your devices and what you print"
+      url: /2019/09/15/hp-printers-send-data-on-what-you-print-back-to-hp/
     - title: "How does online tracking actually work?"
       url: /2017/11/20/how-does-online-tracking-actually-work/
     - title: "Cookie Syncing: how online trackers talk about you behind your back"
@@ -113,6 +113,8 @@ productivity:
       url: /2014/03/07/lessons-from-a-silicon-valley-job-search/
     - title: "How to value your startup stock options"
       url: /2015/11/02/how-to-value-your-startup-stock-options/
+    - title: "Peeking through stock option exercise windows"
+      url: /2019/08/06/peeking-through-stock-option-exercise-windows/
     - title: "Talk: Traits of Successful Software Developers"
       url: /2018/08/21/traits-of-successful-software-developers/
     - title: "Getting Nothing Done: a misguided quest for productivity"
@@ -157,6 +159,8 @@ office_hours:
   posts:
     - title: "I'm doing office hours"
       url: /2018/07/17/office-hours/
+    - title: "I will give you feedback on your code"
+      url: /2019/11/08/i-will-give-you-feedback-on-your-code/
     - title: "Lessons from my first 20 office hours"
       url: /2018/10/02/lessons-from-my-first-20-office-hours/
     - title: "/office-hours"
@@ -175,8 +179,6 @@ life_advice:
       url: /2014/06/02/a-beginners-guide-to-funemployment/
     - title: "How to read"
       url: /2018/06/25/how-to-read/
-    - title: "A blogging style guide"
-      url: /2018/12/06/a-blogging-style-guide/
     - title: "Tales from a San Francisco housing search"
       url: /2014/10/25/tales-from-a-san-francisco-housing-search/
     - title: "10 somewhat advanced Magic: The Gathering plays"
@@ -189,6 +191,20 @@ parenthood:
       url: /2019/06/17/childbirth-a-fathers-eye-view/
     - title: "Port scans and industrial fans: 1 month of parenthood"
       url: /2019/06/30/1-month-of-parenthood
+    - title: "Oscar Heaton, quarterly baby review"
+      url: /2019/08/25/parenthood-3-oscar-heaton-quarterly-baby-review/
+    - title: "Untitled Potato Portrait"
+      url: /2019/10/10/parenthood-4-untitled-potato-portrait/
+
+writing:
+  title: "On writing"
+  posts:
+    - title: "A blogging style guide"
+      url: /2018/12/06/a-blogging-style-guide/
+    - title: "How to come up with blog post ideas"
+      url: /2019/09/24/how-to-come-up-with-blog-post-ideas/
+    - title: "Lessons from a surprisingly successful blog"
+      url: /2014/07/26/lessons-from-a-surprisingly-successful-blog/
 
 stories:
   title: "Stories"
