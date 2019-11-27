@@ -7,7 +7,7 @@ redirect_from:
   - /pfab5
 published: false
 ---
-For [the last][pfab3] [two weeks][pfab4] we've been analyzing a short program that measures commute times, written by Micahel Troyer. So far we've [admired the way in which its logic is split up][pfab3], and have talked about [how its error handling could be improved][pfab4]. In this final discussion of Michael's program we'll look at how we can tidy up and significantly shorten the code that handles querying the database.
+For [the last][pfab3] [two weeks][pfab4] we've been analyzing a short program that measures commute times, written by Michael Troyer. So far we've [admired the way in which its logic is split up][pfab3], and have talked about [how its error handling could be improved][pfab4]. In this final discussion of Michael's program we'll look at how we can tidy up and significantly shorten the code that handles querying the database.
 
 Shorter programs aren't always better. Sometimes it's pragmatic to be verbose today in order to make your code more understandable tomorrow. But if you can make your code shorter *and* more readable at the same time then you've got a recipe for a cake plus eating it type of situation.
 
@@ -15,9 +15,15 @@ Shorter programs aren't always better. Sometimes it's pragmatic to be verbose to
 
 ### Simplifying the database code
 
-Our target today is the `Database` class's `get_data` function. This function is responsible for retrieving information about commute times from the program's database. The function accepts arguments like `specific_route`, `start_date` and `end_date`, and uses these to filter down the data that it returns. It constructs a *SQL query* using these arguments, runs the query against the database, and returns the results.
+Our target today is the `Database` class's `get_data` function.
 
-Here's an example SQL query. You don't need to know anything about the details of SQL in order to understand the `get_data` function:
+Michael's program has two commands. The first repeatedly queries the Google Maps API for the current commute time between two locations, and writes the results to a database. The second command reads the results back out of the database and calculates their average, range, and standard deviation.
+
+<img src="/images/pfab3-graph.jpg" />
+
+`Database#add_data` is the function responsible for retrieving information about commute times from the program's database so that the second command can analyze it. The function accepts arguments like `specific_route`, `start_date` and `end_date`, and uses these to filter down the data that it returns. Inside the function it constructs a *SQL query* using the arguments it receives, runs the query against the database, and returns the results.
+
+Here's an example of a SQL query constructed by `get_data`. However, you don't need to know anything about the details of SQL in order to understand the `get_data` function:
 
 ```
 SELECT *
@@ -28,7 +34,7 @@ WHERE
   Destination = "610 Townsend Street, San Francisco"
 ```
 
-And here's the `get_data` function as it is written today. It's perfectly correct and functioning, but it's also an 80-line monster. Have a read of it. Before reading further, see if you can identify any unnecessarily verbose sections. Then see if you can rewrite it in a much pithier form (I was able to get it down to around 23 lines):
+Next, here's the `get_data` function as it is written today. It's perfectly correct and functioning, but it's also an 80-line monster. Have a read of it. Before reading further, see if you can identify any unnecessarily verbose sections. Then see if you can rewrite it in a much pithier form (I was able to get it down to around 23 lines, making it *more* readable in the process):
 
 ```python
 class Database:
@@ -36,7 +42,8 @@ class Database:
     def get_data(self, start_date=None, end_date=None, specific_route=None):
         """
         Return data from database between start_date and end_date.
-        Optionally allow a specific route: (origin, destination) tuple.
+        Optionally allow a specific route: (origin, destination)
+          tuple.
         Returns a pandas dataframe.
         """
         
@@ -122,9 +129,9 @@ class Database:
 
 ## How I would improve `get_data`
 
-To improve `get_data`, I would first get rid of the `try`/`except` block entirely, for all the reasons discussed [in our previous episode][pfab3]. If `get_data` throws an exception, it shouldn't try to hide this fact by *swallowing* it. Instead, the code that called it should get to see the exception and to decide what to do about it.
+To improve `get_data`, I would first get rid of the `try`/`except` block entirely, for all the reasons discussed [in our previous episode][pfab3]. If `get_data` throws an exception, it shouldn't try to hide this fact by *swallowing* it. Instead, it should allow the code that called it to decide how to respond.
 
-Second, I would try reduce the repeated repetitive repetition throughout the function. When I read `get_data` for the first time, I immediately noticed that the string `SELECT * From CommuteTimes` was repeated 8 times. I also noticed that we have multiply-nested if-statements for every possible combination of the function's arguments. For example, the function starts with the blocks: `if specific_route => if start_date => if end_date`. This prol-IF-eration (sorry) is the root cause of the code's extreme repetitiousness. What's more, suppose that we wanted to add another filter variable into our SQL query (such as `time_of_day`). We would need to add a *fourth* level of if-nesting to every block in our already precarious E-IF-fel Tower (sorry again). This would *double* the number of if-branches, to 16. This is madness.
+Second, I would try to reduce the repeated repetitive repetition throughout the function. When I read `get_data` for the first time, I immediately noticed that the string `SELECT * From CommuteTimes` was repeated 8 times. I also noticed that we have multiply-nested if-statements for every possible combination of the function's arguments. For example, the function starts with the blocks: `if specific_route => if start_date => if end_date`. This prol-IF-eration (sorry) is the root cause of the code's already extreme repetitiousness. What's more, suppose that we wanted to add another filter variable into our SQL query (such as `time_of_day`). We would need to add a *fourth* level of if-nesting to every block in our already precarious E-IF-fel Tower (sorry again). This would *double* the number of if-branches, to 16. This is madness.
 
 After I got to the end of the function I didn't immediately have a plan for how to tighten it up, but I knew that if I couldn't then we were all doomed. I pondered a while. Then I noticed that the variables in the different if-branches aren't dependent on each other. By this I mean that the effect of an `if start_date` block is always to simply add a `Datetime > ?` condition to the `WHERE` clause of the SQL statement.  It doesn't matter whether `end_date` or `specific_route` is set. This means that we can examine every argument in its own, simple, un-nested if-statement. We can use these statements to build up a list of the different `WHERE` filters that we need to apply, and then construct the SQL query *dynamically* at the end of the function.
 
@@ -136,7 +143,8 @@ class Database:
     def get_data(self, start_date=None, end_date=None, specific_route=None):
         """
         Return data from database between start_date and end_date.
-        Optionally allow a specific route: (origin, destination) tuple.
+        Optionally allow a specific route: (origin, destination)
+          tuple.
         Returns a pandas dataframe.
         """
         if specific_route:
@@ -153,34 +161,36 @@ class Database:
 
         query = "SELECT * FROM CommuteTimes"
         if len(filters) > 0:
-            # [f[0] for f in filters] is a Python "list comprehension". It
-            # is shorthand for:
+            # [f[0] for f in filters] is a Python "list
+            # comprehension". It is shorthand for:
             #
             #   l = []
             #   for f in filters:
             #       l.append(f[0])
             #
-            # We use it here to extract the first element of
-            # the filter pairs we just created, and use them
-            # to construct our query.
-            query += " WHERE " + " AND ".join([f[0] for f in filters])
+            # Here we use a list comprehenson to
+            # extract the first elements of the filter
+            # pairs we just created, and use them to
+            # construct our query.
+            clauses = [f[0] for f in filters]
+            query += " WHERE " + " AND ".join(clauses)
             
         with sqlite3.connect(self.db_path) as con:  
             return pd.read_sql_query(query, con=con, parse_dates=['Datetime'], params=[f[1] for f in filters])
 ```
 
-Now if we want to add a `time_of_day` parameter, we no longer have to add 8 new if-statement branches. Instead, we can add an extra 2 line if-statement and call it a day:
+Now if we want to add a `time_of_day` parameter, we no longer have to add 8 new if-statement branches. Instead, we can add a single extra 2 line if-statement and call it a day:
 
 ```python
 if time_of_day:
     filters.append(("TimeOfDay = ?", time_of_day))
 ```
 
-That's it. The query-building code inside `if len(filter) > 0` will magically take care of integrating our new filter into the query.
+That's it. The pre-existing query-building code will magically take care of integrating the new filter into the query.
 
 ## Conclusion
 
-In order to apply this kind of reasoning to your own code, start by developing your sense of smell. Almost every day I write code that feels somehow off, but that I also don't know how to improve. I usually finish up my attempt to the best of my ability, and then ask a co-worker for their opinion and advice. Sometimes they have some ideas, sometimes they don't.
+In order to apply this kind of reasoning to your own code, start by developing your sense of smell. Almost every day I write code that feels somehow off but that I don't know how to improve. I usually finish up my attempt to the best of my ability, and then ask a co-worker for their opinion and advice. Sometimes they have some ideas, sometimes they don't.
 
 Developing a sense for when a piece of code can be improved is an important skill in itself, even when you aren't immediately sure what to do about it. As you expand your toolbox of tricks and patterns, you'll start to be able to fix more of the problems that you notice. Then you'll start noticing more problems, then you'll be able to fix them, then you'll notice more problems, then... You'll never be perfect or satisfied, but you will hopefully get paid more.
 

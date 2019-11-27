@@ -7,7 +7,7 @@ redirect_from:
   - /pfab3
 published: false
 ---
-> Welcome to week 2 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I analyze their code, highlight the things that I like, and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to bring their program up to a professional standard.
+> Welcome to week 3 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I analyze their code, highlight the things that I like, and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to take their code to the next level.
 >
 > (To receive all future PFABs as soon as they’re published, [subscribe by email][subscribe] or [follow me on Twitter][twitter]. For the chance to have your code analyzed and featured in future a PFAB, [go here][feedback])
 
@@ -23,11 +23,20 @@ This week's program was sent to me by Michael Troyer, an archaeologist with an u
 
 Instant full marks for imagination and execution, and the code is solid too. This week we'll talk about the elements of the program that I particularly like, and next week we'll see what I think Michael could improve.
 
-Before reading on, [take a quick look at the program on GitHub][commute-times]. It's written in Python, but uses very few Python-specific constructs and so should be mostly understandable even if you haven't used Python before.
+Before reading on, [take a quick look at the program on GitHub][commute-times]. It's written in Python, but uses very few Python-specific constructs and so should be quite understandable even if you haven't used Python before.
 
 ## 1. Breaking up code into components
 
-We [talk][pfab1] [a lot in PFAB][pfab2] about splitting code up into components that don't care about each other's internal logic. This program is already very tidily chopped up. It has one file that contains all of the logic for querying Google Maps (`commute_handler.py`), a second file that contains the logic for reading and writing to the database (`database_handler.py`), and third and fourth files that contain the logic for running the tool's data-gathering and report-generation commands (`run_app.py` for retrieving data, `run_report.py` for using this data to produce graphs). Here's how these files depend on each other:
+The first thing I like about Michael's code is the way it is structured. We [talk][pfab1] [a lot in PFAB][pfab2] about splitting code up into components that don't care about each other's internal logic, and this program is already very tidily chopped up.
+
+Michael has split up his code into neat, separate components that:
+
+* Query Google Maps
+* Write data to a database (see below)
+* Orchestrate the data retrieval and storage process
+* Orchestrate the data analysis process
+
+The components depend on each other like this:
 
 ```
     +----------+            +-------------+
@@ -41,11 +50,11 @@ We [talk][pfab1] [a lot in PFAB][pfab2] about splitting code up into components 
 +------------------+     +-------------------+
 ```
 
-This split-up structure gives us all the benefits that we've talked about at length in previous PFABs. For example `commute_handler.py` doesn't have to know anything about how `database_handler.py` works. And so long as `commute_handler.py` returns its commute data in a consistent format, `database_handler.py` doesn't have to know anything about where it came from. These isolations make understnding and updating the code much simpler.
+This split-up structure gives us all the benefits that we've talked about at length in previous PFABs. For example `commute_handler.py` doesn't have to know anything about how `database_handler.py` works. And so long as `commute_handler.py` returns its commute data in a consistent format, `database_handler.py` doesn't have to know anything about where it came from. These isolations make understanding and updating the code much simpler.
 
-## Using a database
+## 2. Using a database
 
-Michael elected to use a database to store his commute data. Every time he retrieves some new data from the Google Maps API, he immediately stashes it in a database. In abbreviated pseudo-code, this logic is:
+The second thing I like about Michael's code is his strategic use of a database to store his commute data. Every time he retrieves some new data from the Google Maps API, he immediately stashes it in a database. In abbreviated pseudo-code, this logic is:
 
 ```python
 while True:
@@ -57,7 +66,7 @@ while True:
 # database in a separate script)
 ```
 
-For Michael's use-case, this is a great idea. Technically, he could have got away without bothering with a database. He could have appended each new row of data to a normal *in-memory* list variable and then analyzed all of his data once he had collected enough of it. In pseudo-code this would be:
+For Michael's use-case, this is a great idea. Technically, he could have got away without bothering with a database. He could have appended each new row of data to a normal list variable and then analyzed all of his data once he had collected enough of it. In pseudo-code this would be:
 
 ```python
 all_commutes = []
@@ -71,7 +80,7 @@ print(analyze_commutes(all_commutes))
 
 Stop reading and think for a second - why do *you* think Michael chose to store his data in a database?
 
-I think he chose this approach because he wanted to leave his script running for a long time in order to collect a lot of data. If he had gone with the second, in-memory approach, then if his program had halted for any reason (a bug, computer turning off, power cut, etc) then he would have lost all of the data he had retrieved over the previous days.
+I think he chose this approach because he wanted to leave his script running for a long time in order to collect a lot of data. If he had gone with the second, *in-memory* approach, then if his program had stopped for any reason (a bug, computer turning off, power cut, etc) then he would have lost all of the data he had retrieved over the previous days.
 
 But by writing to a database, Michael ensured that he immediately captured his data in a durable form. If his power had gone out after 2 weeks of patient data-collection then he would at least still have all the results that he had gathered up until that point. He could either perform his analysis using just the numbers that he had amassed so far, or restart the script and combine his new and old data later.
 
@@ -79,7 +88,7 @@ There's no single rule that dictates whether you should write your program's dat
 
 ## In conclusion
 
-I love the idea behind Michael's program, and there's a lot to like about his code as well. Next week we'll look at some ways that he could bring his already solid code up to a professional standard.
+I love the idea behind Michael's program, and there's a lot to like about his code as well. Next week we'll look at some ways that he could kick his already solid code up another notch or two.
 
 In the meantime:
 
