@@ -17,7 +17,7 @@ Last week we began analyzing Michael Troyer's commute-time-measuring tool. If yo
 
 ## You are already perfect
 
-Before we start, I'd like to make it clear that Michael's code is already perfect for what it is. The logic is already entirely correct, and the program already achieves exactly what he wants it to. Sure, the world would be a fractionally tidier place if he tweaked a few things (as we're about to discuss), but no one's life would be materially improved. If in a year's time Michael is looking at another job in another city and wants to re-use his tool, he should just run it again exactly as it is, and not worry about whether his database querying code is as terse as it can possibly be.
+Before we start, I'd like to make it clear that Michael's code is already perfect for what it is. The logic is already entirely correct, and the program already achieves exactly what he wants it to. Sure, the world would be a fractionally tidier place if he tweaked a few things (as we're about to discuss), but no one's life would be materially improved. If in a year's time Michael is looking at another job in another city and wants to re-use his tool, he should just run his code again exactly as it is, and not worry about whether his error handling is as precise as it can possibly be.
 
 On the other hand, suppose that Michael wants to consider expanding the program into something more complex; maybe with a web UI, or the ability to query different map engines, or to consider public transport or walking, or if he just wants to improve his programming chops for the sake of it. In this case I think that he should seriously consider the modifications that I'm about to suggest.
 
@@ -34,9 +34,9 @@ Traceback (most recent call last):
 KeyError: 'id'
 ```
 
-But if a programmer wants her program to be able to gracefully deal with certain types of exceptions, she can use *exception handling* to prevent the explosion and take steps to recover. In most languages this might look something like:
+If you want your program to be able to gracefully deal with certain types of exceptions, you can use *exception handling* to prevent the explosion and tell your program how to recover. In most languages this looks something like:
 
-```
+```python
 try:
     id = response['id']
 except KeyError:
@@ -44,11 +44,11 @@ except KeyError:
     id = None
 ```
 
-Michael makes extensive use of exception handling in his program, because he wants his data-collection program to run and collect data forever, or at least until he manually cancels it. If an exception is thrown while his program is running then he generally doesn't want it to stop. Instead he wants it to *catch* the exception, print out an error message to help with debugging, and continue running.
+Michael makes extensive use of exception handling in his program, because he wants his data-collection program to run and collect data forever, or at least until he manually cancels it. If an exception is thrown while his program is running then he generally doesn't want it to explode. Instead he wants it to *catch* the exception, print out an error message to help with debugging, and continue running.
 
 This is in principle a very sensible idea. It would be very annoying if Michael missed out on several days-worth of data because a request to Google Maps randomly failed for some transient reason that he didn't notice. By catching exceptions Michael allows his program to recover from problems like this and to continue its work.
 
-Catching exceptions might sound like an always-amazing idea. Surely it's always best to stop your program from erroring? However, errors are often invaluable feedback that something is wrong with your code that won't fix itself.
+Catching exceptions might sound like an always-amazing idea. Surely it's always best to stop your program from catching fire? However, errors are often invaluable feedback that something is wrong with your code that you need to pay attention to.
 
 This week we're going to look at two common exception handling mistakes: *swallowing* errors whole, and catching too many types of error.
 
@@ -76,23 +76,25 @@ There are 2 things I would want to change about this function before I would fee
 
 ### 1. Don't swallow your own errors
 
-I don't think that the `Database#add_data` function should even be responsible for catching and swallowing its own errors. To see why, imagine that you are another programmer working on this project, and you want to use `add_data` in your own code. You call the function and run your code, but you don't see any records created in the database. You tear your hair out for an hour. Eventually you scroll back through all of your output logs, and notice a line saying `Error writing data to database: SqliteException`. You realize that your writes to the database were failing for easily-fixable reasons, but the `add_data` function was trying to be helpful by preventing these errors from causing your program to halt. You wish that `add_data` had instead allowed the error to be raised properly so that that it could have noisily and helpfully shown you that there was a problem with your code.
+I don't think that the `Database#add_data` function should even be responsible for catching and swallowing its own errors. To see why, imagine that you are another programmer working on this project, and you want to use `add_data` in your own code. You call the function and run your code, but you don't see any records created in the database. You tear your hair out for an hour. Eventually you scroll back through all of your output logs, and notice a line saying `Error writing data to database: SqliteException`. You realize that your writes to the database were failing for easily-fixable reasons, but the `add_data` function was trying to be helpful by preventing these errors from causing your program to halt. You wish that `add_data` had instead allowed the error to be raised properly so that that you could have known that there was a problem with your code.
+
+In short, don't catch and swallow or ignore errors unless you're sure you know what you're doing.
 
 ### 2. Don't catch every type of Exception
 
 The line `except Exception as e` means "catch *every* type of exception". Even if you do want your code to catch some types of exception, catching every type of exception is almost always a mistake.
 
-When you catch every type of exception, you catch *every* type of exception, including some that are invaluable for debugging and making sure your code is behaving correctly. For example, you'll catch `NameError`, which indicates that a variable is not defined and suggests that you have typoed something somewhere. You almost always want to know about `NameError`s, and never want them to be caught.
+When you catch every type of exception, you catch *every* type of exception, including some that are indicative of boneheaded bugs. For example, `except Exception as e` will even catch `NameError`, an error that indicates that a variable is not defined and suggests that you have typoed something somewhere. You almost always want to know about `NameError`s, and never want them to be caught.
 
-Instead, we should work out what types of errors we expect to see and aren't concerned by, and only catch those errors (for example: `except sqlite3.Error as e`). That said, in this database situation, I don't think that there are any errors that we expect to see. If a single call to `add_data` fails then this suggests that there is likely a bug that we need to fix. I would therefore remove the `try`/`except` block from this function entirely.
+Instead, we should work out what types of errors we expect to see and therefore aren't concerned by, and only catch those errors (for example: `except sqlite3.Error as e`). That said, in this database situation, I don't think that there *are* any errors that we expect to see. If `add_data` throws an exception then this suggests that there is likely a bug that we need to fix. I would therefore remove the `try`/`except` block from this function entirely.
 
-Now let's look at a different part of the program, in which I think that error handling is entirely appropriate: the code that queries the Google Maps API.
+Next let's look at a different part of the program, in which I think that error handling is entirely appropriate: the code that queries the Google Maps API.
 
 ## Catching exceptions from the Google Maps API
 
-Michael's program talks to the Google Maps API by sending it requests over the internet. Despite everyone's best efforts, sometimes requests over the internet fail for no particular reason. Maybe Google's API has a brief hiccup, or maybe Michael's wi-fi goes down briefly at 3am. Without exception handling, a single failed request to the Google Maps API would cause Michael's program to explode and stop collecting data.
+Michael's program talks to the Google Maps API by sending requests to it over the internet. Despite everyone's best efforts, sometimes requests over the internet fail for no particular reason. Maybe Google's API has a brief hiccup, or maybe Michael's wi-fi goes down briefly at 3am. Without exception handling, a single failed request to the Google Maps API would cause Michael's program to explode and stop collecting data.
 
-To keep Michael's program chugging along and collecting data, we should catch Google Maps errors that we believe are *transient*, meaning that they will go away if we try again. Our code might change from:
+To keep Michael's program chugging along in the face of intermittent internet issues, we should catch Google Maps errors that we believe are *transient*, meaning that they will go away if we try again. Our code might change from:
 
 ```python
 data = get_commute_data(origin, destination, api_key)
@@ -109,9 +111,9 @@ except googlemaps.ServiceUnavailable as e:
     print("Error querying GoogleMaps:", e)
 ```
 
-This targeted error handling of only `googlemaps.ServiceUnavailable` exceptions means that we get the best of both worlds - our program doesn't explode if Google Maps is briefly down, but we are also notified of genuine bugs in our code.
+This targeted error handling of only `googlemaps.ServiceUnavailable` exceptions means that we get the best of both worlds - our program doesn't explode if Google Maps is briefly down, but we are also notified of genuine, `NameError`-style bugs in our code.
 
-Since our Google Maps request still failed, we'll miss out on collecting any data for this iteration. This is a shame. Let's therefore take a look at how we can use a technique called *automatic retries* to repeatedly run our query until it succeeds. Let's also study a further technique called *exponential backoffs* that allows us to perform these retries safely and carefully, without spamming Google and incurring their automated wrath.
+Since our Google Maps request still failed, we will miss out on collecting any data for this iteration. This is a shame. Let's therefore take a look at how we can use a technique called *automatic retries* to repeatedly run our query until it succeeds. Let's also study a further technique called *exponential backoffs* that allows us to perform these retries safely and carefully, without spamming Google and incurring their automated wrath.
 
 ### Automatic retries and exponential backoffs
 
