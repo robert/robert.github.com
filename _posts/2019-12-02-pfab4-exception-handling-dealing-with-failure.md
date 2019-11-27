@@ -23,7 +23,7 @@ On the other hand, suppose that Michael wants to consider expanding the program 
 
 Michael wants his data-collection program to run and collect data forever, or at least until he manually cancels it. This means that he usually doesn't want it to exit if an exception is thrown while it is running. Instead he wants the program to "catch" the exception, print out an error message to help with debugging, and continue running.
 
-This is in principle a very sensible idea. It would be very annoying if Michael missed out on several days-worth of data because a request to Google Maps randomly failed for some transient reason that he didn't notice. By catching exceptions Michael allows his program to recover from problems like this and to continute its work.
+This is in principle a very sensible idea. It would be very annoying if Michael missed out on several days-worth of data because a request to Google Maps randomly failed for some transient reason that he didn't notice. By catching exceptions Michael allows his program to recover from problems like this and to continue its work.
 
 The `Database#add_data` function is an overly-zealous example of this approach:
 
@@ -35,11 +35,8 @@ class Database:
         Add data to database. Expects a dictionary.
         """
         try:
-            with sqlite3.connect(self.db_path) as con:
-                cur = con.cursor()
-                cur.execute(
-                    # EDITOR'S NOTE: <arguments snipped for brevity>
-                )
+            # <Code that attempts to write to the database
+            # snipped for brevity>
         except Exception as e:
             print('Error writing data to database:', e)
 ```
