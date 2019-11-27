@@ -7,9 +7,11 @@ redirect_from:
   - /pfab4
 published: false
 ---
-Last week we began analyzing Michael Troyer's commute-time-measuring tool. If you missed it, [read that post first][pfab3] to catch up.
+> Welcome to week 4 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I analyze their code, highlight the things that I like, and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to take their code to the next level.
+>
+> (To receive all future PFABs as soon as they’re published, [subscribe by email][subscribe] or [follow me on Twitter][twitter]. For the chance to have your code analyzed and featured in future a PFAB, [go here][feedback])
 
-This week we're going to look at how Michael could improve the way in which his program handles errors.
+Last week we began analyzing Michael Troyer's commute-time-measuring tool. If you missed it, [read that post first][pfab3] to catch up. This week we're going to look at how Michael could improve the way in which his program handles errors.
 
 *(You may want to [open Michael's code in GitHub][commute-times] to reference while you read this post.)*
 
@@ -21,11 +23,38 @@ On the other hand, suppose that Michael wants to consider expanding the program 
 
 ## Even better if: exception handling
 
-Michael wants his data-collection program to run and collect data forever, or at least until he manually cancels it. This means that he usually doesn't want it to exit if an exception is thrown while it is running. Instead he wants the program to "catch" the exception, print out an error message to help with debugging, and continue running.
+Usually when a program throws an exception, it explodes, stops executing, and prints a stacktrace to the terminal. For example:
+
+```
+Traceback (most recent call last):
+  File "process_data.py", line 6, in <module>
+    get_data()
+  File "process_data.py", line 4, in get_data
+    response['id']
+KeyError: 'id'
+```
+
+But if a programmer wants her program to be able to gracefully deal with certain types of exceptions, she can use *exception handling* to prevent the explosion and take steps to recover. In most languages this might look something like:
+
+```
+try:
+    id = response['id']
+except KeyError:
+    print("Response does not contain an ID!")
+    id = None
+```
+
+Michael makes extensive use of exception handling in his program, because he wants his data-collection program to run and collect data forever, or at least until he manually cancels it. If an exception is thrown while his program is running then he generally doesn't want it to stop. Instead he wants it to *catch* the exception, print out an error message to help with debugging, and continue running.
 
 This is in principle a very sensible idea. It would be very annoying if Michael missed out on several days-worth of data because a request to Google Maps randomly failed for some transient reason that he didn't notice. By catching exceptions Michael allows his program to recover from problems like this and to continue its work.
 
-The `Database#add_data` function is an overly-zealous example of this approach:
+Catching exceptions might sound like an always-amazing idea. Surely it's always best to stop your program from erroring? However, errors are often invaluable feedback that something is wrong with your code that won't fix itself.
+
+This week we're going to look at two common exception handling mistakes: *swallowing* errors whole, and catching too many types of error.
+
+## Catching database errors
+
+Michael's program contains a function called `Database#add_data`. It is particularly over-zealous in its handling of exceptions:
 
 ```python
 class Database:
@@ -35,8 +64,8 @@ class Database:
         Add data to database. Expects a dictionary.
         """
         try:
-            # <Code that attempts to write to the database
-            # snipped for brevity>
+            # (Actual code snipped for brevity)
+            write_to_database(data)
         except Exception as e:
             print('Error writing data to database:', e)
 ```
@@ -51,17 +80,19 @@ I don't think that the `Database#add_data` function should even be responsible f
 
 ### 2. Don't catch every type of Exception
 
-Even if we did want `add_data` to handle its own exceptions, exception handling code should almost never catch the broad `Exception` class. Catching `Exception` means that every single type of error is caught, not just database errors. This includes, for example, `NameError`, which indicates that a variable is not defined and suggests that you have typoed something somewhere. You always want to know about `NameError`s, and never want them to be swallowed.
+The line `except Exception as e` means "catch *every* type of exception". Even if you do want your code to catch some types of exception, catching every type of exception is almost always a mistake.
 
-Instead, we should work out what types of errors we expect to see and aren't concerned by, and only catch those errors (for example: `except sqlite3.Error as e`). However, in this database situation, I don't think that we expect to see *any* errors. If a single call to `add_data` fails then this suggests that every subsequent call will probably fail too, meaning that there is likely a bug that we need to fix. I would therefore remove the `try`/`except` block from this function entirely.
+When you catch every type of exception, you catch *every* type of exception, including some that are invaluable for debugging and making sure your code is behaving correctly. For example, you'll catch `NameError`, which indicates that a variable is not defined and suggests that you have typoed something somewhere. You almost always want to know about `NameError`s, and never want them to be caught.
 
-Now let's look at a different part of the program, where I think that error handling is entirely appropriate: the code that queries the Google Maps API.
+Instead, we should work out what types of errors we expect to see and aren't concerned by, and only catch those errors (for example: `except sqlite3.Error as e`). That said, in this database situation, I don't think that there are any errors that we expect to see. If a single call to `add_data` fails then this suggests that there is likely a bug that we need to fix. I would therefore remove the `try`/`except` block from this function entirely.
+
+Now let's look at a different part of the program, in which I think that error handling is entirely appropriate: the code that queries the Google Maps API.
 
 ## Catching exceptions from the Google Maps API
 
-An exception in `Database#add_data` probably suggests that the function contains a bug that we should fix. By contrast, it's perfectly plausible that Google's API has a brief hiccup or that Michael's internet goes down briefly at 3am, and that if we continue to make requests then they would shortly start to succeed again. Handling these transient errors gracefully allows Michael to keep his program running overnight.
+Michael's program talks to the Google Maps API by sending it requests over the internet. Despite everyone's best efforts, sometimes requests over the internet fail for no particular reason. Maybe Google's API has a brief hiccup, or maybe Michael's wi-fi goes down briefly at 3am. Without exception handling, a single failed request to the Google Maps API would cause Michael's program to explode and stop collecting data.
 
-Once again, we should make sure to only catch errors that we believe are transient, and that we don't believe are indicative of bugs in our code. Our code might change from:
+To keep Michael's program chugging along and collecting data, we should catch Google Maps errors that we believe are *transient*, meaning that they will go away if we try again. Our code might change from:
 
 ```python
 data = get_commute_data(origin, destination, api_key)
@@ -80,11 +111,11 @@ except googlemaps.ServiceUnavailable as e:
 
 This targeted error handling of only `googlemaps.ServiceUnavailable` exceptions means that we get the best of both worlds - our program doesn't explode if Google Maps is briefly down, but we are also notified of genuine bugs in our code.
 
-However, since our Google Maps request still failed, we don't get the data that we wanted. This is a shame. Let's see how we can use a technique called *automatic retries* to repeatedly run our query until it succeeds. We'll also use a further technique called *exponential backoffs* to perform these retries safely and carefully, without spamming Google and incurring their automated wrath.
+Since our Google Maps request still failed, we'll miss out on collecting any data for this iteration. This is a shame. Let's therefore take a look at how we can use a technique called *automatic retries* to repeatedly run our query until it succeeds. Let's also study a further technique called *exponential backoffs* that allows us to perform these retries safely and carefully, without spamming Google and incurring their automated wrath.
 
-## Automatic retries and exponential backoffs
+### Automatic retries and exponential backoffs
 
-Our `get_commute_data` function for querying the Google Maps API starts like this:
+Michael's `get_commute_data` function for querying the Google Maps API starts like this:
 
 ```python
 def get_commute_data(origin, destination, api_key):
@@ -110,7 +141,7 @@ def get_commute_data(origin, destination, api_key):
     while True:
         try:
             # EDITOR'S NOTE: arguments snipped for brevity
-            best_case = gmaps.directions()
+            best_case = gmaps.directions(...)
             break
         except googlemaps.Error as e:
             print("Error querying GoogleMaps:", e)
@@ -124,7 +155,7 @@ Stop and think - what are three problems with this approach? In particular, what
 Well:
 
 1. Looping *forever* until a request succeeds is a bit much. After the 5th or so failed request, we should probably raise an actual exception and tell the rest of our program that something is going substantially wrong with our requests to Google
-2. Catching all types of `googlemaps.Error`s is too broad, for very similar reasons to why catching all `Exception`s was too broad in our previous snippet. For example, if our request is fundamentally invalid or malformed then it has no chance of ever succeeding, and so we will keep repeating it forever (or until we run out of retries). This is a waste of time and energy. Instead, we should think carefully about what specific types of error we actually want to retry on. This will most likely be errors like `googlemaps.ServiceUnavailable`, and any others that we believe may be transient and not indicative of a logic mistake on our part.
+2. Catching all types of `googlemaps.Error`s is too broad, for very similar reasons to why catching all `Exception`s was too broad in our previous snippet. If our request is fundamentally invalid or malformed then it has no chance of ever succeeding, but we will still keep repeating it forever (or until we run out of retries). This is a waste of time and energy. Instead, we should think carefully about what specific types of error we actually want to retry. This will most likely be errors like `googlemaps.ServiceUnavailable`, and any others that we believe may be transient and not indicative of a logic mistake on our part.
 3. If a request fails, we currently send our retry request almost instantly, without giving the Google Maps API any time to shake off its problems. This might make the API server's situation worse, or (more likely) Google will get grumpy at us and will *rate-limit* our requests, locking down our access to their system. We should therefore wait for a brief period before retrying our request. This is known as a *backoff*. The simplest *backoff strategy* is to wait for a fixed amount of time in between each request, which is known as a *constant backoff*. For example:
 
 ```python
@@ -152,15 +183,15 @@ def get_commute_data(origin, destination, api_key):
     # ... more logic goes here ...
 ```
 
-Sometimes a constant backoff is too aggressive, and results in too many requests being made too quickly. In a *linear backoff* you increase the amount of time you wait linearly with each retry. The first wait might be 1 second, then 2 seconds, then 3, 4, 5, and so on. In an *exponential backoff* you increase the amount of time you wait exponentially. In practice this usually means that you double the wait period. First you wait for 1 second, then 2 seconds, then 4, 8, 16, 32, and so on. For our purposes a constant backoff would be perfectly reasonable, but it's still useful to keep the other backoff strategies in mind for more complex or sensitive applications.
+Sometimes a constant backoff is too aggressive, and results in too many requests being made too quickly. In a *linear backoff* you increase the amount of time that you wait by a fixed amount with each retry. The first wait might be 1 second, then 2 seconds, then 3, 4, 5, and so on. In an *exponential backoff* you *multiply* the amount of time that you wait by a fixed amount with each retry. First you wait for 1 second, then 2 seconds, then 4, 8, 16, 32, and so on. For our purposes a constant backoff would be perfectly reasonable, but it's still useful to keep the other backoff strategies in mind for more complex or sensitive applications.
 
 *Exercise for the reader: how would you update the above code to perform linear and exponential backoffs?*
 
 ## Conclusion
 
-This week we've seen how to think about error handling. In general, your first instinct should probably be to not handle errors at all. If you think that your program can gracefully deal with specific types of errors, then by all means go ahead. But errors aren't something to be afraid of and squashed - they're a very useful mechanism for telling you that something has gone wrong.
+This week we've seen how to think about error handling. As a very rough rule of thumb, I think that your first instinct should be to not handle errors at all. If you think that your program can gracefully deal with specific types of errors, then by all means go ahead. But errors aren't something to be afraid of and squashed - they're a very useful mechanism for telling you that something has gone wrong.
 
-Next week will be our final week looking at Michael's commute times program, and we'll spend it simplifiy and reducing the length of his database-querying code from 100 to 30 lines. Don't miss it.
+Next week will be our final week looking at Michael's commute times program. We're going to spend it simplifiy and reducing the length of his database-querying code from 100 to 30 lines. Don't miss it.
 
 To tide you over until then:
 
