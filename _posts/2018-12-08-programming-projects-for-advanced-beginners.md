@@ -13,6 +13,8 @@ redirect_from:
 
 In a few, very specific ways, being a beginner programmer is easy. Everything is new and exciting; you're learning at least ten fresh things every day; and you're slicing through coding exercises as though they were made of butter instead of bytes.
 
+{% include pfab.html %}
+
 But then eventually, without really noticing it, you morph from being a beginner into an *advanced beginner*. You become acutely aware that there's more to life than 10-line brainteasers, even if some of those brainteasers are getting really quite complex. You start looking for bigger things to practice on, but everything is either too big or too small or too hard or too easy. You trip, fall, and begin tumbling gently down the mountain of optimism into the valley of despair. On your way earthward you muse that a "valley" implies a distant but visible edge, and that describing the advanced beginner period as a valley of despair kind of feels like describing the Pacific Ocean as a valley of water.
 
 Folk wisdom says that the best way to progress is to work on projects, and this folk wisdom is entirely correct. But what should these projects be? Further folk wisdom says that a good place to start is by building tools to solve your own problems, like a recipe planner or an exercise tracker. But what if your only real problem is that you aren't yet as skilled a programmer as you would like to be? Even once you do find a plausible project idea, it can still be difficult to know whether it is actually achievable and well-matched to your current experience level. Is facial recognition hard? What about drawing bike routes on Google Maps? Finally, even if you do somehow manage to find a project that is both compelling and suitable, it's still all too easy to get completely, irrevocably stuck. These challenges do get easier to overcome with experience, but it doesn't matter whether the chicken or the egg comes first when you don't even know how to get to the farmers' market.
@@ -33,7 +35,7 @@ The projects focus on methodology - breaking work down into manageable chunks an
 
 ## The projects
 
-So far I've written 5 Programming Projects for Advanced Beginners, with several more coming down the pipeline.
+So far I've written 6 Programming Projects for Advanced Beginners, with several more coming down the pipeline.
 
 ## [1. ASCII Art][proj-1]
 
@@ -97,6 +99,8 @@ Choose the project that interests you the most, and give it a shot. Whether you 
 
 Good luck!
 
+{% include pfab.html %}
+
 *You might also be interested in signing up for [my office hours](/office-hours), or for my newsletter (see below).*
 
 ### Acclaim for Programming Projects for Advanced Beginners
@@ -113,7 +117,6 @@ Good luck!
 
 *"Holy moly, that link is amazing. The way he describes the situation is amazing, so well written and accurate."*
 
-{% include pfab.html %}
 <br/>
 
 [proj-1]: /2018/06/12/programming-projects-for-advanced-beginners-ascii-art/
