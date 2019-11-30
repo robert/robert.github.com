@@ -8,7 +8,7 @@ redirect_from:
 ---
 > Welcome to week 2 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I analyze their code, highlight the things that I like, and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to bring their program up to a professional standard.
 >
-> (To receive all future PFABs as soon as they’re published, subscribe by email or follow me on Twitter. For the chance to have your code analyzed and featured in future a PFAB, [go here][feedback])
+> (To receive all future PFABs as soon as they’re published, [subscribe by email][subscribe] or [follow me on Twitter][twitter]. For the chance to have your code analyzed and featured in future a PFAB, [go here][feedback])
 
 [Last week][pfab1] we began studying [Tiffany Tiffleberry's Tic-Tac-Toe program][original-code]. We saw how to make the interface between the different pieces of Tiffany's program more consistent and intuitive by requiring all of its components to use the *0-2-form* of Tic-Tac-Toe co-ordinates. This week we're going to zoom out and discuss the program's overall structure. We'll see how we can break the program up into discrete pieces and define strict, tidy ways for these pieces to communicate with each other. Most importantly, we'll talk about why doing this is a good idea.
 
