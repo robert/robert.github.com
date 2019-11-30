@@ -5,25 +5,24 @@ tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab2
-published: false
 ---
 > Welcome to week 2 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I analyze their code, highlight the things that I like, and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to bring their program up to a professional standard.
 >
 > (To receive all future PFABs as soon as they’re published, subscribe by email or follow me on Twitter. For the chance to have your code analyzed and featured in future a PFAB, [go here][feedback])
 
-[Last week][pfab1] we began studying [Tiffany Tiffleberry's Tic-Tac-Toe program][original-code]. We saw how we could make the interface between the different pieces of Tiffany's program more consistent and intuitive by requiring all components to use the *0-2-form* of Tic-Tac-Toe co-ordinates. This week we're going to zoom out and discuss the program's overall structure. We'll see how we can break the program up into discrete "components" and define strict, tidy ways for these components to communicate with each other. Most importantly, we'll talk about why doing this is a good idea.
+[Last week][pfab1] we began studying [Tiffany Tiffleberry's Tic-Tac-Toe program][original-code]. We saw how to make the interface between the different pieces of Tiffany's program more consistent and intuitive by requiring all of its components to use the *0-2-form* of Tic-Tac-Toe co-ordinates. This week we're going to zoom out and discuss the program's overall structure. We'll see how we can break the program up into discrete pieces and define strict, tidy ways for these pieces to communicate with each other. Most importantly, we'll talk about why doing this is a good idea.
 
 ## The current state of affairs
 
-Almost all of the logic in Tiffany's program ([read her code on GitHub][original-code]) is currently hung off of a single class called `Board`. Most of the individual functions in the class are perfectly sensibly written, but they're all heaped together in a single big ol' pile of logic spaghetti.
+Almost all of the logic in Tiffany's program ([read her code on GitHub][original-code]) currently hangs off of a single class called `Board`. Most of the individual functions in the class are perfectly sensibly written, but they're all heaped together in a single big ol' pile of logic spaghetti.
 
 This means that the `Board` class is responsible for a lot of functionality that would never be part of a real-life `Board`'s job. A real Tic-Tac-Toe board, either drawn on paper or built unnecessarily lovingly out of wood, would not be responsible for asking players which moves they wanted to make. Neither would it be responsible for checking to see whether the game is over and for deciding who has won. Instead, it would be responsible for one thing and one thing only: keeping track of which pieces are in which squares.
 
-The lack of structure in the current version of the program make it more challenging to understand and work with. Let's see how we can introduce some order. By the end of this post you'll have the blueprints for a beautifully designed game of Tic-Tac-Toe - try using them to complete [Programming Projects for Advanced Beginners #3: Tic-Tac-Toe AI](ttt) and [let me know how you get on](feedback)
+The lack of structure in the current version of the program make it more challenging to understand and work with. This problem will only get worse as we add more features and functionality. Let's see how we can introduce some order. By the end of this post you'll have the blueprints for a beautifully designed game of Tic-Tac-Toe; try using them to complete [Programming Projects for Advanced Beginners #3: Tic-Tac-Toe AI][ttt] and [let me know how you get on][feedback]
 
 ## A different approach
 
-We're going to see how we can break up the responsibilities of a Tic-Tac-Toe game into several components, and wrap each component inside a class:
+We're going to see how we can break up the responsibilities of a Tic-Tac-Toe game into several components, and how we can wrap each component inside a class. These components will be:
 
 1. `Board` - storing the game state, keeping track of the Xs and the Os
 2. `GameManager` - managing the game, updating the game state, checking to see if anyone has won
@@ -69,16 +68,16 @@ main--+
 +--+--------+                  |
    |            Player.get_move|
    |Board.get                  |
-   |                           |
+   |Board.update               |
    v                           v
-+--+--------+  Board.get   +---+--+
-|           | Board.update |      |
++--+--------+              +---+--+
+|           |   Board.get  |      |
 |   Board   +<-------------+Player|
 |           |              |      |
 +-----------+              +------+
 ```
 
-This diagram illustrates several interesting things about our program. For one, the `Board` component doesn't depend on any other components, and so doesn't need to care about anything that the rest of the program does. This type of isolation can be very powerful. It makes our program easier to reason about than a big pile o' logic spaghetti that may or may not depend on itself in unexpected and undocumented ways. It allows us to change how a component (in this case `Board`) works without having to change other components at the same time. We can mess with `Player` or `GameManager` as much as we want, and we know that we won't have to change anything about `Board` because `Board` doesn't depend on them and doesn't care what they do or how. Similarly, `Player` doesn't care about `GameManager`, and whilst `GameManager` cares about `Board` and `Player`, it only needs to communicate with them through a total of 3 methods.
+This diagram illustrates several interesting properties of our program. For one, the `Board` component doesn't have any arrows coming out of it. This means that it doesn't depend on any other components of our program, and so doesn't need to care about anything that the rest of the program does. This type of isolation can be very powerful. It makes our program easier to reason about than a big pile o' logic spaghetti that may or may not depend on itself in unexpected and undocumented ways. It allows us to change how a component (in this case `Board`) works without having to change other components at the same time. We can mess with `Player` or `GameManager` as much as we want, and we know that we won't have to change anything about `Board` because `Board` doesn't depend on them and doesn't care what they do or how. Similarly, `Player` doesn't care about `GameManager`, and whilst `GameManager` cares about `Board` and `Player`, it only needs to communicate with them through a total of 3 methods.
 
 Let's look at each of 3 our components and their interfaces in more detail.
 
@@ -94,7 +93,7 @@ Since the `Board` class doesn't know anything about the rules of Tic-Tac-Toe, we
 
 As we can see from our dependency diagram, it also uses `Player`'s `get_move` function (more on which shortly) to ask the `Player`'s which moves they want to make. `GameManager` knows everything about the rules of Tic-Tac-Toe, but nothing about how to come up with good moves. `GameManager` is like a baseball umpire who knows everything about the dropped third strike and infield fly rules, but couldn't pitch even the slowest slider if their life depended on it.
 
-Another pseudo-code skeleton:
+Here's a pseudo-code skeleton for `GameManager`:
 
 ```python
 class GameManager:
@@ -198,9 +197,9 @@ We've seen how to break down a Tic-Tac-Toe program into several discrete compone
 
 Furthermore:
 
-* Using the tips in this post to complete [Programming Projects for Advanced Beginners #3: Tic-Tac-Toe AI](ttt), and [let me know how you get on](feedback).
-* If you haven't already, sign up to the [PFAB newsletter](subscribe) to receive PFABs directly in your inbox, every weekend
-* Follow me on [Twitter](twitter)
+* Using the tips in this post to complete [Programming Projects for Advanced Beginners #3: Tic-Tac-Toe AI][ttt], and [let me know how you get on][feedback].
+* If you haven't already, sign up to the [PFAB newsletter][subscribe] to receive PFABs directly in your inbox, every weekend
+* Follow me on [Twitter][twitter]
 * Take a look through the archives: [Code review without your glasses](https://robertheaton.com/2014/06/20/code-review-without-your-eyes/)
 
 ## Advanced and entirely optional appendix
@@ -231,5 +230,5 @@ Note that passing around functions as arguments in this way is quite an advanced
 [feedback]: https://robertheaton.com/feedback
 [twitter]: https://twitter.com/robjheaton
 [subscribe]: https://advancedbeginners.substack.com/
-[original-code]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/1/original.py
+[original-code]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/1-2-tic-tac-toe/original.py
 [pfab1]: https://robertheaton.com/pfab1
