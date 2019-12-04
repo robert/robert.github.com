@@ -13,7 +13,7 @@ published: false
 
 <hr/>
 
-This week's program was sent to me by Michael Troyer, an archaeologist with an unexpectedly keen interest in computer programming. Here's how Michael describes his program:
+This week's program was sent to me by Michael Troyer, an archaeologist with an unexpectedly keen interest in computer programming. He prefers not to be called a code-slinging dinosaur hunter, but we all have to make compromises. Here's how Michael describes his program:
 
 > I was recently considering a new job in another city and was trying to decide if it was commutable or not. I was skeptical of most estimates as they didn't really seem to consider real-time events like accidents (which are pretty regular on the route I was considering). So, I decided to use a scheduled script to regularly query the Google Maps API to get current commute time data and store it in a database, and then use this data to plot commute time average, min, max, standard deviation, etc. in order to get a more realistic assessment of an actual commute.
 >
