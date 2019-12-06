@@ -46,7 +46,7 @@ At first I was very anxious that people would demand details of databases and di
 
 ## How do you start?
 
-Set up a page on your personal website at `/office-hours` describing what you're offering and why ([here's mine](/office-hours). Say that I told you to do it if you like. Tell Twitter or your friends or whoever it is that you tell about things like this. Then check your emails and see what happens.
+Set up a page on your personal website at `/office-hours` describing what you're offering and why ([here's mine](/office-hours)). Say that I told you to do it if you like. Tell Twitter or your friends or whoever it is that you tell about things like this. Then check your emails and see what happens.
 
 > See the links below this post for more about my office hours experiences.
 
