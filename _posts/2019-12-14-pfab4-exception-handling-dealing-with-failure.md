@@ -2,10 +2,9 @@
 title: "PFAB#4: Exception handling and coping with failure"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_image: https://robertheaton.com/images/pfab-cover.png
+og_image: https://robertheaton.com/images/pfab4-cover.png
 redirect_from:
   - /pfab4
-published: false
 ---
 > Welcome to week 4 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I analyze their code, highlight the things that I like, and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to take their code to the next level.
 >
@@ -34,7 +33,7 @@ Traceback (most recent call last):
 KeyError: 'id'
 ```
 
-If you instead want your program to be able to gracefully deal with certain types of exceptions, you can use *exception handling* to tell your program how to recover. The way in which exceptions are handled looks very similar in many languages. For example, in Python it looks like this:
+If instead of exploding you want your program to be able to gracefully deal with certain types of exception, you can use *exception handling* to tell it how to recover. The way in which exceptions are handled looks very similar in many languages. For example, in Python it looks like this:
 
 ```python
 try:
@@ -43,22 +42,28 @@ except KeyError as e:
     print("Exception throw: " + e)
     print("Response does not contain an ID!")
     id = None
+
+process_data(id)
+# ...
 ```
 
 In words, this code snippet means "attempt to execute the code in the `try` block. If any of that code throws a `KeyError`, don't blow up the program. Instead, execute the code in the `except` block, and then continue as normal." This allows us to attempt to retrieve the `id` key from the `response` dictionary, but to continue executing the program as normal if it is not there.
 
-`KeyError` is an exception *class*, and the `except KeyError` block will catch any exception that is either a `KeyError` or a sub-class of `KeyError`. That said, if you're not familiar with classes then you can still use `except` blocks with skill and flair. The two most common ways in which you might see this behavior used are:
+Let's look in more detail at the `except KeyError` line. `KeyError` is a *class* that is built in to Python (many other languages take a similar approach). It is a *sub-class* of another built-in Python class called `Exception`. The effect of the `except KeyError` line is to catch any exception that is either a `KeyError` or a sub-class of `KeyError`. This specificity allows you to write code that handles some types of exceptions, but not others.
 
+If you're not familiar with classes and sub-classes then you can still use `except` blocks with skill and flair by remembering a few simple patterns. The three most common ways in which you see `except` blocks used are:
+
+1. By writing `except KeyError` to catch a specific type of error (as in our example)
 1. By writing `except Exception` to catch *all* exceptions (since all exceptions are a sub-class of `Exception`)
 2. A library might have all of its exceptions descend from a common exception class (like `mylibrary.Exception`). This allows users of the library to write `except mylibrry.Exception` to catch all the specialized types of error raised by that library. We'll see why this can be useful later.
 
-Michael makes extensive use of exception handling in his program, because he wants his data-collection program to run and collect data forever, or at least until he manually cancels it. If an exception is thrown while his program is running then he generally doesn't want it to explode. Instead he wants it to *catch* the exception, print out an error message to help with debugging, and continue running.
+Michael makes extensive use of exception handling in his program, because he wants his data-collection program to run and collect data forever, or at least until he manually cancels it. If an exception is thrown while his program is running then he generally doesn't want his program to explode. Instead he wants it to *catch* the exception, print out an error message to help with debugging, and continue running.
 
-This is in principle a very sensible idea. It would be very annoying if Michael missed out on several days-worth of data because a request to Google Maps randomly failed for some transient reason that he didn't notice. By catching exceptions Michael allows his program to recover from problems like this and to continue its work.
+This is in principle a very sensible idea. It would be very annoying if Michael missed out on several days-worth of data because a request to Google Maps randomly failed for some transient reason that he didn't notice. Catching exceptions allows Michael's program to recover from intermittent problems like this and to continue its work.
 
-Catching exceptions might sound like an always-amazing idea. Surely it's always best to stop your program from catching fire? However, errors are often invaluable feedback that something is wrong with your code that you need to pay attention to. This week we're going to look at two common exception handling mistakes: suppressing errors too aggressively, and catching too many types of error.
+Catching exceptions might sound like an always-amazing idea. Surely it's always best to stop your program from catching fire? However, errors are often invaluable feedback that something is wrong with your code that you need to pay attention to. This week we're going to look at two common exception handling mistakes: *suppressing* errors too liberally, and catching too many classes of error.
 
-## Handle with care
+## 1. Handle with care
 
 Michael's program contains a function called `Database#add_data`. It is particularly zealous in its handling of exceptions:
 
@@ -86,15 +91,15 @@ This is becasue when you catch every type of exception, you catch *every* type o
 
 If we wanted to avoid this pitfall, narrow our focus, and just catch errors in our database code, we could take advantage of the fact that the authors of the `sqlite` library made sure that every type of `sqlite` exception is a sub-class of a class called `sqlite.Error`. This means that by writing `except sqlite3.Error` we can catch every type of database error, from those representing "database does not exist" to "query is malformed". However, we will not catch `NameError`s or any other type of error.
 
-For the reasons above, I don't think we should even catch and suppress our database errors. Database errors are a valuable indication that something has gone wrong. But if we did want to suppress database errors for some reason, this would be the way to do it. In short, don't catch and ignore errors unless you're sure you know what you're doing and why; and if you do then be as specific about the errors that you're catching as possible.
+This said, I don't think we should even catch and suppress our database errors, since they too are a valuable indication that something has gone wrong that likely requires our attention. But if we did want to suppress database errors for some reason, we should be specific about the errors that we want to catch. In short, don't catch and ignore errors unless you're sure you know what you're doing and why; and if you do then be as exact about which errors you want to catch as possible.
 
 Next let's look at a different part of the program, in which I think that error handling is entirely appropriate: the code that queries the Google Maps API.
 
-## Catching exceptions from the Google Maps API
+## 2. Handling the right exceptions
 
 Michael's program talks to the Google Maps API by sending requests to it over the internet. Despite everyone's best efforts, sometimes requests over the internet fail for no particular reason. Maybe Google's API has a brief hiccup, or maybe Michael's wi-fi goes down briefly at 3am. Without exception handling, a single failed request to the Google Maps API would cause Michael's program to explode and stop collecting data.
 
-To keep Michael's program chugging along in the face of intermittent internet issues, we should catch Google Maps errors that we believe are *transient*, meaning that they will go away if we try again. Our code might change from:
+To keep Michael's program chugging along in the face of intermittent internet issues, we should catch Google Maps errors that we believe are *transient*, meaning that they will likely go away if we try our request again. Our code might change from:
 
 ```python
 data = get_commute_data(origin, destination, api_key)
