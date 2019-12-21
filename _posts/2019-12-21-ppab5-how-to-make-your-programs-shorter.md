@@ -1,25 +1,24 @@
 ---
-title: "PFAB#5: How to write shorter programs"
+title: "PFAB#5: How to make your programs shorter"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab5
-published: false
 ---
-For [the last][pfab3] [two weeks][pfab4] we've been analyzing a short program that measures commute times, written by Michael Troyer. So far we've [admired the way in which its logic is split up][pfab3], and have talked about [how its error handling could be improved][pfab4]. In this final discussion of Michael's program we'll look at how we can tidy up and significantly shorten the code that handles querying his database.
+For [the last][pfab3] [two weeks][pfab4] we've been analyzing a program, written by an archaeologist named Michael Troyer, that measures commute times. So far we've [admired the way in which its logic is split up][pfab3], and have talked about [how its error handling could be improved][pfab4]. In this final discussion of the program we'll look at how we can tidy up and significantly shorten the code that handles querying its database.
 
 Shorter programs aren't always better. Sometimes it's pragmatic to be verbose today in order to make your code more understandable tomorrow. But if you can make your code shorter *and* more readable at the same time then you've got a recipe for a cake plus eating it type of situation.
 
-*(You may want to [open Michael's code in GitHub][commute-times] to reference while you read this post.)*
+*(You may want to [open the code in GitHub][commute-times] to reference while you read this post.)*
 
 ## Simplifying the database code
 
-Michael's program has two commands. The first repeatedly queries the Google Maps API for the current commute time between two locations, and writes the results to a database. The second command reads the results back out of the database and calculates their average, range, and standard deviation.
+Quick recap - Michael's program has two commands. The first repeatedly queries the Google Maps API for the current commute time between two locations, and writes the results to a database. The second command reads the results back out of the database and calculates their average, range, and standard deviation.
 
 <img src="/images/pfab3-graph.jpg" />
 
-Today we're going to work on the `Database` class's `get_data` function. `Database#add_data` is the function responsible for retrieving information about commute times from the program's database so that Michael's second command can analyze it. The function accepts arguments like `specific_route`, `start_date` and `end_date`, and uses these to filter down the data that it returns. Inside the function it constructs a *SQL query* using the arguments it receives, runs the query against the database, and returns the results.
+Today we're going to work on a function on Michael's `Database` class called `get_data`. `get_data` is responsible for retrieving information about commute times from the program's database, so that the program's second command can analyze it. The function accepts arguments like `specific_route`, `start_date` and `end_date`, and uses these to filter down the data that it returns. Inside the function it constructs a *SQL query* using the arguments it receives, runs the query against the database, and returns the results.
 
 You don't need to know anything about the details of SQL in order to understand the `get_data` function, but here's an example of a SQL query constructed by `get_data`:
 
@@ -32,7 +31,7 @@ WHERE
   Destination = "610 Townsend Street, San Francisco"
 ```
 
-And here's the `get_data` function as it is written today. It's perfectly correct and functioning, but it's also an 80-line monster. Have a read of it. Before reading further, see if you can identify any unnecessarily verbose sections. Then see if you can rewrite it in a much pithier form (as we'll see, I was able to get it down to around 23 lines, making it more readable in the process):
+And here's the `get_data` function as it is written today. It's perfectly correct and functioning, but it's also an 80-line monster. Have a read of it. Before reading further, see if you can identify any unnecessarily verbose sections. Then see if you can rewrite it in a much pithier form. As we'll see, I was able to get it down to around 23 lines, making it more readable in the process.
 
 ```python
 class Database:
@@ -129,7 +128,7 @@ class Database:
 
 To improve `get_data`, I would first get rid of the `try`/`except` block entirely, for all the reasons discussed [in our previous episode][pfab3]. If `get_data` throws an exception, it shouldn't try to hide this fact by *swallowing* it. Instead, it should allow the code that called it to decide how to respond.
 
-Second, I would try to reduce the repeated repetitive repetition throughout the function. When I read `get_data` for the first time, I immediately noticed that the string `SELECT * From CommuteTimes` was repeated 8 times. I also noticed that we have multiply-nested if-statements for every possible combination of the function's arguments. For example, the function starts with the blocks: `if specific_route => if start_date => if end_date`. This prol-IF-eration (sorry) is the root cause of the code's already extreme repetitiousness. What's more, suppose that we wanted to add another filter variable into our SQL query (such as `time_of_day`). We would need to add a *fourth* level of if-nesting to every block in our already precarious E-IF-fel Tower (sorry again). This would *double* the number of if-branches, to 16. This is madness.
+Second, I would try to reduce the repeated repetitive repetition throughout the function. When I read `get_data` for the first time, I immediately noticed that the string `SELECT * From CommuteTimes` was repeated 8 times. I also noticed that we have multiply-nested if-statements for every possible combination of the function's arguments. For example, the function starts with the 3 blocks: `if specific_route => if start_date => if end_date`. This prol-IF-eration (sorry) is the root cause of the code's already extreme repetitiousness. What's more, suppose that we wanted to add another filter variable into our SQL query (such as `time_of_day`). We would need to add a *fourth* level of if-nesting to every block in our already precarious E-IF-fel Tower (sorry again). This would *double* the number of if-branches, to 16. This is madness.
 
 After I got to the end of the function I didn't immediately have a plan for how to tighten it up, but I knew that if I couldn't then we were all doomed. I pondered a while. Then I noticed that none of the variables in the different if-branches depend on each other. By this I mean that the effect of an `if start_date` block is always to simply add a `Datetime > ?` condition to the `WHERE` clause of the SQL statement.  It doesn't matter whether `end_date` or `specific_route` is set. This means that we can examine every argument in its own, simple, un-nested if-statement. We can use these statements to build up a list of the different `WHERE` filters that we need to apply, and then construct the SQL query *dynamically* at the end of the function.
 
@@ -166,7 +165,7 @@ class Database:
             #   for f in filters:
             #       l.append(f[0])
             #
-            # Here we use a list comprehenson to
+            # Here we use a list comprehension to
             # extract the first elements of the filter
             # pairs we just created, and use them to
             # construct our query.
@@ -194,8 +193,9 @@ Developing a sense for when a piece of code can be improved is an important skil
 
 Until next week:
 
-* Explore the archives: [I was 7 words away from being spear-phished][spear-fished]
 * To receive all future PFABs as soon as they're published, [subscribe to the mailing list][subscribe]
+* Check out my series of [Programming Projects for Advanced Beginners][ppab]
+* Explore the archives: [I was 7 words away from being spear-phished][spear-fished]
 * If you've written some code that you'd like feedback on, [send it to me!][feedback]
 * Was any of this post unclear? [Email][about] or [Tweet][twitter] at me with suggestions, comments, and feedback on my feedback. I'd love to hear from you.
 
@@ -209,3 +209,4 @@ Until next week:
 [twitter]: https://twitter.com/robjheaton
 [feedback]: https://robertheaton.com/feedback
 [subscribe]: https://advancedbeginners.substack.com
+[ppab]: https://robertheaton.com/ppab
