@@ -42,7 +42,7 @@ If you fix the bugs, get stuck, or have any other questions or suggestions, plea
 
 ### 1. Blank board
 
-*View, run, and edit this code in your browser [here][repl1]*.
+*To view, run, and edit this code in your browser [click here][repl1]*.
 
 ```python
 def blank_board(width, height):
@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
 ### 2. Search Results
 
-*View, run, and edit this code in your browser [here][repl2]*.
+*To view, run, and edit this code in your browser [click here][repl2]*.
 
 ```python
 def search(query):
@@ -142,7 +142,7 @@ if __name__ == "__main__":
 
 ### 3. Power Battles
 
-*View, run, and edit this code in your browser [here][repl3]*.
+*To view, run, and edit this code in your browser [click here][repl3]*.
 
 ```python
 EXTRA_POWER_NEEDED_TO_DEFEAT_ENEMY = 5
