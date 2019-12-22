@@ -17,10 +17,10 @@ First, here's a step-by-step, whirlwind guide to what I like to call "scientific
 
 For me, *un*-scientific debugging typically means alternating between:
 
-* Sitting perfectly still, staring at my screen and waiting for divine inspriation to strike
+* Sitting perfectly still, staring at my screen and waiting for divine inspiration to strike
 * Flailing around trying semi-random changes that are very rarely actually summoned from the heavens
 
-By constrast, scientific debugging means forming explicit hypotheses about what is wrong my code (which may themselves very well be wrong), then systematically trying to prove or disprove them, and then repeating this process, taking me inexorably closer and closer to a cure.
+By contrast, scientific debugging means forming explicit hypotheses about what is wrong with my code (which may themselves very well be wrong), then systematically trying to prove or disprove them, and then repeating this process, taking me inexorably closer and closer to a cure.
 
 Here's how you can debug scientifically too:
 
