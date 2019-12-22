@@ -38,6 +38,8 @@ We'll talk in much more detail about scientific debugging in future PFABs, inclu
 
 The bugs are written in Python, but the concepts in them are entirely generic. The bugs are all logic mistakes that you could easily accidentally write in almost any language. You don't need to anything about esoteric Python syntax in order to tackle the bugs, other that in order to print the variable `x` to the terminal you write `print(x)`.
 
+If you fix the bugs, get stuck, or have any other questions or suggestions, please do [let me know][about]. I'd love to hear from you.
+
 ### 1. Blank board
 
 *View, run, and edit this code in your browser [here][repl1]*.
@@ -192,3 +194,4 @@ if __name__ == "__main__":
 [repl1]: https://repl.it/@RobertHeaton1/Bug1-Blank-Board
 [repl2]: https://repl.it/@RobertHeaton1/Bug2-Search-Results
 [repl3]: https://repl.it/@RobertHeaton1/Bug3-Power-Battles
+[about]: https://robertheaton.com/about
