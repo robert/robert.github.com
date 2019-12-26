@@ -21,7 +21,7 @@ Kate bounces into your offices in the 19th Century Literature section of the San
 
 “Let me flip that question around, Kate. What do *you* think the plan should be?”
 
-Kate takes a deep breath and paints an extremely detailed vision of the Steveslist platform five years in future and the infrastructure that will power it.
+Kate takes a deep breath and paints an extremely detailed vision of the Steveslist platform five years into the future and the infrastructure that will power it.
 
 —————
 
