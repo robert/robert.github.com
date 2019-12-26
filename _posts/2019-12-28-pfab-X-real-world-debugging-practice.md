@@ -4,14 +4,16 @@ layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
-  - /pfabX
+  - /pfab5
 published: false
 ---
+> This post is part of my "Programming Feedback for Advanced Beginners" series, which aims to help you make the leap from advanced beginner to beginning advanced. [Subscribe now][subscribe] to receive more PFABs in your inbox, every weekend, entirely free.
+
 Only half of programming is about writing code. The other half is about figuring out why the code you've written doesn't god damn work.
 
-This post contains 3 excerpts from real-world programs that my readers have sent me, asking for assistance figuring out why their code isn't working. Your task is to find the responsible bugs and fix them. These bugsquashes are great practice for thinking methodically, and understanding code that you didn't originally write. You don't need to do any setup in order to tackle them, and you can run the code directly in your browser.
+This post contains 3 excerpts from real-world programs that my readers have sent me, asking for assistance figuring out why their code isn't working. Your task is to find the responsible bugs and fix them. These bugsquashes are great practice for thinking methodically, and understanding code that you didn't originally write. You don't need to do any setup in order to tackle them, and you can even run the code directly in your browser.
 
-First, here's a step-by-step, whirlwind guide to what I like to call "scientific debugging":
+Before you start, here's a step-by-step, whirlwind guide to what I like to call "scientific debugging":
 
 ## A very short guide to scientific debugging
 
@@ -36,11 +38,13 @@ We'll talk in much more detail about scientific debugging in future PFABs, inclu
 
 ## The bugs
 
-The bugs are written in Python, but the concepts in them are entirely generic. The bugs are all logic mistakes that you could easily accidentally write in almost any language. You don't need to anything about esoteric Python syntax in order to tackle the bugs, other that in order to print the variable `x` to the terminal you write `print(x)`.
+The bugs are written in Python, but the concepts in them are entirely generic. The bugs are all logic mistakes that you could easily accidentally write in almost any language. You don't need to know anything about esoteric Python syntax in order to tackle the bugs, other that in order to print the variable `x` to the terminal you write `print(x)`.
 
 If you fix the bugs, get stuck, or have any other questions or suggestions, please do [let me know][about]. I'd love to hear from you.
 
 ### 1. Blank board
+
+This bug was sent to me by someone working on [Programming Projects for Advanced Beginners #3: Tic-Tac-Toe][ppab3]. They were trying to write a function that would generate and return a blank Tic-Tac-Toe board, but something was going wrong. See if you can figure out what.
 
 *To view, run, and edit this code in your browser [click here][repl1]*.
 
@@ -82,6 +86,8 @@ if __name__ == "__main__":
 ```
 
 ### 2. Search Results
+
+This bug was sent to me by someone who was trying to programatically query an online search engine with multiple search terms, and then combine all the results into a single array. But things were not going well. Why not?
 
 *To view, run, and edit this code in your browser [click here][repl2]*.
 
@@ -142,6 +148,8 @@ if __name__ == "__main__":
 
 ### 3. Power Battles
 
+Finally, this bug was sent to me by someone building a command-line adventure game. Things were going well, but their players were losing battles that they shouldn't have been losing. Find out why and save the day.
+
 *To view, run, and edit this code in your browser [click here][repl3]*.
 
 ```python
@@ -195,3 +203,15 @@ if __name__ == "__main__":
 [repl2]: https://repl.it/@RobertHeaton1/Bug2-Search-Results
 [repl3]: https://repl.it/@RobertHeaton1/Bug3-Power-Battles
 [about]: https://robertheaton.com/about
+[ppab3]: https://robertheaton.com/2018/10/09/programming-projects-for-advanced-beginners-3-a/
+[pfab1]: https://robertheaton.com/pfab1
+[pfab2]: https://robertheaton.com/pfab2
+[pfab3]: https://robertheaton.com/pfab3
+[pfab4]: https://robertheaton.com/pfab4
+[commute-times]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/3-4-5-commute-times/original
+[spear-fished]: https://robertheaton.com/2019/06/24/i-was-7-words-away-from-being-spear-phished/
+[about]: https://robertheaton.com/about
+[twitter]: https://twitter.com/robjheaton
+[feedback]: https://robertheaton.com/feedback
+[subscribe]: https://advancedbeginners.substack.com
+[ppab]: https://robertheaton.com/ppab
