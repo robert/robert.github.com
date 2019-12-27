@@ -1,17 +1,16 @@
 ---
-title: "PFAB#5: Real-world debugging practice"
+title: "PFAB#6: Real-world debugging practice"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
-  - /pfab5
-published: false
+  - /pfab6
 ---
-> This post is part of my "Programming Feedback for Advanced Beginners" series, which aims to help you make the leap from knowing the syntax to writing clean, elegant code. [Subscribe now][subscribe] to receive more PFABs in your inbox, every weekend, entirely free.
+> This post is part of my "Programming Feedback for Advanced Beginners" series, which aims to help you make the leap from knowing the syntax to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every weekend, entirely free.
 
 Only half of programming is about writing code. The other half is about figuring out why the code you've written doesn't god damn work.
 
-This post contains 3 excerpts from real-world programs that my readers have sent me, asking for assistance figuring out why their code isn't working. Your task is to find the responsible bugs and fix them. These bugsquashes are great practice for thinking methodically, and for understanding code that you didn't originally write. You don't need to do any setup in order to tackle them, and you can even run the code directly in your browser.
+This post contains 3 excerpts from real-world programs that my readers have sent me, asking for assistance figuring out why their code is broken. Your task is to find the bugs and fix them. These bugsquashes are great practice for thinking methodically, and for understanding code that you didn't originally write. You don't need to do any setup in order to tackle them, and you can even run the code directly in your browser.
 
 Before you start, here's a step-by-step, whirlwind guide to what I like to call "scientific debugging":
 
@@ -22,7 +21,7 @@ For me, *un*-scientific debugging typically means alternating between:
 * Sitting perfectly still, staring at my screen and waiting for divine inspiration to strike
 * Flailing around trying semi-random changes that are very rarely actually summoned from the heavens
 
-By contrast, scientific debugging means forming explicit hypotheses about what is wrong with my code (which may themselves very well be wrong), then systematically trying to prove or disprove them, and then repeating this process, taking me inexorably closer and closer to a cure.
+By contrast, scientific debugging means forming explicit hypotheses about what is wrong with my code (which may themselves very well be wrong), systematically trying to prove or disprove them, and then repeating this process, taking me inexorably closer and closer to a cure.
 
 Here's how you can debug scientifically too:
 
@@ -34,7 +33,7 @@ Here's how you can debug scientifically too:
 
 If at any point you aren't able to come up with a new hypothesis ("what do you think is wrong?" "I literally have no idea"), add print-statements all over your code in order to better understand what is going on inside it. Form micro-hypotheses about how you think the internals of your code are working ("I believe that at this point in the code `first_name` should be `Robert`). Prove or disprove these hypotheses ("huh, it's actually `obert`"). Use this new knowledge to form hypotheses about the larger problems you are seeing ("ohhh I bet I'm accidentally chopping off the first character of every input, which would explain why I can't find my users in my database"). Prove or disprove them and repeat as above.
 
-We'll talk in much more detail about scientific debugging in future PFABs, including examples and common patterns. But for now, here are today's bugs.
+We'll talk in much more detail about scientific debugging in future PFABs, including examples and common patterns. [Here's something][sci-debug] I wrote about it a few years ago. But for now, here are today's bugs.
 
 ## The bugs
 
@@ -77,8 +76,9 @@ if __name__ == "__main__":
         [None, None, None, None],
     ]
     # TODO: it looks like there's a bug with our
-    # blank-board generating function! We should figure out
-    # what it is and fix it so that this test passes.
+    # blank-board generating function! We should
+    # figure out what it is and fix it so that
+    # this test passes.
     if test_board == expected_board:
         print("TEST PASSED!!")
     else:
@@ -92,6 +92,13 @@ This bug was sent to me by someone who was trying to programatically query an on
 *To view, run, and edit this code in your browser [click here][repl2]*.
 
 ```python
+def search_all(queries):
+    all_results = []
+    for q in queries:
+        results = search(q)
+        all_results.append(results)
+    return all_results
+
 def search(query):
     """
     This function is a "fake" search engine that
@@ -115,13 +122,6 @@ def search(query):
     for i in range(3):
         results.append(query + "-" + str(i))
     return results
-
-def search_all(queries):
-    all_results = []
-    for q in queries:
-        results = search(q)
-        all_results.append(results)
-    return all_results
 
 if __name__ == "__main__":
     test_queries = ["cat", "dog", "mouse"]
@@ -157,7 +157,8 @@ Finally, this bug was sent to me by someone building a command-line adventure ga
 EXTRA_POWER_NEEDED_TO_DEFEAT_ENEMY = 5
 
 def player_has_enough_power_to_defeat_enemy(player_stats, enemy_stats):
-    # Subtract the enemy power from the player power and make sure that
+    # Subtract the enemy power from the
+    # player power and make sure that
     # the difference is more than 5.
     player_stats['power'] = player_stats['power'] - enemy_stats['power']
 
@@ -167,7 +168,8 @@ def player_has_enough_power_to_defeat_enemy(player_stats, enemy_stats):
         return False
 
 if __name__ == "__main__":
-    # In our game, the player defeats an enemy if they have more than
+    # In our game, the player defeats an
+    # enemy if they have more than
     # 5 greater power than the enemy.
     player_stats = {
         'name': 'Horatio',
@@ -183,9 +185,11 @@ if __name__ == "__main__":
         'power': 20,
     }
 
-    # TODO: since our player has more than 5 extra power than both
-    # Death Face and Brain Eater, we expect them to defeat
-    # both enemies. However, this is not happening! We should figure
+    # TODO: since our player has more than
+    # 5 extra power than both Death Face
+    # and Brain Eater, we expect them to
+    # defeat both enemies. However, this
+    # is not happening! We should figure
     # out what the bug is and fix it.
     if player_has_enough_power_to_defeat_enemy(player_stats, enemy1_stats):
         print("Player DEFEATS Enemy 1!")
@@ -216,3 +220,4 @@ if __name__ == "__main__":
 [feedback]: https://robertheaton.com/feedback
 [subscribe]: https://advancedbeginners.substack.com
 [ppab]: https://robertheaton.com/ppab
+[sci-debug]: https://robertheaton.com/2015/03/29/scientific-debugging/
