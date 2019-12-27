@@ -5,6 +5,7 @@ tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab6
+published: false
 ---
 > This post is part of my "Programming Feedback for Advanced Beginners" series, which aims to help you make the leap from knowing the syntax to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every weekend, entirely free.
 
@@ -101,22 +102,23 @@ def search_all(queries):
 
 def search(query):
     """
-    This function is a "fake" search engine that
-    we use to make this bugsquashing exercise
-    more concise. In the original program it
-    queried an internet search engine.
+    This function is a "fake" search engine
+    that we use to make this bugsquashing
+    exercise more concise. In the original
+    program this function queried an
+    internet search engine.
 
-    This function returns "fake" search results
-    by appending "-0", "-1", and "-2" to the given
-    query. For example, the query "banana" will return:
-    search results of:
+    Now it returns "fake" search results
+    by appending "-0", "-1", and "-2" to
+    the given query. For example, the query
+    "banana" will return:
 
     ["banana-0", "banana-1", "banana-2"]
 
-    Note that using "fake" functions to simplify
-    programs while testing or debugging is not
-    cheating - it is a very common and sensible
-    technique!
+    Note that using "fake" functions to
+    simplify programs while testing or
+    debugging is not cheating - it is a very
+    common and sensible technique!
     """
     results = []
     for i in range(3):
@@ -138,9 +140,10 @@ if __name__ == "__main__":
         "mouse-1",
         "mouse-2",
     ]
-    # TODO: it looks like there's a bug with our
-    # searching function! We should figure out
-    # what it is and fix it so that this test passes.
+    # TODO: it looks like there's a bug with
+    # our searching function! We should
+    # figure out what it is and fix it so
+    # that this test passes.
     if test_results == expected_results:
         print("TEST PASSED!!")
     else:
@@ -203,6 +206,8 @@ if __name__ == "__main__":
         print("Player LOSES to Enemy 2!")
         exit(0)
 ```
+
+Finished? [Let me know!][about]
 
 [repl1]: https://repl.it/@RobertHeaton1/Bug1-Blank-Board
 [repl2]: https://repl.it/@RobertHeaton1/Bug2-Search-Results
