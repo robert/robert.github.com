@@ -207,7 +207,11 @@ if __name__ == "__main__":
         exit(0)
 ```
 
-Finished? [Let me know!][about]
+Finished? [Let me know!][about] In addition:
+
+* [Subscribe][subscribe] to receive all PFABs in your inbox every week, for free
+* Continue to build your skills with one of my [Programming Projects for Advanced Beginners][ppab]
+* From the archives: [Fun with your friend's Facebook and Tinder sessions][fb]
 
 [repl1]: https://repl.it/@RobertHeaton1/Bug1-Blank-Board
 [repl2]: https://repl.it/@RobertHeaton1/Bug2-Search-Results
@@ -226,3 +230,4 @@ Finished? [Let me know!][about]
 [subscribe]: https://advancedbeginners.substack.com
 [ppab]: https://robertheaton.com/ppab
 [sci-debug]: https://robertheaton.com/2015/03/29/scientific-debugging/
+[fb]: https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/
