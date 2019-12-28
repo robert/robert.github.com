@@ -6,7 +6,7 @@ og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab6
 ---
-> This post is part of my "Programming Feedback for Advanced Beginners" series, which aims to help you make the leap from knowing the syntax to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every weekend, entirely free.
+> This post is part of my "Programming Feedback for Advanced Beginners" series, which helps you make the leap from knowing syntax to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every weekend, entirely free.
 
 Only half of programming is about writing code. The other half is about figuring out why the code you've written doesn't god damn work.
 
