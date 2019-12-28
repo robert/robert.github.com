@@ -56,7 +56,9 @@ In a streaming approach, Adarsh would do the opposite. He would load one line fr
 +-------+       +-------+       +-------+
 ```
 
-As is so often the case, neither one of batch or streaming is intrinsically better than the other, and the right approach depends entirely on context. Let's look at the advantages and disadvantages of each.
+As is so often the case, neither one of batch or streaming is intrinsically better than the other, and the right approach depends entirely on context. For example, if we were processing a constantly updating message log in realtime, we would have no choice but to use a stream.
+
+Let's look at some more advantages and disadvantages of each approach.
 
 ## Batch
 
@@ -182,7 +184,7 @@ In order to get this code to handle multi-line messages we will have to make rou
 
 ## So what should Adarsh do?
 
-If I were writing this program, I would start with a batch approach. The code is simpler and easier to get up and running, and even though it may be somewhat less efficient, I don't believe that this actually matters. I assume that we're processing the WhatsApp message logs for a single person with, at most, a few hundred thousand messages. I also assume that we're running the program on a modern, relatively powerful computer. If both of these assumptions are correct then the fact that our code is slightly inefficient won't cause us any problems. Our computer will have plenty of memory to spare, and finishing our calculations in 28.5 seconds rather than 28.3 seconds won't materially affect our lives. In this situation I am happy to make my code somewhat less efficient if this also makes it easier to write, read, and understand.
+If I were writing this program, I would start with a batch approach. The code is simpler and easier to get up and running, and even though it may be somewhat less memory-efficient, I don't believe that this actually matters. I assume that we're processing the WhatsApp message logs for a single person with, at most, a few hundred thousand messages. I also assume that we're running the program on a modern, relatively powerful computer. If both of these assumptions are correct then the fact that our code is slightly inefficient won't cause us any problems. Our computer will have plenty of memory to spare, and finishing our calculations in 28.5 seconds rather than 28.3 seconds won't materially affect our lives. In this situation I am happy to make my code somewhat less efficient if this also makes it easier to write, read, and understand.
 
 However, suppose that this script continues to evolve. Eventually it becomes the backbone of a system inside a squillion-dollar company, responsible for processing and analyzing billions of message logs from millions of users. Suddenly resource efficiency becomes critical. Speeding up the code and cutting down its memory usage could save us hundreds of hours and thousands of dollars of computation time. Faced with this new set of priorities, we may well want to switch to a more efficient streaming approach, or (more likely) a batch-streaming hybrid. So how could we modify our streaming code so as to make it as pleasant to work with as possible?
 

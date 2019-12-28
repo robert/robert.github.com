@@ -5,7 +5,6 @@ tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab6
-published: false
 ---
 > This post is part of my "Programming Feedback for Advanced Beginners" series, which aims to help you make the leap from knowing the syntax to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every weekend, entirely free.
 
@@ -86,6 +85,8 @@ if __name__ == "__main__":
         print("TEST FAILED!!")
 ```
 
+*([Solution][sol1])*
+
 ### 2. Search Results
 
 This bug was sent to me by someone who was trying to programatically query an online search engine with multiple search terms, and then combine all the results into a single array. But things were not going well. Why not?
@@ -150,6 +151,8 @@ if __name__ == "__main__":
         print("TEST FAILED!!")
 ```
 
+*([Solution][sol2])*
+
 ### 3. Power Battles
 
 Finally, this bug was sent to me by someone building a command-line adventure game. Things were going well, but their players were losing battles that they shouldn't have been losing. Find out why and save the day.
@@ -207,6 +210,8 @@ if __name__ == "__main__":
         exit(0)
 ```
 
+*([Solution][sol3])*
+
 Finished? [Let me know!][about] In addition:
 
 * [Subscribe][subscribe] to receive all PFABs in your inbox every week, for free
@@ -231,3 +236,6 @@ Finished? [Let me know!][about] In addition:
 [ppab]: https://robertheaton.com/ppab
 [sci-debug]: https://robertheaton.com/2015/03/29/scientific-debugging/
 [fb]: https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/
+[sol1]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/a46da88ce796d0669d3133c006ae9a05e4bb8ae8
+[sol2]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/f445ae9028342f98f440e28853b20ae8ab8e3ecc
+[sol3]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/8d0e74994f94126410b57cedda234e9cce41c3c3
