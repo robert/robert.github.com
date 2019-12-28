@@ -28,7 +28,7 @@ In order to analyze one of these log lines, Adarsh needs to:
 
 Adarsh has a choice to make for how he processes his log lines: *batch* or *streaming*?
 
-In a batch approach, Adarsh would perform each of these 4 steps on every single line in his log file before moving onto the next step. He would load *all* log lines from the log file. Then he would parse *all* of the messages into their name, date, time and contents. Then he would calculate statistics for *every* parsed message, and then finally combine them all into aggregate statistics.
+In a batch approach, Adarsh would perform each of these 4 steps on a large number of lines in his log file - possibly even all of them - before moving onto the next step. He would load *all* log lines from the log file. Then he would parse *all* of the messages into their name, date, time and contents. Then he would calculate statistics for *every* parsed message, and then finally combine them all into aggregate statistics.
 
 ```
 +-------+       +-------+       +-------+
@@ -56,7 +56,7 @@ In a streaming approach, Adarsh would do the opposite. He would load one line fr
 +-------+       +-------+       +-------+
 ```
 
-As is so often the case, neither one of batch or streaming is intrinsically better than the other, and the right approach depends entirely on context. For example, if we were processing a constantly updating message log in realtime, we would have no choice but to use a stream.
+As is so often the case, neither batch or streaming is intrinsically better than the other, and the right approach depends entirely on context. For example, if we were processing a constantly-updating message log in realtime, we would have no choice but to use a stream, fully processing each new log as soon as it came in.
 
 Let's look at some more advantages and disadvantages of each approach.
 
@@ -89,7 +89,7 @@ A second advantage of a batch approach is that it requires fewer trips to the or
 
 We don't even have to load and process *every* row at once in order to use a batch approach. Maybe we process our data by loading it in batches of 10, 100, 1000, however many records. In fact, when you think about it, streaming is just batch with a batch size of 1 (woah). We'll blur these lines even more next week, but for this week we'll stick with the pure dichotomy between batch and streaming.
 
-One disadvantage of a batch approach is that it typically uses more RAM, or *memory*, to run than a streaming approach does. The batch approach may be slower too. To see why, look again at the schematic batch pseudocode I laid out earlier:
+One disadvantage of a batch approach is that it typically uses more RAM, or *memory*, to run than a streaming approach does. To see why, look again at the schematic batch pseudocode I laid out earlier:
 
 ```ruby
 raw_log = File.read("samplelog.txt")
@@ -136,7 +136,7 @@ Sample Message that is split over two-lines.
 
 This unfortunate fact messes up our nice simple rule of "one log line per message", and makes both our batch and streaming approaches more complex. Now when we're processing a log line, we don't immediately know whether it is the end of the message or whether the message will be continued on the next line. We only know that a message has ended when we process the next log line and find that a new message has started. Then we have to go *back* to the message that we were previously assembling, and add it to our stats and do whatever other processing we want to do on it, before resuming our parsing of our *new* message.
 
-(It may be possible to simplify this logic by going through the file *backwards*. Why this might help is left as an exercise for the reader)
+(It may be possible to simplify this logic somewhat by going through the file *backwards*. Why this might help is left as an exercise for the reader)
 
 Nonetheless, it is entirely possible to incorporate this new logic into a streaming approach. Here's a reasonable, if still somewhat gnarly, attempt:
 
