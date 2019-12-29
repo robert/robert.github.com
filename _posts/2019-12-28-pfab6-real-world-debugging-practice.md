@@ -236,6 +236,7 @@ Finished? [Let me know!][about] In addition:
 [ppab]: https://robertheaton.com/ppab
 [sci-debug]: https://robertheaton.com/2015/03/29/scientific-debugging/
 [fb]: https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/
-[sol1]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/a46da88ce796d0669d3133c006ae9a05e4bb8ae8
-[sol2]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/f445ae9028342f98f440e28853b20ae8ab8e3ecc
-[sol3]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/8d0e74994f94126410b57cedda234e9cce41c3c3
+
+[sol1]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/8d5aa5fd0d2c584989749b7a191590bed9dc0a90
+[sol2]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/0c2a12270960167dda364131ee34b4c7d338144b
+[sol3]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/a3311e0dec50ccdebc36b3cb047c2f2fa80da4d1
