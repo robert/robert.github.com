@@ -21,13 +21,13 @@ Don't worry if the words "computer science" or "algorithm" make you nervous. We'
 
 Let's start with an optional paragraph or two summarizing what goes on inside a breadth-first search.
 
+*(You may find it useful to [open Gianni's code][bfs-code] to reference while you read this post)*
+
 ## Breadth-first search
 
 The goal of breadth-first search is to find the shortest path through a network from a source to a destination. Let's add some terminology that computer scientists use when talking about this kind of algorithm. The network is called a *graph*, and a *graph* is composed of *vertices* - the nodes of the graph - and *edges* - the lines joining these nodes together.
 
 Suppose we were trying to find the shortest route from city A to city B along the highways. Cities would be our vertices, and the highways joining them would be our edges. The overall highway network would be our graph.
-
-[IMG]
 
 In breadth-first search you start at the source vertex and walk simultaneously along every possible path away from it, until one of these paths reaches your desired destination. The "breadth" in breadth-first search comes from the fact that you are trying every possible path simultaneously, instead of following one path at a time all the way to its end.
 
@@ -202,5 +202,6 @@ Until we meet again:
 [feedback]: https://robertheaton.com/feedback
 [subscribe]: https://advancedbeginners.substack.com
 [djikstra]: https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e
-[shortest-path-change]: TODO
+[shortest-path-change]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/80041bdfe61502d85a3ca4fbf8a46875422ed6ed#diff-ee6b8f847e87b1d0e6d13bd6914415dcL92
 [stripe-migration]: https://robertheaton.com/2015/08/31/migrating-bajillions-of-database-records-at-stripe/
+[bfs-code]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/6-breadth-first-search/original/main.py
