@@ -4,7 +4,7 @@ layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
-  - /pfab6
+  - /pfab1000
 published: false
 ---
 > Welcome to week 6 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I highlight the things that I like and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to bring their program up to the next level.
@@ -15,7 +15,7 @@ This week we're going to peruse a program sent to me by Gianni Perez, a security
 
 Gianni's program is an implementation of the *breadth-first search* algorithm for finding the shortest path from A to B. A variation of breadth-first search (called [*Djikstra's Algorithm*][djikstra]) is used by car and train journey-planners to find you the best route from here to there (and show you adverts at the same time).
 
-Breadth-first search is a staple of computer science undergraduate courses, although it's relatively rare that a real person has to implement it this outside of a university lab or an ill-conceived whiteboard interview. Nonetheless, as we'll see, doing so can still be a satisfying and educational exercise.
+Breadth-first search is a staple of computer science undergraduate courses, although it's relatively rare that a real person has to implement it this outside of a university lab or an ill-conceived whiteboard job interview. Nonetheless, as we'll see, doing so can still be a satisfying and educational exercise.
 
 Don't worry if the words "computer science" or "algorithm" make you nervous. We're going to be able to make intelligent observations about Gianni's code without having to know *anything* about the internals of breadth-first search. This is because we're not going to analyze whether Gianni has implemented the algorithm cleanly or even correctly (although as far as I can tell he has). Instead, we're going to pretend that we're considering whether to use his code as a *library* in order to perform breadth-first search in our own journey-planning project. We'll evaluate his code from the perspective of potential consumers, and discuss how to make *library code* more welcoming to new users.
 
@@ -23,19 +23,68 @@ Let's start with an optional paragraph or two summarizing what goes on inside a 
 
 ## Breadth-first search
 
-A more formal statement of the breadth-first search algorithm might be "find the shortest path through a *graph* from a source *vertex* to a destination *vertex*." For our purposes, a graph is a network of *vertices*, some of which are connected to each other by *edges*.
+The goal of breadth-first search is to find the shortest path through a network from a source to a destination. Let's add some terminology that computer scientists use when talking about this kind of algorithm. The network is called a *graph*, and a *graph* is composed of *vertices* - the nodes of the graph - and *edges* - the lines joining these nodes together.
+
+Suppose we were trying to find the shortest route from city A to city B along the highways. Cities would be our vertices, and the highways joining them would be our edges. The overall highway network would be our graph.
 
 [IMG]
 
 In breadth-first search you start at the source vertex and walk simultaneously along every possible path away from it, until one of these paths reaches your desired destination. The "breadth" in breadth-first search comes from the fact that you are trying every possible path simultaneously, instead of following one path at a time all the way to its end.
 
-To perform the algorithm you start at the source vertex. Then you simultaneously take a step from this source vertex to each one of its neighbors, and store a new path in your program for each one. If any of your paths have landed on your destination vertex then you declare victory and return that path as the shortest path. If not then you keep going.
+To perform the algorithm you start at the source vertex. Suppose we are trying to find the shortest path from A to E:
+
+```
+           +---+
+     +-----+ A +-----+
+     |     +---+     |
+     |               |
+     +               +
++---+B+---+          C
+|         |          +
+|         |          |
++         +          |
+D         E          +
+          +---------+F
+```
+
+Then you simultaneously take a step from this source vertex to each one of its neighbors, and store a new path in your program for each one. If any of your paths have landed on your destination vertex then you declare victory and return that path as the shortest path. If not then you keep going.
+
+```
+           +---+
+     +-----+ A +-----+
+     |     +---+     |
+     |               |
+   +-+-+           +-+-+
++--+ B +--+        | C |
+|  +---+  |        +-+-+
+|         |          |
++         +          |
+D         E          +
+          +---------+F
+```
 
 In the next *iteration* through the algorithm you extend each path by one step to each of its new neighbors, creating and keeping track of further new paths where necessary. You repeat this process in each subsequent iteration too, stepping from the vertex at the end of each of your paths to each new neighbor that hasn't yet been touched by another path. You iterate until one of your paths steps onto your destination vertex.
 
+```
+             +---+
+       +-----+ A +-----+
+       |     +---+     |
+       |               |
+     +-+-+           +-+-+
+  +--+ B +--+        | C |
+  |  +---+  |        +-+-+
+  |         |          |
++-+-+     +-+-+        |
+| D |     | E |      +-+-+
++---+     +---+------+ F |
+                     +---+
+
+Shortest path: A => B => E
+```
+
 At this point you know for certain that you have found the shortest path between your source and destination vertices. It's possible and indeed likely that there are many other paths available between these two vertices. However, since you are tracing out every possible path simultaneously and only extending them by one hop at a time, those other paths are guaranteed to take more hops to trace out.
 
-If this doesn't fully make sense then you can either Google "breadth first search", or continue reading this post without worrying too much. As potential users of this library we don't need to know anything about how it works internally. Do you know how your favorite programming language actually works? Me neither, but we're still both able to use it to write software just fine.
+If this doesn't fully make sense then you can either Google "breadth first search", or continue reading this post without worrying too much. As potential users of this library we don't need to know anything about how it works internally. Do you know how your favorite programming language actually works? Me neither, but we're still both able to write programs with it just fine.
 
 ## How does a library look to its users?
 
@@ -81,7 +130,7 @@ One of the library's most important functions is called `shortest_path`. This fu
 
 However, from our outside perspective, `shortest_path` comes with a substantial irritation. Its output is a single string of the names of the vertices on the shortest path, joined together with ASCII arrows. For example, `"10->5->2-15"`. Suppose that we wanted to use this output to draw a route on a map, and to display this map in a webpage to our user (along with lots and lots of advertisements). In order to display each vertex on our map individually, we'd have to split the string returned by `shortest_path` (in the form `"10->5->2-15"`) back into its component vertixes. This is a perfectly doable task, but also an annoying and unnecessary one.
 
-Instead, I would much prefer it if `shortest_path` returned a *list* of the vertices on the shortest path (eg. `['10','5','2','15']`). Thiw would give us maximum flexibility to decide how we want to present the results to our customers. `shortest_path`'s job should only be to calculate data; it shouldn't make any assumptions about how the caller wants to display it.
+Instead, I would much prefer it if `shortest_path` returned a *list* of the vertices on the shortest path (eg. `['10','5','2','15']`). This would give us maximum flexibility to decide how we want to present the results to our customers. `shortest_path`'s job should only be to calculate data; it shouldn't make any assumptions about how the caller wants to display it.
 
 As a rule of thumb, separate out data calculation from data formatting wherever possible. Have your calculation components return their results as raw lists, dictionaries and objects, and avoid doing anything that smells like "display logic". Pass this output into a second component that knows nothing about how to calculate anything, but knows everything about to make data look good.
 
@@ -137,8 +186,8 @@ Next week we'll continue to look at Gianni's library, and suggest some more ways
 
 Until we meet again:
 
-* Explore the archives: [Migrating bajillions of database records at Stripe][stripe-migration]
 * To receive all future PFABs as soon as they're published, [subscribe to the mailing list][subscribe]
+* Explore the archives: [Migrating bajillions of database records at Stripe][stripe-migration]
 * If you've written some code that you'd like feedback on, [send it to me!][feedback]
 * Was any of this post unclear? [Email][about] or [Tweet][twitter] at me with suggestions, comments, and feedback on my feedback. I'd love to hear from you.
 
