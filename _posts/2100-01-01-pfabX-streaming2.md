@@ -3,15 +3,13 @@ layout: post
 title: "PFAB X: First-class functions and dependency injection"
 published: false
 ---
-In the previous edition of PFAB[TODO] we began looking at Adarsh Rao's program that analyzes WhatsApp message logs. We were debating the tradeoffs between taking a *batch* approach - where we load and process many records at once - and a *streaming* approach - where we load one record at a time, fully process it, and only then load the next record.
+In the previous edition of PFAB[TODO] we began looking at a program that analyzes WhatsApp message logs, written by Adarsh Rao. We discussed some of the tradeoffs between taking a *batch* approach - where we load and process many records at once - and a *streaming* approach - where we load one record at a time, fully process it, and only then load and process the next record. We focussed in particular on how to write a clean batch pipeline. This week we're going to look at how to make a *modular* streaming pipeline by using *first-class functions* and *dependency injection*.
 
-Last week we focussed on how to write a clean batch pipeline. This week we're going to look in detail at how to make a streaming pipeline *modular* by using *first-class functions* and *dependency injection*.
+This edition is advanced stuff - this series isn't called "Programming Feedback for Advanced Beginners" for nothing. If after reading this post you think "OK, that's nice and all but I have no idea how to use any of it in my own code" then that's fine and normal. My hope is that the next time you come across some code written in this style then you'll think "oh I see what they're doing here." Then the time after you'll start to really see what's going on, and eventually you'll be writing this type of code yourself in your sleep.
 
-This edition is advanced stuff - this series isn't called "Programming Feedback for Advanced Beginners" for nothing. If after reading this post you think "OK, that's nice and all but I have no idea how to use any of it in my own code" then that's entirely fine and normal. My hope is that the next time you come across some code written in this style you'll think "oh I see what they're doing here." Then the next time you'll start to understand even more, and eventually you'll be writing this type of code yourself in your sleep.
+## Moaning about our un-modular streaming code
 
-## Lamenting our unmodular streaming code
-
-At the end of last week'd PFAB, we were attempting to update our code to deal with the fact that WhatsApp messages can sometimes spread over multiple lines in a log file:
+At the end of last week's PFAB, we were attempting to update our streaming code to deal with the fact that WhatsApp messages can sometimes spread over multiple lines in a log file:
 
 ```
 7/28/19, 11:07 PM - Harold: Here's an idea for the next time you return. 
@@ -81,7 +79,7 @@ The reason that streaming is harder is that we don't have the simple, sequential
 
 The root cause of my discontent with our current streaming code is that our `update_stats` function is buried deep inside our code that parses log lines. This troubles me because if we wanted to reuse our log-parsing code to parse a different log file and perform a different action on each message (for example, write it to a message database), we would have to go inside our log-parsing code and conduct invasive surgery. By contrast, to make a similar update to our batch code we would just have to write a new `write_to_db` function and swap it in for our `calculate_stats` function, leaving our log-parsing code entirely untouched.
 
-Some plausible but unsatisfactory solutions to this problem might include:
+Some plausible but unsatisfactory solutions to this problem include:
 
 * Having two almost-duplicate copies of the same function, called (for example) `parse_log_file_and_calculate_stats` and `parse_log_file_and_copy_to_database`. However, copy-pasting code is always a shame, and it's particularly unfortunate that we'll have to make a new function for every single new processing action that we may want to perform in the future too.
 * A slightly better alternative would be to pull our log-parsing code into a function called (say) `parse_log_file`, and to pass a string into `parse_log_file` that describes the processing action that we want to perform. Inside `parse_log_file` we would use a long if-statement to match the string to a function. For example:
@@ -91,7 +89,7 @@ def parse_log_file(filename, processing_action)
   # <lots of parsing code goes here>
 
   case processing_action
-  when 'update_stats`
+  when 'update_stats'
     stats = update_stats(message, stats)
   when 'write_to_db'
     write_to_db(message)
@@ -104,13 +102,13 @@ end
 
 However, this approach still has the disadvantage of requiring us to update `parse_log_file` every time we want to add a new processing action.
 
-The solution is *first-class functions* and *dependency injection*.
+The solution to this conundrum is to use *first-class functions* and *dependency injection*.
 
 ## First-class functions
 
-A programming language that supports *first-class functions* allow you to pass functions around as first-class variables.
+A programming language that supports *first-class functions* allows you to pass functions around as first-class variables.
 
-To demonstrate, let's switch briefly to Python for a secon, where the syntax for first-class functions is simpler:
+To demonstrate what this means and why it matters, let's switch briefly to Python for a second, where the syntax for first-class functions is simpler:
 
 ```python
 def say_hello():
@@ -164,7 +162,7 @@ x = say_hello
 # immediately and prints "HELLO!"
 ```
 
-However, even though Ruby doesn't have true first-class functions, it does have a concept called a `Proc`, which is a different, slightly more verbose way of achieving the same thing (you don't need to worry too much about the details of `Proc`s unless you're interested). In order to perform dependency injection and produce the same behavior as our Python example above, we need to:
+However, even though Ruby doesn't have true first-class functions, it does have a concept called a `Proc`, which is a different, slightly more verbose way of achieving the same thing (you don't need to worry too much about the details of `Proc`s unless you're interested and want to look them up). In order to perform dependency injection and produce the same behavior as our Python example above, we need to:
 
 * Wrap the function we want to pass around inside `Proc.new`
 * Invoke the `Proc` using `.call()`, instead of simply `()`

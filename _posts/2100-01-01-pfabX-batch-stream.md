@@ -3,9 +3,11 @@ layout: post
 title: "PFAB X: Batch vs Stream processing in data pipelines"
 published: false
 ---
+> This post is part of my "Programming Feedback for Advanced Beginners" series, which helps you make the leap from knowing syntax to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every weekend, entirely free.
+
 How many WhatsApp messages do you think you've exchanged with your best friend? Adarsh Rao, PFAB reader, wanted to find out. He downloaded his WhatsApp message logs and wrote a program to analyze his conversations. He found that he and his best friend had sent each other a respectable 110,000 words. "We've essentially written 2 novels between us if my Google search for 'average novel length' is at all accurate," he notes.
 
-Adarsh's program already works perfectly. But he wants to know how he can make it cleaner, tidier, and easier to extend. I've got a couple of suggestions for him. This week, I'd like to talk about the high-level structure of Adarsh's program. In particular I'd like to discuss a common tradeoff in data processing: *batch* or *streaming*? By pondering this question, we'll learn not only how to construct data pipelines, but also how to evaluate the tradeoffs between different ways of solving problems.
+Adarsh's program already works perfectly. But he wants to know how he can make it cleaner and tidier, and I've got a couple of suggestions for him. This week, I'd like to talk about the high-level structure of Adarsh's program. In particular I'd like to discuss a common tradeoff in data processing: *batch* or *streaming*? By pondering this question, we'll learn not only how to construct data pipelines, but also how to evaluate the tradeoffs between different ways of solving problems.
 
 ## Batch or streaming?
 
@@ -21,8 +23,8 @@ A WhatsApp message log looks like this:
 
 In order to analyze one of these log lines, Adarsh needs to:
 
-1. Load a log line from a file (we'll start by assuming that each log line corresponds to a single message, although we'll see later that this is not the case)
-2. Parse the line and pull out the name, date, time, and contents of the message
+1. Load a log line from a file (we'll start by assuming that each log line corresponds to a single message, although we'll see later that this is not always the case)
+2. Parse the line to pull out the name, date, time, and contents of the message
 3. Calculate some statistics about the message - how long is its body, roughly how long did it take to type, etc?
 4. Add these individual message statistics into aggregate statistics about the total number, average length, etc. of messages in the conversation
 
@@ -56,9 +58,9 @@ In a streaming approach, Adarsh would do the opposite. He would load one line fr
 +-------+       +-------+       +-------+
 ```
 
-As is so often the case, neither batch or streaming is intrinsically better than the other, and the right approach depends entirely on context. For example, if we were processing a constantly-updating message log in realtime, we would have no choice but to use a stream, fully processing each new log as soon as it came in.
+As is so often the case, neither batch or streaming is intrinsically better than the other, and the right approach depends entirely on context. For example, you're more likely to prefer a streaming system when you're processing new data in realtime as it comes in, and are more likely to prefer a batch system for background systems that need to process big chunks of data at once. As we'll see next week, you often want to take a hybrid approach that gives you the best of both worlds.
 
-Let's look at some more advantages and disadvantages of each approach.
+Let's look at some of the advantages, disadvantages, and general properties of batch and streaming pipelines.
 
 ## Batch
 
@@ -172,7 +174,7 @@ I'm starting to get nervous. Previously the sections of our code that parse mess
 
 As we will see next week, it is in fact possible to write streaming code that handles multi-line messages without any sacrifice of *modularity*. It just requires a bit more work and imagination.
 
-By constast, updating our batch code is easy. As a reminder, here's our current, high-level batch structure again:
+By constast, updating our batch code to handle multi-line logs is easy. As a reminder, here's our current, high-level batch structure again:
 
 ```ruby
 raw_log = File.read("samplelog.txt")
@@ -189,3 +191,28 @@ If I were writing this program, I would start with a batch approach. The code is
 However, suppose that this script continues to evolve. Eventually it becomes the backbone of a system inside a squillion-dollar company, responsible for processing and analyzing billions of message logs from millions of users. Suddenly resource efficiency becomes critical. Speeding up the code and cutting down its memory usage could save us hundreds of hours and thousands of dollars of computation time. Faced with this new set of priorities, we may well want to switch to a more efficient streaming approach, or (more likely) a batch-streaming hybrid. So how could we modify our streaming code so as to make it as pleasant to work with as possible?
 
 Find out in next week's edition of Programming Feedback for Advanced Beginners.
+
+* [Subscribe][subscribe] to receive all PFABs in your inbox every week, for free
+* Continue to build your skills with one of my [Programming Projects for Advanced Beginners][ppab]
+* From the archives: [A blogging style guide][blog]
+
+[blog]: https://robertheaton.com/2018/12/06/a-blogging-style-guide/
+[about]: https://robertheaton.com/about
+[ppab3]: https://robertheaton.com/2018/10/09/programming-projects-for-advanced-beginners-3-a/
+[pfab1]: https://robertheaton.com/pfab1
+[pfab2]: https://robertheaton.com/pfab2
+[pfab3]: https://robertheaton.com/pfab3
+[pfab4]: https://robertheaton.com/pfab4
+[commute-times]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/3-4-5-commute-times/original
+[spear-fished]: https://robertheaton.com/2019/06/24/i-was-7-words-away-from-being-spear-phished/
+[about]: https://robertheaton.com/about
+[twitter]: https://twitter.com/robjheaton
+[feedback]: https://robertheaton.com/feedback
+[subscribe]: https://advancedbeginners.substack.com
+[ppab]: https://robertheaton.com/ppab
+[sci-debug]: https://robertheaton.com/2015/03/29/scientific-debugging/
+[fb]: https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/
+
+[sol1]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/8d5aa5fd0d2c584989749b7a191590bed9dc0a90
+[sol2]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/0c2a12270960167dda364131ee34b4c7d338144b
+[sol3]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/a3311e0dec50ccdebc36b3cb047c2f2fa80da4d1
