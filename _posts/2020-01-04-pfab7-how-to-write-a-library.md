@@ -1,17 +1,17 @@
 ---
-title: "PFAB#6: How to write a library"
+title: "PFAB#7: How to write a library"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
-  - /pfab1000
+  - /pfab7
 published: false
 ---
 > Welcome to week 6 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I highlight the things that I like and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to bring their program up to the next level.
 >
 > (To receive all future PFABs as soon as they’re published, [subscribe by email][subscribe] or [follow me on Twitter][twitter]. For the chance to have your code analyzed and featured in future a PFAB, [go here][feedback]) 
 
-This week we're going to peruse a program sent to me by Gianni Perez, a security analyst from the US of A. He spends most of his days attacking or defending networks, rather than building and maintaining large software projects, but he'll frequently throw together quick scripts to automate parts of his work. He says that he's always looking to improve his programming skills, and he asked me to take a look at a small project he recently finished.
+This week we're going to peruse a program sent to me by Gianni Perez, a security analyst from the US of A. He spends most of his days searching for exploits and vulnerabilities, not building and maintaining large software projects, but he'll frequently throw together quick scripts to automate parts of his work. He says that he's always looking to improve his programming skills, and he asked me to take a look at a small project he recently finished.
 
 Gianni's program is an implementation of the *breadth-first search* algorithm for finding the shortest path from A to B. A variation of breadth-first search (called [*Djikstra's Algorithm*][djikstra]) is used by car and train journey-planners to find you the best route from here to there (and show you adverts at the same time).
 
@@ -25,13 +25,11 @@ Let's start with an optional paragraph or two summarizing what goes on inside a 
 
 ## Breadth-first search
 
-The goal of breadth-first search is to find the shortest path through a network from a source to a destination. Let's add some terminology that computer scientists use when talking about this kind of algorithm. The network is called a *graph*, and a *graph* is composed of *vertices* - the nodes of the graph - and *edges* - the lines joining these nodes together.
-
-Suppose we were trying to find the shortest route from city A to city B along the highways. Cities would be our vertices, and the highways joining them would be our edges. The overall highway network would be our graph.
+The goal of breadth-first search is to find the shortest path through a network from a source to a destination. These networks are known as a *graph*, and a *graph* is composed of *vertices* - the nodes of the graph - and *edges* - the lines joining these nodes together. Suppose that we were trying to find the shortest route from city A to city B along the highways. Cities would be our vertices, and the highways joining them would be our edges. The overall highway network would be our graph.
 
 In breadth-first search you start at the source vertex and walk simultaneously along every possible path away from it, until one of these paths reaches your desired destination. The "breadth" in breadth-first search comes from the fact that you are trying every possible path simultaneously, instead of following one path at a time all the way to its end.
 
-To perform the algorithm you start at the source vertex. Suppose we are trying to find the shortest path from A to E:
+To perform the algorithm you start at the source vertex. For example, suppose you were trying to find the shortest path from A to E in the following graph. You would start at A:
 
 ```
            +---+
@@ -47,7 +45,7 @@ D         E          +
           +---------+F
 ```
 
-Then you simultaneously take a step from this source vertex to each one of its neighbors, and store a new path in your program for each one. If any of your paths have landed on your destination vertex then you declare victory and return that path as the shortest path. If not then you keep going.
+Next you simultaneously take a step from this source vertex to each one of its neighbors, and store a new path in your program for each one. If any of your paths have landed on your destination vertex then you declare victory and return that path as the shortest path. If not then you keep going.
 
 ```
            +---+
@@ -67,14 +65,14 @@ In the next *iteration* through the algorithm you extend each path by one step t
 
 ```
              +---+
-       +-----+ A +-----+
-       |     +---+     |
-       |               |
-     +-+-+           +-+-+
-  +--+ B +--+        | C |
-  |  +---+  |        +-+-+
-  |         |          |
-+-+-+     +-+-+        |
+       xxxxxxx A +-----+
+       x     +---+     |
+       x               |
+     +-x-+           +-+-+
+  +--+ B xxxx        | C |
+  |  +---+  x        +-+-+
+  |         x          |
++-+-+     +-x-+        |
 | D |     | E |      +-+-+
 +---+     +---+------+ F |
                      +---+
@@ -82,15 +80,15 @@ In the next *iteration* through the algorithm you extend each path by one step t
 Shortest path: A => B => E
 ```
 
-At this point you know for certain that you have found the shortest path between your source and destination vertices. It's possible and indeed likely that there are many other paths available between these two vertices. However, since you are tracing out every possible path simultaneously and only extending them by one hop at a time, those other paths are guaranteed to take more hops to trace out.
+At this point you know for certain that you have found the shortest path between your source and destination vertices. It's possible and indeed likely that there are other paths available between these two vertices. However, since you are tracing out every possible path simultaneously and only extending them by one hop at a time, those other paths are guaranteed to take more hops to trace out that the one you have found.
 
 If this doesn't fully make sense then you can either Google "breadth first search", or continue reading this post without worrying too much. As potential users of this library we don't need to know anything about how it works internally. Do you know how your favorite programming language actually works? Me neither, but we're still both able to write programs with it just fine.
 
 ## How does a library look to its users?
 
-As users of Gianni's library, we only care whether the code is correct, reasonably efficient, and easy to use. We don't care at all whether the code inside it is neat or messy or well-commented or opaque, because we're never going to see any of these innards ourselves. All we're going to see are the names of the methods that the library exposes to us, and the forms of input and output that they expect.
+As users of Gianni's library, we only care whether its code is correct, reasonably efficient, and easy to use. We don't care at all whether its insides are neat or messy or well-commented or opaque, because we're never going to see any of these innards ourselves. All we're going to see are the names of the methods that the library exposes to us, and the forms of input and output that they expect.
 
-To illustrate the difference between a useable and a useless library, here's a simple example. Which of these functionally-equivalent chart-drawing libraries would you rather work with?
+To illustrate the difference between a usable and a useless library, here's a simple example. Which of these functionally-equivalent chart-drawing libraries would you rather work with?
 
 Number 1:
 
@@ -110,9 +108,9 @@ ch.do(
 Or number 2:
 
 ```python
-import charter
+import chartlib
 
-charter.draw_line_chart(
+chartlib.draw_line_chart(
     data,
     x_axis_label="Date",
     y_axis_label="Sales Volume",
@@ -128,7 +126,7 @@ When analyzing Gianni's code through this lens, I noted a few subtle ways in whi
 
 One of the library's most important functions is called `shortest_path`. This function takes in 3 arguments: a graph, a source vertex, and a destination vertex. As you might expect, it finds and returns the shortest path through the graph from the source to the destination. This is exactly the kind of function that is well-suited to being performed by a library. When writing our journey-planner product, we want to handle all of the parts of the code that are specific to our business - rendering the output maps, finding the user's location, showing them lots of adverts, and so on. But there's no reason for us to re-implement a core, generic computer science algorithm; much better to outsource this type of work to a dedicated, battle-tested algorithmic library like Gianni's.
 
-However, from our outside perspective, `shortest_path` comes with a substantial irritation. Its output is a single string of the names of the vertices on the shortest path, joined together with ASCII arrows. For example, `"10->5->2-15"`. Suppose that we wanted to use this output to draw a route on a map, and to display this map in a webpage to our user (along with lots and lots of advertisements). In order to display each vertex on our map individually, we'd have to split the string returned by `shortest_path` (in the form `"10->5->2-15"`) back into its component vertixes. This is a perfectly doable task, but also an annoying and unnecessary one.
+However, from our outside perspective, `shortest_path` comes with a substantial irritation. Its output is a single string of the names of the vertices on the shortest path, joined together with ASCII arrows. For example, `"10->5->2-15"`. Suppose that we wanted to use this output to draw a route on a map, and to display this map in a webpage to our user (along with lots and lots of advertisements). In order to display each vertex on our map individually, we'd have to split the string returned by `shortest_path` (in the form `"10->5->2-15"`) back into its component vertices. This is a perfectly doable task, but also an annoying and unnecessary one.
 
 Instead, I would much prefer it if `shortest_path` returned a *list* of the vertices on the shortest path (eg. `['10','5','2','15']`). This would give us maximum flexibility to decide how we want to present the results to our customers. `shortest_path`'s job should only be to calculate data; it shouldn't make any assumptions about how the caller wants to display it.
 
@@ -182,7 +180,7 @@ def bfs_traversal(graph, source_vertex):
 
 We've seen how we can analyze the exterior of a piece code from a user's perspective, without having to know anything about what goes on inside. This idea is not specific to programming; we can (and do) critique the user interfaces of complex gadgets without needing to know how they work inside. We might not care to learn how to build a smartphone, but we can still give useful feedback on how one feels to use. Think about how your code might look to someone on the outside who doesn't care how it works and just wants it to be simple and intuitive to work with.
 
-Next week we'll continue to look at Gianni's library, and suggest some more ways in which he could make it more convenient for a journey-planner-programmer in a hurry.
+Next week we'll continue to look at Gianni's library, and suggest some more ways in which he could make it more convenient to use for a journey-planner-programmer in a hurry.
 
 Until we meet again:
 
