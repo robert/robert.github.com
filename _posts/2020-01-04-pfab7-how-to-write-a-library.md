@@ -7,7 +7,7 @@ redirect_from:
   - /pfab7
 published: false
 ---
-> Welcome to week 6 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I highlight the things that I like and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to bring their program up to the next level.
+> Welcome to week 7 of Programming Feedback for Advanced Beginners. In this series I review a program [sent to me by one of my readers][feedback]. I highlight the things that I like and discuss the things that I think could be better. Most of all, I suggest small and big changes that the author could make in order to bring their program up to the next level.
 >
 > (To receive all future PFABs as soon as they’re published, [subscribe by email][subscribe] or [follow me on Twitter][twitter]. For the chance to have your code analyzed and featured in future a PFAB, [go here][feedback]) 
 
