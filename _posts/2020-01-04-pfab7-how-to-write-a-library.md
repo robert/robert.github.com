@@ -12,7 +12,7 @@ redirect_from:
 
 This week we're going to peruse a program sent to me by Gianni Perez, a security analyst from the US of A. He spends most of his days searching for exploits and vulnerabilities, not building and maintaining large software projects, but he'll frequently throw together quick scripts to automate parts of his work. He says that he's always looking to improve his programming skills, and he asked me to take a look at a small project he recently finished.
 
-Gianni's program is an implementation of the *breadth-first search* algorithm for finding the shortest path from A to B. A variation of breadth-first search (called [*Djikstra's Algorithm*][djikstra]) is used by car and train journey-planners to find you the best route from here to there (and show you adverts at the same time).
+Gianni's program is an implementation of the *breadth-first search* algorithm for finding the shortest path from A to B. A variation of breadth-first search (called [*Dijkstra's Algorithm*][djikstra]) is used by car and train journey-planners to find you the best route from here to there (and show you adverts at the same time).
 
 Breadth-first search is a staple of computer science undergraduate courses, although it's relatively rare that a real person has to implement it this outside of a university lab or an ill-conceived whiteboard job interview. Nonetheless, as we'll see, doing so can still be a satisfying and educational exercise.
 
