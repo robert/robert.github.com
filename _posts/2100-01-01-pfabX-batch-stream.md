@@ -7,23 +7,23 @@ published: false
 
 How many WhatsApp messages do you think you've exchanged with your best friend? Adarsh Rao, PFAB reader, wanted to find out. He downloaded his WhatsApp message logs and wrote a program to analyze his conversations. He found that he and his best friend had sent each other a respectable 110,000 words. "We've essentially written 2 novels between us if my Google search for 'average novel length' is at all accurate," he notes.
 
-Adarsh's program already works perfectly. But he wants to know how he can make it cleaner and tidier, and I've got a couple of suggestions for him. This week, I'd like to talk about the high-level structure of Adarsh's program. In particular I'd like to discuss a common tradeoff in data processing: *batch* or *streaming*? By pondering this question, we'll learn not only how to construct data pipelines, but also how to evaluate the tradeoffs between different ways of solving problems.
+Adarsh's program already works perfectly. But he wants to know how he can make it cleaner and tidier, and I've got a couple of suggestions for him. This week, I'd like to talk about the high-level structure of Adarsh's program. In particular I'd like to discuss a common tradeoff in data processing: *batch* or *streaming*? Today we'll learn what these words mean, how we can use them to construct data processing pipelines, and how to evaluate the tradeoffs between different ways of solving problems.
 
 ## Batch or streaming?
 
-A WhatsApp message log looks like this:
+A WhatsApp message log file looks like this:
 
 ```
-7/28/19, 10:56 PM - Harold: Hi. This is a business enquiry requesting a picture of your Dog.
-7/28/19, 10:56 PM - Kumar: Hi, yes
-7/28/19, 10:57 PM - Kumar: Thank you for getting in touch with us
-7/28/19, 10:57 PM - Kumar: We are assigning a representative to fulfil your request
-7/28/19, 10:57 PM - Kumar: Please hold
+7/28/19, 10:56 PM - Kimi: Hi. This is a business enquiry requesting a picture of your Dog.
+7/28/19, 10:56 PM - Guarav: Hi, yes
+7/28/19, 10:57 PM - Guarav: Thank you for getting in touch with us
+7/28/19, 10:57 PM - Guarav: We are assigning a representative to fulfil your request
+7/28/19, 10:57 PM - Guarav: Please hold
 ```
 
-In order to analyze one of these log lines, Adarsh needs to:
+You can export your own WhatsApp chat history by using WhatsApp's ["export" feature][whatsapp-export]. In order to analyze a log line from his file, Adarsh needs to:
 
-1. Load a log line from a file (we'll start by assuming that each log line corresponds to a single message, although we'll see later that this is not always the case)
+1. Load a log line from the file (we'll start by assuming that each log line corresponds to a single message, although we'll see later that this is not always the case)
 2. Parse the line to pull out the name, date, time, and contents of the message
 3. Calculate some statistics about the message - how long is its body, roughly how long did it take to type, etc?
 4. Add these individual message statistics into aggregate statistics about the total number, average length, etc. of messages in the conversation
@@ -58,7 +58,7 @@ In a streaming approach, Adarsh would do the opposite. He would load one line fr
 +-------+       +-------+       +-------+
 ```
 
-As is so often the case, neither batch or streaming is intrinsically better than the other, and the right approach depends entirely on context. For example, you're more likely to prefer a streaming system when you're processing new data in realtime as it comes in, and are more likely to prefer a batch system for background systems that need to process big chunks of data at once. As we'll see next week, you often want to take a hybrid approach that gives you the best of both worlds.
+As is so often the case, neither batch or streaming is intrinsically better than the other, and the appropriate approach depends entirely on the context. For example, you're more likely to prefer a streaming system when you're processing new data in realtime as it comes in, and are more likely to prefer a batch system for background systems that need to process big chunks of data at once. As we'll see next week, you often want to take a hybrid approach that gives you the best of both worlds.
 
 Let's look at some of the advantages, disadvantages, and general properties of batch and streaming pipelines.
 
@@ -87,7 +87,7 @@ else
 end
 ```
 
-A second advantage of a batch approach is that it requires fewer trips to the original source of the data. This is not particularly relevant for our situation, since reading data from a file is a very fast operation that we don't need to optimize. However, suppose that we were instead loading our raw log data from a database. Suppose also that every query to this database takes at least 1 second to execute, since the program has to go through the niceties of establishing a new connection to the database, as well as sending each query on a roundtrip to the database and back. A full streaming approach, where we repeatedly query for a single record at a time (the equivalent of reading a single line from a file at a time) would make us pay this fixed overhead of 1 second for every single record, making our program very inefficient. By contrast, a batch process where we query for and process big chunks of data all at once would allow us to *amortize* the fixed query cost over a large number of rows.
+A second advantage of a batch approach is that it requires fewer trips to the original source of the data. This is not particularly relevant for our situation, since reading data from a file is a relatively fast operation that we don't need worry about optimizing until our system reaches a much large scale. However, suppose that we were instead loading our raw log data from a database. Suppose also that every query to this database takes at least 1 second to execute, since the program has to go through the niceties of establishing a new connection to the database, as well as sending each query on a roundtrip to the database and back. A full streaming approach, where we repeatedly query for a single record at a time (the equivalent of reading a single line from a file at a time) would make us pay this fixed overhead of 1 second for every single record, making our program very inefficient. By contrast, a batch process, in which we query for and process big chunks of data all at once, would allow us to *amortize* the fixed query cost over a large number of rows.
 
 We don't even have to load and process *every* row at once in order to use a batch approach. Maybe we process our data by loading it in batches of 10, 100, 1000, however many records. In fact, when you think about it, streaming is just batch with a batch size of 1 (woah). We'll blur these lines even more next week, but for this week we'll stick with the pure dichotomy between batch and streaming.
 
@@ -99,7 +99,7 @@ parsed_messages = parse_raw_log(raw_log)
 message_stats = calculate_stats(parsed_messages)
 ```
 
-When this (or any other) program runs, it stores its internal state and data in memory, including the data that is stored in variables. In this program, we start by reading the entire log file all at once. We assign the result of this read to a variable called `raw_log`. If the log file is 10MB in size then this variable will probably take up roughly 10MB of memory.
+When this (or any other) program runs, it stores its internal state and data in memory, including the data that is stored in variables. In this program, we start by reading the entire log file all at once. We assign the result of this read to a variable called `raw_log`. If the log file is 10MB in size then it's reasonable to estimate that this variable will take up roughly 10MB of memory.
 
 Next, we parse all of these raw log lines and assign the result to another variable, `parsed_messages`. Since the data in `parsed_messages` is essentially the same as that in `raw_log` but in a different form, `parsed_messages` probably takes up about the same amount of memory again as `raw_log`. We're therefore using at least 20MB of memory to process a 10MB file. This isn't the end of the world, but it is a shame.
 
@@ -119,21 +119,22 @@ end
 
 Ruby's `each_line` method reads the open file one line at a time, and passes each line into the *block* (the code between `do` and `end`) to be processed. `each_line` doesn't read another line from the file until the block has finished executing for the previous one.
 
-Inside the block we use `parse_raw_log_line` to parse the single line into a single message, and then use `add_message_to_stats` to add the message into our aggregate stats-so-far. Once the block has finished executing, the Ruby *interpreter* (the program that executes our Ruby code) is able to throw away (or *garbage collect*) the data for both the raw line and processed message, since it can see that the program won't reference them again. This means that the Ruby interpreter can reuse the piece of memory in which they were stored to load the next line and message.
+Inside the block we use `parse_raw_log_line` to parse the single line into a single message, and then use `add_message_to_stats` to add the message into our aggregate stats-so-far. Once the block has finished executing, the Ruby *interpreter* (the program that executes our Ruby code) is able to throw away (or *garbage collect*) the data for both the raw line and processed message, since it can see that the program won't reference them again. This means that the Ruby interpreter can reuse the piece of memory in which they were stored to store future values instead.
 
 Our streaming program therefore requires much less memory to run than our batch one. It doesn't need to simultaneously hold in memory the entire raw contents of the file, plus the entire processed output. Instead, at any one time it only needs to store a single raw line and a single processed message.
 
-Note that my claims of memory optimization are a high-level simplification; the exact behavior of the Ruby interpreter is more complex and harder to predict than this. However, we can still say with confidence that the streaming program will use less memory than the batch, even if we can't say exactly how much less without measuring.
+Note that my claims of memory optimization are a high-level simplification, and the exact behavior of the Ruby interpreter is complex and hard to predict. However, we can still say with confidence that the streaming program will use less memory than the batch, even if we can't say exactly how much less without measuring.
 
 ## Code cleanliness
 
 "You said that streaming code is often more complex than batch code, but that streaming code snippet you wrote just now didn't look too bad," I hear you say. No, but that was on easy mode. As I mentioned briefly at the start of this post, WhatsApp message logs aren't arranged neatly, one per line. Instead, if a message body contains a newline, the message logs will contain a newline too.
 
 ```
-7/28/19, 11:07 PM - Kumar: With my family. And I have very few photos of him on this device
-7/28/19, 11:07 PM - Harold: Here's an idea for the next time you return. 
-Sample Message that is split over two-lines. 
-7/30/19, 11:03 PM - Kumar: More messages
+7/28/19, 11:07 PM - Guarav: I'm going to write a message split over many lines.
+This is a new line but the same message.
+This is another new line.
+I'm out of control.
+7/30/19, 11:03 PM - Kimi: Well I never.
 ```
 
 This unfortunate fact messes up our nice simple rule of "one log line per message", and makes both our batch and streaming approaches more complex. Now when we're processing a log line, we don't immediately know whether it is the end of the message or whether the message will be continued on the next line. We only know that a message has ended when we process the next log line and find that a new message has started. Then we have to go *back* to the message that we were previously assembling, and add it to our stats and do whatever other processing we want to do on it, before resuming our parsing of our *new* message.
@@ -146,6 +147,7 @@ Nonetheless, it is entirely possible to incorporate this new logic into a stream
 stats = {}
 current_message = nil
 File.readlines("samplelog.txt") do |l|
+  # This method defined elsewhere
   parsed_line = parse_raw_log_line(l)
 
   # If this line is a new message, add the previous
@@ -216,3 +218,4 @@ Find out in next week's edition of Programming Feedback for Advanced Beginners.
 [sol1]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/8d5aa5fd0d2c584989749b7a191590bed9dc0a90
 [sol2]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/0c2a12270960167dda364131ee34b4c7d338144b
 [sol3]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/a3311e0dec50ccdebc36b3cb047c2f2fa80da4d1
+[whatsapp-export]: https://faq.whatsapp.com/en/android/23756533/
