@@ -40,7 +40,9 @@ These are the main ways in which users directly interact with the Steveslist pla
 In addition, we also provide an API that allows programmers to build power-tools on top of the Steveslist platform that, for example, create listings for hundreds of items programatically. To support this, we offer:
 
 * A Steveslist API
-* Steveslist API client libraries
+* Steveslist API *client libraries* that make it easy for programmers to write code that talks to our API
+
+Here, I'll draw a diagram on the whiteboard:
 
 ```
 +-----------+   +--------------+   +-----------------+
@@ -67,6 +69,16 @@ Finally, we have many, many services running in the background that provide the 
 * And many more that we'll talk about another day
 
 Let's go through each of these systems in turn. [Let me know][about] if anything isn't clear or you have any questions.
+
+## What is a server really?
+
+Before we start, let's define some important terms. In fact, let's just define one. We're going to talk a lot about "servers" today. But what is a server, when you really get down to it?
+
+For our purposes, a server is a computer that runs on a network and listens for communications from other computers. When it receives data from another computer it performs some sort of action in response and - usually - sends back some data of its own. For example, a web server listens on a network for HTTP requests and sends back webpages and information in response. A database server listens for database queries and reads and writes data the the database that it is running.
+
+This brief description skips out entire degrees and careers of detail, and there are of course far more precise and accurate ways to define the word "server". But this should get us through until dinnertime. What did you say? What's a "network" really? A good question for another day.
+
+Now we're ready to talk about the Steveslist platform.
 
 ## Steveslist web app
 
@@ -254,7 +266,7 @@ There are tradeoffs involved here that require clear communication and a surpris
 
 ----
 
-"What do you think so far?" asks Kate. "Is this roughly what you've been thinking?" You make a non-committal face and take a big bite of a nearby sandwich in order to preclude any further discussion.
+"What do you think so far?" asks Kate. "Is this roughly what you've been thinking?" You make a non-committal face and take a big bite of a nearby sandwich in order to preclude any further discussion. Kate continues:
 
 ----
 
@@ -585,7 +597,7 @@ We've said that Elasticsearch is somewhat less reliable than most SQL databases.
 
 --------
 
-It's 6pm, and the library is closing. A librarian tries to ask you to leave. You shoo him away with a barrage of crumpled-up balls of paper.
+It's 6pm, and the library is closing. A librarian tries to ask you to leave. Kate shoos him away with a barrage of crumpled-up balls of paper.
 
 --------
 
