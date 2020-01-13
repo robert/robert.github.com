@@ -3,34 +3,40 @@ layout: post
 title: How to run The Hive on AWS ElasticSearch
 published: false
 ---
-When my team at Stripe began setting up The Hive, my first thought was "I really hope we don't have to manage an ElasticSearch cluster".
+When my team at Stripe began setting up [The Hive][thehive], my first thought was "I really hope we don't have to manage an ElasticSearch cluster".
 
-[The Hive][thehive] is an security incident response tool. I'm sure many people would be offended if I described it as JIRA for security incidents, but you can't please everyone all the time. The Hive stores its data in ElasticSearch. Version 4 of The Hive, currently in development, is being built on top of a graph database, but is not yet ready for production use. Since The Hive is open source software that you deploy on your own infrastrucutre, if you want to use The Hive then you're going to need an ElasticSearch database.
+The Hive is an security incident response tool. I'm sure many people would be offended if I described it as JIRA for security incidents, but you can't please everyone all the time. When my team and I began to plan our deployment of it, one of our primary goals was to minimize its operational burden. Our core competency is catching hackers, not Googling "elasticsearch wont turn on please help me". As part of this effort, we wanted to run The Hive on top of AWS's [managed ElasticSearch product][awses], instead of maintaining our own cluster. Until recently, doing so would have been impossible. However, thanks to a small change in v3.4.0 of The Hive, now it is straightforward.
 
-I know that ElasticSearch is highly scalable and distributed and all the rest of it, but Stripe doesn't yet have a team that will set up and run a cluster on my team's behalf. My team's core competency is catching hackers, not Googling "elasticsearch wont turn on please help me". I personally have no appetite for learning how to replicate data across multiple machines, how to make and restore backups, or how to automatically verify that these backups are actually working. I'm sure that everything would probably work out fine if we just ran the entire database on a single machine and stitched together a cron job to make a backup every now and then, but the 1% of infinite parallel Roberts whose database got destroyed and whose backups weren't working would sure be grumpy with me if that was the way we went.
+Here's what to do.
 
-Because of this, I hoped that we could use AWS's managed ElasticSearch product. AWS might be expensive, but it takes good care of many of the things that I don't want to, and Stripe shouldn't put a price on my happiness. However, until recently, doing so was impossible. Clients can communicate with ElasticSearch over two protocols - a Java binary protocol, and HTTP. Until v3.4, The Hive communicated with its ElasticSearch backend using the Java binary protocol. However, AWS ElasticSearch only supports the HTTP protocol. This meant that anyone hoping to use The Hive was also going to have to manage their own ElasticSearch cluster. The internet was littered with hopeful threads asking "can I use The Hive with AWS ElasticSearch?" and sad answers saying "no".
+## Background
 
-Fortunately for the lazy among us, in v3.4.0 The Hive switched to communicating with ElasticSearch over the HTTP protocol. This made it possible to run it using AWS ElasticSearch. All doing so requires is a little extra plumbing.
+The Hive stores its data in [ElasticSearch][es]. Version 4 of The Hive, currently in development, is being built on top of a graph database, but is not yet ready for production use. The Hive is open source software that you deploy on your own infrastrucutre, and so if you want to use it then you're going to need an ElasticSearch database.
+
+I know that ElasticSearch is highly scalable and distributed and all the rest of it, but Stripe doesn't yet have a team that will set up and run a cluster on my team's behalf. I personally have no appetite for learning how to replicate data across multiple machines, how to make and restore backups, or how to automatically verify that these backups are actually working. I'm sure that everything would probably work out fine if we just ran the entire database on a single machine and stitched together a cron job to save a backup every now and then, but the 1% of infinite parallel Roberts whose database got destroyed and whose backups weren't working would sure be grumpy about it.
+
+This is why I hoped that we could use AWS's managed ElasticSearch product. AWS might be expensive, but it takes good care of many of the things that I don't want to, and Stripe shouldn't put a price on my happiness. However, until recently, doing so was impossible. ElasticSearch accepts requests over two different protocol - a binary protocol and HTTP. Until v3.4, The Hive communicated with its ElasticSearch backend using the binary protocol. However, AWS ElasticSearch [only supports HTTP][awshttp]. This meant that The Hive could not communicate with it, and that anyone hoping to use The Hive was also going to have to manage their own ElasticSearch cluster. The internet was littered with hopeful threads asking ["can I use The Hive with AWS ElasticSearch?"][caniuse] and sad answers saying "no".
+
+Fortunately for the lazy among us, in v3.4.0 The Hive switched to communicating with ElasticSearch over HTTP. This made it possible to run The Hive using AWS ElasticSearch. All you need is a little extra plumbing.
 
 ## Signing AWS ElasticSearch requests
 
-AWS ElasticSearch requires every request to it to be [signed using the requestor's AWS access key][sign]. However, since The Hive doesn't know anything about AWS, it won't sign any of its requests. This means that even if you set up an AWS ElasticSearch cluster and correctly point The Hive at it, the cluster will reject all queries that The Hive sends it, because they have not been signed.
+In order to run The Hive on top of AWS ElasticSearch, the biggest problem that needs solving is that AWS ElasticSearch requires every request to it to be [signed using the requestor's AWS access key][sign]. Since The Hive doesn't know anything about AWS, it doesn't sign any of its requests. This means that even if you set up an AWS ElasticSearch cluster and correctly pointed The Hive at it, the cluster would reject all queries that The Hive sent to it, because they would not have been signed.
 
-We can get around this obstacle by writing a tiny *signing proxy* (technically a *reverse proxy*). This is a small web server that sits in between The Hive and AWS ElasticSearch. It accepts requests from The Hive, signs them, and forwards the signed request on to AWS ElasticSearch.
+We can get around this obstacle by writing a tiny *signing proxy*. This is a small HTTP web server that sits in between The Hive and AWS ElasticSearch. It accepts requests from The Hive, signs them, and forwards the signed requests on to AWS ElasticSearch.
 
 ```
-                  1.Unsigned               2.Signed
-                   request                  request
-+-----------------+      +-----------------+       +-----------------+
-|                 |----->|                 |------>|                 |
-|    The Hive     |      |  Signing Proxy  |       |AWS ElasticSearch|
-|                 |<-----|                 |<------|                 |
-+-----------------+      +-----------------+       +-----------------+
-                 4.Response                3.Response
+            1.Unsigned         2.Signed
+             request             request
++-----------+      +-----------+       +-----------+
+|           |----->|           |------>|    AWS    |
+| The Hive  |      |  Signing  |       |  Elastic  |
+|           |<-----|   Proxy   |<------|  Search   |
++-----------+      +-----------+       +-----------+
+           4.Response          3.Response
 ```
 
-Since the request is now properly signed, AWS ElasticSearch accepts it. It runs the query contained in the request, and sends any response back to the signing proxy. Finally, the signing proxy forwards the response back to The Hive. Note that The Hive doesn't need to care or know anything about the chicanery that the signing proxy and AWS ElasticSearch perform with each other behind the scenes. All The Hive cares about is that it can send ElasticSearch requests to the signing proxy, and get back ElasticSearch responses.
+Since the requests are now properly signed, AWS ElasticSearch accepts them. It runs the queries contained in the requests, and sends any responses back to the signing proxy. Finally, the signing proxy forwards the responses back to The Hive. Note that The Hive doesn't need to care or know anything about the chicanery that the signing proxy and AWS ElasticSearch perform with each other behind the scenes. All The Hive cares about is that it can send ElasticSearch requests to the signing proxy, and get back ElasticSearch responses.
 
 ## How to write a signing proxy
 
@@ -40,13 +46,13 @@ AWS signing proxies exist in various forms and languages already - Google "aws s
 
 ### Where to run it
 
-You can either run your signing proxy on the same hosts as The Hive, or different ones. Running it on the same hosts as The Hive is probably simpler and gives you fewer servers to maintain, but running it on separate servers is also entirely acceptable.
+You can either run your signing proxy on the same hosts as The Hive, or on different ones. Running your proxy on the same hosts as The Hive is probably simpler and means that you will have fewer servers to maintain, but running it on separate servers is also entirely acceptable.
 
-Whichever approach you choose, you should ideally have both The Hive and the signing proxy running on multiple servers for redundancy in case one of your servers explodes. Hosts running one or both of these services are almost entirely stateless (apart from The Hive's "streaming" service, which you can survive without), since they aren't hosting the ElasticSearch database. This means that you should be able to safely add or remove hosts from your rotation at will.
+Whichever approach you choose, you should ideally have both The Hive and the signing proxy running on multiple servers for redundancy in case one of them explodes. Servers running one or both of these services are almost entirely stateless (apart from The Hive's "streaming" service, which you can survive without), since they aren't hosting the ElasticSearch database. This means that you should be able to safely add or remove hosts from your rotation at will.
 
 ### Configuring The Hive
 
-If you run the signing proxy on the same hosts that you run the Hive on then you should configure The Hive to connect to its database at `localhost:$PORT_NUMBER`. For example, if you run the signing proxy on port `1234`:
+If you run the signing proxy on the same hosts that you run the Hive on then you should configure The Hive to connect to its database at `localhost:$PORT_NUMBER`. For example, if you run the signing proxy on port `1234`, your `application.conf` should read:
 
 ```
 search {
@@ -54,7 +60,7 @@ search {
 }
 ```
 
-If you instead choose to run the signing proxy on different hosts then you should configure The Hive to connect to its database at the address of the load balancer in front of the signing proxy hosts (or however you distribute traffic inside your environment):
+If you instead choose to run the signing proxy on different hosts to The Hive then you should configure The Hive to connect to its database at the address of the load balancer in front of the signing proxy hosts (or however you distribute traffic inside your environment):
 
 ```
 search {
@@ -75,3 +81,7 @@ Running The Hive with AWS ElasticSearch is a pragmatic choice for the resource-c
 [iam]: https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-ac.html
 [thehive]: https://thehive-project.org/
 [sign]: https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html
+[awses]: https://aws.amazon.com/elasticsearch-service/
+[es]: https://www.elastic.co/
+[awshttp]: https://stackoverflow.com/a/33425725
+[caniuse]: https://github.com/TheHive-Project/TheHive/issues/1145
