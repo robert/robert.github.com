@@ -1,19 +1,22 @@
 ---
 layout: post
-title: How to run The Hive on AWS ElasticSearch
-published: false
+title: How to set up The Hive on AWS ElasticSearch
+tags: [Security]
+og_image: https://robertheaton.com/images/hive-aws-es-cover.png
 ---
 When my team at Stripe began setting up [The Hive][thehive], my first thought was "I really hope we don't have to manage an ElasticSearch cluster".
 
-The Hive is an security incident response tool. I'm sure many people would be offended if I described it as JIRA for security incidents, but you can't please everyone all the time. When my team and I began to plan our deployment of it, one of our primary goals was to minimize its operational burden. Our core competency is catching hackers, not Googling "elasticsearch wont turn on please help me". As part of this effort, we wanted to run The Hive on top of AWS's [managed ElasticSearch product][awses], instead of maintaining our own cluster. Until recently, doing so would have been impossible. However, thanks to a small change in v3.4.0 of The Hive, now it is straightforward.
+<img src="/images/hive-aws-es-cover.png" />
 
-Here's what to do.
+The Hive is an security incident response tool. I'm sure many people would be offended if I described it as JIRA for security incidents, but you can't please everyone all the time. When my team and I began to plan our deployment of it, one of our primary goals was to minimize its operational burden. Our core competency is catching hackers, not Googling "elasticsearch wont turn on please help me". Because of this, we wanted to run The Hive on top of AWS's [managed ElasticSearch product][awses], instead of maintaining our own cluster. Until recently, doing so would have been impossible. However, thanks to a small change in v3.4.0 of The Hive, now it is straightforward.
+
+Here's how you do it.
 
 ## Background
 
 The Hive stores its data in [ElasticSearch][es]. Version 4 of The Hive, currently in development, is being built on top of a graph database, but is not yet ready for production use. The Hive is open source software that you deploy on your own infrastrucutre, and so if you want to use it then you're going to need an ElasticSearch database.
 
-I know that ElasticSearch is highly scalable and distributed and all the rest of it, but Stripe doesn't yet have a team that will set up and run a cluster on my team's behalf. I personally have no appetite for learning how to replicate data across multiple machines, how to make and restore backups, or how to automatically verify that these backups are actually working. I'm sure that everything would probably work out fine if we just ran the entire database on a single machine and stitched together a cron job to save a backup every now and then, but the 1% of infinite parallel Roberts whose database got destroyed and whose backups weren't working would sure be grumpy about it.
+I know that ElasticSearch is highly scalable and distributed and all the rest of it, but Stripe doesn't yet have a team that will set up and run a cluster on my team's behalf. I personally have no appetite for learning how to replicate data across multiple machines, how to make and restore backups, or how to automatically verify that these backups are actually working. I'm sure that everything would probably work out fine if we just ran the entire database on a single machine and stitched together a cron job to save a backup every now and then, but the 1% of infinite parallel Roberts whose databases got destroyed and whose backups weren't working would sure be grumpy about it.
 
 This is why I hoped that we could use AWS's managed ElasticSearch product. AWS might be expensive, but it takes good care of many of the things that I don't want to, and Stripe shouldn't put a price on my happiness. However, until recently, doing so was impossible. ElasticSearch accepts requests over two different protocol - a binary protocol and HTTP. Until v3.4, The Hive communicated with its ElasticSearch backend using the binary protocol. However, AWS ElasticSearch [only supports HTTP][awshttp]. This meant that The Hive could not communicate with it, and that anyone hoping to use The Hive was also going to have to manage their own ElasticSearch cluster. The internet was littered with hopeful threads asking ["can I use The Hive with AWS ElasticSearch?"][caniuse] and sad answers saying "no".
 
@@ -21,7 +24,7 @@ Fortunately for the lazy among us, in v3.4.0 The Hive switched to communicating 
 
 ## Signing AWS ElasticSearch requests
 
-In order to run The Hive on top of AWS ElasticSearch, the biggest problem that needs solving is that AWS ElasticSearch requires every request to it to be [signed using the requestor's AWS access key][sign]. Since The Hive doesn't know anything about AWS, it doesn't sign any of its requests. This means that even if you set up an AWS ElasticSearch cluster and correctly pointed The Hive at it, the cluster would reject all queries that The Hive sent to it, because they would not have been signed.
+In order to run The Hive on top of AWS ElasticSearch, the biggest problem that you need to solve is that AWS ElasticSearch requires every request to it to be [signed using the requestor's AWS access key][sign]. Since The Hive doesn't know anything about AWS, it doesn't sign any of its requests. This means that even if you set up an AWS ElasticSearch cluster and correctly pointed The Hive at it, the cluster would reject all queries that The Hive sent to it, because they would not have been signed.
 
 We can get around this obstacle by writing a tiny *signing proxy*. This is a small HTTP web server that sits in between The Hive and AWS ElasticSearch. It accepts requests from The Hive, signs them, and forwards the signed requests on to AWS ElasticSearch.
 
@@ -74,7 +77,7 @@ You'll need to setup your [AWS IAM permissions][iam] so that the hosts running t
 
 ## In conclusion
 
-Running The Hive with AWS ElasticSearch is a pragmatic choice for the resource-constrained, non-Elastic-expert incident response team. [Let me know how you get on][twitter] or if you have any questions or comments.
+Running The Hive with AWS ElasticSearch is a pragmatic choice for the resource-constrained, non-Elastic-expert incident response team. [Let me know how you get on][twitter] or if you have any questions or suggestions.
 
 [es-actions]: https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-ac.html
 [twitter]: https://twitter.com/robjheaton

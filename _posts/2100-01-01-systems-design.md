@@ -30,14 +30,16 @@ Kate takes a deep breath and paints an extremely detailed vision of the Stevesli
 
 ----
 
-Fast forward five years into the future (says Kate). Steveslist has two main consumer-facing products:
+Before we start (says Kate), I want to make it clear that I'm not saying that any of this is necessarily the "right" way to set up our infrastructure. If someone you trust more than me says something different then you should probably do what they say. There are many tools out there, each with different strengths and weaknesses, and many ways to build a technology company.
+
+In practice, I'm sure that the real, honest reasons we will make many of our technological choices will be "we chose X because Sara knows a lot about X" and "we chose Y on the spur of the moment when it didn't seem like a big decision and we never found the time to re-evaluate."
+
+Nonetheless, let's fast-forward five years into the future. Steveslist has two main consumer-facing products:
 
 * The Steveslist web app
 * The Steveslist smartphone apps
 
-These are the main ways in which users directly interact with the Steveslist platform.
-
-In addition, we also provide an API that allows programmers to build power-tools on top of the Steveslist platform that, for example, create listings for hundreds of items programatically. To support this, we offer:
+These are the main ways in which users directly interact with the Steveslist platform. In addition, we also provide an API that allows programmers to build power-tools on top of the Steveslist platform that, for example, create listings for hundreds of items programmatically. To support this, we offer:
 
 * A Steveslist API
 * Steveslist API *client libraries* that make it easy for programmers to write code that talks to our API
@@ -62,19 +64,19 @@ Finally, we have many, many services running in the background that provide the 
 * User password authentication - to securely log users in
 * SQL database - the main Steveslist data store. Needs to be highly scalable and reliable
 * Free-text searching system - to power the search box where people can look for broad search terms like "TVs" or "motorbikes"
-* Internal tools - to help us administrate the Steveslist platform, and to take actions like issuing sternly-worded warnings to malicious users
+* Internal tools - to help us administer the Steveslist platform, and to take actions like issuing sternly-worded warnings to malicious users
 * Cron jobs - to run regular tasks that do anything from generating invoices, to billing customers, to sending as much of our users' data as possible to third-party ad networks
-* "Pub/sub" system - to allow us to take asynchronous actions on different trigger events (such as "when a new user signs up, send them a welcome email")
+* "Pubsub" system - to allow us to take asynchronous actions on different trigger events (such as "when a new user signs up, send them a welcome email")
 * Big data analytics system - to allow us to run enormous queries over the entirety of Steveslist's data
 * And many more that we'll talk about another day
 
-Let's go through each of these systems in turn. [Let me know][about] if anything isn't clear or you have any questions.
+Let's go through each of these systems in turn. [Let me know][about] if anything isn't clear, if you have any questions, or if you think I've got something wrong.
 
-## What is a server really?
+## Before we start - what is a server really?
 
 Before we start, let's define some important terms. In fact, let's just define one. We're going to talk a lot about "servers" today. But what is a server, when you really get down to it?
 
-For our purposes, a server is a computer that runs on a network and listens for communications from other computers. When it receives data from another computer it performs some sort of action in response and - usually - sends back some data of its own. For example, a web server listens on a network for HTTP requests and sends back webpages and information in response. A database server listens for database queries and reads and writes data the the database that it is running.
+For our purposes, a server is a computer that runs on a network and listens for communications from other computers. When it receives some data from another computer it performs some sort of action in response and - usually - sends back some data of its own. For example, a web server listens on a network for HTTP requests and sends back webpages and information in response. A database server listens for database queries and reads and writes data to the database that it is running.
 
 This brief description skips out entire degrees and careers of detail, and there are of course far more precise and accurate ways to define the word "server". But this should get us through until dinnertime. What did you say? What's a "network" really? A good question for another day.
 
@@ -118,7 +120,7 @@ SPAs are a lot of work to build and maintain, but they sure look good.
 
 We provide Steveslist smartphone apps for both iOS and Android. They are conceptually very similar to our single-page web app. Both our smartphone and web apps make HTTP requests to our servers. Then our servers receive these requests, do some work and return an HTTP response. Finally, both our smartphone and web apps update their display in order to communicate with the user.
 
-Since our smartphone apps are performing the same operations as the web app (for example, create listing, send message, etc), they can usually even send their requests to the exact same URLs as the web app. The only extra work that we have to do is to develop the frontends of the apps themselves.
+Since our smartphone apps are performing the same operations as the web app (for example, create listing, send message, etc), they can usually even send their requests to the exact same URLs as the web app. The only extra work that we have to do is to develop the frontends of the apps themselves. Some frameworks even make it possible to write mobile apps using JavaScript, allowing you to reuse code and logic across platforms.
 
 ## Steveslist API
 
@@ -151,7 +153,7 @@ Programmers use our API by writing code that makes HTTP requests to our *API end
 }
 ```
 
-This structured response format is very easy for a program to parse, which means that the code that made the reuqest can trivially interpret and use the data from our API.
+This structured response format is very easy for a program to parse, which means that the code that made the request can trivially interpret and use the data from our API.
 
 Users identify or *authenticate* themselves to our API using an API key. This is, roughly speaking, the API equivalent of a password. It is a long, random string that we generate and display on a user's "Settings" page. Users include their API key as an *HTTP header* with every HTTP request that they (or their code) makes to the API. When we receive an API request we check to see whether the attached API key corresponds to a Steveslist user. If it does then we perform the request on behalf of that user.
 
@@ -254,7 +256,7 @@ Shared secret key             |
 (eg. 123mhu23jy8xdwgmd...)+---+
 ```
 
-We include this signature with the webhook. When the seller's webhook-receiving server receives a webhook, it takes the shared secret and webhook contents and calculates what it expects the signature to be in exactly the same way that we did. It compares the result to the signature attached to the webhook; if they match then it accepts and processes the webhook. Since the signature can only be generated using the shared secret known only by us and the seller, the webhook-receiving server can be confident that the webhook was sent by us. If the signature don't match, however, the server rejects the webhook.
+We include this signature with the webhook. When the seller's webhook-receiving server receives a webhook, it takes the shared secret and webhook contents and calculates what it expects the signature to be in exactly the same way that we did. It compares the result to the signature attached to the webhook; if they match then it accepts and processes the webhook. Since the signature can only be generated using the shared secret known only by us and the seller, the webhook-receiving server can be confident that the webhook was sent by us. If the signatures don't match, however, the server rejects the webhook.
 
 Note that all of the signature verification code must be written and maintained by the sellers. We can provide them with encouragement and examples, but we can't force them to verify signatures correctly, or even at all. For some real-world examples, look at how [Stripe][stripe-webhooks] and [GitHub][github-webhooks] sign their webhooks.
 
@@ -291,7 +293,9 @@ A hash function is a "one-way" function that takes an input and deterministicall
             Impossible
 ```
 
-Since we only store the hash values of our users' passwords, if a hacker somehow stole our password database (heaven forbid) (touch wood) then they would only be able to see the passwords' hash values. They wouldn't be able to easily turn these hash values back into *plaintext* passwords, meaning that they wouldn't be able to use them to login to Steveslist, and they won't be able to take advantage of all the people who re-use passwords across different services. Since we only store password hash values, when we want to check whether a login password that a user has given us is correct we first calculate its hash value, and compare the result to the hash value in our password database.
+Since we only store the hash values of our users' passwords, if a hacker somehow stole our password database (heaven forbid) (touch wood) then they would only be able to see the passwords' hash values. They wouldn't be able to easily turn these hash values back into *plaintext* passwords, meaning that they wouldn't be able to use them to login to Steveslist, and they won't be able to take advantage of all the people who re-use passwords across different services.
+
+Since we only store password hash values, when we want to check whether a login password that a user has given us is correct we first calculate its hash value, and compare the result to the hash value in our password database.
 
 ```
                  +--------------+
@@ -332,7 +336,7 @@ We had to take an entirely new approach, and reconfigure our database to store i
 
 ### Sharding
 
-Sharding a database means splitting its data into chunks (or "shards") and storing each chunk on a separate machine. How you split your data depends on your application and the types of operations you will be performing. For Steveslist we chose to split out our data by user. This means that all of the data for a given user is stored on the same machine. This includes their profile information, their listings, their messages, and so on. Data that doesn't have a corresponding user (like "Deals of the Day") can be sharded using a *shard key* other than user, or not sharded at all if the dataset is sufficiently small.
+Sharding a database means splitting its data into chunks (or "shards") and storing each chunk on a separate machine. All of the machines that make up a database are together often known as a *database cluster*. How you split data between machine in your cluster depends on your application and the types of operations you will be performing. For Steveslist we chose to split out our data by user. This means that all of the data for a given user is stored on the same machine. This includes their profile information, their listings, their messages, and so on. Data that doesn't have a corresponding user (like "Deals of the Day") can be sharded using a *shard key* other than user, or not sharded at all if the dataset is sufficiently small.
 
 This means that we need an extra "routing" layer in front of our database, which knows which database machine is able to service which queries. We could either make our *application servers* (the servers that execute our code) responsible for knowing the mapping of user IDs to database shards, or have a centralized "router" that all servers send their requests to, and which is responsible for working out the appropriate machine to forward the request on to. Both approaches have their advantages. Making application servers responsible for maintaining the mapping reduces the number of hops that a request has to make, speeding them up. But having a centralized router makes updating the shard mapping much easier, since you only have to update it in one place.
 
@@ -402,7 +406,7 @@ If we have a centralized database router, we have a system that looks like this:
 
 How do we decide which database to assign each user to? However we want. We could start by saying that users with odd-numbered IDs are assigned to shard machine 1, and those with even-numbered ones are assigned to shard machine 2. We could hope that this random assignment results in balancing our data relatively evenly between our shards.
 
-However, it's possible that we might have a small number of power users who create much, much more data than others. Maybe they create so much data that we want to allocate them a shard of their own. This is completely fine - we have complete control over how users are assigned to shards. Random assignments are usually easiest, but are is by no means the only option. We can choose to assign users to shards randomly - except for user 367823, who is assigned to shard 15, which no other user is assigned to.
+However, it's possible that we might have a small number of power users who create much, much more data than others. Maybe they create so much data that we want to allocate them a shard of their own. This is completely fine - we have complete control over how users are assigned to shards. Random assignments are usually easiest, but are by no means the only option. We can choose to assign users to shards randomly - except for user 367823, who is assigned to shard 15, which no other user is assigned to.
 
 If a shard gets too big and starts to fill up its machine's hard-drive, we can split it up into multiple, smaller shards. How do we migrate the data to these new shards without having to turn off our platform for a while? Probably using a sequential process like:
 
@@ -450,7 +454,7 @@ Realtime replication has two main benefits. First, it means that if one of our d
 +-----------+      +-----------+
 ```
 
-Note that database replication is not the same concept as making database backups. Replication happens in (close to) realtime, and is designed to deal on-the-fly with isolated problems in your production systems. Database backups are performed on a schedule (for example, once a day), and the copies of the data are stored separately, away from your production systems. Backups are designed as a final safeguard against widespread, catastrophic data loss, as might happen if all your data centers burned down.
+Note that database replication is not the same concept as making database backups. Replication happens in (close to) realtime, and is designed to deal on-the-fly with isolated problems in your live (or *production*) systems. Database backups are performed on a schedule (for example, once a day), and the copies of the data are stored separately, away from production systems. Backups are designed as a final safeguard against widespread, catastrophic data loss, as might happen if all your data centers burned down.
 
 Pretend that you work in the call centre of a big bank, where people are constantly calling you up in order to send money transfers and ask about their current balance. Replication is the equivalent of hurriedly writing down transfer details into multiple books, as you receive them, just in case you lose one of the books. Making backups is the equivalent of photocopying those books once a day and storing the copies in your filing cabinet.
 
@@ -458,7 +462,7 @@ Pretend that you work in the call centre of a big bank, where people are constan
 
 The process of replication is conceptually quite straightforward. Whenever new data is written to our database, we copy it to multiple machines. This means that if/when a machine fails we can continue querying its siblings, with no user-facing impact. It also means that we can spread our queries out across multiple copies of the same data, resulting in faster query response times.
 
-However, the details of how we do this are important, subtle, and situation-dependent. There's no right way to do replication - as is so often case, the exact approach that you take depends on the specific requirements and constraints of your system.
+However, the details of how we do this are important, subtle, and situation-dependent. There's no right way to do replication - as is so often the case, the exact approach that you take depends on the specific requirements and constraints of your system.
 
 Replication is complicated by two inconvenient facts about the real world. First, database operations randomly fail sometimes. When we attempt to replicate our data from one server to another, things *will* occasionally go wrong, causing our machines to become out of sync, at least for a period. Second, even in periods of smooth operation, replication is not instantaneous. When new data is written to our database cluster, some servers in the cluster will always know about the update sooner than others. When choosing a replication strategy we must be aware of these limitations and how they impact our particular application. For example, maybe it's OK to risk the number of "likes" on a post being slightly out of sync and out of date, but not the amount of money in a user's bank account.
 
@@ -470,7 +474,7 @@ Replication can be handled either synchronously or asynchronously. These words c
 
 By contrast, if an action is performed "asynchronously" then this means that the initiator of the action doesn't wait around for it to be finished. Instead, they just continue with the rest of their work while the action is worked on in the background. The real Postal Service is asynchronous; you give your letter to a postal worker, then leave and continue with your life while the Postal Service delivers your letter. Asynchronous actions can send back notifications of the outcome of the action if they want ("Your letter has arrived and was signed for" or "Mr. Heaton, your dry-cleaning is ready"), but they don't have to.
 
-How does these principles apply to database replication? In synchronous replication, a client writes its new data to a database server and then waits. This server doesn't tell the client whether their write has been completed successfully until it has finished fully replicating the client's data across all of its sibling servers. Then, and only then, does the client continue executing the rest of its code.
+How do these principles apply to database replication? In synchronous replication, a client writes its new data to a database server and then waits. This server doesn't tell the client whether their write has been completed successfully until it has finished fully replicating the client's data across all of its sibling servers. Then, and only then, does the client continue executing the rest of its code.
 
 In asynchronous replication, the client writes its data to the first database server, as before. But this time the first server tells the client that the write was successful as soon as it has written the data to its own data store. It kicks off the replication process in the background, and doesn't wait for it to complete, or even start, before it tells the client that the write was successful. This means that the asynchronous operation appears much faster than the synchronous one, because the client doesn't have to wait for all the replication to complete before it can continue on with the rest of its work. However, if the background replication fails then the client will believe that it has successfully written its data to the database when it actually has not. This could cause problems, the imagination of which is left as an exercise for the reader.
 
@@ -568,13 +572,13 @@ WHERE
 
 However, the resulting query would be slow and cumbersome, and would still miss many important edge-cases that you hadn't thought of. And even if you did get back a useful list of search results, you'd still have a lot of work left to do in order to decide how to order them. The ordering you want isn't something strict like "most-recent first" or "alphabetically by title". Instead it's some much woolier notion of "best" or "most-relevant" first.
 
-All of this means that SQL databases are generally not very good at full-text searches. Fortunately, other types of database are, including one called *Elasticsearch*. Elasticsearch is often described as a *document-oriented database*. We don't need to go into the details of how exactly it works, but the important part for us is that, unlike SQL databases, Elasticsearch is very good at taking queries like "second-hand TV" and returning a list, ordered by "relevance", of the fuzzy matches that users have come to expect from their search engines.
+All of this means that SQL databases are generally not very good at full-text searches. Fortunately, other types of database are, including one called *Elasticsearch*. Elasticsearch is often described as a *document-oriented database*. We don't need to go into the details of how exactly it works, but the important part for us is that, unlike SQL databases, Elasticsearch is very good at taking queries like "second-hand TV" and returning a list, ordered by "relevance," of the fuzzy matches that users have come to expect from their search engines.
 
 "Sounds like Elasticsearch is just better than SQL," you might say. "Should we throw away our SQL databases and put everything in Elasticsearch instead?" Not so fast. Elasticsearch, and other databases like it, have their strengths, but they also have their weaknesses. They're typically somewhat less reliable than SQL databases, and are somewhat more likely to accidentally lose data at large scale. They're also often much slower to write new data to.
 
-In fact, for many jobs (data storage included) there's rarely a single, universally "best" tool. Instead, you have to consider the requirements of your particular system and match them to the strengths and weaknesses of your available options. At Steveslist, we care so much about making sure that we use the right tool for the right job that we store our data in both a SQL database *and* a document-oriented database like Elasticsearch.
+As we've already noted, there's rarely a single, universally "best" tool for any type of job. There's certainly no such thing as "the best" database. Instead, different databases have different strengths and weaknesses, and different solutions are appropriate for different tasks. At Steveslist, we care so much about making sure that we use the right tool for the right job that we store our data in both a SQL database *and* a document-oriented database like Elasticsearch.
 
-We use our SQL database as our primary data store. It is our authoritative "source-of-truth", and we write all our new data to it before we write it anywhere else. We do all our simple, precise reads from it, especially when accuracy and up-to-date-ness are our principal requirement. If we want to show a user a list of all their open listings, we read it from our SQL database. If we want to validate a users password, we read that from our SQL database too. This plays to the strengths of SQL databases.
+We use our SQL database as our primary data store. It is our authoritative "source-of-truth", and we write all our new data to it before we write it anywhere else. We do all our simple, precise reads from it, especially when accuracy and up-to-date-ness are our principal requirements. If we want to show a user a list of all their open listings, we read it from our SQL database. If we want to validate a users password, we read that from our SQL database too. This plays to the strengths of SQL databases.
 
 However, in the background we also copy data from our SQL database into an Elasticsearch database, and send any full-text search queries made via our search box to Elasticsearch. This means that we benefit from the strengths of Elasticsearch, and are not impacted too much by its weaknesses. We copy over batches of records every few minutes, hours, or days, depending on the requirements of the specific dataset. Alternatively, we could watch the logs of our SQL database for new or updated records, and create or update the corresponding Elasticsearch records in near-realtime.
 
@@ -603,11 +607,11 @@ It's 6pm, and the library is closing. A librarian tries to ask you to leave. Kat
 
 ## Internal tools
 
-Managing the Steveslist platform requires bespoke internal tools. We need to perform a wide range of administrative tasks, like deleting listings that are too illegal (even for us), issuing refunds, viewing a user's personal details in order to help with support requests, and so on. Since these tasks are so specific to the way that Steveslist works, we can't do them using third-party tools, and so we have to build our own.
+Managing the Steveslist platform requires bespoke internal tools. We need to perform a wide range of administrative tasks, like deleting listings that are too illegal (even for us), issuing refunds, viewing a user's personal details in order to help with support requests, and so on. Many of these tools will be used by people who work on other teams at Steveslist, like finance, compliance, legal, sales, and support. Since the tasks they need to perform are so specific to the way that Steveslist works, we can't do them using third-party tools, and have to build our own instead.
 
 In the early days, we baked this functionality into the main Stevelist product and only exposed it to users who had the `is_steveslist_employee = True` database flag set. This was an OK approach for a small company, but was also fragile and easy to mess up. It was scary to think that we were exposing all of our superuser powers through the same servers that run our main product. It made the potential consequences of a security flaw in our application much worse, and created new types of mistake for us to make, such as forgetting to disable the `is_steveslist_employee` flag for an acrimoniously fired employee.
 
-Once Steveslist reached a certain level of maturity we built ourselves an entirely separate admin platform, with separate, hardened authentication and authorization. The service runs on entirely separate servers, and requires a *VPN* and a *TLS client certificate* to access (which we'll talk about another day). This separated out our internal- and external-facing products, and drastically reduced the chance of a boneheaded error exposing our admin tools to the world. We're frequently building new internal tools - one for user administration, one for server management, one for fraud detection, and so on. These services all talk to the same database as our user-facing products, so they all have access to the same data. They just run on different servers that are completely inaccessible to the outside world.
+Once Steveslist reached a certain level of maturity, we built ourselves an entirely separate admin platform, with separate, hardened authentication and authorization. The service runs on entirely separate servers, and requires a *VPN* and a *TLS client certificate* to access (which we'll talk about another day). This separated out our internal- and external-facing products, and drastically reduced the chance of a boneheaded error exposing our admin tools to the world. We're frequently building new internal tools - one for user administration, one for server management, one for fraud detection, and so on. These services all talk to the same database as our user-facing products, so they all have access to the same data. They just run on different servers that are completely inaccessible to the outside world.
 
 ## Cron jobs
 
@@ -618,7 +622,9 @@ There are lots of tasks that we'll want our system to perform at fixed times and
 * Charging the credit cards users who have a subscription plan with us
 * Copying data from our SQL database to Elasticsearch
 
-The most common tool used for running scheduled jobs is called *cron*. It's so common that people will often call any kind of scheduled job a "cron job", even when it's not actually being run by cron. You can set up a cron job on your own computer by running:
+The most common tool used for running scheduled jobs is called *cron*, a tool that is built into Unix operating systems. It's so common that people will often call any kind of scheduled job a "cron job", even when it's not actually being run by cron.
+
+You can set up a cron job on your own computer by running:
 
 ```
 crontab -e
@@ -632,7 +638,7 @@ Then typing into the prompt:
 
 This will cause your computer to execute `$YOUR_COMMAND` every 5 minutes.
 
-Steveslist currently has a very simple and slightly fragile cron setup. We have a single "scheduled jobs server". We use `crontab` on this server (as above) to tell it the commands that we want it to run, and the schedule that we want it to run them on. This setup isn't scaling very well - if the scheduled jobs server explodes or even hiccups then we don't always know which jobs it did and didn't run, and have to scramble to bring up a replacement server. And even thought the server is very beefy and powerful, eventually we're going to want to run more jobs than it can handle at once. We're considering either splitting up our cron jobs into multiple servers, or setting up a new system using a modern tool like *Kubernetes*.
+Steveslist currently has a very simple and slightly fragile cron setup. We have a single "scheduled jobs server". We use `crontab` on this server (as above) to tell it the commands that we want it to run, and the schedule that we want it to run them on. This setup isn't scaling very well - if the scheduled jobs server explodes or even hiccups then we don't always know which jobs it did and didn't run, and have to scramble to bring up a replacement server. And even though the server is very beefy and powerful, eventually we're going to want to run more jobs than it can handle at once. We're considering either splitting up our cron jobs into multiple servers, or setting up a new system using a modern tool like *Kubernetes*.
 
 ## Pubsub
 
@@ -640,11 +646,13 @@ Actions have consequences. This is both the subject line of the sinister emails 
 
 When a new user signs up, we want to send them an email welcoming them to Steveslist and reminding them about the action-consequence relationship I just described. When a new listing is added for a stolen TV in San Francisco, we want to notify users who have set up search alerts for TVs in the Bay Area. When a card is declined for a subscription, we want to email the responsible user to politely threaten them. When a new listing is added, we want to perform some extremely cursory anti-fraud checks. When an item is purchased, we want to sent a webhook to its seller. And so on.
 
-Technically, all of these actions could be performed synchronously (rememberer that word?) by the server executing the initiating action. However, this is often a bad idea, for two reasons. First, the response action (such as emailing all the users who are subscribed for notifications about new stolen TVs) may be very slow. Performing the response action synchronously means that if the initiating action was performed by a user then they will have to wait for all the response actions to finish too. This might not be the end of the world if the response action is small and quick, like sending a single email. But if it's larger - like searching for and notifying all users who might be interested in a new item - then, well, it still won't be the end of the world, but it will be a very bad user experience.
+Technically, all of these actions could be performed synchronously (rememberer that word?) by the server executing the initiating action. However, this is often a bad idea, for two reasons. First, the response action (such as emailing all the users who are subscribed for notifications about new stolen TVs) may be very slow. Performing the response action synchronously means that if the initiating action was performed by a user then they will have to wait for all the response actions to finish too. This might not be the end of the world if the response action is small and quick, like sending a single email. But if it's larger - like searching for and notifying all users who might be interested in a new item - then, well, it still won't be the end of the world, but it will be a bad user experience.
 
-To mitigate this problem we have built a "publish-subscribe" or "pubsub" system. When a trigger action is performed, the code that performs it "publishes an event" describing the action, such as `NewListingCreated` or `SubscriptionCardDeclined`. This event is written to a data store of some description - we could use our main SQL database, or a specialized technology like the popular "Kafka".
+To mitigate this problem we have built a "publish-subscribe" or "pubsub" system. When a trigger action is performed, the code that performs it "publishes an event" describing the action, such as `NewListingCreated` or `SubscriptionCardDeclined`. The words "event" and "publish" are quite loosely defined in this context, and don't have a rigorous technical definition. An event is just some sort of record of something that happened, and to publish an event just means that you somehow make a note that something happened. The details of how you do so depend entirely on the pubsub system in question. In a simple system events might be stored in tables in a SQL database, and code would publish events by writing new records to a table.
 
-Then, if a programmer at Steveslist wants our platform to perform a response action whenever a new event of a particular type is published, they can write a *consumer*. This is a piece of code that is notified whenever a new event of a given type is published, and which can use the details of the event (for example, the user whose subscription payment failed) to asynchronously execute whatever actions the programmer wants (for example, sending the user a menacing email).
+If a programmer at Steveslist wants a response action to be performed whenever a new event of a particular type is published, they can write a *consumer*. This is a piece of code that "subscribes" to a type of event, and which is executed whenever a new event of that type is published. It uses the details of the event (for example, the user whose subscription payment failed) to asynchronously execute whatever actions the programmer wants (for example, sending the user a menacing email).
+
+Pubsub systems are often managed by a central *message broker*. Systems publish events to the broker, and the broker is then responsible for getting the events to any subscribed consumers. This can be achieved using either a *push* or a *pull* mechanism. Consumers can pull messages from the broker by polling it and repeatedly asking "any new events? any new events?" or they can wait and listen and the broker can push notifications of new events out to them, for example by sending them an HTTP request.
 
 ```
 1. New user signs|
@@ -653,24 +661,24 @@ up to Steveslist |
        +-----------------+               +------------------------+
        |Steveslist Server|           +-->+SendWelcomeEmailConsumer|
        +---------+-------+           |   +------------------------+
-                 |                   |
+                 |                   v
 2. Server reports|     +-------------++  4. Consumers send welcome
-a NewUserSignup  +---->+Pub/Sub System|  emails, check for spam,
+a NewUserSignup  +---->+Pub/Sub Broker|  emails, check for spam,
 event to the           +-------------++  etc.
-Pub/Sub system                       |
-              3. Pub/Sub system      |   +------------------------+
+Pub/Sub system                       ^
+              3. Pub/Sub broker      |   +------------------------+
               notifies consumers     +-->+NewUserSpamCheckConsumer|
               that have subscribed to    +------------------------+
               NewUserSignup events.
 ```
 
-This approach has many benefits:
+Pubsub systems have many benefits:
 
 * Non-critical actions are performed asynchronously, keeping the user experience snappy
 * Our code is kept clean and well-separated. The code that publishes an event doesn't have to care about what the events' subscribers do in response
 * If a subscriber's action fails for some reason (for example, the email-sending system has a hiccup), the pubsub system can note this failure and retry again later
 
-I would say that the majority of actions in the Steveslist platform are performed asynchronously by our pubsub system.
+Next, let's talk big data.
 
 ## Big data and analytics
 
@@ -678,11 +686,11 @@ In order to understand and optimize our business, we need to be able to calculat
 
 To do this, we need to write database queries that aggregate over the entirety of our data. We don't want to run these queries against our production SQL database, because they could put an enormous amount of load on it. We don't want a huge query issued by an internal analyst to be able to bring our production database to a grinding halt, but we do want to provide this analyst with a tool that is well-suited to their needs. To complicate matters further, database engines that are quick at small queries (like returning all the listings belonging to a single user) are typically unacceptably slow (or indeed incapable) of answering giant queries (like calculating the total dollars spent on listings in each category, per day, for the last 90 days). 
 
-Despite this, for the first year or so after Steveslist was founded, we took a risk and simply ran our analytics queries against the main production database. This was a gamble, but it just about worked. We didn't have much data anyway, and we had more important things to focus our attentions on, like attracting the customers who would create the big data that would one day mean that we had to find a more scalable solution.
+Despite this, for the first year or so after Steveslist was founded, we took a risk and simply ran our analytics queries against the main production database. This was a gamble, but it just about worked. We didn't have much data anyway, and we had more important things to focus on, like attracting the customers who would create the big data that would one day mean that we had to find a more scalable solution.
 
 Eventually we did bring down the production database with an overly-ambitious query, and decided that the time had come to invest in a data warehouse. A data warehouse is a data store that is well-suited to large, system-wide queries. Our warehouse is powered by a database engine called *Hive*, but we could also have chosen Presto, Impala, Redshift, or any number of competing alternatives. Hive accepts queries written in SQL, but is much better at executing these queries against giant datasets than our MySQL database is.
 
-We replicate our data from our production SQL database to Hive, in much the same way that we also replicate it to Elasticsearch. Steveslist analysts and programmers can query the same dataset using whichever database engine best suits their needs. They can use the production SQL database for small, precise, source-of-truth queries from production systems; Elasticsearch for full-text search queries; or the data warehouse for huge queries that aggregate over vast volumes of data.
+We replicate our data from our production SQL database to Hive, once a day, overnight. Steveslist analysts and programmers can query the same dataset using whichever database engine best suits their needs. They can use the production SQL database for small, precise, source-of-truth queries from production systems; Elasticsearch for full-text search queries; or the data warehouse for huge queries that aggregate over vast volumes of data.
 
 ----
 
@@ -692,7 +700,7 @@ It's dark outside and you're hungry. Is that pretty much it? you ask.
 
 You ask if Kate could perhaps continue to elaborate on her five-year vision for Steveslist tomorrow.
 
-"Absolutely," says Kate. We'll talk over many more details of what goes on inside a real, large online platform, including:"
+"Absolutely," says Kate. We'll talk about more of what goes on inside a real, large online platform, including:"
 
 ### Security
 
@@ -707,6 +715,7 @@ You ask if Kate could perhaps continue to elaborate on her five-year vision for 
 * AWS and competitors
 * Terraform
 * Load balancers
+* Containers
 * Alerting when code breaks
 
 ### Big data
