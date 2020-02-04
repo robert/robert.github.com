@@ -4,13 +4,15 @@ layout: post
 tags: [Online Tracking, Security]
 og_image: https://robertheaton.com/images/wacom-cover.png
 ---
+> Disclaimer: I didn't ask Wacom for comment about this story because I'm not a journalist and I don't know how to do that. I don't believe I've got anything important wrong, however.
+
 ## Chapter 1: The discovery
 
-I have a Wacom drawing tablet. I use it to draw cover pictures for my blog posts, such as this one:
+I have a Wacom drawing tablet. I use it to draw cover illustrations for my blog posts, such as this one:
 
 <img src="/images/wacom-cover.png" />
 
-Last week I set up my tablet on my new laptop. As part of installing the drivers I was asked to accept Wacom's privacy policy.
+Last week I set up my tablet on my new laptop. As part of installing its drivers I was asked to accept Wacom's privacy policy.
 
 Being a mostly-normal person I never usually read privacy policies. Instead I vigorously hammer the "yes" button in an effort to reach the game, machine, or medical advice on the other side of the agreement as fast as possible. But Wacom's request made me pause. Why does a device that is essentially a mouse need a privacy policy? I wondered. Sensing skullduggery, I decided to make an exception to my anti-privacy-policy-policy and give this one a read.
 
@@ -18,7 +20,9 @@ In Wacom's defense (that's the only time you're going to see that phrase today),
 
 With that attempt at even-handedness out the way, let's get kicking.
 
-In section 3.1 of their privacy policy, Wacom wondered if it would be OK if they sent a few bits and bobs of data - "[including] aggregate usage data, technical session information and information about [my] hardware device" - from my computer to Google Analytics. The half of my heart that cares about privacy sank. The other half of my heart, the half that enjoys snooping on snoopers and figuring out what they're up to, leapt. It was a disjointed feeling, probably similar to how it feels to get mugged by your favorite TV magician.
+In section 3.1 of their privacy policy, Wacom wondered if it would be OK if they sent a few bits and bobs of data from my computer to Google Analytics, "[including] aggregate usage data, technical session information and information about [my] hardware device." The half of my heart that cares about privacy sank. The other half of my heart, the half that enjoys snooping on snoopers and figuring out what they're up to, leapt. It was a disjointed feeling, probably similar to how it feels to get mugged by your favorite TV magician.
+
+<img src="/images/wacom-policy.png" />
 
 Wacom didn't say exactly what data they were going to send themselves. I resolved to find out.
 
@@ -88,7 +92,7 @@ This brought me to my second problem. Since Wacom was talking to Google Analytic
 
 The most difficult part of presenting such a certificate is that it needs to be *cryptographically signed* by a *certificate authority* that the program trusts. Burp Suite can generate and sign certificates for any domain, no problem, but since by default no computer or program trusts Burp Suite as a certificate authority, the certificates it signs are rejected (I've written much more about TLS and HTTPS [here][https1] and [here][https2]).
 
-Once again, the process of persuading a *web browser* to trust Burp's root certificate is well-documented, but for a thick application like Wacom I'd need to do something slightly different. I therefore used OSX's Keychain to temporarily add Burp's certificate to my computer's list of root certificates.
+Once again, the process of persuading a web browser to trust Burp's root certificate is well-documented, but for a thick application like Wacom I'd need to do something slightly different. I therefore used OSX's Keychain to temporarily add Burp's certificate to my computer's list of root certificates.
 
 <img src="/images/wacom-cert.png" />
 
@@ -138,13 +142,11 @@ This example is admittedly a little contrived, but it's also an illustration tha
 
 ----
 
-In some ways it feels unfair to single out Wacom. This isn't the dataset that's going to tip us into full, 1984-style surveillance capitalism. Nonetheless, it's still deeply obnoxious. A device that is essentially a mouse has no legitimate reasons to make HTTP requests of any sort. Maybe Wacom could hide in the sweet safety of murky territory if they released some sort of mobile app integration or a weekly personal usage report that required this data, but until then I'm happy to classify them as an obligingly clear case of nefariousness.
-
-----
-
 ## Chapter 6: Conclusion
 
-I'm not about to incinerate my Wacom tablet and buy a different one. These things are expensive, and privacy is hard to put a price on. If you too have a Wacom tablet, open up the "Wacom Desktop Center" and click around until you find a way to disable the "Wacom Experience Program". Then the next time you're buying a tablet, remember that Wacom tries to track every app you open, and consider giving another brand a go.
+In some ways it feels unfair to single out Wacom. This isn't the dataset that's going to tip us into full, 1984-style surveillance capitalism. Nonetheless, it's still deeply obnoxious. A device that is essentially a mouse has no legitimate reasons to make HTTP requests of any sort. Maybe Wacom could hide in the sweet safety of murky territory if they released some sort of mobile app integration or a weekly personal usage report that required this data, but until then I'm happy to classify them as an obligingly clear case of nefariousness.
+
+Nonetheless, I'm not about to incinerate my Wacom tablet and buy a different one. These things are expensive, and privacy is hard to put a price on. If you too have a Wacom tablet, open up the "Wacom Desktop Center" and click around until you find a way to disable the "Wacom Experience Program". Then the next time you're buying a tablet, remember that Wacom tries to track every app you open, and consider giving another brand a go.
 
 ----
 
@@ -154,7 +156,7 @@ I finished the first draft of this article three weeks ago. I set up Burp Suite 
 
 The bastards.
 
-I contemplated pretending I hadn't seen this and publishing my post anyway. Then I contemplated publishing it with an additional coda explaining this latest development, but the title "Wacom drawing tablets used to track the name of every application that you open but now seem to have stopped for some reason" didn't seem very snappy. I decided to do some more investigating.
+I contemplated pretending I hadn't seen this and publishing my post anyway. Then I contemplated publishing it with an additional coda explaining this latest development, but the title "Wacom drawing tablets used to track the name of every application that you open but now seem to have stopped for some reason" didn't feel very snappy. I decided to do some more investigating.
 
 I had previously noticed that, before sending data to Google Analytics, the Wacom driver sent a `HEAD` request to the URL `http://link.wacom.com/analytics/analytics.xml`. I hadn't been able to work out why, and until now I hadn't thought much of it. However, now Wacom was responding to this request with a 404 "Not Found" status code instead of 200 "OK". I realized that the request must be some kind of pre-flight check that allowed Wacom to turn off analytics collection remotely without requiring users to install a driver update. Now that the request was failing, Wacom were not sending themselves my data.
 
