@@ -6,7 +6,7 @@ og_image: https://robertheaton.com/images/wacom-cover.png
 ---
 ## Chapter 1: The discovery
 
-I have a Wacom graphical drawing tablet. I use it to draw cover pictures for my blog posts, such as this one:
+I have a Wacom drawing tablet. I use it to draw cover pictures for my blog posts, such as this one:
 
 <img src="/images/wacom-cover.png" />
 
@@ -116,7 +116,7 @@ Some of the events that Wacom were recording were arguably within their purview,
 
 I suspect that Wacom doesn't really think that it's acceptable to record the name of every application I open on my personal laptop. I suspect that this is why their privacy policy doesn't really admit that this is what that they do. I imagine that if pressed they would argue that the name of every application I open on my personal laptop falls into one of their broad buckets like "aggregate data" or "technical session information", although it's not immediately obvious to me which bucket.
 
-It's well-known that no one reads privacy policies and that they're often a fig leaf of consent at best. But since Wacom's privacy policy makes no mention of their intention to record the name of every application I open on my personal laptop, I'd argue that it doesn't even given them the technical-fig-leaf-right to do so. In fact, I'd argue that even if someone had read and understood Wacom's privacy policy, and had knowingly consented to a reasonable interpretation of the words inside it, that person would still not have agreed to allow Wacom to log and track the name of every application that they opened on their personal laptop.
+It's well-known that no one reads privacy policies and that they're often a fig leaf of consent at best. But since Wacom's privacy policy makes no mention of their intention to record the name of every application I open on my personal laptop, I'd argue that it doesn't even give them the technical-fig-leaf-right to do so. In fact, I'd argue that even if someone had read and understood Wacom's privacy policy, and had knowingly consented to a reasonable interpretation of the words inside it, that person would still not have agreed to allow Wacom to log and track the name of every application that they opened on their personal laptop.
 
 Of course, I'm not a lawyer, and I assume that whoever wrote this privacy policy is.
 
@@ -130,7 +130,9 @@ The first is a principled fuck you. I don't care whether anything materially bad
 
 The second is that we can also come up with scenarios that involve real harms. Maybe the very existence of a program is secret or sensitive information. What if a Wacom employee suddenly starts seeing entries spring up for "Half Life 3 Test Build"? Obviously I don't care about the secrecy of Valve's new games, but I assume that Valve does.
 
-We can get more subtle. I personally use Google Analytics to track visitors to my website. I do feel bad about this, but I've got to get my self-esteem from somewhere. Google Analytics has a "User Explorer" tool, in which you can zoom in on the activity of a specific user. Suppose that someone at Wacom "fingerprints" a target person that they knew in real life by seeing that this person uses a very particular combination of applications. The Wacom employee then uses this information to find the person in the "User Explorer" tool. Finally the Wacom employee sees that their target also uses "LivingWith: Cancer Support". Remember, this information is coming from a device that is essentially a mouse.
+We can get more subtle. I personally use Google Analytics to track visitors to my website. I do feel bad about this, but I've got to get my self-esteem from somewhere. Google Analytics has a "User Explorer" tool, in which you can zoom in on the activity of a specific user. Suppose that someone at Wacom "fingerprints" a target person that they knew in real life by seeing that this person uses a very particular combination of applications. The Wacom employee then uses this fingerprint to find the person in the "User Explorer" tool. Finally the Wacom employee sees that their target also uses "LivingWith: Cancer Support".
+
+Remember, this information is coming from a device that is essentially a mouse.
 
 This example is admittedly a little contrived, but it's also an illustration that, even though this data doesn't come with a name and social security number attached, it is neither benign nor inert.
 
@@ -146,21 +148,21 @@ I'm not about to incinerate my Wacom tablet and buy a different one. These thing
 
 ----
 
-### Postscript
+## Epilogue
 
-I finished the first draft of this article three weeks ago. I then set up Burp Suite proxy again in order to grab some final screenshots of the data that Wacom was purloining. I restarted the Wacom driver, as per usual. But nothing happened. Wacom weren't illegitimately siphoning off my personal usage data any more.
+I finished the first draft of this article three weeks ago. I set up Burp Suite proxy again so that I could grab some final screenshots of the data that Wacom was purloining. I restarted the Wacom driver, as per usual. But nothing happened. Wacom weren't illegitimately siphoning off my personal usage data any more.
 
 The bastards.
 
 I contemplated pretending I hadn't seen this and publishing my post anyway. Then I contemplated publishing it with an additional coda explaining this latest development, but the title "Wacom drawing tablets used to track the name of every application that you open but now seem to have stopped for some reason" didn't seem very snappy. I decided to do some more investigating.
 
-I had previously noticed that, before sending data to Google Analytics, the Wacom driver sent a `HEAD` request to the URL `http://link.wacom.com/analytics/analytics.xml`. I couldn't work out why, and until now I hadn't thought anything of it. However, now Wacom was responding to this request with a 404 "Not Found" status code instead of 200 "OK". I realized that the request must be some kind of pre-flight check that allowed Wacom to turn off analytics collection without requiring users to install a driver update. Now that the request was failing, Wacom were not sending themselves my data.
+I had previously noticed that, before sending data to Google Analytics, the Wacom driver sent a `HEAD` request to the URL `http://link.wacom.com/analytics/analytics.xml`. I hadn't been able to work out why, and until now I hadn't thought much of it. However, now Wacom was responding to this request with a 404 "Not Found" status code instead of 200 "OK". I realized that the request must be some kind of pre-flight check that allowed Wacom to turn off analytics collection remotely without requiring users to install a driver update. Now that the request was failing, Wacom were not sending themselves my data.
 
 I dug around in the driver's logfile and found the following snippet that confirmed my suspicions:
 
 <img src="/images/wacom-log.png" />
 
-I wondered if Wacom had gotten wise to what I was up to and panic-disabled their tracking. This seemed unlikely, although the timing was rather coincidental. I decided that Wacom had probably simply made a boneheaded mistake and accidentally broken their own command-and-control center. I impatiently waited for them to realize their goof and bring their data exfiltration operation back online. I contemplated emailing Wacom to alert them to their problem, but couldn't come up with an innocuous way to do so.
+I wondered if Wacom had gotten wise to what I was up to and panic-disabled their tracking. This seemed unlikely, although the timing was rather coincidental. I decided that Wacom had probably simply made a boneheaded mistake and accidentally broken their own command-and-control center. I impatiently waited for them to realize their goof and bring their data exfiltration operation back online. I contemplated emailing Wacom to alert them to their problem, but couldn't come up with a sufficiently innocuous way of doing so.
 
 I decided to wait until the end of the month before doing anything, in case the data was used for generating monthly reports. I hoped that on January 31st Wacom would notice that their graphs were broken and bring their system back online.
 
