@@ -4,7 +4,7 @@ layout: post
 tags: [Online Tracking, Security]
 og_image: https://robertheaton.com/images/wacom-cover.png
 ---
-> Disclaimer: I didn't ask Wacom for comment about this story because I'm not a journalist and I don't know how to do that. I don't believe I've got anything important wrong, however.
+> Disclaimer: I haven't asked Wacom for comment about this story because I'm not a journalist and I don't know how to do that. I don't believe I've got anything important wrong, however.
 
 ## Chapter 1: The discovery
 
@@ -16,7 +16,7 @@ Last week I set up my tablet on my new laptop. As part of installing its drivers
 
 Being a mostly-normal person I never usually read privacy policies. Instead I vigorously hammer the "yes" button in an effort to reach the game, machine, or medical advice on the other side of the agreement as fast as possible. But Wacom's request made me pause. Why does a device that is essentially a mouse need a privacy policy? I wondered. Sensing skullduggery, I decided to make an exception to my anti-privacy-policy-policy and give this one a read.
 
-In Wacom's defense (that's the only time you're going to see that phrase today), the document was short and clear, although as we'll see it wasn't entirely open about its more dubious intentions. In addition, despite its attempts to look like the kind of compulsory agreement that must be accepted in order to unlock the product behind it, as far as I can tell anyone with the presence of mind to decline it could do so with no adverse consequences.
+In Wacom's defense (that's the only time you're going to see that phrase today), the document was short and clear, although as we'll see it wasn't entirely open about its more dubious intentions ([here's the full text][policy]). In addition, despite its attempts to look like the kind of compulsory agreement that must be accepted in order to unlock the product behind it, as far as I can tell anyone with the presence of mind to decline it could do so with no adverse consequences.
 
 With that attempt at even-handedness out the way, let's get kicking.
 
@@ -102,7 +102,7 @@ I sat and waited. I watched Wireshark and Burp at the same time. If Wacom failed
 
 Nothing happened.
 
-I tried drawing something using my Wacom tablet. Still nothing. I plugged and unplugged it. Nothing. Then I went into the Wacom Driver Settings and restarted the driver.
+I wondered if the data dumping was triggered by a timer, or by some particular activity, or by both. I tried drawing something using my Wacom tablet. Still nothing. I plugged and unplugged it. Nothing. Then I went into the Wacom Driver Settings and restarted the driver.
 
 <img src="/images/wacom-restart.png" />
 
@@ -110,7 +110,7 @@ Everything happened.
 
 When I restarted the Wacom driver, rather than lose all the data it had accumulated, the driver fired off everything it had collected to Google Analytics. This data materialized in my Burp Suite. I took a look. My heart experienced the same half-down-half-up schism as it had half an hour ago.
 
-Some of the events that Wacom were recording were arguably within their purview, such as "driver started" and "driver shutdown". I still don't want them to take this information because there's nothing in it for me, but their attempt to do so feels broadly justifiable. What requires more explanation is why Wacom think it's acceptable to record every time I open a new application, including the time, a pseudonymous string that uniquely identifies me, and the application's name.
+Some of the events that Wacom were recording were arguably within their purview, such as "driver started" and "driver shutdown". I still don't want them to take this information because there's nothing in it for me, but their attempt to do so feels broadly justifiable. What requires more explanation is why Wacom think it's acceptable to record every time I open a new application, including the time, a string that presumably uniquely identifies me, and the application's name.
 
 <img src="/images/wacom-evidence-4.png" />
 
@@ -144,9 +144,9 @@ This example is admittedly a little contrived, but it's also an illustration tha
 
 ## Chapter 6: Conclusion
 
-In some ways it feels unfair to single out Wacom. This isn't the dataset that's going to tip us into full, 1984-style surveillance capitalism. Nonetheless, it's still deeply obnoxious. A device that is essentially a mouse has no legitimate reasons to make HTTP requests of any sort. Maybe Wacom could hide in the sweet safety of murky territory if they released some sort of mobile app integration or a weekly personal usage report that required this data, but until then I'm happy to classify them as an obligingly clear case of nefariousness.
+In some ways it feels unfair to single out Wacom. This isn't the dataset that's going to complete the embrace of full, totalitarian surveillance capitalism. Nonetheless, it's still deeply obnoxious. A device that is essentially a mouse has no legitimate reasons to make HTTP requests of any sort. Maybe Wacom could hide in the sweet safety of murky territory if they released some sort of mobile app integration or a weekly personal usage report that required this data, but until then I'm happy to classify them as an obligingly clear case of nefariousness.
 
-Nonetheless, I'm not about to incinerate my Wacom tablet and buy a different one. These things are expensive, and privacy is hard to put a price on. If you too have a Wacom tablet, open up the "Wacom Desktop Center" and click around until you find a way to disable the "Wacom Experience Program". Then the next time you're buying a tablet, remember that Wacom tries to track every app you open, and consider giving another brand a go.
+Nonetheless, I'm not about to incinerate my Wacom tablet and buy a different one. These things are expensive, and privacy is hard to put a price on. If you too have a Wacom tablet (presumably this tracking is enabled for all of their models), open up the "Wacom Desktop Center" and click around until you find a way to disable the "Wacom Experience Program". Then the next time you're buying a tablet, remember that Wacom tries to track every app you open, and consider giving another brand a go.
 
 ----
 
@@ -156,7 +156,7 @@ I finished the first draft of this article three weeks ago. I set up Burp Suite 
 
 The bastards.
 
-I contemplated pretending I hadn't seen this and publishing my post anyway. Then I contemplated publishing it with an additional coda explaining this latest development, but the title "Wacom drawing tablets used to track the name of every application that you open but now seem to have stopped for some reason" didn't feel very snappy. I decided to do some more investigating.
+I contemplated pretending I hadn't seen this and publishing my post anyway. Then I contemplated publishing it with an additional coda explaining this latest development. However, the title "Wacom drawing tablets used to track the name of every application that you open but now seem to have stopped for some reason" didn't feel very snappy. I decided to do some more investigating.
 
 I had previously noticed that, before sending data to Google Analytics, the Wacom driver sent a `HEAD` request to the URL `http://link.wacom.com/analytics/analytics.xml`. I hadn't been able to work out why, and until now I hadn't thought much of it. However, now Wacom was responding to this request with a 404 "Not Found" status code instead of 200 "OK". I realized that the request must be some kind of pre-flight check that allowed Wacom to turn off analytics collection remotely without requiring users to install a driver update. Now that the request was failing, Wacom were not sending themselves my data.
 
@@ -183,3 +183,4 @@ I had no idea who Rick was, but I was glad he was back. Wacom were illegitimatel
 [hp]: https://robertheaton.com/2019/09/15/hp-printers-send-data-on-what-you-print-back-to-hp/
 [snoo]: https://robertheaton.com/2019/11/21/how-to-man-in-the-middle-your-iot-devices/
 [oscar]: https://robertheaton.com/2019/06/17/childbirth-a-fathers-eye-view/
+[policy]: https://gist.github.com/robert/9690e0f0cf4f72a9f51e36952c2776e2
