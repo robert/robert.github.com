@@ -3,6 +3,7 @@ title: "Wacom drawing tablets track the name of every application that you open"
 layout: post
 tags: [Online Tracking, Security]
 og_image: https://robertheaton.com/images/wacom-cover.png
+custom_meta: "I have a Wacom drawing tablet. I use it to draw cover illustrations for my blog posts, such as this one."
 ---
 > Disclaimer: I haven't asked Wacom for comment about this story because I'm not a journalist and I don't know how to do that. I don't believe I've got anything important wrong, however.
 
