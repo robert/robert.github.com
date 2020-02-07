@@ -175,6 +175,12 @@ On February 3rd I checked in and was elated at what I saw:
 
 I had no idea who Rick was, but I was glad he was back. Wacom were illegitimately siphoning off my personal data again, and I couldn't be happier. I grabbed some better screenshots, fixed some grammar, and hit publish. The rest is history.
 
+---
+
+New - *[send me your privacy abuse tipoffs][tipoffs]*
+
+---
+
 [https1]: https://robertheaton.com/2014/03/27/how-does-https-actually-work/
 [https2]: https://robertheaton.com/2018/11/28/https-in-the-real-world/
 [wireshark]: https://www.wireshark.org/
@@ -185,3 +191,4 @@ I had no idea who Rick was, but I was glad he was back. Wacom were illegitimatel
 [snoo]: https://robertheaton.com/2019/11/21/how-to-man-in-the-middle-your-iot-devices/
 [oscar]: https://robertheaton.com/2019/06/17/childbirth-a-fathers-eye-view/
 [policy]: https://gist.github.com/robert/9690e0f0cf4f72a9f51e36952c2776e2
+[tipoffs]: /tipoffs
