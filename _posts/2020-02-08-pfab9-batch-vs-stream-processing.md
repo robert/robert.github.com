@@ -1,9 +1,12 @@
 ---
 layout: post
-title: "PFAB X: Batch vs Stream processing in data pipelines"
-published: false
+title: "PFAB #9: Batch vs Stream processing"
+tags: [Programming Projects for Advanced Beginners]
+og_image: https://robertheaton.com/images/pfab-cover.png
+redirect_from:
+  - /pfab9
 ---
-> This post is part of my "Programming Feedback for Advanced Beginners" series, which helps you make the leap from knowing syntax to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every weekend, entirely free.
+> This post is part of my "Programming Feedback for Advanced Beginners" series, which helps you make the leap from knowing syntax to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.
 
 How many WhatsApp messages do you think you've exchanged with your best friend? Adarsh Rao, PFAB reader, wanted to find out. He downloaded his WhatsApp message logs and wrote a program to analyze his conversations. He found that he and his best friend had sent each other a respectable 110,000 words. "We've essentially written 2 novels between us if my Google search for 'average novel length' is at all accurate," he notes.
 
@@ -26,7 +29,7 @@ You can export your own WhatsApp chat history by using WhatsApp's ["export" feat
 1. Load a log line from the file (we'll start by assuming that each log line corresponds to a single message, although we'll see later that this is not always the case)
 2. Parse the line to pull out the name, date, time, and contents of the message
 3. Calculate some statistics about the message - how long is its body, roughly how long did it take to type, etc?
-4. Add these individual message statistics into aggregate statistics about the total number, average length, etc. of messages in the conversation
+4. Combine these individual message statistics into aggregate statistics about the total number, average length, etc. of messages in the conversation
 
 Adarsh has a choice to make for how he processes his log lines: *batch* or *streaming*?
 
@@ -125,7 +128,7 @@ Our streaming program therefore requires much less memory to run than our batch 
 
 Note that my claims of memory optimization are a high-level simplification, and the exact behavior of the Ruby interpreter is complex and hard to predict. However, we can still say with confidence that the streaming program will use less memory than the batch, even if we can't say exactly how much less without measuring.
 
-## Code cleanliness
+## Code simplicity
 
 "You said that streaming code is often more complex than batch code, but that streaming code snippet you wrote just now didn't look too bad," I hear you say. No, but that was on easy mode. As I mentioned briefly at the start of this post, WhatsApp message logs aren't arranged neatly, one per line. Instead, if a message body contains a newline, the message logs will contain a newline too.
 
