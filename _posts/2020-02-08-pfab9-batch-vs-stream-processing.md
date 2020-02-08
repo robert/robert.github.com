@@ -10,7 +10,7 @@ redirect_from:
 
 How many WhatsApp messages do you think you've exchanged with your best friend? Adarsh Rao, PFAB reader, wanted to find out. He downloaded his WhatsApp message logs and wrote a program to analyze his conversations. He found that he and his best friend had sent each other a respectable 110,000 words. "We've essentially written 2 novels between us if my Google search for 'average novel length' is at all accurate," he notes.
 
-Adarsh's program already works perfectly. But he wants to know how he can make it cleaner and tidier, and I've got a couple of suggestions for him. This week, I'd like to talk about the high-level structure of Adarsh's program. In particular I'd like to discuss a common tradeoff in data processing: *batch* or *streaming*? Today we'll learn what these words mean, how we can use them to construct data processing pipelines, and how to evaluate the tradeoffs between different ways of solving problems.
+Adarsh's program already works perfectly ([here's the code][adarsh-code]). But he wants to know how he can make it cleaner and tidier, and I've got a couple of suggestions for him. This week, I'd like to talk about the high-level structure of Adarsh's program. In particular I'd like to discuss a common tradeoff in data processing: *batch* or *streaming*? Today we'll learn what these words mean, how we can use them to construct data processing pipelines, and how to evaluate the tradeoffs between different ways of solving problems.
 
 ## Batch or streaming?
 
@@ -222,3 +222,4 @@ Find out in next week's edition of Programming Feedback for Advanced Beginners.
 [sol2]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/0c2a12270960167dda364131ee34b4c7d338144b
 [sol3]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/a3311e0dec50ccdebc36b3cb047c2f2fa80da4d1
 [whatsapp-export]: https://faq.whatsapp.com/en/android/23756533/
+[adarsh-code]: https://github.com/robert/programming-feedback-for-advanced-beginners/tree/master/editions/9-10-whatsapp-message-parsing
