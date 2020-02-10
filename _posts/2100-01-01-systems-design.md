@@ -1,14 +1,18 @@
 ---
 layout: post
 title: Systems Infrastructure for Advanced Beginners
+tags: [Programming Projects for Advanced Beginners]
 published: false
 ---
-You've started [yet another][tinder] [company][whatsapp] with your good friend, Steve Steveington. It's an online marketplace where people can buy and sell things, and where no one asks too many questions. It's basically a rip-off of Craigslist, but with Steve's name instead of Craig's.
+You've started [yet another][tinder] [company][whatsapp] with your good friend, Steve Steveington. It's an online marketplace where people can buy and sell things and where no one asks too many questions. It's basically a rip-off of Craigslist, but with Steve's name instead of Craig's.
 
 [tinder]: https://robertheaton.com/2018/07/09/how-tinder-keeps-your-location-a-bit-private/
 [whatsapp]: https://robertheaton.com/2017/10/09/tracking-friends-and-strangers-using-whatsapp/
+[facebook]: https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/
+[whatsapp2]: https://robertheaton.com/2016/10/22/a-tale-of-love-betrayal-social-engineering-and-whatsapp/
+[wifi]: https://robertheaton.com/2019/01/15/a-brief-history-of-wi-fi-privacy-vulnerabilities/
 
-You're going to be responsible for building the entire Steveslist technical platform, including all of its websites, mobile apps, databases, and other infrastructure. You're excited, but also very nervous. You figure that you can probably cobble together a small website, since you've done that a few times before as part of your previous entertaining-if-morally-questionable escapades with the Stevester. But you have no idea how to even start building out all of the other infrastructure and tools that you assume lie behind large, successful online platforms.
+You're going to be responsible for building the entire Steveslist technical platform, including all of its websites, mobile apps, databases, and other infrastructure. You're excited, but also very nervous. You figure that you can probably cobble together a small website, since you've done that a few times before as part of your previous [entertaining][tinder]-[if][whatsapp]-[morally][facebook]-[questionable][whatsapp2] [escapades][wifi] with the Stevester. But you have no idea how to even start building out all of the other infrastructure and tools that you assume lie behind large, successful online platforms.
 
 You are in desperate need of a detailed yet concise overview of how real companies do this. How do they store their data? How do their different applications talk to each other? How do they scale their systems to work for millions of users? How do they keep them secure? How do they make sure nothing goes wrong? What are APIs, webhooks and client libraries, when you really get down to it?
 
@@ -30,11 +34,9 @@ Kate takes a deep breath and paints an extremely detailed vision of the Stevesli
 
 ----
 
-Before we start (says Kate), I want to make it clear that I'm not saying that any of this is necessarily the "right" way to set up our infrastructure. If someone you trust more than me says something different then you should probably do what they say. There are many tools out there, each with different strengths and weaknesses, and many ways to build a technology company.
+Before we start (says Kate), I want to make it clear that I'm not saying that any of this is necessarily the "right" way to set up our infrastructure. If someone you trust more than me says something different then you should probably do what they say. There are many tools out there, each with different strengths and weaknesses, and many ways to build a technology company. The real, honest reasons that we will make many of our technological choices will be "we chose X because Sara knows a lot about X" and "we chose Y on the spur of the moment when it didn't seem like a big decision and we never found the time to re-evaluate."
 
-In practice, I'm sure that the real, honest reasons we will make many of our technological choices will be "we chose X because Sara knows a lot about X" and "we chose Y on the spur of the moment when it didn't seem like a big decision and we never found the time to re-evaluate."
-
-Nonetheless, let's fast-forward five years into the future. Steveslist has two main consumer-facing products:
+Nonetheless, let's fast-forward five years into the future. Now Steveslist has two main consumer-facing products:
 
 * The Steveslist web app
 * The Steveslist smartphone apps
@@ -114,6 +116,8 @@ This is the main Steveslist product. It's just a normal web app, very similar to
 +----------+                                        +----------+
 ```
 
+`robertheaton.com` is not a single-page app. Whenever you click on a link, the browser has to reload the entire page. `twitter.com` *is* a single-page app. Whenever you click on a link, the browser dynamically updates a small portion of tthe page without forcing a full refresh.
+
 SPAs are a lot of work to build and maintain, but they sure look good.
 
 ## Steveslist smartphone apps
@@ -126,9 +130,9 @@ Since our smartphone apps are performing the same operations as the web app (for
 
 We allow users and third-parties to write code that programmatically interacts with our platform. In the same way that people can use the Twitter API to write code that reads; likes; and creates Tweets, we allow them to use the Steveslist API to search; buy; and list items.
 
-Programmers use our API by writing code that makes HTTP requests to our *API endpoints*. For example, in order to retrieve a list of all their listings, the programmer sends an HTTP `GET` request to `api.steveslist.com/v1/listings`. We respond with the data they requested, formatted as *JSON*. JSON stands for JavaScript Object Notation, but JSON is not specific to JavaScript and can easily be interpreted by any programming languages. A JSON response to a request to retrieve all of a user's listings might look something like this:
+Programmers use our API by writing code that makes HTTP requests to our *API endpoints*. For example, in order to retrieve a list of all their listings, the programmer sends an HTTP `GET` request to `api.steveslist.com/v1/listings`. We respond with the data they requested, formatted as *JSON*. JSON stands for JavaScript Object Notation, but JSON is not specific to JavaScript and can easily be interpreted by any programming language. A JSON response to a request to retrieve all of a user's listings might look something like this:
 
-```
+```javascript
 {
   "listings": [
     {
@@ -225,12 +229,12 @@ To use webhooks, the user tells us the URL to which they would like us to send t
             +-----------+
        2.Once the transaction has been completed,
          Steveslist looks up the seller's
-         webhook URL (if set). It then sends
+         webhook URL (if set). We then send
          an HTTP request to this URL,
          containing the details of the purchase.
 ```
 
-The user deploys code on this web server that perform the appropriate response actions whenever it receives a webhook from us. We don't only send webhooks when an item is purchased - we also send them when a user receives a message; when one of their items is removed by an admin; or when a buyer makes a complaint. This enables Steveslist sellers to automate not just the listing of items, but also the selling and shipping of them too.
+The user deploys code on their web server that performs the appropriate response actions whenever it receives a webhook from us. We don't only send webhooks when an item is purchased - we also send them when a user receives a message; when one of their items is removed by an admin; or when a buyer makes a complaint. This enables Steveslist sellers to automate not just the listing of items, but also the selling and shipping of them too.
 
 ### Webhook complications
 
@@ -256,7 +260,18 @@ Shared secret key             |
 (eg. 123mhu23jy8xdwgmd...)+---+
 ```
 
-We include this signature with the webhook. When the seller's webhook-receiving server receives a webhook, it takes the shared secret and webhook contents and calculates what it expects the signature to be in exactly the same way that we did. It compares the result to the signature attached to the webhook; if they match then it accepts and processes the webhook. Since the signature can only be generated using the shared secret known only by us and the seller, the webhook-receiving server can be confident that the webhook was sent by us. If the signatures don't match, however, the server rejects the webhook.
+We include this signature in our webhook body, for example:
+
+```javascript
+{
+  "action": "item_sold",
+  "price": 100,
+  // ...more params...
+  "signature": "234gj98d49j834978gf39t78ndn98g7dq3ng897308y7"
+}
+```
+
+When the seller's webhook-receiving server receives a webhook, it takes the shared secret and webhook contents and calculates what it expects the signature to be in exactly the same way that we did. It compares the result to the signature attached to the webhook; if they match then it accepts and processes the webhook. Since the signature can only be generated using the shared secret known only by us and the seller, the webhook-receiving server can be confident that the webhook was sent by us. If the signatures don't match, however, the server rejects the webhook.
 
 Note that all of the signature verification code must be written and maintained by the sellers. We can provide them with encouragement and examples, but we can't force them to verify signatures correctly, or even at all. For some real-world examples, look at how [Stripe][stripe-webhooks] and [GitHub][github-webhooks] sign their webhooks.
 
@@ -282,7 +297,7 @@ We will have to store our users' passwords very securely. Not only is a user's p
 
 Rupert Herpton has written [the seminal tutorial][ppab6] on how to secure passwords, which I'm sure you've read already. Just in case you need a refresher, the crux of the matter is that we mustn't ever store passwords in their original, *plaintext* form, anywhere. We mustn't store them in plaintext in a database, in a log file, or in any other part of our system. Instead, before storing a password, we must first *hash* it using a *hash function* such as *bcrypt*.
 
-A hash function is a "one-way" function that takes an input and deterministically converts it into a new, seemingly-random string. Calculating a hash value from an input is computationally very easy, but reversing this transformation and recovering the original input from its hash value takes so much time and computing power that it is, practically-speaking, impossible.
+A hash function is a "one-way" function that takes an input and deterministically converts it into a new, seemingly-random string. Calculating a hash value from an input is computationally very easy, but reversing the transformation and recovering the original input from its hash value takes so much time and computing power that it is, practically-speaking, impossible.
 
 ```
 +---------+     Easy    +----------+
@@ -336,7 +351,7 @@ We had to take an entirely new approach, and reconfigure our database to store i
 
 ### Sharding
 
-Sharding a database means splitting its data into chunks (or "shards") and storing each chunk on a separate machine. All of the machines that make up a database are together often known as a *database cluster*. How you split data between machine in your cluster depends on your application and the types of operations you will be performing. For Steveslist we chose to split out our data by user. This means that all of the data for a given user is stored on the same machine. This includes their profile information, their listings, their messages, and so on. Data that doesn't have a corresponding user (like "Deals of the Day") can be sharded using a *shard key* other than user, or not sharded at all if the dataset is sufficiently small.
+Sharding a database means splitting its data into chunks (or "shards") and storing each chunk on a separate machine. All of the machines that make up a database are together known as a *database cluster*. How you split data between machine in your cluster depends on your application and the types of operations you will be performing. For Steveslist we chose to split out our data by user. This means that all of the data for a given user is stored on the same machine. This includes their profile information, their listings, their messages, and so on. Data that doesn't have a corresponding user (like "Deals of the Day") can be sharded using a *shard key* other than user, or not sharded at all if the dataset is sufficiently small.
 
 This means that we need an extra "routing" layer in front of our database, which knows which database machine is able to service which queries. We could either make our *application servers* (the servers that execute our code) responsible for knowing the mapping of user IDs to database shards, or have a centralized "router" that all servers send their requests to, and which is responsible for working out the appropriate machine to forward the request on to. Both approaches have their advantages. Making application servers responsible for maintaining the mapping reduces the number of hops that a request has to make, speeding them up. But having a centralized router makes updating the shard mapping much easier, since you only have to update it in one place.
 
@@ -416,7 +431,7 @@ If a shard gets too big and starts to fill up its machine's hard-drive, we can s
 4. Once we're confident that the new and old shards contain the same data, we switch to reading from the new shards. We continue double-writing in case we need to switch back
 5. Once we're confident that this step has been successful, stop double-writing and delete the old shard
 
-Rupert Herpton has written [a great article about a broadly-similar type of migration][stripe-migration] that goes into much more detail. In short, the process of migrating data between database shards is detailed and finicky, but also entirely doable and logical.
+Rupert Herpton has written [a great article about a broadly-similar type of migration][stripe-migration] that goes into much more detail. In short, the process of migrating data between database shards is detailed and finicky, but also entirely doable and logical. Some types of database can even automatically take care of sharding for you.
 
 ### Replication
 
@@ -474,9 +489,9 @@ Replication can be handled either synchronously or asynchronously. These words c
 
 By contrast, if an action is performed "asynchronously" then this means that the initiator of the action doesn't wait around for it to be finished. Instead, they just continue with the rest of their work while the action is worked on in the background. The real Postal Service is asynchronous; you give your letter to a postal worker, then leave and continue with your life while the Postal Service delivers your letter. Asynchronous actions can send back notifications of the outcome of the action if they want ("Your letter has arrived and was signed for" or "Mr. Heaton, your dry-cleaning is ready"), but they don't have to.
 
-How do these principles apply to database replication? In synchronous replication, a client writes its new data to a database server and then waits. This server doesn't tell the client whether their write has been completed successfully until it has finished fully replicating the client's data across all of its sibling servers. Then, and only then, does the client continue executing the rest of its code.
+How do these principles apply to database replication? In synchronous replication a client writes its new data to a database server and then waits. This server doesn't tell the client whether their write has been completed successfully until it has finished fully replicating the client's data across all of its sibling servers. Then, and only then, does the client continue executing the rest of its code.
 
-In asynchronous replication, the client writes its data to the first database server, as before. But this time the first server tells the client that the write was successful as soon as it has written the data to its own data store. It kicks off the replication process in the background, and doesn't wait for it to complete, or even start, before it tells the client that the write was successful. This means that the asynchronous operation appears much faster than the synchronous one, because the client doesn't have to wait for all the replication to complete before it can continue on with the rest of its work. However, if the background replication fails then the client will believe that it has successfully written its data to the database when it actually has not. This could cause problems, the imagination of which is left as an exercise for the reader.
+In asynchronous replication the client writes its data to the first database server, as before. But this time the first server tells the client that the write was successful as soon as it has written the data to its own data store. It kicks off the replication process in the background, and doesn't wait for it to complete, or even start, before it tells the client that the write was successful. This means that the asynchronous operation appears much faster than the synchronous one, because the client doesn't have to wait for all the replication to complete before it can continue on with the rest of its work. However, if the background replication fails then the client will believe that it has successfully written its data to the database when it actually has not. This could cause problems, the imagination of which is left as an exercise for the reader.
 
 The synchronous approach is slower but "safer" than an asynchronous approach. The database never claims to have successfully received and stored any data until it has finished every single step of doing so. Because the client waits for full confirmation before proceeding, it is guaranteed to never encounter a situation where the client believes that it has written some data to the database, but the database has secretly partially dropped the data on the floor.
  
@@ -696,7 +711,7 @@ We replicate our data from our production SQL database to Hive, once a day, over
 
 It's dark outside and you're hungry. Is that pretty much it? you ask.
 
-"Oh god no," Kate replies, "we could keep going forever. But this is a pretty good start. It's helpful to have a broad understanding of a wide range of topics, but no one needs to know the details about everything. I find that once you know some basics you can keep picking up more basics and even some details as you go along."
+"Oh god no," Kate replies, "we could keep going forever. But this is a pretty good start. It's helpful to have a broad understanding of a wide range of topics, but no one needs to know the details about everything. I find that once you know some basics you can keep picking up more basics and even a couple of details as you go along."
 
 You ask if Kate could perhaps continue to elaborate on her five-year vision for Steveslist tomorrow.
 
