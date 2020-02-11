@@ -1,11 +1,13 @@
 ---
 layout: post
-title: "PFAB X: First-class functions and dependency injection"
+title: "PFAB 10: First-class functions and dependency injection"
 published: false
 ---
-In the previous edition of PFAB[TODO] we began looking at a program that analyzes WhatsApp message logs, written by Adarsh Rao. We discussed some of the tradeoffs between taking a *batch* approach - where we load and process many records at once - and a *streaming* approach - where we load one record at a time, fully process it, and only then load and process the next record. We focussed in particular on how to write a clean batch pipeline. This week we're going to look at how to make a *modular* streaming pipeline by using *first-class functions* and *dependency injection*.
+In the [previous edition of PFAB][pfab9] we began looking at a program that analyzes WhatsApp message logs, written by Adarsh Rao. We discussed some of the tradeoffs between taking a *batch* approach - where we load and process many records at once - and a *streaming* approach - where we load one record at a time, fully process it, and only then load and process the next record. We focussed in particular on how to write a clean batch pipeline. This week we're going to look at how to make a *modular* streaming pipeline by using *first-class functions* and *dependency injection*.
 
-This edition is advanced stuff - this series isn't called "Programming Feedback for Advanced Beginners" for nothing. If after reading this post you think "OK, that's nice and all but I have no idea how to use any of it in my own code" then that's fine and normal. My hope is that the next time you come across some code written in this style then you'll think "oh I see what they're doing here." Then the time after you'll start to really see what's going on, and eventually you'll be writing this type of code yourself in your sleep.
+This edition contains advanced, challenging material - this series isn't called "Programming Feedback for Advanced Beginners" for nothing. If after reading this post you think "OK, that's nice and all but I have no idea how to use any of it in my own code" then that's fine and normal. My hope is that the next time you come across some code written in this style then you'll think "oh I see what they're doing here." Then the time after you'll start to really see what's going on, and eventually you'll be writing this type of code yourself in your sleep.
+
+[Here's the code from last week for reference.][adarsh-code]
 
 ## Moaning about our un-modular streaming code
 
@@ -47,7 +49,7 @@ end
 stats = update_stats(current_message, stats)
 ```
 
-By contrast, the code for our batch version of the program remained nicely separated, with all the above logic wrapped up nicely inside separate functions:
+By contrast, the code for our batch version of the program remained nicely separated, with all of its logic wrapped up inside well-separated functions:
 
 ```ruby
 raw_log = File.read("samplelog.txt")
@@ -77,7 +79,7 @@ However, I found that coming up with this kind of high-level layout for streamin
 
 The reason that streaming is harder is that we don't have the simple, sequential execution that we had in the batch case. We have to read a line, parse it, check if we have finished composing a new message, add it to our stats if so, then go back, read another line, add it to our stats, and so on. We can't simply assemble a line of functions that feed data into each other.
 
-The root cause of my discontent with our current streaming code is that our `update_stats` function is buried deep inside our code that parses log lines. This troubles me because if we wanted to reuse our log-parsing code to parse a different log file and perform a different action on each message (for example, write it to a message database), we would have to go inside our log-parsing code and conduct invasive surgery. By contrast, to make a similar update to our batch code we would just have to write a new `write_to_db` function and swap it in for our `calculate_stats` function, leaving our log-parsing code entirely untouched.
+The root cause of my discontent with our current streaming code is that our `update_stats` function is buried deep inside our code that parses log lines. This troubles me because if we wanted to reuse our log-parsing code to parse a different log file and perform a different action on each message (for example, write it to a message database), we would have to go inside our log-parsing code and conduct deep invasive surgery to change the call to `update_stats`. By contrast, to make a similar update to our batch code we would just have to write a new `write_to_db` function and swap it in for our `calculate_stats` function, leaving the code that parses logs from files untouched.
 
 Some plausible but unsatisfactory solutions to this problem include:
 
@@ -108,7 +110,7 @@ The solution to this conundrum is to use *first-class functions* and *dependency
 
 A programming language that supports *first-class functions* allows you to pass functions around as first-class variables.
 
-To demonstrate what this means and why it matters, let's switch briefly to Python for a second, where the syntax for first-class functions is simpler:
+To demonstrate what this means and why it matters, let's switch for a second from Ruby to Python, for a seconi where the syntax for first-class functions is simpler:
 
 ```python
 def say_hello():
@@ -146,7 +148,7 @@ run_function_twice(say_hello)
 
 ### Translating first-class functions into Ruby
 
-*(If you don't care about the specifics of Ruby and only care about the general principles, you can safely skip this section)*
+*(If you don't care about the specifics of Ruby and only care about the general principles of first-class functions, you can safely skip this section)*
 
 Strictly speaking, Ruby doesn't have first-class functions. You can't assign a method to a variable in the same way that you can in Python:
 
@@ -264,9 +266,9 @@ We can use first-class functions and dependency injection to make our code even 
 
 ### Configurable batch sizes
 
-In the previous edition of PFAB, we mentioned that it is possible to combine streaming and batch approaches. We've so far thought of "streaming" as loading and processing one record at a time, and "batch" as loading and processing all records at once. However, we can also load and process "some" records at a time, in batches of a configurable size.
+In the previous edition of PFAB, we mentioned that it is possible to combine streaming and batch approaches. We've so far thought of "streaming" as loading and processing one record at a time, and "batch" as loading and processing every record at once. However, we can also load and process "some" records at a time, in batches of a configurable size.
 
-There may be interesting tensions at play in our choice of batch size. We might want to keep our batches small to reduce the amount of memory that we use (see last week's PFAB[TODO]). But we might also want to keep our batches large to reduce the number of separate times we have to load data from our data source. In between these competing priorities there is likely a happy middle-ground. Where? That all depends.
+There may be interesting tensions at play in our choice of batch size. We might want to keep our batches small to reduce the amount of memory that we use (see [last week's PFAB][pfab9]). But we might also want to keep our batches large to reduce the number of separate times we have to load data from our data source. In between these competing priorities there is likely a happy middle-ground. Where? That all depends.
 
 Let's once again take our top-down approach, and consider how we would like our batch-size code to look to other programmers who are using it. I would like it if our users simply passed in a `batch_size` parameter to our existing functions, and then we take care of the rest:
 
@@ -276,7 +278,9 @@ parse_log_file(fname, batch_size) do |m|
 end
 ```
 
-`parse_log_file`'s contract then becomes "you give me a filename, a message-processing function, and a batch size. I'll load message from your file in batches of `batch_size`, and run each record through the message-processing function." Go back to the previous definition of `parse_log_file` and think about how you might update it to work with a batch-size.
+`parse_log_file`'s contract then becomes "you give me a filename, a message-processing function, and a batch size. I'll load messages from your file in batches of `batch_size`, and run each record through the message-processing function."
+
+Go back to the previous definition of `parse_log_file` and think about how you might update it to work with a batch-size.
 
 ### More modularity
 
@@ -285,7 +289,7 @@ The `parse_log_file` function is currently responsible for both:
 * Loading log data from a file
 * Parsing log data into messages
 
-For our current purposes, it's not a problem that `parse_log_file` has two jobs. However, suppose that we wanted to extend our system to work with additional *data sources*. In this expanded system, users can load their log data from not just a file, but also from a database or a website. The data is formatted in the same way in each new source type as it is in the log file. We therefore want to be able to reuse our log-parsing code, and just want to be able to configure the source from which the logs are originally loaded.
+For our current purposes, it's not a problem that `parse_log_file` has two jobs. However, suppose that we wanted to extend our system to work with additional *data sources*. In this expanded system, users can load their log data from not just a file, but also from a database or a website. The data in these new sources is formatted in the same way in each new source type as it is in the log file. We therefore want to be able to reuse our log-parsing code, and just want to be able to configure the source from which the logs are originally loaded.
 
 We could write a band-aid solution to this problem, similar to those proposed for our earlier problems. We could make multiple functions called `parse_log_database`, `parse_log_website`, `parse_log_file`, although this would require us to duplicate some code. Or we could pass a `sourcetype` argument into `parse_log_file` that indicated whether the function should load its data from a database, website, or file.
 
@@ -323,6 +327,22 @@ If you're writing a library that will be used by many other programmers then thi
 
 In particular, one of the biggest risks in erecting a framework inside a project is that it might turn out to be the wrong one. Adding new functionality to a framework that isn't designed to handle it is much harder than adding functionality to a project with no framework at all.
 
-For example, all of the above code has assumed that message records are processed one at a time, in a complete vacuum. This sounds like a reasonable assumption. But as part of his analysis, Adarsh (the original author of this program) wants to be able to measure the time difference *in between* messages. This will require us to be able to peek back at past messages in order to read their timestamps, which is not a feature that our current framework has contemplated. Adding it to our now-opinionated framework will be substantially harder than adding it to a more freeform, unstructured program.
+For example, all of the above code has assumed that message records are processed one at a time, in a complete vacuum. This sounds like a reasonable assumption. But suppose that Adarsh (the original author of this program) wanted to be able to measure the time difference *in between* messages. This will require us to be able to peek back at past messages in order to read their timestamps, which is not a feature that our current framework has contemplated. Adding it to our now-opinionated framework will be substantially harder than adding it to a more freeform, unstructured program.
 
 Don't undervalue flexibility. Every clever flourish that you add to your code makes some use-cases easier to handle, but probably also makes others much harder. When you know for sure(ish) the types of tasks that your system will and won't need to handle, then you can start to make assumptions and specialize. Until then, keep your options open, even if it makes your code a little more ragged around the edges for the time being.
+
+Keep reading:
+
+* [Subscribe][subscribe] to receive all PFABs in your inbox, every fortnight, for free
+* Continue to build your skills with one of my [Programming Projects for Advanced Beginners][ppab]
+* In case you missed it: [Wacom drawing tablets track the name of every application that you open][wacom]
+
+[pfab9]: https://robertheaton.com/pfab9
+[adarsh-code]: https://github.com/robert/programming-feedback-for-advanced-beginners/tree/master/editions/9-10-whatsapp-message-parsing
+[about]: https://robertheaton.com/about
+
+[tor]: https://robertheaton.com/2019/04/06/how-does-tor-work
+[subscribe]: https://advancedbeginners.substack.com
+[ppab]: https://robertheaton.com/ppab
+[pfab7]: https://robertheaton.com/pfab7
+[wacom]: https://robertheaton.com/2020/02/05/wacom-drawing-tablets-track-name-of-every-application-you-open/
