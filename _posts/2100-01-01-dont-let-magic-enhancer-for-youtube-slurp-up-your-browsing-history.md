@@ -1,11 +1,15 @@
 ---
 layout: post
-title: Don't let Magic Enhancer for Youtube slurp up your browsing history
+title: Don't let "Magic Enhancer for YouTube" slurp up your browsing history
 tags: [Online Tracking]
-og_image: https://robertheaton.com/images/pfab-cover.png
+og_image: https://robertheaton.com/images/magic-cover.png
 published: false
 ---
 [Magic Enhancer for YouTube][magic-enhancer] is a handy Chrome Extension that improves the user interface of YouTube by hiding all the distracting bits. It is used by over 350,000 people. If you click the wrong buttons while installing it then it tracks the full URL of every website that you visit. 
+
+<p style="text-align: center">
+<img src="/images/magic-cover.png" />
+</p>
 
 The makers of Magic Enhancer, otherwise-invisible-presumably-shell-company BZO Technologies LC, are surprisingly open about their designs on your data. Their [privacy policy][privacy-policy] clearly states that they would like to record the URL of every website that you visit, and in order to enable the tracking you have to opt-in when installing the extension. But the justification they provide for needing this data is bogus; human beings are famous for clicking on buttons without reading the associated text; and I don't think that it should be possible for users to sign away this level of data to a random browser extension just by mashing a button. This isn't quite "you hereby assign all right of your firstborn child to us", but it's on that spectrum.
 
