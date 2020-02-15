@@ -5,13 +5,19 @@ tags: [Online Tracking]
 og_image: https://robertheaton.com/images/magic-cover.png
 published: false
 ---
-[Magic Enhancer for YouTube][magic-enhancer] is a handy Chrome Extension that improves the user interface of YouTube by hiding all the distracting bits. It is used by over 350,000 people. If you click the wrong buttons while installing it then it tracks the full URL of every website that you visit. 
+[Magic Enhancer for YouTube][magic-enhancer] is a handy Chrome Extension that improves the user interface of YouTube by hiding all the distracting bits. Used by over 350,000 people, it was drawn to my attention by [a tipoff][tipoffs] from one of my readers, who noticed that if you click the wrong buttons while installing it then it also tracks the full URL of every website that you visit. 
 
 <p style="text-align: center">
 <img src="/images/magic-cover.png" />
 </p>
 
-The makers of Magic Enhancer, otherwise-invisible-presumably-shell-company BZO Technologies LC, are surprisingly open about their designs on your data. Their [privacy policy][privacy-policy] clearly states that they would like to record the URL of every website that you visit, and in order to enable the tracking you have to opt-in when installing the extension. But the justification they provide for needing this data is bogus; human beings are famous for clicking on buttons without reading the associated text; and I don't think that it should be possible for users to sign away this level of data to a random browser extension just by mashing a button. This isn't quite "you hereby assign all right of your firstborn child to us", but it's on that spectrum.
+This post is a little like shooting fish in a barrel. "Yet another Chrome extension owned by an untraceable shell company is doing something questionable" is not big news. So once we've understood how Magic Enhancer works, we'll look at some ways in which you could protect yourself if you were determined to keep Magic Enhancer installed but wanted to place guard-rails around it.
+
+I haven't contacted Magic Enhancer for comment about this story because the support email on their website doesn't work and their "Contact Us" page is blank.
+
+---
+
+The makers of Magic Enhancer, otherwise-invisible-presumably-shell-company BZO Technologies LC, are surprisingly open about their designs on your data. Their [privacy policy][privacy-policy] clearly states that they would like to record the URL of every website that you visit, and in order for the tracking to be enabled users have to opt-in when installing the extension. But the justification they provide for needing this data is bogus; human beings are famous for clicking on buttons without reading the associated text; and I don't think that it should be possible for users to sign away this level of data to a random browser extension just by mashing a button. This isn't quite "you hereby assign all right to your firstborn child to us", but it's on that spectrum.
 
 Magic Enhancer incorrectly claims that their tracking is technically necessary in order to power a feature that displays the number of likes and dislikes for a YouTube video.
 
@@ -23,15 +29,7 @@ Magic Enhancer incorrectly claims that their tracking is technically necessary i
 
 There is no possible way that such a feature would require slurping up the URL of every website that you visit, and this misdirection suggests that something nefarious is afoot. I have no idea what happens to your data once it reaches the Magic Enhancer servers, but the setup smells similar to [the type of data-hoovering performed by Stylish][stylish], another invasive Chrome extension that is owned by Similar Web, a web analytics company.
 
-Let's have a look at the data that Magic Enhancer collects, and discuss how you can defend yourself if you don't trust the extension's developers but really like what they do to your YouTube interface.
-
-----
-
-I haven't contacted Magic Enhancer for comment about this story because the support email on their website doesn't work and their "Contact Us" page is blank.
-
-----
-
-To snoop on the traffic that Magic Enhancer sends, we set up [Burp Suite proxy][burp] and configure Chrome to send all its traffic through the proxy (see [my post about Wacom tablets tracking the name of every application you open][wacom] for more details on using proxies). We create a new Chrome profile to make sure we don't accidentally send Magic Enhancer any of our real, sensitive data, and install Magic Enhancer inside this profile. We turn on all of the "yes please track all my activity" settings. We stare at the Burp logs, looking for a suitably suspicious domain.
+To snoop on the traffic that Magic Enhancer sends, we set up [Burp Suite proxy][burp] and configure Chrome to send all its traffic through the proxy (see [my post about Wacom tablets tracking the name of every application you open][wacom] for more details on using proxies). We create a new Chrome profile to isolate Magic Enhancer from our real browsing and passwords and to make sure we don't accidentally send it any of our real, sensitive data, and install Magic Enhancer inside this profile. We turn on all of the "yes please track all my activity" settings. We stare at the Burp logs, looking for a suitably suspicious domain.
 
 We soon see requests beaming out to `https://autohdvideoapi.com/embeddedPage`. We believe we have found our target. We look at the data in the body of these requests.
 
@@ -39,7 +37,7 @@ We soon see requests beaming out to `https://autohdvideoapi.com/embeddedPage`. W
 <img src="/images/magic-burp.png" />
 </p>
 
-It looks like jibberish, but we've seen this flavor of nonsense before. For some reason many questionable analytics companies like to encode their data using base64 before sending it to themselves. We can only assume that this is to make it somewhat harder for a casual observer to see what they are doing. We wonder why they don't use something more difficult to decode, if only to make snooping on their activity more time-consuming.
+It looks like jibberish, but we've seen this flavor of nonsense before. For some reason many questionable analytics companies like to encode their data using [base64][base64] before sending it to themselves. We can only assume that this is to make it somewhat harder for a casual observer to see what they are doing. We wonder why they don't use something more difficult to decode, if only to make snooping on their activity more time-consuming.
 
 Ours not to reason why, we write a quick script to decode the data:
 
@@ -69,17 +67,17 @@ Magic Enhancer's justification for grabbing this data is that they need it in or
 
 To me, this is enough of a reason to uninstall the extension. It clearly has some sort of ulterior motive, and even though it's possible to disable the tracking in the extension and to block it at the system level for good measure (see below), life is complicated enough already without having to worry about your Chrome extensions betraying you in future auto-updates.
 
-You might be entirely open and unembarrassed about what you click oclick onbehind closed doors. But even if you are unapologetically without shame and don't care at all about privacy for the sake of privacy, you should still care about security for the sake of your money and identity. [In a previous post about the Stylish browser extension][stylish] I suggested several reasons why many URLs (for example password reset links, secret login URLs) should be considered sensitive information in and of themselves. Since writing that post another reason to be protective of URLs has occurred to me. Suppose you installed one of these extensions on your work laptop and were browsing your company wiki. I doubt that anyone in your management chain would be happy about the URL `https://wiki.internal.ibm.com/posts/dealing-with-our-terrible-q3-results` being recorded in a random database somewhere.
+You might be entirely open and unembarrassed about what you click on behind closed doors. But even if you are without shame and don't care at all about privacy for the sake of privacy, you should still care about security for the sake of your money and identity. [In a previous post about the Stylish browser extension][stylish] I suggested several reasons why many URLs (for example password reset links, secret login URLs) should be considered sensitive information in and of themselves. Since writing that post another reason to be protective of URLs has occurred to me. Suppose you installed one of these extensions on your work laptop and were browsing your company wiki. I doubt that anyone in your management chain would be happy about the URL `https://wiki.internal.ibm.com/posts/dealing-with-our-terrible-q3-results` being recorded in a random database somewhere.
 
 ---
 
-This is a little like shooting fish in a barrel. "Yet another Chrome extension owned by an untraceable shell company is doing something questionable" is not big news. Perhaps more interesting are the ways in which you could try to protect yourself if you were determined to keep Magic Enhancer installed but wanted to place guard-rails around it.
+So how can you can defend yourself if you don't trust the extension's developers but really like what they do to your YouTube interface? I can think of at least 3 mitigations.
 
-### 1. Blackhole its analytics domain
+### 1. Blackhole the analytics domain
 
-We can prevent your data from reaching Magic Enhancer by configuring it to refuse to send traffic to the Magic Enhancer analytics domain.
+We can prevent your data from reaching Magic Enhancer by configuring your computer to refuse to send traffic to the Magic Enhancer analytics domain.
 
-Magic Enhancer sends your browsing history to the URL `https://autohdvideoapi.com/embeddedPage`. However, the internet backbone does not understand URLs or domains like `autohdvideoapi.com`. All it understands are IP addresses like `18.214.180.116`. Therefore, in order to send a request to `autohdvideoapi.com`, your computer first sends a *DNS request* to a *DNS server* asking "what is the IP address for `autohdvideoapi.com`?" When your computer receives back a *DNS response* containing an IP address, it sends out your request to that IP address.
+Burp Suite proxy reveals that Magic Enhancer sends your browsing history to the URL `https://autohdvideoapi.com/embeddedPage`. However, the internet backbone does not understand URLs or domains like `autohdvideoapi.com`. All it understands are IP addresses like `18.214.180.116`. Therefore, in order to send a request to `autohdvideoapi.com`, your computer first sends a *DNS request* to a *DNS server* asking "what is the IP address for `autohdvideoapi.com`?" When your computer receives back a *DNS response* containing an IP address, it sends out your request to that IP address.
 
 We can bypass this process of *DNS resolution* for `autohdvideoapi.com`, thereby isolating Magic Enhancer from its mothership. To do so, we edit a special file called `/etc/hosts`. In this file we can hardcode associations between IP addresses and domains. In particular, we can hardcode `autohdvideoapi.com` to point at `127.0.0.1`, a special IP address called the *loopback address* that points back at your machine. We can do this by adding the following line to the file:
 
@@ -91,7 +89,7 @@ This means that if your computer tries to send a request to `autohdvideoapi.com`
 
 ### 2. Edit the Chrome extension
 
-Alternatively, it is trivial to edit the source code of the Magic Enhancer extension so that it doesn't send any of your data back to their servers. I assume that doing so is legal; if it isn't then don't do it. First, download the source code by running the following commands:
+Alternatively, it is trivial to edit the source code of the Magic Enhancer extension so that it doesn't send any of your data back to their servers. I assume that doing so is legal; if it isn't then don't do it. First, download the source code from the Chrome Store by running the following commands:
 
 ```bash
 # Credit: https://gist.github.com/paulirish/78d6c1406c901be02c2d
@@ -137,3 +135,4 @@ New - *[send me your privacy abuse tipoffs][tipoffs]*
 [wacom]: https://robertheaton.com/2020/02/05/wacom-drawing-tablets-track-name-of-every-application-you-open/
 [privacy-policy]: https://autohdforyoutube.com/privacy
 [tipoffs]: /tipoffs
+[base64]: https://www.base64decode.org/
