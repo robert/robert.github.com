@@ -4,7 +4,7 @@ title: Don't let "Magic Enhancer for YouTube" slurp up your browsing history
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/magic-cover.png
 ---
-[Magic Enhancer for YouTube][magic-enhancer] is a handy Chrome Extension that improves the user interface of YouTube by hiding all the distracting bits. Used by over 350,000 people, it was drawn to my attention by [a tipoff][tipoffs] from one of my readers, who noticed that if you click the wrong buttons while installing it then it also tracks the full URL of every website that you visit. 
+[Magic Enhancer for YouTube][magic-enhancer] is a handy Chrome Extension that improves the user interface of YouTube by hiding all the distracting bits. Used by almost 350,000 people, it was drawn to my attention by [a tipoff][tipoffs] from one of my readers, who noticed that if you click the wrong buttons while installing it then it also tracks the full URL of every website that you visit. 
 
 <p style="text-align: center">
 <img src="/images/magic-cover.png" />
