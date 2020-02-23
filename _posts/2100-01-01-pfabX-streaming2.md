@@ -1,22 +1,27 @@
 ---
 layout: post
 title: "PFAB 10: First-class functions and dependency injection"
-published: false
+tags: [Programming Projects for Advanced Beginners]
+og_image: https://robertheaton.com/images/pfab-cover.png
+redirect_from:
+  - /pfab10
 ---
+> This post is part of my "Programming Feedback for Advanced Beginners" series, which helps you make the leap from knowing how to cobble messy programs toether to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.
+
 In the [previous edition of PFAB][pfab9] we began looking at a program that analyzes WhatsApp message logs, written by Adarsh Rao. We discussed some of the tradeoffs between taking a *batch* approach - where we load and process many records at once - and a *streaming* approach - where we load one record at a time, fully process it, and only then load and process the next record. We focussed in particular on how to write a clean batch pipeline. This week we're going to look at how to make a *modular* streaming pipeline by using *first-class functions* and *dependency injection*.
 
 This edition contains advanced, challenging material - this series isn't called "Programming Feedback for Advanced Beginners" for nothing. If after reading this post you think "OK, that's nice and all but I have no idea how to use any of it in my own code" then that's fine and normal. My hope is that the next time you come across some code written in this style then you'll think "oh I see what they're doing here." Then the time after you'll start to really see what's going on, and eventually you'll be writing this type of code yourself in your sleep.
 
-[Here's the code from last week for reference.][adarsh-code]
+If you haven't read the previous PFAB then [make sure to read it][pfab9] before going any further. This project is written in Ruby, but should be broadly understandable even if you haven't come across Ruby before.
 
 ## Moaning about our un-modular streaming code
 
-At the end of last week's PFAB, we were attempting to update our streaming code to deal with the fact that WhatsApp messages can sometimes spread over multiple lines in a log file:
+At the end of last week's PFAB, we were attempting to update our streaming code to deal with the fact that WhatsApp messages can sometimes spread over multiple lines in a log file, like so:
 
 ```
-7/28/19, 11:07 PM - Harold: Here's an idea for the next time you return. 
+7/28/19, 11:07 PM - Kimi: Here's an idea for the next time you return. 
 Sample Message that is split over two-lines. 
-7/30/19, 11:03 PM - Kumar: More messages
+7/30/19, 11:03 PM - Gaurav: More messages
 ```
 
 We were lamenting the fact that our updated streaming code was starting to look quite gnarly and un-modular. Our code that parses log lines into messages was becoming deeply entwined with our code that processes messages once they had been parsed. Look at the call to `update_stats` buried deep inside our log-parsing code:
@@ -24,7 +29,14 @@ We were lamenting the fact that our updated streaming code was starting to look 
 ```ruby
 stats = {}
 current_message = nil
-File.readlines("samplelog.txt") do |l|
+
+# File.foreach reads the given file and runs
+# the given "block" of code on each line in turn.
+File.foreach("samplelog.txt") do |l|
+  # Assume that we've written a function called
+  # parse_raw_log_line that parses out the date, time,
+  # message, and whether this line is the start of a new
+  # message.
   parsed_line = parse_raw_log_line(l)
 
   # If this line is a new message, add the previous
@@ -108,9 +120,7 @@ The solution to this conundrum is to use *first-class functions* and *dependency
 
 ## First-class functions
 
-A programming language that supports *first-class functions* allows you to pass functions around as first-class variables.
-
-To demonstrate what this means and why it matters, let's switch for a second from Ruby to Python, for a seconi where the syntax for first-class functions is simpler:
+*First-class functions* are a feature of many (but not all) programming languages. If a language has first-class functions, this means that you can pass its functions around as variables. To demonstrate what this means and why it matters, let's switch for a second from Ruby to Python, where the syntax for first-class functions is simpler:
 
 ```python
 def say_hello():
@@ -134,6 +144,8 @@ def say_hello():
   print("HELLO!")
 
 def run_function_twice(my_function):
+  """run_function_twice takes another function
+  as an argument and runs that function twice"""
   my_function()
   my_function()
 
@@ -193,7 +205,7 @@ Don't worry too much about the syntactic specifics for now - if the general idea
 
 ## How does any of this help us?
 
-Recall the second band-aid solution that we proposed to our problem: pass into `parse_log_file` a string describing the processing action that we want to perform, and then use a big if-statement inside `parse_log_file` to pick out and execute the logic that corresponds to this string.
+Recall the second band-aid solution that we proposed to our problem: pass `parse_log_file` a string describing the processing action that we want to perform, and then use a big if-statement inside `parse_log_file` to pick out and execute the logic that corresponds to this string.
 
 This solution was OK, but how about we skip out the middleman? Instead of passing in a string that tells our function which logic to run, how about we pass in the logic itself in the form of a `Proc`?
 
@@ -211,7 +223,7 @@ write_to_db_proc = Proc.new { |m| write_to_db(m) }
 parse_log_file(fname, write_to_db_proc)
 ```
 
-Side-note: Ruby has a more elegant "block" syntax that we can use to achieve the same result in a more stylish manner:
+Side-note: Ruby has a more elegant "block" syntax that we can use to write the same logic in a more stylish way:
 
 ```ruby
 parse_log_file(fname) do |m|
