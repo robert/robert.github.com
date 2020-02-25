@@ -4,7 +4,7 @@ title: Online tracking is about finding excuses to send HTTP requests
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/excuses-cover.png
 ---
-Online tracking is about finding excuses to send HTTP requests. In particular, it's about companies finding excuses to send themselves HTTP requests. The purpose of these HTTP requests is to tell these companies something about how people behave.
+Online tracking is about finding excuses to send HTTP requests. In particular, it's about *companies* finding excuses to send *themselves* HTTP requests, in order to record something about how people behave.
 
 <img src="/images/excuses-cover.png" />
 
