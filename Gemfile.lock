@@ -87,7 +87,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (3.0.3)
-    rake (11.1.2)
+    rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
