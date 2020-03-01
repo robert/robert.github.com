@@ -60,6 +60,8 @@ online_tracking:
       url: /2018/07/02/stylish-browser-extension-steals-your-internet-history/
     - title: "HP printers try to send data back to HP about your devices and what you print"
       url: /2019/09/15/hp-printers-send-data-on-what-you-print-back-to-hp/
+    - title: "Wacom drawing tablets track the name of every application that you open"
+      url: /2020/02/05/wacom-drawing-tablets-track-name-of-every-application-you-open/
     - title: "How does online tracking actually work?"
       url: /2017/11/20/how-does-online-tracking-actually-work/
     - title: "Cookie Syncing: how online trackers talk about you behind your back"
@@ -202,12 +204,16 @@ parenthood:
   posts:
     - title: "Childbirth: a father's-eye view"
       url: /2019/06/17/childbirth-a-fathers-eye-view/
-    - title: "Port scans and industrial fans: 1 month of parenthood"
+    - title: "Port scans and industrial fans"
       url: /2019/06/30/1-month-of-parenthood
     - title: "Oscar Heaton, quarterly baby review"
       url: /2019/08/25/parenthood-3-oscar-heaton-quarterly-baby-review/
     - title: "Untitled Potato Portrait"
       url: /2019/10/10/parenthood-4-untitled-potato-portrait/
+    - title: "Great cement ideas that will make your partner happy"
+      url: /2020/01/06/parenthood-5-great-cement-ideas-that-will-make-your-partner-happy/
+    - title: "Re-rolling the dice"
+      url: /2020/03/02/parenthood-6-re-rolling-the-dice/
 
 writing:
   title: "On writing"
