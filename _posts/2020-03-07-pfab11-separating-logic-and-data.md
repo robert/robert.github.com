@@ -24,7 +24,7 @@ Let's start with a quick tour of the code (you can also [read it in full on GitH
 
 Eat/Play/Drink is built using HTML and JavaScript. If you aren't familiar with these technologies then don't worry - the concepts that we're going to talk about are applicable to all other languages too. Roughly speaking, HTML is how you describe what a website looks like, and JavaScript is how you dynamically update it (for example, expanding a menu when a user clicks on a button).
 
-HTML:
+HTML looks like this:
 
 ```html
 <!-- A simple website with an image and a button -->
@@ -36,7 +36,7 @@ HTML:
 </html>
 ```
 
-JavaScript:
+JavaScript looks like this:
 
 ```javascript
 // When the user clicks on the button, change the image
