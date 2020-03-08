@@ -233,6 +233,6 @@ Until next time:
 [pfab6]: https://robertheaton.com/pfab6
 [pfab10]: https://robertheaton.com/pfab10
 [epd-code]: https://github.com/robert/programming-feedback-for-advanced-beginners/tree/5719e46edfcab3043d37053f413994cba97e3601/editions/11-eat-play-drink/original
-[index_html]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/5719e46edfcab3043d37053f413994cba97e3601/editions/11-eat-play-drink/original/index.html
-[app_js]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/5719e46edfcab3043d37053f413994cba97e3601/editions/11-eat-play-drink/original/app.js
+[index-html]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/5719e46edfcab3043d37053f413994cba97e3601/editions/11-eat-play-drink/original/index.html
+[app-js]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/5719e46edfcab3043d37053f413994cba97e3601/editions/11-eat-play-drink/original/app.js
 [sophia]: https://sophiali.dev/
