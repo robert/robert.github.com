@@ -5,7 +5,6 @@ tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab11
-published: false
 ---
 > This post is part of my "Programming Feedback for Advanced Beginners" series, which helps you make the leap from knowing how to cobble messy programs toether to writing clean, elegant code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.
 
