@@ -12,7 +12,7 @@ This week on [Programming Feedback for Advanced Beginners][subscribe] we're goin
 
 <img src="/images/pfab11-epd-ss.png" />
 
-As with almost every program that we analyze in PFAB, Sophia's program is already entirely functional and fit for purpose. You can even view it in action at [https://sophiali.dev/eat-play-drink](). The changes that we're going to suggest would only start to become particularly important if the codebase grew larger or was being worked on by multiple programmers. For a small, personal side-project the changes should therefore be considered somewhat optional, but they're still good opportunities for practice and learning.
+As with almost every program that we analyze in PFAB, Sophia's program is already entirely functional and fit for purpose. You can even view it in action at [https://sophiali.dev/eat-play-drink][epd]. The changes that we're going to suggest would only start to become particularly important if the codebase grew larger or was being worked on by multiple programmers. For a small, personal side-project the changes should therefore be considered somewhat optional, but they're still good opportunities for practice and learning.
 
 Over the coming editions of PFAB we're going to look at how Sophie could restructure her code so as to make it more "defensive". This means anticipating the types of bugs that future programmers could accidentally introduce (Sophie-in-a-month counts as a future programmer!), and programming in a style that mitigates or prevents these bugs altogether.
 
@@ -153,7 +153,7 @@ target='_blank'>Get directions</a>
 
 This and all other `content` values contain a heading, a description, and a link to directions. Can we exploit this consistency to improve our code? Maybe.
 
-To answer this question, let's start by making sure we understand the possible problems we are trying to solve. Suppose that we wanted to change the `Get directions` link to instead say simply `Directions`. At the moment we'd have to go through each place's `content` field and manually update its value with the new link text. Or suppose that we wanted to allow someone not familiar with programming to add and update our data (as above). This person could probably copy-and-paste an example description and deduce that the words between `<h3>` and `</h3>` are probably a heading. However, this is a lot of unnecessary thinking to require of a person who only wants to make a note of a cool new coffee shop. There's also a significant risk that they might accidentally delete a closing `</p>` tag or make some other typo. Come to think of it there's a significant risk that *I* would accidentally delete a closing `</p>` tag too.
+To answer this question, let's start by making sure we understand the possible problems we are trying to solve. Suppose that we wanted to change the "`Get directions`" link to instead say simply "`Directions`". At the moment we'd have to go through each place's `content` field and manually update its value with the new link text. Or suppose that we wanted to allow someone not familiar with programming to add and update our data (as above). This person could probably copy-and-paste an example description and deduce that the words between `<h3>` and `</h3>` are probably a heading. However, this is a lot of unnecessary thinking to require of a person who only wants to make a note of a cool new coffee shop. There's also a significant risk that they might accidentally delete a closing `</p>` tag or make some other typo. Come to think of it there's a significant risk that *I* would accidentally delete a closing `</p>` tag too.
 
 To solve these problems, we could extract each component of the `content` field into its own field, and write code to join these new fields together into a fully rendered block. So in our `markers` data structure, instead of this:
 
@@ -236,3 +236,4 @@ Until next time:
 [index-html]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/5719e46edfcab3043d37053f413994cba97e3601/editions/11-eat-play-drink/original/index.html
 [app-js]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/5719e46edfcab3043d37053f413994cba97e3601/editions/11-eat-play-drink/original/app.js
 [sophia]: https://sophiali.dev/
+[epd]: https://sophiali.dev/eat-play-drink
