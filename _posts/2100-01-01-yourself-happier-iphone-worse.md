@@ -3,7 +3,6 @@ layout: post
 title: How to make yourself happier by making your iPhone worse
 tags: [Work]
 og_image: https://robertheaton.com/images/iphone-cover.png
-published: false
 ---
 <style>
 p.img-container {
@@ -14,7 +13,7 @@ img {
 }
 </style>
 
-> I wrote this post while COVID-19 was still a small item in the "World News" section. I imagine that many people reading this now feel like WhatsApp and Reddit are the only things holding them together. If this is how you feel then keep doing what you're doing and ignore everything written below that isn't helpful to you. But if you think you would benefit from re-evaluating how you use your phone then I think this post will help.
+> I started writing this post while COVID-19 was still just a small item in the "World News" section. I now imagine that many people reading this feel like WhatsApp and Reddit are the only things holding them together. If this is how you feel then keep doing what you're doing and ignore everything written below that isn't helpful to you. But if you think you would benefit from re-evaluating how you use your phone then I think this post will help.
 
 If you sometimes feel mentally ripped apart by your smartphone then I don't think that the solution is a Nokia 3310. Smartphones may be distracting, but they're also very useful.
 
@@ -44,11 +43,11 @@ I [love receiving emails as much as the next person][emails] ([I'd love to hear 
 
 ## Look and feel
 
-Now we start to get a bit more enterprising.
+Now we start to get a bit more enterprising. Some of these suggestions may not work for you if you have impaired vision.
 
 ### 4. Set the display to black and white
 
-In Settings > General > Accessibility > Color Filters, you can configure your display to be black and white. This makes your phone look much more drab and boring and makes you correspondingly less likely to accidentally fall down a brightly-colored pit of clickbait. There are admittedly times when you do need pigments, such as when you're reading a color-coded graph. For these occasions you can turn triple-click-ing the home button into a shortcut for toggling black-and-white mode on and off. This makes it easy to disable, and, more importantly, easy to turn back on once you don't need colors any more.
+In Settings > Accessibility > Display & Text Size > Color Filters (this and all other settings in this post are for iOS 13.3), you can configure your display to be black and white. This makes your phone look much more drab and boring and makes you correspondingly less likely to accidentally fall down a brightly-colored pit of clickbait. There are admittedly times when you do need pigments, such as when you're reading a color-coded graph. For these occasions you can turn triple-click-ing the home button into a shortcut for toggling black-and-white mode on and off. This makes it easy to disable, and, more importantly, easy to turn back on once you don't need colors any more.
 
 Screenshots ignore both black-and-white mode and color inversion (see next tip), so here's a real-life photo of what it looks like.
 
@@ -58,7 +57,7 @@ Screenshots ignore both black-and-white mode and color inversion (see next tip),
 
 ### 5. Invert the display colors
 
-In Settings > General > Accessibility > Display Accomodations, you can also invert your display colors, giving you instant dark-mode on many websites and apps. In older versions of iOS this option would invert the colors of icons and photos, making them look quite strange. But in new versions it leaves them untouched, flipping only the colors of text and background colors. Coupled with the black and white setting described above, this makes your screen noticeably more relaxing.
+In Settings > Accessibility > Display & Text Size > Smart Invert, you can also invert your display colors, giving you instant dark-mode on many websites and apps. In older versions of iOS this option would invert the colors of icons and photos, making them look quite strange. But new versions offer "Smart Invert" which leaves them untouched, flipping only the colors of text and background colors. Coupled with the black and white setting described above, this makes your screen noticeably more relaxing.
 
 <p class="img-container">
 <img src="/images/iphone-darkmode.jpg" />
@@ -72,7 +71,7 @@ Most people have their phone background set to a photo of their partner, childre
 
 One day I was on the train. As I assume all people do, I was looking over the shoulders of the people in front of me and following along as they went about their daily online lives. Not exactly ethical, but I had finished my book and they should have had better operational security.
 
-I noticed that the phone of the elderly, bespectacled gentleman to my left was displaying his text messages in a giant font. It looked ridiculous, and I had to know how he did it. I poked around on my own phone and found that in Settings > General > Accessibility > Larger Text you can configure the font size used by system menus and some applications (it doesn't appear to apply to many apps, including Safari). This makes your phone feel a little more unwieldy, but in what I believe is a good way. It might be a step too far, but I've fallen in love and I'm never going back to normal text.
+I noticed that the phone of the elderly, bespectacled gentleman to my left was displaying his text messages in a giant font. It looked ridiculous, and I had to know how he did it. I poked around on my own phone and found that in Settings > Accessibility > Display & Text Size > Larger Text you can configure the font size used by system menus and some applications (it doesn't appear to apply to many apps, including Safari). This makes your phone feel a little more unwieldy, but in what I believe is a good way. It might be a step too far, but I've fallen in love and I'm never going back to normal text.
 
 <p class="img-container">
 <img src="/images/iphone-font.png" />
@@ -128,7 +127,7 @@ A few years ago I published [a widely-read rant about how mind-rotting Slack is]
 
 Friction can even feel good when you deliberately sign up for it. But there are limits. For example, you would definitely use your phone less if you disabled fingerprint unlocking. But for me this would be too much awkwardness, indiscriminately applied. Many of the things I use my phone for are life-enhancing; I don't want to make those more bothersome if I can avoid it.
 
-I wonder what an operating system built around a central principle of least distraction would look like. I wonder if there are any economic incentives that could ever produce such a product. Either way, in the meantime, the above techniques should help. Start at the top.
+I wonder what an operating system built around a central principle of least distraction would look like. In the meantime, the above techniques should help. Start at the top.
 
 [slack]: https://robertheaton.com/2016/08/23/how-make-slack-slightly-less-bad-for-you/
 [emails]: https://robertheaton.com/2018/08/20/how-i-kicked-my-email-compulsion/
