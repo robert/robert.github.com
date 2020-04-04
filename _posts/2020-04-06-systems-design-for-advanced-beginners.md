@@ -1,10 +1,15 @@
 ---
 layout: post
-title: Systems Infrastructure for Advanced Beginners
+title: Systems design for Advanced Beginners
 tags: [Programming Projects for Advanced Beginners]
+og_image: https://robertheaton.com/images/systems-cover.png
 published: false
 ---
+> This post is part of my [Programming for Advanced Beginners series](https://advancedbeginners.substack.com/). [Subscribe now](https://advancedbeginners.substack.com/) to receive specific, actionable ways to make your code cleaner, every other week, entirely free.
+
 You've started [yet another][tinder] [company][whatsapp] with your good friend, Steve Steveington. It's an online marketplace where people can buy and sell things and where no one asks too many questions. It's basically a rip-off of Craigslist, but with Steve's name instead of Craig's.
+
+<img src="/images/systems-cover.png" />
 
 [tinder]: https://robertheaton.com/2018/07/09/how-tinder-keeps-your-location-a-bit-private/
 [whatsapp]: https://robertheaton.com/2017/10/09/tracking-friends-and-strangers-using-whatsapp/
