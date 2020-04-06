@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "PFAB #10: First-class functions and dependency injection"
-tags: [Programming Projects for Advanced Beginners]
+tags:
+  - Programming Projects for Advanced Beginners
+  - PFAB
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab10

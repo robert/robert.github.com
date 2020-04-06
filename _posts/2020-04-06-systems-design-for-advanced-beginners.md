@@ -1,7 +1,9 @@
 ---
 layout: post
 title: Systems design for Advanced Beginners
-tags: [Programming Projects for Advanced Beginners]
+tags:
+  - Programming Projects for Advanced Beginners
+  - PFAB
 og_image: https://robertheaton.com/images/systems-cover.png
 ---
 > This post is part of my [Programming for Advanced Beginners series](https://advancedbeginners.substack.com/). [Subscribe now](https://advancedbeginners.substack.com/) to receive specific, actionable ways to make your code cleaner, every other week, entirely free.
