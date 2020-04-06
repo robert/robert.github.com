@@ -1,7 +1,9 @@
 ---
 title: "Programming Feedback for Advanced Beginners #0"
 layout: post
-tags: [Programming Projects for Advanced Beginners]
+tags:
+  - Programming Projects for Advanced Beginners
+  - PFAB
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab0

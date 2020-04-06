@@ -1,7 +1,9 @@
 ---
 title: "PFAB#6: Real-world debugging practice"
 layout: post
-tags: [Programming Projects for Advanced Beginners]
+tags:
+  - Programming Projects for Advanced Beginners
+  - PFAB
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab6

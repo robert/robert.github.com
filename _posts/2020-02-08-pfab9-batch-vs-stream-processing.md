@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "PFAB #9: Batch vs Stream processing"
-tags: [Programming Projects for Advanced Beginners]
+tags:
+  - Programming Projects for Advanced Beginners
+  - PFAB
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab9
