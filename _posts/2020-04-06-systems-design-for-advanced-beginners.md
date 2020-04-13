@@ -216,7 +216,7 @@ We've seen how Steveslist users can use our API to programmatically interact wit
 
 Instead, we provide an industry standard system called *webhooks*. A webhook is an HTTP request that we send to our users whenever something interesting happens to their account. It contains all the data describing the event that just happened - for example, the item ID, the price, the buyer ID, buyer address, and so on. Webhooks allow users to automatically perform response actions, such as the aforementioned email and auto-shipping.
 
-To use webhooks, the user tells us the URL to which they would like us to send their webhooks (for example, `steveslistwebhooks.robertheaton.com`. They set up a web server at that URL that will receives and actions these webhook notifications.
+To use webhooks, the user tells us the URL to which they would like us to send their webhooks (for example, `steveslistwebhooks.robertheaton.com`. They set up a web server at that URL that will receive and action these webhook notifications.
 
 ```
 1.Buyer purchases an      3.The seller's server receives the webhook,
