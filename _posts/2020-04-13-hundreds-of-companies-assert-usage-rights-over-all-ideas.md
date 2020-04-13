@@ -3,7 +3,6 @@ layout: post
 title: Hundreds of companies assert usage rights over all ideas sent through their services
 tags: [Online Tracking]
 og_image: https://robertheaton.com/images/ts-cs-cover.png
-published: false
 ---
 I was onto a scandal, but not the one I thought.
 
@@ -25,11 +24,9 @@ There were over 300.
 
 That's 30 Google pages of companies asserting the right to use any and all content that flows through their services, for any purpose, regardless of where it came from or who it was intended for. These companies range from [CrossVerify][crossverify], a provider of anti-money laundering data, to [Lunalife][lunalife], a moon-based motivation app. And these are just the organizations who assert these rights using the same Terms and Conditions template that they copy-pasted from the same discount lawyer. It seems reasonable to assume that there are hundreds more declaring the same privileges using slightly different words.
 
-I'm not sure if this is better or worse than House Party being the sole perpetrator of this nonsense. On the face of it, hundreds of companies claiming a license to any idea that strays within two hundred yards of their headquarters is much worse than one company doing so. However, dusting off my rarely-used benevolent hat, the fact that so many of them are doing it implies that the language is legal boilerplate, and that no individual company has any immediate intention of actually invoking the clause. None of these companies' primary business plan is "steal people's ideas", although they do all reserve the right to pivot if [being a digital assistant for elder care][aloecare] doesn't work out.
+I wasn't sure if this was better or worse than House Party being the sole perpetrator of this nonsense. On the face of it, hundreds of companies claiming a license to any idea that strays within two hundred yards of their headquarters is much worse than a single company doing so. However, dusting off my rarely-used benevolent hat, the fact that so many of them are doing it implies that the language is legal boilerplate, and that no individual company has any immediate intention of actually invoking the clause. None of these companies' primary business plan is "steal people's ideas", although they do all reserve the right to pivot if [being a digital assistant for elder care][aloecare] doesn't work out.
 
-Keeping my benevolent hat on despite gale force winds, I assume that the clause is included as a defensive measure. Perhaps companies want to make absolutely certain that they are in the legal clear if someone sends them some helpful advice that they decide to take. Perhaps they want to pre-empt lawsuits in which a user claims that the company read their communications and stole their ideas, since the company can point to the line in their Ts+Cs that gives them the right to do this, not that they ever would.
-
-Even so, the wording is still surprisingly aggressive. I wonder why a company would include it in their Ts+Cs, and I wonder whether it would stand up in any kind of contested legal battle. Even if there's an innocent-sounding explanation, one should always be cautious about giving any profit-seeking enterprise the benefit of the doubt when the other side of that doubt could be profitable.
+Keeping my benevolent hat on despite gale force winds, I assume that the clause is included as a defensive measure. Perhaps companies want to make absolutely certain that they are in the legal clear if someone sends them some helpful advice that they decide to take. Indeed, House Party have recently changed the wording in their Ts+Cs to instead say "You acknowledge and agree that any feedback, comments, or suggestions you may provide regarding Life On Air, or the Services is entirely voluntary and we will be free to use such feedback, comments or suggestions as we see fit and without any obligation to you." I wonder if there are any other reasons why other companies include the original, more aggressive wording in their Ts+Cs, and I wonder whether this wording would stand up in any kind of contested legal battle. I suppose that, in a way, I also hope that we never need to find out.
 
 [wacom]: https://robertheaton.com/2020/02/05/wacom-drawing-tablets-track-name-of-every-application-you-open/
 [houseparty]: https://houseparty.com/
