@@ -34,6 +34,8 @@ best_of:
       url: /2017/11/13/a-zero-knowledge-proof-for-the-existence-of-god/
     - title: "Lessons from a Silicon Valley job search"
       url: /2014/03/07/lessons-from-a-silicon-valley-job-search/
+    - title: "Systems design for advanced beginners"
+      url: /2020/04/06/systems-design-for-advanced-beginners/
 
 steve_steveington:
   title: The Steve Steveington Chronicles
@@ -214,6 +216,18 @@ parenthood:
       url: /2020/01/06/parenthood-5-great-cement-ideas-that-will-make-your-partner-happy/
     - title: "Re-rolling the dice"
       url: /2020/03/02/parenthood-6-re-rolling-the-dice/
+
+music:
+  title: "Music"
+  posts:
+    - title: "Reverse engineering LogicPro synth files"
+      url: /2017/07/17/reverse-engineering-logic-pro-synth-files/
+    - title: "Synth1: an unofficial manual"
+      url: /2019/04/21/synth1-unofficial-manual/
+    - title: "Endless Summer by The Midnight: a brief analysis"
+      url: /2019/05/01/endless-summer-by-the-midnight/
+    - title: "Smile by Papa (Gary Computer Remix)"
+      url: /2020/03/13/smile-by-papa-gary-computer-remix/
 
 writing:
   title: "On writing"

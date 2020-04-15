@@ -231,6 +231,19 @@ title: Robert Heaton
   </div>
 
   <div class="topic-box">
+    <h2>{{ site.data.home.music.title }}</h2>
+    <ul>
+      {% for post in site.data.home.music.posts %}
+        <li>
+          <a href="{{post.url}}">
+            {{ post.title}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="topic-box">
     <h2>{{ site.data.home.writing.title }}</h2>
     <ul>
       {% for post in site.data.home.writing.posts %}
