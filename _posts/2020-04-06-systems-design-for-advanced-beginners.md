@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Systems design for Advanced Beginners
+title: Systems design for advanced beginners
 tags:
   - Programming Projects for Advanced Beginners
   - PFAB
