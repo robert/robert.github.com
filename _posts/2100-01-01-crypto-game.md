@@ -15,7 +15,7 @@ With the game almost finished, you had been working hard on crafting your email 
 
 The root cause of the flaw is that Steve Enix is a bootstrapped company on a shoe-string budget. This means that you don't have any money to pay for level designers. You also don't have any money to pay for core engine programmers, but you've reached an understanding with Kate and Otekah whereby they provide you with mediocre code and stale water-cooler banter and you don't say anything about anything to the IRS. You think it was John le Carre who said that blackmail is more effective than bribery; he forgot that it's also much cheaper.
 
-To get around your lack of level designers you've decided to centre your game around user-generated levels, built by your players using an in-game level editor. This saves precious money and means that if your players don't have fun then it's their own stupid fault. You want players to be able to email their levels to each other as level files, instead of downloading them from a centralized server. This retro mode of discovery makes you nostalgic for the days when you shared Nintendo cartridges with your friends and hadn't yet been so thoroughly corrupted by a futile lust for fame and money and internet points. It's also substantially cheaper than running a centralized server.
+To get around your lack of level designers you've decided to centre your game around user-generated levels, built by your players using an in-game level editor in the style of *Little Big Planet* and *Super Mario Maker*. This saves precious money and means that if your players don't have fun then it's their own stupid fault. You want players to be able to email their levels to each other as level files, instead of downloading them from a centralized server. This retro mode of discovery makes you nostalgic for the days when you shared Nintendo cartridges with your friends and hadn't yet been so thoroughly corrupted by a futile lust for fame and money and internet points. It's also substantially cheaper than running a centralized server.
 
 You have incredibly low standards and expectations for the levels produced by your community, and the only quality control you want to inject is that every user-created level must be guaranteed to be completable. You don't want anyone stuck in a world where the only exit is the other side of an inoperable door. You have no qualms about selling turds to rubes who don't read Steam reviews, but your shriveled conscience does still require that the turds be technically functional.
 
@@ -43,7 +43,7 @@ You, Steve, Kate and Otekah sit down to battle.
 
 ## 1. Can we include the level solution in the file?
 
-Steve goes first. He suggests that when the level editor exports a level to a file, the file should include not just the level but also the sequence of button presses that the level's creator used to prove its solvability. When a player loads a level, the game tests out the solution attached to the level file in the background. If the solution is valid, it loads the level. If it is not, it warns the player that someone is trying to hoodwink them and exits.
+Steve is the first to suggest a new way to prevent level creators from creating impossible levels. He suggests that when the level editor exports a level to a file, the file should include not just the level, but also its solution. The solution section of the file should be the list of button presses that the level's creator used to prove its solvability. When a player loads a level, the game tests out the solution attached to the level file in the background. If the solution is valid, it loads the level. If it is not, it warns the player that someone is trying to hoodwink them and exits.
 
 <img src="/images/levels-append-solution.png" />
 
@@ -51,7 +51,7 @@ Kate and Otekah agree that this would prevent level creators from luring players
 
 ## 2. Can we encrypt the solution?
 
-You're up next. Everyone should take a step back, you say, since the answer is obvious and you can't believe no one else has thought of it. All you need to do is have the level editor encrypt the solution before inserting it into the exported level file. When a player loads the level, the game decrypts the solution and runs it through the level, as before.
+You're up next. Everyone should take a step back, you say, since the answer is obvious and you can't believe no one else has thought of it. All you need to do is have the level editor encrypt the solution before inserting it into the exported level file. When a player loads the level, the game decrypts the solution and runs it through the level, as Steve just suggested.
 
 Otekah agrees that this sounds like a good solution, IF YOU'RE AN IDIOT. "Encryption" isn't magic. Since the game is running on the player's computer, anything the game can do the player can do too. If the game can decrypt the solution, the player can too. All they need to do is reverse engineer the decryption steps that the game performs. You can obfuscate your code and use strange types of encryption and generally make life awkward for them, but you can't make it impossible. Eventually you run into the problem that people on the internet are psychotic monsters who will break anything and everything that they are mathematically able to.
 
@@ -83,9 +83,9 @@ You have a brainwave. The team has been fixated on a model in which players send
 
 Steve is just about awake from his textbook concussion. He agrees that this would be the most technically straightforward solution. However, since the company is funded by his mum's credit card that she still hasn't reported as stolen, he's the closest thing that Steve Enix has to a CFO. He doesn't want to have to pay to develop and deploy a whole jumble of database infrastructure. Cloud computing is quite cheap nowadays, but Steve Enix has very little money and it's only a matter of time before his mum notices all the charges the gang have been racking up on her AmEx.
 
-Steve concedes that the solution to this level integrity conundrum will likely require Steve Enix to run some servers of some sort, but he'd like the keep them as cheap and lightweight as possible. Kate and Otekah agree. They couldn't give two farts about Steve's mum or her Amex, but they really like the idea of sending validated level files to your friends directly, without having to sign up for any kind of Steve Enix Network Experience Center.
+Steve concedes that the solution to this level integrity conundrum will likely require Steve Enix to run some servers of some sort, but he'd like to keep them as cheap and lightweight as possible. Centralized servers that have to store and serve up every level that your players create will be too costly in both blood and treasure. Kate and Otekah agree. They couldn't give two farts about Steve's mum or her Amex, but they don't want to have to sign up for any kind of Steve Enix Network Experience Center.
 
-[Stop here? Then get into crypto next episode?]
+The Thunderdome continues.
 
 ## 6. Can we use public key cryptography? Take 1
 
@@ -95,11 +95,11 @@ An *encryption algorithm* is a method of scrambling data. For example, in simple
 
 <img src="/images/levels-algo-key.png" />
 
-Before we talk about public key encryption, let's talk about its much simpler opposite: *symmetric key encryption*. In symmetric key encryption the same key is used for both encrypting and decrypting a message. Alphabet-rotation encryption is symmetric; to encrypt a message you move each letter forward by a fixed amount, and to decrypt it you move each letter back by that same amount. If I want to send you message encrypted using symmetric key encryption then we need to agree on a shared key ahead of time. This type of encryption has its uses, but I can't think of any way to use it to solve our problem.
+Before we talk about public key encryption, let's talk about its much simpler opposite: *symmetric key encryption*. In symmetric key encryption the same key is used for both encrypting and decrypting a message. Alphabet-rotation encryption is symmetric; to encrypt a message you move each letter forward by a fixed amount, and to decrypt it you move each letter back by that same amount. If I want to send you message encrypted using symmetric key encryption then we need to agree on a shared key ahead of time. This type of encryption has its uses (such as in the post-*key exchange* phase of [the TLS protocol][https]), but I can't think of any way to use it to solve our problem.
 
 <img src="/images/levels-sym-enc.png" />
 
-Public key cryptography is much more interesting, because different keys are used for encryption and decryption. An individual who wants to use public key cryptography starts by using another algorithm (the details of which aren't important here) to generate two keys, known a *keypair*. The most important property of this keypair is that a message encrypted by one key in the pair can only be decrypted by the other key. This means that neither key in the pair is able to decrypt a message that it itself encrypted. This might be tricky to wrap your head around, but the maths work out, I promise.
+Public key cryptography is much more interesting, because different keys are used for encryption and decryption. An individual who wants to use public key cryptography starts by using another algorithm (the details of which aren't important here) to generate two keys, known as a *keypair*. The most important property of this keypair is that a message encrypted by one key in the pair can only be decrypted by the other key. This means that neither key in the pair is able to decrypt a message that it itself encrypted. This might be tricky to wrap your head around, but the maths work out, I promise.
 
 <img src="/images/levels-pub-enc.png" />
 
@@ -151,9 +151,9 @@ I hear you snark - why is this any better than using our public key to encrypt t
 
 Second, it mitigates the consequences of our private key getting stolen. In the previous approach, anyone who hacked our systems and stole a copy of our private key would be able to use the key to decrypt the solution to any previously-published level. This would be a catastrophe. However, the second, signing approach doesn't suffer from this problem. We don't need to attach an encrypted copy of the solution to every level - all we need to attach is a harmless cryptographic signature.
 
-That's all true, says Kate, but I still think that my encryption approach is better. If our private key gets stolen then it's undeniably annoying that players can cheat and get the solution to all levels, but at least we'll still have the ability to tell non-cheating players whether a level *has* a solution or not. In your signing solution, if our private key gets stolen then the thief could use it to generate signatures for impossible levels. We would have to generate a new keypair; distribute its public key to all game clients; and start using that to sign all new levels instead. However, now have no idea whether any level signed with our old, compromised key is truly valid. Players have no way to tell the difference between valid levels that were legitimately signed by Steve Enix before the compromise, and invalid levels that were sneakily signed by an attacker after it. They'll just have to play and hope that the level is valid.
+That's all true, says Kate, but I still think that my encryption approach is better. If our private key gets stolen then it's undeniably annoying that players can cheat and get the solution to all levels, but at least we'll still have the ability to tell non-cheating players whether a level *has* a solution or not. In your signing solution, if our private key gets stolen then the thief could use it to generate signatures for impossible levels. We would have to generate a new keypair; distribute its public key to all game clients; and start using that to sign all new levels instead. However, we would now have no idea whether any level signed with our old, compromised key is truly valid. Players have no way to tell the difference between valid levels that were legitimately signed by Steve Enix before the compromise, and invalid levels that were sneakily signed by an attacker after it. They'll just have to play and hope that the level is valid.
 
-Plus, it's not necessarily true that your signing solution will cause less load on our servers that my encryption one. In my version, we have to make one validation request whenever a player wants to play a level for the first time. If 100 players want to play a level, we'll make 100 validation requests, but if no one plays a level, we never need to validate it. In your solution, we always make 1 validation request for every level as soon as its created. If lots of levels get created but never played, your solution will cause more load on our servers.
+Plus, it's not necessarily true that your signing solution will cause less load on our servers than my encryption one. In my version, we have to make one validation request whenever a player wants to play a level for the first time. If 100 players want to play a level, we'll make 100 validation requests, but if no one plays a level, we never need to validate it. In your solution, we always make 1 validation request for every level as soon as its created. If lots of levels get created but never played, your solution will cause more load on our servers.
 
 A final difference between our solutions is that my encryption solution allows level creators to create and export levels even when their internet isn't working. This is because all they need in order to create a level file is our public key in order to encrypt their solution. However, my solution does require *players* to have an internet connection in order to play a level so that they can send it to our servers and we can validate the encrypted solution. Your solution is the opposite - creators need an internet connection when they want to export a level so that we can validate their solution and give them a signature, but players don't need an internet connection in order to use our public key to validate this signature.
 
@@ -161,9 +161,10 @@ A final difference between our solutions is that my encryption solution allows l
 
 ----
 
-SOMETHING SOMETHING CONCLUSION
+SOMETHING SOMETHING CONCLUSION, INCLUDING:
 
-We could go even further and develop an entire *[public key infrastructure][pki]* to make our game's cryptography even more robust. I know I can't be bothered with that but it could be fun to blackmail some interns into doing it.
+* We could go even further and develop an entire *[public key infrastructure][pki]* to make our game's cryptography even more robust. I know I can't be bothered with that but it could be fun to blackmail some interns into doing it.
+* But in reality you'd just do the centralized database, not that big a deal if anyone makes impossible levels and not that expensive to host servers, assuming the game sells OK
 
 [fb-tinder]: https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/
 [whatsapp]: https://robertheaton.com/2016/10/22/a-tale-of-love-betrayal-social-engineering-and-whatsapp/
@@ -175,3 +176,4 @@ We could go even further and develop an entire *[public key infrastructure][pki]
 [logic]: https://robertheaton.com/2017/07/17/reverse-engineering-logic-pro-synth-files/
 [zkp]: https://robertheaton.com/2017/11/13/a-zero-knowledge-proof-for-the-existence-of-god/
 [pki]: https://robertheaton.com/2018/11/28/https-in-the-real-world/
+[https]: https://robertheaton.com/2014/03/27/how-does-https-actually-work/
