@@ -1,17 +1,16 @@
 ---
 layout: post
-title: "PFAB #13 - A point of disagreement with Clean Code"
+title: "PFAB #13 - When code is too clever to be clean
 tags:
   - Programming Projects for Advanced Beginners
   - PFAB
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab13
-published: false
 ---
 > This post is part of my "Programming Feedback for Advanced Beginners" series, which helps you make the leap from cobbling programs together to writing elegant, thoughtful code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.
 
-I just finished reading Robert Martin's *Clean Code*, one of the better-selling books about programming of all time. I agreed with the vast majority of its recommendations, but that's not interesting. If you want to hear about the parts that I agreed with then you might as well just read it yourself. In this post I'm going to quibble with both its overall tone and some of its specific recommendations.
+I just finished reading Robert Martin's *Clean Code*, one of the better-selling programming books of all time. I agreed with the vast majority of its recommendations, but that's not interesting. If you want to hear about the parts that I agreed with then you might as well just read it yourself. In this post I'm going to quibble with both its overall tone and some of its specific recommendations.
 
 I wished that Martin had talked more about why and when it can be correct to compromise on code cleanliness. It's one thing to know how to write good code given plenty of time and clear requirements. It's another to know what to do when the clock is ticking and you have no idea what tomorrow will bring. You should never call your variables `x` and `asdf` instead of `preTaxSubTotal` and `authorName` in order to save a few milliseconds of typing, but it can sometimes be right to skip over whole libraries of best practices in the name of speed or simplicity. Martin often feels like a clean dogmatist, fond of hifalutin words like "craftsmanship". But sometimes being a craftsman or an artisan or any other word that makes being a salaried employee sound cooler requires making tradeoffs.
 
@@ -21,7 +20,7 @@ Philosophy aside, I also disagreed with some of the books specifics. Let's look 
 
 ## Trying to be too clever
 
-In a past life, Martin worked on an environment monitoring system. He doesn't go into detail about its specifics, but it seems to have been responsible for measuring and controlling the temperature of buildings. Martin quotes a code snippet from one of the system's *unit tests*; a piece of code that runs the main program and verifies that it works in the way that the programmer expects. Martin does not like the test's code:
+In a past life, Martin worked on an environment monitoring system. He doesn't go into detail about its specifics, but it seems to have been responsible for measuring and controlling the temperature of buildings. Martin quotes a code snippet from one of the system's *unit tests*; a piece of code that runs the main program and verifies using *assertions* that it works in the way that the programmer expects. Martin does not like the test's code:
 
 ```java
 @Test
@@ -38,7 +37,7 @@ public void turnOnLoTempAlarmAtThreshold() throws Exception {
 
 Martin writes:
 
-> Notice, as you read the test, that your eye needs to bounce back and forth between the name of the state being checked, and the *sense* of the state being checked. You see `heaterState`, and then your eyes glissade left to `assertTrue`. You see `coolerState` and your eyes must track left to `assertFalse`. This is tedious and unrealiable. It makes the test hard to read.
+> Notice, as you read the test, that your eye needs to bounce back and forth between the name of the state being checked, and the *sense* of the state being checked. You see `heaterState`, and then your eyes glissade left to `assertTrue`. You see `coolerState` and your eyes must track left to `assertFalse`. This is tedious and unreliable. It makes the test hard to read.
 
 I'm not offended by these problems in the same way that Martin is. On the other hand, I didn't have to work in the codebase, and I could certainly believe that after reading and debugging 30 other near-identical tests then the style could begin to grate. Either way, I think that the cure that Martin proposes is worse than the disease:
 
@@ -58,7 +57,7 @@ He continues:
 
 This refactored version is much more compact than the original. But this terseness comes at the cost of converting all of those clear, explicit `assert` statements into a too-cryptic secret language. To the uninitiated, it is impossible to understand what this test is doing. Even the already-initiated don't have it much easier. Is `hiTemp` the first or second `h`? What does that `B` stand for again?
 
-The situation gets worse if the system ever evolves. What if we add another property to the `state`? What if we remove one? Or rename it? Going through each `HBchL`-like string and removing, adding, or updating the exact right character will be a chore. Pretend that you're a new programmer making a small change to the system. You know roughly how it works, but don't have any deep experience working with it. You make your change, run the tests, and see:
+The situation gets worse if the system ever evolves. What if we add another property to the `state`, like `hiHumidity`? What if we remove one? Or rename it? Going through each `HBchL`-like string and removing, adding, or updating the exact right character will be a chore. Pretend that you're a new programmer making a small change to the system. You know roughly how it works, but don't have any deep experience working with it. You make your change, run the tests, and see:
 
 ```
 turnOnLoTempAlarmAtThreshold FAILED
@@ -130,7 +129,7 @@ state = EnvironmentState(
 
 The former is easier to read, and doesn't require us to remember the exact order of the parameters. If someone tries to pass in `haeter=True`, Python will say "there's no such argument as `haeter`". The programmer immediately knows exactly what has gone wrong.
 
-Since Java does not support named parameters, we need to find another way of helping the programmer realize when they have made a typo. I see two main ways to do this, depending on whether we want to represent our state useing a Map or an `EnvironmentState` class.
+Since Java does not support named parameters, we need to find another way of helping the programmer realize when they have made a typo. I see two main ways to do this, depending on whether we want to represent our state using a Map or an `EnvironmentState` class.
 
 If we want to stick with a Map, we could wrap the call to `assertEquals` inside our own method called `assertStateEquals`. `assertStateEquals` begins by checking that the given Map only contains valid properties. If it finds any invalid properties (eg. `haeter`) it immediately throws an exception with a helpful error message. If it doesn't, it calls `assertEquals` on the states, as before. The code would look like this:
 
@@ -168,4 +167,4 @@ This approach is my favorite. The resulting code is easy to read and has well-pl
 
 ---
 
-*Clean Code* is packed with good ideas and examples. I found the writing style a little offputting at times, and I don't think I'd want to be friends with the author. But that's fine - I'm looking for professional advice, not a new golfing buddy. I'd recommend it to anyone.
+*Clean Code* is packed with good ideas and examples. I found the writing style a little domineering at times, and I don't think I'd want to be friends with the author. But that's fine - I'm looking for professional advice, not a new golfing buddy. I'd recommend the book to anyone.
