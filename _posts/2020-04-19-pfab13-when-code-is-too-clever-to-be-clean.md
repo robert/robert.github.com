@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PFAB #13 - When code is too clever to be clean
+title: "PFAB #13 - When code is too clever to be clean"
 tags:
   - Programming Projects for Advanced Beginners
   - PFAB
