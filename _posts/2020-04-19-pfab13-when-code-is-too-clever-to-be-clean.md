@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PFAB #13 - When code is too clever to be clean"
+title: "PFAB #13: When code is too clever to be clean"
 tags:
   - Programming Projects for Advanced Beginners
   - PFAB
@@ -168,3 +168,5 @@ This approach is my favorite. The resulting code is easy to read and has well-pl
 ---
 
 *Clean Code* is packed with good ideas and examples. I found the writing style a little domineering at times, and I don't think I'd want to be friends with the author. But that's fine - I'm looking for professional advice, not a new golfing buddy. I'd recommend the book to anyone.
+
+[subscribe]: https://advancedbeginners.substack.com
