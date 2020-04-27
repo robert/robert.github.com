@@ -76,7 +76,7 @@ online_tracking:
       url: /2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/
 
 https:
-  title: HTTPS etc
+  title: HTTPS, TCP and friends
   posts:
     - title: "How does HTTPS actually work?"
       url: /2014/03/27/how-does-https-actually-work/
@@ -86,6 +86,8 @@ https:
       url: /2015/04/06/the-ssl-freak-vulnerability/
     - title: "How does Tor work?"
       url: /2019/04/06/how-does-tor-work
+    - title: "How does a TCP Reset Attack work?"
+      url: /2020/04/27/how-does-the-tcp-reset-attack-work/
 
 computer_games:
   title: Computer games

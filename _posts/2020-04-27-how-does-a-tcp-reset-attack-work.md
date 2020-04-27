@@ -3,13 +3,12 @@ layout: post
 title: How does a TCP Reset Attack work?
 tags: [Security]
 og_image: https://robertheaton.com/images/tcp-reset-cover.png
-published: false
 ---
 A TCP reset attack is executed using a single packet of data, no more than a few bytes in size. A spoofed TCP segment, crafted and sent by an attacker, tricks two victims into abandoning a TCP connection, interrupting possibly vital communications between them.
 
 <img src="/images/tcp-reset-cover.png" />
 
-The attack has had real-world consequences. Fear of it has caused mitigating changes to be made to the TCP protocol itself. The attack is believed to be a key component of China's Great Firewall, used by the Chinese government to censor the internet inside China. Despite this weighty CV, understanding the attack doesn't require deep prior knowledge of networking or TCP. Indeed, understanding the attack's intricacies will teach you a great deal about the particulars of the TCP protocol, and, as we will soon see, you can even execute the attack against yourself using only a single laptop.
+The attack has had real-world consequences. Fear of it has caused mitigating changes to be made to the TCP protocol itself. The attack is believed to be a key component of China's Great Firewall, used by the Chinese government to censor the internet inside China. Despite this weighty biography, understanding the attack doesn't require deep prior knowledge of networking or TCP. Indeed, understanding the attack's intricacies will teach you a great deal about the particulars of the TCP protocol, and, as we will soon see, you can even execute the attack against yourself using only a single laptop.
 
 In this post we're going to:
 
@@ -73,7 +72,7 @@ An `ACK` segment is denoted by the presence of the `ACK` flag and a correspondin
 
 Sidenote - the TCP protocol also allows for *selective ACKs*, which are sent when a receiver has received some, but not all, segments in a range. For example "I've received bytes 1000-3000 and 4000-5000, but not 3001-3999". For simplicity, we will ignore selective ACKs in our discussion of TCP reset attacks.
 
-If a sender sends data but does not receive an `ACK` for it within a certain time window, then the sender assumes that the data was lost and re-sends it, tagged with the same sequence numbers. This means that if the receiver receives the same bytes twice, it can trivially use sequence numbers to de-duplicate them without corrupting the stream. A receiver might receive duplicate data because an original segment arrived late, after it had been re-sent; or because an original segment arrived successfully but the corresponding `ACK` was lost on its way back to the sender.
+If a sender sends data but does not receive an `ACK` for it within a certain time interval, then the sender assumes that the data was lost and re-sends it, tagged with the same sequence numbers. This means that if the receiver receives the same bytes twice, it can trivially use sequence numbers to de-duplicate them without corrupting the stream. A receiver might receive duplicate data because an original segment arrived late, after it had been re-sent; or because an original segment arrived successfully but the corresponding `ACK` was lost on its way back to the sender.
 
 <img src="/images/tcp-double-ack.jpg" />
 
@@ -111,13 +110,13 @@ max_seq_no = max_acked_seq_no + window_size
 
 `max_acked_seq_no` is the maximum sequence number that the receiver has sent an `ACK` for. It is the maximum sequence number that the sender knows that the receiver has received successfully. Since the sender is only allowed to have `window_size` unacknowledged bytes in-flight, the maximum sequence number that it can send is `max_acked_seq_no + window_size`.
 
-Because of this, the TCP specification decrees that the receiver should ignore any data that it receives with sequence numbers outside its acceptable window. For example, if a receiver has acknowledged all bytes up to 150,000, and its window size is 30,000, then the receiver will accept any data with a sequence number between 150,000 and (150,000 + 30,000 = 180,000). By contrast, the receiver will completely ignore data with a sequence number outside this range. If a segment contains some data that is within its window, and some that is outside, then the data inside the window will be accepted and acknowledged, but the data outside it will be dropped. Note that we are still ignoring the possibility of *selective `ACK`s*, which we touched on briefly at the start of this post.
+Because of this, the TCP specification decrees that the receiver should ignore any data that it receives with sequence numbers outside its acceptable window. For example, if a receiver has acknowledged all bytes up to 15,000, and its window size is 30,000, then the receiver will accept any data with a sequence number between 15,000 and (15,000 + 30,000 = 45,000). By contrast, the receiver will completely ignore data with a sequence number outside this range. If a segment contains some data that is within its window, and some that is outside, then the data inside the window will be accepted and acknowledged, but the data outside it will be dropped. Note that we are still ignoring the possibility of *selective `ACK`s*, which we touched on briefly at the start of this post.
 
 For most TCP segments, this rule gives the range of acceptable sequence numbers. However, as previously noted, the restrictions on `RST` segments are even stricter than those for normal, data-transmission, segments. As we will soon see, this is in order to make a type of TCP reset attack called a *blind TCP reset attack* more difficult.
 
 ### Acceptable sequence numbers for `RST` segments
 
-Normal segments are accepted if they have a sequence number anywhere between the next expected sequence number and the next expected sequence number plus the window size. However, `RST` packets are only accepted if they have a sequence number *exactly equal* to the next expected sequence number. Consider once again our previous example, in which the receiver has sent an acknowledgement number of 150,000. In order to be accepted, a `RST` packet must have a sequence number of exactly 150,000. If the receiver receives a `RST` segment with a sequence number that is not exactly 150,000, it will not accept it.
+Normal segments are accepted if they have a sequence number anywhere between the next expected sequence number and that number plus the window size. However, `RST` packets are only accepted if they have a sequence number *exactly equal* to the next expected sequence number. Consider once again our previous example, in which the receiver has sent an acknowledgement number of 15,000. In order to be accepted, a `RST` packet must have a sequence number of exactly 15,000. If the receiver receives a `RST` segment with a sequence number that is not exactly 15,000, it will not accept it.
 
 <img src="/images/tcp-acceptable-sns.jpg" />
 
@@ -174,7 +173,7 @@ The code is in [my GitHub repo][github-repo]. It sniffs traffic on our connectio
 
 ```python
 t = sniff(
-        iface=iface,
+        iface='lo0',
         lfilter=is_packet_tcp_client_to_server(localhost_ip, localhost_server_port, localhost_ip),
         prn=log_packet,
         count=50)
