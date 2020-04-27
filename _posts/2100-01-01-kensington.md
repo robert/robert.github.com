@@ -33,9 +33,11 @@ lsof ETC TODO
 
 Sadly (or happily, depending on your morals and point of view), I saw that it was indeed only listening on `lo0`. No matter. Next I wanted to see what information was being sent to it. I opened up Wireshark, a tool that allows you to watch the network traffic flowing in and out of your computer. I set Wireshark listening on `lo0`, filtered to port `9090`.
 
-Traffic appeared immediately. Something was pinging the KensingtonWorks server every few seconds with an HTTP `GET` request to a URL with the path `/devices`. The KensingtonWorks server was sending back the response `[]`. This was good news - since KensingtonWorks was using HTTP it would be straightforward to fiddle with. But the most important part of the HTTP request was the part that wasn't there: authentication.
+Traffic appeared immediately. Something was pinging the KensingtonWorks server every few seconds with an HTTP `GET` request to a URL with the path `/devices`. The KensingtonWorks server was sending back the response `[]`.
 
 <img src="/images/kensington-slash-devices.png" />
+
+Zooming in on the request showed:
 
 ```
 GET /devices HTTP/1.1
@@ -44,6 +46,8 @@ User-Agent: axios/0.19.0
 Host: localhost:9090
 Connection: close
 ```
+
+This was good news - since KensingtonWorks was using HTTP it would be straightforward to fiddle with. But the most important part of the HTTP request was the part that wasn't there: authentication.
 
 Since there were no long, gibberish-looking tokens in the request, it was pesos to pizza that the KensingtonWorks server was not protected by any kind of password or key. This meant that any program able to send HTTP requests to the server could perform all of the same actions as the official Kensington program that was sending those pings to `/devices`. In particular, a malicious website controlled by an attacker could use JavaScript to send background HTTP requests to `http://localhost:9090`, without requiring the victim to interact with the page in any way. The attacker wouldn't be able to read any data returned by KensingtonWorks because of *Cross-Origin Resource Sharing* (CORS) restrictions that prevent pages from reading responses returned from other domains. However, the KensingtonWorks server presumably has some endpoints for updating configuration settings, and the attacker can send requests to these with no problems. The attacker doesn't care that they don't get to see the responses, since the requests have already done the damage.
 
@@ -126,6 +130,8 @@ I bound my side mouse button to the "copy" command. I looked at Wireshark to see
 
 <img src="/images/kensington-config-button.png" />
 
+Zooming in on the request showed:
+
 ```
 POST /config/buttons?app=*&device=CENSORED&button=4 HTTP/1.1
 Accept: application/json, text/plain, */*
@@ -141,7 +147,8 @@ Connection: close
 Once again, the request contained no authentication. The closest thing to authentication looked to be the `device` parameter in the query string, a 5-digit number that presuambly identified the target mouse in case the user had multiple Kensington devices. I manually re-sent this request from the command line with a different device ID:
 
 ```bash
-$ curl localhost:9090/config/buttons?app=*&device=12345&button=4 -X POST -d "{\"command\":\"editing_copy\",\"params\":{}}"
+$ curl localhost:9090/config/buttons?app=*&device=12345&button=4 \
+    -X POST -d "{\"command\":\"editing_copy\",\"params\":{}}"
 {"reason":"Setting for device does not exist","success":false}
 ```
 
@@ -193,7 +200,7 @@ commandRunner.copy().then(() =>
 
 I added my library and implementation code to my webpage and refreshed it. The copy/open/paste/quit sequence flashed past in less than a second. Here's a slowed down GIF:
 
-<img src="/images/kensington-poc.png" />
+<img src="/images/kensington-poc.gif" />
 
 However, I still didn't know how to deal with the device ID parameter. Was it fixed and predictable, or would I need to brute-force it by trying every possible ID between 0 and 99,999 until one worked? I could have bought more Kensington mice to try to see if the device ID varied between different products or between different instances of the same product. But I was already out £40 for one mouse that I was never going to use, so I assumed the worst case of randomization and started putting together a way to brute force the device ID.
 
