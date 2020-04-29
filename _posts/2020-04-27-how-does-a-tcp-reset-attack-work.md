@@ -217,3 +217,5 @@ The TCP reset attack is both deep and simple. Good luck with your experimentatio
 
 [https]: /2014/03/27/how-does-https-actually-work/
 [github-repo]: https://github.com/robert/how-does-a-tcp-reset-attack-work/blob/master/main.py
+[netcat]: https://linux.die.net/man/1/nc
+[scapy]: https://scapy.net/
