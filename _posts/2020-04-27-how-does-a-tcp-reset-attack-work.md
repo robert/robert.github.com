@@ -132,6 +132,8 @@ As we have already noted, in the original version of the TCP protocol an attacke
 
 ## Executing a TCP reset attack against ourselves
 
+*NOTE: I've tested this process on OSX, but have received several reports of it not working as intended on Linux.*
+
 We now know everything about executing a TCP reset attack. An attacker has to:
 
 * Watch (or *sniff*) the network traffic being exchanged between our two victims
