@@ -1,17 +1,17 @@
 ---
 layout: post
-title: "PFAB #13: Evil `eval`, enemy of security and clarity"
+title: "PFAB #14: Evil `eval`"
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab14
 published: false
 ---
-PFAB reader Frankie Frankleberry writes:
+*Programming Feedback for Advanced Beginners* reader Frankie Frankleberry writes:
 
 > Here's a program I wrote recently. It works, but I'm really not sure if my code is "proper". I use Python's `eval` function, which never feels like a good idea. There might be a nicer way to do it...?
 
-Frankie is absolutely correct; using the `eval` function is never a good idea. Fortunately, he's also correct that there is almost always a better way. In this post we'll learn what the `eval` function does, why it's wonderful and amazing, and why you should never, *ever* use it. We'll also see how we can rewrite Frankie's code using first-class functions to expunge the evil `eval` altogether. Frankie's code is written in Python, but the lessons are applicable to code written in many other languages.
+Frankie is absolutely correct; using the `eval` function is never a good idea. Fortunately, he's also correct that you almost never have to use it, and there are almost always better options available. In this post we'll learn what the `eval` function does, why it's wonderful and amazing, and why you should never, *ever* use it. We'll also see how we can rewrite Frankie's code using first-class functions to expunge the evil `eval` altogether. Frankie's code is written in Python, but the lessons are applicable to code written in many other languages.
 
 ## What does Frankie's program do?
 
@@ -27,9 +27,7 @@ Frankie's program is a data processing script that helps his business analyze it
                      +---------------------+
 ```
 
-In his email, Frankie describes this process as "data cleansing", but I don't think this is correct. Data cleansing means finding invalid or corrupted records in a dataset and fixing or removing them. Any analysis done on a dataset where someone's phone number is `banana` or their age is `-100` is unlikely to produce useful results. Frankie's company might be losing money from their low margin products, but there's nothing wrong with the data itself. I think it's more appropriate to call this process "analysis" or "filtering".
-
-You can read Frankie's code on GitHub, as well as my refactored version (here's [the updated file][updated-file], and here's [a commit showing just the changes][updated-commit]). In order to understand the changes that I made, we need to first understand the `eval` function.
+You can read Frankie's code on GitHub, as well as my refactored version (here's [his original code][original-file], here's [the updated version][updated-file], and here's [a commit showing just the changes][updated-commit]). In order to understand the changes that I made, we need to first understand Python's `eval` function.
 
 ## What does the `eval` function do?
 
@@ -90,9 +88,9 @@ print(outputs)
 
 ## Why is `eval` dangerous?
 
-`eval` is dangerous because it can make your code insecure. The above `eval` example snippet is, in the exact form that it is currently written, technically fin, technically finee. If you used it as part of a real website or other system, it would not introduce any immediate vulnerabilities. But the `eval` would still be lurking there, waiting for an innocuous-seeming change to turn it into a gaping flaw.
+`eval` is dangerous because it can make your code insecure. The above `eval` example snippet is, in the exact form that it is currently written, technically fine. If you used it as part of a real website or other system, it would not introduce any immediate vulnerabilities. But the `eval` would still be lurking there, waiting for an innocuous-seeming change to turn it into a gaping flaw.
 
-Here's a plausible story about the future. Suppose that Frankie's system keeps growing and adding new features. It becomes so useful that his company releases it as a standalone product that other organizations can use to analyze their own data. Frankie adds a UI in which users can select the filters that they want to run on their data. He asks users for the list of `function_names` that they want to run, and swaps that list in for the current, hardcoded `function_names` variable. His new code looks something like this:
+Here's a plausible story about the future. Suppose that Frankie's system keeps growing and adding new features. It becomes so useful that his company releases it as a standalone product that other organizations can use to analyze their own data. Frankie adds a UI in which users can select the filters that they want to run on their data. He asks users for the list of `function_names` that they want to run, and swaps that list in for the current, hard-coded `function_names` variable. His new code looks something like this:
 
 ```python
 function_names = get_function_names_from_user_input()
@@ -106,7 +104,7 @@ for fn in function_names:
 Very elegant, but very, very insecure. To see why, think about what would happen if a user passed in a function name of:
 
 ```
-"print('hello world') and low_profit_margin_products"
+print('hello world') and low_profit_margin_products
 ```
 
 The code would assemble and then run the following string as code:
@@ -118,14 +116,14 @@ print('hello world') and low_profit_margin_products(dataset)
 This line would return the low profit margin products, as per usual, but before it did so it would execute `print('hello world')`. Printing `hello world` isn't going to bring down Frankie's company, but an attacker could use the same technique with a function name of:
 
 ```
-"exec('import os; os.rmdir("/")') and low_profit_margin_product"
+exec('import os; os.rmdir("/")') and low_profit_margin_product
 ```
 
 to erase Frankie's server's hard drive. That would ruin quite a few people's days.
 
 The problem with `eval` is that it risks allowing attackers to craft malicious input (such as the above) that tricks your program into executing harmful code. This is not a theoretical threat; an attacker trying to exploit your system will often try feeding it a long list of sneaky inputs, designed to take advantage of insecure usages of tools like `eval`. Even if a program uses `eval` in a way that is technically safe today, it adds a subtle booby trap that future programmers might unwittingly stumble into when they update the code. You want your code to be secure, robust, and difficult to accidentally break.
 
-As well as being a security risk, `eval` makes your code difficult to understand and reason about. For example, suppose that you write several methods to work with "reports" called `create_report`, `delete_report`, and `update_report`. To reduce duplication in your code and show how clever you are, you decide to use `eval` to wrap the functions up inside a single `perform_report_action` method, like so:
+As well as being a security risk, `eval` makes your code difficult to understand and work with. For example, suppose that you write several methods to work with "reports" called `create_report`, `delete_report`, and `update_report`. To reduce duplication in your code, you decide to use `eval` to wrap the functions up inside a single `perform_report_action` method, like so:
 
 ```python
 def perform_report_action(action_type):
@@ -152,7 +150,7 @@ d = perform_report_action("delete")
 u = perform_report_action("update")
 ```
 
-This fancy code works and saves you from repeating the code for the permission check and audit log for each report action. However, a few months later you decide to add some extra arguments to the `create_report` method. In order to make this change you'll need to update every existing usage of `create_report()`. You search through your project for the string "`create_report`". However, because of your previous cleverness, this string doesn't actually appear anywhere and so your search finds nothing. This makes it difficult for you to figure out where `create_report` is used, or even whether it is still used at all. You either give up and move onto something else, or make your change and accidentally break your system.
+This fancy code works and saves you from repeating the code that performs the permission check and audit log for each report action. However, a few months later you decide to add some extra arguments to the `create_report` method. In order to make this change you'll need to update every existing usage of `create_report()`. You search through your project for the string "`create_report`". However, because of your previous cleverness, this string doesn't actually appear anywhere and so your search finds nothing. This makes it difficult for you to figure out where `create_report` is used, or even whether it is still used at all. You either give up and move onto something else, or make your change and accidentally break your system.
 
 In summary, never use `eval` or any method like it.
 
@@ -255,3 +253,4 @@ First-class functions are wonderful. Passing around logic in the same way as any
 [updated-commit]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/43c4a223a0b36c05cbc7a49dc404712b01c8e8f1
 [pfab10]: https://robertheaton.com/2020/02/23/pfab10-first-class-functions-dependency-injection/
 [subscribe]: https://advancedbeginners.substack.com
+[original-file]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/master/editions/14-evil-eval/original/main.py
