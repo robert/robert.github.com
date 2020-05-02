@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Preventing impossible gamemaker levels using cryptography
+title: Preventing impossible game levels using cryptography
 tags: [The Steve Steveington Chronicles, Security]
 og_image: https://robertheaton.com/images/levels-cover.png
 published: false
@@ -17,7 +17,9 @@ With the game almost finished, you had been working hard on crafting your email 
 
 The root cause of the flaw is that Stevesoft is a bootstrapped company on a shoe-string budget. This means that you don't have any money to pay for level designers. You also don't have any money to pay for core engine programmers, but you've reached an understanding with Kate and Otekah whereby they provide you with mediocre code and stale water-cooler banter and you don't say anything about anything to the IRS. You think it was John le Carre who said that blackmail is more effective than bribery; he forgot that it's also much cheaper.
 
-To get around your lack of level designers you've decided to centre your game around user-generated levels, built by your players using an in-game level editor in the style of *Little Big Planet* and *Super Mario Maker*. This saves precious money and means that if your players don't have fun then it's their own stupid fault. You want players to be able to email their levels to each other as level files, instead of downloading them from a centralized server. This retro mode of discovery makes you nostalgic for the days when you shared Nintendo cartridges with your friends and hadn't yet been so thoroughly corrupted by a futile lust for fame and money and internet points. It's also substantially cheaper than running a centralized server.
+To get around your lack of level designers you've decided to centre your game around user-generated levels, built by your players using an in-game level editor in the style of *Little Big Planet* and *Super Mario Maker*. This saves precious money and means that if your players don't have fun then it's their own stupid fault.
+
+You don't want players to have to share levels via a centralized server. Instead, you want them to be able to email level files to each other  This retro mode of discovery makes you nostalgic for the days when you shared Nintendo cartridges with your friends and hadn't yet been so thoroughly corrupted by a futile lust for fame and money and internet points. It's also substantially cheaper than running a centralized server.
 
 <img src="/images/levels-check-out.png" />
 
@@ -45,7 +47,7 @@ You, Steve, Kate and Otekah sit down to battle.
 
 ## 1. Can we include the level solution in the file?
 
-Steve is the first to suggest a new way to prevent level creators from creating impossible levels. He suggests that when the level editor exports a level to a file, the file should include not just the level, but also its solution. The solution section of the file should be the list of button presses that the level's creator used to prove its solvability. When a player loads a level, the game tests out the solution attached to the level file in the background. If the solution is valid, it loads the level. If it is not, it warns the player that someone is trying to hoodwink them and exits.
+Steve is the first to suggest a new way to prevent level creators from creating impossible levels. He suggests that when the level editor exports a level to a file, the file should include not just the level, but also its solution. The solution should be represented by the list of button presses that the level's creator used to prove its solvability. When a player loads a level, the game tests out the solution attached to the level file in the background. If the solution is valid, it loads the level. If it is not, it warns the player that someone is trying to hoodwink them and exits.
 
 <img src="/images/levels-append-solution.png" />
 
@@ -55,7 +57,7 @@ Kate and Otekah agree that this would prevent level creators from luring players
 
 You're up next. Everyone should take a step back, you say, since the answer is obvious and you can't believe no one else has thought of it. All you need to do is have the level editor encrypt the solution before inserting it into the exported level file. When a player loads the level, the game decrypts the solution and runs it through the level, as Steve just suggested.
 
-Otekah agrees that this sounds like a good solution, IF YOU'RE AN IDIOT. "Encryption" isn't magic. Since the game is running on the player's computer, anything the game can do the player can do too. If the game can decrypt the solution, the player can too. If the game contains the decryption key for the solutions, the player can pull the game apart, find the key, figure out what decryption steps the game performs, and run these steps themselves. You can obfuscate your code and try to hide your keys and generally make life awkward for the player, but you can't make decryption impossible. Eventually you run into the problem that people on the internet are psychotic monsters who will break anything and everything that they are mathematically able to.
+Otekah agrees that this sounds like a good solution, IF YOU'RE AN IDIOT. "Encryption" isn't magic. Since the game is running on the player's computer, anything the game can do the player can do too. If the game can decrypt the solution, the player can too. If the game contains the decryption key for the solutions, the player can pull the game apart, find the key, figure out the decryption steps that the game performs, and run these steps themselves. You can obfuscate your code and try to hide your keys and generally make life awkward for the player, but you can't make decryption impossible. Eventually you run into the problem that people on the internet are psychotic monsters who will break anything and everything that they are mathematically able to.
 
 You sulkily concede that Otekah is correct but note that she hasn't exactly been helping.
 
@@ -105,7 +107,7 @@ Public key cryptography is much more interesting, because different keys are use
 
 <img src="/images/levels-pub-enc.png" />
 
-One key in the pair is designated as the *public key*, and the other as the *private key*. The public key is entirely nonsensitive. It can be published and distributed freely to anyone, even someone who the keys' creator doesn't trust. The private key is, of course, private, and so is kept secret. Now anyone who wants to send the keys' creator a secret message should encrypt it using the creator's published public key. Neither the sender nor the recipient needs to worry about the encrypted message being intercepted. An attacker could get their hands on both the encrypted message and the public key used to encrypt it. However, they would be unable to decrypt the message without the corresponding private key. So long as the private key remains truly private, messages encrypted with the public key remain truly secure.
+One key in the pair is designated as the *public key*, and the other as the *private key*. The public key is not at all sensitive. It can be published and distributed freely to anyone, even someone who the keys' creator doesn't trust. The private key is, of course, private, and so is kept secret. Now anyone who wants to send the keys' creator a secret message should encrypt it using the creator's published public key. Neither the sender nor the recipient needs to worry about the encrypted message being intercepted. An attacker could get their hands on both the encrypted message and the public key used to encrypt it. However, they would be unable to decrypt the message without the corresponding private key. So long as the private key remains truly private, messages encrypted with the public key remain truly secure.
 
 <img src="/images/levels-attacker-pub.png" />
 
@@ -145,7 +147,7 @@ First, you take the message that you want to approve and encrypt it using your *
 
 <img src="/images/levels-signing.png" />
 
-We can use this technique to generate cryptographic seals of approval for level files, once their creator proves to us that they can be solved. When a level creator wants to export a level, their level editor sends their level and solution to our server. Our server verifies that the given solution does indeed complete the level, and if it does, it uses our private key to sign the contents of the level and sends the signature back to the level creator. The creator's level editor attaches the signature to the level file. When a player loads the level, their game uses the Stevesoft public key (bundled with the game) to decrypt the signature. If it matches the contents of the level file, the game knows that Squaresoft has verified that the level is solvable. Signatures can't be forged, because they can only be generated using our private key, which only we have access to. Signatures can't even be transferred from a valid level to an invalid one, because the decrypted signature has to match exactly the contents of the level.
+We can use this technique to generate cryptographic seals of approval for level files, once their creator proves to us that they can be solved. When a level creator wants to export a level, their level editor sends their level and solution to our server. Our server verifies that the given solution does indeed complete the level, and if it does, it uses our private key to sign the contents of the level and sends the signature back to the level creator. The creator's level editor attaches the signature to the level file. When a player loads the level, their game uses the Stevesoft public key (bundled with the game) to decrypt the signature. If it matches the contents of the level file, the game knows that Stevesoft has verified that the level is solvable. Signatures can't be forged, because they can only be generated using our private key, which only we have access to. Signatures can't even be transferred from a valid level to an invalid one, because the decrypted signature has to match exactly the contents of the level.
 
 <img src="/images/levels-signing-game.png" />
 
@@ -153,7 +155,7 @@ I hear you snark - why is this any better than using our public key to encrypt t
 
 Second, it mitigates the consequences of our private key getting stolen. In the previous approach, anyone who hacked our systems and stole a copy of our private key would be able to use the key to decrypt the solution to any previously-published level. This would be a catastrophe. However, the second, signing approach doesn't suffer from this problem. We don't need to attach an encrypted copy of the solution to every level - all we need to attach is a harmless cryptographic signature.
 
-That's all true, says Kate, but I still think that my encryption approach is better. If our private key gets stolen then it's undeniably annoying that players can cheat and get the solution to all levels, but at least we'll still have the ability to tell non-cheating players whether a level *has* a solution or not. In your signing solution, if our private key gets stolen then the thief could use it to generate signatures for impossible levels. We would have to generate a new keypair; distribute its public key to all game clients; and start using that to sign all new levels instead. However, we would now have no idea whether any level signed with our old, compromised key is truly valid. Players have no way to tell the difference between valid levels that were legitimately signed by Stevesoft before the compromise, and invalid levels that were sneakily signed by an attacker after it. They'll just have to play and hope that the level is valid.
+That's all true, says Kate, but I still think that my encryption approach is better. If our private key gets stolen then it's undeniably annoying that players can cheat and get the solution to all levels, but at least we'll still have the ability to tell non-cheating players whether a level *has* a solution or not. In your signing solution, if our private key gets stolen then the thief could use it to generate signatures for impossible levels. We would have to generate a new keypair; distribute its public key to all game clients; and start using that to sign all new levels instead. However, we would now have no idea whether any level signed with our old, compromised key was truly valid. Players have no way to tell the difference between valid levels that were legitimately signed by Stevesoft before the compromise, and invalid levels that were sneakily signed by an attacker after it. They'll just have to play and hope that the level is valid.
 
 Plus, it's not necessarily true that your signing solution will cause less load on our servers than my encryption one. In my version, we have to make one validation request whenever a player wants to play a level for the first time. If 100 players want to play a level, we'll make 100 validation requests, but if no one plays a level, we never need to validate it. In your solution, we always make 1 validation request for every level as soon as it's created. If lots of levels get created but never played, your solution will cause more load on our servers.
 
@@ -163,10 +165,17 @@ A final difference between our solutions is that my encryption solution allows l
 
 ----
 
-SOMETHING SOMETHING CONCLUSION, INCLUDING:
+It's dark outside. If the library were open it would have closed hours ago. The security guard comes up the stairs; you open Twitter and shake your phone at him, menacingly. He backs away.
 
-* We could go even further and develop an entire *[public key infrastructure][pki]* to make our game's cryptography even more robust. I know I can't be bothered with that but it could be fun to blackmail some interns into doing it.
-* But in reality you'd just do the centralized database, not that big a deal if anyone makes impossible levels and not that expensive to host servers, assuming the game sells OK
+So where does this all leave us? Kate asks. Silence.
+
+This is all very clever, Otekah starts. But isn't it a bit...much? We could keep going like this forever. We could allow third-parties to verify levels. We could develop an entire *[public key infrastructure][pki]* to make our cryptography even more robust and flexible. These would all be fun projects to blackmail some interns into doing. But shouldn't we just do the thing with the centralized database? If enough people upload enough levels to make the server bills expensive then surely we'll have sold enough copies of the game to cover them?
+
+Steve Steveington, sort-of-CFO, sighs. I suppose you're right, he says. Can you put something together this week?
+
+Well I don't know...starts Otekah. Steve flaps a dossier of misfiled tax returns. Absolutely! she finishes.
+
+Everyone packs up their stuff and leaves. You hang back. Don't wait for me, you shout. No one waits for you. When you're absolutely sure everyone has gone, you touch the drawings on the wall. It was only for a day, but you were a cryptographer.
 
 [fb-tinder]: https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/
 [whatsapp]: https://robertheaton.com/2016/10/22/a-tale-of-love-betrayal-social-engineering-and-whatsapp/
