@@ -1,12 +1,15 @@
 ---
 layout: post
 title: "PFAB #14: Evil `eval`"
-tags: [Programming Projects for Advanced Beginners]
+tags:
+  - Programming Projects for Advanced Beginners
+  - PFAB
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab14
-published: false
 ---
+> This post is part of my "Programming Feedback for Advanced Beginners" series, which helps you make the leap from cobbling programs together to writing elegant, thoughtful code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.
+
 *Programming Feedback for Advanced Beginners* reader Frankie Frankleberry writes:
 
 > Here's a program I wrote recently. It works, but I'm really not sure if my code is "proper". I use Python's `eval` function, which never feels like a good idea. There might be a nicer way to do it...?
