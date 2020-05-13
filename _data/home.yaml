@@ -76,7 +76,7 @@ online_tracking:
       url: /2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/
 
 https:
-  title: HTTPS, TCP and friends
+  title: Network security
   posts:
     - title: "How does HTTPS actually work?"
       url: /2014/03/27/how-does-https-actually-work/
@@ -88,6 +88,8 @@ https:
       url: /2019/04/06/how-does-tor-work
     - title: "How does a TCP Reset Attack work?"
       url: /2020/04/27/how-does-a-tcp-reset-attack-work/
+    - title: "How to build a TCP proxy"
+      url: /2018/08/31/how-to-build-a-tcp-proxy-1/
 
 computer_games:
   title: Computer games
@@ -160,8 +162,6 @@ programming:
   posts:
     - title: "I was 7 words away from being spear-phished"
       url: /2019/06/24/i-was-7-words-away-from-being-spear-phished/
-    - title: "How to build a TCP proxy"
-      url: /2018/08/31/how-to-build-a-tcp-proxy-1/
     - title: "The Padding Oracle Attack"
       url: /2013/07/29/padding-oracle-attack/
     - title: "Introducing Afl-Ruby: fuzz your Ruby programs using afl"
@@ -218,6 +218,8 @@ parenthood:
       url: /2020/01/06/parenthood-5-great-cement-ideas-that-will-make-your-partner-happy/
     - title: "Re-rolling the dice"
       url: /2020/03/02/parenthood-6-re-rolling-the-dice/
+    - title: "The coronavirus and happy birthday edition"
+      url: /2020/05/13/parenthood-7-the-coronavirus-and-happy-birthday-edition/
 
 music:
   title: "Music"
