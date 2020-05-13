@@ -2,7 +2,7 @@
 layout: post
 title: "Parenthood #7: the coronavirus and happy birthday edition"
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/parenthood6-kitchen.jpg
+og_image: https://robertheaton.com/images/parenthood7-garden.jpg
 ---
 I had been collecting stories about parental leave and childcare. Now it feels crass to care about anything other than the death toll and the FTSE, but let's see what we can do.
 
