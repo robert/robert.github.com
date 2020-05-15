@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PFAB #15: Functions do one thing something"
+title: "PFAB #15: Don't overwork your functions"
 tags:
   - Programming Projects for Advanced Beginners
   - PFAB
@@ -9,7 +9,7 @@ redirect_from:
   - /pfab15
 published: false
 ---
-[Last time on Programming Feedback for Advanced Beginners][pfab14], we analyzed Frankie Frankleberry's data analysis script. Frankie's program helps his company analyze its product ranges to see if any items are mispriced. The program loads a big CSV of product data and flags any products meeting certain criteria, such as those with particularly low sales prices or profit margins. The company presumably uses the program's output to try to charge more money for the same stuff.
+[Last time on Programming Feedback for Advanced Beginners][pfab14], we analyzed a data processing script written by PFAB reader Frankie Frankleberry. Frankie's program helps his company scrutinize its product ranges to see if any items are mispriced. The program loads a big CSV of product data and flags any products meeting certain criteria, such as those with particularly low sales prices or profit margins. The company presumably uses the program's output to try to charge more money for the same stuff.
 
 [Last time we looked][pfab14] at how Frankie could use *first-class functions* to avoid having to use the evil `eval` function. This week we're going to look at some of his overworked functions and see how to take some weight off of them. We'll migrate them into classes, and by the end of the episode Frankie's program will be looking positively cromulent.
 
@@ -17,7 +17,9 @@ You can read both [Frankie's original program][original-file] and [my refactored
 
 ## Describing filters
 
-Frankie's program uses "filters" to select a subset of his input data matching a criteria. For documentation he wants to associate each filter function with a plain-English description of what the function does. He wants to use these descriptions in his program's `--list-filters` command, like this:
+Frankie's program uses "filters" to select a subset of his input data matching a criteria. For example, a filter could select all products in the luxury category with a price below $50.
+
+For documentation he wants to associate each filter function with a plain-English description of what the function does. He wants to use these descriptions in his program's `--list-filters` command, like this:
 
 ```
 $ python3 filter.py --list-filters
@@ -31,7 +33,7 @@ $ python3 filter.py --list-filters
 3. ...etc...
 ```
 
-In his code, Frankie wants each filter's description to be directly attached the function containing its logic. He doesn't want the functions to live in one part of his code and the descriptions in another. The following code would work, but it would be difficult to maintain:
+In his code, Frankie wants each filter's description to be directly attached the function containing its logic. He doesn't want the functions to live in one part of his code and the descriptions in another. He doesn't want to have to write code like the following snippet, in which one function called `run_filter` is responsible for executing filters, and another completely separate function called `get_description` is responsible for keeping track of their descriptions:
 
 ```python
 # `run_filter` runs the filter with the given filter name
@@ -60,7 +62,7 @@ This code is unpleasant for at least two reasons. First, future programmers have
 
 Second, it's difficult for a programmer working on the code to see which description is associated with which function, because they have to hop back and forth between `run_function` and `get_description`. It would be clearer and more robust if the description and logic for a function lived right next to each other and didn't need to be matched up by strings and parallel if-statements.
 
-Uniting a filter's description and its logic is a worthy aim. However, the way in which Frankie achieved this goal created new problems of its own.
+Uniting a filter's description and its logic is a worthy aim. However, the way in which Frankie achieved this goal created new problems of its own. Let's look at what those problems are and then how we can fix them.
 
 ## Functions that do too much
 
@@ -232,7 +234,7 @@ for f in filters:
     print(f.apply(input_data))
 ```
 
-This approach has several advantages. First, it splits up a filter's description and logic so that they are no longer squashed into in the same function. `filter_f` always returns a dataset; `description` is always a string. Second, it gives us a framework on which we can hang additional properties of filters in the future, such as:
+This approach has several advantages. First, it splits up a filter's description and logic so that they are no longer squashed into the same function. `filter_f` always returns a dataset; `description` is always a string. Second, it gives us a framework on which we can hang additional properties of filters in the future, such as:
 
 * The name of the filter
 * The name of the team who owns the filter
