@@ -11,18 +11,16 @@ published: false
 ---
 [Last time on Programming Feedback for Advanced Beginners][pfab14], we analyzed a data processing script written by PFAB reader Frankie Frankleberry. Frankie's program helps his company scrutinize its product ranges to see if any items are mispriced. The program loads a big CSV of product data and flags any products meeting certain criteria, such as those with particularly low sales prices or profit margins. The company presumably uses the program's output to try to charge more money for the same stuff.
 
-[Last time we looked][pfab14] at how Frankie could use *first-class functions* to avoid having to use the evil `eval` function. This week we're going to look at some of his overworked functions and see how to take some weight off of them. We'll migrate them into classes, and by the end of the episode Frankie's program will be looking positively cromulent.
+[Last time we looked][pfab14] at how Frankie could use *first-class functions* to avoid having to use the evil `eval` function. This week we're going to look at some of his functions that have become overworked and responsible for too many different tasks. We'll see how we can take some weight off of them by migrating them into classes, and by the end of the episode Frankie's program will be looking positively cromulent.
 
-You can read both [Frankie's original program][original-file] and [my refactored version][updated-file] on GitHub (and [here's a commit showing just the changes][updated-commit]). The code is written in Python, but the lessons are broadly applicable to any language. If you haven't read [the previous episode of PFAB][pfab14] in which we started analyzing Frankie's program, start there.
+You can read both [Frankie's original program][original-file] and [my refactored version][updated-file] on GitHub (and [here's a commit showing just the changes][updated-commit]). The code is written in Python, but the lessons are applicable to any language. If you haven't read [the previous episode of PFAB][pfab14] in which we started analyzing Frankie's program, start there.
 
 ## Describing filters
 
-Frankie's program uses "filters" to select a subset of his input data matching a criteria. For example, a filter could select all products in the luxury category with a price below $50.
-
-For documentation he wants to associate each filter function with a plain-English description of what the function does. He wants to use these descriptions in his program's `--list-filters` command, like this:
+Frankie's program uses "filters" to select a subset of his input data matching a criteria. For example, a filter could select all products in the luxury category with a price below $50. In order to document his filters for his users, Frankie wants to associate each filter function with a plain-English description of what the function does. This might be used as follows:
 
 ```
-$ python3 filter.py --list-filters
+$ python3 filter.py list-filters
 ######################
 ## 7 active filters ##
 ######################
@@ -62,11 +60,11 @@ This code is unpleasant for at least two reasons. First, future programmers have
 
 Second, it's difficult for a programmer working on the code to see which description is associated with which function, because they have to hop back and forth between `run_function` and `get_description`. It would be clearer and more robust if the description and logic for a function lived right next to each other and didn't need to be matched up by strings and parallel if-statements.
 
-Uniting a filter's description and its logic is a worthy aim. However, the way in which Frankie achieved this goal created new problems of its own. Let's look at what those problems are and then how we can fix them.
+Uniting a filter's description and its logic is a worthy aim. But as we'll see, the way in which Frankie achieved this goal created new problems for him. Let's look at Frankie's solution, the problems it created, and how we can fix them.
 
 ## Functions that do too much
 
-Frankie bound his logic and descriptions together by requiring each filter function to accept a `description_only` boolean flag argument. If the function is called with `description_only=False`, the function filters the data as normal and returns the results as a dataset of some sort. But if it is called with `description_only=True`, it instead returns the description of the filter as a string.
+Frankie bound his logic and descriptions together by requiring each filter function to accept a `description_only` boolean flag argument. If the function is called with `description_only=False`, the function filters the data as normal and returns the results as a dataset of some sort. But if it is called with `description_only=True`, it instead returns the description of the filter as a string. For example:
 
 ```python
 def low_price_products(input, description_only):
@@ -85,7 +83,9 @@ print(low_price_products(data, description_only=True))
 # => "Find all the products that cost less than $2"
 ```
 
-This approach tightly links logic and description, as desired, but at a high cost. The filter functions (like `low_price_products`) have become overworked. You should aim to have each component of your code be responsible for a single thing. A function that returns different types of data depending on the input it is given is by definition responsible for too much.
+This approach tightly links logic and description, as desired, but at a high cost. The filter functions (like `low_price_products`) have become overworked. You should aim to have each component of your code be responsible for a single thing. Frankie's functions either return a string of the description, or the output dataset. A function that returns different types of data depending on the input it is given is by definition responsible for too much.
+
+## Functions should always return the same datatype
 
 A rule of thumb:
 
@@ -96,7 +96,7 @@ As with all things in life and software, there are exceptions. A function that t
 * A dictionary of information if the username exists
 * Or `nil` if it the username doesn't exist
 
-Anything fancier than this is likely a bad idea, because it means that your function is having to do too much.
+Anything fancier than this is likely a bad idea, because it means that your function is doing too much.
 
 ## An aside on dynamically- and statically-typed languages
 
@@ -107,8 +107,8 @@ How easy or hard it is to write functions that return different data types depen
 # or the type that `multiply` returns.
 #
 # New versions of Python do allow you to specify
-# *type-hints*, but we can safely ignore them for the
-# sake of this discussion.
+# *type-hints*, but we can safely ignore type-hints
+# for the sake of this discussion.
 def multiply(a, b):
     return a * b
 
@@ -150,9 +150,15 @@ func lowPriceItems(input Dataset, descriptionOnly string) ????? {
 }
 ```
 
-There are ways around this restriction if we were determined enough, but they are unlikely to be a good idea. For example, we could make a class called `FilterOutput` with two fields called `Description` and `Dataset`. We could tell the Go compiler that the `lowPriceItems` function will return a `FilterOutput` object and set only the field corresponding to the type of data that we want to return:
+There are ways around this restriction if we were determined enough, but they are unlikely to be a good idea. For example, we could make a type called `FilterOutput` with two fields called `Description` and `Dataset`. We could tell the Go compiler that the `lowPriceItems` function will return a `FilterOutput` object and set only the field corresponding to the type of data that we want to return:
 
 ```go
+// Define the FilterOutput type with 2 fields.
+type FilterOutput struct {
+    Description string
+    Dataset dataset
+}
+
 // Now `lowPriceItems` will always return a `FilterOutput`
 // object, so we can set this `FilterOutput` as the
 // `lowPriceItems` return type.
@@ -179,14 +185,14 @@ This approach would work but I would not recommend it, for the reasons already d
 
 ## Binding data together in a class
 
-Frankie wants to tightly bind together a filter's logic and its description. But instead of squeezing them both into the same function, let's hang them off of a class.
+Frankie wants to tightly bind together a filter's logic and its description. Unstead of squeezing them both into the same function, let's hang them off of a class.
 
 We'll define a class called `Filter`. This class's constructor will take two arguments:
 
 * A first-class function containing the filter's logic (see PFABs [#10][pfab10] and [#14][pfab14] for more on first-class functions)
 * A description string
 
-To begin with, `Filter` will have a single method called `apply`. This will take a dataset, run it through the filter function that was given to the constructor, and return the result.
+`Filter` will have a single method called `apply`. This will take a dataset, run it through the filter function that was given to the constructor, and return the result.
 
 ```python
 class Filter(object):
@@ -199,7 +205,7 @@ class Filter(object):
         return self.filter_f(input)
 ```
 
-At the end of the previous PFAB, we had a list of first-class functions that our code would pass our input dataset through:
+At the end of [the previous PFAB][pfab14], our code had a list of first-class functions that our code would pass our input dataset through:
 
 ```python
 functions = [
@@ -246,10 +252,6 @@ Eventually we may find ourselves with so many extra properties on `Filter` that 
 ## In summary
 
 Don't write functions that return drastically different data types. If you need to tightly couple several concepts or pieces of data together, consider hanging them off of a class instead.
-
-## Until next time
-
-* TODO
 
 [pfab14]: https://robertheaton.com/2020/05/03/pfab14-evil-eval/
 [updated-file]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/b059b83fd74c0b1b911dd5ed9a84d6ae0659c3af/editions/14-evil-eval/updated/main.py
