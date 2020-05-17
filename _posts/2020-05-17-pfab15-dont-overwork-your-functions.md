@@ -8,6 +8,8 @@ og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab15
 ---
+> This post is part of my "Programming Feedback for Advanced Beginners" series, in which I help you make the leap from cobbling programs together to writing elegant, thoughtful code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.
+
 [Last time on Programming Feedback for Advanced Beginners][pfab14], we analyzed a data processing script written by PFAB reader Frankie Frankleberry. Frankie's program helps his company scrutinize its product ranges to see if any items are mispriced. The program loads a big CSV of product data and flags any products meeting certain criteria, such as those with particularly low sales prices or profit margins. The company presumably uses the program's output to try to charge more money for the same stuff.
 
 [Last time we looked][pfab14] at how Frankie could use *first-class functions* to avoid having to use the evil `eval` function. This week we're going to look at some of his functions that have become overworked and responsible for too many different tasks. We'll see how we can take some weight off of them by migrating them into classes, and by the end of the episode Frankie's program will be looking positively cromulent.
