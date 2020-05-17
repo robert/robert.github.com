@@ -7,7 +7,6 @@ tags:
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab15
-published: false
 ---
 [Last time on Programming Feedback for Advanced Beginners][pfab14], we analyzed a data processing script written by PFAB reader Frankie Frankleberry. Frankie's program helps his company scrutinize its product ranges to see if any items are mispriced. The program loads a big CSV of product data and flags any products meeting certain criteria, such as those with particularly low sales prices or profit margins. The company presumably uses the program's output to try to charge more money for the same stuff.
 
@@ -60,7 +59,7 @@ This code is unpleasant for at least two reasons. First, future programmers have
 
 Second, it's difficult for a programmer working on the code to see which description is associated with which function, because they have to hop back and forth between `run_function` and `get_description`. It would be clearer and more robust if the description and logic for a function lived right next to each other and didn't need to be matched up by strings and parallel if-statements.
 
-Uniting a filter's description and its logic is a worthy aim. But as we'll see, the way in which Frankie achieved this goal created new problems for him. Let's look at Frankie's solution, the problems it created, and how we can fix them.
+Uniting a filter's description and its logic is a worthy aim. But as we'll see, the way in which Frankie achieved this goal created severla new problems. Let's look at Frankie's solution, the problems it created, and how we can fix them.
 
 ## Functions that do too much
 
@@ -83,9 +82,9 @@ print(low_price_products(data, description_only=True))
 # => "Find all the products that cost less than $2"
 ```
 
-This approach tightly links logic and description, as desired, but at a high cost. The filter functions (like `low_price_products`) have become overworked. You should aim to have each component of your code be responsible for a single thing. Frankie's functions either return a string of the description, or the output dataset. A function that returns different types of data depending on the input it is given is by definition responsible for too much.
+This approach tightly links logic and description, as desired, but at a high cost. The filter functions (like `low_price_products`) have become overworked. You should aim to have each component of your code be responsible for a single thing. Frankie's functions sometimes return a string, and other times return the output dataset. A function that can return multiple different types of data is by definition responsible for too much.
 
-## Functions should always return the same datatype
+## Functions should always return the same data type
 
 A rule of thumb:
 
@@ -185,7 +184,7 @@ This approach would work but I would not recommend it, for the reasons already d
 
 ## Binding data together in a class
 
-Frankie wants to tightly bind together a filter's logic and its description. Unstead of squeezing them both into the same function, let's hang them off of a class.
+Frankie wants to tightly bind together a filter's logic and its description. Instead of squeezing them both into the same function, let's hang them off of a class.
 
 We'll define a class called `Filter`. This class's constructor will take two arguments:
 
