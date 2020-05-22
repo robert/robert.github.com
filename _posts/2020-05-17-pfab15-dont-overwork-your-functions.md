@@ -1,5 +1,5 @@
 ---
-permalink: /2020/05/17/pfab15-dont-overwork-your-functions
+permalink: /2020/05/17/pfab15-dont-overwork-your-functions/index.html
 layout: post
 title: "PFAB #15: Don't overwork your functions"
 tags:

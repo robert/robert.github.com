@@ -1,5 +1,5 @@
 ---
-permalink: /2014/07/14/getting-nothing-done-a-misguided-quest-for-productivity
+permalink: /2014/07/14/getting-nothing-done-a-misguided-quest-for-productivity/index.html
 layout: post
 title: Getting Nothing Done&#58; a misguided quest for productivity
 weight: 0

@@ -1,5 +1,5 @@
 ---
-permalink: /2019/10/10/parenthood-4-untitled-potato-portrait
+permalink: /2019/10/10/parenthood-4-untitled-potato-portrait/index.html
 title: "Parenthood #4: Untitled Potato Portrait"
 layout: post
 tags: [Babies, Life]

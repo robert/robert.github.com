@@ -1,5 +1,5 @@
 ---
-permalink: /2019/07/08/how-to-write-an-afl-wrapper-for-any-language
+permalink: /2019/07/08/how-to-write-an-afl-wrapper-for-any-language/index.html
 title: "How to write an afl wrapper for any language"
 layout: post
 tags: [Fuzzing, Security]

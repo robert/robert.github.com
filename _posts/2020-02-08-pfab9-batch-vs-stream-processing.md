@@ -1,5 +1,5 @@
 ---
-permalink: /2020/02/08/pfab9-batch-vs-stream-processing
+permalink: /2020/02/08/pfab9-batch-vs-stream-processing/index.html
 layout: post
 title: "PFAB #9: Batch vs Stream processing"
 tags:

@@ -1,5 +1,5 @@
 ---
-permalink: /2100/01/01/a-blogging-style-guide-vol-2
+permalink: /2100/01/01/a-blogging-style-guide-vol-2/index.html
 title: A blogging style guide, vol 2
 layout: post
 tags: [Writing]

@@ -1,5 +1,5 @@
 ---
-permalink: /2014/06/02/a-beginners-guide-to-funemployment
+permalink: /2014/06/02/a-beginners-guide-to-funemployment/index.html
 layout: post
 title: A beginner's guide to funemployment
 hn: 7932102

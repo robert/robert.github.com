@@ -1,5 +1,5 @@
 ---
-permalink: /2019/12/05/why-i-have-office-hours-and-you-should-too
+permalink: /2019/12/05/why-i-have-office-hours-and-you-should-too/index.html
 title: "Why I have office hours and why you should too"
 layout: post
 tags: [Office Hours]

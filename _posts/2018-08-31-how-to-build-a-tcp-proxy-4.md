@@ -1,5 +1,5 @@
 ---
-permalink: /2018/08/31/how-to-build-a-tcp-proxy-4
+permalink: /2018/08/31/how-to-build-a-tcp-proxy-4/index.html
 title: "How to build a TCP proxy #4: Fake Certificate Authority"
 layout: post
 tags: [How to build a TCP proxy]

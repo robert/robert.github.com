@@ -1,5 +1,5 @@
 ---
-permalink: /2018/12/02/programming-project-5-snake
+permalink: /2018/12/02/programming-project-5-snake/index.html
 title: "Programming Projects for Advanced Beginners #5: Snake"
 layout: post
 tags: [Programming Projects for Advanced Beginners]

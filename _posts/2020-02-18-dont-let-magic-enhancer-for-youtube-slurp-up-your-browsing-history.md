@@ -1,5 +1,5 @@
 ---
-permalink: /2020/02/18/dont-let-magic-enhancer-for-youtube-slurp-up-your-browsing-history
+permalink: /2020/02/18/dont-let-magic-enhancer-for-youtube-slurp-up-your-browsing-history/index.html
 layout: post
 title: Don't let "Magic Enhancer for YouTube" slurp up your browsing history
 tags: [Online Tracking]

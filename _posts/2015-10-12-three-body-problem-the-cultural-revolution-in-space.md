@@ -1,5 +1,5 @@
 ---
-permalink: /2015/10/12/three-body-problem-the-cultural-revolution-in-space
+permalink: /2015/10/12/three-body-problem-the-cultural-revolution-in-space/index.html
 title: Three Body Problem by Cixin Liu - the Cultural Revolution, in space
 layout: post
 tags: [Book Reviews]

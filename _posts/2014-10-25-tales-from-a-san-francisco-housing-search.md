@@ -1,5 +1,5 @@
 ---
-permalink: /2014/10/25/tales-from-a-san-francisco-housing-search
+permalink: /2014/10/25/tales-from-a-san-francisco-housing-search/index.html
 layout: post
 title: Tales from a San Francisco housing search
 tags: [Life]

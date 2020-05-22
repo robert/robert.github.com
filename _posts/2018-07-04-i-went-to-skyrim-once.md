@@ -1,5 +1,5 @@
 ---
-permalink: /2018/07/04/i-went-to-skyrim-once
+permalink: /2018/07/04/i-went-to-skyrim-once/index.html
 title: I went to Skyrim, once
 redirect_from:
   - /2018/07/09/i-went-to-skyrim-once

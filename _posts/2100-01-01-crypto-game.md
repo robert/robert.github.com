@@ -1,5 +1,5 @@
 ---
-permalink: /2100/01/01/crypto-game
+permalink: /2100/01/01/crypto-game/index.html
 layout: post
 title: Preventing impossible game levels using cryptography
 tags: [The Steve Steveington Chronicles, Security]

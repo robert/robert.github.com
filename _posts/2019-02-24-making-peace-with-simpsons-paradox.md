@@ -1,5 +1,5 @@
 ---
-permalink: /2019/02/24/making-peace-with-simpsons-paradox
+permalink: /2019/02/24/making-peace-with-simpsons-paradox/index.html
 title: "Making peace with Simpson's Paradox"
 layout: post
 tags: [Economics]

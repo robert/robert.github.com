@@ -1,5 +1,5 @@
 ---
-permalink: /2020/03/06/interview-on-the-cyberwire-podcast
+permalink: /2020/03/06/interview-on-the-cyberwire-podcast/index.html
 layout: post
 title: "Interview on the Cyberwire podcast about Wacom data collection"
 tags: [Security]

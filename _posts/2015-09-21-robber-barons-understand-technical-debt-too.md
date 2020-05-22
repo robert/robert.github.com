@@ -1,5 +1,5 @@
 ---
-permalink: /2015/09/21/robber-barons-understand-technical-debt-too
+permalink: /2015/09/21/robber-barons-understand-technical-debt-too/index.html
 title: Robber Barons understand technical debt too
 layout: post
 redirect_from:

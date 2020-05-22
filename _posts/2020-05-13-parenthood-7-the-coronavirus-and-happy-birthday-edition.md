@@ -1,5 +1,5 @@
 ---
-permalink: /2020/05/13/parenthood-7-the-coronavirus-and-happy-birthday-edition
+permalink: /2020/05/13/parenthood-7-the-coronavirus-and-happy-birthday-edition/index.html
 layout: post
 title: "Parenthood #7: the coronavirus and happy birthday edition"
 tags: [Babies, Life]

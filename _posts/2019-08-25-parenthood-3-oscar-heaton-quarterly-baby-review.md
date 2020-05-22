@@ -1,5 +1,5 @@
 ---
-permalink: /2019/08/25/parenthood-3-oscar-heaton-quarterly-baby-review
+permalink: /2019/08/25/parenthood-3-oscar-heaton-quarterly-baby-review/index.html
 title: "Parenthood #3: Oscar Heaton, Quarterly Baby Review"
 layout: post
 tags: [Babies, Life]

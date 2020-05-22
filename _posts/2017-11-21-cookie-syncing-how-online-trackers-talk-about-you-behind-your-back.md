@@ -1,5 +1,5 @@
 ---
-permalink: /2017/11/21/cookie-syncing-how-online-trackers-talk-about-you-behind-your-back
+permalink: /2017/11/21/cookie-syncing-how-online-trackers-talk-about-you-behind-your-back/index.html
 title: "Cookie Syncing: how online trackers talk about you behind your back"
 layout: post
 tags: [Online Tracking]

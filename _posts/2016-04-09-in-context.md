@@ -1,5 +1,5 @@
 ---
-permalink: /2016/04/09/in-context
+permalink: /2016/04/09/in-context/index.html
 layout: indented_post
 title: In context
 tags: [Stories]

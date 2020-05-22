@@ -1,5 +1,5 @@
 ---
-permalink: /2019/04/28/skeptical-advice-for-programming-jobseekers
+permalink: /2019/04/28/skeptical-advice-for-programming-jobseekers/index.html
 title: "Skeptical advice for programming jobseekers"
 layout: post
 tags: [Office Hours]

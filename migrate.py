@@ -12,12 +12,13 @@ for fname in os.listdir(posts_dir):
         endbit = bits[3][0:-3]
     else:
         endbit = bits[3]
-    url = f"/{bits[0]}/{bits[1]}/{bits[2]}/{endbit}"
+    url = f"/{bits[0]}/{bits[1]}/{bits[2]}/{endbit}/index.html"
     print(bits)
     print(url)
 
     with open(path, 'r') as f:
         ls = f.readlines()
-        ls.insert(1, f"permalink: {url}\n")
+        # ls.insert(1, f"permalink: {url}\n")
+        ls[1] = f"permalink: {url}\n"
         with open(path, 'w') as fw:
             fw.writelines(ls)

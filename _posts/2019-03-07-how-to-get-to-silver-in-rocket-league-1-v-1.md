@@ -1,5 +1,5 @@
 ---
-permalink: /2019/03/07/how-to-get-to-silver-in-rocket-league-1-v-1
+permalink: /2019/03/07/how-to-get-to-silver-in-rocket-league-1-v-1/index.html
 title: "How to get to Silver in Rocket League 1v1s"
 layout: post
 tags: [Computer Games]

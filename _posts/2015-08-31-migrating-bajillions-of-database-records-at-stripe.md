@@ -1,5 +1,5 @@
 ---
-permalink: /2015/08/31/migrating-bajillions-of-database-records-at-stripe
+permalink: /2015/08/31/migrating-bajillions-of-database-records-at-stripe/index.html
 title: Migrating bajillions of database records at Stripe
 layout: post
 published: true

@@ -1,5 +1,5 @@
 ---
-permalink: /2020/03/18/yourself-happier-iphone-worse
+permalink: /2020/03/18/yourself-happier-iphone-worse/index.html
 layout: post
 title: How to make yourself happier by making your iPhone worse
 tags: [Work]

@@ -1,5 +1,5 @@
 ---
-permalink: /2019/01/15/a-brief-history-of-wi-fi-privacy-vulnerabilities
+permalink: /2019/01/15/a-brief-history-of-wi-fi-privacy-vulnerabilities/index.html
 title: A brief history of wi-fi privacy vulnerabilities
 layout: post
 tags: [The Steve Steveington Chronicles]

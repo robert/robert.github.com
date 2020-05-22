@@ -1,5 +1,5 @@
 ---
-permalink: /2018/12/08/programming-projects-for-advanced-beginners
+permalink: /2018/12/08/programming-projects-for-advanced-beginners/index.html
 title: Programming Projects for Advanced Beginners
 layout: post
 tags: [Programming Projects for Advanced Beginners]

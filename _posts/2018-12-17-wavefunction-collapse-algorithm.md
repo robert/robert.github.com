@@ -1,5 +1,5 @@
 ---
-permalink: /2018/12/17/wavefunction-collapse-algorithm
+permalink: /2018/12/17/wavefunction-collapse-algorithm/index.html
 title: The Wavefunction Collapse Algorithm explained very clearly
 layout: post
 tags: [Computer Games]

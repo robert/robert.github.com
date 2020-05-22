@@ -1,5 +1,5 @@
 ---
-permalink: /2019/11/08/programming-feedback-for-advanced-beginners-0
+permalink: /2019/11/08/programming-feedback-for-advanced-beginners-0/index.html
 title: "Programming Feedback for Advanced Beginners #0"
 layout: post
 tags:

@@ -1,5 +1,5 @@
 ---
-permalink: /2019/11/21/how-to-man-in-the-middle-your-iot-devices
+permalink: /2019/11/21/how-to-man-in-the-middle-your-iot-devices/index.html
 title: How to man-in-the-middle proxy your IOT devices
 layout: post
 tags: [Security]

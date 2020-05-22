@@ -1,5 +1,5 @@
 ---
-permalink: /2014/06/20/code-review-without-your-eyes
+permalink: /2014/06/20/code-review-without-your-eyes/index.html
 layout: post
 title: Code review without your glasses
 hn: 7998657

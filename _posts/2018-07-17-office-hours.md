@@ -1,5 +1,5 @@
 ---
-permalink: /2018/07/17/office-hours
+permalink: /2018/07/17/office-hours/index.html
 title: I'm doing Office Hours
 layout: post
 tags: [Office Hours]

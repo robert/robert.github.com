@@ -1,5 +1,5 @@
 ---
-permalink: /2015/09/02/staying-safe-cycling-san-franciscos-wiggle
+permalink: /2015/09/02/staying-safe-cycling-san-franciscos-wiggle/index.html
 title: Staying safe cycling San Francisco's Wiggle
 layout: post
 published: true

@@ -1,5 +1,5 @@
 ---
-permalink: /2020/01/06/parenthood-5-great-cement-ideas-that-will-make-your-partner-happy
+permalink: /2020/01/06/parenthood-5-great-cement-ideas-that-will-make-your-partner-happy/index.html
 layout: post
 title: "Parenthood #5: Great cement ideas that will make your partner happy"
 tags: [Babies, Life]
