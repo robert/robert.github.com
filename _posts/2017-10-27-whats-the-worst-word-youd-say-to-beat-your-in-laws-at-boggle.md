@@ -1,4 +1,5 @@
 ---
+permalink: /2017/10/27/whats-the-worst-word-youd-say-to-beat-your-in-laws-at-boggle
 title: What's the worst word you'd say to beat your in-laws at Boggle?
 layout: post
 tags: [Stories]

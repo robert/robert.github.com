@@ -1,4 +1,5 @@
 ---
+permalink: /2014/04/21/9-ways-to-get-that-engineer
 layout: post
 title: 9 ways to get that engineer
 tags: [Work]

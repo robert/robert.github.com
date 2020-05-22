@@ -1,4 +1,5 @@
 ---
+permalink: /2013/04/01/check-youre-wearing-trousers-first
 layout: post
 title: Check you’re wearing trousers first
 hn: 5478893

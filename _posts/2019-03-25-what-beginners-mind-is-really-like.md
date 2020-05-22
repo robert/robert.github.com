@@ -1,4 +1,5 @@
 ---
+permalink: /2019/03/25/what-beginners-mind-is-really-like
 title: What beginner's mind is really like
 layout: post
 tags: [Programming Projects for Advanced Beginners]

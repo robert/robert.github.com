@@ -1,4 +1,5 @@
 ---
+permalink: /2018/08/31/how-to-build-a-tcp-proxy-2
 title: "How to build a TCP proxy #2: Fake DNS Server"
 layout: post
 tags: [How to build a TCP proxy]

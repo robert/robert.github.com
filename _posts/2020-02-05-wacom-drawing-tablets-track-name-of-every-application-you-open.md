@@ -1,4 +1,5 @@
 ---
+permalink: /2020/02/05/wacom-drawing-tablets-track-name-of-every-application-you-open
 title: "Wacom drawing tablets track the name of every application that you open"
 layout: post
 tags: [Online Tracking, Security]

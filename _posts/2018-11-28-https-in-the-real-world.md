@@ -1,4 +1,5 @@
 ---
+permalink: /2018/11/28/https-in-the-real-world
 title: "HTTPS in the real world"
 layout: post
 tags: [HTTPS, Security]

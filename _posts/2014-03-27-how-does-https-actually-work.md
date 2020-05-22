@@ -1,4 +1,5 @@
 ---
+permalink: /2014/03/27/how-does-https-actually-work
 layout: post
 title: How does HTTPS actually work?
 tags: [HTTPS, Security]

@@ -1,4 +1,5 @@
 ---
+permalink: /2016/02/01/i-am-with-the-police
 title: I am with the police
 layout: indented_post
 tags: [Stories]

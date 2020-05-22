@@ -1,4 +1,5 @@
 ---
+permalink: /2020/05/03/pfab14-evil-eval
 layout: post
 title: "PFAB #14: Evil `eval`"
 tags:

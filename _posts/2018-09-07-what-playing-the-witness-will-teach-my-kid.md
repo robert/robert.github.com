@@ -1,4 +1,5 @@
 ---
+permalink: /2018/09/07/what-playing-the-witness-will-teach-my-kid
 title: What playing The Witness will teach my kid about problem solving
 layout: post
 tags: [Computer Games]

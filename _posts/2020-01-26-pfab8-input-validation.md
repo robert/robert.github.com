@@ -1,4 +1,5 @@
 ---
+permalink: /2020/01/26/pfab8-input-validation
 layout: post
 title: "PFAB #8: Input validation - tradeoffs between convenience and surprise"
 tags:

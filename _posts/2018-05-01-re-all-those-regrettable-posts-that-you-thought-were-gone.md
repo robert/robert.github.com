@@ -1,4 +1,5 @@
 ---
+permalink: /2018/05/01/re-all-those-regrettable-posts-that-you-thought-were-gone
 title: "Re: All those regrettable posts that you thought were gone"
 layout: post
 tags: [The Steve Steveington Chronicles, Online Tracking]

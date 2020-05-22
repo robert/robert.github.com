@@ -1,4 +1,5 @@
 ---
+permalink: /2015/11/30/a-day-at-the-free-market
 layout: indented_post
 title: A day at The Free Market
 tags: [Stories, Writing]

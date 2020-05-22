@@ -1,4 +1,5 @@
 ---
+permalink: /2018/08/16/stylish-is-back-and-you-still-shouldnt-use-it
 title: "\"Stylish\" is back, and you still shouldn't use it"
 layout: post
 tags: [Online Tracking]

@@ -1,4 +1,5 @@
 ---
+permalink: /2018/08/15/what-does-an-increase-in-gini-coefficient-actually-look-like
 layout: post
 title: What does a 0.01 increase in the Gini Coefficient actually look like?
 tags: [Economics]

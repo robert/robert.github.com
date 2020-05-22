@@ -1,4 +1,5 @@
 ---
+permalink: /2016/07/05/improve-your-recruiting-using-math-rand
 layout: post
 title: Randomness-Driven Recruiting
 custom_meta: You can be unprejudiced whilst still being erratic. And when making decisions in a system that is hard to measure and is made up of a small number of events (like, say, hiring), noise and volatility work for you, not against.

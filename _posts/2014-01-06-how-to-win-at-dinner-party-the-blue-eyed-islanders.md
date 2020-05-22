@@ -1,4 +1,5 @@
 ---
+permalink: /2014/01/06/how-to-win-at-dinner-party-the-blue-eyed-islanders
 layout: post
 title: The Blue-Eyed Islanders Puzzle
 hn: 7023595

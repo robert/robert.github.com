@@ -1,4 +1,5 @@
 ---
+permalink: /2018/07/09/how-tinder-keeps-your-location-a-bit-private
 title: How Tinder keeps your exact location (a bit) private
 redirect_from:
   - /2018/07/09/how-tinder-keeps-your-exact-location-a-bit-private/

@@ -1,4 +1,5 @@
 ---
+permalink: /2019/11/08/i-will-give-you-feedback-on-your-code
 title: "I will give you feedback on your code"
 layout: post
 tags: [Programming Projects for Advanced Beginners]

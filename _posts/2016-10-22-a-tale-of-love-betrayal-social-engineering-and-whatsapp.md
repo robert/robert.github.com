@@ -1,4 +1,5 @@
 ---
+permalink: /2016/10/22/a-tale-of-love-betrayal-social-engineering-and-whatsapp
 layout: post
 title: A tale of love, betrayal, social engineering and Whatsapp
 tags: [The Steve Steveington Chronicles]

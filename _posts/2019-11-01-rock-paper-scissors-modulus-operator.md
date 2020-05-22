@@ -1,4 +1,5 @@
 ---
+permalink: /2019/11/01/rock-paper-scissors-modulus-operator
 title: Rock, Paper, Scissors, Modulus Operator
 layout: post
 tags: [Programming Projects for Advanced Beginners]

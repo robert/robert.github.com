@@ -1,4 +1,5 @@
 ---
+permalink: /2014/01/20/cookieless-user-tracking-for-douchebags
 layout: post
 title: Cookieless user tracking for douchebags
 tags: [Security, Online Tracking]

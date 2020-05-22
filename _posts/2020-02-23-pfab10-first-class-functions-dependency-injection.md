@@ -1,4 +1,5 @@
 ---
+permalink: /2020/02/23/pfab10-first-class-functions-dependency-injection
 layout: post
 title: "PFAB #10: First-class functions and dependency injection"
 tags:

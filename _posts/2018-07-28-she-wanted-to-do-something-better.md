@@ -1,4 +1,5 @@
 ---
+permalink: /2018/07/28/she-wanted-to-do-something-better
 title: She wanted to do something better
 layout: indented_post
 tags: [Stories]

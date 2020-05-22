@@ -1,4 +1,5 @@
 ---
+permalink: /2017/11/24/identity-graphs-how-online-trackers-follow-you-across-devices
 title: "Identity Graphs: how online trackers follow you across devices"
 layout: post
 tags: [Online Tracking]

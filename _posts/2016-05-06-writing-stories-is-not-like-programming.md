@@ -1,4 +1,5 @@
 ---
+permalink: /2016/05/06/writing-stories-is-not-like-programming
 layout: post
 title: Writing stories is not like programming
 ---

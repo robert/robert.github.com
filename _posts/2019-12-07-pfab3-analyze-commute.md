@@ -1,4 +1,5 @@
 ---
+permalink: /2019/12/07/pfab3-analyze-commute
 title: "PFAB#3: How to rigorously analyze your journey to work"
 layout: post
 tags:

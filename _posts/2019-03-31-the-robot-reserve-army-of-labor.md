@@ -1,4 +1,5 @@
 ---
+permalink: /2019/03/31/the-robot-reserve-army-of-labor
 title: "The Robot Reserve Army of Labor"
 layout: post
 tags: [Economics]

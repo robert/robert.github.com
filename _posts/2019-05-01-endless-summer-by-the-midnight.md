@@ -1,4 +1,5 @@
 ---
+permalink: /2019/05/01/endless-summer-by-the-midnight
 title: "Endless Summer by The Midnight: a brief analysis"
 layout: post
 tags: [Music]
