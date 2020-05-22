@@ -9,8 +9,8 @@ for fname in os.listdir(posts_dir):
     url = f"/{bits[0]}/{bits[1]}/{bits[2]}/{bits[3].rstrip('.md')}"
     print(url)
 
-    with open(path, 'w+') as f:
+    with open(path, 'r') as f:
         ls = f.readlines()
-        ls.insert(1, f"permalink: {url}")
-        print(ls)
-        f.writelines(ls)
+        ls.insert(1, f"permalink: {url}\n")
+        with open(path, 'w') as fw:
+            fw.writelines(ls)
