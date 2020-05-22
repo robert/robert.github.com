@@ -94,7 +94,7 @@ public void turnOnLoTempAlarmAtThreshold() throws Exception {
   assertEquals(Map.of(
     "heater", true,
     "blower", true,
-    "cooler". false,
+    "cooler", false,
     "hiTemp", false,
     "loTemp", true,
   ), hw.getState())

@@ -81,6 +81,12 @@ Some of my favorites include:
 * Remember that everything you write is content marketing for everything else, which is itself content marketing for the thing that you really care about. If you don't know what you really care about yet then that's OK. A lot of people come to my site for the accessible cryptography explanations, stay for the series about parenthood, and email me to say that they feel professionally stuck and alone and to ask if I have any ideas.
 * I've written a lot more about coming up with ideas for blog posts [here][blog-ideas].
 
+## Website design
+
+* Don't write your "[About Me](/about)" page in the third person, since you obviously wrote it
+* Do put dates on your posts. Some people will encourage you not to because your work should be timeless and immortal. But the world moves and most of your work won't be. Knowing when a piece was written helps your readers to put it in context.
+* Have a prominent "[Best of](/)" section so people who want to read more of your writing have a clear place to start.
+
 ## Asking for feedback from friends and family
 
 * After someone reads your writing, ask them what they liked. This is more important than what they didn't like because it tells you what to do more of. It doesn't matter that no one liked my post ["WeSeeYou: Democratizing De-Anonymization"][we-see-you] (although I thought it was very good), but it's invaluable to know that the central thesis behind ["Programming Projects for Advanced Beginners"][ppab] is spot on.
