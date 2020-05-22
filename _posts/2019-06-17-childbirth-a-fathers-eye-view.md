@@ -1,5 +1,5 @@
 ---
-permalink: /2019/06/17/childbirth-a-fathers-eye-view
+permalink: /2019/06/17/childbirth-a-fathers-eye-view/index.html
 title: "Childbirth: a father's-eye view"
 layout: post
 tags: [Babies, Life]

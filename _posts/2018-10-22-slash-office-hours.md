@@ -1,5 +1,5 @@
 ---
-permalink: /2018/10/22/slash-office-hours
+permalink: /2018/10/22/slash-office-hours/index.html
 title: "/office-hours"
 layout: post
 tags: [Office Hours]

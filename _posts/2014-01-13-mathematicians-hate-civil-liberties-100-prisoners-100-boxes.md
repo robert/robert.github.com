@@ -1,5 +1,5 @@
 ---
-permalink: /2014/01/13/mathematicians-hate-civil-liberties-100-prisoners-100-boxes
+permalink: /2014/01/13/mathematicians-hate-civil-liberties-100-prisoners-100-boxes/index.html
 layout: post
 title: "Mathematicians hate civil liberties: 100 prisoners and 100 boxes"
 tags: [Puzzles]

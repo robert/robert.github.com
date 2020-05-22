@@ -1,5 +1,5 @@
 ---
-permalink: /2014/07/26/lessons-from-a-surprisingly-successful-blog
+permalink: /2014/07/26/lessons-from-a-surprisingly-successful-blog/index.html
 layout: post
 title: Lessons from a surprisingly successful blog
 weight: -1

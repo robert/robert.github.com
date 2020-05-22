@@ -1,5 +1,5 @@
 ---
-permalink: /2014/03/07/lessons-from-a-silicon-valley-job-search
+permalink: /2014/03/07/lessons-from-a-silicon-valley-job-search/index.html
 layout: post
 redirect_from:
   - /2014/03/07/lessons-from-a-silicon-valley-j1-search/

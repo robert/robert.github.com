@@ -1,5 +1,5 @@
 ---
-permalink: /2014/04/07/downfall-of-a-once-readable-blog-post
+permalink: /2014/04/07/downfall-of-a-once-readable-blog-post/index.html
 layout: post
 title: Downfall of a once readable blog post
 ---

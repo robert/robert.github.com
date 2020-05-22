@@ -1,5 +1,5 @@
 ---
-permalink: /2013/02/13/how-to-save-1-day-a-year
+permalink: /2013/02/13/how-to-save-1-day-a-year/index.html
 layout: post
 title: How to save 1 day/year of quality Rails time
 ---

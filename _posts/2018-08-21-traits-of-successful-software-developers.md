@@ -1,5 +1,5 @@
 ---
-permalink: /2018/08/21/traits-of-successful-software-developers
+permalink: /2018/08/21/traits-of-successful-software-developers/index.html
 title: "Talk: Traits of Successful Software Developers"
 layout: post
 tags: [Productivity]

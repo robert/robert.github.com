@@ -1,5 +1,5 @@
 ---
-permalink: /2017/10/17/we-see-you-democratizing-de-anonymization
+permalink: /2017/10/17/we-see-you-democratizing-de-anonymization/index.html
 title: "WeSeeYou: Democratizing De-Anonymization"
 layout: post
 tags: [Security, Online Tracking]

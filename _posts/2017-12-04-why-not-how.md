@@ -1,5 +1,5 @@
 ---
-permalink: /2017/12/04/why-not-how
+permalink: /2017/12/04/why-not-how/index.html
 title: Why, not how
 layout: post
 published: false

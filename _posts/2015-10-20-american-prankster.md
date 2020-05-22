@@ -1,5 +1,5 @@
 ---
-permalink: /2015/10/20/american-prankster
+permalink: /2015/10/20/american-prankster/index.html
 title: American Prankster
 layout: indented_post
 tags: [Stories, Writing]

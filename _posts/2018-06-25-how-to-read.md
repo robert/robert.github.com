@@ -1,5 +1,5 @@
 ---
-permalink: /2018/06/25/how-to-read
+permalink: /2018/06/25/how-to-read/index.html
 title: How to read
 layout: post
 tags: [Studying, Productivity]

@@ -1,5 +1,5 @@
 ---
-permalink: /2020/04/19/pfab13-when-code-is-too-clever-to-be-clean
+permalink: /2020/04/19/pfab13-when-code-is-too-clever-to-be-clean/index.html
 layout: post
 title: "PFAB #13: When code is too clever to be clean"
 tags:

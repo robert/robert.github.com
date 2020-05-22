@@ -1,5 +1,5 @@
 ---
-permalink: /2015/09/08/favorite-bits-from-my-insane-never-to-be-published-novel
+permalink: /2015/09/08/favorite-bits-from-my-insane-never-to-be-published-novel/index.html
 title: Favorite bits from my insane, never-to-be-published novel
 layout: post
 tags: [Writing]

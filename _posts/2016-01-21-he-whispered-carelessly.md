@@ -1,5 +1,5 @@
 ---
-permalink: /2016/01/21/he-whispered-carelessly
+permalink: /2016/01/21/he-whispered-carelessly/index.html
 title: He whispered, carelessly
 layout: indented_post
 tags: [Stories]

@@ -1,5 +1,5 @@
 ---
-permalink: /2016/08/23/how-make-slack-slightly-less-bad-for-you
+permalink: /2016/08/23/how-make-slack-slightly-less-bad-for-you/index.html
 title: How to make Slack less bad for you
 custom_meta: Slack claim to be in the business of "making your working life simpler, more pleasant, and more productive". We’re about to be cynical, so let’s acknowledge that this claim is probably at least partly true.
 layout: post

@@ -1,5 +1,5 @@
 ---
-permalink: /2019/04/14/open-source-for-advanced-beginners-1-bashplotlib
+permalink: /2019/04/14/open-source-for-advanced-beginners-1-bashplotlib/index.html
 title: "Open Source for Advanced Beginners #1: bashplotlib"
 layout: post
 tags: [Programming Projects for Advanced Beginners]

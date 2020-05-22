@@ -1,5 +1,5 @@
 ---
-permalink: /2013/07/15/when-you-have-a-nail-in-your-eye
+permalink: /2013/07/15/when-you-have-a-nail-in-your-eye/index.html
 layout: post
 title: When you have a nail in your eye, everything looks like a nail
 hn: 6051120

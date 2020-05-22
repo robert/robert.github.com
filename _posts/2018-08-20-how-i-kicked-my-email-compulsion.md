@@ -1,5 +1,5 @@
 ---
-permalink: /2018/08/20/how-i-kicked-my-email-compulsion
+permalink: /2018/08/20/how-i-kicked-my-email-compulsion/index.html
 title: How I kicked my email compulsion
 layout: post
 tags: [Productivity]

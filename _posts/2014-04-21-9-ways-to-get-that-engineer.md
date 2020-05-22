@@ -1,5 +1,5 @@
 ---
-permalink: /2014/04/21/9-ways-to-get-that-engineer
+permalink: /2014/04/21/9-ways-to-get-that-engineer/index.html
 layout: post
 title: 9 ways to get that engineer
 tags: [Work]

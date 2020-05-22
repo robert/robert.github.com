@@ -1,5 +1,5 @@
 ---
-permalink: /2013/11/05/kanban-at-londons-national-gallery
+permalink: /2013/11/05/kanban-at-londons-national-gallery/index.html
 layout: post
 title: Kanban at London's National Gallery
 hn: 6717569

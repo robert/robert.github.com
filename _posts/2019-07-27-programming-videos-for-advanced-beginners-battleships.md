@@ -1,5 +1,5 @@
 ---
-permalink: /2019/07/27/programming-videos-for-advanced-beginners-battleships
+permalink: /2019/07/27/programming-videos-for-advanced-beginners-battleships/index.html
 title: "Programming Videos for Advanced Beginners #1: Battleships"
 layout: post
 tags: [Programming Projects for Advanced Beginners]

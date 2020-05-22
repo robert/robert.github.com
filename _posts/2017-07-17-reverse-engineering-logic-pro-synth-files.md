@@ -1,5 +1,5 @@
 ---
-permalink: /2017/07/17/reverse-engineering-logic-pro-synth-files
+permalink: /2017/07/17/reverse-engineering-logic-pro-synth-files/index.html
 title: Reverse engineering LogicPro synth files
 layout: post
 tags:

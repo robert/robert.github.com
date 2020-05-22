@@ -1,5 +1,5 @@
 ---
-permalink: /2019/04/06/how-does-tor-work
+permalink: /2019/04/06/how-does-tor-work/index.html
 title: "How does Tor work?"
 layout: post
 tags: [Security]

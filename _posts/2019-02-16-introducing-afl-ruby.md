@@ -1,5 +1,5 @@
 ---
-permalink: /2019/02/16/introducing-afl-ruby
+permalink: /2019/02/16/introducing-afl-ruby/index.html
 title: "Introducing Afl-Ruby: fuzz your Ruby programs using afl"
 layout: post
 tags: [Fuzzing, Security]

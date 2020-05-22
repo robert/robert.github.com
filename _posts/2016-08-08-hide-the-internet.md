@@ -1,5 +1,5 @@
 ---
-permalink: /2016/08/08/hide-the-internet
+permalink: /2016/08/08/hide-the-internet/index.html
 layout: post
 title: Hide the internet
 tags: [Productivity]

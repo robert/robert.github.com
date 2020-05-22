@@ -1,5 +1,5 @@
 ---
-permalink: /2019/07/23/maximizing-profit-and-evaluating-success-as-a-craigslist-seller
+permalink: /2019/07/23/maximizing-profit-and-evaluating-success-as-a-craigslist-seller/index.html
 title: "Maximizing profits and evaluating success as a Craigslist seller"
 layout: post
 tags: [Life]

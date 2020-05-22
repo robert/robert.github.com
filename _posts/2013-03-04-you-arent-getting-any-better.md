@@ -1,5 +1,5 @@
 ---
-permalink: /2013/03/04/you-arent-getting-any-better
+permalink: /2013/03/04/you-arent-getting-any-better/index.html
 layout: post
 title: You are not getting any better
 hn: 5324029

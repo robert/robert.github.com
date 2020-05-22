@@ -1,5 +1,5 @@
 ---
-permalink: /2019/04/13/open-source-for-advanced-beginners
+permalink: /2019/04/13/open-source-for-advanced-beginners/index.html
 title: "Open Source for Advanced Beginners"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
