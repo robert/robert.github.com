@@ -11,3 +11,4 @@ gems:
   - jekyll-redirect-from
   - jekyll-paginate
 paginate: 20
+permalink: "/:title"
