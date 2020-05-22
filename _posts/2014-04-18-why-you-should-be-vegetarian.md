@@ -1,4 +1,5 @@
 ---
+permalink: /2014/04/18/why-you-should-be-vegetarian
 layout: post
 title: Why you should be vegetarian
 tags: [Life]

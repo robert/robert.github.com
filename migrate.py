@@ -8,7 +8,12 @@ for fname in os.listdir(posts_dir):
         continue
 
     bits = fname.split("-", 3)
-    url = f"/{bits[0]}/{bits[1]}/{bits[2]}/{bits[3].rstrip('.md')}"
+    if bits[3].endswith(".md"):
+        endbit = bits[3][0:-3]
+    else:
+        endbit = bits[3]
+    url = f"/{bits[0]}/{bits[1]}/{bits[2]}/{endbit}"
+    print(bits)
     print(url)
 
     with open(path, 'r') as f:

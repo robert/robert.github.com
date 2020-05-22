@@ -1,4 +1,5 @@
 ---
+permalink: /2019/11/30/pfab2-how-to-structure-your-programs
 title: "PFAB#2: How to structure your programs"
 layout: post
 tags:

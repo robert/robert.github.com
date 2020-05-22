@@ -1,4 +1,5 @@
 ---
+permalink: /2014/10/26/tales-from-a-san-francisco-housing-search-deleted-scenes
 layout: post
 tags: [Life]
 title: Tales from a San Francisco housing search (DELETED SCENES)

@@ -1,4 +1,5 @@
 ---
+permalink: /2017/10/09/tracking-friends-and-strangers-using-whatsapp
 title: Tracking friends and strangers using WhatsApp
 layout: post
 tags: [The Steve Steveington Chronicles, Online Tracking]

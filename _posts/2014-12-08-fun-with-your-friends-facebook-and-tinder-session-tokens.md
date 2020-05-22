@@ -1,4 +1,5 @@
 ---
+permalink: /2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens
 title: Fun with your friend's Facebook and Tinder sessions
 layout: post
 redirect_from:

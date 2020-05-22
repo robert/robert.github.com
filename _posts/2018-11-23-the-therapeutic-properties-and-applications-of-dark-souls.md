@@ -1,4 +1,5 @@
 ---
+permalink: /2018/11/23/the-therapeutic-properties-and-applications-of-dark-souls
 title: The therapeutic properties and applications of Dark Souls
 layout: indented_post
 tags: [Computer Games]

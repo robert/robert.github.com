@@ -1,4 +1,5 @@
 ---
+permalink: /2014/12/12/green-waves-on-an-arbitrary-valencia-street
 title: Green Waves on an arbitrary Valencia Street
 layout: post
 tags: [Puzzles]

@@ -1,4 +1,5 @@
 ---
+permalink: /2017/02/13/notes-from-rep-jackie-speiers-town-hall
 layout: post
 title: Notes from Rep. Jackie Speier's Town Hall
 ---

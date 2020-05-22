@@ -1,4 +1,5 @@
 ---
+permalink: /2020/04/13/hundreds-of-companies-assert-usage-rights-over-all-ideas
 layout: post
 title: Hundreds of companies assert usage rights over all ideas sent through their services
 tags: [Online Tracking]

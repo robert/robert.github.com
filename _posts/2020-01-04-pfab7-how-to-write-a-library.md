@@ -1,4 +1,5 @@
 ---
+permalink: /2020/01/04/pfab7-how-to-write-a-library
 title: "PFAB#7: How to write a library"
 layout: post
 tags:

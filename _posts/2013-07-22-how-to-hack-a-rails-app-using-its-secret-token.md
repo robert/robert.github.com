@@ -1,4 +1,5 @@
 ---
+permalink: /2013/07/22/how-to-hack-a-rails-app-using-its-secret-token
 layout: post
 title: How to hack a Rails app using its secret_token
 hn: 6110386

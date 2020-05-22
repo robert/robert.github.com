@@ -1,4 +1,5 @@
 ---
+permalink: /2015/12/22/how-they-solved-true-detective-season-1
 layout: post
 title: How they solved True Detective Season 1
 tags: [Writing]

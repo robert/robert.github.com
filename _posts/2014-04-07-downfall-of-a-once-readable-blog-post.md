@@ -1,4 +1,5 @@
 ---
+permalink: /2014/04/07/downfall-of-a-once-readable-blog-post
 layout: post
 title: Downfall of a once readable blog post
 ---

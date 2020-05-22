@@ -1,4 +1,5 @@
 ---
+permalink: /2018/06/05/why-economists-need-bureaucracy
 title: Why economists need bureaucracy
 layout: post
 tags: [Economics]

@@ -1,4 +1,5 @@
 ---
+permalink: /2016/09/12/building-a-magic-the-gathering-sealed-deck-ai
 title: Building a Magic&#58; The Gathering sealed deck AI
 custom_title: Building a Magic The Gathering sealed deck AI
 layout: post

@@ -1,4 +1,5 @@
 ---
+permalink: /2020/04/27/how-does-a-tcp-reset-attack-work
 layout: post
 title: How does a TCP Reset Attack work?
 tags: [Security]

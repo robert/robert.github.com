@@ -1,4 +1,5 @@
 ---
+permalink: /2015/03/20/something-that-i-dont-talk-about-much
 title: Something that I don't talk about much
 layout: post
 tags: [Pain]

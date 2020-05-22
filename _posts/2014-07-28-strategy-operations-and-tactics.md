@@ -1,4 +1,5 @@
 ---
+permalink: /2014/07/28/strategy-operations-and-tactics
 layout: post
 title: Strategy, operations and tactics
 published: false

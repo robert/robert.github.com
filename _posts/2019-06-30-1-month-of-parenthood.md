@@ -1,4 +1,5 @@
 ---
+permalink: /2019/06/30/1-month-of-parenthood
 title: "Port scans and industrial fans: 1 month of parenthood"
 layout: post
 tags: [Babies, Life]

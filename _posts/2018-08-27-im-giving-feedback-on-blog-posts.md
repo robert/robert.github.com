@@ -1,4 +1,5 @@
 ---
+permalink: /2018/08/27/im-giving-feedback-on-blog-posts
 title: "I'm giving feedback on blog posts"
 layout: post
 tags: [Office Hours]

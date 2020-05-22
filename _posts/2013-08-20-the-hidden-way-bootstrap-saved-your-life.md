@@ -1,4 +1,5 @@
 ---
+permalink: /2013/08/20/the-hidden-way-bootstrap-saved-your-life
 layout: post
 title: The hidden way Bootstrap saved your life
 ---

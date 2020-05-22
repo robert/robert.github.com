@@ -1,4 +1,5 @@
 ---
+permalink: /2020/01/14/how-to-set-up-the-hive-on-aws-elasticsearch
 layout: post
 title: How to set up The Hive on AWS ElasticSearch
 tags: [Security]

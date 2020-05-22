@@ -1,4 +1,5 @@
 ---
+permalink: /2019/09/24/how-to-come-up-with-blog-post-ideas
 title: "How to come up with blog post ideas"
 layout: post
 tags: [Writing]

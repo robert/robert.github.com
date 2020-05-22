@@ -1,4 +1,5 @@
 ---
+permalink: /2013/07/29/padding-oracle-attack
 layout: post
 title: The Padding Oracle Attack
 bestof: true

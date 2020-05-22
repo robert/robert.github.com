@@ -1,4 +1,5 @@
 ---
+permalink: /2018/07/20/project-2-game-of-life
 title: "Programming Projects for Advanced Beginners #2: Game of Life"
 layout: post
 tags: [Programming Projects for Advanced Beginners]

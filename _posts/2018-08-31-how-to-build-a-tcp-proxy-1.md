@@ -1,4 +1,5 @@
 ---
+permalink: /2018/08/31/how-to-build-a-tcp-proxy-1
 title: "How to build a TCP proxy #1: Intro"
 layout: post
 tags: [How to build a TCP proxy]

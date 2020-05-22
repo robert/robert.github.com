@@ -1,4 +1,5 @@
 ---
+permalink: /2013/03/11/coding-with-gumption
 layout: post
 title: Coding with gumption
 bestof: true

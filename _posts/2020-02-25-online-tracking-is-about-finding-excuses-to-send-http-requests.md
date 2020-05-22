@@ -1,4 +1,5 @@
 ---
+permalink: /2020/02/25/online-tracking-is-about-finding-excuses-to-send-http-requests
 layout: post
 title: Online tracking is about finding excuses to send HTTP requests
 tags: [Online Tracking]

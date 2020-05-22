@@ -1,4 +1,5 @@
 ---
+permalink: /2019/12/21/ppab5-how-to-make-your-programs-shorter
 title: "PFAB#5: How to make your programs shorter"
 layout: post
 tags:

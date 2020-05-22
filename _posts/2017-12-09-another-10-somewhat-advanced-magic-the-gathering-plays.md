@@ -1,4 +1,5 @@
 ---
+permalink: /2017/12/09/another-10-somewhat-advanced-magic-the-gathering-plays
 title: Another 10 somewhat advanced Magic&#58; The Gathering plays
 custom_title: Another 10 somewhat advanced Magic The Gathering plays
 layout: post

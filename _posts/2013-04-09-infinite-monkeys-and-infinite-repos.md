@@ -1,4 +1,5 @@
 ---
+permalink: /2013/04/09/infinite-monkeys-and-infinite-repos
 layout: post
 title: Infinite monkeys and infinite repos
 hn: 5517334

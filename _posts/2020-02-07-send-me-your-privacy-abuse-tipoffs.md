@@ -1,4 +1,5 @@
 ---
+permalink: /2020/02/07/send-me-your-privacy-abuse-tipoffs
 title: Send me your privacy abuse tipoffs
 layout: post
 tags: [Online Tracking, Security]

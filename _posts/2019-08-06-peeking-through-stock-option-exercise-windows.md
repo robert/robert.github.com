@@ -1,4 +1,5 @@
 ---
+permalink: /2019/08/06/peeking-through-stock-option-exercise-windows
 title: Peeking through stock option exercise windows
 layout: post
 tags: [Work]
