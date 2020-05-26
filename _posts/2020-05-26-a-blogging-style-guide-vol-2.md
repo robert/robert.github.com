@@ -1,12 +1,12 @@
 ---
-permalink: /2100/01/01/a-blogging-style-guide-vol-2/index.html
 title: A blogging style guide, vol 2
 layout: post
 tags: [Writing]
 og_image: https://robertheaton.com/images/style-guide-2-cover.png
-published: false
 ---
 Here are 30 or so more ways to make your blog more entertaining to read and more pleasurable to write. See also: ["A blogging style guide, vol 1"][vol1].
+
+<img src="/images/style-guide-2-cover.png" />
 
 ## Choosing good words
 
@@ -22,10 +22,8 @@ I realized that "something of" was just fearful throat-clearing, so I deleted it
 
 This sentence is tighter and punchier. Enough improvements like this add up to appreciably better prose.
 
-<img src="/images/style-guide-2-cover.png" />
-
 * Use a thesaurus, especially when you have another criteria you need your word to meet. For example, you might want a word that starts with a particular letter to help with alliteration, or one that sounds like another word to complete a pun. In [a post about being a parent][parenthood7], I wanted to express the idea that I felt that I should write honestly because the result is compelling, but not too honestly because some of my readers are also my close relatives. I wanted a half-pun on "discretion is the better part of valor(/honesty)". I looked up "honesty" in a thesaurus, and arrived at the pleasing "discretion is the better part of candor".
-* When using a thesaurus, don't ignore the less precise matches further down the page. Sometimes these words can put a colorful curlicue on an otherwise mundane sentence. Do be careful though.
+* When using a thesaurus, don't ignore the less precise matches further down the page. Sometimes these words can put a colorful curlicue on an otherwise mundane sentence. Don't ever use words like "curlicue", however.
 * It is often said that you should write how you speak because this sounds clear and natural. This is good advice, but keep in mind that most people's organic speech is meandering and confusing. When listening to my favorite podcasts I always notice how much worse the live shows are than those recorded in a studio. Don't write how you talk; write how you would sound on a well-edited, multi-take podcast.
 * Tell your reader where your piece is going and why. For example: "Much better than approach A is approach B. Let's look at the reasons for this." Or "In order to understand X, we first need to learn about Y." I used to think that such functional phrases were artless and unnecessary. I switched from A to B and X to Y without warning and expected the reader to keep up. Then I re-read some pieces I had written a few months ago and was unable to even keep pace with myself. I decided that lucidity was more important than art and started writing more signposts.
 
@@ -52,7 +50,7 @@ When I've got enough of an outline to start writing, I start with the introducti
 
 I often start writing for real with the section that seems like it will be the most fun. In [posts][stylish1] [about][stylish2] [privacy][wacom] [violations][hp], this is usually the part where I'm mean about the company that is stealing your data. In most other posts it's whichever bit I've thought up the most jokes for. I start here in order to help me get excited about the post, and to help get the style of the post off on the right foot. Anything that starts a dirge will stay a dirge, but something that begins life with a sparkle has a chance of maintaining that sparkle throughout.
 
-Once I've built up some speed I go back to the top, just after the introduction that still doesn't exist, and start writing body paragraphs in rough order. My first draft is usually rushed, feels terrible, and exists primarily as a sentence-level outline. If there are any sentences or sections that feel too intimidating write during this phase then I leave a TODO instead. Once I've finished the first draft I go back to the top, write the introduction, and start editing. Many sentences are awkward and don't hang together, but it's easier to polish them once I've got down the important information in a reasonable order.
+Once I've built up some speed I go back to the top, just after the introduction that still doesn't exist, and start writing body paragraphs in rough order. My first draft is usually rushed, feels terrible, and exists primarily as a sentence-level outline. If there are any sentences or sections that feel too intimidating to write during this phase then I leave a TODO instead. Once I've finished the first draft I go back to the top, write the introduction, and start editing. Many sentences are awkward and don't hang together, but it's easier to polish them once I've got down the important information in a reasonable order.
 
 When editing I start at the top, read the post, and make improvements as I go. Once I reach the bottom I go back to the top, read it again, and make more improvements. I stop once I get through a pass without making any improvements. Then I leave the post for a week - ideally longer - and repeat this process. Finally I send it out for feedback (see below).
 
@@ -68,14 +66,14 @@ When I'm finished, if I still have pleasing phrases without a home then I add th
 </a>
 </p>
 
-Some of my favorites include:
+Some of my favorite snippets include:
 
 * She was putting it in terms that he could relate to, which he both hated and appreciated
 * When the kids are exuberant and the adults are drunk and you're neither
 * I took refuge in a church where you could bring in outside food
 * If you want the wisdom then you'll have to wade through the exposition first
 
-## Ideas
+## Post ideas
 
 * Keep a list of writing by other people that you wish you had written
 * When someone asks you a question, that's a good excuse for a blog post
@@ -84,9 +82,9 @@ Some of my favorites include:
 
 ## Website design
 
-* Don't write your "[About Me](/about)" page in the third person, since you obviously wrote it
+* Don't write your "[About Me](/about)" page in the third person, since it was obviously written by you
 * Do put dates on your posts. Some people will encourage you not to because your work should be timeless and immortal. But the world moves and most of your work won't be. Knowing when a piece was written helps your readers to put it in context.
-* Have a prominent "[Best of](/)" section so people who want to read more of your writing have a clear place to start.
+* Have a prominent "[Best of](/)" section so people who want to read more of your writing have a obvious place to start.
 
 ## Asking for feedback from friends and family
 
