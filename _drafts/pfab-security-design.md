@@ -65,7 +65,7 @@ The authors suggest that `validateForXSS` would check that the given username co
 There are two problems with sanitizing your data on its way in to your application:
 
 1. It's useful to store data exactly as it was given to you, not some processed version of it. What if you need to use the data in a different context with different rules for escaping (for example, a SQL query)? What if you want to search your database for the string `<script>`?
-2. It places your defence at the wrong point in your system. You should place your defences as close as possible to the place in which they will be needed.
+2. It places your defence at the wrong point in your system. You should place your defences as close as possible to the place in which they will be needed. This ensures that they are kept up to date and fit-for-purpose as their target changes, and reduces the space in which other data can sneak in
 
 
 
