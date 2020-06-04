@@ -5,9 +5,9 @@ tags: [Security]
 og_image: TODO
 published: false
 ---
-KensingtonWorks is a tool that allows users to add power functionality to their Kensington mice. As of 2020-08-04 it contains an unpatched vulnerability that allows an attacker to use it to remotely execute arbitrary code on a victim's computer.
+[KensingtonWorks][kw] is a tool that allows users to add power functionality to their Kensington mice. As of 2020-08-04 it contains an unpatched vulnerability that allows an attacker to use it to remotely execute arbitrary code on a victim's computer.
 
-I've contacted Kensington via every channel I can think of to try to responsibly disclose this flaw to them, but I haven't heard anything back other than one "OK cool we'll look into it". I first contacted Kensington on 2020-03-09, when I told them I would be publishing details of the vulnerability 90 days later.
+I've tried to contact Kensington via every channel I can think of in order to responsibly disclose this flaw, but I haven't heard anything back other than one "OK cool we'll look into it". I sent my first message on 2020-03-09, when I said that I would wait for 90 days before publishing details of the vulnerability so as to give them time to fix it.
 
 This period expired on 2020-06-07, so in this post I'll describe how the vulnerability works and the story of how I stumbled across it.
 
@@ -26,7 +26,7 @@ To mitigate the flaw, users should either:
 
 ## Backstory
 
-Back in January, Twitter user ProfessaChapman sent me a tipoff:
+Back in February, Twitter user ProfessaChapman sent me a tipoff:
 
 <img src="/images/kensington-twitter-dm.png" />
 
@@ -276,3 +276,4 @@ If you see anything interesting then keep on digging, or at least let me know wh
 
 [wireshark]: https://www.wireshark.org/
 [cors]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+[kw]: https://www.kensington.com/en-gb/software/kensingtonworks/
