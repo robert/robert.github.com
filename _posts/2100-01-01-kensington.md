@@ -15,7 +15,7 @@ This period expired on 2020-06-07, so in this post I'll describe how the vulnera
 
 To exploit the bug, the attacker lures the victim to a malicious website. This website uses JavaScript to send HTTP requests to a local web server run by KensingtonWorks. These requests trick KensingtonWorks into physically opening the users terminal application, then pasting and executing the attacker's payload commands. No user interaction with the page is required.
 
-<img src="/images/kensington-poc.png" />
+<img src="/images/kensington-poc.gif" />
 
 I've only tested the vulnerability on vTODO on OSX, but it seems reasonable to assume that it applies to all older versions on all operating systems. The vulnerability is currently unpatched, meaning that the latest version of KensingtonWorks is vulnerable.
 
@@ -61,8 +61,6 @@ Since there were no long, gibberish-looking tokens in the `/devices` request, it
 In particular, it occurred to me that if an attacker could trick a user into visiting a malicious website then that website could use JavaScript to send background HTTP requests to `http://localhost:9090`. The attacker wouldn't be able to read any data returned by the local KensingtonWorks server because browsers prevent pages from reading responses returned from other domains (unless the other domain is using [*Cross-Origin Resource Sharing* (CORS)][cors]). However, I figured that it was likely that some endpoints on the KensingtonWorks server were used to *update* configuration settings. An attacker could send requests to these endpoints with no problems. They still wouldn't get to see the responses, but they wouldn't care because in this situation the requests are what do the damage.
 
 This said, all I had so far was the `GET /devices` endpoint. This wasn't going to compromise any computers. I needed to find additional endpoints that would allow me to fiddle with the KensingtonWork's settings and cause some mischief. I clicked around the application and monitored Wireshark, trying to trigger more HTTP requests. But without any Kensington devices plugged the application was almost empty.
-
-[PIC-TODO]
 
 I assumed that if I bought myself a Kensington mouse then I'd be able to see more of the application's functionality. But Kensington mice aren't cheap, and £40 is a lot to pay for a boring, secure mouse. I wanted better evidence that there were vulnerabilities to be found before I purchased one. I decided to nose around at the code in KensingtonWorks's application directory:
 
@@ -239,7 +237,7 @@ commandRunner.copy().then(() =>
 
 I added my library and implementation code to my webpage and refreshed it. The copy/open/paste/quit sequence flashed past in less than a second. Here's a slowed down GIF:
 
-<img src="/images/kensington-poc.png" />
+<img src="/images/kensington-poc.gif" />
 
 ### How do we work out device IDs?
 
