@@ -1,5 +1,5 @@
 ---
-permalink: /2013/01/05/why-its-the-taxpayers-fault-we-ve-got-no-money/index.html
+permalink: /2013/01/05/why-its-the-taxpayers-fault-we-ve-got-no-money/
 layout: post
 title: Why it’s the taxpayer’s fault we’ve got no money
 ---
