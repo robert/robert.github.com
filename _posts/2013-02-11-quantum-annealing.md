@@ -1,5 +1,5 @@
 ---
-permalink: /2013/02/11/quantum-annealing
+permalink: /2013/02/11/quantum-annealing/
 layout: post
 title: Quantum Annealing, or, Do Weird Stuff
 ---
