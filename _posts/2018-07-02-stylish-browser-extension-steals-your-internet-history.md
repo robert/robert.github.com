@@ -1,5 +1,5 @@
 ---
-permalink: /2018/07/02/stylish-browser-extension-steals-your-internet-history/index.html
+permalink: /2018/07/02/stylish-browser-extension-steals-your-internet-history/
 title: "\"Stylish\" browser extension steals all your internet history"
 layout: post
 tags: [Online Tracking]

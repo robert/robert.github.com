@@ -1,5 +1,5 @@
 ---
-permalink: /2016/09/21/there-were-millions/index.html
+permalink: /2016/09/21/there-were-millions/
 title: There were millions
 layout: indented_post
 tags: [Stories]

@@ -1,5 +1,5 @@
 ---
-permalink: /2018/10/02/lessons-from-my-first-20-office-hours/index.html
+permalink: /2018/10/02/lessons-from-my-first-20-office-hours/
 title: "Lessons from my first 20 office hours"
 layout: post
 tags: [Office Hours]

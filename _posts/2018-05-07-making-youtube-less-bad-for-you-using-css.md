@@ -1,5 +1,5 @@
 ---
-permalink: /2018/05/07/making-youtube-less-bad-for-you-using-css/index.html
+permalink: /2018/05/07/making-youtube-less-bad-for-you-using-css/
 title: Making YouTube less bad for you using CSS
 layout: post
 og_image: https://robertheaton.com/images/youtube-pokemon-after.jpg

@@ -1,5 +1,5 @@
 ---
-permalink: /2014/11/03/why-you-should-read-playing-to-win-by-david-sirlin/index.html
+permalink: /2014/11/03/why-you-should-read-playing-to-win-by-david-sirlin/
 title: Why you should read Playing to Win by David Sirlin
 layout: post
 redirect_from:

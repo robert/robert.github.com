@@ -1,5 +1,5 @@
 ---
-permalink: /2018/11/17/reproducible-beliefs/index.html
+permalink: /2018/11/17/reproducible-beliefs/
 title: Reproducible beliefs
 layout: post
 tags: [Studying]

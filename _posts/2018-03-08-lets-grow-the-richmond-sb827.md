@@ -1,5 +1,5 @@
 ---
-permalink: /2018/03/08/lets-grow-the-richmond-sb827/index.html
+permalink: /2018/03/08/lets-grow-the-richmond-sb827/
 title: "Let's grow the Richmond: SB827"
 layout: post
 ---

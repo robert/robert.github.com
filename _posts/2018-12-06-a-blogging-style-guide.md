@@ -1,5 +1,5 @@
 ---
-permalink: /2018/12/06/a-blogging-style-guide/index.html
+permalink: /2018/12/06/a-blogging-style-guide/
 title: A blogging style guide
 layout: post
 tags: [Writing]

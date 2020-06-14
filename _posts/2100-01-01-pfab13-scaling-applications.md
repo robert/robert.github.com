@@ -1,5 +1,5 @@
 ---
-permalink: /2100/01/01/pfab13-scaling-applications/index.html
+permalink: /2100/01/01/pfab13-scaling-applications/
 layout: post
 title: "PFAB #13 - Scaling"
 tags: [Programming Projects for Advanced Beginners]

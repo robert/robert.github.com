@@ -1,5 +1,5 @@
 ---
-permalink: /2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/index.html
+permalink: /2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/
 title: "I Might Be Spartacus: a differential privacy marketplace"
 layout: post
 tags: [Online Tracking]

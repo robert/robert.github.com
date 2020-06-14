@@ -1,5 +1,5 @@
 ---
-permalink: /2014/05/02/jaccard-similarity-and-minhash-for-winners/index.html
+permalink: /2014/05/02/jaccard-similarity-and-minhash-for-winners/
 layout: post
 title: Jaccard Similarity and MinHash for winners
 tags: [Programming]

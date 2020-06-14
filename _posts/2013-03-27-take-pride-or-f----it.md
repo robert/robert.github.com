@@ -1,5 +1,5 @@
 ---
-permalink: /2013/03/27/take-pride-or-f----it/index.html
+permalink: /2013/03/27/take-pride-or-f----it/
 layout: post
 title: Take pride or f--- it
 bestof: true

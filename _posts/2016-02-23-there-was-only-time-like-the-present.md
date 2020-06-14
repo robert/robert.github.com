@@ -1,5 +1,5 @@
 ---
-permalink: /2016/02/23/there-was-only-time-like-the-present/index.html
+permalink: /2016/02/23/there-was-only-time-like-the-present/
 title: There was only time like the present
 layout: indented_post
 tags: [Stories]

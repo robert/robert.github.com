@@ -1,5 +1,5 @@
 ---
-permalink: /2018/11/03/programming-project-4-photomosaics/index.html
+permalink: /2018/11/03/programming-project-4-photomosaics/
 title: "Programming Projects for Advanced Beginners #4: Photomosaics"
 layout: post
 tags: [Programming Projects for Advanced Beginners]

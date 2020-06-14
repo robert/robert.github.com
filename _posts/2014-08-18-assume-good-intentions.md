@@ -1,5 +1,5 @@
 ---
-permalink: /2014/08/18/assume-good-intentions/index.html
+permalink: /2014/08/18/assume-good-intentions/
 layout: post
 title: Assume good intentions
 published: false

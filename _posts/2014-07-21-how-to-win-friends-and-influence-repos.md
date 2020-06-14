@@ -1,5 +1,5 @@
 ---
-permalink: /2014/07/21/how-to-win-friends-and-influence-repos/index.html
+permalink: /2014/07/21/how-to-win-friends-and-influence-repos/
 layout: post
 title: How to win friends and influence repos
 weight: 3

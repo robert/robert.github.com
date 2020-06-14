@@ -1,5 +1,5 @@
 ---
-permalink: /2015/03/29/scientific-debugging/index.html
+permalink: /2015/03/29/scientific-debugging/
 title: Scientific debugging
 layout: post
 redirect_from:

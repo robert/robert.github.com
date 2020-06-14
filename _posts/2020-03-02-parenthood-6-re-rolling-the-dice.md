@@ -1,5 +1,5 @@
 ---
-permalink: /2020/03/02/parenthood-6-re-rolling-the-dice/index.html
+permalink: /2020/03/02/parenthood-6-re-rolling-the-dice/
 layout: post
 title: "Parenthood #6: Re-rolling the dice"
 tags: [Babies, Life]

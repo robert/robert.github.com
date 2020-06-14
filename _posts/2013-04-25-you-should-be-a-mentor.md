@@ -1,5 +1,5 @@
 ---
-permalink: /2013/04/25/you-should-be-a-mentor/index.html
+permalink: /2013/04/25/you-should-be-a-mentor/
 layout: post
 title: You should be a mentor
 hn: 5606545

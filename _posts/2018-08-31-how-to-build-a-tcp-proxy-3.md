@@ -1,5 +1,5 @@
 ---
-permalink: /2018/08/31/how-to-build-a-tcp-proxy-3/index.html
+permalink: /2018/08/31/how-to-build-a-tcp-proxy-3/
 title: "How to build a TCP proxy #3: Proxy Server"
 layout: post
 tags: [How to build a TCP proxy]

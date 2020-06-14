@@ -1,5 +1,5 @@
 ---
-permalink: /2013/02/24/featurewhack/index.html
+permalink: /2013/02/24/featurewhack/
 layout: post
 title: Featurewhack
 hn: 5298338

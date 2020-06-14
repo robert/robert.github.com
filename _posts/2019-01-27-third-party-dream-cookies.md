@@ -1,5 +1,5 @@
 ---
-permalink: /2019/01/27/third-party-dream-cookies/index.html
+permalink: /2019/01/27/third-party-dream-cookies/
 title: "Third-party dream cookies"
 layout: indented_post
 tags: [The Steve Steveington Chronicles, Online Tracking]

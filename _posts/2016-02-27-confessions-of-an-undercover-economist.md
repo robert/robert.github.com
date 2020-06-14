@@ -1,5 +1,5 @@
 ---
-permalink: /2016/02/27/confessions-of-an-undercover-economist/index.html
+permalink: /2016/02/27/confessions-of-an-undercover-economist/
 title: Confessions of an Undercover Economist
 published: false
 ---

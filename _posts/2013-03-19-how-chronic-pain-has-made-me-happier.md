@@ -1,5 +1,5 @@
 ---
-permalink: /2013/03/19/how-chronic-pain-has-made-me-happier/index.html
+permalink: /2013/03/19/how-chronic-pain-has-made-me-happier/
 layout: post
 title: How chronic pain has made me happier
 hn: 5406693

@@ -1,5 +1,5 @@
 ---
-permalink: /2019/12/14/pfab4-exception-handling-dealing-with-failure/index.html
+permalink: /2019/12/14/pfab4-exception-handling-dealing-with-failure/
 title: "PFAB#4: Exception handling and coping with failure"
 layout: post
 tags:

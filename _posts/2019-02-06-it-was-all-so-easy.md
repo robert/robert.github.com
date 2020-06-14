@@ -1,5 +1,5 @@
 ---
-permalink: /2019/02/06/it-was-all-so-easy/index.html
+permalink: /2019/02/06/it-was-all-so-easy/
 title: "It was all so easy: a story about privacy"
 layout: indented_post
 tags: [The Steve Steveington Chronicles, Online Tracking]
