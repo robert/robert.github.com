@@ -26,9 +26,9 @@ Before we look at how to speed up Justin's program, let's talk about how it work
 <img src="/images/ascii-speed-pineapple.png" />
 </p>
 
-Justin wants to speed up the part of his program responsible for choosing the colors that are printed to the terminal. This task is complicated by the restrictions imposed on an artist who uses a terminal as their canvas. In an image file, the color of a pixel is stored as 3 numbers that describe the amount of Red, Green, and Blue in the pixel respectively. Each of these numbers is an integer between 0 and 255; for example, the shade of blue in the Facebook logo is represented as `(59,89,152)`. This trio of numbers is called a color's *RGB value*. This means that each pixel in an image file can be any of `256 * 256 * 256 =~ 16MM` possible colors.
+Justin wants to speed up the part of his program responsible for choosing the colors that are printed to the terminal. In an image file, the color of a pixel is stored as 3 numbers that describe the amount of Red, Green, and Blue in the pixel respectively. Each of these numbers is an integer between 0 and 255; for example, the shade of blue in the Facebook logo is represented as `(59,89,152)`. This trio of numbers is called a color's *RGB value*. This means that each pixel in an image file can be any of `256 * 256 * 256 =~ 16MM` possible colors.
 
-However, characters can only be printed to a terminal using a limited subset of these colors. The [ANSI extended standard][ansi-colors] defines 255 colors that compliant terminals should be capable of displaying. This means that in order to display an image in a terminal, we need to round the color of each pixel in our file to the closest ANSI color. Justin's sensible, straightforward method of doing this is to, for each pixel:
+However, using a terminal as a canvas imposes restrictions on an artist. Characters can only be printed to a terminal using a limited subset of these 16MM possible colors. The [ANSI extended standard][ansi-colors] defines 255 colors that compliant terminals should be capable of displaying. This means that in order to display an image in a terminal, we need to round the color of each pixel in our file to the closest ANSI color. Justin's sensible, straightforward method of doing this is to, for each pixel:
 
 * Calculate the distances between the pixel color and each ANSI color using [3-D Pythagoras's Theorem][pythag]
 * Return the ANSI color closest to the pixel color
@@ -124,6 +124,8 @@ I'm not entirely certain that this approach really is any quicker than simply us
 ## Conclusion
 
 You can almost always speed up a piece of code, but speed doesn't come for free. To quote myself from a few paragraphs ago: "Writing faster code takes time that could be profitably spent elsewhere, and optimized code is often more complex and more bug-prone than its dawdling brethren." Sometimes these tradeoffs will be worth it, but often they won't. Don't feel bad about writing straightforward, moderately-paced code.
+
+*Create your own lo-fi art and implement the algorithm in this post yourself by tackling [Programming Projects for Advanced Beginners #1: ASCII art][ppab1].*
 
 *Missed previous PFABs? Catch up with [the full archives][pfab] and learn how to make your programs shorter, clearer, and easier for other people to work with.*
 
