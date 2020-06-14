@@ -12,7 +12,7 @@ for fname in os.listdir(posts_dir):
         endbit = bits[3][0:-3]
     else:
         endbit = bits[3]
-    url = f"/{bits[0]}/{bits[1]}/{bits[2]}/{endbit}/index.html"
+    url = f"/{bits[0]}/{bits[1]}/{bits[2]}/{endbit}/"
     print(bits)
     print(url)
 
