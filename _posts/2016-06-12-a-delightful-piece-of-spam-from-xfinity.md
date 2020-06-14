@@ -1,5 +1,5 @@
 ---
-permalink: /2016/06/12/a-delightful-piece-of-spam-from-xfinity/index.html
+permalink: /2016/06/12/a-delightful-piece-of-spam-from-xfinity/
 title: A delightful piece of spam from Xfinity
 layout: post
 ---

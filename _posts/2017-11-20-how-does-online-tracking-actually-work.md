@@ -1,5 +1,5 @@
 ---
-permalink: /2017/11/20/how-does-online-tracking-actually-work/index.html
+permalink: /2017/11/20/how-does-online-tracking-actually-work/
 title: How does online tracking actually work?
 layout: post
 tags: [Online Tracking]

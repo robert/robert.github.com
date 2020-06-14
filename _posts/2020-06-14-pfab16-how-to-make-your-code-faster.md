@@ -1,5 +1,5 @@
 ---
-layout: post
+permalink: /2020/06/14/pfab16-how-to-make-your-code-faster/
 title: "PFAB #16: How to make your code faster and why you often shouldn't bother"
 tags:
   - Programming Projects for Advanced Beginners

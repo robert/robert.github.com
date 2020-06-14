@@ -1,5 +1,5 @@
 ---
-permalink: /2015/10/26/why-and-how-to-make-smaller-pull-requests/index.html
+permalink: /2015/10/26/why-and-how-to-make-smaller-pull-requests/
 title: Why and how to make smaller pull requests
 layout: post
 ---

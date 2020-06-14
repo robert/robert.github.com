@@ -1,5 +1,5 @@
 ---
-permalink: /2013/02/15/nothing-new-under-the-sun/index.html
+permalink: /2013/02/15/nothing-new-under-the-sun/
 layout: post
 title: Nothing new under the sun
 ---

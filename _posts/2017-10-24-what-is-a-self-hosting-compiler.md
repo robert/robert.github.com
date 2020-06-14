@@ -1,5 +1,5 @@
 ---
-permalink: /2017/10/24/what-is-a-self-hosting-compiler/index.html
+permalink: /2017/10/24/what-is-a-self-hosting-compiler/
 title: What is a self-hosting compiler?
 layout: post
 tags: [Programming]

@@ -1,5 +1,5 @@
 ---
-permalink: /2019/03/17/robert-prove-that-your-randomized-trial-really-was-random/index.html
+permalink: /2019/03/17/robert-prove-that-your-randomized-trial-really-was-random/
 title: "ROBERT: prove that your randomized trial really was random"
 layout: post
 tags: [Economics]

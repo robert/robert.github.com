@@ -1,5 +1,5 @@
 ---
-permalink: /2019/12/28/pfab6-real-world-debugging-practice/index.html
+permalink: /2019/12/28/pfab6-real-world-debugging-practice/
 title: "PFAB#6: Real-world debugging practice"
 layout: post
 tags:

@@ -1,5 +1,5 @@
 ---
-permalink: /2019/06/24/i-was-7-words-away-from-being-spear-phished/index.html
+permalink: /2019/06/24/i-was-7-words-away-from-being-spear-phished/
 title: I was 7 words away from being spear-phished
 layout: post
 tags: [Security]

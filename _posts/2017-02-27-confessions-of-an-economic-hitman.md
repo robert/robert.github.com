@@ -1,5 +1,5 @@
 ---
-permalink: /2017/02/27/confessions-of-an-economic-hitman/index.html
+permalink: /2017/02/27/confessions-of-an-economic-hitman/
 title: Confessions of an Economic Hitman - a review
 layout: post
 tags: [Book Reviews, Economics]

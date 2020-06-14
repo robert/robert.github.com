@@ -1,5 +1,5 @@
 ---
-permalink: /2014/07/05/why-i-love-refactoring/index.html
+permalink: /2014/07/05/why-i-love-refactoring/
 layout: post
 title: Why I love refactoring
 ---

@@ -1,5 +1,5 @@
 ---
-permalink: /2019/08/11/real-world-programming-projects-for-advanced-beginners/index.html
+permalink: /2019/08/11/real-world-programming-projects-for-advanced-beginners/
 title: Real-World Programming Projects for Advanced Beginners
 layout: post
 tags: [Programming Projects for Advanced Beginners]

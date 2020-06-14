@@ -1,5 +1,5 @@
 ---
-permalink: /2016/09/03/ten-somewhat-advanced-magic-the-gathering-plays/index.html
+permalink: /2016/09/03/ten-somewhat-advanced-magic-the-gathering-plays/
 title: 10 somewhat advanced Magic&#58; The Gathering plays
 custom_title: 10 somewhat advanced Magic The Gathering plays
 layout: post

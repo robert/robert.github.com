@@ -1,5 +1,5 @@
 ---
-permalink: /2019/08/12/programming-projects-for-advanced-beginners-user-logins/index.html
+permalink: /2019/08/12/programming-projects-for-advanced-beginners-user-logins/
 title: "Programming Projects for Advanced Beginners #6: User Logins"
 layout: post
 tags: [Programming Projects for Advanced Beginners]

@@ -1,5 +1,5 @@
 ---
-permalink: /2018/06/12/programming-projects-for-advanced-beginners-ascii-art/index.html
+permalink: /2018/06/12/programming-projects-for-advanced-beginners-ascii-art/
 title: "Programming Projects for Advanced Beginners #1: ASCII art"
 layout: post
 tags: [Programming Projects for Advanced Beginners]

@@ -1,5 +1,5 @@
 ---
-permalink: /2020/03/07/pfab11-separating-logic-and-data/index.html
+permalink: /2020/03/07/pfab11-separating-logic-and-data/
 layout: post
 title: "PFAB #11: Separating logic and data"
 tags:

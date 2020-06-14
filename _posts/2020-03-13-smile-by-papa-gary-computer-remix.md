@@ -1,5 +1,5 @@
 ---
-permalink: /2020/03/13/smile-by-papa-gary-computer-remix/index.html
+permalink: /2020/03/13/smile-by-papa-gary-computer-remix/
 layout: post
 title: "Smile by Papa (Gary Computer Remix)"
 tags: [Music]

@@ -1,5 +1,5 @@
 ---
-permalink: /2020/04/06/systems-design-for-advanced-beginners/index.html
+permalink: /2020/04/06/systems-design-for-advanced-beginners/
 layout: post
 title: Systems design for advanced beginners
 tags:

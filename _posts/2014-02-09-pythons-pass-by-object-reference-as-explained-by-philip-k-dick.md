@@ -1,5 +1,5 @@
 ---
-permalink: /2014/02/09/pythons-pass-by-object-reference-as-explained-by-philip-k-dick/index.html
+permalink: /2014/02/09/pythons-pass-by-object-reference-as-explained-by-philip-k-dick/
 layout: post
 title: Is Python pass-by-reference or pass-by-value?
 custom_meta: The two most widely known and easy to understand approaches to parameter passing amongst programming languages are pass-by-reference and pass-by-value.

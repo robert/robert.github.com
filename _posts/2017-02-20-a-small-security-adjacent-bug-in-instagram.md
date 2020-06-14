@@ -1,5 +1,5 @@
 ---
-permalink: /2017/02/20/a-small-security-adjacent-bug-in-instagram/index.html
+permalink: /2017/02/20/a-small-security-adjacent-bug-in-instagram/
 title: A small, security-adjacent bug in Instagram
 custom_meta: When a user updates their email address, Instagram (like almost all websites) sends a notification of the change to the old email address. This is primarily so that if an attacker compromises an Instagram account and attempts to completely lock the owner out by changing the account's email address, the victim is made aware of this change and can contact Instagram and attempt to recover their account.
 layout: post

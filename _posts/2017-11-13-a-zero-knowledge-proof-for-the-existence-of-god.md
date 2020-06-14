@@ -1,5 +1,5 @@
 ---
-permalink: /2017/11/13/a-zero-knowledge-proof-for-the-existence-of-god/index.html
+permalink: /2017/11/13/a-zero-knowledge-proof-for-the-existence-of-god/
 title: A zero-knowledge proof for the existence of God
 layout: post
 tags: [Stories, Security]

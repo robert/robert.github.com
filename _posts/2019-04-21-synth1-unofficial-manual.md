@@ -1,5 +1,5 @@
 ---
-permalink: /2019/04/21/synth1-unofficial-manual/index.html
+permalink: /2019/04/21/synth1-unofficial-manual/
 title: "Synth1: an unofficial manual"
 layout: post
 tags: [Music]

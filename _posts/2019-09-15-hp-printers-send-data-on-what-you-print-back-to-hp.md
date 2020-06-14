@@ -1,5 +1,5 @@
 ---
-permalink: /2019/09/15/hp-printers-send-data-on-what-you-print-back-to-hp/index.html
+permalink: /2019/09/15/hp-printers-send-data-on-what-you-print-back-to-hp/
 title: "HP printers try to send data back to HP about your devices and what you print"
 layout: post
 tags: [Online Tracking]

@@ -1,5 +1,5 @@
 ---
-title: A blogging style guide, vol 2
+permalink: /2020/05/26/a-blogging-style-guide-vol-2/
 layout: post
 tags: [Writing]
 og_image: https://robertheaton.com/images/style-guide-2-cover.png
