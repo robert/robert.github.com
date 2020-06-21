@@ -255,7 +255,7 @@ An hour is admittedly a long time to require a victim to stay on a website, alth
 
 ## Conclusion
 
-To mitigate this vulnerability Kensington appear to have removed the `emulatebuttonclick` endpoint from KensingtonWorks. This means that an attacker can no longer use the above process to actually execute code. However, Kensington haven't updated KensingtonWorks's overall security model, so an attacker can still use the first half of the process to silently re-bind shortcut buttons. This bug should be fixed too, but it isn't a must-uninstall showstopper.
+To mitigate this vulnerability Kensington appear to have removed the `emulatebuttonclick` endpoint from KensingtonWorks. This means that an attacker can no longer use the above process to actually execute code. However, Kensington haven't updated KensingtonWorks's overall security model, so an attacker can still use the first half of the process to silently re-bind shortcut buttons and delete app-specific configurations. This bug should be fixed too, but it isn't a must-uninstall showstopper.
 
 In my opinion KensingtonWorks should ditch the local web server model altogether. It's bad manners to leave an unnecessary local web server lying around, and it also increases the program's attack surface area. If making this change isn't an option, the developers should at least generate a random key when KensingtonWorks is installed and use it to verify that requests to the server are coming from the geniune KensingtonWorks client
 
