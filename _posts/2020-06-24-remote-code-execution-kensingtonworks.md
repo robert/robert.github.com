@@ -2,13 +2,13 @@
 layout: post
 title: Remote code execution vulnerability in KensingtonWorks device manager
 tags: [Security]
-og_image: TODO
+og_image: https://robertheaton.com/kensington-cover.png
 ---
 Back in February, a Twitter user who has asked to remain anonymous sent me a tipoff. They had noticed some odd behavior by [KensingtonWorks][kw], a piece of software that allows its users to add power functionality to mice made by Kensington, a popular brand of peripherals.
 
 <img src="/images/kensington-twitter-dm.png" />
 
-KensingtonWorks was listening on a TCP network port, allowing other programs on the user's computer to connect to it. There's nothing necessarily wrong with this, but it was still a strange thing for KensingtonWorks to do. It shouldn't need to receive any network connections in order to manage its users' mice. I was intrigued. My dad owns several Kensington devices, and if you mess with my dad then, well, I'd prefer if you didn't. I started digging.
+In their message they noted that KensingtonWorks was listening on a TCP network port, allowing other programs on the user's computer to connect to it. There's nothing necessarily wrong with this, but it was still a strange thing for KensingtonWorks to do. It shouldn't need to receive any network connections in order to manage its users' mice. I was intrigued. My dad owns several Kensington devices, and if you mess with my dad then, well, I'd prefer if you didn't. I started digging.
 
 The result of said shovelwork was a vulnerability that allows an attacker to remotely execute arbitrary code on a victim's computer. I disclosed this flaw to Kensington on 2020-03-09, when I said that I would wait for 90 days before publishing details of the vulnerability to give them time to fix it. They have not been in contact with me since, but they appear to have recently mitigated the most harmful effects of the vulnerability, preventing it from being used to execute arbitrary code. However, they haven't patched the root cause, and an attacker can still use the same pattern to secretly mess with the user's KensingtonWorks settings. Users should either upgrade to v2.1.17 or uninstall the product until the remaining, less severe flaw is fixed, depending on their risk tolerance.
 
@@ -16,15 +16,19 @@ In this post I'll describe how the vulnerability works and how I found it.
 
 ## Vulnerability summary
 
-To exploit the bug, the attacker lures their victim to a malicious website. The attacker's website use JavaScript to send HTTP requests to an unsecured local web server run by KensingtonWorks. These requests trick KensingtonWorks into physically opening the users terminal application, then pasting and executing the attacker's payload commands. No user interaction with the page is required.
+To exploit the bug, the attacker lures their victim to a malicious website. The attacker's website uses JavaScript to send HTTP requests to an unsecured local web server run by KensingtonWorks. These requests trick KensingtonWorks into physically opening the users terminal application, then pasting and executing the attacker's payload commands. No user interaction with the page is required.
 
 <img src="/images/kensington-poc.gif" />
 
 ## The backstory
 
-Back to my DMs. My correspondant had sent me the screenshots in response to my request for [suspected privacy abuses][priv], but I suspected that this was more likely to be a security problem than a privacy one. From a privacy perspective there's nothing intrinsically problematic about listening on a network port; but from a security point of view it increases the application's attack surface area and gives the developers more ways in which they can make mistakes.
+Back to my DMs. My correspondent had messaged me in response to my request for [suspected privacy abuses][priv], but I reckoned that this was more likely to be a security problem than a privacy one. From a privacy perspective there's nothing intrinsically problematic about listening on a network port; but from a security point of view it increases the application's attack surface area and gives the developers more ways in which they can make mistakes.
 
-I peered closer. The `127.0` at the edge of my correspondant's screenshot suggested that KensingtonWorks was only listening on the local *loopback interface*. This at least meant that the application was only accessible to other programs running on the user's machine, and not to other machines on their network. Nonetheless, I couldn't think of a good reason for KensingtonWorks to open up even a local network port. As Sherlock Holmes might have said, once you eliminate all the good reasons for doing something, all that's left are the questionable ones. I decided to take a closer look.
+I peered closer. The `127.0` at the edge of the screenshot in my correspondent's message suggested that KensingtonWorks was only listening on the local *loopback interface*.
+
+<img src="/images/kensington-twitter-dm-ss.png" />
+
+This at least meant that the application was only accessible to other programs running on the user's machine, and not to other machines on their network. Nonetheless, I couldn't think of a good reason for KensingtonWorks to open up even a local network port. As Sherlock Holmes might have said, once you eliminate all the good reasons for doing something, all that's left are the questionable ones. I decided to take a closer look.
 
 I downloaded and installed KensingtonWorks. First I confirmed that it really was only listening on `lo0`, the loopback interface:
 
@@ -168,14 +172,14 @@ Connection: close
 {"command":"editing_copy","params":{}}
 ```
 
-Once again, the request contained no authentication. The closest thing to authentication looked to be the `device` parameter in the query string: a 5-digit number that presuambly identified the target mouse in case the user had multiple Kensington devices. I manually re-sent this request from the command line with a different device ID:
+Once again, the request contained no authentication. The closest thing to authentication looked to be the `device` parameter in the query string: a 5-digit number that presumably identified the target mouse in case the user had multiple Kensington devices. I manually re-sent this request from the command line with a different device ID:
 
 ```bash
 $ curl localhost:9090/config/buttons?app=*&device=12345&button=4 -X POST -d "{\"command\":\"editing_copy\",\"params\":{}}"
 {"reason":"Setting for device does not exist","success":false}
 ```
 
-The request failed. This suggested than an attacker would need to know their victim's device ID in order to execute an attack. I didn't (and still don't) know how device IDs are generated. It could be a random ID set when the device is plugged in, or a fixed ID representing the model of the device, or something else entirely. I wasn't worried - even if the ID was randomly generated, an attacker could brute force the 100,000 5-digit combinations quite quickly.
+The request failed. This suggested that an attacker would need to know their victim's device ID in order to execute an attack. I didn't (and still don't) know how device IDs are generated. It could be a random ID set when the device is plugged in, or a fixed ID representing the model of the device, or something else entirely. I wasn't worried - even if the ID was randomly generated, an attacker could brute force the 100,000 5-digit combinations quite quickly.
 
 I updated my attack website to use the `/config/buttons` endpoint to bind my side mouse button to the "screenshot" command. I opened my site in Chrome, and then re-opened KensingtonWorks. Success - my mouse's side button had been bound to "screenshot". I pressed it and took a screenshot for my log book.
 
@@ -257,7 +261,7 @@ An hour is admittedly a long time to require a victim to stay on a website, alth
 
 To mitigate this vulnerability Kensington appear to have removed the `emulatebuttonclick` endpoint from KensingtonWorks. This means that an attacker can no longer use the above process to actually execute code. However, Kensington haven't updated KensingtonWorks's overall security model, so an attacker can still use the first half of the process to silently re-bind shortcut buttons and delete app-specific configurations. This bug should be fixed too, but it isn't a must-uninstall showstopper.
 
-In my opinion KensingtonWorks should ditch the local web server model altogether. It's bad manners to leave an unnecessary local web server lying around, and it also increases the program's attack surface area. If making this change isn't an option, the developers should at least generate a random key when KensingtonWorks is installed and use it to verify that requests to the server are coming from the geniune KensingtonWorks client
+In my opinion KensingtonWorks should ditch the local web server model altogether. It's bad manners to leave an unnecessary local web server lying around, and it also increases the program's attack surface area. If making this change isn't an option, the developers should at least generate a random key when KensingtonWorks is installed and use it to verify that requests to the server are coming from the genuine KensingtonWorks client
 
 Have a look to see what programs are listening on network ports on your own computer. For example, on OSX see what you find when you run:
 
