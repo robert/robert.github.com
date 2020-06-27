@@ -100,9 +100,12 @@ At first glance, precomputing the closest ANSI color to every single RGB value s
 
 You'll rarely need to write out equations in the same way as we did here, or to know off-hand how long it takes to access a dictionary or a database. But it does pay to build up your intuition about how different approaches behave at different scales. And if you need to cast-iron ensure that your program is as fast as it can possibly be then you can't beat trying a few things out and timing them.
 
+*New to Programming Feedback for Advanced Beginners? Catch up with [the full archives][pfab], [subscribe][subscribe] to future editions, and learn how to make your programs shorter, clearer, and easier for other people to work with.*
+
 [pfab16]: https://robertheaton.com/pfab16-how-to-make-your-code-faster/
 [full-code]: https://github.com/robert/programming-feedback-for-advanced-beginners/tree/fd08b6737b0f8cffab4877aa9ea042f1043cc55b/editions/16-ascii-speed/updated-v2
 [main-file]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/fd08b6737b0f8cffab4877aa9ea042f1043cc55b/editions/16-ascii-speed/updated-v2/asciiart.py#L165-L199
 [diff]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/fd08b6737b0f8cffab4877aa9ea042f1043cc55b
 [ansi-colors]: https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html#colors
 [subscribe]: https://advancedbeginners.substack.com
+[pfab]: https://robertheaton.com/pfab
