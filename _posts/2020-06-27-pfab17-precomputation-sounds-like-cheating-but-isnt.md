@@ -1,17 +1,18 @@
 ---
 layout: post
-title: "PFAB #16: Precomputation sounds like cheating but isn't"
+title: "PFAB #17: Precomputation sounds like cheating but isn't"
 tags:
   - Programming Projects for Advanced Beginners
   - PFAB
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab17
-published: false
 ---
-[Last time on Programming Feedback for Advanced Beginners][pfab16] we started speeding up Justin Reppert's ASCII art generator. We looked at how to improve Justin's algorithm for mapping image colors to terminal colors, and devised an approach that got the job done ten times faster. If you haven't read [last week's PFAB][pfab16] then I'd suggest you start there. It's not long and it got rave reviews.
+> This post is part of "Programming Feedback for Advanced Beginners", a regular series that helps you make the leap from cobbling programs together to writing elegant, thoughtful code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.
 
-A ten-x speedup is nothing to sneeze at, but this week we're going to optimize Justin's program even further. What we're about to do might feel like cheating, but it's really just good pratice.
+[Last time on Programming Feedback for Advanced Beginners][pfab16] we started speeding up Justin Reppert's ASCII art generator. We looked at how to improve Justin's algorithm for mapping image colors to terminal colors and devised an approach that got the job done thirty times faster. If you haven't read [last week's PFAB][pfab16] then I'd suggest you start there. It's not long and it got rave reviews.
+
+A thirty-x speedup is nothing to sneeze at, but this week we're going to optimize Justin's program even further. What we're about to do might feel like cheating, but it's really just good pratise.
 
 ## Precomputation
 
@@ -23,7 +24,7 @@ At the moment Justin's program goes through each pixel in a source image and com
 
 "In fact," you might continue, "if we use this approach then the price of our lunch actually *increases*. If we use the on-the-fly method method for an 80x80 image then we have to calculate the closest ANSI color to a pixel color `80 * 80 = 6,400` times. But if we calculate in advance the closest ANSI color to every possible pixel color then we have to do `256 * 256 * 256 =~ 16,000,000` calculations, almost all of which will be wasted. This is like saying that producing Lord of the Rings was easy because all the publisher had to do was press print and a best-selling book came out." If you were paying me for any of my blog posts, which you aren't, you might ostentatiously demand a refund.
 
-However, you'd be missing some important subtleties. What we think of as a program's "speed" depends on the context. Programs are written to be used, and so arguably the most important definitions of "speed" is the time that a program takes to respond to a user's request. For our program, this is the time between a user asking for a colorful ASCII art image and our program printing this image to the terminal. 
+However, you'd be missing some important subtleties. What we think of as a program's "speed" depends on the context. Programs are written to be used, and so arguably the most important definition of "speed" is the time that a program takes to respond to a user's request. For our program, this is the time between a user asking for a colorful ASCII art image and our program printing this image to the terminal. 
 
 Precomputing all the answers may require more total work to be performed. However, we can do all of the precomputation in advance of the program being run. We can store the results in a file or a database, and load them when our program runs. This means that the user doesn't have to sit and wait while we run all the calculations. They can benefit from our work without having to sit through it. There's no free lunch, but like any good investment bank we can use some sleight of hand to palm the costs off onto someone else.
 
@@ -104,4 +105,4 @@ You'll rarely need to write out equations in the same way as we did here, or to 
 [main-file]: https://github.com/robert/programming-feedback-for-advanced-beginners/blob/fd08b6737b0f8cffab4877aa9ea042f1043cc55b/editions/16-ascii-speed/updated-v2/asciiart.py#L165-L199
 [diff]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/fd08b6737b0f8cffab4877aa9ea042f1043cc55b
 [ansi-colors]: https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html#colors
-
+[subscribe]: https://advancedbeginners.substack.com
