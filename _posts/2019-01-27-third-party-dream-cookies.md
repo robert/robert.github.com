@@ -1,7 +1,9 @@
 ---
 permalink: /2019/01/27/third-party-dream-cookies/
 title: "Third-party dream cookies"
-layout: indented_post
+layout: post
+article_classes: indent
+layout: post
 tags: [The Steve Steveington Chronicles, Online Tracking]
 og_image: https://robertheaton.com/images/dream-cookie-cover.png
 ---

@@ -1,17 +1,13 @@
-@import "bourbon/bourbon";
+---
+---
 
-@include keyframes(fade-in) {
-  0% { opacity: 0 }
-  50% { opacity: 0 }
-  100% { opacity: 1 }
-}
 
-body { 
+body {
   background: #fff;
   color: #000;
-  font-family: 'Merriweather', Georgia, helvetica, arial, sans-serif;
+  font-family: sans-serif;
   font-size: 16px;
-  line-height: 1.55em;
+  line-height: 1.7em;
   padding: 0; margin: 0;
 }
 
@@ -20,34 +16,9 @@ body {
 }
 
 header {
-  @include clearfix;
-  padding-bottom: 20px;
-  margin-top: -5px;
-  line-height: 1.3em; 
-  margin: 0 auto 30px;
-  background: #f0f1f2;
-  @include box-sizing(border-box);
-  @include transition(all, 0.3s);
-  a { @include transition(all, 0.3s); }
-  h1 { @include inline-block; font-size: 20px; margin: 0 0 15px; }
-  p { margin: 0; font-size: 13px; line-height: 2em; }
-  .rob { 
-    position: absolute;
-    left: -104px;
-    top: 10px;
-    @include inline-block;
-    overflow: hidden;
-    border-radius: 50px;
-    border: 4px solid fade-out(black, 0.95);
-    @include animation(fade-in 1.5s);
-  }
 }
 
 footer {
-  padding: 25px; 
-  background: #f0f1f2;
-  line-height: 2rem;
-  h3 { font-size: 14px; }
 }
 
 h1, h2, h3, h4, h5, h6 { font-weight: normal; }
@@ -63,13 +34,12 @@ h1, h2, h3, h4, h5, h6 { font-weight: normal; }
 }
 
 a, .as-link {
-  text-decoration: none; 
-  color: #527d9a;
+  text-decoration: none;
+  color: #003152;
   &:hover { color: #003355; }
   &.big-button {
     display: block;
     border-radius: 3px;
-    @include transition(all, 0.2s);
     color: #fff;
     font-size: 12px;
     line-height: 2em;
@@ -80,12 +50,10 @@ a, .as-link {
     border: 4px solid #8ab;
     background: #6f8f9f;
     &:hover { background: #608090; }
-    &:active { @include box-shadow(inset 0 1px 2px #406070); }
     &.red {
       border: 4px solid #ddacac;
       background: #bf6653;
       &:hover { background: #bf4634; }
-      &:active { @include box-shadow(inset 0 1px 2px #602022); }
     }
   }
 }
@@ -96,7 +64,6 @@ a, .as-link {
   margin: auto;
   padding: 15px;
   position: relative;
-  @include box-sizing(border-box);
 }
 
 @media (min-width: 960px) {
@@ -120,8 +87,7 @@ ul.posts {
   max-width: 800px;
   margin: 0 auto 40px;
   li { margin: 0; padding: 0; list-style: none; }
-  li a { 
-    &, * { @include transition(all, 0.3s); }
+  li a {
     display: block;
     font-size: 18px;
     margin-bottom: 15px;
@@ -137,16 +103,13 @@ ul.posts {
 }
 .site section.blogpost, .site section > p {
   line-height: 1.8em;
-  blockquote { 
+  blockquote {
     border-left: 3px solid #f6f8f9;
     padding: 0 0 0 15px; margin: 20px 0 20px -18px;;
-    font-style: italic; color: #777879;
-    @include transition(all, 0.3s);
     &:hover { color: #030507; border-left-color: #e4e6e9; }
   }
-  li .CodeMirror { margin: 10px 0; }
   li p { margin-bottom: 5px; }
-  img { 
+  img {
     max-width: 100%;
     &.half { width: 50%; }
   }
@@ -159,7 +122,7 @@ ul.posts {
 .muted { color: #777; }
 
 .sec-head {
-  display: none; 
+  display: none;
   background: #494949;
   color: #fff;
   display: block;
@@ -174,10 +137,9 @@ ul.posts {
 }
 
 section.info {
-  width: 49%; 
+  width: 49%;
   a { line-height: 2.4em; }
   &:not(:last-of-type) { margin-right: 1%; }
-  @include inline-block;
   vertical-align: top;
   small { color: #999; }
   .item { * { padding-bottom: 2px; border-bottom: 1px dotted #ccc;} }
@@ -185,8 +147,8 @@ section.info {
 
 @media (max-width: 800px) {
   section.info {
-    width: 100%; 
-    &:not(:last-of-type) { 
+    width: 100%;
+    &:not(:last-of-type) {
       border-bottom: 1px dotted #ccc; margin-bottom: 20px;
       padding-bottom: 35px;
     }
@@ -205,12 +167,10 @@ section.info {
 }
 
 section.navigation {
-  @include clearfix;
   position: relative;
   margin: 0 0 15px;
   a {
     width: 50%;
-    span { opacity: 0.8; padding: 0 5px; @include transition(all, 0.3s); }
     &:hover span { opacity: 1; }
   }
 }
@@ -220,10 +180,9 @@ section.share-links {
   border-top: 1px dotted #ddd;
   padding: 20px 0 0px;
   margin: 20px 0;
-  .button { 
-    @include inline-block;
+  .button {
     vertical-align: top;
-    height: 20px; 
+    height: 20px;
     &.spaced { margin-right: 30px; }
   }
 }

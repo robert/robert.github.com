@@ -1,6 +1,7 @@
 ---
 permalink: /2016/04/09/in-context/
-layout: indented_post
+article_classes: indent
+layout: post
 title: In context
 tags: [Stories]
 ---

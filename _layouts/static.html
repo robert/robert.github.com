@@ -1,13 +1,17 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>Robert Heaton</title>
     {% include header.html %}
   </head>
-  <body>
+  <body class="sans-serif lh-copy">
     <div id="fb-root"></div>
-    {% include navbar.html %}
-    <div class='container'>
-      {{ content }}
+    <div class="flex-l">
+      {% include navbar.html %}
+      <main class="flex-auto nested-img bt bn-l b--moon-gray pa4 {{ page.classes }}">
+        <!-- {% include rss_home.html %} -->
+        {{ content }}
+      </main>
     </div>
     {% include footer.html %}
   </body>
