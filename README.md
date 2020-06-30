@@ -4,5 +4,5 @@
 
 ```
 bundle install
-jekyll serve -w
+bundle exec jekyll serve -w
 ```
