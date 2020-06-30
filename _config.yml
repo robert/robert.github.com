@@ -11,6 +11,3 @@ plugins:
   - jekyll-paginate
 paginate: 20
 permalink: "/:title/"
-sass:
-  sass_dir: assets
-  style: :compressed
