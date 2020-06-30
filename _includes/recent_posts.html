@@ -1,14 +1,14 @@
-<nav class="flex bt b--moon-gray nl4 nr4 nb4 lh-title">
+<nav class="flex-ns bt b--moon-gray nl4 nr4 nb4 lh-title">
   {% if page.previous %}
-    <a class="pa4 fw6 w-50 hover-bg-near-white bg-animate flex-auto link {% if page.next %}br b--moon-gray{% endif %} near-black inline-flex items-center" href="{{ page.previous.url }}" id="next">
+    <a class="pa4 fw6 w-50-ns hover-bg-near-white bg-animate flex-auto link {% if page.next %}br-ns b--moon-gray{% endif %} near-black inline-flex items-center" href="{{ page.previous.url }}" id="next">
       <span class="f4 mr3">&#9664;</span>
       <div class="flex-auto measure-narrow">{{page.previous.title}}</div>
     </a>
   {% endif %}
   {% if page.next %}
-    <a class="pa4 fw6 w-50 hover-bg-near-white bg-animate flex-auto link near-black inline-flex items-center justify-end" href="{{page.next.url}}" id="prev">
-      <div class="measure-narrow tr">{{page.next.title}}</div>
-      <span class="f4 ml3">&#9654;</span>
+    <a class="pa4 fw6 w-50-ns hover-bg-near-white bg-animate bt b--moon-gray bn-ns flex-auto link near-black inline-flex items-center justify-end" href="{{page.next.url}}" id="prev">
+      <div class="measure-narrow tr-ns order-1 order-0-ns">{{page.next.title}}</div>
+      <span class="f4 ml3-ns mr3 mr0-ns">&#9654;</span>
     </a>
   {% endif %}
 </nav>
