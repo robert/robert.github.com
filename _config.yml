@@ -4,11 +4,13 @@ highlighter: rouge
 name: Robert Heaton | Blog
 description: 'Software engineer. One-track lover down a two-way lane'
 url: https://robertheaton.com
-auto: true
 feedburner_id: robertheaton
 future: true
-gems:
+plugins:
   - jekyll-redirect-from
   - jekyll-paginate
 paginate: 20
 permalink: "/:title/"
+sass:
+  sass_dir: assets
+  style: :compressed

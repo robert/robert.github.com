@@ -1,7 +1,8 @@
 ---
 permalink: /2015/10/20/american-prankster/
 title: American Prankster
-layout: indented_post
+article_classes: indent
+layout: post
 tags: [Stories, Writing]
 ---
 <br/>

@@ -1,288 +1,266 @@
 ---
+title: Posts
 layout: index
-title: Robert Heaton
 ---
-<style>
-.topic-box {
-  margin-bottom: 17px;
-  padding-top: 1px;
-  padding-bottom: 5px;
-  padding-left: 17px;
-  padding-right: 17px;
-  background: #f0f1f2;
-}
-.topic-box ul {
-  padding-inline-start: 20px;
-}
-.home-img img {
-  max-width: 100%;
-  margin-bottom: 17px;
-}
 
-</style>
-<div id="home">
-  <div class="topic-box">
-    <h2>Latest</h2>
-    <ul>
-      {% for post in site.posts | limit: 5 %}
-        <li>
-          {{ post.date | date_to_string }} -
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">Latest</h2>
+  <ul class="list pl0 mb3">
+    {% for post in site.posts | limit: 5 %}
+      <li class="pv2">
+        <a class="link f3 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+        <div class="f5 silver">{{ post.date | date_to_string }}</div>
+      </li>
+    {% endfor %}
+  </ul>
 
-    <p>
-    <a href="/archive">(view all)</a>
-    </p>
-  </div>
+  <a class="bw2 fw6 b--dark-gray pa3 ba link near-black dib" href="/archive">View all</a>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.projects.title }}</h2>
-    <ul>
-      {% for post in site.data.home.projects.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.projects.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.projects.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.best_of.title }}</h2>
-    <ul>
-      {% for post in site.data.home.best_of.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.best_of.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.best_of.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="home-img">
-    <a href="/2018/11/28/https-in-the-real-world/">
-      <img src="/images/https-intro.png" />
-    </a>
-  </div>
+<div class="measure">
+  <a href="/2018/11/28/https-in-the-real-world/">
+    <img src="/images/https-intro.png" />
+  </a>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.learning_programming.title }}</h2>
-    <ul>
-      {% for post in site.data.home.learning_programming.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.learning_programming.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.learning_programming.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.online_tracking.title }}</h2>
-    <ul>
-      {% for post in site.data.home.online_tracking.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.online_tracking.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.online_tracking.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="home-img">
-    <a href="/2019/01/15/a-brief-history-of-wi-fi-privacy-vulnerabilities/">
-      <img src="/images/wifi-casino.png" />
-    </a>
-  </div>
+<div class="measure">
+  <a href="/2019/01/15/a-brief-history-of-wi-fi-privacy-vulnerabilities/">
+    <img src="/images/wifi-casino.png" />
+  </a>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.https.title }}</h2>
-    <ul>
-      {% for post in site.data.home.https.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.https.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.https.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  {% include rss_home.html %}
+{% include rss_home.html %}
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.steve_steveington.title }}</h2>
-    <ul>
-      {% for post in site.data.home.steve_steveington.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.steve_steveington.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.steve_steveington.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.computer_games.title }}</h2>
-    <ul>
-      {% for post in site.data.home.computer_games.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.computer_games.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.computer_games.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="home-img">
-    <a href="/2018/11/23/the-therapeutic-properties-and-applications-of-dark-souls/">
-      <img src="/images/dark-souls-cover.png" />
-    </a>
-  </div>
+<div class="measure">
+  <a href="/2018/11/23/the-therapeutic-properties-and-applications-of-dark-souls/">
+    <img src="/images/dark-souls-cover.png" />
+  </a>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.productivity.title }}</h2>
-    <ul>
-      {% for post in site.data.home.productivity.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.productivity.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.productivity.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="home-img">
-    <a href="/2018/11/03/programming-project-4-photomosaics/">
-      <img src="/images/mosaic-me-small.png" />
-    </a>
-  </div>
+<div class="measure">
+  <a href="/2018/11/03/programming-project-4-photomosaics/">
+    <img src="/images/mosaic-me-small.png" />
+  </a>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.economics.title }}</h2>
-    <ul>
-      {% for post in site.data.home.economics.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.economics.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.economics.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.office_hours.title }}</h2>
-    <ul>
-      {% for post in site.data.home.office_hours.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.office_hours.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.office_hours.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.life_advice.title }}</h2>
-    <ul>
-      {% for post in site.data.home.life_advice.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.life_advice.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.life_advice.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="home-img">
-    <a href="/2019/03/31/the-robot-reserve-army-of-labor/">
-      <img src="/images/robot-army-cover.png" />
-    </a>
-  </div>
+<div class="measure">
+  <a href="/2019/03/31/the-robot-reserve-army-of-labor/">
+    <img src="/images/robot-army-cover.png" />
+  </a>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.stories.title }}</h2>
-    <ul>
-      {% for post in site.data.home.stories.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.stories.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.stories.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.parenthood.title }}</h2>
-    <ul>
-      {% for post in site.data.home.parenthood.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.parenthood.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.parenthood.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.music.title }}</h2>
-    <ul>
-      {% for post in site.data.home.music.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.music.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.music.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="home-img">
-    <!-- <a href="/2019/03/31/the-robot-reserve-army-of-labor/"> -->
-      <img src="/images/levels-cover.png" />
-    <!-- </a> -->
-  </div>
+<div class="measure">
+  <!-- <a href="/2019/03/31/the-robot-reserve-army-of-labor/"> -->
+    <img src="/images/levels-cover.png" />
+  <!-- </a> -->
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.writing.title }}</h2>
-    <ul>
-      {% for post in site.data.home.writing.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.writing.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.writing.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
 
-  <div class="topic-box">
-    <h2>{{ site.data.home.programming.title }}</h2>
-    <ul>
-      {% for post in site.data.home.programming.posts %}
-        <li>
-          <a href="{{post.url}}">
-            {{ post.title}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-  <div style="clear: left"></div>
+<div class="mt4">
+  <h2 class="bb dib mb0 fw2 mt0 f3">{{ site.data.home.programming.title }}</h2>
+  <ul class="list pl0">
+    {% for post in site.data.home.programming.posts %}
+      <li class="pv2">
+        <a class="link f4 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 </div>

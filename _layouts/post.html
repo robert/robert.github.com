@@ -1,35 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>{{ page.title }} | Robert Heaton</title>
     {% include header.html %}
   </head>
-  <body>
-    {% include navbar.html %}
-    <div class='container site'>
-      <section class='post blogpost'>
-        <h1 class='subject'><a href="{{page.url}}">{{ page.title }}</a></h1>
-        <div class='date muted'>{{ page.date | date_to_string }}</div>
-        {{ content }}
+  <body class="sans-serif lh-copy">
+    <div id="fb-root"></div>
+    <main class="flex-l">
+      {% include navbar.html %}
+      <div class="flex-auto nested-img bt bn-l b--moon-gray pa4 {{ page.classes }}">
+        <article class="f4 measure-wide mb5">
+          <h2 class="mv0 f2 lh-title"><a class="near-black no-underline" href="{{page.url}}">{{ page.title }}</a></h1>
+          <div class="f5 mb4 mt2 fw4 silver">{{ page.date | date_to_string }}</div>
+          <div class="{{ page.article_classes }}">{{ content }}</div>
+        </article>
         {% if page.hn %}
-          <a href="https://news.ycombinator.com/item?id={{ page.hn }}" target="_blank">Discussion on Hacker News</a>
-        {% endif %}
-        <hr/>
-        <div style="">
-          <a href="https://twitter.com/robjheaton">
-            Follow me on Twitter
+          <a class="pa4 db link near-black fw6 nl4 nr4 bt b--moon-gray" href="https://news.ycombinator.com/item?id={{ page.hn }}" target="_blank">
+            Discussion on Hacker News
+            &#10140;
           </a>
-          or
-          <a href="https://robertheaton.com/feed.xml">
-            RSS
+        {% endif %}
+        <div class="bt b--moon-gray nl4 nr4">
+          <a class="pa4 dib link hover-dark-blue near-black fw6" href="https://twitter.com/robjheaton">
+            Follow me on Twitter &#10140;
+          </a>
+          <a class="pa4 dib link hover-dark-blue near-black fw6" href="https://robertheaton.com/feed.xml">
+            RSS &#10140;
           </a>
         </div>
 
         {% include rss.html %}
         {% include related_posts.html %}
         {% include recent_posts.html %}
-        <br/>
-      </section>
-    </div>
+      </div>
+    </main>
     {% include footer.html %}
   </body>
 </html>
