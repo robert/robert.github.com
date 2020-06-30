@@ -1,6 +1,6 @@
 {% if page.tags.first %}
 <div class="pv4">
-  <h3 class="fw8 f5 ttu mt0 mb1">More on {{page.tags.first}}</h3>
+  <h3 class="fw8 f5 ttu mt0 mb1">More on <span class="green">{{page.tags.first}}</span></h3>
   <ul class="mb0">
     {% for post in site.posts %}
       {% for post_tag in post.tags %}
