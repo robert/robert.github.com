@@ -1,8 +1,19 @@
 pre.highlight {
-  font-size: .65em;
   border: 1px solid #ccc;
   padding: 16px;
   overflow: auto;
+  font-size: .9em;
+}
+
+pre.highlight code {
+  background: transparent;
+  padding: 0;
+}
+
+code {
+  font-size: .8em;
+  background: #f0f0f0;
+  padding: .2em .5em;
 }
 .highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #999988; font-style: italic } /* Comment */
