@@ -6,7 +6,7 @@ layout: index
 <div class="mt4">
   <h2 class="bb dib mb0 fw2 mt0 f3">Latest</h2>
   <ul class="list pl0 mb3">
-    {% for post in site.posts | limit: 5 %}
+    {% for post in site.posts limit: 5 %}
       <li class="pv2">
         <a class="link f3 underline-hover near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
           {{ post.title}}
