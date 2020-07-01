@@ -11,3 +11,4 @@ plugins:
   - jekyll-paginate
 paginate: 20
 permalink: "/:title/"
+incremental: true
