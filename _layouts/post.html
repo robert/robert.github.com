@@ -6,9 +6,9 @@
   </head>
   <body class="sans-serif lh-copy">
     <div id="fb-root"></div>
-    <main class="flex-l">
+    <div class="flex-l">
       {% include navbar.html %}
-      <div class="flex-auto bt bn-l b--moon-gray pa4 {{ page.classes }}">
+      <main class="flex-auto bt bn-l b--moon-gray pa4 {{ page.classes }}">
         <article class="f4 measure-wide mb5 nested-headline-line-height">
           <h2 class="mv0 f2 lh-title"><a class="near-black no-underline" href="{{page.url}}">{{ page.title }}</a></h1>
           <div class="f5 mb4 mt2 fw4 silver">{{ page.date | date_to_string }}</div>
@@ -32,8 +32,8 @@
         {% include rss.html %}
         {% include related_posts.html %}
         {% include recent_posts.html %}
-      </div>
-    </main>
+      </main>
+    </div>
     {% include footer.html %}
   </body>
 </html>
