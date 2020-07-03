@@ -1,11 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <title>{{ page.title }} | Robert Heaton</title>
     {% include header.html %}
   </head>
   <body>
     {% include navbar.html %}
-    <div class='container site'>
+    <div class='measure center'>
       <section class='post blogpost'>
         <h1 class='subject'><a href="{{page.url}}">{{ page.title }}</a></h1>
         <div class='date muted'>{{ page.date | date_to_string }}</div>

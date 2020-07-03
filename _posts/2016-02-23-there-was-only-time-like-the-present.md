@@ -1,7 +1,8 @@
 ---
 permalink: /2016/02/23/there-was-only-time-like-the-present/
 title: There was only time like the present
-layout: indented_post
+article_classes: indent
+layout: post
 tags: [Stories]
 ---
 <br/>
