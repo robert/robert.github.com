@@ -1,9 +1,8 @@
 ---
-layout: static
-title: Robert Heaton | About me
+layout: index
+title: About me
+classes: measure-wide f4
 ---
-# About me
-
 I work on security [at Stripe][stripe]. I write about:
 
 * [Unconvering online privacy violations][wacom]

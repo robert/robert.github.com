@@ -1,6 +1,7 @@
 ---
 permalink: /2015/11/30/a-day-at-the-free-market/
-layout: indented_post
+article_classes: indent
+layout: post
 title: A day at The Free Market
 tags: [Stories, Writing]
 redirect_from: [/2015/11/30/market-forces/]
@@ -8,7 +9,7 @@ redirect_from: [/2015/11/30/market-forces/]
 <br/>
 Chefs, families, supermarket representatives, and all other types of person who might wish to purchase rice, were sat at rows upon rows of desks at the far end of The Hall Of Equilibrium. They were filling out Form 41A, regarding the ways in which the price per kilogram might affect the amount of rice that they would purchase that day.
 
-The hall also contained farmers, wholesalers, supermarket representatives, and all other types of person who might wish to sell rice. They were sat at their own rows upon rows of desks, where they were filling out Form 41B, regarding the ways in which the price per kilogram might affect the amount of rice they would produce and sell that day. 
+The hall also contained farmers, wholesalers, supermarket representatives, and all other types of person who might wish to sell rice. They were sat at their own rows upon rows of desks, where they were filling out Form 41B, regarding the ways in which the price per kilogram might affect the amount of rice they would produce and sell that day.
 
 The bell rang, their forms were collected and processed, and the day's supply-demand curve for rice was distributed to the world. Trading began.
 
@@ -67,4 +68,4 @@ The pile of flesh shrank slightly, trying unsuccessfully to make itself look sma
 
 Mr. Smith shook his head, opened his briefcase and took out a small chainsaw. He circled the flesh pile thoughtfully as it screamed, pleaded for mercy, and recited market statistics. He prodded and poked his chainsaw in exactly the right places. Blood and viscera sprayed pleasing crimson patterns on the floor. Occasionally a chunk of flesh detached from the body altogether and fell to the ground. After a few minutes Mr. Smith switched off his professional tool and stepped back. The pile of flesh was anatomized and he was finished. His suit was soaked in fluids; he was glad he had brought a spare. He began packing his professional tool back into his briefcase. Suddenly, each chunk of flesh began to twitch and remould. They tottered around, taking ungainly steps on rapidly-forming proto-limbs. Their stumblings gradually took on a familiar form. The dismembered remains of the flesh pile were playing Blotch. There was competition again.
 
-Mr. Smith pulled out some instruments and took some ambient readings. Prices were falling already. He packed up, allowed himself a small smile, and started the thankless journey back to the offices of The Small Government. 
+Mr. Smith pulled out some instruments and took some ambient readings. Prices were falling already. He packed up, allowed himself a small smile, and started the thankless journey back to the offices of The Small Government.

@@ -1,7 +1,8 @@
 ---
 permalink: /2016/09/21/there-were-millions/
 title: There were millions
-layout: indented_post
+article_classes: indent
+layout: post
 tags: [Stories]
 ---
 <br/>

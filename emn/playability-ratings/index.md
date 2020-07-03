@@ -1,5 +1,5 @@
 ---
-layout: static
+layout: index
 ---
 This is a full list of the Playability Ratings for the common cards from Eldritch Moon. Read the full article [here](/2016/09/12/building-a-magic-the-gathering-sealed-deck-ai).
 
