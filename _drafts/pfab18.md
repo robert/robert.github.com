@@ -8,27 +8,36 @@ og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab18
 ---
-Last time on Programming Feedback for Advanced Beginners we wrote a program that used pre-computation to speed up Justin Reppert's ASCII art program. We calculated the closest ANSI color for every possible pixel color, and stored the answers in a file. Whenever we ran our ASCII art-generating program, we first loaded our previous pre-computations back into a color map, and then used them to find the best ANSI color for each pixel color almost instantly.
+Last time on Programming Feedback for Advanced Beginners[LINK-TODO] we wrote a program that used pre-computation to speed up Justin Reppert's ASCII art program. We calculated the closest ANSI color for every possible pixel color, and stored the answers in a file. Whenever we ran our ASCII art-generating program, we first loaded our previous pre-computations back into a color map, and then used them to find the best ANSI color for each pixel color almost instantly.
 
 When I was writing the code for that edition of PFAB, my precomputed file was over 100MB in size and took around 30 seconds to load whenever I ran the program. This wasn't a big problem, but while I was waiting I started daydreaming. If we tried, how small could we make this file? And since smaller files are quicker for a program to read, how much time would doing this save us? This (and next) time on PFAB, we're going to find out.
 
 We'll learn a lot about serialization, hexadecimal and problem solving. None of what follows is necessarily the *best* way to do anything, and I'm sure I've glossed over lots of micro-optimizations. However, it should still help you think more deeply about how computers work.
 
-If you haven't read the previous two editions of PFAB then I'd suggest start with them [TODO-LINKS]. Let's start today's edition by learning a long word for a simple concept.
+If you haven't read the previous two editions of PFAB then I'd suggest starting with them [TODO-LINKS]. Let's start today's edition by learning a long word for a simple concept.
 
 ## What is serialization?
 
-> Serialization is the process of turning an object in memory into a stream of bytes so you can do stuff like store it on disk or send it over the network.
->
-> Deserialization is the reverse process: turning a stream of bytes into an object in memory.
->
-> https://stackoverflow.com/questions/633402/what-is-serialization
+In order to re-use our pre-computed color map, we'll need to write its contents to a file. When we want to use our color map again, we'll read the file back into our program and use the information inside it re-create our original map. In order to do this, we'll need to a set of rules for converting the data in our program into a long string that can be written to a file. We'll also need a corresponding set of rules converting that long string back into our color map data. These rules are called a *serialization format*.
 
-For our purposes, serialization is how our program takes our pre-computed color map of pixel values and ANSI IDs and saves it to a file. Deserialization is how our program later reads that file and converts its contents back into a color map that we can use to generate ASCII art. A *serialization format* is a set of rules for serializing and deserializing our data. Condensing our color map file will require us to tweak and optimize the serialization format that we use to create it.
+Some common, generic serialziation formats that you may or may not have heard of include JSON, YAML, Pickle, and XML. As we'll see, we can also define our own, specialized serialization formats that are only ever used by our program. A serialization format is just a pair of rules for writing and reading data - there's nothing stopping you from making up your own rules.
+
+The process of turning data into something (specifically, a *stream of bytes*) that can be written to a file is called *serialization*, and the opposite process of turning a file back into data inside a program is called *deserialization*. The same de/serialization processes can also be used when sending and receiving data over a network (like the internet).
+
+```
++------------+  Serialization  +-----------------+
+|            +---------------->| Bytes that      |
+| Data in    |                 | can be saved    |
+| a program  |                 | to file/sent    |
+|            +<----------------+ over network/etc|
++------------+ Deserialization +-----------------+
+```
+
+The simplest way to serialize our color mapping is to use a pre-existing, general-purpose serialization format like *JSON*[LINK-TODO]. This is where we'll start.
 
 ## Pretty JSON
 
-The simplest way to serialize our color mapping is to use a pre-existing, general-purpose serialization format like *JSON*[LINK-TODO]:
+A JSON string looks something like this:
 
 ```json
 {
@@ -40,7 +49,7 @@ The simplest way to serialize our color mapping is to use a pre-existing, genera
 }
 ```
 
-This is what we did last time, and it's a very sensible and pragmatic approach. If I hadn't already decided that I wanted this week's PFAB to go into unnecessary detail about file minification then I'd say that we should use JSON and call it a day. Every language has at least one well-tested library for reading and writing JSON. It's even straightforward for humans to read, which helps with debugging. But flexibility and readability come at the cost of verbosity, and for today verbosity is the enemy.
+We used JSON in our first version of this program from the previous edition, which was a very sensible and pragmatic approach. If I hadn't already decided that I wanted this week's PFAB to go into unnecessary detail about file minification then I'd say that we should use JSON and call it a day. Every language has at least one well-tested library for writing JSON to files and reading it back out into structured data. JSON is even straightforward for humans to read, which helps with debugging. But flexibility and readability come at the cost of verbosity, and for today verbosity is the enemy.
 
 Nonetheless, the first version of my precomputation code stored its data in a file of "pretty" JSON. "Pretty" JSON means that each new element is written on a new line and is indented to make it clearer to see where blocks begin and end. My file looked something like this:
 
@@ -54,17 +63,17 @@ Nonetheless, the first version of my precomputation code stored its data in a fi
 }
 ```
 
-Let's estimate how large a pretty JSON color map will be.
+Let's estimate how large a pretty JSON color map will be. This will allow us to compare its size to that of the more compact approaches we'll soon look at. 
 
-## Analyzing pretty JSON
+## How big is a pretty JSON color map?
 
-In the first version of my program, I stored the data using pretty JSON. Each pixel color/ANSI pair required between 18 and 26 characters to store, depending on how many digits there were in each number. Every new line in a file is represented by a `\n` character, which added an extra character per line.
+If we look at the example JSON color map above, we can see that each pixel color/ANSI pair requires between 18 and 26 characters to store, depending on how many digits there were in each number. Every new line in a file is represented by a `\n` character, which added an extra character per line.
 
-To calculate how large a file needs to be in order to store this data in this format, let's assume that 1 character in a file requires 1 byte of storage. The exact value depends on a file's *character encoding* - the way in which a series of bits and bytes on your hard drive are converted into meaningful strings. Common examples of character encodings are *ASCII* and *UTF-8*. Character encodings can be fiddly and frustrating, and since you don't need to know anything about them for this post we won't discuss them any further.
+Let's assume that 1 character requires 1 byte of storage in a file. The exact value actually depends on a file's *character encoding* - the way in which a series of bits and bytes on your hard drive are converted into meaningful strings. Common examples of character encodings are *ASCII* and *UTF-8*. Character encodings can be fiddly and frustrating, and since you don't need to know anything about them for this post we won't discuss them any further.
 
-Let's stick with the assumption that 1 character takes up 1 byte. There are `256*256*256 = 16.7 million` different pixel color/ANSI pairs that we need to store, so we would expect a pretty JSON file representing them to be around `16.7 million colors * 26 bytes/color = 434 million bytes = 434MB` in size. This is quite a weight.
+Let's stick with the assumption that 1 character takes up 1 byte. There are `256*256*256 = 16.7 million` different pixel color/ANSI pairs that we need to store, so we would expect a pretty JSON file representing them to be around `16.7 million colors * 26 bytes/color = 434 million bytes = 434MB` in size. A photo taken by your smartphone is about 1-2MB, so 434MB is quite a weight. Let's look at how we can use different serialization formats to make it smaller.
 
-## Ugly JSON
+## Ugly JSON is smaller than pretty JSON
 
 We can shrink our file by condensing the JSON inside it without fundamentally changing its meaning. Our program doesn't care how pretty or ugly our JSON is as long as it's valid. This means that we can immediately save some bytes by turning off pretty-mode. This gets rid of all extraneous newlines and whitespace and prints the entire JSON object on a single line:
 
@@ -76,7 +85,7 @@ We can save a few more characters by noticing that we don't strictly need the br
 
 In order to look up the ANSI color for a pixel color *tuple* (eg. `(0,0,0)`), we need to have a standard process for turning that tuple into a string key that we can look up in our color map. Passing a tuple into the `str` function (i.e. calling `str((0,0,0,))`) returns a string of the elements of the tuple, surrounded by brackets (i.e. the string `"(0,0,0)"`). Using this output as the key in our color map means that in Python we can convert a tuple to a key simply by using the `str` function.
 
-As we've discussed, we can shorten these keys by removing the brackets from them. This will mean that we need to write a little more code in order to turn a pixel tuple into a key, since we can no longer rely on simply the `str` function. This is no bad thing, since having our program implicitly depend on the way in which Python happens to converts tuples to strings makes for fragile, hard-to-follow code. Making this change will give us an ugly JSON file that looks like this:
+As we've discussed, we can shorten these keys by removing the brackets from them. This will mean that we need to write a little more code in order to turn a pixel tuple into a key, since we can no longer rely on simply the `str` function. This is no bad thing, since having our program implicitly depend on the way in which Python happens to convert tuples to strings makes for fragile, hard-to-follow code. Making this change will give us an ugly JSON file that looks like this:
 
 ```json
 {"0,0,0":0,"0,0,1":0,...etc...}
@@ -88,7 +97,7 @@ Now each extra pixel pair takes up between 10 and 18 characters, a saving of aro
 
 As we've discussed already, JSON is a very flexible way to serialize data. It can handle strings, integers, booleans, lists, and maps, all nested as deep as your use-case requires. This flexibility is why JSON is so widely used. However, with great flexibility comes extra verbosity in the form of commas, colons, and square- and curly-brackets. Our use-case is very specific and well-defined and so doesn't need any flexibility. We can therefore invent and use our own specialized serialization format, safely sacrificing some versatility in exchange for terser output. This means that we have to decide on our own form for representing a color map in a file, as well as writing our own code to convert our precomputed data to and from this form.
 
-Inventing a custom serialization format in order to save a few bytes is rarely a good idea. It's almost always well worth accepting slightly bloated output in return for flexibility, readability, and standardization. But, for better or for worse, today we've decided that the only thing we care about is pure resource efficiency. Let's therefore see how we can sacrifice some of these boons in exchange for further space savings. For our first attempt at a serialization format, let's make the following specifications:
+Inventing a custom serialization format in order to save a few bytes is rarely a good idea. It's almost always worth accepting slightly bloated output in return for flexibility, readability, and standardization. But, for better or for worse, today we've decided that the only thing we care about is pure resource efficiency. Let's therefore see how we can sacrifice some of these boons in exchange for further space savings. For our first attempt at a serialization format, let's use the following rules:
 
 * Each color pair is on a new line
 * The first part of the line is the pixel color, in RGB form. Each RGB element should be separated by a comma
@@ -109,15 +118,13 @@ Now each pixel pair takes up between 8 and 16 characters, depending on the lengt
 
 ## Removing the separators using hex and fixed-width numbers
 
-Each line still contains 4 "information-less" characters: the 2 commas, 1 pipe, and 1 newline. These characters' only purpose is to indicate that one number has finished and the next number has started. This relative lack of importance suggests that we might be able to get rid of these characters, but doing so is not straightforward. Each RGB number and ANSI ID can be either 1, 2, or 3 digits long, and so if we simply removed the commas and pipes then many lines would become ambiguous. For example, how should we parse this line?
+Each line still contains 4 "information-less" characters: the 2 commas, 1 pipe, and 1 newline. These characters' only purpose is to indicate that one number has finished and the next number has started. Their relative lack of importance suggests that we might be able to get rid of them, but doing so is not straightforward. Each RGB number and ANSI ID can be either 1, 2, or 3 digits long, and so if we simply removed the commas and pipes then many lines would become ambiguous. For example, how should we parse this line?
 
 ```
 92255182
 ```
 
-There's no way for us to know whether this represents `92,25,51|82`, or `9,225,5|182`, or any one of many other ways of dividing up the digits.
-
-We could solve this problem by requiring that every number written using exactly 3 digits, adding leading padding with zeroes where necessary. This would alter numbers like so:
+There's no way for us to know whether this represents `92,25,51|82`, or `9,225,5|182`, or any one of many other ways of dividing up the digits. We could solve this problem by requiring that every number written using exactly 3 digits, adding leading padding with zeroes where necessary. This would alter numbers like so:
 
 * `7` => `007`
 * `45` => `045`
@@ -133,7 +140,7 @@ can be unambiguously parsed as `92,255,1|82`. However, since nearly half the num
 
 We can adapt this approach by continuing to use *fixed-width values* for our numbers, but this time using the *hexadecimal* counting system. Hexadecimal (often shortened to "hex") is an alternative to the standard, decimal system of representing numbers. It uses the digits 0-9 to represent the decimal numbers 0-9, but then also uses the letters A-F to represent the decimal numbers 10-15. To count to the decimal number 20 in hex, you go 1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,10,11,12,13,14. For more on hex, see this article[LINK-TODO].
 
-Conveniently, every decimal number between 0 and 255 can be represented as a hex number with only 1 or 2 digits. The decimal number `0` is also `0` in hex, and decimal 255 is `FF` in hex. This means that we can write our previous, seprator-less line using padded hex numbers as:
+Conveniently, every decimal number between 0 and 255 can be represented as a hex number with only 1 or 2 digits. The decimal number `0` is also `0` in hex, and decimal 255 is `FF` in hex. This means that we can write our previous, separator-less line using padded hex numbers as:
 
 ```
 5CFF0152
