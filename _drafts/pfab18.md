@@ -1,26 +1,29 @@
 ---
 layout: post
-title: "PFAB #18: TODO"
+title: "PFAB #18: Adventures in squeezing serialized data"
 tags:
   - Programming Projects for Advanced Beginners
   - PFAB
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab18
+published: false
 ---
-Last time on Programming Feedback for Advanced Beginners[LINK-TODO] we wrote a program that used pre-computation to speed up Justin Reppert's ASCII art program. We calculated the closest ANSI color for every possible pixel color, and stored the answers in a file. Whenever we ran our ASCII art-generating program, we first loaded our previous pre-computations back into a color map, and then used them to find the best ANSI color for each pixel color almost instantly.
+> *This post is part of "Programming Feedback for Advanced Beginners", a regular series that helps you make the leap from cobbling programs together to writing elegant, thoughtful code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.*
+
+[Last time on Programming Feedback for Advanced Beginners][pfab17] we wrote a program that used pre-computation to speed up Justin Reppert's ASCII art program. We calculated the closest ANSI color for every possible pixel color, and stored the answers in a file. Whenever we ran our ASCII art-generating program, we first loaded our previous pre-computations back into a color map, and then used them to find the best ANSI color for each pixel color almost instantly.
 
 When I was writing the code for that edition of PFAB, my precomputed file was over 100MB in size and took around 30 seconds to load whenever I ran the program. This wasn't a big problem, but while I was waiting I started daydreaming. If we tried, how small could we make this file? And since smaller files are quicker for a program to read, how much time would doing this save us? This (and next) time on PFAB, we're going to find out.
 
 We'll learn a lot about serialization, hexadecimal and problem solving. None of what follows is necessarily the *best* way to do anything, and I'm sure I've glossed over lots of micro-optimizations. However, it should still help you think more deeply about how computers work.
 
-If you haven't read the previous two editions of PFAB then I'd suggest starting with them [TODO-LINKS]. Let's start today's edition by learning a long word for a simple concept.
+If you haven't read the previous two editions of PFAB then I'd suggest starting with them ([#16][pfab16], [#17][pfab17]). Then let's begin today's edition by learning a long word for a simple concept.
 
 ## What is serialization?
 
 In order to re-use our pre-computed color map, we'll need to write its contents to a file. When we want to use our color map again, we'll read the file back into our program and use the information inside it re-create our original map. In order to do this, we'll need to a set of rules for converting the data in our program into a long string that can be written to a file. We'll also need a corresponding set of rules converting that long string back into our color map data. These rules are called a *serialization format*.
 
-Some common, generic serialziation formats that you may or may not have heard of include JSON, YAML, Pickle, and XML. As we'll see, we can also define our own, specialized serialization formats that are only ever used by our program. A serialization format is just a pair of rules for writing and reading data - there's nothing stopping you from making up your own rules.
+Some common, generic serialization formats that you may or may not have heard of include JSON, YAML, Pickle, and XML. As we'll see, we can also define our own, specialized serialization formats that are only ever used by our program. A serialization format is just a pair of rules for writing and reading data - there's nothing stopping you from making up your own rules.
 
 The process of turning data into something (specifically, a *stream of bytes*) that can be written to a file is called *serialization*, and the opposite process of turning a file back into data inside a program is called *deserialization*. The same de/serialization processes can also be used when sending and receiving data over a network (like the internet).
 
@@ -33,7 +36,7 @@ The process of turning data into something (specifically, a *stream of bytes*) t
 +------------+ Deserialization +-----------------+
 ```
 
-The simplest way to serialize our color mapping is to use a pre-existing, general-purpose serialization format like *JSON*[LINK-TODO]. This is where we'll start.
+The simplest way to serialize our color mapping is to use a pre-existing, general-purpose serialization format like [*JSON*][json]. We'll soon go off in some strange directions in our quest for compactness, but JSON is where we'll start.
 
 ## Pretty JSON
 
@@ -67,7 +70,7 @@ Let's estimate how large a pretty JSON color map will be. This will allow us to 
 
 ## How big is a pretty JSON color map?
 
-If we look at the example JSON color map above, we can see that each pixel color/ANSI pair requires between 18 and 26 characters to store, depending on how many digits there were in each number. Every new line in a file is represented by a `\n` character, which added an extra character per line.
+If we look at the example JSON color map above, we can see that each pixel color/ANSI pair requires between 18 and 26 characters to store, depending on how many digits there were in each number. In a file (or indeed any string) a line break is represented by a `\n` character, which added an extra character per line.
 
 Let's assume that 1 character requires 1 byte of storage in a file. The exact value actually depends on a file's *character encoding* - the way in which a series of bits and bytes on your hard drive are converted into meaningful strings. Common examples of character encodings are *ASCII* and *UTF-8*. Character encodings can be fiddly and frustrating, and since you don't need to know anything about them for this post we won't discuss them any further.
 
@@ -138,7 +141,7 @@ This would allow us to confidently treat every fixed-width block of 3 digits as 
 
 can be unambiguously parsed as `92,255,1|82`. However, since nearly half the numbers in the range 0-255 have only 1 or 2 digits (i.e. all numbers from 0-99), we would end up having to add a lot of leading 0s for padding. We'd have removed all the commas and pipes, but replaced them with 0s instead, undoing a lot of our gains.
 
-We can adapt this approach by continuing to use *fixed-width values* for our numbers, but this time using the *hexadecimal* counting system. Hexadecimal (often shortened to "hex") is an alternative to the standard, decimal system of representing numbers. It uses the digits 0-9 to represent the decimal numbers 0-9, but then also uses the letters A-F to represent the decimal numbers 10-15. To count to the decimal number 20 in hex, you go 1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,10,11,12,13,14. For more on hex, see this article[LINK-TODO].
+We can adapt this approach by continuing to use *fixed-width values* for our numbers, but this time using the *hexadecimal* counting system. Hexadecimal (often shortened to "hex") is an alternative to the standard, decimal system of representing numbers. It uses the digits 0-9 to represent the decimal numbers 0-9, but then also uses the letters A-F to represent the decimal numbers 10-15. To count to the decimal number 20 in hex, you go 1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,10,11,12,13,14. For more on hex, see [this article][hex].
 
 Conveniently, every decimal number between 0 and 255 can be represented as a hex number with only 1 or 2 digits. The decimal number `0` is also `0` in hex, and decimal 255 is `FF` in hex. This means that we can write our previous, separator-less line using padded hex numbers as:
 
@@ -150,62 +153,11 @@ We've still got rid of all the commas and pipes, but by using hex instead of dec
 
 We're now down to exactly 8 bytes for every color pair, a saving of around 75% on the 18-26 required by our original pretty JSON. Of course, we can still do even better. But we've learned enough about serialization, files, and numbering systems for one week, so we'll finish off this problem next time on Programming Feedback for Advanced Beginners.
 
+*New to Programming Feedback for Advanced Beginners? Catch up with [the full archives][pfab], [subscribe][subscribe] to future editions, and learn how to make your programs shorter, clearer, and easier for other people to work with.*
 
-
-
-
-
-
-## No keys
-
-We can get rid of the pixel colors in our pixel/ANSI pairs by replacing them with a convention. Instead of writing out every pixel color, we can have our code that reads and writes the file use the convention that we first write the ANSI color that `(0,0,0)` maps to, then `(0,0,1)`, then `(0,0,2)`, and so on. Once we reach `(0,0,255)`, we loop back round to `(0,1,0)`, then `(0,1,1)`, and so on. This convention means that we don't need to write out the pixel colors. We just write out a long list of ANSI colors, and the program that reads the file is responsible for assigning them to the appropriate pixel colors. For example, the snippet from above would become simply:
-
-```
-650C03
-```
-
-This halves our file size to 6 bytes for every pixel color.
-
-## ASCII
-
-The final step that we're going to make today is to stop thinking about our file in terms of strings and characters, and start thinking about it as a list of bytes.
-
-Each character in an extended ASCII-encoded file takes up a byte of memory. A byte is made up of 8 bits. Each bit can have a value of either 0 or 1, so the 8 bits that make up a byte can together have `2**8 = 256` different values.
-
-However, so far we've only been using a tiny subset of these possible values to represent our colors. We started by using the digits `0-9`, and then added in the letters `A-F` when we switched to writing our numbers as hex. But there are still `256-16 = 240` other byte values that we're not using. This means that we're wasting valuable opportunities to convey extra information. This is like trying to write a book with only one word on each page. We can still convey the same information, it just takes more pages.
-
-We can stop thinking of the contents of our file in terms of characters like `A`, `B`, `1`, and `2`. Instead we can think of the contents in terms of bytes. A byte is effectively a number between 0 and 255. This number is all that is stored on your hard drive. A hard drive has no inherent concept of `A` or `1`. To interpret the bytes as meaningful characters a computer uses an *encoding*. Examples of encodings that you may or may not have come across are ASCII, UTF-8, and Unicode. Encodings can be a fiddly and frustrating subject, so we're going to ignore them.
-
-After we've calculated the ANSI value that a pixel value maps to, we write it to our file. However, instead of writing it as the decimal number "245" or the hex number "TODO", we write it as a byte. To do this in Python, we have to open the file in "binary mode" using the `b` flag to `open`:
-
-```python
-ansi = # ...calculate an ansi value...
-
-# `w` means write mode
-# `b` means binary mode
-with open('./color_map.bin', 'wb') as f:
-    # `bytes` converts a list of integers to
-    # a list of bytes.
-    f.write(bytes([ansi]))
-```
-
-We use the same scheme for implicitly mapping ANSI values to pixel values as in the hex example - the first pixel is for `(0,0,0)`, the second for `(0,0,1)`, and so on. This gives us a file that is exactly `256*256*256 = TODO` bytes, or `TODO MB` in size. This is Nx smaller than our original JSON file.
-
-## Going *even* further
-
-This is the smallest that a file can possibly be while still explicitly containing all the precomputed answers in a "straightforward" form. However, we could go even further. We could use a *lossless compression algorithm* on the file. Compression algorithms condense blocks of information by using patterns in them to express the same information in a terser manner. If a compression algorithm is lossless, this means that the original information can be perfectly reconstructed from the compressed output. For example, a string that alternates the letters `A` and `B` for ten thousand characters can most straightforwardly be represented as `ABABABABABAB...` and so on, taking up an entire byte for each character. Alternatively it can be represented using logic to the effect of "alternate the characters `A` and `B` for ten thousand characters." Representing the data in this way is a form of compression. Given a piece of code that will summarize the original string and another piece of code that will un-summarize it and turn it back into the original string, it is likely to be more efficient to store the data in a compressed form.
-
-Compressing and uncompressing data takes time. Generally speaking the more space saving you want to make, the more time it takes to deflate and inflate your data. The more regular your input data, the more space savings a compression algorithm will be able to make. Our vague compression algorithm above will have a much harder time squeezing anything out of a string of ten thousand random characters than it did our highly regular `ABABABABAB...`.
-
-We could express our computations in terms of regions. We could calculate and save information to the effect of "every pixel in between these 8 points should be mapped to this ANSI color". This would save us from writing out the same ANSI color over and over again. It would exploit our specific knowledge of our problem, and I imagine that representing our data in this way would give us even more savings over a generic compression algorithm. We'd have to do extra work when we read the file to turn this information into a full, precomputed color map.
-
-## Conclusion
-
-This is all academic, since - as I keep saying - Justin's program is perfectly fast already. Even if we wanted to go the precomputation route, most computers have enormous hard drives that won't notice an extra 300MB file. Even though it's technically more efficient to condense the size of our precomputed color map, doing so won't improve the way our program works in any meaningful way.
-
-Of course, sometimes efficiency is critical. Websites need to be fast; embedded devices don't have much hard drive space. There's nothing wrong with optimizing your code when you need to, and knowing how to do so can often teach you a lot . Just don't feel like you have to unless you have a specific reason. In practice projects "I thought it would be interesting" is a great reason. "I like my program but I feel like a loser when my code is a bit slow" is not.
-
-
-
-
-
+[pfab16]: https://robertheaton.com/pfab16
+[pfab17]: https://robertheaton.com/pfab17
+[hex]: https://www.mathsisfun.com/hexadecimals.html
+[json]: https://www.json.org/json-en.html
+[subscribe]: https://advancedbeginners.substack.com
+[pfab]: https://robertheaton.com/pfab
