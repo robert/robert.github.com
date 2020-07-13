@@ -1,13 +1,12 @@
 ---
 layout: post
-title: "PFAB #18: Adventures in squeezing serialized data"
+title: "PFAB #18: Adventures in shrinking serialized data"
 tags:
   - Programming Projects for Advanced Beginners
   - PFAB
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab18
-published: false
 ---
 > *This post is part of "Programming Feedback for Advanced Beginners", a regular series that helps you make the leap from cobbling programs together to writing elegant, thoughtful code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.*
 
