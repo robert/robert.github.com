@@ -174,7 +174,7 @@ Steve Steveington, sort-of-CFO, sighs. I suppose you're right, he says. Can you 
 
 Well I don't know...starts Otekah. Steve flaps a dossier of misfiled tax returns. Absolutely! she finishes.
 
-Everyone packs up their stuff and leaves. You hang back. Don't wait for me, you shout. No one waits for you. When you're absolutely sure everyone has gone, you touch the drawings on the wall. It was only for a day, but you were a cryptographer.
+Everyone packs up their stuff and leaves. You hang back. Don't wait for me, you shout. No one waits for you. When you're absolutely sure everyone has gone, you touch the drawings on the wall. You were a cryptographer, if only for a day.
 
 [fb-tinder]: https://robertheaton.com/2014/12/08/fun-with-your-friends-facebook-and-tinder-session-tokens/
 [whatsapp]: https://robertheaton.com/2016/10/22/a-tale-of-love-betrayal-social-engineering-and-whatsapp/
