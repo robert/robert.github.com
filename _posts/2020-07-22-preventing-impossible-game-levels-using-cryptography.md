@@ -1,10 +1,8 @@
 ---
-permalink: /2100/01/01/crypto-game/
 layout: post
 title: Preventing impossible game levels using cryptography
 tags: [The Steve Steveington Chronicles, Security]
 og_image: https://robertheaton.com/images/levels-cover.png
-published: false
 ---
 You and your good buddy, Steve Steveington, have almost finished work on your company's new video game. It's a banal 2-D platformer in which you run from left to right and collect coins or rings or some other kind of doodad. At the end you rescue a Princess or save a city or whatever, who cares, the player has already given you their money and you don't do refunds.
 
@@ -34,7 +32,7 @@ No.
 
 ----
 
-The fateful day starts innocuously with your team standup. As per usual, each person delivers their updates in the form of a disorganized ramble while the rest of the team browses Reddit. However, today Kate Kateberry's laptop has run out of battery and her phone is recovering  in a bowl of rice from a recent trip down the toilet. She finds herself with no choice but to listen to what her teammates have been working on.
+The day starts innocuously with your team standup. As per usual, each person delivers their updates in the form of a disorganized ramble while the rest of the team browses Reddit. However, today Kate Kateberry's laptop has run out of battery and her phone is recovering  in a bowl of rice from a recent trip into the toilet. She finds herself with no choice but to listen to what her teammates have been working on.
 
 She listens as Steve describes his brilliant idea for preventing players from creating impossible levels. Once he has finished congratulating himself, she points out that his plan won't work. Sure, it will prevent level creators from creating unsolvable levels using the in-game level editor. However, they can still manually edit the contents of an exported file in a standard text editor, resulting in potentially impossible levels. Worse, they can reverse engineer the entire structure of your level files, allowing them to build their own bootleg level editor that doesn't require any proof that a level is solvable before it will export it. The output files from knockoff editors will be indistinguishable from those outputted by the game's official editor. Unsuspecting players will have no idea that the game's flimsy integrity protections had been bypassed, and may end up smashing their heads against an unsmashable wall.
 
@@ -88,13 +86,13 @@ You have a brainwave. The team has been fixated on a model in which players send
 
 Steve is just about awake from his textbook concussion. He agrees that this would be the most technically straightforward solution. However, since the company is funded by his mum's credit card that she still hasn't reported as stolen, he's the closest thing that Stevesoft has to a CFO. He doesn't want to have to pay to develop and deploy a whole jumble of database infrastructure. Cloud computing is quite cheap nowadays, but Stevesoft has very little money and it's only a matter of time before his mum notices all the charges the gang have been racking up on her AmEx.
 
-Steve concedes that the solution to this level integrity conundrum will likely require Stevesoft to run some servers of some sort, but he'd still like to keep them as cheap and lightweight as possible. Centralized servers that have to store and serve up every level that your players create will be too costly in both blood and treasure. Kate and Otekah agree. They couldn't give two farts about Steve's mum or her Amex, but they don't want to have to sign up for any kind of Stevesoft Network Experience Center.
+Steve concedes that the solution to the level integrity conundrum will likely require Stevesoft to run some servers of some sort, but he'd still like to keep them as cheap and lightweight as possible. Centralized servers that have to store and serve up every level that your players create will be too costly in both blood and treasure. Kate and Otekah agree. They couldn't give two farts about Steve's mum or her Amex, but they don't want to have to sign up for any kind of Stevesoft Network Experience Center.
 
 The Thunderdome continues.
 
 ## 6. Can we use public key cryptography? Take 1
 
-What about public key encryption? says Kate. Steve says that she'll need both to be more specific and to give a quick refresher in public-key cryptography, for the others. Kate obliges, patronizingly. Let's start from the top, with some definitions.
+What about public key encryption? says Kate. Steve says that she'll need both to be more specific and to give a quick refresher in public-key cryptography, for the benefit of the others. Kate obliges, patronizingly. Let's start from the top, with some definitions.
 
 An *encryption algorithm* is a method of scrambling data. For example, in simple alphabet-rotation (or [*Caesar Cipher*](https://en.wikipedia.org/wiki/Caesar_cipher)) encryption, the algorithm is that every letter in a message is rotated forward in the alphabet by a fixed number of places. An *encryption key* is an additional, secret input into the algorithm that determines its output. In alphabet-rotation encryption, the key is the number of spaces that each letter should be shifted. In order to produce an encrypted message or turn it back into *plaintext*, you need the appropriate key.
 
