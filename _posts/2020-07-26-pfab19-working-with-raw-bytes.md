@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PFAB #19: TODO"
+title: "PFAB #19: Working with raw bytes"
 tags:
   - Programming Projects for Advanced Beginners
   - PFAB
