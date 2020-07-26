@@ -7,19 +7,18 @@ tags:
 og_image: https://robertheaton.com/images/pfab-cover.png
 redirect_from:
   - /pfab19
-published: false
 ---
 > *This post is part of "Programming Feedback for Advanced Beginners", a regular series that helps you make the leap from cobbling programs together to writing elegant, thoughtful code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.*
 
-On the past three editions of Programming Feedback for Advanced Beginners ([#16][pfab16], [#17][pfab17], [#18][pfab18]) we've been optimizing Justin Reppert's ASCII art generation program. If you haven't read those editions yet then start with them. You'll still get something out of this week's discussion if you don't, but there's a lot of good stuff in them that you'll need in order for this week to properly click into place.
+On the past three editions of Programming Feedback for Advanced Beginners ([#16][pfab16], [#17][pfab17], [#18][pfab18]) we've been optimizing Justin Reppert's ASCII art generation program. If you haven't read these editions yet then start with them. You'll still get something out of this week's discussion if you don't, but they contain a lot of good stuff that you'll need in order for this week to properly click into place.
 
 ## Previously on PFAB
 
-We've been focussing on the portion of Justin's program responsible for adding color to his ASCII art. We've been trying to optimize the algorithm that the program uses to add colors to the ASCII images that it prints to the terminal. Many terminals only have the ability to print a small number of colors, defined by the [ANSI standard][ansi-TODO]. To deal with this limitation we need to write code that maps from the true color of each pixel in our input image to the closest ANSI color.
+We've been focussing on the portion of Justin's program responsible for adding color to his ASCII art. We've been trying to optimize the algorithm that the program uses to add colors to the ASCII images that it prints to the terminal. Many terminals are only able to print a small number of colors, defined by the [ANSI standard][ansi-colors]. To deal with this limitation we need to write code that maps from the true color of each pixel in our input image to the closest ANSI color.
 
 <p style="text-align: center"><img src="/images/ascii-speed-colors.png" /></p>
 
-One approach we've taken is to pre-compute the closest ANSI color code for every possible RGB pixel color and store the output in a file. When we run our program to convert an image to ASCII art, we first load up our pre-computed mappings of pixel colors to ANSI codes from our stored file. Then we look up the ANSI code corresponding to the color of each pixel, and print our ASCII character using that code.
+One approach we've been taking is to pre-compute the closest ANSI color code to every possible RGB pixel color and store this data in a file. When we run our program to convert an image to ASCII art, we first load up our pre-computed mappings of pixel colors to ANSI codes from our stored file. Then we look up the ANSI code corresponding to the color of each pixel, and print our ASCII character using that code.
 
 [Last time][pfab18] we were working on shrinking the size of the file in which we store our pre-computed mapping so as to make it faster to load. We devised a file format in which each mapping from a pixel color to an ANSI code is represented by 8 somewhat cryptic characters of [*hexadecimal*][hex]. In this format, a block of characters that maps a pixel color to an ANSI code looks something like this:
 
@@ -33,11 +32,11 @@ Let's look at this block in a little more detail. Two hexadecimal digits are cap
 
 Since each block is exactly 8 characters long we don't need newlines or any other separator between them. Instead, the code that reads our file is responsible for chunking up the file into blocks of 8 characters itself.
 
-This serialization format is already 70% smaller than our original *pretty JSON*. But how can we make it even smaller?
+This serialization format is already 70% smaller than our original [*pretty JSON*][pfab17]. But how can we make it even smaller?
 
 ## Remove the pixel colors
 
-Currently each block contains both a pixel color (6 characters) and an ANSI code (2 characters). However, we can save significant space by printing only the ANSI codes. If we do this then we'll still need a way to keep track of which pixel color each ANSI code corresponds to, but we can do this using a convention instead of explicitly including 6 characters of pixel color for every pixel/ANSI mapping.
+Currently each block contains both a pixel color (6 characters) and an ANSI code (2 characters). However, we can save significant space by writing only the ANSI codes. If we do this then we'll still need a way to keep track of which pixel color each ANSI code corresponds to, but we can do this using a convention instead of explicitly including 6 characters of pixel color for every pixel/ANSI mapping.
 
 Remember that our file isn't storing the pixel/ANSI mapping for a specific image; it's storing the mapping from a pixel color to an ANSI code for *every* possible pixel color. When our program wants to convert the color of a pixel from a specific image to the closest ANSI code, it looks it up in the pre-computed mapping that it loaded from our file when it started up. Changing the form of our file doesn't change the ANSI code that any pixel color maps to. Instead it expresses the same information using fewer characters.
 
@@ -83,10 +82,10 @@ Pixel  ANSI
 Now we are using a convention that says that the first 2 characters in the file are the ANSI code for `(0,0,0)`, the next 2 are the code for `(0,0,1)`, the next 2 are the code for `(0,0,2)`, and so on. This means that we can write the above as the much terser:
 
 ```
-000000
+00 00 00
 ```
 
-We'll find that `00` is the closest ANSI code to all the pixel colors from `(0,0,0)` to `(0,0,47)`, but once we reach `(0,0,48)` the closest code becomes `11`, and the closest code keeps changing as the pixel color changes.
+When we do the calculations we'll find that `00` is the closest ANSI code to all the pixel colors from `(0,0,0)` to `(0,0,47)`, but once we reach `(0,0,48)` the closest code becomes `11`, and keeps changing as the pixel color changes.
 
 This approach gets us all the way down to 2 characters - meaning a mere 2 bytes - per block.
 
@@ -138,7 +137,7 @@ For example, consider a string that alternates the letters `A` and `B` for ten t
 
 ## Conclusion
 
-This edition of PFAB has been fun, but it's also been almost entirely academic. As I keep saying, Justin's program is perfectly fast already. It might be technically more efficient to condense our precomputed color map, but most computers have enormous hard drives that won't notice an extra 400MB file or two. This means that performing this condensation won't improve our program in any meaningful way. Even if we truly did need to shrink the file for some good and unavoidable reason, we would likely just slap a compression algorithm on our original JSON and call it a day.
+This edition of PFAB has been fun, but it's also been almost entirely academic. As I keep saying, Justin's program is perfectly fast already. It might be technically more efficient to condense our precomputed color map, but most computers have enormous hard drives that won't notice an extra 400MB file or two. This means that shrinking our file won't improve our program in any meaningful way. Even if we truly did need to make it smaller for some good and unavoidable reason, in real life we would likely just slap a compression algorithm on our original JSON and call it a day.
 
 Sometimes maximum efficiency *is* critical. Websites need to be fast, and cheap embedded devices need to cope with tiny hard drives. There's nothing wrong with optimizing your code when you need to, and learning how to do so can teach you a lot about how computers work. Just don't feel like you have to. "I thought it would be interesting" is a great reason to optimize your hobby project. "My code works fine already but I feel like a loser when my programs are a bit slow" is not.
 
@@ -153,3 +152,4 @@ PFAB reader Jason D'Souza has written [a great summary][jason] of the results of
 [pfab18]: https://robertheaton.com/pfab18-shrinking-serialized-data/
 [subscribe]: https://advancedbeginners.substack.com
 [diff]: https://github.com/robert/programming-feedback-for-advanced-beginners/commit/86cda4a4ea636ab6b96509d64aad6ee105a0d002
+[ansi-colors]: https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html#colors
