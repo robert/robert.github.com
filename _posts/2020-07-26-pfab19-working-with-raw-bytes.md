@@ -11,17 +11,27 @@ published: false
 ---
 > *This post is part of "Programming Feedback for Advanced Beginners", a regular series that helps you make the leap from cobbling programs together to writing elegant, thoughtful code. [Subscribe now][subscribe] to receive PFAB in your inbox, every fortnight, entirely free.*
 
-On the previous three editions of Programming Feedback for Advanced Beginners ([#16][pfab16], [#17][pfab17], [#18][pfab18]) we've been optimizing Justin Reppert's ASCII art generation program. If you haven't read those editions yet then start with them. I'm not going anywhere, and there's a lot of good stuff in them that you'll need in order for this edition to properly click into place.
+On the past three editions of Programming Feedback for Advanced Beginners ([#16][pfab16], [#17][pfab17], [#18][pfab18]) we've been optimizing Justin Reppert's ASCII art generation program. If you haven't read those editions yet then start with them. You'll still get something out of this week's discussion if you don't, but there's a lot of good stuff in them that you'll need in order for this week to properly click into place.
 
-As you may recall, we've been focussing on the portion of Justin's program responsible for adding color to his ASCII art. We've been trying to optimize the algorithm that the program uses to map from an input image's RGB pixel colors to ANSI color codes that can be displayed by our terminal.
+## Previously on PFAB
 
-We've been focussing on an approach in which we pre-compute the closest ANSI color code for every possible RGB pixel color and store the output in a file. [Last time][pfab18] we were working on shrinking the size of this file so as to make it faster to load. We devised a file format in which each mapping from a pixel color to an ANSI code is represented by 8 somewhat cryptic characters of [*hexadecimal*][hex]. In this format, a block of characters that maps a pixel color to an ANSI code looks something like this:
+We've been focussing on the portion of Justin's program responsible for adding color to his ASCII art. We've been trying to optimize the algorithm that the program uses to add colors to the ASCII images that it prints to the terminal. Many terminals can only print a small number of different colors, defined by the [ANSI standard][ansi-TODO], and to deal with this limitation we need to write code that maps from the true color of each pixel in our input image to the closest ANSI color.
+
+[IMG]
+
+One approach we've taken is to pre-compute the closest ANSI color code for every possible RGB pixel color and store the output in a file. When we run our program to convert an image to ASCII art, we first load up our pre-computed mappings of pixel colors to ANSI codes from our stored file. Then we look up the ANSI code corresponding to the color of each pixel, and print our ASCII character using that code.
+
+[IMG]
+
+[Last time][pfab18] we were working on shrinking the size of the file in which we store our pre-computed mapping so as to make it faster to load. We devised a file format in which each mapping from a pixel color to an ANSI code is represented by 8 somewhat cryptic characters of [*hexadecimal*][hex]. In this format, a block of characters that maps a pixel color to an ANSI code looks something like this:
 
 ```
 5CFF0152
 ```
 
-The first 6 characters in a block represent the RGB (red, green, blue) value of the pixel color using the hexadecimal counting system. Remember that two hexadecimal digits can represent any number between 0 and 255, so the first 2 characters in the block are the amount of red in the pixel color (`5C` in the above example), the next 2 are the amount of green (`FF`), and the final 2 are the amount of blue (`01`). The 7th and 8th characters in each block represent the ANSI color code that the pixel color maps to (`52`). This code is also a number between 0 and 255, again represented using 2 hexadecimal digits.
+The first 6 characters in a block represent the RGB (red, green, blue) value of the pixel color using the hexadecimal counting system. The 7th and 8th characters in each block represent the ANSI color code that the pixel color maps to.
+
+Remember that two hexadecimal digits can represent any number between 0 and 255, so the first 2 characters in the block are the amount of red in the pixel color (`5C` in the above example), the 3rd and 4th are the amount of green (`FF`), and the 5th and 6th are the amount of blue (`01`). The 7th and 8th are the ANSI code (`52`), which is also a number between 0 and 255.
 
 Since each block is exactly 8 characters long we don't need newlines or any other separator between them. Instead, the code that reads our file is responsible for chunking up the file into blocks of 8 characters itself.
 
@@ -29,7 +39,9 @@ This serialization format is already 70% smaller than our original *pretty JSON*
 
 ## Remove the pixel colors
 
-Currently each block contains both a pixel color and an ANSI code. However, we can save significant space by removing the pixel colors and replacing them with a convention. We can write out a long list of 2-hex-digit ANSI codes, and decree that the first code in the file corresponds to to the pixel color `(0,0,0)`, the next corresponds to the pixel color `(0,0,1)`, then `(0,0,2)`, and so on. Once we reach the pixel color `(0,0,255)` then we loop back round to `(0,1,0)`, then `(0,1,1)`, and so on. In more detail, we write the ANSI codes corresponding to:
+Currently each block contains both a pixel color (6 characters) and an ANSI code (2 characters). However, we can save significant space by printing only the ANSI codes. We can use a convention to keep track of which code corresponds to which pixel color, instead of explicitly including 6 characters of pixel color for every pixel/ANSI mapping.
+
+For our convention we can decree that the first two characters in the file are the closest ANSI code to the pixel color `(0,0,0)`. The next two characters are the closest code to the pixel color `(0,0,1)`, then the next two are for `(0,0,2)`, and so on. Once we reach the code for the pixel color `(0,0,255)` then we loop back round to `(0,1,0)`, then `(0,1,1)`, and so on. In more detail, we write the ANSI codes corresponding to:
 
 ```
 (0,0,0)
@@ -59,19 +71,24 @@ for (255,255,255), at which point we're done.
 (255,255,255)
 ```
 
-Previously, to represent the fact that `(0,0,0)`, `(0,0,1)`, and `(0,0,2)` all map to the ANSI color code `0`, we would have to write:
+Previously, to represent the fact that `(0,0,0)`, `(0,0,1)`, and `(0,0,2)` all map to the ANSI color code `0`, we would have to write the following (headings, newlines, and spaces added for clarity):
 
 ```
-000000000000010000000200
+Pixel  ANSI
+000000 00
+000001 00
+000002 00
 ```
 
-Now that we are using a convention to stipulate that the first 2 characters correspond to the ANSI code for `(0,0,0)`, the next 2 to the code for `(0,0,1)`, then the next 2 to the code for `(0,0,2)`, we can simply write:
+Now we are using a convention that says that the first 2 characters in the file are the ANSI code for `(0,0,0)`, the next 2 are the code for `(0,0,1)`, the next 2 are the code for `(0,0,2)`, and so on. This means that we can write the above as the much terser:
 
 ```
 000000
 ```
 
-and so on for the ANSI codes for `(0,0,3)` and beyond. This gets us all the way down to 2 characters - meaning a mere 2 bytes - per block.
+We'll find that `00` is the closest ANSI code to all the pixel colors from `(0,0,0)` to `(0,0,47)`, but once we reach `(0,0,48)` the closest code becomes `11`, and the closest code keeps changing as the pixel color changes.
+
+This approach gets us all the way down to 2 characters - meaning a mere 2 bytes - per block.
 
 ## Think in terms of bytes instead of characters
 
