@@ -54,6 +54,12 @@ steve_steveington:
       url: /2019/01/15/a-brief-history-of-wi-fi-privacy-vulnerabilities/
     - title: "Third-party dream cookies"
       url: /2019/01/27/third-party-dream-cookies/
+    - title: "It was all so easy"
+      url: /2019/02/06/it-was-all-so-easy/
+    - title: "Systems design for advanced beginners"
+      url: /2020/04/06/systems-design-for-advanced-beginners/
+    - title: "Preventing impossible game levels using cryptography"
+      url: /preventing-impossible-game-levels-using-cryptography/
 
 online_tracking:
   title: Online tracking
@@ -172,6 +178,8 @@ programming:
       url: /2014/06/20/code-review-without-your-eyes/
     - title: "The Wavefunction Collapse Algorithm explained very clearly"
       url: /2018/12/17/wavefunction-collapse-algorithm/
+    - title: "Remote code execution vulnerability in KensingtonWorks mouse manager"
+      url: /remote-code-execution-kensingtonworks/
 
 office_hours:
   title: Office Hours
@@ -238,6 +246,8 @@ writing:
   posts:
     - title: "A blogging style guide"
       url: /2018/12/06/a-blogging-style-guide/
+    - title: "A blogging style guide, vol. 2"
+      url: /a-blogging-style-guide-vol-2/
     - title: "How to come up with blog post ideas"
       url: /2019/09/24/how-to-come-up-with-blog-post-ideas/
     - title: "Lessons from a surprisingly successful blog"
