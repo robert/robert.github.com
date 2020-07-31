@@ -58,7 +58,7 @@ If you're not familiar with classes and sub-classes then you can still use `exce
 
 1. By writing `except KeyError` to catch a specific type of error (as in our example)
 1. By writing `except Exception` to catch *all* exceptions (since all exceptions are a sub-class of `Exception`)
-2. A library might have all of its exceptions descend from a common exception class (like `mylibrary.Exception`). This allows users of the library to write `except mylibrry.Exception` to catch all the specialized types of error raised by that library. We'll see why this can be useful later.
+2. A library might have all of its exceptions descend from a common exception class (like `mylibrary.Exception`). This allows users of the library to write `except mylibrary.Exception` to catch all the specialized types of error raised by that library. We'll see why this can be useful later.
 
 Michael makes extensive use of exception handling in his program, because he wants his data-collection program to run and collect data forever, or at least until he manually cancels it. If an exception is thrown while his program is running then he generally doesn't want his program to explode. Instead he wants it to *catch* the exception, print out an error message to help with debugging, and continue running.
 
