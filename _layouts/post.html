@@ -9,7 +9,7 @@
     <div class="flex-l">
       {% include navbar.html %}
       <main class="flex-auto bt bn-l b--moon-gray pa4 {{ page.classes }}">
-        <article class="f4 measure-wide mb5 nested-headline-line-height">
+        <article class="f4 measure-wide nested-headline-line-height">
           <h2 class="mv0 f2 lh-title"><a class="near-black no-underline" href="{{page.url}}">{{ page.title }}</a></h1>
           <div class="f5 mb4 mt2 fw4 silver">{{ page.date | date_to_string }}</div>
           <div class="{{ page.article_classes }}">{{ content }}</div>
