@@ -6,7 +6,7 @@ og_image: https://robertheaton.com/images/ascii-speed.jpg
 published: false
 ---
 {% raw %}
-This is a programming project for Advanced Beginners. If you’ve completed all the introductory tutorials and short exercises you can find but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you, and can be completed using any programming language. Plus, in the second half of the project we go deep, deep into the minutiae of how I think about splitting code up into functions.
+This is a programming project for Advanced Beginners. If you’ve completed all the introductory tutorials and short exercises you can find but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. The project can be completed using any programming language, and I've written [an example version in Python][example] that you can refer to if you get truly stuck. Plus, in the second half of the project we go deep, deep into the minutiae of how I think about splitting code up into functions.
 
 Let's get started.
 
@@ -712,3 +712,4 @@ A rule-of-thumb that I like to use is that if I write a function that is 80% gen
 [jinja]: https://jinja.palletsprojects.com/en/2.11.x/
 [pfab]: https://advancedbeginners.substack.com
 [ppab]: https://robertheaton.com/ppab
+[example]: https://github.com/robert/auto-project-builder
