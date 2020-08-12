@@ -26,7 +26,7 @@ You and I are both busy people with places to be and no patience for drudgerous 
 
 ```
 $ python3 auto-project-builder/main.py
-> What is 
+> What is the name of this project?
 robs-secret-project
 > Who is the author?
 rob
