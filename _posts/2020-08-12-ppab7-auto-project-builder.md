@@ -7,7 +7,7 @@ og_image: https://robertheaton.com/images/ascii-speed.jpg
 {% raw %}
 This is a programming project for Advanced Beginners. If you’ve completed all the introductory tutorials and short exercises you can find but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. The project can be completed using any programming language, and I've written [an example version in Python][example] that you can refer to if you get truly stuck.
 
-On the way, we'll focus on two critical skills. First, do you sometimes find it hard to decide which portion of your project to work on next? Do you find yourself battling simultaneous bugs in multiple corners of your codebase? We'll talk about how you can use *milestones* to split up your work into managable chunks.
+On the way, we'll focus on two critical skills. First, do you sometimes find it hard to decide which portion of your project to work on next? Do you find yourself simultaneously battling bugs in multiple corners of your codebase? We'll talk about how you can use *milestones* to split up your work into manageable chunks.
 
 Next, do you understand how functions work and why you might use them, but have trouble figuring out how to break up your code into clear, reusable, blocks? In the second half of the project we'll use an example function from our own code to go deep, deep into the minutiae of how I tackle this type of challenge.
 
