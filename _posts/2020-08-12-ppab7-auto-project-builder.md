@@ -3,10 +3,13 @@ title: "Programming Projects for Advanced Beginners #7: Auto-project-builder"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
 og_image: https://robertheaton.com/images/ascii-speed.jpg
-published: false
 ---
 {% raw %}
-This is a programming project for Advanced Beginners. If you’ve completed all the introductory tutorials and short exercises you can find but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. The project can be completed using any programming language, and I've written [an example version in Python][example] that you can refer to if you get truly stuck. Plus, in the second half of the project we go deep, deep into the minutiae of how I think about splitting code up into functions.
+This is a programming project for Advanced Beginners. If you’ve completed all the introductory tutorials and short exercises you can find but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. The project can be completed using any programming language, and I've written [an example version in Python][example] that you can refer to if you get truly stuck.
+
+On the way, we'll focus on two critical skills. First, do you sometimes find it hard to decide which portion of your project to work on next? Do you find yourself battling simultaneous bugs in multiple corners of your codebase? We'll talk about how you can use *milestones* to split up your work into managable chunks.
+
+Next, do you understand how functions work and why you might use them, but have trouble figuring out how to break up your code into clear, reusable, blocks? In the second half of the project we'll use an example function from our own code to go deep, deep into the minutiae of how I tackle this type of challenge.
 
 Let's get started.
 
@@ -17,13 +20,13 @@ Let's get started.
 {% raw %}
 ## The Auto-project-builder
 
-This project is number 7 in the Programming Projects for Advanced Beginners series ([here are the others][ppab]). The projects span a wide range of subjects, but they still all have similar structures. They have a file of code that you run, maybe some other files of code that the first file imports, a README describing how the project works and how to use it, and a TODO list of things you want to do next.
+This project is number 7 in the Programming Projects for Advanced Beginners series ([here are the others][ppab]). While writing these projecst, I've noticed that even though they span a wide range of different topics (such as ASCII art, Tic-Tac-Toe, authorization systems), they're still all structured quite similarly. They have a file of code that you run, maybe some other files of code that the first file imports, a README describing how the project works and how to use it, and a TODO list of things you want to do next.
 
 You and I are both busy people with places to be and no patience for drudgerous repetition. So for this project we're going to build a tool that creates the skeleton structure of all our other projects for us. Once it's finished, we'll use it to set up future projects, like so:
 
 ```
 $ python3 auto-project-builder/main.py
-> What is your project called?
+> What is 
 robs-secret-project
 > Who is the author?
 rob
@@ -67,15 +70,23 @@ Taking this kind of methodical approach is quadruply important when working on c
 
 ## What is a milestone?
 
-Pretend once again that you're building a house. Your end goal is;to have a finished house. Your milestones are your interim goals along the way. For example "Get planning permission", "Complete foundations", "Build first wall" and so on. Milestones give you and everyone else involved in the project short-term focus. You might still get the house finished eventually if you instead came each in each day, worked on whatever you feel like, and tested that everything mostly worked as expected once everything was finished. But that's not a house that I'd feel comfortable living in or paying you to build.
+Pretend once again that you're building a house. Your end goal is to have a finished house. Your milestones are your interim goals along the way. For example "Get planning permission", "Complete foundations", "Build first wall" and so on. Milestones give you and everyone else involved in the project short-term focus. You might still get the house finished eventually if you instead came each in each day, worked on whatever you feel like, and tested that everything mostly worked as expected once everything was finished. But that's not a house that I'd feel comfortable living in or paying you to build.
 
 ## How can you devise milestones for your project?
 
 Milestones don't need to be particularly impressive on their own. They just need to get your project one step closer to realization. Milestones should have clear *completion conditions* - either something new that your program can do ("ask the user for input, process it, and save it to the database") or something very specific about the way in which your code has changed ("move all code related to the AI logic into a `Player` class"). It should be very clear when a milestone can be considered completed and you can move onto the next one.
 
-## Project Creator milestones
+## Auto-project-builder milestones
 
-Let's come up with some milestones for the Project Creator. Milestones are best if they're small and boring; in our project, a good, dull place to start might be:
+Let's come up with some milestones for the auto-project-builder.
+
+### Try it yourself
+
+Before reading any further, take a minute or two to come up with a list of 5 or so milestones of your own. This is an important skill, so practicing it is well worth your time. If you need inspiration, start with "Ask the user for the name of the project and author. Print this information back out to the terminal."
+
+### The milestones that I came up with
+
+Milestones are best if they're small and boring; as just mentioned, a good, dull place for us to start might be:
 
 > .1. Ask the user for the name of the project and the author. Print this information back out to the terminal.
 
@@ -89,7 +100,7 @@ Once again, this milestone is something that our program does, and something tha
 
 > .3. The program creates a `README.md` file inside the new directory, containing information about the project and the author
 
-We'll eventually want to create many new files inside our directory, but our third milestone focusses on creating just one. We'll make our program capable of creating one file, then fix all the bugs that will this will inevtiably spawn, then give ourselves one pat on the back and call the milestone complete. This is a better approach than trying to immediately create three files, because that would give us something extra to worry about.
+We'll eventually want to create many new files inside our directory, but our third milestone focuses on creating just one. We'll make our program capable of creating one file, then fix all the bugs that this will inevitably spawn, then give ourselves one pat on the back and call the milestone complete. This is a better approach than trying to immediately create three files, because that would give us something extra to worry about.
 
 That's another good way of thinking about milestones - "reduce the number of things you have to think about at any one time".
 
@@ -130,9 +141,9 @@ It's desirable to reduce uncertainty as much as possible, as fast as possible. D
 
 Our first possible milestone is "Create multiple files using our current, non-templated approach". I don't think that completing this milestone would reduce our technical uncertainty very much. We can already be relatively certain that the approach we used to create one file will also allow us to create two more. It will take time and effort to implement, but it will definitely work. This means that taking our code that creates a single file and using it to create multiple files will not give us much new information, and so will not reduce our technical uncertainty.
 
-Our second possible milestone is "Create the same single `README.md` file, but this time using a new, refactored template approach." By contrast, I think that completing this milestone would substantially reduce our technical uncertainty. This is because I think that templating is more likely to throw up a technical challenge that we hadn't previously considered. Maybe we'll find that templating libraries don't work in the way that we think, or that they're too fiddly to get setup correctly. Even if our original plan turns out to be sound, proving that it is will allow us to commit to it more wholeheartedly and to seleep more soundly at night. This means that successfully adapting our code to use template files will give us lots of new information and so will substantially reduce our technical uncertainty.
+Our second possible milestone is "Create the same single `README.md` file, but this time using a new, refactored template approach." By contrast, I think that completing this milestone would substantially reduce our technical uncertainty. This is because I think that templating is more likely to throw up a technical challenge that we hadn't previously considered. Maybe we'll find that templating libraries don't work in the way that we think, or that they're too fiddly to get set up correctly. Even if our original plan turns out to be sound, proving that it is will allow us to commit to it more wholeheartedly and to sleep more soundly at night. This means that successfully adapting our code to use template files will give us lots of new information and so will substantially reduce our technical uncertainty.
 
-All of this said, in this particular situation my preference is mild at most. If you would find it satisfying to get our program working end-to-end before going back and *refactoring* it to use templates, then that's an entirely sensible and valid preference too. In fact, focussing on getting a working project as soon as possible, code quality be damned, would reduce our *product uncertainty* (is our desired goal even a good idea?) more than prioritizing template files would. We'll talk more about product uncertainty in future projects. In this particular situation I prefer to focus on reducing technical rather than product uncertainty. We're already committed to finishing this project in it's current form and aren't likely to make any changes to our plans for the functionality of our program until the extensions section. But if you would prefer to add the extra files first then you should do so and feel good about it.
+All of this said, in this particular situation my preference is mild at most. If you would find it satisfying to get our program working end-to-end before going back and *refactoring* it to use templates, then that's an entirely sensible and valid preference too. In fact, focussing on getting a working project as soon as possible, code quality be damned, would reduce our *product uncertainty* (is our desired goal even a good idea?) more than prioritizing template files would. We'll talk more about product uncertainty in future projects. In this particular situation I prefer to focus on reducing technical rather than product uncertainty. We're already committed to finishing this project in its current form and aren't likely to make any changes to our plans for the functionality of our program until the extensions section. But if you would prefer to add the extra files first then you should do so and feel good about it.
 
 On the basis of this analysis, I'd suggest that for our fourth milestone we go with:
 
@@ -390,7 +401,7 @@ Use Google to research templating engines available for your language, and choos
 
 Figuring out the nuances of your specific templating library is left as an exercise for the reader, because that's kind of the whole point of this project.
 
-If you simply can't get templating to work, despite having bashed your head against stacks of curly-braces until your head was really very sore, then don't worry. They're not essential for finishing the this project, and you can stick with the string-manipulation approach we took in the previous mileston. Templates are needed for the final milestone so do give this step your best shot, but you can also make a note to come back to this section once you've got more projects and experience under your belt.
+If you simply can't get templating to work, despite having bashed your head against stacks of curly-braces until your head was really very sore, then don't worry. They're not essential for finishing the project, and you can stick with the string-manipulation approach we took in the previous milestone. Templates are needed for the final milestone so do give this step your best shot, but you can also make a note to come back to this section once you've got more projects and experience under your belt.
 
 Once you're done, make sure that our program still works in the same way as before. Edit the template, and make sure that the rendered output changes when you re-run the program.
 
@@ -502,7 +513,7 @@ How should we decide what arguments our `write_template_to_file` function should
 
 ### Function contracts
 
-I find it useful to think about functions in terms of their *contracts*. What offer does your function make to other code that calls it? How would describe it in terms of "you give me these arguments, and I'll give you back this return value" or "you give me these arguments, and I'll do X with them"?
+I find it useful to think about functions in terms of their *contracts*. What offer does your function make to other code that calls it? How would you describe it in terms of "you give me these arguments, and I'll give you back this return value" or "you give me these arguments, and I'll do X with them"?
 
 Some examples:
 
@@ -518,7 +529,7 @@ Function contracts can get more complicated, especially when they have to handle
 
 Contracts should be as complex as they need to be and no more. Think about how you would describe your function to someone else, and what they would need to know in order to use it correctly. Would anything about your function surprise them? Is there any risk that using it will introduce strange, silent bugs to their code?
 
-These kinds of "ergonomics" are always important for making your code clean and readable. However, they are most important when you're writing "library code" that is intended be read and used by a wide range of people in a wide range of circumstances. A good example of library code is the code behind a templating engine like Jinja.
+These kinds of "ergonomics" are always important for making your code clean and readable. However, they are most important when you're writing "library code" that is intended to be read and used by a wide range of people in a wide range of circumstances. A good example of library code is the code behind a templating engine like Jinja.
 
 Let's look at how to use contracts to design clean, pleasant-to-use functions.
 
@@ -557,7 +568,7 @@ if not validate_project_name(project_name):
 
 This pretend code looks perfectly reasonable, but, as I mentioned above, I don't like the function name `validate_project_name`. It's too vague. A new reader of the above code could probably infer from context that it returns a boolean representing whether `project_name` is valid. But it's also perfectly possible that a function with this name throws an exception if `project_name` is invalid, or even returns a list of strings describing the errors.
 
-I would thererefore prefer to call the function something more specific and descriptive, like `is_valid_project_name`. Let's see how this new name looks in an if-statment:
+I would therefore prefer to call the function something more specific and descriptive, like `is_valid_project_name`. Let's see how this new name looks in an if-statement:
 
 ```python
 if not is_valid_project_name(project_name):
@@ -566,7 +577,7 @@ if not is_valid_project_name(project_name):
 
 Now we've almost got an intelligible, if stilted, English sentence. The phrase `is_valid_project_name` is itself a binary question, and it is therefore obvious to even a casual reader that it returns a true/false answer. Sidenote - the Ruby programming language takes this principle even further with the convention that methods that return booleans end in a `?`. In Ruby we would therefore call our method `valid_project_name?`. At this point you can almost hear the rising vocal inflection.
 
-Maybe your programming language or your company has different function naming conventions. That's fine - learn what they are and try to follow them. For now the important thing isn't to get everything about your code and functions perfect first time; it's to start thinking about how they look.
+Maybe your programming language or your company has different function naming conventions. That's fine - learn what they are and try to follow them. For now the important thing isn't to get everything about your code and functions perfect the first time; it's to start thinking about how they look.
 
 ---
 
@@ -659,7 +670,7 @@ This finished function is compact and modest, but it still has more details for 
 
 ### Genericism
 
-Our `write_template_to_file` function is almost entirely *generic*. This means that it contains very few assumptions or constraints that are specific to our project. It could in theory be reused as-is by any other program that needed to write templated files to files. This is a good thing, because it meanst that it will be easier to adapt as our program's requirements change.
+Our `write_template_to_file` function is almost entirely *generic*. This means that it contains very few assumptions or constraints that are specific to our project. It could in theory be reused as-is by any other program that needed to write templated files to files. This is a good thing, because it means that it will be easier to adapt as our program's requirements change.
 
 Here's an alternative implementation of `write_template_to_file` that would still work but would be much less generic. Notice how its contract has changed from accepting arguments of `(template_path, output_path, template_variables)` to `(file_name, project_name, template_variables)`:
 
@@ -701,7 +712,7 @@ A rule-of-thumb that I like to use is that if I write a function that is 80% gen
 
 ## Extensions
 
-*We're done - congratulations! Usually a PPAB project would have an extensions section where you go off on your own and add wacky, imaginative features to your program. However, I haven't finished writing the extensions to this project yet (they're coming soon). Send me [an email][contact] if you got this far and I'll send you what I've written, or [subscribe to my newsleter on programming for advanced beginners][pfab] to receive updates.*
+*We're done - congratulations! Usually a PPAB project would have an extensions section where you go off on your own and add wacky, imaginative features to your program. However, I haven't finished writing the extensions to this project yet (they're coming soon). Send me [an email][contact] if you got this far and I'll send you what I've written, or [subscribe to my newsletter on programming for advanced beginners][pfab] to receive updates.*
 
 {% endraw %}
 
