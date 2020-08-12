@@ -2,7 +2,7 @@
 title: "Programming Projects for Advanced Beginners #7: Auto-project-builder"
 layout: post
 tags: [Programming Projects for Advanced Beginners]
-og_image: https://robertheaton.com/images/ascii-speed.jpg
+og_image: https://robertheaton.com/images/ppab7-cover.png
 ---
 {% raw %}
 This is a programming project for Advanced Beginners. If you’ve completed all the introductory tutorials and short exercises you can find but are struggling to find medium-sized projects to develop your skills on, this project is for you. It is structured and guided, whilst still leaving all of the difficult work to you. The project can be completed using any programming language, and I've written [an example version in Python][example] that you can refer to if you get truly stuck.
