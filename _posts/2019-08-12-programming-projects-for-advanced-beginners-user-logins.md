@@ -171,16 +171,16 @@ JSON:
 ```
 {
   {
-    'username': 'robert',
-    'password_hash': 'ab12987dbdbd'
+    "username": "robert",
+    "password_hash": "ab12987dbdbd"
   },
   {
-    'username': 'anoosh',
-    'password_hash': '12978bffebab'
+    "username": "anoosh",
+    "password_hash": "12978bffebab"
   },
   {
-    'username': 'rob',
-    'password_hash': 'b12389df1889'
+    "username": "rob",
+    "password_hash": "b12389df1889"
   }
 }
 ```
