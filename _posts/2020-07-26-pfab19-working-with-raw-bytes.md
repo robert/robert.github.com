@@ -145,7 +145,7 @@ Sometimes maximum efficiency *is* critical. Websites need to be fast, and cheap 
 
 PFAB reader Jason D'Souza has written [a great summary][jason] of the results of applying compression algorithms to our color map problem.
 
-[jason]: https://gist.github.com/jasonrdsouza/fd407c579672584bb679780a37c27e37
+[jason]: https://www.jasondsouza.org/post/pfab-compression
 [hex]: https://www.mathsisfun.com/hexadecimals.html
 [pfab16]: https://robertheaton.com/pfab16-how-to-make-your-code-faster/
 [pfab17]: https://robertheaton.com/pfab17-precomputation-sounds-like-cheating-but-isnt/
