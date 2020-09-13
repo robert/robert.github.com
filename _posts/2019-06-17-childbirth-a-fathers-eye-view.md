@@ -7,7 +7,7 @@ redirect_from:
   - /2019/06/20/childbirth-a-fathers-eye-view/
 og_image: https://robertheaton.com/images/oscar-rob-cover.png
 ---
-"I have no idea who he is. He feels like a random baby sucking on my boob," said Gaby, my wife, ten minutes after the birth of our first child. I agreed with the sentiment, if not the specifics, but we still decided to give Oscar a bit longer before giving up and dumping him on his grandparents.
+"I have no idea who he is. He feels like a random baby lying on my chest," said Gaby, my wife, ten minutes after the birth of our first child. I agreed with the sentiment, if not the specifics, but we still decided to give Oscar a bit longer before giving up and dumping him on his grandparents.
 
 This is the story of the twenty-four hours leading up to this moment. It contains very little advice per se, since nothing scares me more than blithe overgeneralization. But it is a case study of one way amongst many in which you can have a baby.
 
