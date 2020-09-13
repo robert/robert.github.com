@@ -1,4 +1,5 @@
-
+published: false
+---
 
 A few months ago I published details of a remote code execution (RCE) vulnerability in KensingtonWorks. This vulnerability was fixed, but thanks to Parsia Harman I've found another one. I've reported this problem to Kensington, but as of 2020-09-XX this second vulnerability has not been fixed. If you use KensingtonWorks I'd therefore suggest that you uninstall it and live without your power features for a little while while you wait for it to be fixed.
 
