@@ -95,6 +95,8 @@ Sometimes he mutters and tosses in his sleep, apparently in the midst of a baby 
 
 That's my boy.
 
+> Scroll down for more posts on parenthood.
+
 <img src="/images/parenthood6-fountain.jpg" />
 
 [wacom]: https://robertheaton.com/2020/02/05/wacom-drawing-tablets-track-name-of-every-application-you-open/

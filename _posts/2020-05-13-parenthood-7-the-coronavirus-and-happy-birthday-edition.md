@@ -5,6 +5,13 @@ title: "Parenthood #7: the coronavirus and happy birthday edition"
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/parenthood7-garden.jpg
 ---
+> [(part 1)](/2019/06/17/childbirth-a-fathers-eye-view/)
+> [(part 2)](/2019/06/30/1-month-of-parenthood/)
+> [(part 3)](/2019/08/25/parenthood-3-oscar-heaton-quarterly-baby-review/)
+> [(part 4)](/2019/10/10/parenthood-4-untitled-potato-portrait/)
+> [(part 5)](/2020/01/06/parenthood-5-great-cement-ideas-that-will-make-your-partner-happy/)
+> [(part 6)](/2020/03/02/parenthood-6-re-rolling-the-dice/)
+
 I had been collecting stories about parental leave and childcare. Now it feels crass to care about anything other than the death toll and the FTSE, but let's see what we can do.
 
 <img src="/images/parenthood7-garden.jpg" />
@@ -32,6 +39,16 @@ Maybe we should focus on games with a lot of luck, like Settlers of Catan and [M
 ----
 
 Happy birthday son.
+
+> Next:
+> [(part 8)](/married-with-kids/)
+> Previously:
+> [(part 1)](/2019/06/17/childbirth-a-fathers-eye-view/)
+> [(part 2)](/2019/06/30/1-month-of-parenthood/)
+> [(part 3)](/2019/08/25/parenthood-3-oscar-heaton-quarterly-baby-review/)
+> [(part 4)](/2019/10/10/parenthood-4-untitled-potato-portrait/)
+> [(part 5)](/2020/01/06/parenthood-5-great-cement-ideas-that-will-make-your-partner-happy/)
+> [(part 6)](/2020/03/02/parenthood-6-re-rolling-the-dice/)
 
 <p style="text-align:center">
 <img src="/images/parenthood7-bus.jpg" width="50%"/>
