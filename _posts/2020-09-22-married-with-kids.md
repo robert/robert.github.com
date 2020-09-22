@@ -3,7 +3,6 @@ layout: post
 title: "I got married and had kids so you don't have to"
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/parenthood7-horse.jpg
-published: false
 ---
 <img src="/images/parenthood7-horse.jpg" />
 
