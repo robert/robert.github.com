@@ -15,7 +15,7 @@ og_image: https://robertheaton.com/images/parenthood7-horse.jpg
 > [(part 6)](/2020/03/02/parenthood-6-re-rolling-the-dice/)
 > [(part 7)](/2020/05/13/parenthood-7-the-coronavirus-and-happy-birthday-edition/)
 
-Because of Covid Oscar doesn’t see many other children and we don’t see many other parents. When Oscar does see children in a park he learns weird rules for interacting with them. We do too. It's clearly bad form to let your child lick another child when their saliva might be carrying a deadly virus, but what about in normal times? If your child steals someone else’s ball then are you obliged to wave an anti-bacterial wipe at it and return it as soon as possible, or can you turn it into a game? Setting aside the deadly virus, for a moment.
+Because of Covid, Oscar doesn’t see many other children and we don’t see many other parents. When Oscar does see children in a park he learns weird rules for interacting with them. We do too. It's clearly bad form to let your child lick another child when their saliva might be carrying a deadly virus, but what about in normal times? If your child steals someone else’s ball then are you obliged to wave an anti-bacterial wipe at it and return it as soon as possible, or can you turn it into a game? Setting aside the deadly virus, for a moment.
 
 We just moved to London. Few of our friends have babies, so we’re going to need to go out and make some parent pals. While I was on parental leave I had just started getting together a calendar of local soft plays and toddler groups. Now the Gcal events slip by without anyone having any fun or making any connections. Even though Covid lockdown is starting to lift, I think it will be a while before we go back to Little Rascal's House of Fomites.
 
