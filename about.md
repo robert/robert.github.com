@@ -5,7 +5,7 @@ classes: measure-wide f4
 ---
 I work on security [at Stripe][stripe]. I write about:
 
-* [Unconvering online privacy violations][wacom]
+* [Uncovering online privacy violations][wacom]
 * [Online tracking][online-tracking]
 * [Being sneaky][weseeyou]
 * [Network security][tcp-reset]
