@@ -96,7 +96,7 @@ P2[16] = C1[16] ^ I2[16]
        = C1[16] ^ 95
 {% endhighlight %}
 
-We plugin in whatever `C1[16]` is and find the last byte of the actual ciphertext! At this stage this will just be padding, so we will have to do some more decrypting before we find something interesting.
+We plugin in whatever `C1[16]` is and find the last byte of the actual plaintext! At this stage this will just be padding, so we will have to do some more decrypting before we find something interesting.
 
 ## Do it again
 
