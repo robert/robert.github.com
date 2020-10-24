@@ -90,13 +90,13 @@ I notified Kensington about this vulnerability on `2020-07-06`, but they haven't
 
 However, the root cause of both this and the previous vulnerability I found is still the insecure local web server. As long as it is possible for an attacker to interfere with a victim's configuration using only a malicious website, KensingtonWorks is vulnerable to settings-manipulation, which is only a small mis-step away from another remote code execution flaw.
 
-As I've already written, I don't think that KensingtonWorks should be using a local web server at all. However, I acknowledge that corporate constraints mean that a full rewrite of the tool is unlikely. If Kensington sticks with the local web server model, they should at least add authentication that prevents an attacker from interacting with it. I'm told that the industry standard for securing such local web servers is to require a custom HTTP header to be set on all requests sent to the tool. It doesn't matter what value the header takes, so long as its key is not part of the core HTTP spec. For example:
+As I've already written, I don't think that KensingtonWorks should be using a local web server at all. However, I acknowledge that corporate constraints mean that a full rewrite of the tool is unlikely. If Kensington sticks with the local web server model, they should at least add authentication that prevents an attacker from interacting with it. I'm told that the industry standard for securing such local web servers is to require a custom HTTP header to be set on all requests sent to the tool. It doesn't matter what value the header takes, so long as it begins with `Sec-`. For example:
 
 ```
-X-KensingtonWorks: 1
+Sec-X-KensingtonWorks: 1
 ```
 
-This works because browsers don't allow JavaScript running on webpages to set custom HTTP headers on their AJAX requests. Even though an attacker knows exactly the header that they need to send in order to circumvent the new security, the user's browser makes it impossible for them to set this header on a JavaScript HTTP request to KensingtonWorks.
+This works because browsers [don't allow JavaScript running on webpages to set custom HTTP headers][headers] that begin with `Sec-` on their AJAX requests. Even though an attacker knows exactly the header that they need to send in order to circumvent the new security, the user's browser makes it impossible for them to set this header on a JavaScript HTTP request to KensingtonWorks.
 
 This approach makes sense, but it still feels a little scanty to me. Other applications running on a user's machine aren't subject to the same restrictions as JavaScript running inside a browser. This means that they can still send arbitrary HTTP requests with arbitrary custom headers, allowing them to bypass KensingtonWorks's new authentication. You could argue that these applications are already executing code on the user's machine, so if they're malicious then it's already game over. But it still means that an otherwise innocuous vulnerability in a benign application that allows an attacker to make arbitrary HTTP requests can potentially be escalated to code execution via KensingtonWorks. Because of this I would prefer for the client and server to agree on a long, random string at installation-time that must be supplied with each HTTP request.
 
@@ -126,3 +126,4 @@ Questions? Comments? I'd love to [hear from you](/about).
 [electron]: https://www.electronjs.org/
 [parsia]: https://twitter.com/cryptogangsta
 [cors]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+[headers: https://developer.mozilla.org/en-US/docs/Glossary/Forbidden_header_name
