@@ -3,7 +3,6 @@ title: "Lessons from buying a house for the first time"
 layout: post
 tags: [Life]
 og_image: https://robertheaton.com/images/buying-house.png
-published: false
 ---
 This year my family and I moved from San Francisco to New York to London. When we landed at Heathrow we went to stay with my parents for a few weeks that became seven months thanks to Covid. Eventually we bought our first house. I have a few lessons and reflections from the experience.
 
