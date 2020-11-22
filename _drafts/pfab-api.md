@@ -2,250 +2,68 @@ For example, let's consider the API for Asana, a to-do list manager. The Asana A
 
 
 
+TODO: add a Steve Steveington wrapper, even if very light?
+
+
+
 ========
 
 # APIs for advanced beginners
 
-To help understand what an API is, let's start by comparing APIs to UIs, or *user interfaces*. A system's user interface is how an end user interacts with the system. Some UIs are very simple: you press `3 + 3` on your calculator and it displays the answer on its little screen. Others are very complex: you click on the Microsoft Excel icon and a spreadsheet appears, then you click on cell `C5`, then you type `=VLOOKUP(C:C, D12)`, then I forget exactly what happens but it's somewhere in the documentation.
+A user interface (UI) is how humans interact with a system. Some UIs are very simple: you press `3 + 3` on your calculator and it displays the answer on its little screen. Others are very complex: you click on the Microsoft Excel icon and a spreadsheet appears, then you click on cell `C5`, then you type `=VLOOKUP(C:C, D12)`, then I forget exactly what happens but it's somewhere in the documentation.
 
-In the same way, a system's "Application Programming Interface" (API) is how *other systems* interact with it. A system's API is a standardized definition of how other systems can communicate with it, and what it will do in response. For example, the Facebook API tells programmers what kinds of requests they can send to Facebook, and how Facebook will respond to them. An API gives programmers a convenient way to automate interactions with a system.
+Similarly, an "Application Programming Interface" (API) is how *other systems* interact with a system. A system's API defines the ways in which other systems can communicate with it, and what the system will do in response. For example, the Facebook API tells programmers what kinds of requests they can send to Facebook, and what Facebook will do in response. An API gives programmers a convenient way to automate interactions with a system.
 
-This idea of a system presenting a well-defined set of communication paths is so useful that tech companies tend to apply it to everything and anything, even things completely unrelated to code. A team might (slightly but not all that pretentiously) describe itself as having an API. If you want to ask us a question, fill in this form. If you have a bug report, create a JIRA ticket. If you need urgent help with an incident, call this phone number. Yes you can also ignore all of our carefully documented processes and come and harrass us in Slack and we will probably still help you, but that's not part of our API and so we will be grumpy about it.
+[TODO-PIC]
 
-The acronym "API" can describe many types of interactions between many types of systems. You might hear people talk about a programming library having an API, or a TODO, or even the Linux kernel. This is why my above definitions use such vague words like "system", "communicate", and "interact". However, if you're a programmer who works on or near the internet and are thinking "I should really learn more about APIs", you're probably most interested in *HTTP* APIs that allow you to interact with other companies' online products by writing code, instead of by clicking around a browser or mobile app.
+The acronym "API" can be used to describe many types of interactions between many types of systems. You might hear people talk about a programming library having an API, or a TODO, or even the Linux kernel. This is why my above definitions use such vague words like "system", "communicate", and "interact". However, if you're a programmer who works on or near the internet and who wants to learn more about APIs, you're probably thinking about *HTTP* APIs. These are APIs that companies create in order to allow you to interact with their products by writing code that sends requests over the internet, instead of by clicking around a browser or mobile app.
 
-For example, the Twitter API[LINK] allows you to write programs that read, write, search, and do all kinds of things with Tweets. The Instagram API does the same thing but for Instagram posts. Some companies' main product is an API. Twilio's[LINK] primary business is an API for programatically making phone calls and sending text messages. Stripe's[LINK] business is an API for accepting online payments. If you read the marketing material then Stripe is actually "payments infrastructure for the internet", and I'm not saying it's not, but for our purposes today it's an API for accepting online payments.
+For example, the Twitter API[LINK] allows you to write programs that read, write, search, and do all kinds of things with Tweets. The Instagram API does the same thing but for Instagram posts. Some companies' main product is an API. Twilio's[LINK] primary offering is an API for programatically making phone calls and sending text messages. Stripe's[LINK] business is an API for accepting online payments. If you read the marketing material then Stripe is actually "payments infrastructure for the internet", and I'm not saying it's not that, but for our purposes today let's call it an API for accepting online payments.
 
-In this post we're going to start with the fundamentals, but by the end we'll be deep in the weeds of nuanced best practices. What does an API request look like? What about an API response? What's an API client library? How can you write your own? What is REST? How do mobile apps use APIs? We'll look at examples of APIs. By the end you'll understand what APIs are and how to use them, and even how to build your own.
+[TODO-PIC][of interacting with Instagram API]
+
+This idea of a system presenting a well-defined set of communication paths is so useful that tech companies tend to apply it to everything and anything, even things completely unrelated to programming. A team might - slightly but not entirely pretentiously - describe itself as having an API. This API is a list of all the different ways in which other teams can communicate with it. If you want to ask us a question, fill in this form. If you have a bug report, create a JIRA ticket. If you need urgent help with an incident, call this phone number. You can also ignore all of our carefully documented processes and come and harrass us in Slack and we will probably still help you, but that's not part of our API and so we will be grumpy about it.
+
+In this post we're going to start with the fundamentals, but by the end we'll be deep in the weeds of nuanced best practices. What does an API request look like? What about an API response? What's an API client library? How can you write your own? What is REST? How do mobile apps use APIs? We'll look at examples of APIs. By the end you'll understand what APIs are and how to use them, and even how to build your own. [TODO-make-better]
 
 ======
 
 ## Who uses APIs? How do they use them?
 
-A system's API alows other systems to programatically communicate with it. APIs are often use by companies in order to integrate their comercial products with each other. For example:
+A system's API alows other systems to programatically communicate with it. Companies often use each other's APIs in order to integrate their products with each other. For example:
 
-* Strava allows you to import your FitBit data[LINK]
+* Strava uses the FitBit API to import your FitBit data into Strava[LINK]
 * Travel websites like Kayak[LINK] use airline company APIs to retrieve data about their flights
 * Tinder uses the Facebook API to pull users' profile pictures, and to tell potential matches when they have friends in common
-* Online stores use the Stripe API to charge their customers
-* Websites use Twilio to send SMS messages to their users for *two-factor authentication*
+* Online shops use the Stripe API to charge their customers
+* All kinds of applications use Twilio to send authentication and reminder SMS messages to their users
 * Calendly uses the Google Calendar API to make sure you don't schedule meetings on top of each other
 * If This Then That (IFTTT) and Zapier have built entire businesses around making it easy for users to plug APIs into each other
 * ...and many, many more
 
-Companies also use other companies' APIs to streamline their internal workflows. This allows them to build private tools and intranet sites that plug third-party tools into each other. For example:
+Companies also use each other's APIs to streamline their internal workflows. This allows them to build private tools and intranet sites that combine data and functionality from multiple third-party tools. For example:
 
 * They use the JIRA API[LINK] to automatically create tickets when their code breaks
 * They use the Greenhouse API[LINK] to build tools for managing their recruiting pipelines
 * They use the AWS API to build tools to manage their servers
 * They use the Amazon.com API the build tools to automatically list their products
 
-Note that even though APIs are primarly used by companies, many are publicly accessible and can just as easily be used by private citizens in recreational projects.
+Note that even though APIs are primarly used by companies, many are publicly accessible and can just as easily be used by private citizens in personal projects.
 
 ## What happens when you make an API request?
 
-When you make an HTTP API request, your code sends an *HTTP request* to a server (we'll talk more about HTTP shortly). Your request probably contains an *API key* that identifies you to the server, as well as some parameters telling the server what you would like it to do. The server receives the request, parses it, and checks your identity and permissions. If everything checks out then it performs the action you requested. This might be retrieving some data from a database, or writing some new data. Finally the server sends back an *HTTP response* containing any data that you requested, and an indication of whether anything went wrong while it was processing your request.
+When you make an HTTP API request, your code sends an *HTTP request* to a server (we'll talk more about HTTP shortly). This request contains parameters telling the server what you would like it to do, including an *API key* that proves your identity. The server receives the request, parses it, and performs the action you requested. Finally the server sends back an *HTTP response* containing any data that you requested, and an indication of whether anything went wrong while it was processing your request.
 
 [TODO-PIC]
 
-Web browsers also mostly retrieve websites over HTTP, and what happens when your program makes an API request is very similar to what happens when you visit a website using your browser. In fact, as we'll soon see, it can be neat and desirable for a company's websites and mobile apps to perform their actions using exact same API endpoints as other API clients. In this model the company's apps and websites are effectively no different to other API consumers; they just happen to have been written by the same company that wrote the API.
+A program making an API request is in many ways very similar to a web browser loading a website. Browsers also use HTTP to retrieve most of the data that they use to display webpages, such as HTML, images, and JavaScript. There's no hard technical difference between the HTTP requests used to load webpages and those that are conventionally thought of as API requests. In fact, as we'll see, it can even be neat and desirable for a company's websites and mobile apps to perform their actions using exact same API endpoints as other API clients. In this model the company's apps and websites are effectively no different to other API clients; they just happen to have been written by the same company that wrote the API.
 
 [TODO-PIC]
 
-In this post, we're going to be talking about HTTP APIs. So let's start by asking and answering: what is HTTP?
+In order to have a good understanding of HTTP APIs, we first need to understand more about HTTP. (TODO - HTTP section is really long so make it clear that this is a big switch)
 
-### What is HTTP?
 
-HTTP stands for *Hyper Text Transfer Protocol*. It was originally designed by Tim Berners-Lee at the dawn of the internet, and is the protocol that underlies most of the web. Before we talk about HTTP any further, let's make it clear what we mean by a "protocol". Yes we can continue this recursive definition process forever and ever until we get to "what is truth, really?" But let's just go one more layer down then we'll stop, I prmoise.
 
-A protocol is a formalized set of rules that allow systems to exchange information. Agreeing on a set of rules allows different systems to talk to each other, even those built by different, competing companies. For example, many different companies can provide you with email services. Many of these companies hate and are sueing each other. Fortunately, the internet has agreed on a common protocol for sending emails called Simple Message Transfer Protocol (SMTP). This means that when you send me an email, your email provider sends my email provider a message structured according to SMTP. Since my email provider knows and respects the rules of SMTP, it can parse this message out into subject, body, return address, attachments, and so on.
-
-Similarly, an HTTP request is a message formatted according to the HTTP protocol. Here's an example HTTP request that your browser sends when it wants to request the page `robertheaton.com/about` from my server:
-
-```
-GET /about HTTP/1.1
-Host: robertheaton.com
-User-Agent: curl/7.54.0
-Accept: */*
-TODO
-```
-
-Here's another example of an HTTP request, this time one that a program might send to the Stripe API in order to create a new charge:
-
-```
-TODO
-```
-
-It may be illuminating to realize that these aren't human-readable summaries of an HTTP request; they are literally what an HTTP request looks like. The client sends this exact data to the server, and the server parses it to work out what the client is asking it to do. There may be some minor complications; the client may encrypt the data before sending it, and the newer HTTP/2 protocol sends data in a more compressed form. But it still makes you think.
-
-We'll talk more about a few important details of HTTP shortly. It's useful to understand HTTP at a high level, but you can get a long way without knowing about the more byzantine edge cases. If you know about URL paths (like `/TODO`); HTTP verbs (like `GET` and `POST`); status codes (like `200 OK`, `404 Not Found`, and `500 Internal Error`); and a little about HTTP headers (like `TODO`), then you'll be able to get a long way.
-
-But before we talk about the protocol that underlies most web APIs, let's disambiguate a little.
-
-### What's the different between a protocol and an API?
-
-Protocols and APIs sound very similar. They're both, broadly speaking, sets of rules that allow systems to exchange information. The difference between the two is that a protocol is typically a generic set of rules implemented by many systems in order to achieve a generic goal, such as allowing two computers to exchange data over a network. By contrast, an API is a specific interface provided by a specific entity in order to achieve something specific.
-
-For example, the postal service has a protocol for sending mail around the country. If you put a letter in an envelope, write a name and address on it, and attach enough stamps, the postal service will deliver it. The protocol also has branches that deal with unexpected behavior. If you don't put enough stamps on it then they will ask the recipient to pay instead. If you write your own address on the back then they will return it to you if they are unable to deliver it. The postal service doesn't care how you use its protocol (beyond a few basic legality and safety checks). It's just a generic mechanism for delivering letters.
-
-In this analogy, an API might be a specific usage of the postal service protocol, such as submitting a particular form to the IRS.
-
-
-
-A somewhat subtle point: the postal service's rules are a protocol, but the postal service itself is an *implementation* of that protocol. The protocol describes the contract that a user has with the postal service, but you still need actual vans, postal workers, and post offices bring that contract to life.
-
-Protocols can build on top of each other. TCP/IP is a *networking-level* protocol that describes how computers can connect to and exchange data with each other over the internet. However, just being able to reliably exchange data isn't enough for two computers to have a productive conversation. They need an extra layer of rules in order to know how to structure that data. This is where HTTP comes in.
-
-HTTP is an *application-level* protocol. It gives clients and servers a well-structured way in which to send each other messages. The first line should be an *HTTP verb* (like `GET` or `POST`), then a space, then the *path* to the resource that you want (like `/posts/124891`), then the HTTP version, then a newline, and so on. 
-
-HTTP is analogous to the conventions on how formal-ish letters are usually laid out. The sender's address goes in the top-right, then the date, then "Dear So-And-So", then the body of the letter, then "Yours faithfully/Hugs and kisses/Best regards", then the sender's name.
-
-[PIC]
-
-This letter-structuring protocol is much less strict than a computer protocol like HTTP. No one's going to return a letter saying "ERROR COULD NOT PARSE DATE" if you mis-spell "Setpember". But it's still a set of rules for laying out a message, just like HTTP. Letters are written according to letter-writing conventions and sent from A to B using the postal service. Web requests are written according to HTTP and sent using TCP/IP.
-
-In the same way that letter-writing conventions have no opinions about what you actually write in the body of your letter, HTTP has no opinions about what goes in an HTTP request. 
-
-By contrast, APIs are *specific*. HTTP tells us where request paths and bodies and headers go; an API tells us what paths should go there and what the server will do and send back when it receives a particular type of API request.
-
-Technically API providers don't have to use HTTP, or indeed any existing generic protocol. An API provider could invent their own application-level protocol and tell their users to use that. "Send us a message with TODO." As long as the provider published their new protocol's specification this would work, but it would be a pain to use. Systems all across the internet have already agreed what is meant by concepts such as "an HTTP body" and "an HTTP response code". This means that API providers can simply say "to create an article, send a `POST` request to `/articles` with the following parameters in the body, formatted as JSON." They don't have to redefine all of these generic concepts.
-
-### Lifecycle of an HTTP request
-
-TODO
-
-The client forms a block of text that makes up its HTTP request. It opens a TCP connection to a server (this is admittedly a long story, but essentially this means that the client and server establish a pipe through which they can exchange data). Then it sends the block of text to the server. The server does some processing, forms its own block of text that makes up its HTTP response, and sends it back down the pipe to the client.
-
-[TODO-pic]
-
-TODO I'll say this a lot, but this is all convention. You could tecnically do whatever you want, but not a good idea
-
-### URL paths
-
-TODO Describes the resource to return. Sometimes there is literally a file there, but nowadays there usually isn't.
-
-### HTTP verbs
-
-Every HTTP request has a *verb*. The two most common are `GET` and `POST`, but there are 9 in total[TODO]. Usually the desired action is given by the combination of the HTTP verb and the URL path.
-
-HTTP could easily have been designed without verbs. Instead of creating a task by sending a `POST` request to `/api/1.0/tasks`, HTTP could have been designed so that you sent a single, generic type of HTTP request to `/api/1.0/tasks/create`. You list your tasks by sending a request to `/api/1.0/tasks/list`, and so on.
-
-The point of verbs is to give standardized hints about what a request will do. For example, by convention `GET` requests ask for existing information to be returned. They shouldn't create or update any existing resources. By contrast, a `POST` request is typically a request to create a new resource, like a new tweet, to-do item, or article. A `DELETE` request is a request to delete data, `PUT` requests update data, and so on.
-
-These are only conventions, and are not enforced in any way. If you wanted to write an API `GET` endpoint that deleted data then there's nothing stopping you, other than hopefully your colleagues' code review. 
-
-However, the hints that HTTP verbs give can be very useful. For example, when you type a URL into your browser address bar and press enter, your browser always requests this URL with an HTTP `GET` request. Since `GET` requests should only ever return data, not mutate it, this means that typing a URL into your browser is always "safe". You can be very confident that visiting `https://facebook.com/account/delete` in your browser isn't going to accidentally delete your account. If there was only one type of HTTP request, you would have no such guarantee.
-
-HTTP verbs also allow API designers to separate the *resource* that they want to act on from the action that they want to perform on it. Consider an HTTP request to `GET /articles/123`. The URL path (`/articles/123`) gives the resource that is being acted on, and the HTTP verb (`GET`) gives the action that should be performed on it. `GET /articles/123` probably means "give me article 123". By changing the HTTP verb but leaving the URL path the same, we can change the action that we perform on article 123.
-
-For example, `PUT /articles/123` normally means "update article 123 with some new data". `DELETE /articles/123` means "delete article 123 entirely". This approach works on groups of resources too. `GET /articles` usually means "give me all articles". `POST /articles` means "create a new article". Once again, none of this is technically necessary, and HTTP could function perfectly adequately without it. However, separating out concepts into their own parameters often makes for simpler code and systems. This way of laying out URL paths is often described as *RESTful*. We'll talk more about *REST* in a few sections time.
-
-### HTTP request parameters
-
-An HTTP request's verb and URL path tell the server what the sender wants the server to do. However, many actions require additional parameters. Users can't just say "create a new article"; they also need to provide the article's title, body, tags, and so on. Read-only operations like "list all articles" can also take filter parameters like author, date, and so on. There are two main ways of passing request parameters: the *query string*, and the *request body*.
-
-A query string is the section of a URL path that comes after a `?`. For example:
-
-`GET /articles?author=Robert%20Heaton&year=2020`
-
-In a `GET` request parameters are conventionally passed in the query string. This is because they help describe the resource that the `GET` request is requesting. This is the job of the URL. Parameters are usually specified using a `key=value` syntax like `?key1=value1&key2=value2`. Once again though, this is only a convention. Clients can put - and servers can accept - whatever they want in the query string. But for any normal application, we can expect a request to the above URL (`GET /articles?author=Robert%20Heaton&year=2020`) to return all articles written by Robert Heaton in the year 2020.
-
-By contrast, in a `POST` or `PUT` request parameters are usually passed in the HTTP *request body*. The request body is a blob of text that is attached to the end of an HTTP request.
-
-[TODO-PIC]
-
-A request body can take any format, but most modern APIs require parameters to be sent using JavaScript Object Notation (JSON). JSON is a simple, human-readable *serialization format*. For example, the parameters to create an article might be:
-
-```json
-{
-    "title": "An advanced beginners guide to APIs",
-    "body": "TODO",
-    "tags": ["programming", "advanced-beginners"],
-    "author": {
-        "first_name": "Robert",
-        "last_name": "Heaton"
-    }
-}
-```
-
-Older APIs might require parameters to be sent using other serialization formats like XML.
-
-Parameters that describe how a requestor wants their action to be performed are passed in the HTTP body because they describe the payload. It wouldn't make sense to pass these parameters in the query string as part of the URL, because they don't describe the resource that should be acted on; instead they describe *how* the resource specified in the URL should be acted on. Yet again, there's nothing technically enforcing this, and you could absolutely write an API endpoint that expected `POST` requests with the new resource's properties in the query string. I woudn't recommend it though.
-
-HTTP requests are only half of the story. We also need to consider HTTP responses.
-
-### HTTP responses
-
-When a client sends an HTTP request to a server, the server parses the request, performs some sort of action, then returns an HTTP response back to the client. HTTP responses have several components, but the two that you'll usually pay the most attention to are the *HTTP response code* and the *HTTP response body*.
-
-If the request was a request to retrieve some information, the response might include that information in the response body. If it was a request to create a new record, it might contain information about whether the creation was successful and the database ID of the new record. If something goes seriously wrong (eg. the server literally explodes half-way through processing the request, or the client loses its internet connection) then the client might not receive an HTTP response. In all other situations the client should expect to receive back a response. If something went wrong during processing then the server should send back a response with a status code and body indicating what went wrong.
-
-Let's look in more detail at response bodies and status codes.
-
-#### Example HTTP response
-
-HTTP responses
-
-```
-GET / HTTP/1.1
-Host: nonhttps.com
-User-Agent: curl/7.54.0
-Accept: */*
-```
-
-#### HTTP response body
-
-The HTTP response body contains the blob of information that the client requested. It's the equivalent of the HTTP request body. In modern APIs it will usually also be structured as JSON. For example, the response to a request to `GET /articles` might be:
-
-```json
-{
-    "data": [
-        {
-            "title": "TODO",
-        }
-    ]
-}
-```
-
-The response body to a request to `GET /articles/123` might be:
-
-```json
-{
-    "title": "TODO"
-}
-```
-
-Requests to create or update resources will also usually return the created or updated resource in full to give the client full information about the operation that was just performed. A request to `POST /articles` might return:
-
-```json
-TODO
-```
-
-#### HTTP response codes
-
-The Mozilla Developer Network says:
-
-> HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped into five classes:
->
-> * Informational responses (100–199),
-> * Successful responses (200–299),
-> * Redirects (300–399),
-> * Client errors (400–499),
-> * and Server errors (500–599).
-
-You can read the full list of response codes on MDN[LINK-https://developer.mozilla.org/en-US/docs/Web/HTTP/Status]. Some of the most common ones are:
-
-* `200 OK`: The request has succeeded
-* `400 Bad Request`: The server could not understand the request due to invalid syntax
-* `403 Forbidden`: The client does not have access rights to the content 
-* `404 Not Found`: The server can not find the requested resource. You've probably seen this in your browser many times over the years. See eg. https://robertheaton.com/THIS_PAGE_DOESNT_EXIST[TODO]
-* `500 Internal Server Error`: The server has encountered a situation it doesn't know how to handle. Often suggests that the server's code threw an exception while processing the client's request.
-
-----
-
-We now have a good grasp on what is meant by the "HTTP" in "HTTP API". HTTP is TODO.
-
-Now we're ready to look in more detail at APIs themselves.
 
 ----
 
@@ -599,6 +417,54 @@ In this project we're going to write a command-line interface tool for Asana, a 
 This project will be fun and life-affirming in itself, but that's not the main point of it. We're going to use this project to learn about APIs and HTTP.
 
 You may have heard of these important acronyms before. If you haven't then don't worry, we'll start from the beginning. If you have then that's great, and perhaps this project will be an opportunity for you to practice your skills, or maybe look at them from a new angle.
+
+
+
+
+
+
+
+### PROTOCOL VS API
+
+Before we talk about HTTP any further, let's make it clear what we mean by a "protocol". Yes we can continue this recursive definition process forever and ever until we get to "what is truth, really?" But let's just go one more layer down then we'll stop, I prmoise.
+
+A protocol is a formalized set of rules that allow systems to exchange information. Agreeing on a set of rules allows different systems to talk to each other, even those built by different, competing companies. For example, many different companies can provide you with email services. Many of these companies hate and are sueing each other. Fortunately, the internet has agreed on a common protocol for sending emails called Simple Message Transfer Protocol (SMTP). This means that when you send me an email, your email provider sends my email provider a message structured according to SMTP. Since my email provider knows and respects the rules of SMTP, it can parse this message out into subject, body, return address, attachments, and so on.
+
+### What's the different between a protocol and an API?
+
+Protocols and APIs sound very similar. They're both, broadly speaking, sets of rules that allow systems to exchange information. The difference between the two is that a protocol is typically a generic set of rules implemented by many systems in order to achieve a generic goal, such as allowing two computers to exchange data over a network. By contrast, an API is a specific interface provided by a specific entity in order to achieve something specific.
+
+For example, the postal service has a protocol for sending mail around the country. If you put a letter in an envelope, write a name and address on it, and attach enough stamps, the postal service will deliver it. The protocol also has branches that deal with unexpected behavior. If you don't put enough stamps on it then they will ask the recipient to pay instead. If you write your own address on the back then they will return it to you if they are unable to deliver it. The postal service doesn't care how you use its protocol (beyond a few basic legality and safety checks). It's just a generic mechanism for delivering letters.
+
+In this analogy, an API might be a specific usage of the postal service protocol, such as submitting a particular form to the IRS.
+
+
+
+A somewhat subtle point: the postal service's rules are a protocol, but the postal service itself is an *implementation* of that protocol. The protocol describes the contract that a user has with the postal service, but you still need actual vans, postal workers, and post offices bring that contract to life.
+
+Protocols can build on top of each other. TCP/IP is a *networking-level* protocol that describes how computers can connect to and exchange data with each other over the internet. However, just being able to reliably exchange data isn't enough for two computers to have a productive conversation. They need an extra layer of rules in order to know how to structure that data. This is where HTTP comes in.
+
+HTTP is an *application-level* protocol. It gives clients and servers a well-structured way in which to send each other messages. The first line should be an *HTTP verb* (like `GET` or `POST`), then a space, then the *path* to the resource that you want (like `/posts/124891`), then the HTTP version, then a newline, and so on. 
+
+HTTP is analogous to the conventions on how formal-ish letters are usually laid out. The sender's address goes in the top-right, then the date, then "Dear So-And-So", then the body of the letter, then "Yours faithfully/Hugs and kisses/Best regards", then the sender's name.
+
+[PIC]
+
+This letter-structuring protocol is much less strict than a computer protocol like HTTP. No one's going to return a letter saying "ERROR COULD NOT PARSE DATE" if you mis-spell "Setpember". But it's still a set of rules for laying out a message, just like HTTP. Letters are written according to letter-writing conventions and sent from A to B using the postal service. Web requests are written according to HTTP and sent using TCP/IP.
+
+In the same way that letter-writing conventions have no opinions about what you actually write in the body of your letter, HTTP has no opinions about what goes in an HTTP request. 
+
+By contrast, APIs are *specific*. HTTP tells us where request paths and bodies and headers go; an API tells us what paths should go there and what the server will do and send back when it receives a particular type of API request.
+
+Technically API providers don't have to use HTTP, or indeed any existing generic protocol. An API provider could invent their own application-level protocol and tell their users to use that. "Send us a message with TODO." As long as the provider published their new protocol's specification this would work, but it would be a pain to use. Systems all across the internet have already agreed what is meant by concepts such as "an HTTP body" and "an HTTP response code". This means that API providers can simply say "to create an article, send a `POST` request to `/articles` with the following parameters in the body, formatted as JSON." They don't have to redefine all of these generic concepts.
+
+
+
+
+HTTP methods allow programmers to separate the *resource* that a request acts on from the *action* that they want to perform on it. Consider an HTTP request to `GET /articles/123`. The URL path (`/articles/123`) gives the resource that is being acted on, and the HTTP verb (`GET`) gives the action that should be performed on it. `GET /articles/123` probably means "give me article 123". By changing the HTTP verb but leaving the URL path the same, we can change the action that we perform on article 123.
+
+For example, `PUT /articles/123` normally means "update article 123 with some new data". `DELETE /articles/123` means "delete article 123 entirely". This approach works on groups of resources too. `GET /articles` usually means "give me all articles". `POST /articles` means "create a new article". Once again, none of this is technically necessary, and HTTP could function perfectly adequately without it.
+
 
 ======
 
