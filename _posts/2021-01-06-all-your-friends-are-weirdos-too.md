@@ -15,7 +15,7 @@ custom_meta: "The morning after the US election it looked like the presidency wa
 > [(part 7)](/2020/05/13/parenthood-7-the-coronavirus-and-happy-birthday-edition/)
 > [(part 8)](https://robertheaton.com/married-with-kids/)
 
-The morning after the US election it looked like the presidency was still up in the air and the Democrats were going to lose the senate. We were on edge. We went for a morose morning walk, and Oscar was uncharacteristically grumpy too. His pissiness escalated as the walk wore on, until he was screaming and bawling and refusing to get out of his pushchair. We decided that we wouldn't send him to makeshift daycare at his grandparents and marveled at how amazing he was at picking up on world events and our subtle mood cues. When we got home we found a spoon in his boot.
+The morning after the US election it looked like the presidency was still up in the air and the Democrats were going to lose the senate. We were on edge. We went for a morose morning walk, and Oscar was uncharacteristically grumpy too. He got even crabbier as the walk wore on, until he was screaming and bawling and refusing to get out of his pushchair. We decided that we wouldn't send him to makeshift daycare at his grandparents and marveled at how amazing he was at picking up on world events and our subtle mood cues. When we got home we found a spoon in his boot.
 
 <img src="/images/parenthood9-woods.png" />
 
