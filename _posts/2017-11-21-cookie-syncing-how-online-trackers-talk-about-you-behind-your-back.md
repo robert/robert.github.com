@@ -32,7 +32,7 @@ When it receives this redirected request, the AdOrgy server generates its own un
 
 Here's an example of cookie syncing in action on [TheGuardian.com](https://theguardian.com). I chose TheGuardian.com in order to show that cookie syncing is truly a mainstream technique, and that even venerable lefty newspapers with relatively robust subscriber bases need to maximize ad revenue.
 
-When I visit TheGuardian.com in search of a thoughtful hot take, the first request in the cookie syncing samba is sent to CasaleMedia (ssum-sec.casalemedia.com), a tracker of some sort. CasaleMedia responds to thes rquest with several cookies (the important one containing my new tracking ID has the value `Wg9smdHM4WsAAGz0I9oAAAC2`), and redirects the request to another tracker called KRXD (beacon.krxd.net). The KRXD URL has my CasaleMedia tracking ID clearly attached to the end. KRXD now know what ID CasaleMedia have assigned me.
+When I visit TheGuardian.com in search of a thoughtful hot take, the first request in the cookie syncing samba is sent to CasaleMedia (ssum-sec.casalemedia.com), a tracker of some sort. CasaleMedia responds to this request with several cookies (the important one containing my new tracking ID has the value `Wg9smdHM4WsAAGz0I9oAAAC2`), and redirects the request to another tracker called KRXD (beacon.krxd.net). The KRXD URL has my CasaleMedia tracking ID clearly attached to the end. KRXD now know what ID CasaleMedia have assigned me.
 
 The redirected request to KRXD does not actually get re-redirected back to CasaleMedia. This means that KRXD know the ID that CasaleMedia have assigned me, but not vice versa. This could be a deliberate feature of their business agreement; it is also possible that KRXD send the ID that they have assigned me over to CasaleMedia elsewhere in the page load.
 
@@ -40,7 +40,7 @@ The redirected request to KRXD does not actually get re-redirected back to Casal
 <img src="/images/cookie-syncing-lots.jpg" />
 </p>
 
-In addition to CasaleMedia, KRXD attempt to sync cookies with no fewe than 8 other tracking companies whenever anyone loads TheGuardian.com. They may be syncing with other behavior trackers in order to expand their reach. They may be syncing with ad networks in order to allow their advertisers to make more informed bids. They may be syncing cookies with "identity graphs", companies whose entire reason for existence is trying to figure out which phones and computers are owned by the same person. Or perhaps KRXD are the ones with a valuable tracking product that these other 10 companies want to buy. We have no way of knowing what goes on once cookies are synced. Cookie syncing is cheap and easy, and the market for data is big business.
+In addition to CasaleMedia, KRXD attempt to sync cookies with no fewer than 8 other tracking companies whenever anyone loads TheGuardian.com. They may be syncing with other behavior trackers in order to expand their reach. They may be syncing with ad networks in order to allow their advertisers to make more informed bids. They may be syncing cookies with "identity graphs", companies whose entire reason for existence is trying to figure out which phones and computers are owned by the same person. Or perhaps KRXD are the ones with a valuable tracking product that these other 10 companies want to buy. We have no way of knowing what goes on once cookies are synced. Cookie syncing is cheap and easy, and the market for data is big business.
 
 ## Defence against the dark ads
 
