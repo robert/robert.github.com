@@ -3,6 +3,7 @@ layout: post
 title: "Don't worry son, all your friends are weirdos too"
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/parenthood9-woods.png
+custom_meta: "The morning after the US election it looked like the presidency was still up in the air and the Democrats were going to lose the senate."
 ---
 > Previously on parenting:
 > [(part 1)](/2019/06/17/childbirth-a-fathers-eye-view/)
