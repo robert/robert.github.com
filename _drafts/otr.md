@@ -14,7 +14,11 @@ TODO?: does Signal Protocol implement OTR semantics?
 
 
 
+TODO: perhaps briefly skim over the protocol first, then fill in all the gaps, then explain it again?
 
+TODO: OTR uses opportunistic authentication, where users are expected to authenticate fingerprints out of band or using
+a Socialist’s Millionaire’s Protocol. If this authentication is performed, it is secure, but it is often omitted.
+=> does this mean they don't use public keys?
 
 
 
@@ -22,391 +26,427 @@ https://otr.cypherpunks.ca/otr-wpes.pdf
 Original paper
 
 
+This doesn't mean that it's completely impossible that the emails are bogus. However, it does mean that you have to make bolder claims
+
+Once again, you can try to insist that the email is bogus and that your email account was hacked or your email provider maliciously signed an email that you didn't really send. These are both technically possible, but they're much less plausible denials than simply saying "yeah that message is bogus, you have no proof that I sent it, now get out of my office."
+
+TODO: different keys for signing and encryption
+
+TODO: Skylar the sceptical third-party
+
+
+
+
+Both Green's solution to DKIM signatures and OTRM use the same key insights to provide both authentication and deniability:
+
+1. Signatures only needs to be prove identity to a specific person at a specific time
+2. If the private key used to generate a signature is made public, that signature no longer proves anything to anyone
+
+
+
+
+
+
+
 ## Irl conversation properties
 
 
+The physical world has reasonably strong and, by definition, intuitive privacy settings. Suppose that you have a clandestine conversation with a friend in a local park. If you first inspect any nearby shrubberies then you can be confident that no one is eavesdropping on you. And unless you're being secretly recorded or filmed, which in most situations is unlikely, you can be similarly confident that no permanent, verifiable record of the conversation is being made. You and your friend can have a secret, off-the-record exchange of views.
 
+Technology makes communication easier, but it also changes its privacy settings. These changes don't necessarily increase or decrease net privacy, but they do change the threats and vectors that participants need to consider. No one can hide in the bushes and overhear your email or instant messages, but they can glimpse your screen over your shoulder or intercept your traffic as it travels over a network. There's no record of a conversation in a park apart from the other person's word, but emails and instant messages create a papertrail, which is both useful and incriminating.
 
-Privacy settings in the real world are quite good. You can have a conversation with your friend and be reasonably confident that no one is eavesdropping. No permanent record of the conversation is made, unless it's being secretly recorded or filmed, which for most people in most situations it probably isn't. I'm not sure whether these privacy settings are objectively good, or whether they're just what humans in free societies have grown up to expect and function with.
+Let's consider Alice and Bob. Alice and Bob want to talk to each other online, but, as always in such situations, their privacy is under threat from the evil Eve. Alice and Bob are concerned that Eve may intercept their traffic; compromise their computers; and generally try to find out what they are saying or manipulate the contents of their messages.
 
-Technology makes communication easier, but it also changes its security properties. These changes don't necessarily increase or decrease security overall - they just change the threats that participants need to consider. No one can overhear an email or IM exchange with their meat-ears, but they might see your screen over your shoulder, or intercept your traffic as it travels over a network. Sending messages by text by default creates a papertrail of everything that you say. This is both useful and incriminating.
+One way in which Alice and Bob can prevent Eve from using their network traffic to read or spoof their communication is by using standard cryptographic protocols such as PGP (Pretty Good Privacy) that provide both *encryption* (preventing Eve from reading their messages) and *authentication* (preventing Eve from spoofing fake messages). PGP is very good at facilitating secret, verifiable communication. However, it comes with unexpected and often undesirable side-effects.
 
-Let's consider a specific scenario: Alice and Bob want to talk to each other privately online. They are concerned about the possibility that Eve will eavesdrop or tamper with their messages. The most obvious defences that they need to erect are to ensure that Eve can't read their messages, and can't spoof fake messages.
+## The problems with PGP
 
-These goals can be achieved with standard cryptographic protocols like PGP (Pretty Good Privacy) that provide both *encryption* (preventing Eve from reading their messages) and *authentication* (preventing Eve from spoofing fake messages).
+Let's start by seeing how PGP works when everything goes according to plan. PGP uses an *asymmetric cipher*. This means that encryption and decryption are performed with different keys. In order to use PGP, users generate a pair of two keys, called a keypair. One of these keys is their public key, which they can safely publish and make available to anyone who wants it, even their enemies. The other is their private key, which they must keep secret and safe at all costs. Messages encrypted with their public key can only be decrypted with their private key, and vice-versa.
 
-Alice wants to use PGP to send an encrypted, authenticated message to Bob. First, she takes her private key and uses it to sign the unencrypted body of her message. This produces a digital signature that she appends to the body of her message. Then she takes Bob's public key and uses it to encrypt the message and signature together, producing an encrypted ciphertext. Finally, she sends the ciphertext to Bob over a messaging platform.
+[TODO-pic]
 
-If Eve is listening on the connection between Alice and Bob and intercepts the encrypted message, she will be unable to decrypt it, because she doesn't have Bob's private key.
+Suppose that Alice wants to use PGP to send an encrypted message to Bob. She retrieves Bob's public key from wherever he has published it and uses it to encrypt her message. She sends the resulting ciphertext to Bob, and Bob uses his private key to decrypt and read it. Since the message can only be decrypted using Bob's private key, which only Bob knows, Alice and Bob can be confident that Eve can't read their message.
 
-When Bob receives the message, he first uses his private key to decrypt the message. This allows him to read the message and its signature. Finally, he uses Alice's public key to verify the signature. Bob knows that no one could have produced this signature for this message without access to Alice's private key, which gives him very high confidence that the message was genuinely written and sent by Alice.
+[TODO-pic]
 
----BOX---
+However, even though Bob is the only person who can decrypt Alice's message, Bob has no strong proof that the message really was written by Alice. As far as he's concerned it could have been written and encrypted by Eve, or Eve could have intercepted and manipulated a real message from Alice. To prove to Bob that the message really was written by her, Alice *cryptographically signs* her message before sending it. To generate a cryptographic signature, Alice passes her message through a hash function, which is a function that produces a random-seeming but consistent and fixed-length output for a given input. She encrypts the output of the hash function with her private key. The result of this encryption is a *cryptographic signature* for her message. Alice appends the signature to her encrypted message, and sends them both to Bob. This shows why the hash function was necessary - the hash function converts an input of any length to a fixed-length output before it is encrypted, which means that all message signatures are the same length. We wouldn't want a giant message to produce a giant signature that we had to spend bandwidth on, or a tiny message to produce a tiny signature that could be easy to forge.
 
-A basic understanding of PGP and *public key cryptography*, the technique that underlies it, is important for understanding why Off-The-Record Messaging is interesting and special. If you are familiar with these concepts then you can skip this box.
+[TODO-hash-or-encrypt-first?]
 
-TODO: possibly explain PK crypto
+When Bob receives the message and signature, he uses the signature to prove to himself that the message was written by Alice and has not been tampered with. He does this by performing a similar but different process to the one that Alice used to generate the signature. He too calculates the hash of Alice's message, but he then uses Alice's *public* key to *decrypt* Alice's signature. If the resulting plaintext matches the hash of Alice's message then Bob can be confident that the signature was generated using Alice's private key, and that the contents of the message haven't changed. Since Alice is the only one who knows her private key, she is the only one who could have generated the signature, and so Bob can infer that the message really was written and signed by Alice.
 
----END BOX---
+[TODO-pic]
 
-PGP gives Alice and Bob encryption and authentication. If everything goes perfectly, it works perfectly. However, in the real world, we have to plan for the very real possibility that sometimes everything will not go perfectly. Public key cryptography relies on private keys staying private. If a user's private key is stolen, the security properties of public key cryptography are blown apart. If Eve has access to Alice's private key then she can use it to sign fake messages and make it look like they came from Alice herself. If Eve has access to Bob's private key and can intercept Alice's message on its way to Bob, then Eve can decrypt and read the message.
+This is how PGP gives Alice and Bob privacy and authentication. If Eve is listening on the connection between Alice and Bob's computers and intercepts their encrypted message then she won't be able to decrypt it, because she doesn't know Bob's private key. And if Eve tries to spoof a fake message to Bob from Alice then she won't be able to produce a valid signature, because she doesn't know Alice's private key. When Bob tries to verify a signature forged by Eve, he will discover that something is afoot. If everything goes perfectly, PGP works perfectly.
 
-It gets worse, however. Eve can use a stolen private key to read any future messages that she can intercept. But she can also read any old messages that were encrypted with that key that she has grabbed. If Bob has been using the same key then this could be months or even years of messages that were previously believed to be secret.
+However, in the real world, we have to plan for the very real possibility that sometimes everything does not go perfectly. PGP relies on private keys staying private. If a user's private key is stolen then the security properties  previously underpinned by it are entirely blown apart. If Eve has access to Bob's private key and intercepts Alice's message on its way to Bob then Eve can use Bob's private key to decrypt and read the message. If Eve also has access to Alice's private key then she can use it to sign fake messages that Eve herself has written, making it look like these messages came from Alice. If Alice and Bob's private keys are compromised and used in this way then they have to scramble to generate and exchange new keys so that they can open a new encrypted line of communication that Eve can't tamper with.
 
-It gets even worse. Alice cryptographically signed all her messages so that Bob could be confident that they were authentic. However, whilst generating a signature requires access to Alice's private key, *verifying* a signature only requires her public key. By definition, this is freely available. This means that Eve can use Alice's signatures to verify the message's authenticity just as well as Bob can. This gives her a cryptographically verifiable transcript of Alice and Bob's communications that she can use in a court of law or send to an unfriendly journalist or anywhere else.
+[TODO-pic]
 
-It's great that PGP gives encryption and authentication. However, the above, very plausible scenario, suggests two further desirable properties for a secure communication channel: *perfect forward secrecy* and *deniability*.
+All encryption is underpinned by the assumption that private keys stay private, and so we should expect any protocol to be severely damaged if this assumption is broken. But with PGP the fallout gets worse. We know already that if Eve steals a private key then she can use it to decrypt any future PGP messages that she intercepts and that were encrypted using the corresponding public key. But suppose that Eve has been listening on the connection between Alice and Bob for months or years, patiently storing all of the encrypted traffic. Previously she had no way to read any of this traffic, but with access to Bob's private key Eve can read all of the traffic she has stored that was encrypted using Bob's public key. This gives her access to reams of historical, previously-secret messages.
+
+But it gets *even* worse. Alice cryptographically signed all her PGP messages so that Bob could be confident that they were authentic. However, whilst generating a signature requires Alice's private key, *verifying* her signature only requires her public key. A public key is typically freely available. This means that Eve can use Alice's signatures to verify messages sent by Alice and stolen from Bob just as well as Bob can. If Eve gets access to Alice and Bob's signed messages, she also gets access to a cryptographically verifiable transcript of their communications that prevents Alice and Bob from credibly denying that the stolen messages are real. In a few sections' time we'll look at some real-world examples of how cryptographic signatures like this can make life more awkward for hack victims.
+
+PGP gives secrecy and authentication. But it's brittle, and it isn't robust to private key compromise. We'd ideally like an encryption protocol that better mitigates the consequences of a catastrophic hack. In particular we'd like two extra properties. First, we'd like *deniability*, which is the ability for a user to credibly deny that they ever sent hacked messages. And second, we'd like *forward secrecy*, which is the property that if an attacker compromises a user's private key then they are still unable to read past traffic that was encrypted using that keypair.
+
+Let's examine these properties in detail, see how they work, and see why they are so desirable. Then we'll look at how they are achieved in Off-The-Record-Messaging.
 
 ### Deniability
 
-Deniability (also often known as repudiatability) is the ability for a person to credibly deny that they wrote a message. In-person conversations are usually easy to deny. If you claim that over lunch I told you TODO then I can credibly say that I didn't. Normal email conversations are deniable too. If you forward an email to a journalist in which I apparently say TODO then I can credibly claim that you either edited it or forged it from scratch.
+Deniability is the ability for a person to credibly deny that they knew or did something. Statements from in-person conversations are normally easily deniable. If you claim that I told you that I planned to rob a bank then I can credibly retort that I didn't. You can't prove otherwise. Email conversations can be deniable too (although see below for a look into why they often aren't). Suppose that you forward to a journalist the text of an email in which I appear to describe my plans to rob eight banks. I can credibly claim that you edited the email or forged it from scratch. Once again, you can't prove otherwise. The public or the police or the judge might still believe your claims over mine, but nothing is mathematically provable and we're down in the murky world of human judgement.
 
-By contrast, PGP-signed emails are not deniable.
+By contrast, we've seen that PGP-signed messages are not deniable. If Alice signs a message and sends it to Bob then Bob can use the signature to validate that the message is authentic. However, anyone else who comes into possession of the message can also validate the signature and prove that Alice sent the message in exactly the same way that Bob did. Alice is therefore permanently on the record as having sent these messages. If Eve hacks Bob's messages, or if Alice and Bob fall out and Bob forwards their past communication to her enemies, Alice cannot plausibly deny having sent the messages in the same way as she could if she had never signed them. If you forward to a journalist an email in which I describe my plans to rob eight banks and which I cryptographically signed, I will be in a pickle.
 
-When Alice sends a message to Bob, she might sign it in order to authenticate her identity to Bob. The signature allows Bob to be certain that the message was sent by Alice, and that its contents are the exact contents that Alice originally sent. This is a very useful property.
+On the face of it, deniability is in tension with authentication. Authentication requires that Bob can verify that a message was sent by Alice. Deniability requires that Alice can deny having ever sent that same message. As we'll see, one of the most interesting innovations of OTRM is how it achieves these seemingly contradictory goals simultaneously.
 
-However, these same signatures mean that anyone who comes into possession of the signed emails can validate the signature in exactly the same way that Bob did. They will need access to Alice's public key, but this is unlikely to be a challenge since the whole point of public keys is that they can be distributed widely and publicly. Alice is therefore permanently on the record as having sent these messages. If Bob's email account gets hacked, or if Alice and Bob fall out and Bob forwards their past communication to her enemies or the press, she cannot deny having sent the messages in the same way as if she had never signed them.
+Technically anything can be denied, even cryptographic signatures. I can always claim that someone stole my computer and guessed my password, or infected my computer with malware, or stole my private keys while I was letting them use my computer to look up the football scores. These claims are not impossible, but they are unlikely and tricky to argue. Deniability is a sliding scale of plausibility, and OTRM goes goes to great lengths to make denials more believable and therefore more plausible. "A dog ate my homework" is a much more credible excuse if I ostentatiously purchased 20 ferocious dogs the day before.
 
-TODO - you might think this is a benefit. I'm not sure it is, be careful what you wish for. And either way it's not a benefit for Alice. NB: wikipedia lists non-rep as an advantage of DKIM https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail#Non-repudiability . Sometimes non-rep is good - contracts, audit trails, etc
+On the flip side, it's perfectly reasonable to believe that a technically deniable message is authentic. We all assess and believe hundreds of claims every day on the vague balance of probability, with no mathematical proof of their validity. Screenshots of a text conversation might be enough to convince you of my plans to rob fifty-five banks, even if no cryptographic signatures are available.
 
-Authentication and deniability are in tension. Authentication requires Alice to be able to prove to Bob that she is Alice and her message is real. Deniability requires her to be able to credibly claim to have no idea who sent a message or why. The most interesting innovation of Off-The-Record Messaging is to achieve these seemingly opposed goals simultaneously.
+But if signatures are available then that does make everything much easier.
 
-For senders of casual, social messages, deniability is a desirable property. You don't want to have everything you say or write go into an indelible record that might come back to haunt you. This is not the same thing as saying that deniability is an objectively good thing that makes the world strictly better. You might think that it was a good thing that Wikileaks was able to prove the provenance of the Podesta emails
-
-Sometimes we want messages to be un-deniable. For example, contracts are only useful if the participants can't credibly deny having made them. However, in my opinion it is sensible for casual online conversation to be deniable in the same way that casual real-life conversation is.
-
-If a message is technically cryptographically deniable, this doesn't mean that it's worthless. We all assess and believe thousands of claims every day on the vague balance of probability that have no mathematical proof of their validity. Screenshots of a text conversation might be enough to convince you of TODO, even without a cryptographic signature.
-
-Also note that anything can techncially be denied, even cryptographic signatures. You can always say that someone stole your computer and guessed your password. What we're trying to do here is make a denial more plausible. As we'll see, Off-The-Record Messaging goes to great lengths to make denials more plausible. "A dog ate my homework" is a much more believable excuse if you loudly and deliberately bought 20 ferocious dogs the day before.
-
-### The Podesta Emails
+### The Podesta Emails and the Hunter Biden laptop
 
 https://blog.cryptographyengineering.com/2020/11/16/ok-google-please-publish-your-dkim-secret-keys/
 https://wikileaks.org/podesta-emails/
 https://wikileaks.org/podesta-emails/emailid/10667
 https://wikileaks.org/DKIM-Verification.html
 
-Deniability matters in the real world.
+For message senders, deniability is almost always a desirable property. There's rarely any advantage to having everything you say or write go into an indelible record that might come back to haunt you. This is not the same thing as saying that deniability is an objectively good thing that always makes the world strictly better. Take the intertwined stories of the DKIM email verification protocol, US Democratic Party operative John Podesta, and the laptop of Hunter Biden, President Joe Biden's son.
 
-Email providers use a authentication method called DKIM to prove to mail recipients that an email is authentic and not spoofed by spammers. The email provider signs messages that they send with a private key, and makes the corresponding public key available. They make the key available via a DNS TXT record, although this detail is not important. The receiver of the messages looks up the public key and uses it to check the signature. If this verification fails, the receiver assumes that the message is forged and rejects it. This prevents spammers from sending fake, spoofed emails.
+Cryptographic signatures are used in many protocols, not just PGP. And where there's a cryptographic signature, there might also be a problem with deniability. In the old days, when an email provider received an email claiming to be from `rob@robmail.com`, there was no way for the provider to verify that the email really was sent by `rob@robmail.com`. They therefore typically hoped that it was, and accepted the email. Spammers abused this trust to bombard email inboxes around the world with forged emails. The DKIM protocol was created in 2004 to allow email providers to verify that emails they receive are legitimate, and the procotol is still used to this day.
 
-However, it also provides a permanent verification that a message is real, in exactly the same way as a PGP signature.Once again, you can try to insist that the email is bogus and that your email account was hacked or your email provider maliciously signed an email that you didn't really send. These are both technically possible, but they're much less plausible denials than simply saying "yeah that message is bogus, you have no proof that I sent it, now get out of my office."
+In order to use DKIM, email providers generate a signing keypair and publish their public key to the world (via a DNS TXT record, although the exact mechanism is not important to us here). When a user sends an email, their email provider generates a signature for their email using the provider's private signing key. The provider inserts this signature into the outgoing message as an email header.
 
-Matthew Green points out [LINK] that this makes email hacking a much more lucrative pursuit for criminals. It's hard for a journalist or a foreign government to trust a stolen dump of emails received from an associate of an associate of an associate. Any of the people in the long chain of associates could have faked or embellished their contents. However, cryptographic signatures don't decay with social distance and personal unreliability. If the signature checks out then the emails are real, no matter how questionable the character from whom you acquired them. This means that stolen signed emails are a verifiable and therefore much more valuable commodity. Data thieves are able to piggy-back off of Google's (or any other DKIM signer's) credibility.
+[TODO-pic]
 
-In March 2016, Wikileaks published a dump of emails hacked from the Gmail account of John Podesta, a US Democratic Party operative. With each email, Wikileaks included the corresponding DKIM signature, generated by Gmail or whichever provider sent the email. This allowed independent verification of the messages.
+When the receiver's email provider receives the message, it looks up the sending provider's public key and uses it to check the DKIM signature against the email's contents, in exactly the same way as a recipient would check a PGP message signature against the message's contents. If the signature is valid, the receiving provider accepts the message. If it is not, the receiving provider assumes that the message is forged and rejects it. Since spammers don't have access to mail providers' signing keys, they can't generate valid signatures, and so can't generate fake emails that pass DKIM verification. DKIM is therefore very good at preventing email forging.
 
-You may think that this specific hack was a good or a bad thing, and you may think that it's a good or a bad thing that the emails were cryptographically verificable. Either way, you probably agree that its generally a bad thing to incentivize email hacking. Even if you don't, you do have to agree that from John Podesta's point of view this hack and its verifiability was most definitely a bad thing, and that John Podesta and other email account owners are incentivized to want their conversations to happen off-the-record.
+[TODO-img]
 
-Matthew Green suggests that Google reduce the value of these dumps by regularly changing their DKIM keys and *publicly publishing* each private key once it has been taken out of service. This would mean that anyone could use that old private key to spoof a valid DKIM signature for an email. However, the purpose of DKIM is to allow email recipients to verify a message *at the time of receipt*. Once the receiver has verified and accepted the message, the signature becomes useless to everyone apart from future hackers who want to be able to prove the provenance of their haul.
+However, a DKIM signature also provides permanent proof that the signed message is real and unaltered, in much the same way as a PGP signature. DKIM signatures are part of the contents of an email, so they are saved in the recipient's inbox. If a hacker steals all the emails from an inbox, they can use the sending provider's public DKIM key to validate DKIM signatures themselves, again in the same way as they would validate a PGP signature.
 
-It therefore doesn't matter if an attacker can spoof a signature for an old email. In fact it's desirable, because it means that they are now able to spoof the signatures for all the emails in their previously valuable dumps. Previously only the email provider could have generated the signatures. Now that anyone can generate them, the signatures don't prove anything about anything.
+Email providers change, or *rotate*, their DKIM keys regularly, which means that the public key currently in their DNS record may be different to the key used to sign the message, but for many large mail providers historical DKIM public keys can easily be found on the internet. The attacker already knows that the emails are legitimate, since they stole them with their own two hands. However, DKIM signatures allow them to prove this fact to a sceptical third-party as well.
 
-These are the key insights that Off-The-Record Messaging uses to provide both authentication and deniability: authentication only needs to be prove identity to a specific person at a specific time; and once the secret key material used to generate an authentication is made public then the associated authentications can be generated by anyone, and therefore no longer prove anything to anyone.
+Matthew Green, a professor at Johns Hopkins University, points out that making emails non-repudiatable like this is not one of the goals of the DKIM protocol[LINK]. Rather, it's an odd side-effect that wasn't contemplated when DKIM was originally designed and deployed. Green also argues that DKIM signatures make email hacking a much more lucrative pursuit. It's hard for a journalist or a foreign government to trust a stolen dump of unsigned emails sent to them by an associate of an associate of an associate, since any of the people in this long chain of associates could have faked or embellished the the emails' contents. However, if the emails contain cryptographic DKIM signatures generated by trustworthy third parties (such as a reputable email provider), then the emails are provably real, no matter how questionable the character from whom they came. Cryptographic signatures don't decay with social distance or sordidness. Data thieves are able to piggy-back off of Gmail's (or any other DKIM signer's) credibility, making stolen, signed emails a verifiable and therefore more valuable commodity. 
 
-### Perfect Forward Secrecy
+In March 2016, Wikileaks published a dump of emails hacked from the Gmail account of John Podesta, a US Democratic Party operative. Alongside each email Wikileaks published the corresponding DKIM signature, generated by Gmail or whichever provider sent the email. This allowed independent verification of the messages, which prevented Podesta from claiming that the emails were nonsense fabricated by crooks.
 
-Perfect Forward Secrecy is the remarkable property that if an attacker compromises a user's private key, they still cannot decrypt traffic encrypted with that key.
+You may think that the Podesta hack was, in itself, a good thing for democracy, or a terrible thing for a private citizen. You may believe that the long-term verifiability of DKIM signatures is a virtue that increases transparency, or a failing that incentivizes email hacking. But whatever your opinions, you'd have to agree that John Podesta definitely wishes that his emails didn't have long-lived proofs of their provenance, and that most individual email users would like their own messages to be sent deniably and off-the-record.
 
-Previously could store traffic forever and then decrypt it
-This prevents that attack
+Matthew Green has a counter-intuitive but elegant solution to this problem. Google already regularly rotate their DKIM keys. They do this as a best practice precaution, in case the keys have been compromised without Google realizing. Green proposes that, once Google (and other mail providers) have rotated a DKIM keypair and taken it out of service, they *publicly publish* the keypair's *private key*.
 
-Cool but not a key innovation of OTRM, just using a sensible thing off the shelf
+Publishing an old private key would mean that anyone could use it to spoof a valid-looking DKIM signature for an email. If the keypair were still in use, this would make Google's DKIM signatures useless. However, since the keypair has been retired, revealing the private key does not jeopardize the effectiveness of DKIM in any way. The purpose of DKIM is to allow *email recipients* to verify the authenticity of a message *at the time they receive that message*. Once the recipient has verified and accepted the message, they need never verify it again. The signature has no further use unless someone - such as an attacker - wants to later prove the provenance of the email.
+
+Since DKIM only requires signatures to be valid and verifiable when the email is received, it doesn't matter if an attacker can spoof a signature for an old email. In fact it's desirable, because it renders worthless all DKIM signatures that were legitimately generated by the email provider using the now-public private key. Suppose that an attacker has stolen an old email dump containing many emails sent by Gmail, complete with DKIM signatures generated using Gmail's now-public private key. Previously, only Google could have generated these signatures, and so the signatures proved that the emails were genuine. However, since the private key is public, now anyone can trivially generate valid signatures themselves. Unless the attacker can prove that the signatures were generated while the key was still private (which in general they won't be able to), the signatures don't prove anything about anything to a sceptical third party. This applies even if the attacker really did steal the emails and is engaging in only a single layer of simple malfeasence.
+
+The theory makes sense and the Podesta Emails are interesting, but how much difference does any of this really make? Wouldn't everyone have believed the Podesta Emails anyway, without the signatures? Possibly. But consider a more recent example in which I think that DKIM signatures could have changed the course of history, had they been available.
+
+During the 2020 US election campaign, Republican operatives claimed to have gained access to a laptop belonging to Hunter Biden, the son of the then-Democratic candidate and now-President Joe Biden. The Republicans claimed that this laptop contained gobs of explosive emails and information about the Bidens that would shock the public.
+
+The alleged story of how the Republicans got hold of this laptop is somewhat fantastical, running by way of a computer repair shop in a small town in Delaware. However, somewhat fantastical stories are sometimes true, and this is exactly the type of situation in which cryptographic signatures could play a big role in establishing credibility. It doesn't matter how wild the story is if the signatures validate. Indeed, in an effort to prove the laptop's provenance, Republicans released a single email, with [a single DKIM signature](https://github.com/robertdavidgraham/hunter-dkim), that they claimed came from the laptop.
+
+[TODO-pic]
+
+The DKIM signature of this email is valid, and it does indeed prove that `v.pozharskyi.ukraine@gmail.com` sent an email to `hbiden@rosemontseneca.com` about meeting the recipient's father, sometime between 2012 and 2015. However, it also raises a lot of questions, and provides a perfect example of the sliding-scale nature of deniability. The single email doesn't prove anything more than what it says. It doesn't prove who `v.pozharskyi.ukraine@gmail.com` is, it doesn't prove that there are thousands more like it, and it doesn't prove that the email came from the alleged laptop.
+
+The email is cryptographically verifiable, but without further evidence the associated story is still plausibly deniable. I imagine that if a full dump of emails and signatures had been released, a la Wikileaks and Podesta, then their combined weight could have been enough to overcome many circumstantial denials. If they were also sitting on a stack of additional, also-cryptographically-verifiable material then it's hard to understand why the Republicans chose to release only this single, not-particularly-incendiary example. Maybe the 2020 election could have gone a different way. Cryptographic deniability is important.
+
+
+
+
+
+## Forward Secrecy
+
+Suppose that Alice and Bob are exchanging encrypted messages over a network connection. Eve is intercepting their traffic, but since their messages are encrypted she can't read them. Nonetheless, Eve decides to store Alice and Bob's encrypted traffic, just in case she can make use of it in the future.
+
+Suppose also that a year later, Eve compromises one or both of Alice and Bob's private keys. For many encryption protocols, Eve would be able to go back to her archives and use her newly stolen keys to decrypt all the encrypted messages that she has stored over the years. This could be disastrous. However, if Alice and Bob were using an encryption protocol with the remarkable property of *forward secrecy* then Eve would not be able to read their historical messages, even though she had access to their private keys. [TODO-fix]
+
+Cryptography is a very precise field so I'll quote a technical definition of Forward Secrecy to show that I'm also a very precise person:
+
+> [Perfect] Forward Secrecy is a feature of specific key agreement protocols that gives assurances your session keys will not be compromised even if the private key of the server is compromised. [TODO-source]
+
+The mathematics of how forward secrecy works are not important to us today, but a quick tour is nonetheless instructive.
+
+First, a few definitions. An encryption algorithm, or *cipher*, can be either symmetric or asymmetric. A symmetric cipher is one in which the same key is used to encrypt and decrypt the message, and an asymmetric cipher is one in which different keys are used for encryption and decryption.
+
+PGP uses an asymmetric cipher. This means that different keys - specifically, a user's public and private keys - are used to encrypt and decrypt a message. We know already that encrypting a message directly using the recipient's public key does not give forward secrecy, because if an attacker compromises the recipient's private key then the attacker can read all of their PGP-encrypted messages.
+
+Encryption protocols that provide forward secrecy typically require Alice and Bob to instead use a symmetric cipher. Since a symmetric cipher uses the same key to encrypt and decrypt a message, Alice and Bob need to agree on a shared, symmetric key that they both know the value of. As we'll soon see, in order to achieve forward secrecy they need to go even further, and use each symmetric key only briefly before forgetting it and agreeing on a new one. These temporary symmetric keys are often called *ephemeral* or *session keys*.
+
+Alice and Bob agree on each symmetric key via a process known as a *key-exchange*, which we'll look at in more detail later. Once Alice and Bob have agreed on a short-lived symmetric key, they use it to encrypt and decrypt a small number of messages (exactly 1, in the most cautious implementations). Finally, once they've finished with a key, Alice and Bob "forget" it, wiping it from their RAM, disk, and anywhere else from which an attacker might be able to recover it.
+
+Alice and Bob clearly need to agree on each symmetric key in a way that prevents Eve from working out the value of the key, even if she watches all of their key-exchange traffic. Agreeing on a secure session key over an insecure network is not trivial. Some key-exchange protocols take a simple approach that does indeed keep session keys secret, but does not provide forward secrecy.
+
+In these, non-forward-secrecy protocols, Alice chooses a random shared secret and then uses Bob's public key to encrypt that shared secret. Alice then sends the encrypted shared secret to Bob, who uses his private key to decrypt it. Since Eve does not have access to the recipient's private key, she cannot read the shared secret. Alice and Bob are therefore free to use the shared secret to symmetrically encrypt and decrypt their message.
+
+[TODO-PIC]
+
+This approach keeps session keys secret so long as Bob's private key stays secret, but it does not provide forward secrecy. Suppose that Eve stores all their encrypted traffic and then later compromises Bob's private key. She can use his key to decrypt the encrypted session keys, and then use those session keys to decrypt the actual messages that Alice sent to Bob.
+
+To give forward secrecy - and this is the very clever part - Alice and Bob must agree on each session key in such a way that prevents an attacker from working out its value, even if the attacker also compromises their long-lived private keys. Alice and Bob do still use their private keys during these key-exchanges, but only in order to prove their identities to each other. OTRM uses a Diffie-Hellman key-exchange, which we'll look at more later.
+
+If Alice and Bob agree their session keys using a key-exchange protocol like Diffie-Hellman and fully forget them once they're finished with them, then there is no way for anyone to work out what the values of those keys were; even the attacker, and even Alice and Bob. There is therefore no way, in any circumstances, to decrypt traffic that was encrypted using one of these forgotten keys. Forward secrecy, and with it one of the primary goals of OTRM, has been achieved.
+
+Forward secrecy is often called "perfect forward secrecy", including by many very eminent cryptographers. Other, similarly eminent cryptographers object to the word "perfect" because (my paraphrasing) it promises too much. Nothing is perfect, and even when a forward secrecy protocol is correctly implemented, its guarantees are not perfect until the sender and receiver have finished forgotting a session key. Between the time at which a message is encrypted and the key is forgotten lies a window of opportunity for a sufficiently advanced attacker to steal the session key from the participants' RAM or anywhere else they might have stored it. In practice the guarantees of forward secrecy are still strong and remarkable. But when discussing Off-The-Record Messaging, a protocol whose entire reason for existence is to be robust to failures, this is exactly the kinds of edge-cases we should contemplate.
+
+----
+
+We knew already that encryption and authentication were highly desirable properties for a secure messaging protocol. Encryption prevents attackers from reading your messages, while authentication allows you to be confident that you are talking to the right person and prevents attackers from modifying or faking your messages.
+
+Now we've seen why deniability and forward secrecy are important too. Deniability allows participants to credibly claim to have not sent their messages in the event of a compromise. This mirrors the privacy properties of real-life conversation and makes the fallout of a data theft less harmful. Forward secrecy, the other property that we discussed, prevents attackers from reading historical encrypted messages, even if they compromise the long-lived private keys used at the base of the encryption process.
+
+The goal of OTRM is to achieve all of these properties simultaneously, and now we're ready to see how it does it. We'll start by looking at the broad mechanics of how an OTRM exchange works, then we'll delve deeper into its subtler design decisions.
 
 ## Off The Record Messaging
 
-We already knew that encryption and authentication is a desirable property for a secure messaging platform
-We've now seen that two less obvious properties are also highly desirable - deniability and PFS
-We've also seen how common protocols may not provide these properties.
-And I've said how I think that deniability is the coolest part of this
+At a high level, an OTRM exchange looks similar to many other encryption protocols. To exchange an OTRM message, the sender and recipient must:
 
-## Threat models
+* Agree on a secret encryption key
+* Verify each other's identities
 
-Let's talk in terms of some concrete situations and see what benefits OTRM brings to them
+Then the sender must:
 
-* Eve monitoring and storing all traffic, plus private keys are known and stolen (TODO?: do you not even need PKs for DH??)
-* Unencrypted data dump stolen, including signatures
-* Eve has completely compromised a machine and can see everything they can
+* Encrypt the message
+* Sign the message
+* Send the message
 
-Throughout the following protocol description, keep in mind 3 questions for each situation:
+And the recipient must:
 
-* What can Eve see?
-* What can Eve verify to her own satisfaction?
-* What can Eve prove to a sceptical third-party later?
+* Decrypt the message
+* Authenticate its contents
+
+It sounds simple enough, but OTRM's insatiable hunger for deniability and forward secrecy mean that there's a lot of nuance in those little bullet points. There are also a few extra steps that I've left out for now because they won't make much sense until we get there.
+
+Let's start at the top.
+
+## Agreeing on an encryption key
+
+OTRM performs its encryption using shared, symmetric, ephemeral session keys, as described in the "Forward Secrecy" section above. In short, Alice and Bob agree on a symmetric key, then use it with a symmetric cipher to encrypt a message. Once the message has been received and decrypted, they forget the key and re-agree on a new one. The cadence at which new keys are agreed is discussed in detail in the original OTRM paper in section XXXTODO[LINK], but for our purposes we can assume that they are rotated roughly every message.
+
+[TODO-pic]
+
+In OTRM, Alice and Bob achieve forward secrecy by agreeing on their shared secret keys using a process called *Diffie-Hellman key exchange*.
+
+### Diffie-Hellman key exchange
+
+The guts of a Diffie-Hellman key exchange are complicated and not crucial to an understanding of OTRM. But, roughly speaking, Alice and Bob each separately choose a random secret number. They each send the other a specially-chosen number that is derived from, but isn't, their own random secret number. Now each knows their own random secret number, as well as the derived number that the other sent them. Thanks to the careful construction of the Diffie-Hellman protocol, each can use this information to derive the same final, secret key, which they can use as their shared session key. Even if Eve snoops on their communication and sees both of the derived numbers that they exchanged, she is unable to compute the final, secret key, because she doesn't know either of their initial random secrets.
+
+[TODO-PIC]
+
+Wikipedia has a good anology that uses paint instead of numbers [LINK-https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#General_overview], but if you don't get it then don't worry, the details aren't important to us. What matters is that Diffie-Hellman allows Alice and Bob to agree on a shared symmetric key with forward secrecy.
+
+## Verifying identities
+
+We've described how Alice and Bob can agree on a shared secret session key that they can use for symmetric encryption. However, we haven't yet considered how they can verify the identity of the person they've agreed a session key with. At the moment Eve could intercept and drop all of Alice and/or Bob's traffic, and then spoof a separate Diffie-Hellman key-exchange with each of them herself! Alice and Bob would each have agreed a shared secret, but with Eve instead of each other. Eve would be able to read their messages and spoof replies, and Alice and Bob would have no way of knowing what had happened.
+
+[TODO-PIC]
+
+Even though OTRM doesn't use public key cryptography to directly encrypt its messages, it does use public key cryptography for identity verification. The original OTRM paper[LINK] recommended an elegant way to verify the identities of participants in a Diffie-Hellman key exchange. However, a year or so later another paper was published that described a weakness in the original approach. The second paper proposed a broadly similar but more complex alternative. Today we'll discuss the original, simpler, if slightly flawed procedure, since it's still a good illustration of the general principle[TODO].
+
+We've seen how Alice and Bob send each other intermediate values that they derived from their secret, random values. We've seen also how Alice and Bob combine the other person's intermediate value with their own secret value to produce their shared secret key.
+
+[TODO-PIC]
+
+To prove their identities to each other, when Alice and Bob send each other their intermediate values they also cryptographically sign them. Then, when they receive a signed intermediate value from the other person, they can verify the signature against the other person's public key. If the signature doesn't check out, they can abort the conversation. If it does, they can be sure that the corresponding secret value is known only the person whose public key signed the intermediate value. This allows Alice and Bob to each be sure that they're agreeing a shared secret with the right person.
+
+[TODO-PIC]
+
+Eve can still intercept and try to tamper with their traffic, but she won't be able to get them to accept an intermediate Diffie-Hellman value derived from her own random secret. She therefore won't be able to trick them into negotiating an encrypted connection with her instead of each other.
+
+On the other hand, XXXTODO does show other ways in which Eve can manipulate a key-exchange performed in this way. Eve can have Alice and Bob agree a connection with each other, but trick Bob into believing that he is talking to Eve when he is really talking to Alice. Eve still can't read their messages, but this is nonetheless an unnacceptable level of shennanigans to allow in an otherwise highly robust protocol. OTRM therefore now uses the approach outlined in XXXTODO, which we won't discuss here.
+
+[TODO-PIC]
+
+Astute readers may be surprised by the very idea of this step. Haven't we been saying that public key cryptographic signatures are the enemy of deniability? We have, and this is a good instinct. However, all Alice and Bob sign are their intermediate key exchange values. All these signatures prove is that Alice and Bob exchanged two random-looking values. Alice and Bob don't sign their actual messages using their private keys, because this would leave them vulnerable to the deniability problems we've discussed previously.
+
+Now that Alice and Bob have agreed on a shared secret key, Alice has to pass that key into a cipher in order to encrypt her message.
+
+## Encrypting the message
+
+A secret key agreed using Diffie-Hellman can be used as part of any symmetric cipher. In OTRM, Alice and Bob use a *stream cipher with AES in counter mode*. Once again, the details of what this means and how it works are not important to us. We can treat this cipher as a black box that Alice and Bob can combine with their symmetric key to encrypt or decrypt a message.
+
+What is important is that OTRM uses a stream cipher because it is *malleable*, meaning that it is particularly *easy* for an attacker to tamper with. We'll see why this counter-intuitive property is desirable shortly.
+
+[TODO-pic]
+
+Alice and Bob have now agreed on a key, verified each other's identities, and we've told them which cipher to use. They haven't used their private keys to sign anything important, which means that there's nothing cryptographically tying them back to their message in the event of a compromise. They are therefore ready to use their key and cipher to encrypt, exchange, and decrypt a message.
+
+However, something is missing. In PGP, the job of a cryptographic signature is to prove both that a message really was originally sent by its purported sender, and that it hasn't been tampered with in transit. Because they signed their Diffie-Hellman key-exchange, Alice and Bob can each be confident in the other's identity, and so can be confident that no one else will be able to read their encrypted messages. But we haven't yet given them a way to be confident that their encrypted messages haven't been tampered with. The fact that a stream cipher is malleable and therefore particularly easy to tamper with makes this check especially important for OTRM.
+
+Let's see how OTRM authenticates the contents of its messages without jeopardizing Alice and Bob's ability to deny that they sent them.
+
+## Authenticating the message's contents
+
+By performing a Diffie-Hellman key exchange, Alice and Bob have agreed on a shared secret key and have verified each other's identities. Alice can now use their shared secret key to encrypt and send a message, and be confident that only Bob will be able to read it.
+
+However, even though Eve can't read Alice's message, she may still try to tamper with it on its way to Bob. Indeed, as we've just seen (although we haven't yet seen why), OTRM makes it especially *easy* for Eve to tamper with the message by using a stream cipher to perform its encryption. OTRM therefore needs to bolt on an extra piece of authentication so that Bob can verify that the message is unmolested.
+
+PGP achieves this authentication by having the sender sign their messages using their private signing key. Unfortunately, as we know, an attacker can use PGP signatures to prove that stolen communication is genuine.
+
+OTRM avoids this problem and preserves deniability by being very careful about what information it signs and how. Think of a shady business owner who does all their deals through handshakes and verbal agreements because they don't want to put their signature onto any potentially incriminating documents. The shifty business owner might not want to sign a purchase order for five hundred stolen TVs, but they might put their name to a birthday card for their Auntie Sarah.
+
+Alice and Bob use their private keys to prove their identities to each other by signing parts of their Diffie-Hellman key exchange. Crucially, these signatures only authenticate their key exchange; they don't prove anything to either an attacker or to Alice and Bob about the authenticity of the messages that Alice and Bob exchange using the key that they exchange. Alice and Bob can be confident that Eve won't be able to read their messages, but they can't yet be confident that she won't be able to tamper with them without them realizing.
+
+Since Alice and Bob don't want to sign their messages using their private signing keys, OTRM has to prove the integrity of its messages using a different type of cryptographic signature: an HMAC (Hash-Based Message Authentication Code). The critical property of an HMAC signature is that it is *symmetric*. In the same way that a symmetric cipher performs both encryption and decryption with the same key, a symmetric signature is both generated and verified using a single shared secret key. We'll see why this is important shortly.
+
+[TODO-pic]
+
+In order to generate an HMAC signature for a message, the signer passes the message and the secret key into the HMAC algorithm (how HMAC works internally is not important to us). The algorithm gives the signer back an HMAC signature, and the signer sends the message and HMAC signature to the recipient. In order to verify the signature, the recipient performs the same process, passing the message and the shared secret signing key into the HMAC algorithm, and getting back an HMAC signature. If the signature that the recipient calculates matches the signature provided by the sender then the recipient can be confident that the message has not changed and has not been tampered with.
+
+[TODO-pic]
+
+In order to use HMAC signatures to authenticate their messages, the sender and recipient need to agree on a shared secret signing key. In OTRM they use the *cryptographic hash* of their shared secret encryption key as their shared secret signing key.
+
+[TODO-pic]
+
+A cryptographic hash is a one-way function that produces a random-seeming but consistent output for each input. Given an input it is very easy to calculate the cryptograhic hash output. But by contrast, given a cryptographic hash output it is impossible to calculate the input that produced it. Using the hash of their encryption key as their signing key is convenient, since it removes the need for Alice and Bob to perform another key-exchange dance. It also provides a subtle contribution towards deniability that we will discuss later.
+
+[TODO-pic]
+
+With an encryption secret and a signing secret both agreed, the sender signs their message using the shared signing secret and the HMAC algorithm. The sender encrypts the message and signature together using the shared encryption secret and a stream cipher with AES in counter mode. The sender then sends their encrypted message and signature to the recipient. Once the recipient receives the message they perform the same process in reverse: they decrypt the message in order to read it, and verify the HMAC signature in order to ensure it has not been tampered with.
+
+[TODO-pic]
+
+## An unexpected twist: publishing the signing key
+
+Penultimately and oddly, the sender *publishes* the shared signing key to the world. This is safe because the HMAC key is a cryptographic hash of the encryption key, and so cannot be used to reconstruct the encryption key. However, this doesn't tell us why it is actively a useful thing to do; we'll talk about this in the next section.
+
+Once the recipient has received, decrypted, and verified a message and the sender has published the private signing key, the participants can both forget and delete their session key. This step is necessary in order to preserve forward secrecy and make it impossible for an attacker to ever penetrate their encrypted traffic. The participants negotiate a new shared session encryption key for their next message.
+
+In summary:
+
+1. Sender and recipient agree on a secret encryption session key using Diffie-Hellman key exchange. They prove their identities to each other by signing the intermediate values in the exchange
+2. Sender signs their message with an HMAC. They use a signing key equal to the cryptographic hash of the encryption key from step 1
+3. Sender uses the encryption key from step 1 to encrypt their message and signature
+4. Sender sends the encrypted ciphertext to the recipient
+5. Recipient decrypts the cipherext and verifies the signature
+6. Sender publishes the HMAC key
+7. Sender and recipient forget their session keys
+
+
 
 
 ## Key insights
 
-Before we go into the details of OTRM I'd like to outline some of the key insights that make it achieve its goals. My hope is that once these all make sense then the technical details of the protocol will all make much more sense.
+[TODO-transition]
 
+### Why does OTRM use HMAC signatures?
 
-### Reconceive the purpose of a cryptographic signature
+Suppose that I drag you, panicked, down the corridor of an office building. I stop in front of a locked door. Hands shaking, I take out a key, unlock the door, and throw it open. You peer inside. You see a clear plexiglass screen, behind which is another room with another locked door. In the corner of this other room lies a dead body, still fresh. "My good buddy, Steve Steveington, was the only person with a key to that room!" I whisper, "He did this. You must arrest him." You're not a police officer so you can't do that, but you do agree that we should call the cops.
 
-The cornerstone of OTRM is reconceiving sigantures as only needing to allow a particular person at a particular time to satisfy themselves that a message is authentic. The verifier only needs to be confident that the signature wasn't forged when they are checking the signature. Once they have authenticated the message, the signature has served its purpose. The verifier need never look at the signature again, and they need never trust it again.
+[TODO-PIC]
 
-However, suppose an attacker has access to all the messages and signatures. This might happen if TODO. With normal PGP signatures, the attacker can use the signer's public key to verify their signatures. If their private key is still private, the attacker can be confident that the signatures were generated by the real conversant. They can take their stolen data to a third-party, who can run the same verification. Even if they are skeptical of the person bringing them the messages, they can be relatively confident that the sigantures and therefore the messages are legitimate.
+My story checked out and you called the law because I was able to show you that there was a dead body inside the locked room behind the plexiglass screen, without having been able to access that room. If I had needed to be able to open the dead-body-room myself in order to show you what was inside it, then I could not have shown you that a murder had been committed without becoming as much of a suspect as my good buddy, Steve Steveington. I was able to verify a murder without being able to have commited it.
 
-In our discussion of Google's DKIM keys, we observed that signers can short-circuit this trust by publishing their private signing key. Doing so means that anyone can fake their signatures, which means that all signatures generated by the key become useless. It becomes impossible to tell whether an old signature was legitimately generated by the signer, or by a forger. The fact that old signatures become useless means that the signer's conversation partners can no longer trust them, but this is not a problem because they have presumably already used them to verify whatever information they were needed for. By contrast, the fact that old, legitimate signatures become useless to third-party verifiers is hugely problematic, because they have not yet been able to use them to verify the messages' veracity.
+Similarly, a person can verify a PGP signature without being able to create it. To create a signature you use a private key, but to verify it you use the corresponding public key. This is a usually-useful property that makes it easy to establish and propagate cryptographic trust. People often try to explain it by making an analogy to an intricate series of padlocks and boxes, but I find that these rarely make anything clearer and I've already used up my metaphor allowance for this section on the murder room thing.
 
-It is possibly practical (although a pain) for users to reveal and rotate their signing keys once every few months. However, until a signing key is published, signatures generated using it stay valid and therefore dangerous. We want to reduce the hassle of revealing our signing keys, and increase the frequency with which we can do it.
+However, as we've seen with the Podesta Emails, asymmetry can also allow hackers to turn your cryptographic signatures against you, preventing you from repudiating your hacked or leaked messages. One of the main goals of OTRM is to prevent your signatures from coming back to bite you like this.
 
-As we'll see, OTRM's approach is to sign messages using a temporary, or *ephemeral* shared secret agreed by the two participants. This secret is generated on-the-fly, which means that revealing it doesn't really cost us anything, since we can trivially generate a new ephemeral shared secret for every message that we want to sign.
+To see how OTRM acheives this goal, let's go back to the murder room. Suppose instead that I unlocked the door and opened it to reveal a single, simple room with the same dead body in the corner. "My good buddy, Steve Steveington, was the only person with a key to this room!" I whisper, "He did this. You must arrest him." You're still not a police officer, but you're also not an idiot. In order to show you what's behind this door, I've just opened it. As far as you're concerned I could also have easily committed the murder and dumped the body in the room myself.
 
-TODO: is it interesting that Alice and Bob both know it?
+[TODO-PIC]
 
-TODO: Be careful what you sign - Never sign anything apart from intermediate values [TODO - look this up more]
+By hiding the body in the single locked room, my good buddy, Steve Steveington, has put me in a bind. In order to show you that there's a dead body inside the room, I need to to unlock the door. However, by unlocking the door, I also demonstrate that I could have done the murder. I know that I didn't do the murder and I know that Steve Steveington really is the only other person with a key to the room, so I know that he must have done it. But I can't prove this to anyone else. OTRM uses a less murderous version of this insight to make its signatures both authenticatable and deniable.
 
+OTRM uses HMAC signatures. Unlike PGP signatures, HMAC signatures are both created and verified using a single shared secret key, known to both the signer and the verifier. HMAC signatures are also both created and verified using the same procedure. The signer creates the signature by passing their message and the shared secret key into the HMAC algorithm. The verifier verifies the signature by performing the same operation and comparing their result with the given signature.
 
+Suppose that an attacker has stolen a dump of messages, together with their HMAC signatures and the HMAC keys necessary to verify them. The attacker wants to use these HMAC signatures to prove that their dump is real, in the same way that Wikileaks used John Podesta's emails' DKIM signatures to prove that his emails were. In order to prove that a message's HMAC signature is valid, the attacker recomputes the signature by passing the message and the secret key into the HMAC algorithm. They then show a sceptical third-party that this generated signature matches the signature that they have stolen.
 
+[TODO-pic]
 
+However, since HMAC signatures are symmetric, anyone who can verify an HMAC signature must necessarily also be able to have produced it. This means that in order to prove to the sceptical third-party that the HMAC signature is real, the attacker must reveal that they have the tools necessary to have faked it. Even if the messages are real and were stolen fair and square, the attacker is in the same awkward position as I was when trying to show you the dead body in the single room. The sceptical third-party might still believe that the messages are genuine on the balance of probability, but this time the victim's cryptography doesn't inadvertantly work against them.
 
+Does this mean that HMAC signatures are somehow better than PGP signatures? No. HMAC and PGP signatures are different, with different uses in different scenarios, and neither is better than the other. They are both ways of authenticating messages, and which is appropriate depends on the situation.
 
-### Signatures don't prove anything to a sceptical third-party if in order to verify them you need to be able to create them
+### Why does OTRM require the sender to publish their ephemeral HMAC signing keys?
 
-Signatures don't prove anything to a skeptcial third-party if in order to verify them you need to theoretically be able to create them
-Analogy - using a key to open a door with a dead body and saying that only Alice has access to this room so it must have been her. Maybe you are much more trustworthy than Alice and so your story still checks out, but it's not mathematically proven
+Message signatures only need to allow a particular person at a particular time to satisfy themselves that a message is authentic. In OTRM, only the message recipient needs to be confident that the signature is valid, and they only need to be confident of this when they are initially receiving the message and checking its signature. Once the recipient has authenticated the message, they can record the fact that the signature was valid. They need never look at the signature again, and they need never trust it again.
 
-Signatures only help if a third party can both read a message and not create signatures for messages
-If they can't read the message and can't create signatures then that's fine and normal
-If they can do both then they can't prove anything to anyone else. Bad, but defend-able
-If they can't read but can sign then that's weird but is probably OK
+This is why it is safe for Google to publish a private DKIM signing key once the key is retired, as suggested by Matthew Green many paragraphs ago. If Google publish a retired, private DKIM signing key then all signatures generated using that key become useless, but this is OK because all of the genuine signatures have already been verified and have served their purpose.
 
+As we've seen, an OTRM recipient uses a message's HMAC signature to verify its authenticity. Once they have done this, the final step in an OTRM exchange is for the sender to publish the shared secret that they used to sign the message. The reason that they do this is similar but subtly different to the reason that Prof. Green asks Google to publish their DKIM keys. Prof. Green asks Google to publish their DKIM keys because this makes old, genuine signatures produced by the keys useless to an attacker wanting to prove the validity of stolen emails. However, we've seen that OTRM signatures are already close-to-useless to attackers because they are generated using the symmetric HMAC algorithm. A thief still can't ever use HMAC signatures to authenticate their swag to a sceptical third-party, because the third-party knows that the attacker could have trivially faked them. The thief is in this predicament whether or not the participants publish their private signing keys.
 
+Nonetheless, the attacker can still use the HMAC signatures they've stolen to give themselves and their trusted accomplices additional confidence that the corresponding messages are genuine. From the attacker's point of view, the HMAC keys are known only to Alice, Bob, and the attacker. Since the attacker knows that they didn't fake the messages, they can be confident that they were legitimately written and signed by Alice and Bob, even though they can't cryptographically prove this to anyone else. If the attacker has accomplices who trust them implicitly then those accomplices can be similarly confident too. A court might trust an intelligence agency not to fake HMAC signatures, even thought they trivially could, and so take signatures as strong evidence of a message's genuineness.
 
+However, by publishing their ephemeral HMAC signing keys, Alice and Bob make it harder for the attacker to be certain that their haul is genuine. Once anyone can see their ephemeral HMAC signing keys, anyone could have written and signed the messages and left them lying around on Bob's hard drive. Admittedly, the most plausible explanation for how the messages got there is still that Alice and Bob wrote and signed them, but publishing their signing keys is still a cheap and cunning way for Alice and Bob to introduce some extra uncertainty and deniability into the mix. The attacker can't be as certain as they used to be that their stolen messages are real, and anyone they give the messages to has to trust not only that the attacker is being honest (as before), but also that the messages weren't forged by a fourth-party. It's not an "I am Spartacus" moment so much as a "she is Spartacus, or maybe he is, or perhaps she is, I don't know, leave me alone."
 
-### Malleable encryption improves deniability
+### Why does OTRM use a malleable encryption cipher?
 
-Usually it's hard to produce a ciphertext without the key
-It's not quite hard enough that you can use it for authentication, but it's still hard
+One of the main goals of OTRM is to make it as plausible as possible for the author of an encrypted, authenticated message to claim that they did not write it. We've already seen how OTRM signatures are designed so as to crumble to dust when compromised by an attacker. However, it's still possible for even an unsigned ciphertext to make hard-to-deny ties back to the true author. These ties aren't as mathemtically bulletproof as a signature, but in the interests of completeness OTRM tries to sever them too.
 
-Making it easier to forge makes it easier to deny
-=> TODO: when would this become relevant? If key is revealed because of poor RNG generation
-=> If decryption key is revealed? If its symmetric then they could clearly have produced fake ciphertext already
-Again, deniability is a sliding scale
-Idk whether this would have any relevance in a court of law but it's interesting
+For many encryption ciphers, it's very hard to produce an encrypted ciphertext that decrypts to anything meaningful if you don't know the secret key. It's not quite hard enough that you can assume that any ciphertext that decrypts to a sensible plaintext must have been generated by someone with access to the secret key, but it is still very hard. This means that if a ciphertext produces sensible plaintext when decrypted then it's reasonable to infer that it was probably generated by someone with access to the secret key.
 
+[TODO-pic]
 
+To mitigate this undesirable connection, OTRM performs its encryption using a *malleable* cipher. A malleable cipher is one for which it's comparatively easy for an attacker to produce a ciphertext that decrypts to something sensible, even if they don't know the encryption key. OTRM uses a stream cipher. If an attacker can correctly guess the plaintext that a stream cipher's ciphertext decrypts to, the attacker can manipulate that ciphertext so that it decrypts to any message of their choice of the same length. The attacker can do this even if they don't know the key used to encrypt the original ciphertext.
 
+[TODO-pic]
 
+This means that using a malleable cipher gives Alice and Bob an extra layer of deniability, very similar to the one that they get from publishing their HMAC signing keys. Let's consider a scenario in which this added layer might be useful. Suppose that Alice and Bob accidentally use a weak random-number generator when choosing their random secrets at the start of their Diffie-Hellman key exchanges. This means that Eve is able to deduce the values of their random secrets; work out their symmetric encryption keys; and use these keys to decrypt Alice and Bob's messages. This is already a very bad outcome, but OTRM's goal in disasters like this is to mitigate the mishap and make the revealed messages as deniable as possible.
 
-### Principle of Most Privilege
+Alice and Bob didn't use their private keys to sign their messages directly, which already gives them a lot of wiggle room. But even though Eve can't cast-iron prove anything, but she can use try to build a case on-the-balance-of-probability.
 
-Usually we want least privilege - an attacker who gets power X should not be able to easily pivot into power Y
-But in this case we want compromising part of the system to give the attacker powers to manipualte it arbitrarily. Principle of Most Privilege!
+Alice and Bob signed parts of their Diffie-Hellman key exchange using their private keys. Eve can use these signatures to prove to a sceptical third-party that Alice and Bob performed a key exchange that produced a specific symmetric session key. Eve can then also show the third-party the encrypted messages that Alice and Bob exchanged, and demonstrate that the session key decrypts these messages into sensible plaintexts with valid signatures.
 
-Would usually probably not want to allow forging sigs - eg in a build system
-TODO: does this make your system less secure? Could you get compromised and not realize it and it will be easier to forge? No because if the compromise the other person then you're screwed either way
+[TODO-pic]
 
-If your security services are too powerful and can compromise anything at will then you can't credibly claim that you couldn't have possibly accessed a private key, so sigs become useless. I guess they become useless for your enemies too, so that's a nice win
+Even without a malleable cipher, this isn't a total deniability disaster. Symmetrically encrypted ciphertexts are just as useless for proving authorship as symmetrically signed messages. If Eve is able to verify a symmetric signature then she must also have been able to forge it, and if Eve is able to decrypt a symmetrically encrypted ciphertext then she must have been able to forge that ciphertext too. Eve therefore can't use Alice and Bob's ciphertexts to rigorously prove that they wrote them, because Eve could have produced the ciphertexts herself. This is a general property of symmetric encryption, and applies even if the cipher that Alice and Bob use is not malleable.
 
+However, as with HMAC signatures, the fact that the ciphertexts decrypt to a sensible plaintext does give Eve herself a lot of confidence that they are genuine, as well as anyone else who implicitly trusts Eve. If Eve knows that the symmetric encryption key was known only to Alice, Bob, and herself, and she knows that she didn't produce the ciphertext, then she knows that Alice or Bob must have.
 
+To solve a similar problem with their HMAC signatures, Alice and Bob injected some extra uncertainty by publishing their HMAC signing keys after they had been used. This made it clear that anyone could have generated the signatures, not just Alice, Bob, or Eve. Eve could still guess that the signatures were probably generated by Alice or Bob, but now she also has to account for the increased possibility, however slight, that they were forged by a fourth-party.
 
+Similarly, by using a malleable cipher, Alice and Bob make it more plausible that a ciphertext that can be legibly decrypted using their symmetric encryption key could have been produced by a fourth-party. All that this fourth-party would have had to do is intercept one of their messages, correctly guess its plaintext version, and exploit the malleability of the stream cipher used to generate it. This isn't trivial, but it's much easier than if Alice and Bob used a more robust, non-malleable cipher. I don't know whether this would have any power in a court, but it's fun to think about.
 
+Note that even though stream ciphers are easier to tamper with than many other types of cipher, OTRM participants are protected by the bolted-on HMAC signature from their messages being blindly tampered with, so long as the attacker has not compromised their encryption session key. If an attacker who does not know their encryption session key is able to successfully tamper with a message then the HMAC signature will no longer validate, and the participants will know that they are under attack. If the attacker does know their encryption session key then the game is unavoidably up, and OTRM goes into deniability-preserving disaster-defence mode as described above.
 
-## OTR summary
+### Why is the hash of the encryption key used as the signing key?
 
-Brief overview, then we'll look at each step in more detail
+We previously mentioned that the value used for the HMAC symmetric signing key is equal to the hash of the symmetric encryption key. This choice gives two benefits. First, the participants have already negotiated a symmetric encryption key, and securely deriving the signing key from the encryption key saves the participants from having to perform a second negotiation. Second, and most interestingly, it means that any attacker who compromises an encryption session key also compromises the corresponding signing key by default, since all they need to do to calcualte the signing key is to take the hash of the encryption key.
 
-* DH key exchange
-* Encrypt using malleable stream cipher
-* Bolt on auth using MAC with key that is hash of enc key
-* Publish MAC keys to make them useless
+This combines the two finesses that we have just talked about. We know already that any attacker who can decrypt a message could also have forged it, and any attacker who can verify a signature could also have forged that. By linking encryption and signing keys in this way, any attacker who can decrypt a message could also have forged both the message *and* its signature. Making it easier for an attacker to produce a total forgery in the event of a key compromise increases deniability. This is a good example of the Principle of Most Privilege.
 
+### The Principle of Most Privilege
 
-### Agree a shared secret key using Diffie-Hellman
+You may have heard of the Principle of Least Privilege. This security precept states:
 
-Use DH to create a shared secret key then use this for PFS encryption.
-Can use normal PKI to authenticate IDs
-It's the key exchange that makes it PFS, not the algo
+> Any user, program, or process should have only the bare minimum privileges necessary to perform its function.
 
-Brief outline of DH
+Applying Least Privilege to your system means that an attacker who compromises one part of it won't be able to easily pivot into new parts and powers, and will therefore only be able to do limited damage. This is why spies operate in small cells; if they are discovered and interrogated then they don't have enough knowledge or privileges to help their captors roll up their chain of command. This is also why you shouldn't give everyone in your company administrator access to all of your systems. You might trust everyone without reservation, but giving a user unnecessary powers needlessly worsens the consequences of their account getting compromised. It's bad if an attacker is able to read all of one person's emails; it's much worse if they can read everyone's emails, then delete them all, then forge new messages that they look like they came from the CEO.
 
+Nonetheless, I would argue that OTRM goes out of its way to achieve the opposite: The Principle of Most Privilege! To see why I think this, remember that the worst-case situation that OTRM tries to prevent at all costs is the one in which an attacker:
 
-### Encrypt message using a malleable cipher
+1. Has access to unencrypted, signed messages
+2. Can prove to a sceptcial third-party that the signatures are valid
+3. Could *not* have produced the signatures themselves
 
-Could use any sensible encryption algo here
-But we've said that malleable encryption is desirable in order to increase deniability
-So we use a malleable stream cipher
-Easy to manipulate
+This combination is a particular disaster because it means that the attacker can both read Alice and Bob's messages *and* use their cryptographic signatures to prove their legitimacy to a sceptical third-party. It's important that the attacker can verify the signatures (point 2), but *can't* produce them (point 3), because then the third-party can trust that the attacker didn't forge the signatures themselves. The attacker's capabilities are limited, which is Least Privilege in action but in an oddly unhelpful way.
 
+As we've seen, OTRM prevents these 3 properties from occuring simultaneously by making it impossible for points 2 and 3 to be true at the same time. If an attacker can verify a signature (point 2) then they must have its symmetric HMAC key and so *could* have generated it themselves (the opposite of point 3). This is the Principle of Most Privilege - if you want to verify signatures, then you also have to be able to create them.
 
+The ideal situation is of course that users' communications stay secret and no attacker has any access to anything. Any sensible encryption scheme works well when everything goes as planned, but OTRM puts substantial focus on what happens when it doesn't. Usually we want to segment powers and credentials; this is an odd situation in which we don't.
 
-### Bolt authentication onto the side using HMAC
+NB: The Principle of Most Privilege is not a real principle, I just made it up. Don't bother Googling it.
 
-Since messages are easy to manipulate, we need to add authentication
-Symmetric authentication is desirable because of Principle of Most Privilege
+## CONCLUSION
 
-Make the MAC key the hash of the enc key so that anyone who can write a message can also sign it
-Either attacker can do nothing or the whole system is busted open
+TODO SOMETHING END
 
 
 
 
 
 
-### Publish old HMAC secrets to increase deniability
 
-Publishing old HMAC secrets doesn't reveal keys because they are one-way hash
+====
 
-4.4 Revealing MAC keys
-"This can be seen as the analogue
-of perfect forward secrecy for authentication: anyone who
-recovers the MAC key in the future is unable to use it to
-verify the authenticity of past messages."
-=> we only get this property if we can easily and reliably claim that the MAC keys are widely known to others. You could make this claim in normal circumstances, and sometimes you'd be telling the truth, but it's not very plausible. 
+Public key cryptography like PGP has the advantage that the participants don't need to talk to each other directly in order to agree a key. Instead they can freely read each other's public keys and freely send each other messages to pick up later. This is convenient. However, full public key cryptography requires lots of infrastructure and checks that are often glossed over, such as roots of trust, certificate chains, and key recovation [TODO-link-to-my-post].
 
+By contrast, in order to create and verify an HMAC signature, participants need to communicate directly and pro-actively agree on a shared secret key. This is awkward, but it's also the only thing they need to do. Once they've exchanged a secret key, there's no other checks to worry about. On the other hand, HMAC doesn't do anything to prove the identity of the person you are talking to; you'll need a further check (possibly itself involving public key cryptography) to do that.
 
+Which is most appropriate also depends on the context. HMAC works well when exchanging messages with one other person and when suitable key-exchange and identity-verification protocols are available. However, suppose that I want to make a public post on Reddit with a new account, and I want to prove that the message was written by me, Robert Heaton. A good way to do this would be to cryptographically sign my message.
 
+However, using an HMAC signature to authenticate a public message would be nonsensical. An HMAC signature requires a shared secret, but if I share a secret with the whole world then it's not really a secret anymore, since anyone could use it to spoof a signature for any message. Even more importantly, since HMAC signatures deliberately ignore the problem of identity-verification, there's no reason to believe that the HMAC signature was generated by me, Robert Heaton. Adding an HMAC signature to a public message therefore achieves almost exactly nothing.
 
-
-
-
-
-## Authentication
-
-MACs for signing, which require knowing the single key in order to either create or verify
-Can only be verified by someone who could also have created the sig. This means that Bob can't prove that Alice wrote a message to a skeptical third-party
-=> if Bob starts trying to do this then we leave the neat world of crypto and enter the messy real world. It seems unlikely that Bob would try to forge a message. But then if he's trying to prove to someone else that Alice said something then he probably has a grudge against her. Have to make a decision and interpret this info. OTR is just a tool to nudge the balance of probabilities in a direction
-
-
-
-
-Go even further - use the same key for signing and encryption (hash the encryption key to produce the signing key), so anyone who can read a message can also sign it. This provably avoids the bad case of read not sign (above)
-Go even even further - publish the MAC key after it has served its purpose.
-=> TODO: what scenario does this protect against? Eve recovers a dump of messages and deposits them with law enforcement, then law enforcement later recover the MAC key?
-=> or just law enforcement recovers a dump of messages and you can say you don't know anything about them. Even if the courts still trust law enforcement, you've made the messages less useful.
-=> journalists are less trustworthy than law enforcement (right?) but they can't provide any equivalent of the Podesta signatures. Public still might believe them, but your encryption scheme at least isn't working against you.
-=> Don't consider journalists safe harbor so they have a problem immediately. even if we do assume law enforcement to be acting honestly, we can still deny
-=> we're making our denial more plausible by requiring less James Bond espionage in order to carry it out
-
-
-
-=> TODO?: doesn't this allow Eve to authenticate Alice? Or is this already assumed to be the case. Eve can authenticate that the person who published the MAC is also the person who sent the messages, but she probably knew that
-=> TODO: how are the keys published?
-
-
-"Eve can’t
-look at the MAC’d message and determine that Alice sent it,
-because Eve doesn’t know the MAC key"
-
-Law enforcement grabs a dump of messages and has managed to recover the enc key
-=> even if we trust law enforcement not to have forged any messages, we can still say that someone else generated everything without having to say that they stole our keys? But then the sigs won't check out? OHHH so that's why we publish the MAC keys - we say that someone could have massaged our message to make it say anything, and then used the MAC keys we've published to sign it and make it look legit
-=> TODO?: do we sign then encrypt or vv? Makes a difference for how hard it is to fiddle with a message and then produce a valid signature
-
-
-
-
-
-
-
-
-## ARCHIVE
-
-# PGP
-## Encryption
-Encrypted using R's public key, decrypted using their private key
-Doesn't say anything about who *sent* the message
-
-## Authentication
-Sig created using S's private key
-Sig verified using S's public key
-Totally separate to who is receiving the message
-Oh so actually maybe encryption and auth *are* separated in PGP?
-
-# OTRM
-## Enc
-Encrypted using shared secret, actively negotiated and verified using both parties' private/public keys
-
-## Auth
-Also done using same shared secret
-
-Enc+auth are deliberately tied together because this means that anyone who can verify the sig could also have produced the message. This is not the case with PGP
-
-
-## Forgeability
-
-Forgeability - very easy to monkey with encfrypted text
-Use a cipher that doesn't provide any integrity of authenticity
-That is bolted on by the HMAC
-=> is this really all we've really got for deniability? Seems a bit weak - relies on the fact that someone could have theoretically fully guessed the text and messed with it.
-https://en.wikipedia.org/wiki/Stream_cipher_attacks
-I guess it works even if you just do it with a small section of the message
-
-Doesn't this only come into play if keys are revealed somehow anyway? (yes)
-
-
-TODO?: Without this property, you'd have non-repudiatability by the back door (or unlikely repudiatability) - because it was encrypted using a secret value rather than a public key. If law enforcement recovered the shared secret (eg. bad RNG) and a message then they'd be able to prove that you (or Bob) wrote the message.
-=> Could have been that someone else stole the shared secret but this is a less plausible denial
-
-4.3
-Anyone who can decyrpt a message can also update it and modify the MAC
-This is different to PGP because in PGP signing is done using private key (https://protonmail.com/support/knowledge-base/how-to-use-pgp/ yes this is correct)
-They say that if Eve can recover the the encryption key (eg poor RNG) then she still can't prove anything
-This doesn't apply to PGP
-
-
-
-
-
-
-
-
-
-## Misc
-
-Doesn't necessarily revolutionize anything, but it's a marginal improvement
-And is very interesting
-
-You could deny any heinous Tweet by saying that someone stole your phone. In general we have to cancel everyone just to be sure
-
-
-TODO?: do we sign then encrypt or vv? Makes a difference for how hard it is to fiddle with a message and then produce a valid signature
-
-=> we're making our denial more plausible by requiring less James Bond espionage in order to carry it out
-
-3.3
-"Further, Bob can’t
-even prove to a third party that Alice sent the message; all
-he can prove is that someone with the MAC key generated
-it, but for all anyone knows, Bob could have made up the
-message himself!"
-=> TODO?: Could Bob have invented the entire conversation, including the key exchange, after the bit where Alice sends him the Diffie-Hellman value and adds in her little bit of authentication? Just proves that *a* message was signed with *a* MAC key that was partially generated by Alice?
-
-
-Consider the case where a sketchy journalist grabs your encrypted messages, signatures, and shared secrets
-TODO?: Thanks to PFS they can't prove that this all came from you or your hard-drive (right?)
-
-Consider the case where law enforcement grab your encrypted messages, signatures, and shared secrets.
-If the courts and the public trust law enforcement then you can still claim that someone else monkeyed with the messages. It's a bit more plausible, especially if the dump passed through a few more hands to get to them
-Even if we trust everything law enforcement say and view them as a safe harbor, you still have the defence that someone else monkeyed with the messages and law enforcement had nothing to do with it
-
-Sidenote: As recording technology has become easier it's become easier to record and maybe prove this. But as fake technology has become better it's now somewhat more plausible to claim fakery
-
-video taping Zero Knowledged proof
-
-https://en.wikipedia.org/wiki/Deniable_authentication
-In cryptography, deniable authentication refers to message authentication between a set of participants where the participants themselves can be confident in the authenticity of the messages, but it cannot be proved to a third party after the event.
-
-
-Could just save messages but throw away sigs
-But what if someone was watching you exchange messages? Or had root on your computer?
-Sigs are radioactive - as soon as they get revealed you're screwed unless you reveal the keys that generated them, which is where OTRM comes in
-
-
-
-
-
-## Qs
-
-* If we didn't use stream cipher then would everythign technically still be deniable, this just makes tampering more likely/plausible?
-* Suggest threat models
-* Encrypt then sign or vv?
-
-
-
-
-
-
-
-
-
+On the other hand, PGP is perfect for authenticating public messages. I can publish my public key in a way that proves it belongs to me, perhaps via my website. This proves to the world that the keypair really does belong to me, Robert Heaton, and that messages signed using the keypair must have been written by me. Publishing a message on Reddit and PGP-signing it with my private key is therefore an excellent way to prove its authenticity.
