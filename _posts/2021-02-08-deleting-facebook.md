@@ -3,7 +3,6 @@ layout: post
 title: "Deleting Facebook"
 tags: [Productivity, Life]
 og_image: https://robertheaton.com/images/deleting-facebook-cover.png
-published: false
 ---
 After 15 years on Facebook, I’ve deleted my account. 
 
