@@ -20,7 +20,7 @@ and:
 
 > Facebook and the other companies in the Facebook family also may use information from us to improve your experiences within their services such as making product suggestions (for example, of friends or connections, or of interesting content) and showing relevant offers and ads.
 
-I started idly thinking about whether I could do without Facebook. It turned out I could.
+My mistrust roused, I started thinking about whether I could do without Facebook. It turned out I could.
 
 ----
 
