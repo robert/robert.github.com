@@ -3,8 +3,7 @@ layout: post
 title: "Reliable osquery deployment for the paranoid"
 tags: [Security]
 og_image: https://robertheaton.com/images/osquery-4.png
-custom_meta: "I’d like to start with a short story. Last year we started rolling out osquery to Stripe’s server fleet.
-"
+custom_meta: "I’d like to start with a short story. Last year we started rolling out osquery to Stripe’s server fleet."
 ---
 *Here's the recording, transcript, and slides for a talk about gingerly deploying osquery to a server fleet that I gave at osquery@scale 2021.*
 
@@ -177,11 +176,3 @@ As I said at the start, these are all solvable, answerable questions.
 <img src="/images/osquery-35.png" />
 
 You should just make sure to answer them ahead of time so you don’t have to answer them at 3am when your fleet is compromised or on fire. Understand your own threat models - they’ll be different to mine and different to those of the person virtually sitting next to you. It’s OK to decide to accept risks in return for a faster or simpler system. But if you’re feeling paranoid, then please do get in touch, I’d love to talk more.
-
-
-
-
-
-
-
-
