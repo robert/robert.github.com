@@ -141,27 +141,25 @@ Cryptography is a very precise field so I'll quote a technical definition of for
 
 We don't need to know the mathematics of forward secrecy, but a quick synopsis is important. First, a few definitions. An encryption algorithm, or *cipher*, can be either symmetric or asymmetric. A symmetric cipher is one in which the same key is used to encrypt and decrypt the message, and an asymmetric cipher is one in which different keys are used for encryption and decryption.
 
-[TODO-pic]
+[DONE-pic][9-symm]
 
 PGP uses an asymmetric cipher. This means that different keys - specifically, a user's public and private keys - are used to encrypt and decrypt a message. We know already that encrypting a message directly using the recipient's public key does not give forward secrecy, because if an attacker compromises the recipient's private key then the attacker can read all of their PGP-encrypted messages.
 
-[TODO-pic]
+[DONE-pic][10-asymm]
 
 Encryption protocols that provide forward secrecy typically require Alice and Bob to instead use a symmetric cipher. Since a symmetric cipher uses the same key to encrypt and decrypt a message, Alice and Bob need to agree on a shared, symmetric key that they both know the value of. As we'll soon see, in order to achieve forward secrecy they need to go even further, and use each symmetric key only briefly before forgetting it and agreeing on a new one. These temporary symmetric keys are often called *ephemeral* or *session keys*.
 
 Alice and Bob agree on each symmetric key via a process known as a *key-exchange*, which we'll look at in more detail shortly. Once Alice and Bob have agreed on a short-lived symmetric key, they use it to encrypt and decrypt a small number of messages (exactly 1, in the most cautious implementations). Finally, once they've finished with a key, Alice and Bob "forget" it, wiping it from their RAM, disk, and anywhere else from which an attacker might be able to recover it.
 
-[TODO-pic]
+[DONE-pic][11-key-exchange]
 
 Alice and Bob clearly need to agree on each symmetric key in a way that prevents Eve from working out the value of the key, even if she watches all of their key-exchange traffic. Agreeing on a secure session key over an insecure network is not trivial. Some key-exchange protocols take a simple approach that does indeed keep session keys secret, but does not provide forward secrecy.
 
 In these, non-forward-secrecy protocols, Alice chooses a random shared secret and then uses Bob's public key to encrypt that shared secret. Alice then sends the encrypted shared secret to Bob, who uses his private key to decrypt it. Since Eve does not have access to the recipient's private key, she cannot read the shared secret. Alice and Bob are therefore free to use the shared secret to symmetrically encrypt and decrypt their message.
 
-[TODO-PIC]
+[DONE-pic][12-simple-key-exchange]
 
 This approach keeps session keys secret so long as Bob's private key stays secret, but it does not provide forward secrecy. Suppose that Eve stores all of Alice and Bob's encrypted traffic and then later compromises Bob's private key. She can use this key to decrypt the encrypted session keys, and then use those session keys to decrypt the actual messages that Alice sent to Bob.
-
-[TODO-PIC]
 
 To give forward secrecy - and this is the very clever part - Alice and Bob must agree on each session key in such a way that prevents Eve from working out its value, even if she also compromises their long-lived private keys. Alice and Bob do still use their private keys during these key-exchanges, but only in order to prove their identities to each other.
 
@@ -203,13 +201,13 @@ Let's start at the top.
 
 OTRM performs its encryption using shared, symmetric, ephemeral session keys, as described in the "Forward Secrecy" section above. In short, Alice and Bob agree on a symmetric key, then use it to encrypt a message with a symmetric cipher. Once the message has been received and decrypted, they forget the session key and re-agree on a new one. The cadence at which new keys are agreed is discussed in detail in [the original OTR paper][otr-paper], but for our purposes we can assume that they are rotated roughly every message.
 
-[TODO-pic]
+[DONE-pic][13-new-keys]
 
 ### Diffie-Hellman key exchange
 
 In OTRM, Alice and Bob achieve forward secrecy by agreeing on their shared secret keys using a process called a Diffie-Hellman key exchange. The guts of Diffie-Hellman are complicated and not crucial to an understanding of OTRM. But, roughly speaking, Alice and Bob each separately choose a random secret number. They each send the other a specially-chosen number that is derived from, but isn't, their own random secret number. Now each knows their own random secret number, as well as the derived number that the other sent them. Thanks to the careful construction of the Diffie-Hellman protocol, each can use this information to derive the same final, secret key, which they can use as their shared session key. Even if Eve snoops on their communication and sees both of the derived numbers that they exchanged, she is unable to compute the final, secret key, because she doesn't know either of their initial random secrets.
 
-[TODO-PIC]
+[DONE-pic][14-eve-snoops]
 
 Wikipedia has a good anology that uses paint instead of numbers [LINK-https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#General_overview], but if you don't get it then don't worry, the details aren't important to us. What matters is that Diffie-Hellman allows Alice and Bob to agree on a shared symmetric key in a way that gives them forward secrecy.
 
@@ -217,7 +215,7 @@ Wikipedia has a good anology that uses paint instead of numbers [LINK-https://en
 
 We've described how Alice and Bob can agree on a shared secret session key that they can use for symmetric encryption. However, we haven't yet considered how they can verify the identity of the person they've agreed a session key with. At the moment Eve could intercept and drop all of Alice and/or Bob's traffic, and then spoof a separate Diffie-Hellman key-exchange with each of them herself! Alice and Bob would each have agreed a shared secret, but with Eve instead of each other. Eve would be able to read their messages and spoof replies, and Alice and Bob would have no way of knowing what had happened.
 
-[TODO-PIC]
+[DONE-pic][15-eve-key]
 
 Even though OTRM doesn't use public key cryptography to directly encrypt its messages, it does use public key cryptography for identity verification. The original OTR paper ([Borisov, Goldberg and Brewer 2004][otr-paper]) recommended an elegant way to verify the identities of participants in a Diffie-Hellman key exchange. However, a few years later another paper ([Alexander and Goldberg 2007](https://www.cypherpunks.ca/~iang/pubs/impauth.pdf)) was published that described a weakness in the original approach. The second paper proposed a broadly similar but more complex alternative. Today we'll discuss the original, simpler, if slightly flawed procedure, since it's still a good illustration of the general principle.
 
