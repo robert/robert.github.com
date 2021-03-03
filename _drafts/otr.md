@@ -4,29 +4,25 @@ https://github.com/python-otr/pure-python-otr
 
 
 
-TODO: Skylar the sceptical third-party
-TODO: do I need to mention socialist millionaires?
-
-
 
 ## Intro
 
 
-The physical world has reasonably strong and, by definition, intuitive privacy settings. Suppose that you are having a clandestine conversation with a friend in a local park. If you secure any nearby shrubberies then you can be confident that no one is eavesdropping on you. And unless you're being secretly recorded or filmed, which in most situations is unlikely, you can be similarly confident that no permanent, verifiable record of the conversation is being made. You and your friend can have a secret, off-the-record exchange of views.
+Suppose that you are having a clandestine conversation with a friend in a local park. If you secure any nearby shrubberies then you can be confident that no one is eavesdropping on you. And unless you're being secretly recorded or filmed, which in most situations is unlikely, you can be similarly confident that no permanent, verifiable record of the conversation is being made. You and your friend can have a secret, off-the-record exchange of views.
 
-Technology makes communication easier, but it also changes its privacy settings. These changes don't necessarily increase or decrease net privacy, but they do change the threats and vectors that participants need to consider. No one can hide in the bushes and overhear your email or instant messages, but they can glimpse your screen over your shoulder or intercept your traffic as it travels over a network. There's no record of a conversation in a park apart from the other person's word, but emails and instant messages create a papertrail, which is both useful and incriminating.
+The physical world has reasonably strong and, by definition, intuitive privacy settings. In the cyberworld, these settings get more complex. No one can hide in the bushes and overhear your email or instant messages, but they can glimpse your screen over your shoulder or intercept your traffic as it travels over a network. There's no record of a conversation in a park apart from the other person's word, but emails and instant messages create a papertrail, which is both useful and incriminating. These changes don't necessarily increase or decrease net privacy, but they do change the threats and vectors that participants need to consider.
 
-The goal of Off-The-Record Messaging (OTR) is to replicate the privacy properties of casual, in-person conversation. Any fool with years and decades of experience in high-grade cryptography can design a communication protocol that is secure when things go right. OTR focuses on what happens when things go wrong.
+Suppose that, as happens all too often, an attacker steals a dump of messages or a secret encryption key. Many encryption protocols can be used against the conversationalists, allowing the attacker to mathematically verify to the world the contents and authors of their stolen messages. The attacker may also be able to use a compromised secret key to decrypt years worth of previously-encrypted messages too. In the physical world, a brief lapse in communication security will usually allow an attacker to overhear a single conversation or a disgruntled associate to loosely retell, without proof, the details of a past conversation. In the cyberworld, brief lapses can be catastrophic.
 
-Suppose that, as happens all too often, an attacker steals a dump of messages or a secret encryption key. Many encryption protocols can be used against the conversationalists, allowing the attacker to mathematically verify to the world the contents and authors of their stolen messages. The attacker may also be able to use a compromised secret key to decrypt years worth of previously-encrypted messages too.
+Communication strategies can be designed to address these problems. There's much more to cryptography than just encrypting and decrypting messages. Where do encryption keys come from? How do the sender and receiver decide on their keys? How often do they need to generate new keys? What happens to keys once they've been used? How do the sender and receiver authenticate each other's identities? The collection of rules that answer these questions and that a sender and receiver use to exchange private messages is called a *cryptographic protocol*.
 
-It's always bad when an attacker steals a dump of messages or a private encryption key, but OTR's goal is to mitigate the fallout. OTR preserves the messages authors' ability to deny having ever sent stolen messages, and prevents the attacker from using a compromised encryption key to decrypt historical traffic.
+*Off-The-Record Messaging* (OTR) is a cryptographic protocol that aims to replicate the privacy properties of casual, in-person conversation. No one can overhear an OTR exchange, and if someone somehow does, they can't prove anything about anything that they heard and they certainly can't read reams of historical messages too. Any fool with years and decades of experience in high-grade cryptography can design a communication protocol that is secure when things go right. Privacy on the happy path is taken as a given. OTR focuses on what happens when things go wrong.
 
-OTR does this using standard, off-the-shelf ciphers and algorithms. Its (relatively) simple genius is in how it combines these well-understood tools. In order to understand the innovations of OTRM we don't need to pore over pages of mathematical proofs. Instead we have to think extremely precisely about the system-level ways in which known tools are chained together. OTR inspired the first version of the Signal Protocol, the eponymous protocol use by the increasingly popular secure messaging app Signal. Learning how OTR works increases your cryptographic imagination.
+It's always bad when an attacker steals a dump of messages or a private encryption key, but OTR's goal is to mitigate the fallout. OTR preserves the messages authors' physical-world ability to deny having ever sent stolen messages, and prevents the attacker from using a compromised encryption key to decrypt historical traffic. OTR does this using standard, off-the-shelf ciphers and algorithms, and its (relatively) simple genius is in how it combines these well-understood tools. In order to understand the innovations of OTR we don't need to pore over pages of mathematical proofs. Instead we have to think extremely precisely about the system-level ways in which known tools are chained together. OTR inspired the first version of the Signal Protocol, the eponymous protocol use by the increasingly popular secure messaging app Signal, and learning how OTR works will increase your cryptographic imagination too.
 
-This long blog post/short book is based on [Borisov, Goldberg and Brewer 2004][otr-paper], the paper that first introduced OTR. It assumes very little prior knowledge. It can't hurt if you are already familiar in-passing with concepts like public and private keys and cryptographic signatures, but if you aren't then don't worry, we'll cover what you need to know.
+----
 
-The post/book explains for a generalist audience the concepts that Borisov, Goldberg and Brewer might have very reasonably taken for granted in their academic readers. Where they had but 7 pages in an academic journal, we have as long as we like in which to ponder the ways in which OTR intersects with the 2020 US Presidential Election, and how dead bodies in a series of convolutedly-structured rooms illustrate how a protocol can simultaneously achieve both authentication and deniability.
+This long blog post/short book is based on [Borisov, Goldberg and Brewer 2004][otr-paper], the paper that first introduced OTR. It assumes very little prior knowledge of cryptography. It can't hurt if you have some familiarity with concepts like public and private keys and cryptographic signatures, but if you aren't then don't worry, we'll cover what you need to know. The post/book explains for a generalist audience concepts that Borisov, Goldberg and Brewer very reasonably took for granted with their academic readers. Where they had but 7 pages in an academic journal, we have as much space as we like in which to ponder the ways in which OTR intersects with the 2020 US Presidential Election, and how dead bodies in a series of convolutedly-structured rooms illustrate how a protocol can simultaneously achieve both authentication and deniability.
 
 ----
 
@@ -36,34 +32,33 @@ One way in which Alice and Bob can prevent Eve from using their network traffic 
 
 ## The problems with PGP
 
-Let's start by seeing how PGP works when everything goes according to plan. PGP handles its encryption using an *asymmetric cipher*, which means that encryption and decryption are performed with different keys. In order to use PGP, a user generates a pair of keys, called a keypair. One of these keys is their public key, which they can safely publish and make available to anyone who wants it, even their enemies. The other is their private key, which they must keep secret and safe at all costs. Messages encrypted with their public key can only be decrypted with their private key, and vice-versa.
+Let's start by seeing how PGP works when everything goes according to plan. PGP handles its encryption using an *asymmetric cipher*, which means that encryption and decryption are performed using different keys. In order to receive PGP messages, a user generates a pair of keys, called a keypair. One of these keys is their public key, which they can safely publish and make available to anyone who wants it, even their enemies. The other is their private key, which they must keep secret and safe at all costs. Messages encrypted with their public key can only be decrypted with their private key, and vice-versa.
 
-[DONE-pic][1-pub-pri]
-[DONE-pic][2-pri-pub]
+<img src="/images/otr/otr-1.png" />
+<img src="/images/otr/otr-2.png" />
 
 Suppose that Alice wants to use PGP to send an encrypted message to Bob. She retrieves Bob's public key from wherever he has published it and uses it to encrypt her message. She sends the resulting ciphertext to Bob, and Bob uses his private key to decrypt and read it. Since the message can only be decrypted using Bob's private key, which only Bob knows, Alice and Bob can be confident that Eve can't read their message.
 
-[DONE-pic][3-basic-enc]
+<img src="/images/otr/otr-3.png" />
 
 However, even though Bob is the only person who can decrypt Alice's message, Bob has no strong proof that the message really was written by Alice. As far as he's concerned it could have been written and encrypted by Eve, or Eve could have intercepted and manipulated a real message from Alice. To prove to Bob that the message really was written by her, Alice *cryptographically signs* her message before sending it. To generate a cryptographic signature, Alice passes her message through a hash function, which is an algorithm that produces a random-seeming but consistent and fixed-length output for a given input. She encrypts the output of the hash function with her private key, and the result of this encryption is a *cryptographic signature* for her message (we'll see why in a second). Alice appends the signature to her encrypted message, and sends them both to Bob.
 
-[DONE-pic][3-enc-sign]
+<img src="/images/otr/otr-4.png" />
 
 [TODO-hash-or-encrypt-first?]
 
 When Bob receives the message and signature, he uses the signature to prove to himself that the message was written by Alice and has not been tampered with. He does this by performing a similar but different process to the one that Alice used to generate the signature. He too calculates the hash of Alice's message, but he then uses Alice's *public* key to *decrypt* Alice's signature. If the resulting plaintext matches the hash of Alice's message then Bob can be confident that the signature was generated using Alice's private key, and that the contents of the message haven't changed. Since Alice is the only one who knows her private key, she is the only one who could have generated the signature, and so Bob can infer that the message really was written and signed by Alice.
 
-[DONE-pic][4-enc-sign]
-
 Messages are hashed before they are signed because the output of a hash function is always of the same, fixed length, meaning that signatures are also of the same fixed length. If they were not hashed then a long message would produce a long signature that would require unnecessary bandwidth to transmit, and a tiny message would produce a tiny signature that could be easy to forge.
 
-[DONE-pic][5-sig-length]
+<img src="/images/otr/otr-5a.png" />
+<img src="/images/otr/otr-5b.png" />
 
 This process is how PGP gives Alice and Bob privacy and authentication. If Eve is listening on the connection between Alice and Bob's computers and intercepts their encrypted message then she won't be able to decrypt it, because she doesn't know Bob's private key. And if Eve tries to spoof a fake message to Bob from Alice then she won't be able to produce a valid signature, because she doesn't know Alice's private key. When Bob tries to verify a signature forged by Eve, he will discover that something is afoot. If everything goes perfectly, PGP works perfectly.
 
 However, in the real world, we have to plan for the very real possibility that sometimes everything does not go perfectly. PGP relies heavily on private keys staying private. If a user's private key is stolen then the security properties previously underpinned by it are entirely blown apart. If Eve has access to Bob's private key and intercepts Alice's message on its way to Bob, Eve can decrypt and read the message. If Eve also has access to Alice's private key then she can use it to sign fake messages that Eve herself has written, making it look like these messages came from Alice.
 
-[DONE-pic][6-eve-stolen]
+<img src="/images/otr/otr-6.png" />
 
 All encryption is underpinned by the assumption that private keys stay private, and so we should expect any protocol to be severely damaged if this assumption is broken. But with PGP the fallout gets worse. We know already that if Eve steals a private key then she can use it to decrypt any future PGP messages that she intercepts and that were encrypted using the corresponding public key. But suppose that Eve has been listening on the connection between Alice and Bob for months or years, patiently storing all of the encrypted traffic. Previously she had no way to read any of this traffic, but with access to Bob's private key Eve can read all of the traffic she has stored that was encrypted using Bob's public key. This gives her access to extra reams of historical, previously-secret messages.
 
@@ -95,7 +90,7 @@ Cryptographic signatures are used in many protocols, not just PGP. And where the
 
 In order to use DKIM, email providers generate a signing keypair and publish their public key to the world (via a DNS TXT record, although the exact mechanism is not important to us here). When a user sends an email, their email provider generates a signature for their email using the provider's private signing key. The provider inserts this signature into the outgoing message as an email header.
 
-[DONE-pic][7-dkim]
+<img src="/images/otr/otr-7.png" />
 
 When the receiver's email provider receives the message, it looks up the sending provider's public key and uses it to check the DKIM signature against the email's contents, in exactly the same way as a recipient would check a PGP message signature against the PGP message's contents. If the signature is valid, the receiving provider accepts the message. If it isn't, the receiving provider assumes that the message is forged and rejects it. Since spammers don't have access to mail providers' signing keys, they can't generate valid signatures, and so can't generate fake emails that pass DKIM verification. DKIM is therefore very good at preventing email forging.
 
@@ -119,7 +114,7 @@ During the 2020 US election campaign, Republican operatives claimed to have gain
 
 The alleged story of how the Republicans got hold of this laptop is somewhat fantastical, running by way of a computer repair shop in a small town in Delaware. However, somewhat fantastical stories are sometimes true, and this is exactly the type of situation in which cryptographic signatures could play a big role in establishing credibility. It doesn't matter how wild the story is if the signatures validate. Indeed, in an effort to prove the laptop's provenance, Republicans released a single email, with [a single DKIM signature](https://github.com/robertdavidgraham/hunter-dkim), that they claimed came from the laptop.
 
-[DONE-pic][8-dkim-email]
+<img src="/images/otr/otr-8.png" />
 
 The DKIM signature of this email is valid, and it does indeed prove that `v.pozharskyi.ukraine@gmail.com` sent an email to `hbiden@rosemontseneca.com` about meeting the recipient's father, sometime between 2012 and 2015. However, it also raises a lot of questions, and provides a perfect example of the sliding-scale nature of deniability. The single email doesn't prove anything more than what it says. It doesn't prove who `v.pozharskyi.ukraine@gmail.com` is (although other evidence might), it doesn't prove that there are thousands more like it, and it doesn't prove that the email came from the alleged laptop.
 
@@ -141,23 +136,23 @@ Cryptography is a very precise field so I'll quote a technical definition of for
 
 We don't need to know the mathematics of forward secrecy, but a quick synopsis is important. First, a few definitions. An encryption algorithm, or *cipher*, can be either symmetric or asymmetric. A symmetric cipher is one in which the same key is used to encrypt and decrypt the message, and an asymmetric cipher is one in which different keys are used for encryption and decryption.
 
-[DONE-pic][9-symm]
+<img src="/images/otr/otr-9.png" />
 
 PGP uses an asymmetric cipher. This means that different keys - specifically, a user's public and private keys - are used to encrypt and decrypt a message. We know already that encrypting a message directly using the recipient's public key does not give forward secrecy, because if an attacker compromises the recipient's private key then the attacker can read all of their PGP-encrypted messages.
 
-[DONE-pic][10-asymm]
+<img src="/images/otr/otr-10.png" />
 
 Encryption protocols that provide forward secrecy typically require Alice and Bob to instead use a symmetric cipher. Since a symmetric cipher uses the same key to encrypt and decrypt a message, Alice and Bob need to agree on a shared, symmetric key that they both know the value of. As we'll soon see, in order to achieve forward secrecy they need to go even further, and use each symmetric key only briefly before forgetting it and agreeing on a new one. These temporary symmetric keys are often called *ephemeral* or *session keys*.
 
 Alice and Bob agree on each symmetric key via a process known as a *key-exchange*, which we'll look at in more detail shortly. Once Alice and Bob have agreed on a short-lived symmetric key, they use it to encrypt and decrypt a small number of messages (exactly 1, in the most cautious implementations). Finally, once they've finished with a key, Alice and Bob "forget" it, wiping it from their RAM, disk, and anywhere else from which an attacker might be able to recover it.
 
-[DONE-pic][11-key-exchange]
+<img src="/images/otr/otr-11.png" />
 
 Alice and Bob clearly need to agree on each symmetric key in a way that prevents Eve from working out the value of the key, even if she watches all of their key-exchange traffic. Agreeing on a secure session key over an insecure network is not trivial. Some key-exchange protocols take a simple approach that does indeed keep session keys secret, but does not provide forward secrecy.
 
 In these, non-forward-secrecy protocols, Alice chooses a random shared secret and then uses Bob's public key to encrypt that shared secret. Alice then sends the encrypted shared secret to Bob, who uses his private key to decrypt it. Since Eve does not have access to the recipient's private key, she cannot read the shared secret. Alice and Bob are therefore free to use the shared secret to symmetrically encrypt and decrypt their message.
 
-[DONE-pic][12-simple-key-exchange]
+<img src="/images/otr/otr-12.png" />
 
 This approach keeps session keys secret so long as Bob's private key stays secret, but it does not provide forward secrecy. Suppose that Eve stores all of Alice and Bob's encrypted traffic and then later compromises Bob's private key. She can use this key to decrypt the encrypted session keys, and then use those session keys to decrypt the actual messages that Alice sent to Bob.
 
@@ -201,13 +196,13 @@ Let's start at the top.
 
 OTRM performs its encryption using shared, symmetric, ephemeral session keys, as described in the "Forward Secrecy" section above. In short, Alice and Bob agree on a symmetric key, then use it to encrypt a message with a symmetric cipher. Once the message has been received and decrypted, they forget the session key and re-agree on a new one. The cadence at which new keys are agreed is discussed in detail in [the original OTR paper][otr-paper], but for our purposes we can assume that they are rotated roughly every message.
 
-[DONE-pic][13-new-keys]
+<img src="/images/otr/otr-13.png" />
 
 ### Diffie-Hellman key exchange
 
 In OTRM, Alice and Bob achieve forward secrecy by agreeing on their shared secret keys using a process called a Diffie-Hellman key exchange. The guts of Diffie-Hellman are complicated and not crucial to an understanding of OTRM. But, roughly speaking, Alice and Bob each separately choose a random secret number. They each send the other a specially-chosen number that is derived from, but isn't, their own random secret number. Now each knows their own random secret number, as well as the derived number that the other sent them. Thanks to the careful construction of the Diffie-Hellman protocol, each can use this information to derive the same final, secret key, which they can use as their shared session key. Even if Eve snoops on their communication and sees both of the derived numbers that they exchanged, she is unable to compute the final, secret key, because she doesn't know either of their initial random secrets.
 
-[DONE-pic][14-eve-snoops]
+<img src="/images/otr/otr-14.png" />
 
 Wikipedia has a good anology that uses paint instead of numbers [LINK-https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange#General_overview], but if you don't get it then don't worry, the details aren't important to us. What matters is that Diffie-Hellman allows Alice and Bob to agree on a shared symmetric key in a way that gives them forward secrecy.
 
@@ -215,37 +210,25 @@ Wikipedia has a good anology that uses paint instead of numbers [LINK-https://en
 
 We've described how Alice and Bob can agree on a shared secret session key that they can use for symmetric encryption. However, we haven't yet considered how they can verify the identity of the person they've agreed a session key with. At the moment Eve could intercept and drop all of Alice and/or Bob's traffic, and then spoof a separate Diffie-Hellman key-exchange with each of them herself! Alice and Bob would each have agreed a shared secret, but with Eve instead of each other. Eve would be able to read their messages and spoof replies, and Alice and Bob would have no way of knowing what had happened.
 
-[DONE-pic][15-eve-key]
+<img src="/images/otr/otr-15.png" />
 
-Even though OTRM doesn't use public key cryptography to directly encrypt its messages, it does use public key cryptography for identity verification. The original OTR paper ([Borisov, Goldberg and Brewer 2004][otr-paper]) recommended an elegant way to verify the identities of participants in a Diffie-Hellman key exchange. However, a few years later another paper ([Alexander and Goldberg 2007](https://www.cypherpunks.ca/~iang/pubs/impauth.pdf)) was published that described a weakness in the original approach. The second paper proposed a broadly similar but more complex alternative. Today we'll discuss the original, simpler, if slightly flawed procedure, since it's still a good illustration of the general principle.
+Even though OTRM doesn't use public key cryptography to directly encrypt its messages, it does use public key cryptography for identity verification. The original OTR paper ([Borisov, Goldberg and Brewer 2004][otr-paper]) recommended an elegant way to verify the identities of participants in a Diffie-Hellman key exchange. However, a few years later another paper ([Alexander and Goldberg 2007](https://www.cypherpunks.ca/~iang/pubs/impauth.pdf)) was published that described a weakness in the original approach. The second paper proposed a broadly similar but more complex alternative. Here we'll discuss the original, simpler, if slightly flawed procedure, since it's still a good illustration of the general principle of authenticating a key-exchange.
 
-We've seen how Alice and Bob send each other intermediate values that they derived from their secret, random values. We've seen also how Alice and Bob combine the other person's intermediate value with their own secret value to produce their shared secret key.
+In the original OTRM formulation, in order to prove their identities to each other Alice and Bob each sign the intermediate Diffie-Hellman values that they send to the other person. Then, when they receive a signed intermediate value, they verify the signature against the other person's public key. If the signature doesn't check out, they abort the conversation. If it does, they can be sure that the secret value corresponding to this intermediate value is known only the person who signed the intermediate value. They can proceed to combine the intermediate value with their own secret value in order to produce the shared symmetric secret key. This allows Alice and Bob to each be sure that they're agreeing a shared secret with the right person.
 
-[TODO-PIC]
-
-To prove their identities to each other, when Alice and Bob each sign the intermediate values that they send to the other person. Then, when they receive a signed intermediate value, they verify the signature against the other person's public key. If the signature doesn't check out, they abort the conversation. If it does, they can be sure that the secret value corresponding to this intermediate value is known only the person who signed the intermediate value. This allows Alice and Bob to each be sure that they're agreeing a shared secret with the right person.
-
-[TODO-PIC]
+<img src="/images/otr/otr-16.png" />
 
 Eve can still intercept and try to tamper with Alice and Bob's traffic, but she won't be able to get them to accept an intermediate Diffie-Hellman value derived from her own random secret. She therefore won't be able to trick them into negotiating an encrypted connection with her instead of each other.
 
-On the other hand, Alexander and Goldberg 2007 does show other ways in which Eve can manipulate a key-exchange performed in this way. Eve can have Alice and Bob agree a connection with each other, but trick Bob into believing that he is talking to Eve when he is really talking to Alice.
+However, Alexander and Goldberg 2007 shows other ways in which Eve can manipulate a key-exchange signed in this way. Eve can have Alice and Bob agree a connection with each other, but trick Bob into believing that he is talking to Eve when he is really talking to Alice. Eve still can't read their messages, but this is nonetheless an unnacceptable level of shennanigans to allow in an otherwise robust protocol. OTRM therefore now uses the more intricate approach outlined in Alexander and Goldberg 2007, in which Alice and Bob use vanilla Diffie-Hellman to set up an encrypted but unauthenticated connection, and then authenticate each other's identities inside that channel.
 
-[TODO-PIC]
-
-Eve still can't read their messages, but this is nonetheless an unnacceptable level of shennanigans to allow in an otherwise robust protocol. OTRM therefore now uses the more intricate approach outlined in Alexander and Goldberg 2007.
-
-[TODO-PIC]
-
-Astute readers may be surprised by the very idea of this step. Haven't we been saying that public key cryptographic signatures are the enemy of deniability? We have, and this is a good instinct. However, all Alice and Bob sign are their intermediate key exchange values. All these signatures prove is that Alice and Bob exchanged two random-looking values. Alice and Bob don't sign their actual messages using their private keys, because this would leave them vulnerable to the deniability problems we've discussed previously.
+Astute readers may be surprised by the very idea of performing identity verification in the OTR protocol. Haven't we been saying that public key cryptographic signatures are the enemy of deniability? We have, and this is a good instinct. However, all Alice and Bob sign are their intermediate key exchange values. All these signatures prove is that Alice and Bob exchanged two random-looking values. Alice and Bob don't sign their actual messages using their private keys, because this would leave them vulnerable to the deniability problems we've discussed previously.
 
 Now that Alice and Bob have agreed on a shared secret key, Alice has to pass that key into a cipher in order to encrypt her message.
 
 ## Encrypting the message
 
 A secret key agreed using Diffie-Hellman can be used with any symmetric cipher. In OTRM, Alice and Bob use a *stream cipher with AES in counter mode*. Once again, the details of what this means and how it works are not important to us. We can treat this cipher as a black box that Alice and Bob can combine with their symmetric key to encrypt or decrypt a message. What is important to us is that OTRM uses a stream cipher because it is *malleable*, meaning that it is particularly *easy* for an attacker to tamper with. We'll see why this counter-intuitive property is desirable shortly.
-
-[TODO-pic]
 
 Alice and Bob have now agreed on a key, verified each other's identities, and we've told them which cipher to use. They haven't used their private keys to sign anything important, which means that there's nothing cryptographically tying them back to their message in the event of a compromise. They are therefore ready to use their key and cipher to encrypt, exchange, and decrypt a message.
 
@@ -265,23 +248,17 @@ Alice and Bob use their private keys to prove their identities to each other by 
 
 Since Alice and Bob don't want to sign their messages using their private signing keys, OTRM has to prove the integrity of its messages using a different type of cryptographic signature: an HMAC (Hash-Based Message Authentication Code). The critical property of an HMAC signature is that it is *symmetric*. In the same way that a symmetric cipher performs both encryption and decryption with the same key, a symmetric signature is both generated and verified using a single shared secret key. We'll see why this is important shortly.
 
-[TODO-pic]
+<img src="/images/otr/otr-17.png" />
 
 In order to generate an HMAC signature for a message, the signer passes the message and the secret key into the HMAC algorithm (how HMAC works internally is not important to us). The algorithm gives the signer back an HMAC signature, and the signer sends the message and HMAC signature to the recipient. In order to verify the signature, the recipient performs the same process, passing the message and the shared secret signing key into the HMAC algorithm, and getting back an HMAC signature. If the signature that the recipient calculates matches the signature provided by the sender then the recipient can be confident that the message has not changed and has not been tampered with.
 
-[TODO-pic]
-
 In order to use HMAC signatures to authenticate their messages, the sender and recipient need to agree on a shared secret signing key. In OTRM they use a *cryptographic hash* of their shared secret encryption key as their shared secret signing key.
 
-[TODO-pic]
+<img src="/images/otr/otr-18.png" />
 
 A cryptographic hash function is a *one-way* function that produces a random-seeming but consistent output for each input. Given an input it is very easy to calculate the cryptograhic hash output. But by contrast, given a cryptographic hash output it is impossible to calculate the input that produced it. Using the hash of their encryption key as their signing key is convenient, since it removes the need for Alice and Bob to perform another key-exchange dance. It also provides a subtle contribution towards deniability that we will discuss later.
 
-[TODO-pic]
-
 With an encryption secret and a signing secret both agreed, the sender signs their message using the shared signing secret and the HMAC algorithm. The sender encrypts the message and signature together using the shared encryption secret and a stream cipher with AES in counter mode. The sender then sends their encrypted message and signature to the recipient. Once the recipient receives the message they perform the same process in reverse: they decrypt the message in order to read it, and verify the HMAC signature in order to ensure it has not been tampered with.
-
-[TODO-pic]
 
 ## An unexpected twist: publishing the signing key
 
@@ -309,7 +286,7 @@ Let's find out.
 
 Suppose that I drag you, panicked, down the corridor of an office building. I stop in front of a locked door. Hands shaking, I take out a key, unlock the door, and throw it open. You peer inside. You see a clear plexiglass screen, behind which is another room with another locked door. In the corner of this other room lies a dead body, still fresh. "My good buddy, Steve Steveington, was the only person with a key to that room!" I whisper, "He did this. You must arrest him." You're not a police officer so you can't do that, but you do agree that we should call the cops.
 
-[TODO-PIC]
+<img src="/images/otr/otr-19.png" />
 
 My story checked out and you called the law because I was able to show you that there was a dead body inside the locked room behind the plexiglass screen, without having been able to access that room. If I had needed to be able to open the dead-body-room myself in order to show you what was inside it, then I could not have shown you that a murder had been committed without becoming as much of a suspect as my good buddy, Steve Steveington. I was able to verify a murder without being able to have commited it.
 
@@ -319,15 +296,13 @@ However, as we've seen with the Podesta Emails, asymmetry can also allow hackers
 
 To see how OTRM acheives this goal, let's go back to the murder room. Suppose instead that I unlocked the door and opened it to reveal a single, simple room with the same dead body in the corner. "My good buddy, Steve Steveington, was the only person with a key to this room!" I whisper, "He did this. You must arrest him." You're still not a police officer, but you're also not an idiot. In order to show you what's behind this door, I've just opened it. As far as you're concerned I could also have easily committed the murder and dumped the body in the room myself.
 
-[TODO-PIC]
+<img src="/images/otr/otr-20.png" />
 
 By hiding the body in the single locked room, my good buddy, Steve Steveington, has put me in a bind. In order to show you that there's a dead body inside the room, I need to to unlock the door. However, by unlocking the door, I also demonstrate that I could have done the murder. I know that I didn't do the murder and I know that Steve Steveington really is the only other person with a key to the room, so I know that he must have done it. But I can't prove this to anyone else. OTRM uses a less murderous version of this insight to make its signatures both authenticatable and deniable.
 
 OTRM uses HMAC signatures. Unlike PGP signatures, HMAC signatures are both created and verified using a single shared secret key, known to both the signer and the verifier. HMAC signatures are also both created and verified using the same procedure. The signer creates the signature by passing their message and the shared secret key into the HMAC algorithm. The verifier verifies the signature by performing the same operation and comparing their result with the given signature.
 
 Suppose that an attacker has stolen a dump of messages, together with their HMAC signatures and the HMAC keys necessary to verify them. The attacker wants to use these HMAC signatures to prove that their dump is real, in the same way that Wikileaks used John Podesta's emails' DKIM signatures to prove that theirs was. In order to prove that a message's HMAC signature is valid, the attacker recomputes the signature by passing the message and the secret key into the HMAC algorithm. They then show a sceptical third-party that this generated signature matches the signature that they have stolen.
-
-[TODO-pic]
 
 However, since HMAC signatures are symmetric, anyone who can verify an HMAC signature must necessarily also be able to have produced it. This means that in order to prove to the sceptical third-party that the HMAC signature is real, the attacker must reveal that they have the tools necessary to have faked it. Even if the messages are real and were stolen fair and square, the attacker is in the same awkward position as I was when trying to show you the dead body in the single room. The sceptical third-party might still believe that the messages are genuine on the balance of probability, but this time the victim's cryptography doesn't inadvertantly work against them.
 
@@ -351,19 +326,13 @@ One of the main goals of OTRM is to make it as plausible as possible for the aut
 
 For many encryption ciphers, it's very hard to produce an encrypted ciphertext that decrypts to anything meaningful if you don't know the secret key. It's not quite hard enough that you can assume that any ciphertext that decrypts to a sensible plaintext must have been generated by someone with access to the secret key, but it is still very hard. This means that if a ciphertext produces sensible plaintext when decrypted then it's reasonable to infer that it was probably generated by someone with access to the secret key.
 
-[TODO-pic]
-
 To mitigate this incomplete but still undesirable connection, OTRM performs its encryption using a *malleable* stream cipher. A malleable cipher is one for which it's comparatively easy for an attacker to produce a ciphertext that decrypts to something sensible, even if they don't know the encryption key. If an attacker can correctly guess the plaintext that a stream cipher's ciphertext decrypts to, the attacker can manipulate that ciphertext so that it decrypts to any message of their choice of the same length. The attacker can do this even if they don't know the key used to encrypt the original ciphertext.
 
-[TODO-pic]
+<img src="/images/otr/otr-21.png" />
 
 This means that using a malleable cipher gives Alice and Bob an extra layer of deniability, very similar to the one that they get from publishing their HMAC signing keys. Let's consider a scenario in which this added layer might be useful. Suppose that Alice and Bob accidentally use a weak random-number generator when choosing their random secrets at the start of their Diffie-Hellman key exchanges. This means that Eve is able to deduce the values of their random secrets; work out their symmetric encryption keys; and use these keys to decrypt Alice and Bob's messages. This is already a very bad outcome, but OTRM's goal in disasters like this is to mitigate the mishap and make the revealed messages as deniable as possible.
 
-[TODO-pic]
-
 Alice and Bob didn't use their private keys to sign their messages directly, which already gives them a lot of wiggle room. But even though Eve can't cast-iron prove anything, but she can still try to build a case on-the-balance-of-probability. Alice and Bob signed parts of their Diffie-Hellman key exchange using their private keys. Eve can use these signatures to prove to a sceptical third-party that Alice and Bob performed a key exchange that produced a specific symmetric session key. Eve can then also show the third-party the encrypted messages that Alice and Bob exchanged, and demonstrate that the session key decrypts these messages into sensible plaintexts with valid signatures.
-
-[TODO-pic]
 
 Even without a malleable cipher, this isn't a total deniability disaster. Symmetrically encrypted ciphertexts are just as useless for proving authorship as symmetrically signed messages. If Eve is able to verify a symmetric signature then she must also have been able to forge it, and if Eve is able to decrypt a symmetrically encrypted ciphertext then she must have been able to forge that ciphertext too. Eve therefore can't use Alice and Bob's ciphertexts to rigorously prove that they wrote them, because Eve could have produced the ciphertexts herself. This is a general property of symmetric encryption, and applies even if the cipher that Alice and Bob use is not malleable.
 
@@ -408,7 +377,8 @@ NB: The Principle of Most Privilege is not a real principle, I just made it up. 
 TODO SOMETHING END
 
 
-
+https://en.wikipedia.org/wiki/Off-the-Record_Messaging
+Socialist millionaire protocol for key fingerprints
 
 
 
