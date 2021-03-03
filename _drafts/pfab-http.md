@@ -1,3 +1,7 @@
+https://news.ycombinator.com/item?id=26225373
+
+
+
 You’ve started yet another company with your good friend, Steve Steveington. It’s an online marketplace where people can buy and sell things and where no one asks too many questions. It’s basically a rip-off of Craigslist, but with Steve’s name instead of Craig’s.
 
 You're responsible for building the entire Steveslist platform. However, while you do know how to build small web apps, you have no idea how to build a system capable of scaling to millions of users before your investors notice all the accounting fraud that CEO Steve Steveington is no doubt commiting behind your back. You've therefore enlisted your less-good-but-still-mostly-reliable friend, Kate Kateberry, to help fill in some gaps in your knowledge. She's already given you an excellent primer on systems design[LINK], the transcript of which picked up a cool 945 points on Hacker News[LINK]. You don't like to boast, but since internet points can't buy sandwiches or make your alimony payments and can't fill the yawning void inside of you where your hopes and dreams and principles used to be, boasting seems to be the only use left for them. You think that the marketers call this "social proof".
