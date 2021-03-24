@@ -20,7 +20,7 @@ I've already attempted to make it easier to "think of a project and just work on
 
 <img src="/images/osab-cover-main.png" />
 
-Now I'm working on a new series called ["Open Source Projects for Advanced Beginners"](/2019/04/13/open-source-for-advanced-beginners-1-bashplotlib/) that helps with suggestions 2 and 3: "read other people's code" and "work on open source projects". I've made copies of some open source codebases and come up with features that I think would make them better. Your task is to add them.
+Now I'm working on a new series called ["Open Source Projects for Advanced Beginners"](/2019/04/14/open-source-for-advanced-beginners-1-bashplotlib/) that helps with suggestions 2 and 3: "read other people's code" and "work on open source projects". I've made copies of some open source codebases and come up with features that I think would make them better. Your task is to add them.
 
 Despite the name, the goal of Open Source Projects for Advanced Beginners is not to help you get into open source. It's to help you get your first programming job. It does this by giving you experience of working in large codebases written by other people, and thus helping you to break the classic employment dilemma:
 
