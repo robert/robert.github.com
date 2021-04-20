@@ -2,7 +2,7 @@
 layout: post
 title: "Another family without a backstory"
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/parenthood9-woods.png
+og_image: https://robertheaton.com/images/oscar10-cover.jpg
 custom_meta: "Other people's kids are just as interesting as Oscar, but I hate being reminded of this. It makes Oscar feel like another generic baby and the three of us like another family without a backstory"
 ---
 > Previously on parenting:
