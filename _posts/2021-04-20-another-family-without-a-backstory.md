@@ -98,7 +98,7 @@ I've got to where I am in my own career by piecing together scraps of knowledge 
 
 An accelerated version of me isn't remarkable, at least not in the inspirational but mentally-taxing Silicon Valley sense of putting a dent in the universe. The world needs more decent programmers who play a difficult but workaday role in large companies, but it's not what comes to mind when I think of the word "remarkable". I'm aware that I don't properly value the benefit to the individual and society of having a good job; doing it well; and living your version of a good life. I don't know how strict to be about the moral and carbon accounting.
 
-Will Ocar want to be like his old dad too? Should he? For now he can have big dreams and be anything that he wants to be, but eventually he'll have to choose something and then he'll just have a job and a hobby and maybe a blog.
+Will Oscar want to be like his old dad too? Should he? For now he can have big dreams and be anything that he wants to be, but eventually he'll have to choose something and then he'll just have a job and a hobby and maybe a blog.
 
 Oscar dumped a big pile of Sticklebricks on my desk and then forgot about them. I fiddle with them during meetings, just below the camera line. If I do achieve anything noteworthy then I'll attribute it to the creativity pump of the Sticklebricks.
 
