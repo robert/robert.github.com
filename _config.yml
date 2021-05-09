@@ -12,3 +12,5 @@ plugins:
 paginate: 20
 permalink: "/:title/"
 incremental: true
+kramdown:
+  auto_ids: true 
