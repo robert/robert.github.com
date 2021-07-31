@@ -4,9 +4,9 @@ https://news.ycombinator.com/item?id=26225373
 
 You’ve started yet another company with your good friend, Steve Steveington. It’s an online marketplace where people can buy and sell things and where no one asks too many questions. It’s basically a rip-off of Craigslist, but with Steve’s name instead of Craig’s.
 
-You're responsible for building the entire Steveslist platform. However, while you do know how to build small web apps, you have no idea how to build a system capable of scaling to millions of users before your investors notice all the accounting fraud that CEO Steve Steveington is no doubt commiting behind your back. You've therefore enlisted your less-good-but-still-mostly-reliable friend, Kate Kateberry, to help fill in some gaps in your knowledge. She's already given you an excellent primer on systems design[LINK], the transcript of which picked up a cool 945 points on Hacker News[LINK]. You don't like to boast, but since internet points can't buy sandwiches or make your alimony payments and can't fill the yawning void inside of you where your hopes and dreams and principles used to be, boasting seems to be the only use left for them. You think that the marketers call this "social proof".
+You're responsible for building the entire Steveslist platform. However, while you do know how to build small web apps, you have no idea how to build a system capable of scaling to millions of users before your investors notice all the accounting fraud that CEO Steve Steveington is no doubt commiting behind your back. You've therefore enlisted your less-good-but-still-mostly-reliable friend, Kate Kateberry, to help fill in some gaps in your knowledge. She's already given you an excellent primer on systems design[LINK], the transcript of which picked up a cool 945 points on Hacker News[LINK]. You don't like to boast, but since internet points can't buy sandwiches or make your alimony payments or fill the yawning void inside of you where your hopes and dreams and principles used to be, boasting seems to be the only use left for them. You think that the marketers call this "social proof".
 
-You found Kate's systems design primer very insightful, well-structured, and empathetic. Next in your sights is HTTP. You've realized that even though you use HTTP all day every day and sort of get what it is and how it works, the details are a little fuzzy. You know that it's the protocol that underlies a large portion of the web. You've used the Chrome Developer Tools to debug simple HTTP-related problems, and you know what a 404 page is. You can usually muddle through the tasks in front of you, using libraries and hand-waving to get the job done, after a fashion. However, as the Steveslist platform has become more complex, you've started to think that it might be useful to understand HTTP in more depth. This will help with fixing more complex problems, structuring your systems to be more reliable and efficient, and might even be a little interesting.
+You found Kate's systems design primer very insightful, well-structured, and empathetic. Now you want to ask her to explain HTTP to you [TODO: gentler intro to HTTP]. You've realized that even though you use HTTP all day every day and sort of get what it is and how it works, the details are a little fuzzy. You know that it's the protocol that underlies a large portion of the web. You've used the Chrome Developer Tools to debug simple HTTP-related problems, and you know what a 404 page is. You can usually muddle through the tasks in front of you, using libraries and hand-waving to get the job done, after a fashion. However, as the Steveslist platform has become more complex, you've started to think that it might be useful to understand HTTP in more depth. This will help with fixing more complex problems, structuring your systems to be more reliable and efficient, and might even be a little interesting.
 
 You especially want to know:
 
@@ -26,6 +26,8 @@ Kate Kateberry trudges into the Steveslist office in the 19th century literature
 
 She is surprisingly enthusiastic. You wonder if she's seen a scam that you've missed, or if maybe you're just paying her too much. She bounces over to the whiteboard. Before she can start, you ask if you can skip all the basics about `GET` and `POST` and so on, since you already know all that stuff. I'm sure you know that `GET` and `POST` exist, Kate replies, but do you know *why* they exist? Why does HTTP bother with them? Why doesn't HTTP keep things simple and just have a single type of request?
 
+[TODO: don't mention GET/POST etc]
+
 You aren't sure. This, says Kate, is just one of the many nuances that we will learn about today.
 
 You start taking notes.
@@ -36,11 +38,13 @@ You start taking notes.
 
 HTTP stands for *Hyper Text Transfer Protocol*. HTTP was originally designed by Tim Berners-Lee at the dawn of the internet, and is the protocol that underlies most of the web. Whenever you use a web browser or an app to load a website, image, or any other kind of data, there's a very good chance that you're doing so using HTTP.
 
+[TODO: what is a protocol? Gentler]
+
 HTTP is a client-server protocol. This means that software running on servers sits around waiting for incoming requests, and an HTTP conversation only happen when a client (like your phone or computer) initiates one. For example, when you click on a profile in the Facebook app, the app requests the different pieces of data necessary to populate the profile page. It does this by sending HTTP requests to the Facebook server. It probably sends one HTTP request for the profile data, one for each image, and maybe one for the user's latest timeline posts. When the Facebook server receives one of these requests it retrieves the requested data and sends it back to your phone in an HTTP response.
 
 [TODO-PIC] of sitting around waiting
 
-Since your phone doesn't act as an HTTP server, it doesn't listen for incoming requests in the same way that Facebook servers do. This means that Facebook can't contact your phone directly. Even though Facebook is famous for smuggling out data from your devices, they can only do this by writing code in their app that pro-actively sends it to them.
+Your phone doesn't act as an HTTP server, and it doesn't listen for incoming requests in the same way that Facebook servers do. This means that Facebook can't pro-actively contact your phone directly. Even though Facebook is famous for smuggling data out from your devices, they can only do this by writing code in their app that sends it to them.
 
 [TODO-PIC] of phone ignoring incoming requests
 
@@ -52,7 +56,7 @@ HTTP is also often used to query APIs. "API" stands for Application Programming 
 
 Companies can use any protocol they like in their APIs, but HTTP is a sensible default. To use an HTTP-based API a client sends the server an HTTP request describing the action that it wants the server to perform. The request usually includes an authorization key that verifies the client's identity. The server performs the action, and sends back an HTTP response.
 
-There's no difference in HTTP when it used by a browser, an app, or a custom program that queries an API. HTTP requests are structured the same, irrespective of the client that sent them. The data in the HTTP responses might take a different form in each case; browsers will often get back HTML webpages, whereas apps and custom programs might get back structured data. Even this is a poor dividing line, since webpages increasingly query the same API endpoints as other API clients. In all cases the protocol is still fundamentally HTTP, and it hardly matters what the devices on either end of the exchange are.
+There's no difference in HTTP when it used by a browser, an app, or a custom program that queries an API. HTTP requests are structured the same, irrespective of the client that sent them. The data in the HTTP responses might be different; browsers will often get back HTML webpages, whereas apps and custom programs might get back structured data in a format like *JSON*. Even this is a poor dividing line, since webpages increasingly query the same API endpoints as other API clients. In all cases the protocol is still fundamentally HTTP, and it hardly matters what the devices on either end of the exchange are.
 
 An HTTP client can be any device that needs to retrieve data from a remote server: a web browser, a phone, a PlayStation, or a smart-fridge. An HTTP server can also technically be anything that is capable of listening for and responding to incoming HTTP requests. In practice servers are almost always big computers sitting in a data center. But if you were determined enough you could probably hook up a website that was powered by your smart-thermostat, and it is genuinely possible (if hard work) to run a web server from a laptop in your front room. HTTP is a common and sensible choice for any devices that need to exchange data over a network.
 
@@ -62,11 +66,11 @@ There's a lot that goes on behind the glib statement "the client sends an HTTP r
 
 The rules of HTTP are responsible for specifying the structure of the messages that clients and servers exchange with each other. HTTP works at the level of an application, and so is often described as an *application-level protocol*. However, HTTP doesn't say anything about *how* HTTP messages should travel between clients and servers. That's the job of a *network-level protocol*. In practice almost all HTTP requests are exchanged using the TCP and IP protocols. The responsibilities of the different layers are well-separated. TCP/IP is responsible for moving data between computers; HTTP is responsible for how that data is structured.
 
-All of the above questions are the domain of TCP/IP and a few related protocols, and as a user of HTTP you don't have to worry about these details if you don't want to. The same kind of separation applies when sending a letter. The postal service is responsible for getting letters from A to B; you are responsible for the contents of those letters. You don't have to care how the postal service works after you drop off your letter; the postal service doesn't have to care what's in your letter.
+As a user of HTTP you rarely have to worry about the details of TCP/IP and other lower-level protocols if you don't want to. The same kind of separation applies when sending a letter. The postal service is responsible for getting letters from A to B; you are responsible for the contents of those letters. You don't have to care how the postal service works after you drop off your letter; the postal service doesn't have to care what's in your letter.
 
 [TODO-PIC] of differen layers
 
-If you're interested then you can learn about the myriad layers underneath and alongside HTTP - TCP, IP, Ethernet, DNS, SSL/TLS, and many more. This will be useful and interesting. However, if you don't have time or these technologies aren't where your interests lie then you can also focus on the things that you do care about. You can leave things at "the client sends an HTTP request to the server" and trust that the pieces of software that other people have built will do their jobs without you. This hiding of details is known as *abstraction*.
+If you're interested then you can learn about the myriad layers that reside underneath and alongside HTTP - TCP, IP, Ethernet, DNS, SSL/TLS, and many more. This will be useful and interesting. However, if you don't have time or these technologies aren't where your interests lie then you can also focus on the things that you do care about. You can leave things at "the client sends an HTTP request to the server" and trust that the pieces of software that other people have built will do their jobs without you. This hiding of details is known as *abstraction*.
 
 -----
 
@@ -81,7 +85,7 @@ I'm already here, you think, you can cut the sales pitch.
 When an HTTP client communicates with a server:
 
 1. The client opens a *TCP connection* with the server. You can think of a TCP connection as a pipe that the client and server use to send information to each other. To open a new connection, a client sends a message to a server that is listening for incoming TCP connections. The server sends back a message to the client, the client and server exchange a few more introductory formalities, and by the end they have a reliable connection that they can use to exchange data. The full details of TCP are a whole new story on their own, but thanks to abstraction, you don't need to know about them if you don't want to.
-2. Shortly before or after opening a TCP connection, the client builds an HTTP request containing the data that it wants to send to the server. An HTTP request is nothing more than a carefully structured block of text (we'll talk much more about this structure shortly), so this step is like the client writing a letter to the server before sending it in the next step.
+2. Shortly before or after opening a TCP connection, the client builds an HTTP request containing the data that it wants to send to the server. An HTTP request is nothing more than a carefully structured block of text (we'll talk much more about this structure shortly), so this step is like the client writing a letter to the server before sending it in the next.
 3. The client sends the HTTP request it built in step 2 to the server via the TCP connection that it established in step 1.
 4. The server receives the client's HTTP request. Because the server knows about the HTTP protocol and how HTTP requests are structured, it can parse the request and understand what it means. Depending on the contents of the request the server might perform an action and/or retrieve some data.
 5. Once the server has finished its work, it sends an HTTP response back to the client over the same TCP connection from step 1. This response should contain either the data that the client requested, or an explanation of the work that the server did (eg. "I successfully created a new message").
@@ -97,7 +101,7 @@ HTTP requests are made up of 5 components:
 * Request target - the resource that the request will act on (eg. `/about`, `https://google.com/search`)
 * HTTP protocol version - the version of the HTTP protocol that the request uses. Most commonly 1.0, 1.1, or 2.
 * Headers - metadata about the request (eg. cookies, the type of response expected, data about caching)
-* Body - the main block of data (if any) that the client wants to send to the server (eg. the body of a message to be created, the details of an item to be purchased)
+* Body - the main block of data (if any) that the client wants to send to the server (eg. the body of a message to be created, or the details of an item to be purchased)
 
 [TODO-PIC] - example HTTP request
 
@@ -129,13 +133,13 @@ Sometimes a request target refers directly to an actual file on the server. One 
 
 [TODO-pic] how apache works
 
-Note that servers using this approach have to be careful to reject malicious requests for sneaky paths. For example, a request to `GET /../../../etc/passwd`, if treated naively, could end up returning the file at `/var/www/html/../../../etc/passwd`. Since `..` means "go up a directory", this path resolves to `/etc/passwd`, the file containing the system's passwords.
+Note that servers using this approach have to be careful to reject malicious requests for sneaky paths. For example, a request to `GET /../../../etc/passwd`, if treated naively, could end up returning the file at `/var/www/html/../../../etc/passwd`. Since `..` means "go up a directory", this path resolves to `/etc/passwd`, the file containing a Linux system's passwords.
 
-The simple approach of mapping paths directly to a file system used to be more common at the dawn of the internet, when a website was nothing more than a collection of static files. Nowadays most websites are much more complicated and contain mostly dynamic content. These websites run more complicated server software that dynamically generates webpages and other responses instead of reading and serving pre-generated files from a server's hard disk.
+This simple approach of mapping paths directly to a file system used to be more common at the dawn of the internet, when a website was nothing more than a collection of static files. Nowadays most websites are much more complicated and contain mostly dynamic content. These websites run more complicated server software that dynamically generates webpages and other responses instead of reading and serving pre-generated files from a server's hard disk. [TODO: FB doesn't have your profile saved on disk]
 
 ### HTTP methods
 
-Every HTTP request has a *HTTP request method*. The request method usually dictates *what* the request will do to the resource in the request target. There are many conventions around which method should be used for which type of action. As we will see, these conventions provide useful hints to clients about how they should treat requests and responses.
+Every HTTP request has an *HTTP request method*. The request method usually dictates *what* the request will do to the resource in the request target. There are many conventions around which method should be used for which type of action. As we will see, these conventions provide useful hints to clients about how they should treat requests and responses. [TODO: common methods are GET/POST/etc]
 
 For example, responses to `GET` requests usually contain a representation of the target resource in their *response body*. The form of this representation depends on the context. `GET` requests for webpages that will be displayed in a browser should usually return HTML; requests to an API should usually return data in a more structured format such as *JSON* (more on which later). Both are valid ways to respond to a `GET` request, and it's up to the programmers writing the server software to return data in the most appropriate form.
 
@@ -147,7 +151,7 @@ There are 9 HTTP methods in total[LINK]. Other common ones include:
 
 You may have noticed that I've been using a lot of weasel-words like "should" and "likely". This is because all of these "rules" about what different HTTP methods should do are only conventions and best-practices. There's nothing stopping a programmer from having a `GET` request to `/home` delete a user's account, other than hopefully their colleagues' code review.
 
-Indeed, HTTP request method conventions are routinely broken in situations where the payoff is deemed worth it. For example, consider "magic login links". Some websites don't login their users using a username/password form. Instead they ask a user to submit just their email address. The website generates a long, secret, random token, and saves it to its database alongside the user's ID. The website then sends the user an email containing a "magic login link", the URL of which contains the random login token:
+Indeed, HTTP request method conventions are routinely broken in situations where the payoff is deemed worth it. For example, consider "magic login links". Some websites don't login their users using a username/password form. Instead they ask a user to submit just their email address. The website then generates a long, secret, random token, and saves it to a database alongside the user's ID. The website then sends the user an email containing a "magic login link", the URL of which contains the random login token:
 
 `https://socialnetwork.com/login?token=3873278132h181432hs12d178924nc17982t1dgj9jg89`
 
@@ -155,7 +159,7 @@ When the user clicks on the link, the website reads the token from the HTTP requ
 
 [TODO-PIC]
 
-Username/password forms are usually submitted using `POST` requests. This is because `POST` requests are conventionally used to create new resources, and logging in creates a new *session* on the website. However, when a user clicks on a vanilla link, such as one in an email, their browser requests it as a `GET`. It is possible for a website designer to have links send HTTP requests using other HTTP methods (including `POST`), but this requires JavaScript or HTML forms, neither of which are allowed in emails. This means that magic login links have to send `GET` requests that cause the user to become logged in. This is a violation of the convention that `GET` requests should only ever return information, and should not "do" anything or cause anything to change on the server. But rules were made to be broken, and magic login links are generally seen as a convenient and reasonably secure way to authenticate users.
+Username/password forms are usually submitted using `POST` requests. This is because `POST` requests are conventionally used to create new resources, and logging in creates a new *session* on the website. However, when a user clicks on a vanilla link, such as one in an email, their browser requests it as a `GET`. It is possible for a website designer to have links on their site trigger HTTP requests that use other HTTP methods (including `POST`), but this requires JavaScript or HTML forms, neither of which are allowed in emails. This means that magic login links have to send `GET` requests that cause the user to become logged in. This is a violation of the convention that `GET` requests should only ever return information, and should not "do" anything or cause anything to change on the server. But rules were made to be broken, and magic login links are generally seen as a convenient and reasonably secure way to authenticate users.
 
 HTTP could have been designed without any concept of HTTP methods, with instead only a single "type" of HTTP request. In actual, real HTTP, you would expect to use the HTTP path `/articles` in order to both create and list articles. The thing that differentiates these requests from each other is the HTTP method:
 
@@ -175,7 +179,7 @@ It is useful for a client to know whether an HTTP request will be *safe*. A safe
 
 Convention says that all `GET` requests should be safe (as should much rarer `HEAD`, `OPTIONS`, and `TRACE` requests), but that `POST`, `PUT`, and `DELETE` requests may not be. This is a useful property because it means that web crawlers can safely automatically click on links, and browsers can safely pre-load data like the top Google result for a search. So long as all the requests they send are `GET`s, the crawlers and browsers can be confident that they won't change the state of the server, and so won't cause any problems for website operators.
 
-The fact that `GET` requests are safe is useful in other situations too. When you type a URL into your browser address bar and press enter, your browser always requests this URL with an HTTP `GET` request. Since `GET` requests should only ever return data, not mutate it, this means that typing a URL into your browser is always "safe". You can be very confident that visiting `https://facebook.com/account/delete` in your browser isn't going to accidentally delete your account. If there was only one type of HTTP request, you would have no such guarantee.
+The fact that `GET` requests are safe is useful in other situations too. When you type a URL into your browser address bar and press enter, your browser always requests this URL using an HTTP `GET` request. Since `GET` requests should only ever return data, not mutate it, this means that typing a URL into your browser is always "safe". You can be very confident that visiting `https://facebook.com/account/delete` in your browser isn't going to accidentally delete your account. If there was only one type of HTTP request, you would have no such guarantee.
 
 #### Idempotency
 
@@ -201,21 +205,23 @@ If the client isn't sure whether a request succeeded (perhaps because of a bug i
 
 [TODO-pic] flowchart of idempotence key
 
-For a real-world example of idempotency keys, see the Stripe API documentation[LINK].
+For a real-world example of idempotency keys, see the Stripe API documentation for them[LINK].
 
 Since `GET` requests are safe and don't change the state of the server, they should always be idempotent by default. Your browser will never warn you that you are refreshing a page that was returned from a `GET` request. Other types of requests may be idempotent by default too, for example, `DELETE` requests that delete a resource. If the resource hasn't been deleted, the server should delete it. If it has already been deleted, then it can sensibly ignore the request. The effect of sending the request multiple times is therefore the same as sending it once, which is the definition of idempotency.
 
+[[[TODO: why are we moving onto this section? What's going on?]]]
+
 ### HTTP request parameters
 
-An HTTP request's HTTP method and path describe the action that a request should perform. However, many actions also require additional parameters in order to be carried out. Clients can't just say "create a new article"; they also need to provide the article's title, body, tags, and so on. Even read-only operations like "list all articles" can take filter parameters like a specific author, date, and so on. There are two main ways of passing parameters in an HTTP request: the *query string*, and the *request body*.
+An HTTP request's HTTP method and path describe the action that a request should perform. However, many actions also require additional parameters in order to be carried out. Clients can't just say "create a new article"; they also need to provide information about the article's title, body, tags, and so on. Even read-only operations like "list all articles" may requrie filter parameters like a specific author, date, and so on. There are two main ways of passing parameters in an HTTP request: the *query string*, and the *request body*.
 
-#### Query string
+#### [TODO - Option 1?] Query string
 
 The query string is an optional section of a URL path, separated from the base URL by a `?`. For example, consider the following URL:
 
 `https://newspaper.com/articles?author=Robert%20Heaton&year=2020`
 
-The base of this URL is `https://newspaper.com/articles`, and the query string is `author=Robert%20Heaton&year=2020`. Query strings usually encode multiple parameters using a `key=value` syntax that looks like `?key1=value1&key2=value2`. We can expect that a `GET` request to `https://newspaper.com/articles?author=Robert%20Heaton&year=2020` will return all articles written by Robert Heaton in the year 2020.
+The base of this URL is `https://newspaper.com/articles`, and the query string is `author=Robert%20Heaton&year=2020`. Query strings usually encode multiple parameters using a `key=value` syntax that looks like `?key1=value1&key2=value2` (although this is just s useful convention, and clients can put whatever data they like there). We can expect that a `GET` request to `https://newspaper.com/articles?author=Robert%20Heaton&year=2020` will return all articles written by Robert Heaton in the year 2020.
 
 `GET` requests should provide all their parameters in the query string. By contrast, `POST` or `PUT` requests usually pass their parameters in the HTTP *request body*.
 
@@ -229,7 +235,7 @@ Just as for query strings, the HTTP protocol does not make any requirements for 
 
 #### JSON
 
-JSON is a *serialization format*, which roughly means that it's a way to represent data in a form that can be easily shared. JSON is by no means the only serialization format available. Older APIs might use *XML*; newer ones might use *protobuf*. You could even invent your own, although I wouldn't recommend that you use it in production.
+JSON is a *serialization format*, which roughly means that it's a standardized way to represent data in a form that can be easily shared. JSON is by no means the only serialization format available. Older APIs might use *XML*; newer ones might use *protobuf*. You could even invent your own, although I wouldn't recommend that you use it in production.
 
 JSON looks very much like the maps, dictionaries, lists, and arrays that you might use when you're writing a program. For example, suppose that you want to send an API request to create a new article. In order for the server to be able to create your new article, it will need to know several extra parameters, such as `title`, `body`, `tags`, and `author`. The API's documentation will tell you how to structure the JSON that you send it. One reasonable specification might look something like this:
 
