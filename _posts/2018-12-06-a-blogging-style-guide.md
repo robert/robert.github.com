@@ -91,4 +91,9 @@ Here are 39 ways to make your blog more entertaining to read and more pleasurabl
 <li>Try not to let yourself realize when you start writing your final draft. It often becomes much harder to write or change anything for fear of getting it wrong.</li>
 </ol>
 
-<i>This post was kindly <a href="https://qianyongchao.blog/2018/12/19/%E8%AF%91%EF%BC%9A%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/">translated into Chinese</a> by Ryan Qian.</i>
+<i>This post has been translated into:</i>
+
+<ul>
+<li><i><a href="https://qianyongchao.blog/2018/12/19/%E8%AF%91%EF%BC%9A%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/">Chinese by Ryan Qian</a></i></li>
+<li><i><a href="https://www.ibidemgroup.com/edu/guia-estilo-blogs/">Spanish by Jose Bescos</a></i></li>
+</ul>
