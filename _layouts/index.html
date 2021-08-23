@@ -8,10 +8,10 @@
     <div id="fb-root"></div>
     <div class="flex-l">
       {% include navbar.html %}
-      <main class="flex-auto nested-img bt bn-l b--moon-gray pa4 {{ page.classes }}">
+      <main class="flex-auto nested-img bt bn-l b--moon-gray pl4 pr4 pb4 {{ page.classes }}">
         <!-- {% include rss.html %} -->
         {% if page.title %}
-          <h2 class="mv0 f2 lh-title">{{ page.title }}</h2>
+          <h2 class="mv0 f2 lh-title pt4">{{ page.title }}</h2>
         {% endif %}
         {{ content }}
       </main>
