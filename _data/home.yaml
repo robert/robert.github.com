@@ -47,7 +47,7 @@ steve_steveington:
     - title: "Tracking friends and strangers using WhatsApp"
       url: "/2017/10/09/tracking-friends-and-strangers-using-whatsapp/"
     - title: "Re: all those regrettable posts that you thought were gone"
-      url: :/2018/05/01/re-all-those-regrettable-posts-that-you-thought-were-gone/"
+      url: /2018/05/01/re-all-those-regrettable-posts-that-you-thought-were-gone/"
     - title: "How Tinder keeps your exact location (a bit) private"
       url: /2018/07/09/how-tinder-keeps-your-location-a-bit-private/
     - title: "A brief history of wi-fi privacy vulnerabilities"
@@ -96,6 +96,16 @@ https:
       url: /2020/04/27/how-does-a-tcp-reset-attack-work/
     - title: "How to build a TCP proxy"
       url: /2018/08/31/how-to-build-a-tcp-proxy-1/
+
+vulns:
+  title: Bug bounty write-ups
+  posts:
+    - title: "Remote code execution vulnerability in KensingtonWorks mouse manager"
+      url: /remote-code-execution-kensingtonworks/
+    - title: "Another RCE vulnerability in KensingtonWorks"
+      url: /another-rce-in-kensingtonworks
+    - title: "Vulnerability in Bumble dating app reveals any user's exact location"
+      url: /bumble-vulnerability
 
 computer_games:
   title: Computer games
@@ -178,8 +188,6 @@ programming:
       url: /2014/06/20/code-review-without-your-eyes/
     - title: "The Wavefunction Collapse Algorithm explained very clearly"
       url: /2018/12/17/wavefunction-collapse-algorithm/
-    - title: "Remote code execution vulnerability in KensingtonWorks mouse manager"
-      url: /remote-code-execution-kensingtonworks/
 
 office_hours:
   title: Office Hours

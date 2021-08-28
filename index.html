@@ -107,6 +107,25 @@ regenerate: true
 </div>
 
 <div class="mt4">
+  <h3 class="dib mb0 fw8 mid-gray ttu mt0 f5">{{ site.data.home.vulns.title }}</h3>
+  <ul class="list pl0">
+    {% for post in site.data.home.vulns.posts %}
+      <li class="pv2">
+        <a class="link f4 underline near-black hover-dark-gray lh-solid fw6" href="{{post.url}}">
+          {{ post.title}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="measure">
+  <a href="/bumble-vulnerability">
+    <img src="/images/bumble-phone-cover-inline.png" />
+  </a>
+</div>
+
+<div class="mt4">
   <h3 class="dib mb0 fw8 mid-gray ttu mt0 f5">{{ site.data.home.steve_steveington.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.steve_steveington.posts %}
@@ -273,4 +292,5 @@ regenerate: true
       </li>
     {% endfor %}
   </ul>
+  <a class="bw2 fw6 b--dark-gray pv2 ph3 ba link near-black dib" href="/archive">View full archive</a>
 </div>
