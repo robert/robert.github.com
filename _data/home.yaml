@@ -10,7 +10,6 @@ projects:
     - title: "Send me your privacy abuse tipoffs"
       url: /tipoffs
 
-
 best_of:
   title: Best of
   posts:
@@ -24,8 +23,6 @@ best_of:
       url: /2018/11/28/https-in-the-real-world/
     - title: "I was 7 words away from being spear-phished"
       url: /2019/06/24/i-was-7-words-away-from-being-spear-phished/
-    - title: "A beginners' guide to funemployment"
-      url: /2014/06/02/a-beginners-guide-to-funemployment/
     - title: "Childbirth: a father's-eye view"
       url: /2019/06/17/childbirth-a-fathers-eye-view/
     - title: "Making peace with Simpson's Paradox"
@@ -110,6 +107,8 @@ vulns:
 computer_games:
   title: Computer games
   posts:
+    - title: "It can’t be for nothing: notes from The Last of Us Part 2"
+      url: /last-of-us-part-2/
     - title: "I went to Skyrim, once"
       url: /2018/07/04/i-went-to-skyrim-once/
     - title: "The therapeutic properties and applications of Dark Souls"
