@@ -3,7 +3,6 @@ title: "How to write better sentences: 6 examples"
 layout: post
 tags: [Writing]
 og_image: https://robertheaton.com/images/sentences/ex3.png
-published: false
 ---
 You want to improve your writing. You've read a few style guides and remember several of their principles, but you're not sure what to do next. You know that you should "know your audience" and "omit needless words." But how?
 
