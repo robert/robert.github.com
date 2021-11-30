@@ -5,11 +5,11 @@ tags: [Writing]
 og_image: https://robertheaton.com/images/sentences/ex3.png
 published: false
 ---
-You want to improve your writing. You've read a few style guides and remember several of their principles, but you're not sure where to go from here. You know that you should "know your audience" and "omit needless words." But how?
+You want to improve your writing. You've read a few style guides and remember several of their principles, but you're not sure what to do next. You know that you should "know your audience" and "omit needless words." But how?
 
 You need more practice and more examples.
 
-To help, here are 6 real-world sentences that I've made shorter, clearer, and more engaging. The improvements cover techniques like resolutions, eliminating pointless phrases, and choosing assertive and kooky words to keep your readers awake. Most of the examples come from essays I've written on subjects including computer programming, parenthood, and cryptography, but you don't need to care about these things in order for the lessons to be useful. The changes are small, but small changes add up quickly over the course of a full essay.
+To help, here are 6 real-world sentences that I've made shorter, clearer, and more engaging. The improvements cover techniques like resolutions, eliminating pointless phrases, and choosing assertive and kooky words to keep your readers awake. Most of the examples come from essays I've written on subjects including computer programming, parenthood, and cryptography, but you don't need to care about these things in order for the lessons to be useful. The changes are small, but add up quickly over the course of a full essay.
 
 ### Who am I?
 
@@ -51,7 +51,7 @@ Now our writing is simpler too.
 
 ### 3. Keep editing
 
-Even after several rounds of editing you can still make big improvements. In a blog post called "How I Motivate Myself to Write"[https://blog.pragmaticengineer.com/writing-motivation/] by Gergely Orosz, the author describes how he edited one of his own paragraphs. His first attempt was:
+Even after several rounds of editing you can still make big improvements. In a blog post called ["How I Motivate Myself to Write"](https://blog.pragmaticengineer.com/writing-motivation/) by Gergely Orosz, the author describes how he edited one of his own paragraphs. His first attempt was:
 
 > In the past I used Hemingway Editor [a piece of writing software] to spot overly complex sentences which I would then proceed to make shorter, but over time I learned to write shorter sentences myself.
 
@@ -61,7 +61,7 @@ He improved this meandering sentence by splitting it into three:
 
 This is a good start, but I think we can do better.
 
-First, I dislike the phrase "I would then proceed" in the second sentence. Neither "then" nor "proceed" are useful words. If sentence 2 follows sentence 1 then it's usually obvious that it happened later. You rarely need a "then", and we certainly don't need one here. The phrase "I proceeded to" is similarly meaningless and usually sounds like a poor attempt at being funny, although here I suspect that it's just one of the author's tics.
+First, I dislike the phrase "I would then proceed" in the second sentence. Neither "then" nor "proceed" are useful words. If sentence 2 follows sentence 1 then it's usually obvious that it happened later. You rarely need a "then", and we certainly don't need one here. The phrase "I proceeded to" is similarly meaningless and usually sounds like a poor attempt at being funny, although here I suspect that here it's just one of the author's tics.
 
 All of this said, I can't see a simple way to excise both "then" and "proceed" from the second sentence. In the absence of better options we should at least get rid of one of them, leaving either:
 
@@ -75,7 +75,7 @@ However, even better would be to rethink whether we need this second sentence at
 
 > In the past I used Hemingway Editor to spot and fix overly complex sentences.
 
-We save 12 words and get rid of 2 real clunkers. We do have to be careful though. This new wording arguably implies that Hemingway Editor actually rewrote the sentences for the author, whereas I imagine that the author did the rewriting himself before merely asking Hemingway what it thought of the new version. If we were worried about this confusion then I would also be OK with:
+We save 12 words and get rid of 2 clunkers. We do have to be careful though. This new wording arguably implies that Hemingway Editor actually rewrote the sentences for the author, whereas I imagine that the author did the rewriting himself before merely asking Hemingway what it thought of the new version. If we were worried about this confusion then I would also be OK with:
 
 > In the past I used Hemingway Editor to spot overly complex sentences so that I could fix them.
 
@@ -94,6 +94,8 @@ Since we're going from a situation where the author and Hemingway were working t
 > In the past I used Hemingway Editor to spot and fix overly complex sentences. Over time I learned to write clearer sentences on my own.
 
 <img src="/images/sentences/ex3.png" style="border: 1px black solid" />
+
+The version that the original author wrote is perfectly reasonable too and the overall post it comes from is very good. I hope it's clear that I mean this nitpicking as a sincere form of flattery.
 
 ---
 
