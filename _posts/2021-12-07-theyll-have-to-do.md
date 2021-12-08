@@ -2,7 +2,7 @@
 title: "I wouldn't call my friends strong male role models but they'll have to do"
 layout: post
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar-12-cover.png
+og_image: https://robertheaton.com/images/oscar-11-cover.jpg
 custom_meta: "Oscar and I have started playing chess. He saw the handsome wooden set my parents got me for my 18th birthday and wanted to know what it was. The rules of chess so far are that one person plays white and the other plays black."
 ---
 > Previously on parenting:
