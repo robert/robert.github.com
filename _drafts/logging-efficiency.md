@@ -36,7 +36,7 @@ def dump_gameboy_state(gameboy):
     """
     output = ""
     for register in gameboy.registers:
-        # Do lots of work...
+        # Do lots of work that takes a long time...
         # ...
         # ...
 
@@ -66,13 +66,13 @@ def run():
 run()
 ```
 
-The problem is that even though the `log` method isn't logging the output of `dump_gameboy_state` because `DEBUG_MODE` is set to `False`, we're still doing all the work to evaluate `dump_gameboy_state(gameboy)`. The output is never actually used by `log` or any other part of the program, but the program still evaluates it.
+The problem is that even though the `log` method isn't logging the output of `dump_gameboy_state` because `DEBUG_MODE` is set to `False`, we're still doing all the work to evaluate `dump_gameboy_state(gameboy)` so that we can pass the result into the `log` method. The output is never actually used by `log` or any other part of the program, but the program doesn't know this and so still evaluates it.
 
-This means that on every pass through the `while True` loop, the program is executing the time-consuming `dump_gameboy_state` function. This is why my program was taking so long.
+This means that on every pass through the `while True` loop, the program was executing the time-consuming `dump_gameboy_state` function. This was why my program was running so slowly.
 
-To speed it up, I needed to prevent it from executing `dump_gameboy_state` unless the output was actually going to be needed. I see two main solutions.
+To speed it up, I needed to prevent it from executing `dump_gameboy_state` unless the output was actually going to be logged. I could see two main solutions.
 
-First, move the `if DEBUG_MODE` statement out of `log`:
+First, I could move the `if DEBUG_MODE` statement out of `log`:
 
 ```python
 if DEBUG_MODE:
@@ -89,12 +89,16 @@ Here's what this might look like:
 
 ```python
 def log(output_f):
+    """
+    `output_f` is a *function* that returns a string when called, not
+    an actual string.
+    """
     if DEBUG_MODE:
         print(output_f())
 
 # ...<snip>...
 
-# ## VERSION 1 ##
+# ## OPTION 1 ##
 
 def dump():
     return dump_gameboy_state(gameboy)
@@ -106,7 +110,7 @@ def dump():
 # us to later call this function inside `log`.
 log(dump)
 
-# ## VERSION 2 ##
+# ## OPTION 2 ##
 
 # An alternative shorthand using Python's `lambda` syntax.
 # `lambda: dump_gameboy_state(gameboy)` means the same thing
@@ -133,9 +137,33 @@ log("CPU cycle: " + cpu_cycle_n)
 log_f(lambda: dump_gameboy_state(gameboy))
 ```
 
-The general term for this kind of approach is lazy evaluation.
+The general term for this kind of approach is lazy evaluation. Our example isn't strictly lazy by the formal Computer Science definition because XYZ, but it achieves the same goal.
 
-Some programming languages are highly focussed on laziness. For example, the Scala language allows you to specify that the arguments to a function should always be evalauted lazily.
+Some programming languages are highly focussed on laziness. For example, the Scala language allows you to specify that the arguments to a function should not be evaluated when the function is called, and should only be evaluated inside the function if and when their outputs are actually needed. If their output are never needed (for example, because the function evaluation goes down a particular set of if-branches), the arguments are never evaluated, saving execution time.
+
+```scala
+TODO
+```
+
+Python uses lazy principles too, and sometimes makes changes to introduce them. For example, take the `range` function. This is used to iterate over a sequence of numbers:
+
+```python
+for i in range(100):
+    # TODO: good example of why you would do this in real life
+```
+
+In Python2, `range(100)` returned a list of all the integers from `0` to `100`:
+
+```python
+>>> range(100)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, <...etc...>]
+```
+
+The problem is that this list takes time and space in memory to construct. For 100 integers this isn't a problem, but for larger numbers it can be.
+
+However, in normal `for i in range(100)`-style usage, we never need all of the numbers at the same time. We only need to know the value of the number that we are currently processing. Instantiating a full list of all the numbers is therefore a waste.
+
+Because of this, in Python3 `range` was changed to instead return a special `Range` object. This object behaved identically to a list when used in a `for i in range(100)` statement, but made some internal optimizations.
 
 
 
