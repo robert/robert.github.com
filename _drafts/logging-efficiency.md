@@ -1,8 +1,3 @@
-Story about how a small tweak made a program I was working on actually run reasonably
-Mention that program was a gameboy? Mention that it was laziness?
-
-
-
 I was writing an emulator for the Nintendo Gameboy. An emulator is a program that TODO.
 
 I'd never written an emulator for anything before and was finding it difficult. In particular, my program was incredibly slow. I had got it to display the startup "Nintendo" logo that made me think I was about to play Pokemon, but it was chugging down the screen very slowly.
@@ -139,13 +134,9 @@ log_f(lambda: dump_gameboy_state(gameboy))
 
 The general term for this kind of approach is lazy evaluation. Our example isn't strictly lazy by the formal Computer Science definition because XYZ, but it achieves the same goal.
 
-Some programming languages are highly focussed on laziness. For example, the Scala language allows you to specify that the arguments to a function should not be evaluated when the function is called, and should only be evaluated inside the function if and when their outputs are actually needed. If their output are never needed (for example, because the function evaluation goes down a particular set of if-branches), the arguments are never evaluated, saving execution time.
+### Laziness and `range`
 
-```scala
-TODO
-```
-
-Python uses lazy principles too, and sometimes makes changes to introduce them. For example, take the `range` function. This is used to iterate over a sequence of numbers:
+Python uses lazy principles in other places too, and sometimes makes changes to introduce them. For example, take the `range` function. This is used to iterate over a sequence of numbers:
 
 ```python
 for i in range(100):
@@ -161,12 +152,24 @@ In Python2, `range(100)` returned a list of all the integers from `0` to `100`:
 
 The problem is that this list takes time and space in memory to construct. For 100 integers this isn't a problem, but for larger numbers it can be.
 
-However, in normal `for i in range(100)`-style usage, we never need all of the numbers at the same time. We only need to know the value of the number that we are currently processing. Instantiating a full list of all the numbers is therefore a waste.
+However, in normal `for i in range(100)`-style usage, we never need all of the numbers at the same time. We only need to know the value of the number that we are currently processing. Instantiating a full list of all the numbers is therefore a waste, because we throw it away as soon as the loop is complete.
 
-Because of this, in Python3 `range` was changed to instead return a special `Range` object. This object behaved identically to a list when used in a `for i in range(100)` statement, but made some internal optimizations.
+Because of this, in Python3 `range` was changed to instead return a special `Range` object. This object behaved identically to a list when used in a `for i in range(100)` statement, but made some internal optimizations. When used in a loop it returns each number in sequence, just like the full list, and it can even generate numbers on the fly when accessed directly using `[]`:
 
+```python3
+>>> range(100)[25]
+25
+```
 
+Python2 actually had this capability already in a function called `xrange`, but Python3 got rid of the non-lazy (or eager) version entirely and made the zippier, lazy version the default.
 
+### Other programming languages
+
+Some programming languages are highly focussed on laziness. For example, the Scala language allows you to specify that the arguments to a function should not be evaluated when the function is called, and should only be evaluated inside the function if and when their outputs are actually needed. If their output are never needed (for example, because the function evaluation goes down a particular set of if-branches), the arguments are never evaluated, saving execution time.
+
+```scala
+TODO
+```
 
 
 

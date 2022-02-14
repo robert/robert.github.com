@@ -11,10 +11,14 @@ published: false
     }
 </style>
 
-TODO-later: should I have an immediate summary? "Off-The-Record Messaging tries to replicate the properties of blah blah blah"? Could have it in italics at the top so it's clearly a blurb and not really part of the main post?
+> “A dog ate my homework” is a much more credible excuse if you ostentatiously purchased twenty ferocious dogs the day before.*
 
-*“A dog ate my homework” is a much more credible excuse if you ostentatiously purchased twenty ferocious dogs the day before.*
-This is a funny quote
+#### Index
+
+* [Part 1: the problem with PGP](/otr1)
+* [Part 2: deniability and forward secrecy](/otr2)
+* [Part 3: how OTR works](/otr3)
+* [Part 4: OTR's key insights](/otr4)
 
 ## 0. Introduction 
 
@@ -44,7 +48,7 @@ This long blog post/short book is based on [Borisov, Goldberg and Brewer 2004][o
 
 ----
 
-## 1. Why do we need Off-The-Record Messaging?
+## 1. Why use Off-The-Record Messaging?
 
 Alice and Bob want to talk to each other online. However, their privacy is under threat from the evil Eve, who wants to find out what they are saying and manipulate the contents of their messages. Alice and Bob want to stop her and talk to each other securely. To do this, they need a cryptographic protocol.
 
@@ -98,7 +102,7 @@ Nonetheless, neither family of algorithms is inherently more "secure" than the o
 
 #### How PGP uses asymmetric encryption
 
-In fact, PGP uses both asymmetric and symmetric encryption. It does this because although asymmetric encryption is convenient, it is slow, especially for long inputs. Using an asymmetric cipher to encrypt a long message in its entirety would be unacceptably time-consuming. By contrast, symmetric ciphers are much zippier. Alice and Bob would therefore prefer to do as much of their encryption and decryption as possible using a symmetric cipher instead of an asymmetric one. But how can they agree on a single, shared key to use with a symmetric cipher without Eve being able to see this key too?
+In fact, PGP uses both asymmetric and symmetric encryption. It does this because asymmetric encryption is slow, especially for long inputs. Using an asymmetric cipher to encrypt a long message in its entirety would be unacceptably time-consuming. By contrast, symmetric ciphers are much zippier. Alice and Bob would therefore prefer to do as much of their encryption and decryption as possible using a symmetric cipher instead of an asymmetric one. But how can they agree on a single, shared key to use with a symmetric cipher without Eve being able to see this key too?
 
 PGP gets the best of both worlds with a neat trick. In PGP, Alice doesn't encrypt her entire message using an asymmetric cipher. Instead, she encrypts it using a symmetric cipher, with a random symmetric key that she generates called a session key.
 
@@ -114,7 +118,7 @@ However, even though Bob is the only person who can read Alice's message, at the
 
 A cryptographic signature is a blob of data attached to a message that allows the recipient to prove to themselves who wrote the message. It also allows them to satisfy themselves that the message has not been tampered with. Signatures can be generated in several different ways, including the same kind of asymmetric cryptography that Alice and Bob just used to encrypt their messages.
 
-When encrypting and decrypting a message using asymmetric cryptography, Alice and Bob exploited the fact that a message encrypted using a public key can only be decrypted using the corresponding private key. To sign a message, they exploit the equivalent but inverse fact that a message encrypted with a *private* key can only be decrypted using the corresponding *public* key.
+When encrypting and decrypting a message using asymmetric cryptography, Alice and Bob exploit the fact that a message encrypted using a public key can only be decrypted using the corresponding private key. To sign a message, they exploit the equivalent but inverse fact that a message encrypted with a *private* key can only be decrypted using the corresponding *public* key.
 
 <img src="/images/otr/otr-2.png" />
 
@@ -157,17 +161,19 @@ Let's examine these properties in detail and see why they are so desirable. Then
 
 Deniability is the ability for a person to credibly deny that they knew or did something. It's one of the main focusses of OTR, but one of the main weaknesses of PGP.
 
-Statements from in-person conversations are usually easily deniable. If you claim that I told you that I robbed a bank then I can credibly retort that I didn't and you can't prove otherwise. Email conversations can be deniable too (although see below for a look into why in practice they often aren't). Suppose that you forward to a journalist the text of an email in which I appear to describe my plans to rob a hundred banks. I can credibly claim that you edited the email or forged it from scratch, and you still can't prove that I'm lying. The public or the police or the judge might believe your claims over mine, but nothing is mathematically provable and we're down in the murky world of human judgement.
+Statements from in-person conversations are usually easily deniable. If you claim that I told you that I robbed a bank then I can credibly retort that I didn't and you can't prove otherwise.
 
-By contrast, we've seen that PGP-signed messages are not deniable. If Alice signs a message and sends it to Bob then Bob can use the signature to validate that the message is authentic. However, anyone else who comes into possession of the message can also validate the signature and prove that Alice sent the message in exactly the same way that Bob did. Alice is therefore permanently on the record as having sent these messages. If Eve hacks Bob's messages, or if Alice and Bob fall out and Bob forwards their past communication to her enemies, Alice cannot plausibly deny having sent the messages in the same way as she could if she had never signed them. If you forward to a journalist a cryptographically signed email in which I describe my plans to rob a thousand banks, I will be in a pickle.
+Email conversations can be deniable too (although see below for a look into why in practice they often aren't). Suppose that you forward to a journalist the text of an email in which I appear to describe my plans to rob a hundred banks. I can credibly claim that you edited the email or forged it from scratch, and you still can't prove that I'm lying. The public or the police or the judge might believe your claims over mine, but nothing is mathematically provable and we're down in the murky world of human judgement.
+
+By contrast, we've seen that PGP-signed messages are not deniable. If Alice signs a message and sends it to Bob then Bob can use the PGP signature to validate that the message is authentic. However, all this validation requires is Alice's public key, which is freely available. This means that anyone else who comes into possession of the message can also validate the signature and prove that Alice sent the message in exactly the same way that Bob did. Alice is therefore permanently on the record as having sent these messages. If Eve hacks Bob's messages, or if Alice and Bob fall out and Bob forwards their past communication to her enemies, Alice cannot plausibly deny having sent the messages in the same way as she could if she had never signed them. If you forward to a journalist a cryptographically signed email in which I describe my plans to rob a thousand banks, I will be in a pickle.
 
 On the face of it, deniability is in tension with authenticity. Authenticity requires that Bob can prove to himself that a message was sent by Alice. By contrast, deniability requires that Alice can deny having ever sent that same message. As we'll see, one of the most interesting innovations of OTR is how it achieves these seemingly contradictory goals simultaneously.
 
-Of course, technically anything can be denied, even cryptographic signatures. I can always claim that someone stole my computer and guessed my password, or infected my computer with malware, or stole my private keys while I was letting them use my computer to look up the football scores. These claims are not impossible, but they are unlikely and tricky to argue. Deniability is a sliding scale of plausibility, and so OTR goes to great lengths to make denials more believable and therefore more plausible. "A dog ate my homework" is a much more credible excuse if you ostentatiously purchased twenty ferocious dogs the day before.
+Technically anything can be denied, even cryptographic signatures. I can always claim that someone stole my computer and guessed my password, or infected my computer with malware, or stole my private keys while I was letting them use my computer to look up the football scores. These claims are not impossible, but they are unlikely and tricky to argue. Deniability is a sliding scale of plausibility, and so OTR goes to great lengths to make denials more believable and therefore more plausible. "A dog ate my homework" is a much more credible excuse if you ostentatiously purchased twenty ferocious dogs the day before.
 
-It's still perfectly reasonable to believe that a deniable message is still authentic. We all assess and believe hundreds of claims every day using vague balances of probability, without mathematical proof. Screenshots of a WhatsApp conversation might reasonably be enough to convince the authorities of my plans to rob ten thousand banks, even without cryptographic signatures.
+It's perfectly reasonable to believe that a deniable message is still authentic. We all assess and believe hundreds of claims every day using vague balances of probability, without mathematical proof. Screenshots of a WhatsApp conversation might reasonably be enough to convince the authorities of my plans to rob ten thousand banks, even without cryptographic signatures.
 
-But as we'll now see, if signatures are available then that does make everything much easier.
+But as we'll now see, if signatures are available then that does make everything easier.
 
 #### 1.2.1 DKIM, the Podesta Emails, and the Hunter Biden laptop
 
@@ -183,13 +189,13 @@ When the receiver's email provider receives the message, it looks up the sending
 
 But as we've seen with PGP, where there's a cryptographic signature, there might also be a problem with deniability. As well as providing authentication, a DKIM signature provides permanent, undeniable proof that the signed message is authentic. DKIM signatures are part of the contents of an email, so they are saved in the recipient's inbox. If a hacker steals all the emails from an inbox, they can validate the DKIM signatures themselves using the sending provider's public DKIM key, in the same way that the recipient's email provider did when it received the message. The attacker already knows that the emails are legitimate, since they stole them with their own two hands. However, DKIM signatures allow them to prove this fact to a sceptical third-party as well, obliterating the emails' deniability. Email providers change, or *rotate*, their DKIM keys regularly, which means that the public key currently in their DNS record may be different to the key used to sign the message. Fortunately for the attacker, historical DKIM public keys for many large mail providers can easily be found on the internet.
 
-Matthew Green, a professor at Johns Hopkins University, [points out](https://blog.cryptographyengineering.com/2020/11/16/ok-google-please-publish-your-dkim-secret-keys/) that making emails non-repudiatable in this way is not one of the goals of the DKIM protocol. Rather, it's an odd side-effect that wasn't contemplated when DKIM was originally designed and deployed. Green further argues that DKIM signatures make email hacking a much more lucrative pursuit. It's hard for a journalist or a foreign government to trust a stolen dump of unsigned emails sent to them by an associate of an associate of an associate, since any of the people in this long chain of associates could have faked or embellished the emails' contents. However, if the emails contain cryptographic DKIM signatures generated by trustworthy third parties (such as a reputable email provider), then the emails are provably real, no matter how questionable the character who gave them to you. Cryptographic signatures don't decay with social distance or sordidness. Data thieves are able to piggy-back off of Gmail's (or any other DKIM signer's) credibility, making stolen, signed emails a verifiable and therefore more valuable commodity. 
+Matthew Green, a professor at Johns Hopkins University, [points out](https://blog.cryptographyengineering.com/2020/11/16/ok-google-please-publish-your-dkim-secret-keys/) that making emails non-repudiatable in this way is not one of the goals of the DKIM protocol. Rather, it's an odd side-effect that wasn't contemplated when DKIM was originally designed and deployed. Green argues that DKIM signatures make email hacking a much more lucrative pursuit. It's hard for a journalist or a foreign government to trust a stolen dump of unsigned emails sent to them by an associate of an associate of an associate, since any of the people in this long chain of associates could have faked or embellished the emails' contents. However, if the emails contain cryptographic DKIM signatures generated by trustworthy third parties (such as a reputable email provider), then the emails are provably real, no matter how questionable the character who gave them to you. Cryptographic signatures don't decay with social distance or sordidness. Data thieves are able to piggy-back off of Gmail's (or any other DKIM signer's) credibility, making stolen, signed emails a verifiable and therefore more valuable commodity. 
 
 This causes problems in the real world. In March 2016, Wikileaks published [a dump of emails](https://wikileaks.org/podesta-emails/) hacked from the Gmail account of John Podesta, a US Democratic Party operative. Alongside each email Wikileaks published [the corresponding DKIM signature](https://wikileaks.org/podesta-emails/emailid/10667), generated by Gmail or whichever provider sent the email. This allowed independent verification of the messages, which prevented Podesta from claiming that the emails were nonsense fabricated by liars.
 
 You may think that the Podesta hack was, in itself, a good thing for democracy, or a terrible thing for a private citizen. You may believe that the long-term verifiability of DKIM signatures is a societal virtue that increases transparency, or a blunder that incentivizes email hacking. But whatever your opinions, you'd have to agree that John Podesta definitely wishes that his emails didn't have long-lived proofs of their provenance, and that most individual email users would like their own messages to be sent deniably and off-the-record.
 
-Matthew Green has a counter-intuitive but elegant solution to this problem. Google already regularly rotate their DKIM keys. They do this as a best-practice precaution, in case the keys have been compromised without Google realizing. Green proposes that, once Google (and other mail providers) have rotated a DKIM keypair and taken it out of service, they should *publicly publish* the keypair's *private key*.
+Matthew Green has a counter-intuitive but elegant solution to this problem. Google already regularly rotate their DKIM keys. They do this as a best-practice precaution, in case the keys have been compromised without Google realizing. Green proposes that once Google (and other mail providers) have rotated a DKIM keypair and taken it out of service, they should *publicly publish* the keypair's *private key*.
 
 This sounds odd. Publishing an DKIM private key means that anyone can use it to spoof a valid-looking DKIM signature for an email. If the keypair were still in use, this would make Google's DKIM signatures useless. However, since the keypair has been retired, revealing the private key does not jeopardize the effectiveness of DKIM in any way. The purpose of DKIM is to allow *email recipients* to verify the authenticity of a message *at the time they receive that message*. Once the recipient has verified and accepted the message, they don't need to re-verify it in the future. The signature has no further use unless someone - such as an attacker - wants to later prove the provenance of an email.
 
@@ -205,7 +211,9 @@ The story of how the Republicans allegedly got hold of this laptop is somewhat f
 
 <img src="/images/otr/otr-8.png" />
 
-The DKIM signature of this email is valid, and when combined with the email body (not shown above) it does indeed prove that `v.pozharskyi.ukraine@gmail.com` sent an email to `hbiden@rosemontseneca.com` about meeting the recipient's father, sometime between 2012 and 2015 (the period for which the DKIM signing key was valid). However, it also raises a lot of questions, and provides a perfect example of the sliding-scale nature of deniability. The email doesn't prove anything more than what it says. It doesn't prove who `v.pozharskyi.ukraine@gmail.com` is (although other evidence might). It doesn't prove that there are thousands more like it, and it doesn't prove that the email came from the alleged laptop.
+The DKIM signature of this email is valid, and when combined with the email body (not shown above) it does indeed prove that `v.pozharskyi.ukraine@gmail.com` sent an email to `hbiden@rosemontseneca.com` about meeting the recipient's father, sometime between 2012 and 2015 (the period for which the DKIM signing key was valid). However, it also raises a lot of questions, and provides a perfect example of the sliding-scale nature of deniability.
+
+The email doesn't prove anything more than what it says. It doesn't prove who `v.pozharskyi.ukraine@gmail.com` is (although other evidence might). It doesn't prove that there are thousands more like it, and it doesn't prove that the email came from the alleged laptop.
 
 The email is cryptographically verifiable, but without further evidence the associated story is still plausibly deniable. I suspect that if a full dump of emails and signatures had been released, a la Wikileaks and Podesta, then their combined weight could have been enough to overcome many circumstantial denials. If the Republicans were also sitting on a stack of additional, also-cryptographically-verifiable material then it's hard to understand why they chose to release only this single, not-particularly-incendiary example. Maybe the 2020 election could have gone a different way. Cryptographic deniability is important.
 
@@ -223,7 +231,7 @@ Here's Wikipedia's definition of forward secrecy:
 
 > Forward Secrecy is a feature of specific key agreement protocols that gives assurances your session keys will not be compromised even if the private key of the server is compromised. *([Wikipedia](https://en.wikipedia.org/wiki/Forward_secrecy))*
 
-We've seen already that PGP does not give forward secrecy. Suppose that Eve stores encrypted PGP communication and later compromises Bob's private key. Eve can now use Bob's private key to decrypt all of the historical session keys that Alice encrypted using Bob's public key. This means that she can use those session keys to decrypt all of Alice's corresponding messages, long after they were sent.
+We've seen in part 1 [TODO-LINK] that PGP does not give forward secrecy. Suppose that Eve stores encrypted PGP communication and later compromises Bob's private key. Eve can now use Bob's private key to decrypt all of the historical session keys that Alice encrypted using Bob's public key. This means that she can use those session keys to decrypt all of Alice's corresponding messages, long after they were sent.
 
 To prevent this from happening, Alice and Bob need a session key exchange process that prevents Eve from working out the value of the key, even if she watches all of their key-exchange traffic, and even if she compromises their private keys. The original version of OTR achieved this remarkable property using a key-exchange protocol called *Diffie-Hellman* (other similar protocols would also work), which we'll look at more later. 
 
@@ -286,7 +294,7 @@ Alice and Bob start by agreeing on a shared, symmetric, ephemeral session key. T
 
 <img src="/images/otr/otr-13.png" />
 
-Alice and Bob securely agree on each shared secret key without allowing Eve to discover them using a Diffie-Hellman key exchange, as briefly mentioned above. The guts of Diffie-Hellman are complicated and not necessary in order to understand OTR, but a broad understanding is nonetheless instructive.
+Alice and Bob securely agree on each shared secret key without allowing Eve to discover them by using a Diffie-Hellman key exchange, as briefly mentioned above. The guts of Diffie-Hellman are complicated and not necessary in order to explain OTR, but a broad understanding is still instructive.
 
 #### 2.1.1 Diffie-Hellman key exchange
 
