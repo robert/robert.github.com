@@ -2,7 +2,7 @@
 title: "I'm a security engineer and I still almost got scammed"
 layout: post
 tags: [Security]
-og_image: https://robertheaton.com/images/scam-sover.png
+og_image: https://robertheaton.com/images/scam-cover.png
 ---
 I was in the park with my son and his best friend. I saw 2 missed calls from a number I didn’t recognise. I Googled it - it was my bank. I told the other adults that I should call back in case it was important.
 
