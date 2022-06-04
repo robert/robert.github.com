@@ -6,10 +6,10 @@ regenerate: true
 
 <div class="mt4">{% include rss.html %}</div>
 
-<ul class="mt4 pl3">
+<ul class="mt4 pl0 list" style="list-style:none">
   {% for post in site.posts %}
   <li class="mt3">
-    <a class="f4 link near-black underline lh-title fw6" href="{{ post.url }}">
+    <a class="f4 link near-black underline lh-title" href="{{ post.url }}">
       {{ post.title }}
     </a>
     <div class="f5 silver">

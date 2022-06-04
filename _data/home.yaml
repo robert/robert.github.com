@@ -1,7 +1,7 @@
 projects:
-  title: Projects I am working on
+  title: Projects
   posts:
-    - title: "NEW: Programming Feedback for Advanced Beginners"
+    - title: "Programming Feedback for Advanced Beginners"
       url: https://advancedbeginners.substack.com
     - title: "Office hours"
       url: /office-hours
