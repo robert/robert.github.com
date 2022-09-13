@@ -2,7 +2,7 @@
 title: "I love him more and more every day on average"
 layout: post
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar15-cover.jpg
+og_image: https://robertheaton.com/images/oscar-15-cover.jpg
 custom_meta: "We're having another baby. Gaby's been a blunt advocate for more ever since we got Oscar home. She muted her arguments when we were considering whether to have any children because she wanted to give me a free choice about my life's wide arc."
 ---
 > This is part 15 of a series about my experiences being a parent. Read the rest [here](https://robertheaton.com#parenthood).
