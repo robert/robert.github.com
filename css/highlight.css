@@ -1,3 +1,9 @@
+figcaption {
+  font-style: italic; 
+}
+
+
+
 pre {
   border: 1px solid #ccc;
   padding: 16px;
