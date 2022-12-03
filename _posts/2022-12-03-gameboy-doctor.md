@@ -8,7 +8,7 @@ Are you [building a Gameboy emulator](https://gbdev.io/pandocs/)? Are you stuck?
 
 <img src="/images/nintendo-upside-down.png" />
 
-Gameboy Doctor can help! ([GitHub link](https://github.com/robert/github-doctor))
+Gameboy Doctor can help! ([GitHub link](https://github.com/robert/gameboy-doctor))
 
 <img src="/images/example.jpg" />
 
@@ -24,7 +24,7 @@ Just Python3, no third-party libraries.
 
 ### 0. Clone the repo
 
-The tool is available [on GitHub](https://github.com/robert/github-doctor) - clone it using git.
+The tool is available [on GitHub](https://github.com/robert/gameboy-doctor) - clone it using git.
 
 ### 1. Choose a test ROM
 
