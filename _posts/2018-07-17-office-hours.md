@@ -29,7 +29,7 @@ We can cover any topic that you like. Some example things I think I could help w
 
 ## How do you sign up?
 
-Send me an email at [robqheaton@gmail.com](robqheaton@gmail.com) with a few sentences on who you are and what you'd like to work on. I'll email you right back with whether I think I can help, and we can get scheduling.
+Send me an email at [robqheaton@gmail.com](mailto:robqheaton@gmail.com) with a few sentences on who you are and what you'd like to work on. I'll email you right back with whether I think I can help, and we can get scheduling.
 
 ## What do I get out of this?
 
