@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "I’d thought I knew what I was doing this time: how our second son was born"
+title: "I thought I knew what I was doing this time: how our second son was born"
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/sam.jpg
 custom_meta: "Before Oscar was born, I was entirely excited that we were going to have a child. I liked my life, but it was a good time to change everything."
