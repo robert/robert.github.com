@@ -3,7 +3,6 @@ layout: post
 title: "How to pass a coding interview with me"
 tags: [Work]
 og_image: https://robertheaton.com/images/interview-cover.png
-published: false
 ---
 In the last 10 years I've given more than 400 coding interviews. That's the equivalent of 2 working months just watching strangers having a crack at the same handful of programming challenges. Some of my would-be colleagues solve the problems without incident, but others run into trouble for similar, easily-correctable reasons. I wish I could give better feedback, but because of legal and time constraints that's not how the system works.
 
