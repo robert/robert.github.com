@@ -4,7 +4,7 @@ title: "How to pass a coding interview with me"
 tags: [Work]
 og_image: https://robertheaton.com/images/interview-cover.png
 ---
-In the last 10 years I've given more than 400 coding interviews. That's the equivalent of 2 working months just watching strangers having a crack at the same handful of programming challenges. Some of my would-be colleagues solve the problems without incident, but others run into trouble for similar, easily-correctable reasons. I wish I could give better feedback, but because of legal and time constraints that's not how the system works.
+In the last 10 years I've given more than 400 coding interviews. That's the equivalent of 2 working months just watching strangers having a crack at the same few programming challenges. Some of my would-be colleagues solve the problems without incident, but others run into trouble for similar, easily-correctable reasons. I wish I could give better feedback, but because of legal and time constraints that's not how the system works.
 
 So instead of personalised advice, I've written this cheat sheet containing 22 tips about how to pass a programming challenge interview with me. The tips can't replace skill and practice, but they will help you calm your nerves, avoid silly mistakes, and showcase the best of your ability. Most of the tips are easy to implement, and put together they'll increase the number of interviews that you pass.
 
@@ -16,25 +16,27 @@ So instead of personalised advice, I've written this cheat sheet containing 22 t
 
 You might use Google to look up the questions that my company tends to ask before the interview. This does go against the spirit of the thing, but I'm not sure how much of a duty you have to uphold the integrity of my company's interview process. Plenty of people do it, and I imagine that it's usually very helpful. I do have to ding you if I notice that you've done it, though.
 
-If you're doing the interview on the same computer you used to look up the question, make sure to close your tabs and delete your browser history before you start. I've interviewed several people who left a tab containing the leaked question open; interestingly they all did quite poorly.
+If you're doing the interview on the same computer you used to look up the question, make sure to close your tabs and delete your browser history before you start. I've interviewed several people who left a tab containing the leaked question open, although interestingly they all did quite poorly.
 
 ### 2. Set up a basic program and make sure you can run it
 
 If you're using your own laptop, set up a basic hello-world program and make sure you can run it. Write your solution in this file. This makes sure that you don't waste time at the start of the interview scrabbling around with a broken environment.
 
 I've interviewed several people who used a laptop belonging to their current company, but then realised that it was so customised that they didn't know how to use it to write and run a basic program from scratch. They hacked around the problem by finding a simple part of their company's codebase and editing it to answer the question. This cost them time and stress, looked bad, and surely violated their employment contract.
+
 ## Introduction
 
 ### 3. Keep your personal intro short
 
 It's usually not a technical interviewer's job to assess your experience and goals. I might start an interview by asking "My name is Rob, I work on this and that, what about you?" but this is just an icebreaker. Answer succinctly like "I'm Sarah, I work on the Infrastructure team at Badger corp. It's our job to make sure that our servers are reliable, secure, and easy to manage." I've had people go on for several minutes, which achieves nothing and wastes your time and energy.
+
 ### 4. Ask how much time you have to answer the question
 
 Ask how long you have to answer the question so that you can manage your time accordingly. I should tell you this unprompted, but sometimes I forget and interviewees forget to ask.
 
 ## When you get the question
 
-When you get the question I think it's useful having a repeatable script to check you understand what you're being asked to do, and to get all the extra metadata you need. I don't think this is particularly important, but it's easy to implement. I'd suggest:
+When you get the question I think it's useful to have a repeatable script to check you understand what you're being asked to do and to get any extra information that you need. I'd suggest:
 
 - Restate the question, briefly
 - Ask a clarifying question or two
@@ -42,38 +44,46 @@ When you get the question I think it's useful having a repeatable script to chec
 - Sketch a solution that works for at least the base case
 
 A few more details:
+
 ### 5. Restate the question, briefly
 
 I'll either describe the question or send you a written version. Once you think you understand it, restate it briefly:
 
 > "So the goal is to return all the triplets of numbers from the input list that add up to 0. Does that sound right?"
 
-This allows the interviewer to correct you if you've got the wrong idea, and probably helps start to establish a mild rapport.
+This allows the interviewer to correct you if you've got the wrong idea, and probably helps start to establish a little rapport.
 
-It's also possible that I only approve of rephrasing the question like this because it shows that you've read the same books saying that it's a good habit as I have.
+I admit that it's possible I only approve of rephrasing the question like this because it shows that you've read the same books saying that it's a good habit as I have.
+
 ### 6. Ask a clarifying question or two
 
 Once you understand the problem, try to ask a clarifying question or two. This gives you an air of thoughtfulness and might even help you answer the question as well. Two off-the-shelf options are:
 
 * "Can I assume that the input will be valid?"
 * "What's the largest input size that we can expect?"
+
 ### 7. Ask how you're being assessed
 
 The goal of any coding interview is to write good code at a decent pace, but the details can vary.
+
 #### How far are you supposed to get?
 
 Some interviews have multiple parts, and some deliberately have more parts than anyone could reasonably finish in the time allowed. Ask how far you're expected to get so that you can plan ahead.
+
 #### Is the interviewer looking for efficient code, clean code, or both?
 
 Some interviewers are looking for efficient code; some are looking for clean code. Most are probably looking for a bit of both. Ask them what they care about so that you can focus on the right things.
+
 #### Should you write tests?
 
 Simple unit tests will help you answer most questions (see below), but some interviewers might not want them, or some questions might not be easily testable (eg. those that use external dependencies like HTTP requests). You might as well clarify.
+
 ### 8. Sketch a solution that works for at least the base case
 
 Start by drafting your program using prose or pseudocode. Don't start by writing actual code; even if you know that step 1 will be to read an input file, only read it once you know roughly what you're going to do afterwards.
 
 This will probably help you get your own head in order, and will also allow a benevolent interviewer to correct any big misconceptions early, or at least know where they've come from. The more you say and do, the more partial credit an interviewer can give you if your code doesn't fully work.
+
 ## Debugging
 
 ### 9. Run your code frequently

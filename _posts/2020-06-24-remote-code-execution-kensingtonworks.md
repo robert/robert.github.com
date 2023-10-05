@@ -3,6 +3,8 @@ layout: post
 title: Remote code execution vulnerability in KensingtonWorks mouse manager
 tags: [Bug bounty write-ups, Security]
 og_image: https://robertheaton.com/images/kensington-cover.png
+redirect_from:
+  - /k
 ---
 Back in February, a Twitter user who has asked to remain anonymous sent me a tipoff. They had noticed some odd behavior by [KensingtonWorks][kw], a piece of software that allows its users to add power functionality to mice made by Kensington, a popular brand of peripherals.
 
