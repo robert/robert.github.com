@@ -3,6 +3,8 @@ title: "Another RCE vulnerability in KensingtonWorks"
 layout: post
 tags: [Bug bounty write-ups, Security]
 og_image: https://robertheaton.com/images/kensington2-cover.png
+redirect_from:
+  - /k2
 ---
 A few months ago I published [a remote code execution (RCE) vulnerability][ken1] in [KensingtonWorks][kenworks]. KensingtonWorks is a tool made by a company called Kensington for adding power-user features to mice. Kensington fixed this flaw, but I've found another RCE that, as of time of publishing, remains unpatched. Like the previous vulnerability I reported, an attacker exploits this one by luring a victim to a malicious webpage. The victim doesn't need to interact with the page; all they need to do is stay on the site while background JavaScript silently exploits the KensingtonWorks defect. The attacker can then execute arbitrary code on the target's machine and take near-complete control of it.
 
