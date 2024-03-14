@@ -1,5 +1,11 @@
 <section class="nl4 ph4 pv3 bt bb b--moon-gray nr4">
-  <form action="https://tinyletter.com/robheaton" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/robheaton', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+<form
+  action="https://buttondown.email/api/emails/embed-subscribe/heaton"
+  method="post"
+  target="popupwindow"
+  onsubmit="window.open('https://buttondown.email/heaton', 'popupwindow')"
+  class="embeddable-buttondown-form"
+>
     <label for="mce-EMAIL">
       <h3 class="f3 mt0 mb1">Get new essays sent to you</h3>
     </label>
@@ -8,9 +14,8 @@
       topics. Published a few times a month.
     </span>
     <br/>
-        <input
-          type="email" value="" name="email" id="tlemail" placeholder="Your email address"
-          class="bw2 b--dark-gray pa3 ba measure-narrow w-100 mr2">
+  <input type="email" name="email" id="tlemail" placeholder="Your email address"
+    class="bw2 b--dark-gray pa3 ba measure-narrow w-100 mr2" />
       <input type="hidden" value="1" name="embed"/>
       <button type="submit" name="subscribe" id="mc-embedded-subscribe"
         class="bw2 b--green green bg-white dark fw6 pa3 ba mt2 dib hover-white hover-bg-green pointer">Subscribe</button>
