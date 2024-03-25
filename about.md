@@ -3,7 +3,11 @@ layout: index
 title: About me
 classes: measure-wide f4
 ---
-I work on security [at Stripe][stripe]. I write about:
+I'm a researcher at [Anthropic][anthropic] on the frontier red team.
+
+I've written a book about being a dad that I'm working on [getting published](/book-draft-finished).
+
+On this blog I write about:
 
 * [Uncovering online privacy violations][wacom]
 * [Online tracking][online-tracking]
@@ -21,15 +25,9 @@ I work on security [at Stripe][stripe]. I write about:
 
 I also like chess, but I haven't written any blog posts about that. I used to [live in San Francisco][sf]. Now I live in London.
 
-## Teaching programming
-
-I do weekly [office hours][office-hours] where I talk about programming with anyone who signs up. I think they are most useful for "[Advanced Beginners][pfab]" who are working towards getting their first job as a programmer. But regardless of who you are, if this sounds interesting and useful then [I'd love to hear from you][office-hours].
-
-I publish a fortnightly newsletter called [Programming Feedback for Advanced Beginners][pfab], in which I review code sent to me by readers and offer suggestions on how they could improve it. My aim is to help you make the leap from cobbling programs together to writing elegant, thoughtful code. You can [subscribe now][pfab], entirely free, or [read the increasingly extensive archives][pfab-archives].
-
 ## Contact
 
-I'm on [Twitter][twitter] and I use email - `robqheaton at gmail dot com`. I'd love to hear from you.
+I'm on [Twitter][twitter] and I use email - `robqheaton at gmail dot com`. I'd love to hear from you about anything that's on your mind.
 
 [wacom]: https://robertheaton.com/2020/02/05/wacom-drawing-tablets-track-name-of-every-application-you-open/
 [stripe]: /2014/03/07/lessons-from-a-silicon-valley-job-search/
@@ -50,3 +48,4 @@ I'm on [Twitter][twitter] and I use email - `robqheaton at gmail dot com`. I'd l
 [twitter]: https://twitter.com/robjheaton
 [tcp-reset]: https://robertheaton.com/2020/04/27/how-does-a-tcp-reset-attack-work/
 [skyrim]: https://robertheaton.com/2018/07/04/i-went-to-skyrim-once/
+[anthropic]: https://anthropic.com
