@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "I've written a book about being a dad; now I'm trying to get it published"
+title: "I've written a book about being a dad; now I want to get it published"
 tags: [Babies, Life]
 og_image: https://robertheaton.com/images/book-finished-cover.webp
 ---
