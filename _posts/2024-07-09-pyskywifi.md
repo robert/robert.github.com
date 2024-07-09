@@ -5,7 +5,7 @@ tags: [Programming]
 mermaid: true
 og_image: https://robertheaton.com/images/pyskywifi-cover.webp
 ---
-The plane reached 10,000ft. I connected my laptop to the wi-fi. The network login page encouraged me to sign in to my airmiles account, free of charge, even though I hadn't yet paid for any internet. A hole in the firewall, I thought. It's a long way from London to San Francisco so I decided to stick my finger in and wiggle it around.
+The plane reached 10,000ft. I connected my laptop to the wi-fi. The network login page encouraged me to sign in to my airmiles account, free of charge, even though I hadn't yet paid for any internet. A hole in the firewall, I thought. It's a long way from London to San Francisco so I decided to peer through it.
 
 I logged in to my JetStreamers Diamond Altitude account and started clicking. I went to my profile page. I saw an edit button. It looked like a normal button: drop shadow, rounded corners, nothing special. I was supposed to use it to update my name, address, and so on.
 
