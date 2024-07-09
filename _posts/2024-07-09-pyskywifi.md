@@ -3,6 +3,7 @@ layout: post
 title: "PySkyWiFi: completely free, unbelievably stupid wi-fi on long-haul flights"
 tags: [Programming]
 mermaid: true
+og_image: https://robertheaton.com/images/pyskywifi-cover.webp
 ---
 The plane reached 10,000ft. I connected my laptop to the wi-fi. The network login page encouraged me to sign in to my airmiles account, free of charge, even though I hadn't yet paid for any internet. A hole in the firewall, I thought. It's a long way from London to San Francisco so I decided to stick my finger in and wiggle it around.
 
@@ -133,6 +134,7 @@ Once you make your request it will hang for several minutes. If by some miracle 
 
 Here's what happens behind the scenes:
 
+<a id="pic1"></a>
 ```mermaid
 sequenceDiagram
     actor Me
@@ -246,6 +248,7 @@ None of this transport logic cares about the details of the network layer throug
 
 Here's how PSWF uses transport protocol segments to exchange long messages:
 
+<a id="pic2"></a>
 ```mermaid
 sequenceDiagram
     actor Me
