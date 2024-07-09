@@ -5,9 +5,11 @@ tags: [Programming]
 mermaid: true
 og_image: https://robertheaton.com/images/pyskywifi-cover.webp
 ---
-The plane reached 10,000ft. I connected my laptop to the wi-fi. The network login page encouraged me to sign in to my airmiles account, free of charge, even though I hadn't yet paid for any internet. A hole in the firewall, I thought. It's a long way from London to San Francisco so I decided to peer through it.
+The plane reached 10,000ft. I took out my laptop, planning to peruse the internet and maybe do a little work if I got really desperate.
 
-I logged in to my JetStreamers Diamond Altitude account and started clicking. I went to my profile page. I saw an edit button. It looked like a normal button: drop shadow, rounded corners, nothing special. I was supposed to use it to update my name, address, and so on.
+I connected to the in-flight wi-fi and opened my browser. The network login page demanded credit card details. I fumbled for my card, which I eventually discovered had hidden itself inside my passport. As I searched I noticed that the login page was encouraging me to sign in to my airmiles account, free of charge, even though I hadn't paid for anything yet. A hole in the firewall, I thought. It's a long way from London to San Francisco so I decided to peer through it.
+
+I logged in to my JetStreamers Diamond Altitude account and started clicking. I went to my profile page, where I saw an edit button. It looked like a normal button: drop shadow, rounded corners, nothing special. I was supposed to use it to update my name, address, and so on.
 
 But suddenly I realised that this was no ordinary button. This clickable rascal would allow me to access the entire internet through my airmiles account. This would be slow. It would be unbelievably stupid. But it would work.
 
