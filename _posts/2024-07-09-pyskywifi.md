@@ -18,9 +18,9 @@ Before I could access the entire internet through my airmiles account I'd need t
 
 Here's the basic idea: suppose that I logged into my airmiles account and updated my name. If you were also logged in to my account then you could read my new name, from the ground. You could update it again, and I could read your new value. If we kept doing this then the name field of my airmiles account could serve as a tunnel through the airplane's wi-fi firewall to the real world.
 
-This tunnel could support a simple instant messaging protocol. I could update my name to "`Hello how are you`."  You could read my message and then send me a reply by updating my name again to "`Im fine how are you`." I could read that, and we could have a stilted conversation. This might not sound like much, but it would be the first step on the road to full internet access.
+This tunnel could support a simple instant messaging protocol. I could update my name to "`Hello how are you`."  You could read my message and then send me a reply by updating my name again to "`Im fine how are you`." I could read that, and we could have a stilted conversation. This might not sound like much, but it would be the first step on the road to full internet access. <a id="nl"></a>
 
-I paid for the internet on my old laptop. I hadn't finished migrating my data off this computer, so it still had to come everywhere with me. I messaged my wife to ask her to help me with my experiments. `no, what are you talking about, i'm busy` she replied, lovingly. 
+I paid for the internet on my old laptop. I hadn't finished migrating my data off this computer, so it still had to come everywhere with me. I messaged my wife to ask her to help me with my experiments. `no, what are you talking about, i'm busy` she replied, lovingly.
 
 So instead I took out my new laptop, which still had no internet access. I created a test airmiles account and logged into it on both computers. I found that I could indeed chat with myself by updating the name field in the UI.
 
