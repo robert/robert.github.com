@@ -35,9 +35,6 @@ GEM
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     kramdown (1.17.0)
-    kramdown-mermaid (0.1.2)
-      kramdown
-    kramdown-plantuml (1.0.4)
     liquid (4.0.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -66,8 +63,6 @@ DEPENDENCIES
   jekyll
   jekyll-paginate
   jekyll-redirect-from
-  kramdown-mermaid
-  kramdown-plantuml
   rouge
 
 BUNDLED WITH
