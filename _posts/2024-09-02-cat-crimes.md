@@ -2,7 +2,7 @@
 layout: post
 title: "Generating infinite, age-appropriate Cat Crimes puzzles"
 tags: [Programming]
-og_image: https://robertheaton.com/images/pyskywifi-cover.webp
+og_image: https://robertheaton.com/images/cc.webp
 ---
 A few weeks ago my 5-year-old and I tried playing *Cat Crimes*, a puzzle game in which you work out which of your cats ate your shoes. We had a wonderful time - for about 20 minutes.
 
