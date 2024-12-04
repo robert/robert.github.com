@@ -3,7 +3,6 @@ layout: post
 title: "PyMyFlySpy: track your flight using its headrest data"
 tags: [Programming]
 og_image: https://robertheaton.com/images/pymyflyspy/ss-main.png
-published: false
 ---
 "Where are we daddy?" asked my five-year-old.
 
@@ -84,7 +83,7 @@ The one strange design choice I made was to use a Firefox Extension to read the 
 
 ![image](/images/pymyflyspy/100s.png)
 
-However, I'm a very cautious person. I'm sure that airlines would rather people didn't poke around at their onboard servers, even if those people are very careful and well-intentioned and handsome. To make sure I didn't irritate them, I came up with an even more judicious approach.
+However, I'm sure that airlines would rather people didn't poke around at their onboard servers, even if those people are very careful and well-intentioned and handsome. To make sure I didn't irritate them, I came up with an even more judicious approach.
 
 Instead of scraping the data endpoint, I wrote a Firefox Extension. The extension sits there while the airline's wi-fi landing page requests the latest data from the `/info` endpoint, just like normal, every few seconds. The extension peeks at the data that's returned; sends the data to the `PyMyFlySpy` web server; and finally the web server writes it to the `PyMyFlySpy` database, to serve to the web frontend. Using a Firefox Extension like this means that `PyMyFlySpy` never interacts with the plane's info server directly. This means that `PyMyFlySpy` can provably never harm the server.
 
@@ -94,7 +93,7 @@ I had to write the extension for Firefox instead of Chrome, because Chrome is in
 
 PyMySkySpy gives us programmatic access to data about our flight. It would be fun to use this to trigger events, like:
 
-* "When our ETA is 2 hours exactly, block my access to `netflix.com` and open the latest draft of my unfinished novel."
+* "For the first half of the flight, only let me open the big report that I need to finish by 5pm today."
 * "When our location is within 10 miles of the Grand Canyon, send the kids a Slack message to look out the window. Also send me a Slack message to bug them to look out the window."
 * "If our altitude drops by more than 300ft in 1 second then play a reassuring but really quite urgent sound on all of my devices."
 
