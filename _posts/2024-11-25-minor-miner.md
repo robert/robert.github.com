@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "MinorMiner: we turn maths homework into Bitcoin"
+title: "MinorMiner: we turn your class's maths homework into Bitcoin"
 tags: [Programming]
-og_image: https://robertheaton.com/images/TODO
+og_image: https://robertheaton.com/images/minor-miner/cover.webp
 published: false
 ---
-Welcome everyone! My name is Hobert Reaton, [serial](https://robertheaton.com/2017/10/17/we-see-you-democratizing-de-anonymization/) [entrepreneur](https://robertheaton.com/2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/), and I'm here in this rather shabby motel conference room to present you with another once-in-a-lifetime investment opportunity.
+Hello! Hello! Welcome, welcome. My name is Hobert Reaton, and I'm here in this rather shabby motel conference room to present you with [another](https://robertheaton.com/2017/10/17/we-see-you-democratizing-de-anonymization/) [once-in-a-lifetime](https://robertheaton.com/2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/) investment opportunity.
 
 Look at this picture. Tell me what you see:
 
@@ -17,7 +17,7 @@ I'll tell you what I see: wasted computing power.
 
 Between the ages of 5 and 18, the average child in full-time education completes about 5 maths worksheets a week. Each worksheet has 20 questions. This means that over the course of their school career, every single one of our kids performs about 80,000 calculations.
 
-At the moment society completely wastes their work. A student figures out that 5+5=10 and 7x7=49. This motivates them; they're energised by their success. But then what do we do with the fruits of their labour? Nothing! We throw the fruit away, to rot in the void. "We knew that already," we tell them. "Your ideas don't matter." Our children deserve better.
+At the moment society completely wastes their work. A student figures out that 5+5=10 and 7x7=49. This motivates them; they're energised by their success. But then what do we do with the fruits of their labour? Nothing! We throw their fruit away, to rot in the void. "We knew that already," we tell them. "Your ideas don't matter." Our children deserve better.
 
 That's why I founded MinorMiner.
 
@@ -27,9 +27,9 @@ MinorMiner allows school-age children to monetise their maths homework by using 
 
 Today people mine bitcoin by using computers to solve complex mathematical puzzles. There's no elegant way to solve these puzzles; bitcoin miners just have to guess answers until they find a right one, over and over and over again. When a miner guesses a right answer we say that they've "mined" a new "block". They're rewarded with new bitcoin.
 
-Bitcoin mining is like having millions of automated accountants double-checking each other's work, making sure that no one has made a mistake or pulled a fast one. Through some additional steps that we don't need to worry about here, mining keeps the Bitcoin network secure and ensure that all of its transactions are legitimate and correct. However, it requires an incredible amount of electricity - around 150TWh per year, or 1% of the world's total energy consumption. What if there was better way?
+The point of all this is to keep the Bitcoin blockcheck secure and reliable. Mining is like having millions of automated accountants double-checking each other's work, making sure that no one has made a mistake or pulled a fast one. Through a few additional steps that we don't need to worry about here, mining keeps the Bitcoin network safe and ensures that all of its transactions are legitimate and correct. However, it requires an incredible amount of electricity - around 150TWh per year, or 1% of the world's total energy consumption. What if there was better way?
 
-This is where MinorMiner and school-aged children come in. "But Bitcoin mining sounds hard!" I hear you wail. "My child has only a rudimentary grasp of basic algorithms!" True, true - but the magic is that the children don't need to know how to mine Bitcoin, and they won't even know that they're doing it. Our team has converted the algorithm used by the bitcoin blockchain (called *SHA-256 hashing*) into a sequence of elementary arithmetic questions that even the dullest dullards can answer. Solving a blockchain puzzle used to require understanding and executing a SHA-256 hash. Now all it takes is skipping through a few trillion simple brainteasers.
+This is where MinorMiner and school-aged children come in. "But Bitcoin mining sounds hard!" I hear you wail. "My child has only a rudimentary grasp of basic algorithms!" True, true - but the magic is that the children on our platform don't need to know how to mine Bitcoin, and they won't even know that they're doing it. Our team has converted the algorithm used by the bitcoin blockchain (called *SHA-256 hashing*) into a sequence of elementary arithmetic questions that even the dullest dullards can answer. Solving a blockchain puzzle used to require understanding and executing a SHA-256 hash. Now all it takes is skipping through a few trillion simple brainteasers.
 
 * `5+3=?`
 * `10*5=?`
@@ -42,7 +42,7 @@ The kids do the sums - we take care of the rest.
 
 The heart of MinorMiner is a centralised system that manages our mining. The system decomposes a SHA-256 hash computation into simple arithmetic questions, and works out which of these questions need answering next. But how do we find the kids to do the number crunching? Three words: online maths quizzes.
 
-We have a maths learning platform that we sell to schools all over the world. The platform isn't particularly good, but we give department heads a generous revenue share and so this tends not to matter. Once a teacher (or "distribution associate") is set up on MinorMiner, they assign a quiz to their class as homework. In the evening their children (or "computation partners") log into the MinorMiner portal and load up their quiz for the day.
+You see, we also have a maths learning platform that we sell to schools all over the world. The platform isn't particularly good, but we give department heads a generous revenue share and so this tends not to matter. Once a teacher (or "distribution associate" as we like to call them) is set up on MinorMiner, they assign a quiz to their class as homework. In the evening their children (or "computation partners") log into the MinorMiner portal and load up their quiz for the day.
 
 The quiz consists of whatever questions our hashing system says need doing next. Our computation partners answer them. By way of compensation their distribution associate doesn't give them a detention. We collect the answers and use them to continue calculating a hash. When one partner finishes their quiz, the next partner continues calculating from where they left off.
 
@@ -50,11 +50,11 @@ The quiz consists of whatever questions our hashing system says need doing next.
 
 We have to be careful - a hash is a delicate thing. One tiny mistake in one tiny step and - poof! - the whole calculation is completely, irreversibly screwed. That's why send each calculation to two separate computation partners. If their answers disagree then we escalate to a slightly older partner to adjudicate. We maintain a rating for each partner based on their accuracy. If their rating drops below 4.3 stars then they are invited to undergo additional training to help them get back to the standard expected for MinorMiner partners. If such improvement is not forthcoming then they are invited to seek maths education elsewhere.
 
-Any questions so far? No? Then let show you our real technological breakthrough.
+Any questions so far? No? Then it's time for me to show you our real technological breakthrough.
 
 ### CUDAAAAGH
 
-We write our mining code using a Python library that we call `Centralized Underage Distributed Arithmetic - Automated Assignment And Group Hashing` (CUDAAAAGH). CUDAAAAGH allows us to distribute any complex computation across an infinitely-scalable pool of computation partners. We've open-sourced it [on GitHub](https://github.com/robert/CUDAAAAGH) and [PyPi](https://pypi.org/project/CUDAAAAGH).
+We write our mining code using a Python library called `Centralized Underage Distributed Arithmetic - Automated Assignment And Group Hashing` (CUDAAAAGH). CUDAAAAGH allows us to distribute any complex computation across an infinitely-scalable pool of computation partners. We've open-sourced it [on GitHub](https://github.com/robert/CUDAAAAGH) and [PyPi](https://pypi.org/project/CUDAAAAGH).
 
 To use it, we run `pip install CUDAAAAGH` and then use its `CUDAAAAGHInt` class everywhere we would normally use Python's standard integer type. Aside from that, we write all of our code as normal. When we execute our program, CUDAAAAGH automatically offloads any arithmetic computations to our network of computation partners, instead of burdening our own CPUs.
 
@@ -73,7 +73,7 @@ print(f"The answer is: {y}")
 # => 15
 ```
 
-![image](/images/minor-miner/demo.gif)
+![image](/images/minor-miner/demo-slower.gif)
 
 This works for all integer operations. For complex operations like XOR, CUDAAAAGH breaks them up into simpler additions and multiplications that will be more familiar to our computation partners. It then combines their answers behind the scenes to calculate the requested XOR:
 
@@ -183,7 +183,7 @@ This is why we've successfully lobbied to have XOR calculations added to the fir
 
 But why stop with XORs? Think about how legacy mining has evolved over the last decade or so. The first Bitcoins were mined on normal computers, with normal CPUs. Nowadays all bitcoins are mined using specialised computers called ASICs, hardwired to calculates hashes and nothing out. In order to compete, we have to train human ASICs.
 
-Kids need to learn how to calculate a SHA-256 themselves, end-to-end. This is why we're such vocal supporters of SB-1337 - "No Child Left Unmined." SB-1337 will replace the outdated year 7 maths syllabus with an in-depth, end-to-end course on calculating SHA-256 hashes by hand. It will allow us to stop sending students trivial additions and multiplications, and send them real maths like this instead:
+Kids need to learn how to calculate a SHA-256 themselves, end-to-end. This is why we're such vocal supporters of SB-1337 - "No Child Left Unmined." SB-1337 will replace the outdated year 7 maths syllabus with an in-depth, end-to-end course on calculating SHA-256 hashes by hand. It will allow us to stop sending students trivial additions and multiplications, and send them real maths instead:
 
 ```
 Question 1:
@@ -199,7 +199,7 @@ We'll be able to turn their homework directly into bitcoins, with no intermediat
 
 ### 3. Teacher Incentive Alignment
 
-At first some of our new Distribution Associates (or teachers, as they are sometimes called) were...hesitant to embrace our new, hash-centric curriculum. Fortunately this changed when they learned about our Teacher Incentive Alignment program (TIA).
+At first some of our new Distribution Associates (or teachers, as they're known as in the legacy system) were...hesitant to embrace our new, hash-centric curriculum. Fortunately this changed when they learned about our Teacher Incentive Alignment program (TIA).
 
 TIA allows us to compensate Distribution Associates for their hard work, using a sliding-scale fee for every billion hashes produced by their Computation Partners (or, "students"). With TIA, whenever we profit, they profit. The Computation Partners profit too of course, through the invaluable knowledge and practice that they get by participating in MinorMiner.
 
@@ -229,18 +229,18 @@ After we've perfected the bitcoin use-case, we'll pivot straight to AI. We're al
 
 ```python
 def matmul(m1: CUDAAAAGHMatrix, m2: CUDAAAAGHMatrix) -> CUDAAAAGHMatrix:
-  # (Implementation left as an exercise for the reader, you've probably
-  # got the idea by now.)
+  # (Implementation left as an exercise for the reader, you get
+  # the joke by now)
 ```
 
-Applying CUDAAAAGH to AI also raises some delightful philosophical questions. Were you already deeply confused about whether sufficiently advanced AI models should count as conscious beings whose welfare we are morally obliged to care about? How much more confusing does this question become if the actions of the AI models are an emergent property of billions of children doing their maths homework?
+Applying CUDAAAAGH to AI also raises some delightful philosophical questions. Were you already deeply confused about whether sufficiently advanced AI models should count as conscious beings? Are we going to be morally obliged to care about their welfare? How much more confusing do these questions become if the AI models are an emergent property of billions of children doing their maths homework?
 
 And what will we do after AI? Cloud computing, ladies and gentlemen, cloud computing. Children are commodity hardware. Our big, audacious goal is to implement an entire computer using them. Everywhere that a computer normally has an electron, we'll replace it with a school-aged child doing their maths homework. CPUs become specialised children performing incredibly-specialised operations. Hard-drives become arrays of children remembering 1s and 0s. Motherboards become lines of children deciding what messages to send to the others. Think about the implications! Free computers for everyone!
 
-Version one of this new computing platform will still need to be built on top of legacy silicon of course. But version two will be virtualized and [self-hosted](/2017/10/24/what-is-a-self-hosting-compiler/) on top of version one, at which point my scientists tell me that we can get rid of the silicon altogether. This will save us a lot on cloud computing costs.
+Version one of this new computing platform will still need to be built on top of legacy silicon. But version two will be virtualized and [self-hosted](/2017/10/24/what-is-a-self-hosting-compiler/) on top of version one, at which point my scientists tell me that we can get rid of the silicon altogether. This will save us a lot on cloud computing costs.
 
 ![image](/images/minor-miner/self-hosting.png)
 
-Thank you for listening. Believe in children! Invest in the MinorMiner pre-seed! Form an orderly line! Make your cheques payable to "Hobert Reaton." No madam, there's no "LLC" at the end. Just "Hobert Reaton." I also accept cash. Thank you.
+That's all I have to say today, thank you for listening. Believe in children! Invest in the MinorMiner pre-seed! Form an orderly line! Make your cheques payable to "Hobert Reaton." No madam, there's no "LLC" at the end. Just "Hobert Reaton." I also accept cash and a wide range of shitcoins. Here's my wallet address. Thank you.
 
 *CUDAAAAGH is [available on GitHub](https://github.com/robert/CUDAAAAGH). It can also be installed [from PyPi](https://pypi.org/project/CUDAAAAGH/) using `pip install CUDAAAAGH`.*
