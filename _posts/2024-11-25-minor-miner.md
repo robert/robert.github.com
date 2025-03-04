@@ -21,13 +21,20 @@ At the moment society completely wastes their work. A student figures out that 5
 
 That's why I founded MinorMiner.
 
-## MinorMiner's big insight
+## What is MinorMiner?
 
-MinorMiner allows school-age children to monetise their maths homework by using it to mine bitcoin. Yes, you heard me right. Here's how it works.
+MinorMiner allows school-age children to monetise their maths homework by using it to mine bitcoin. Yes, you heard me right.
 
-Today people mine bitcoin by using computers to solve complex mathematical puzzles. There's no elegant way to solve these puzzles; bitcoin miners just have to guess answers until they find a right one, over and over and over again. When a miner guesses a right answer we say that they've "mined" a new "block". They're rewarded with new bitcoin.
+In order to understand MinorMiner's brilliance, we first need to understand how Bitcoin is mined today. Right now, people mine bitcoin by using computers to solve complex mathematical puzzles. The puzzles all look like this:
 
-The point of all this is to keep the Bitcoin blockcheck secure and reliable. Mining is like having millions of automated accountants double-checking each other's work, making sure that no one has made a mistake or pulled a fast one. Through a few additional steps that we don't need to worry about here, mining keeps the Bitcoin network safe and ensures that all of its transactions are legitimate and correct. However, it requires an incredible amount of electricity - around 150TWh per year, or 1% of the world's total energy consumption. What if there was better way?
+1. Take the list of the Bitcoin transactions that have occurred since the last Bitcoin was mined. Check that they're all correctly authorized and that none of them spend money that the creator doesn't have
+2. Choose a string of extra letters and numbers to add on to the end of this list (this is the miner's attempt to solve the puzzle)
+3. Pass the list and your extra characters through an extremely complex function called a *hash function*. The hash function chops and slices and spins and dices the input around, seemingly (but not actually) at random, until it spits out a number at the end
+4. The puzzle is: what combination of letters and numbers from step 2 cause the output from step 3 to be less than some small target number?
+
+There's no elegant way to solve these puzzles. This means that Bitcoin miners have no choice but to guess inputs to step 2, over and over and over again, until they find one that satisfies the criteria in step 4. When a miner guesses a right answer we say that they've "mined" a new "block". They attach their solution to the blockchain to show that they've verified the transactions in the block, and they're rewarded with new bitcoin. Their work, along with a couple of extra steps that I've hand-waved over, ensures that the blockchain is safe and secure.
+
+However, it also requires an incredible amount of electricity - around 150TWh per year, or 1% of the world's total energy consumption. What if there was a better way?
 
 This is where MinorMiner and school-aged children come in. "But Bitcoin mining sounds hard!" I hear you wail. "My child has only a rudimentary grasp of basic algorithms!" True, true - but the magic is that the children on our platform don't need to know how to mine Bitcoin, and they won't even know that they're doing it. Our team has converted the algorithm used by the bitcoin blockchain (called *SHA-256 hashing*) into a sequence of elementary arithmetic questions that even the dullest dullards can answer. Solving a blockchain puzzle used to require understanding and executing a SHA-256 hash. Now all it takes is skipping through a few trillion simple brainteasers.
 
@@ -237,10 +244,6 @@ Applying CUDAAAAGH to AI also raises some delightful philosophical questions. We
 
 And what will we do after AI? Cloud computing, ladies and gentlemen, cloud computing. Children are commodity hardware. Our big, audacious goal is to implement an entire computer using them. Everywhere that a computer normally has an electron, we'll replace it with a school-aged child doing their maths homework. CPUs become specialised children performing incredibly-specialised operations. Hard-drives become arrays of children remembering 1s and 0s. Motherboards become lines of children deciding what messages to send to the others. Think about the implications! Free computers for everyone!
 
-Version one of this new computing platform will still need to be built on top of legacy silicon. But version two will be virtualized and [self-hosted](/2017/10/24/what-is-a-self-hosting-compiler/) on top of version one, at which point my scientists tell me that we can get rid of the silicon altogether. This will save us a lot on cloud computing costs.
-
-![image](/images/minor-miner/self-hosting.png)
-
-That's all I have to say today, thank you for listening. Believe in children! Invest in the MinorMiner pre-seed! Form an orderly line! Make your cheques payable to "Hobert Reaton." No madam, there's no "LLC" at the end. Just "Hobert Reaton." I also accept cash and a wide range of shitcoins. Here's my wallet address. Thank you.
+That's all I have to say today, thank you for listening. Believe in children! Invest in the MinorMiner pre-seed! Form an orderly line! Make your cheques payable to "Hobert Reaton." No madam, there's no "LLC" at the end. Just "Hobert Reaton." I also accept cash and a wide range of memecoins. Here's my wallet address. Thank you.
 
 *CUDAAAAGH is [available on GitHub](https://github.com/robert/CUDAAAAGH). It can also be installed [from PyPi](https://pypi.org/project/CUDAAAAGH/) using `pip install CUDAAAAGH`.*
