@@ -6,7 +6,7 @@ og_image: https://robertheaton.com/images/frt-cover.png
 ---
 I work at [Anthropic](https://www.anthropic.com/) on the Frontier Red Team. Our mission is to find out whether AI models possess critical, advanced capabilities, and to help the world to prepare. We're hiring AI researchers and engineers in the US and UK, and if that describes you then we’d love to talk.
 
-We explore questions like: can models design bioweapons, or accelerate vaccine research? Can they orchestrate massive cyberattacks, or defend our critical infrastructure? Can they self-improve, or build a business, or fly drones? Eeven if they can't do these things right now, when might they be able to?
+We explore questions like: can models design bioweapons, or accelerate vaccine research? Can they orchestrate massive cyberattacks, or defend our critical infrastructure? Can they self-improve, or build a business, or fly drones? Even if they can't do these things right now, when might they be able to?
 
 We’re a technical research team embedded inside both Anthropic’s policy and research organizations. We work with frontier models; top experts in every domain that we cover; and key national security and policy actors. This [Wall Street Journal article](https://www.wsj.com/tech/ai/ai-safety-testing-red-team-anthropic-1b31b21b) explains a bit more.
 
