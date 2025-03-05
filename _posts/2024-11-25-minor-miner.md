@@ -17,26 +17,86 @@ I'll tell you what I see: wasted computing power.
 
 Between the ages of 5 and 18, the average child in full-time education completes about 5 maths worksheets a week. Each worksheet has 20 questions. This means that over the course of their school career, every single one of our kids performs about 80,000 calculations.
 
-At the moment society completely wastes their work. A student figures out that 5+5=10 and 7x7=49. This motivates them; they're energised by their success. But then what do we do with the fruits of their labour? Nothing! We throw their fruit away, to rot in the void. "We knew that already," we tell them. "Your ideas don't matter." Our children deserve better.
+At the moment society completely wastes their work. A student figures out that 5+5=10 and 7x7=49. This motivates them; they're energised by their success. But then what do we do with the fruits of their labour? Nothing! We throw their fruit away, to rot in the void. "We knew that already," we tell them. "Your ideas don't matter." Unlike the rest of society, I believe that our children deserve to feel appreciated. I believe that their achievements are valuable.
 
 That's why I founded MinorMiner.
 
 ## What is MinorMiner?
 
-MinorMiner allows school-age children to monetise their maths homework by using it to mine bitcoin. Yes, you heard me right.
+MinorMiner is a platform that allows school-age children to monetise their maths homework by using it to mine Bitcoin. Yes, you heard me. We send children their homework, they crunch through it, and then together we turn their sweat into digital gold. This isn't some rinky-dink, unsustainable incentive program where we bribe children to care about multiplication. Homework is the primary, essential raw material that feeds our machine. We need these kids. No kids; no Bitcoin.
 
-In order to understand MinorMiner's brilliance, we first need to understand how Bitcoin is mined today. Right now, people mine bitcoin by using computers to solve complex mathematical puzzles. The puzzles all look like this:
+In order to understand the innovation that makes MinorMiner possible, we first need to understand how Bitcoin is mined today. Right now, people mine Bitcoin by using computers to solve complex mathematical puzzles. The puzzles all look like this:
 
 1. Take the list of the Bitcoin transactions that have occurred since the last Bitcoin was mined. Check that they're all correctly authorized and that none of them spend money that the creator doesn't have
-2. Choose a string of extra letters and numbers to add on to the end of this list (this is the miner's attempt to solve the puzzle)
-3. Pass the list and your extra characters through an extremely complex function called a *hash function*. The hash function chops and slices and spins and dices the input around, seemingly (but not actually) at random, until it spits out a number at the end
+2. Choose a string of extra letters and numbers to add on to the end of this list (this is called a *nonce*, and is the miner's attempt to solve the puzzle)
+3. Pass the list and your extra characters through an extremely complex function called the *SHA-256 hash function* (technically you pass it through the function twice). The hash function chops and slices and spins and dices the input around, seemingly (but not actually) at random. At the end it spits out a number
 4. The puzzle is: what combination of letters and numbers from step 2 cause the output from step 3 to be less than some small target number?
 
-There's no elegant way to solve these puzzles. This means that Bitcoin miners have no choice but to guess inputs to step 2, over and over and over again, until they find one that satisfies the criteria in step 4. When a miner guesses a right answer we say that they've "mined" a new "block". They attach their solution to the blockchain to show that they've verified the transactions in the block, and they're rewarded with new bitcoin. Their work, along with a couple of extra steps that I've hand-waved over, ensures that the blockchain is safe and secure.
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  
+  <rect width="800" height="500" fill="#f9f9f9"/>
+  
+<!-- Title removed -->
+  
+  <!-- Step 1: Transaction List -->
+  <rect x="50" y="40" width="200" height="120" rx="10" fill="#FFE0B2" stroke="#E65100" stroke-width="2"/>
+  <text x="150" y="70" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Step 1</text>
+  <text x="150" y="95" font-family="Arial" font-size="14" text-anchor="middle">Collect valid Bitcoin</text>
+  <text x="150" y="115" font-family="Arial" font-size="14" text-anchor="middle">transactions since</text>
+  <text x="150" y="135" font-family="Arial" font-size="14" text-anchor="middle">last block</text>
+  
+  <!-- Step 2: Add Nonce -->
+  <rect x="300" y="40" width="200" height="120" rx="10" fill="#C8E6C9" stroke="#2E7D32" stroke-width="2"/>
+  <text x="400" y="70" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Step 2</text>
+  <text x="400" y="95" font-family="Arial" font-size="14" text-anchor="middle">Add nonce</text>
+  
+  <!-- Step 3: Hash Function -->
+  <rect x="550" y="40" width="200" height="120" rx="10" fill="#BBDEFB" stroke="#1565C0" stroke-width="2"/>
+  <text x="650" y="70" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Step 3</text>
+  <text x="650" y="95" font-family="Arial" font-size="14" text-anchor="middle">Pass transactions and</text>
+  <text x="650" y="115" font-family="Arial" font-size="14" text-anchor="middle">nonce through hash</text>
+  <text x="650" y="135" font-family="Arial" font-size="14" text-anchor="middle">function</text>
+  
+  <!-- Step 4: Check Result -->
+  <rect x="300" y="240" width="200" height="120" rx="10" fill="#E1BEE7" stroke="#6A1B9A" stroke-width="2"/>
+  <text x="400" y="270" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">Step 4</text>
+  <text x="400" y="295" font-family="Arial" font-size="14" text-anchor="middle">Check if hash output</text>
+  <text x="400" y="315" font-family="Arial" font-size="14" text-anchor="middle">is less than target</text>
+  
+  <!-- Flow Arrows - FIXED to be shorter and avoid overlap with consistent starts -->
+  <path d="M250 100 L290 100" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="288,95 295,100 288,105" fill="#333"/>
+  
+  <path d="M500 100 L540 100" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="538,95 545,100 538,105" fill="#333"/>
+  
+  <path d="M650 160 L650 190 L400 190 L400 230" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="395,228 400,235 405,228" fill="#333"/>
+  
+  <!-- Failed attempt loop - FIXED with proper start point -->
+  <path d="M300 300 C240 300, 240 100, 300 100" fill="none" stroke="#FF5252" stroke-width="2" stroke-dasharray="5,5" stroke-linecap="round"/>
+  <polygon points="298,95 305,100 298,105" fill="#FF5252"/>
+  <text x="200" y="210" font-family="Arial" font-size="12" fill="#FF5252" text-anchor="middle">NO - try again with</text>
+  <text x="200" y="225" font-family="Arial" font-size="12" fill="#FF5252" text-anchor="middle">new nonce</text>
+
+   <!-- Success box -->
+  <rect x="425" y="400" width="250" height="40" rx="10" fill="#DCEDC8" stroke="#33691E" stroke-width="2"/>
+  <text x="550" y="425" font-family="Arial" font-size="14" font-weight="bold" fill="#33691E" text-anchor="middle">Publish solution and claim reward</text>
+  
+  <!-- Success path - FIXED with proper start and end points -->
+  <path d="M500 305 L550 305 L550 390" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="545,388 550,395 555,388" fill="#4CAF50"/>
+  
+  <!-- Success path label -->
+  <text x="610" y="330" font-family="Arial" font-size="12" fill="#4CAF50" text-anchor="middle">YES - new bitcoin</text>
+  <text x="610" y="345" font-family="Arial" font-size="12" fill="#4CAF50" text-anchor="middle">block mined!</text>
+</svg>
+
+There's no elegant way to solve these puzzles. This means that Bitcoin miners have no choice but to guess inputs to step 2, over and over and over again, until they find one that happens to satisfy the criteria in step 4. When a miner guesses a right answer we say that they've "mined" a new "block". They attach their solution to the blockchain to show that they've verified the transactions in the block, and they're rewarded with new bitcoin. Their work, along with a couple of extra steps that I've hand-waved over, ensures that the blockchain is safe and secure.
 
 However, it also requires an incredible amount of electricity - around 150TWh per year, or 1% of the world's total energy consumption. What if there was a better way?
 
-This is where MinorMiner and school-aged children come in. "But Bitcoin mining sounds hard!" I hear you wail. "My child has only a rudimentary grasp of basic algorithms!" True, true - but the magic is that the children on our platform don't need to know how to mine Bitcoin, and they won't even know that they're doing it. Our team has converted the algorithm used by the bitcoin blockchain (called *SHA-256 hashing*) into a sequence of elementary arithmetic questions that even the dullest dullards can answer. Solving a blockchain puzzle used to require understanding and executing a SHA-256 hash. Now all it takes is skipping through a few trillion simple brainteasers.
+This is where MinorMiner and school-aged children come in. "But Bitcoin mining sounds hard!" I hear you wail. "My child has only a rudimentary grasp of basic algorithms!" True, true - but the magic is that the children on our platform don't need to know how to mine Bitcoin, and they won't even know that they're doing it. Our team has converted the SHA-256 hashing algorithm used by the bitcoin blockchain into a sequence of elementary arithmetic questions that even the dullest dullards can answer. Solving a blockchain puzzle used to require understanding and executing a SHA-256 hash. Now all it takes is skipping through a few trillion simple brainteasers.
 
 * `5+3=?`
 * `10*5=?`
@@ -53,7 +113,7 @@ You see, we also have a maths learning platform that we sell to schools all over
 
 The quiz consists of whatever questions our hashing system says need doing next. Our computation partners answer them. By way of compensation their distribution associate doesn't give them a detention. We collect the answers and use them to continue calculating a hash. When one partner finishes their quiz, the next partner continues calculating from where they left off.
 
-![image](/images/minor-miner/system-diagram.png)
+![image](/images/minor-miner/system-diagram-2.png)
 
 We have to be careful - a hash is a delicate thing. One tiny mistake in one tiny step and - poof! - the whole calculation is completely, irreversibly screwed. That's why send each calculation to two separate computation partners. If their answers disagree then we escalate to a slightly older partner to adjudicate. We maintain a rating for each partner based on their accuracy. If their rating drops below 4.3 stars then they are invited to undergo additional training to help them get back to the standard expected for MinorMiner partners. If such improvement is not forthcoming then they are invited to seek maths education elsewhere.
 
