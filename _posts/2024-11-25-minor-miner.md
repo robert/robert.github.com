@@ -23,7 +23,7 @@ That's why I founded MinorMiner.
 
 ## What is MinorMiner?
 
-MinorMiner is a platform that allows school-age children to monetise their maths homework by using it to mine Bitcoin. Yes, you heard me. We send children their homework, they crunch through it, and then together we turn their sweat into digital gold. This isn't some rinky-dink, unsustainable incentive program where we bribe children to care about multiplication. Homework is the primary, essential raw material that feeds our machine. We need these kids. No kids; no Bitcoin.
+MinorMiner is a platform that allows school-age children to monetise their maths homework by using it to mine Bitcoin. Yes, you heard me. We send children their homework, they crunch through it, and then together we transform their sweat into digital gold. This isn't some rinky-dink, unsustainable incentive program where we bribe children to care about multiplication. Homework is the primary, essential raw material that feeds our machine. We need these kids. No kids; no Bitcoin.
 
 In order to understand the innovation that makes MinorMiner possible, we first need to understand how Bitcoin is mined today. Right now, people mine Bitcoin by using computers to solve complex mathematical puzzles. The puzzles all look like this:
 
