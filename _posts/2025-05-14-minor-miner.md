@@ -3,7 +3,6 @@ layout: post
 title: "MinorMiner: turn your school's maths homework into Bitcoin"
 tags: [Programming]
 og_image: https://robertheaton.com/images/minor-miner/cover.webp
-published: false
 ---
 Hello! Hello! Welcome, welcome. My name is Hobert Reaton, and I'm here in this shabby motel conference room to present you with yet [another](https://robertheaton.com/2017/10/17/we-see-you-democratizing-de-anonymization/) [once-in-a-lifetime](https://robertheaton.com/2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/) investment opportunity.
 
