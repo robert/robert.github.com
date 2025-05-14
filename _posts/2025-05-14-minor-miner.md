@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MinorMiner: turn your school's maths homework into Bitcoin"
+title: "MinorMiner: we turn your kid's maths homework into Bitcoin"
 tags: [Programming]
 og_image: https://robertheaton.com/images/minor-miner/cover.webp
 ---
