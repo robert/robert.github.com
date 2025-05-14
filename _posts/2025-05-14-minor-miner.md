@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "MinorMiner: we turn your class's maths homework into Bitcoin"
+title: "MinorMiner: turn your school's maths homework into Bitcoin"
 tags: [Programming]
 og_image: https://robertheaton.com/images/minor-miner/cover.webp
 published: false
 ---
-Hello! Hello! Welcome, welcome. My name is Hobert Reaton, and I'm here in this rather shabby motel conference room to present you with [another](https://robertheaton.com/2017/10/17/we-see-you-democratizing-de-anonymization/) [once-in-a-lifetime](https://robertheaton.com/2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/) investment opportunity.
+Hello! Hello! Welcome, welcome. My name is Hobert Reaton, and I'm here in this shabby motel conference room to present you with yet [another](https://robertheaton.com/2017/10/17/we-see-you-democratizing-de-anonymization/) [once-in-a-lifetime](https://robertheaton.com/2018/10/28/i-might-be-spartacus-differential-privacy-marketplace/) investment opportunity.
 
 Look at this picture. Tell me what you see:
 
@@ -17,20 +17,20 @@ I'll tell you what I see: wasted computing power.
 
 Between the ages of 5 and 18, the average child in full-time education completes about 5 maths worksheets a week. Each worksheet has 20 questions. This means that over the course of their school career, every single one of our kids performs about 80,000 calculations.
 
-At the moment society completely wastes their work. A student figures out that 5+5=10 and 7x7=49. This motivates them; they're energised by their success. But then what do we do with the fruits of their labour? Nothing! We throw their fruit away, to rot in the void. "We knew that already," we tell them. "Your ideas don't matter." Unlike the rest of society, I believe that our children deserve to feel appreciated. I believe that their achievements are valuable.
+At the moment we completely waste their work. A student figures out that 5+5=10 and 7x7=49. This motivates them; they're energised by their success. But then what do we do with the fruits of their labour? Nothing! We throw the fruit away, to rot in the void. "We knew that already," we tell our children. "Your ideas don't matter." Unlike the rest of society, I believe that kids deserve to feel appreciated. I believe that their achievements are valuable.
 
 That's why I founded MinorMiner.
 
 ## What is MinorMiner?
 
-MinorMiner is a platform that allows school-age children to monetise their maths homework by using it to mine Bitcoin. Yes, you heard me. We send children their homework, they crunch through it, and then together we transform their sweat into digital gold. This isn't some rinky-dink, unsustainable incentive program where we bribe children to care about multiplication. Homework is the primary, essential raw material that feeds our machine. We need these kids. No kids; no Bitcoin.
+MinorMiner is a platform that allows school-age children to monetise their maths homework by using it to mine Bitcoin. Yes, you heard me. We send children their homework, they crunch through it, and then together we transform their sweat into digital gold. This isn't some rinky-dink incentive program where we bribe children to care about multiplication. Homework is the essential raw material that feeds our machine. We need these kids. No kids; no Bitcoin.
 
-In order to understand the innovation that makes MinorMiner possible, we first need to understand how Bitcoin is mined today. Right now, people mine Bitcoin by using computers to solve complex mathematical puzzles. The puzzles all look like this:
+In order to understand the innovation that makes MinorMiner possible, we first need to understand how Bitcoin is mined today. Right now, people mine Bitcoin by using computers to solve complex mathematical puzzles. The puzzles look like this:
 
-1. Take the list of the Bitcoin transactions that have occurred since the last Bitcoin was mined. Check that they're all correctly authorized and that none of them spend money that the creator doesn't have
-2. Choose a string of extra letters and numbers to add on to the end of this list (this is called a *nonce*, and is the miner's attempt to solve the puzzle)
+1. Take the list of the Bitcoin transactions that have occurred since the last Bitcoin was mined. Check that they're all correctly authorized and that none of them spend money that the creator doesn't have.
+2. Choose a string of extra letters and numbers to add on to the end of this list (a *nonce*). This is your attempt to solve the puzzle.
 3. Pass the list and your extra characters through an extremely complex function called the *SHA-256 hash function* (technically you pass it through the function twice). The hash function chops and slices and spins and dices the input around, seemingly (but not actually) at random. At the end it spits out a number
-4. The puzzle is: what combination of letters and numbers from step 2 cause the output from step 3 to be less than some small target number?
+4. The puzzle that you're trying to solve is: what combination of letters and numbers from step 2 cause the output from step 3 to be less than some small target number?
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
   
@@ -92,26 +92,24 @@ In order to understand the innovation that makes MinorMiner possible, we first n
   <text x="610" y="345" font-family="Arial" font-size="12" fill="#4CAF50" text-anchor="middle">block mined!</text>
 </svg>
 
-There's no elegant way to solve these puzzles. This means that Bitcoin miners have no choice but to guess inputs to step 2, over and over and over again, until they find one that happens to satisfy the criteria in step 4. When a miner guesses a right answer we say that they've "mined" a new "block". They attach their solution to the blockchain to show that they've verified the transactions in the block, and they're rewarded with new bitcoin. Their work, along with a couple of extra steps that I've hand-waved over, ensures that the blockchain is safe and secure.
+There's no elegant way to solve these puzzles. The only thing for Bitcoin miners to do is to guess inputs to step 2, over and over and over again, until they find one that happens to satisfy the criteria in step 4. When a miner guesses a right answer we say that they've "mined" a new "block". They attach their solution to the blockchain to show that they've verified the transactions in the block, and they're rewarded with new bitcoin. Their work, along with a couple of extra steps that I've hand-waved over, ensures that the blockchain stays safe and secure.
 
-However, it also requires an incredible amount of electricity - around 150TWh per year, or 1% of the world's total energy consumption. What if there was a better way?
+However, it also requires an incredible amount of electricity - around 150TWh per year, or 1% of the world's total energy consumption. What if there was a better, more efficient way to achieve the same thing?
 
-This is where MinorMiner and school-aged children come in. "But Bitcoin mining sounds hard!" I hear you wail. "My child has only a rudimentary grasp of basic algorithms!" True, true - but the magic is that the children on our platform don't need to know how to mine Bitcoin, and they won't even know that they're doing it. Our team has converted the SHA-256 hashing algorithm used by the bitcoin blockchain into a sequence of elementary arithmetic questions that even the dullest dullards can answer. Solving a blockchain puzzle used to require understanding and executing a SHA-256 hash. Now all it takes is skipping through a few trillion simple brainteasers.
+This is where MinorMiner and school-aged children come in. "But Bitcoin mining sounds hard!" I hear you wail. "My child has only a rudimentary grasp of basic algorithms!" True, true - but the magic is that the children on our platform don't need to know how to mine Bitcoin, and they won't even know that they're doing it. Our team has converted the SHA-256 hashing algorithm used by the bitcoin blockchain into a sequence of elementary arithmetic questions that even the dullest dullard can answer. Solving a blockchain puzzle used to require understanding and executing a SHA-256 hash. Now all it takes is skipping through a few trillion simple brainteasers.
 
 * `5+3=?`
 * `10*5=?`
 * `Is 102 bigger than 67? (y/n)`
 * And so on
 
-The kids do the sums - we take care of the rest.
+The kids do these sums - we take care of the rest.
 
 ## How does the MinorMiner platform work?
 
-The heart of MinorMiner is a centralised system that manages our mining. The system decomposes a SHA-256 hash computation into simple arithmetic questions, and works out which of these questions need answering next. But how do we find the kids to do the number crunching? Three words: online maths quizzes.
+The heart of MinorMiner is a centralised system that manages our mining. The system decomposes a SHA-256 hash computation into simple arithmetic questions, and works out which of these questions need answering next. Simple enough - but how do we get the questions to the kids? Three words: online maths quizzes.
 
-You see, we also have a maths learning platform that we sell to schools all over the world. The platform isn't particularly good, but we give department heads a generous revenue share and so this tends not to matter. Once a teacher (or "distribution associate" as we like to call them) is set up on MinorMiner, they assign a quiz to their class as homework. In the evening their children (or "computation partners") log into the MinorMiner portal and load up their quiz for the day.
-
-The quiz consists of whatever questions our hashing system says need doing next. Our computation partners answer them. By way of compensation their distribution associate doesn't give them a detention. We collect the answers and use them to continue calculating a hash. When one partner finishes their quiz, the next partner continues calculating from where they left off.
+You see, MinorMiner also has a maths learning platform that we sell to schools all over the world. Our platform isn't particularly good, but we give department heads a generous revenue share and so this tends not to matter. Once a teacher (or "distribution associate" as we like to call them) is set up on MinorMiner, they assign a quiz to their class as homework. In the evening their children (or "computation partners") log into the MinorMiner portal and answer their quiz for the day, which consists of whatever questions our hashing system needs doing next. By way of compensation their distribution associate doesn't give them a detention. We collect their answers and use them to continue calculating a hash. When one partner finishes their quiz, the next partner continues calculating from where they left off.
 
 ![image](/images/minor-miner/system-diagram-2.png)
 
@@ -182,24 +180,27 @@ For example, here's our current, naive implementation of XOR:
 
 ```python
 class CUDAAAAGHInt:
-
-  def __init__(self, val: int):
-    self.val = val
-
-  def __xor__(self, other: CUDAAAAGHInt) -> CUDAAAAGHInt:
-    result = CUDAAAAGHInt(0)
-    # Calculate the value of each bit, and use bit-shifting to combine
-    # them using standard integer arithemtic.
-    for i in range(max(self.bit_length(), other.bit_length())):
-      bit_self = _ith_bit(self, CUDAAAAGHInt(i))
-      bit_other = _ith_bit(other, CUDAAAAGHInt(i))    
-      xor_bit = bit_self + bit_other - CUDAAAAGHInt(2) * bit_self * bit_other
-      result += xor_bit << CUDAAAAGHInt(i)    
-    return result
-
-
-def _ith_bit(n: CUDAAAAGHInt, i: CUDAAAAGHInt) -> CUDAAAAGHInt:
-    return CUDAAAAGHInt((n.val >> i.val) & 1)
+    def __init__(self, val: int):
+        self.val = val
+    
+    def __xor__(self, other: 'CUDAAAAGHInt') -> 'CUDAAAAGHInt':
+        result = CUDAAAAGHInt(0)
+        # Calculate the value of each bit, and use bit-shifting to combine
+        # them using standard integer arithemtic.
+        for i in range(max(self.bit_length(), other.bit_length())):
+            bit_self = self._ith_bit(CUDAAAAGHInt(i))
+            bit_other = other._ith_bit(CUDAAAAGHInt(i))
+            
+            xor_bit = bit_self + bit_other - CUDAAAAGHInt(2) * bit_self * bit_other
+            result += xor_bit << CUDAAAAGHInt(i)
+        
+        return result
+    
+    def _ith_bit(self, i: 'CUDAAAAGHInt') -> 'CUDAAAAGHInt':
+        return CUDAAAAGHInt((self.val >> i.val) & 1)
+    
+    def bit_length(self) -> int:
+        return self.val.bit_length()
 ```
 
 This implementation is serial and slow - just look at that for-loop! But now look even closer. Notice how each pass through the loop is entirely independent of all others. This means that we can calculate the value of each bit separately, in parallel, then combine all the results once we're done. We can even compute `bit_x` and `bit_y` in parallel inside each loop.
@@ -207,31 +208,44 @@ This implementation is serial and slow - just look at that for-loop! But now loo
 Combining these tricks gives us a parallel implementation that looks something like this:
 
 ```python
+import asyncio
+
 class CUDAAAAGHInt:
 
-  def __init__(self, val: int):
-    self.val = val
+    def __init__(self, val: int):
+        self.val = val
 
-  def __xor__(self, other: CUDAAAAGHInt) -> CUDAAAAGHInt:
-    # Calculate a single bit XOR at position i
-    def compute_bit_xor(i: int) -> CUDAAAAGHInt:
-      with ThreadPoolExecutor(max_workers=2) as executor:
-        future_self = executor.submit(_ith_bit, self, CUDAAAAGHInt(i))
-        future_other = executor.submit(_ith_bit, other, CUDAAAAGHInt(i))
-        bit_self = future_self.result()
-        bit_other = future_other.result()  
-      xor_bit = bit_self + bit_other - CUDAAAAGHInt(2) * bit_self * bit_other
-      return xor_bit << CUDAAAAGHInt(i)
+    async def __xor__(self, other: 'CUDAAAAGHInt') -> 'CUDAAAAGHInt':
+        # Calculate a single bit XOR at position i
+        async def compute_bit_xor(i: int) -> 'CUDAAAAGHInt':
+            bit_self_task = asyncio.create_task(self._ith_bit(CUDAAAAGHInt(i)))
+            bit_other_task = asyncio.create_task(other._ith_bit(CUDAAAAGHInt(i)))
+            
+            bit_self = await bit_self_task
+            bit_other = await bit_other_task
+            
+            xor_bit = bit_self + bit_other - CUDAAAAGHInt(2) * bit_self * bit_other
+            return xor_bit << CUDAAAAGHInt(i)
 
-    # Determine the number of bits to process
-    max_bits = max(self.bit_length(), other.bit_length())    
-    # Calculate all bits in parallel and then sum them
-    with ThreadPoolExecutor() as executor:
-      all_bits = executor.map(compute_bit_xor, range(max_bits))
-      return sum(all_bits, start=CUDAAAAGHInt(0))
-
-def _ith_bit(n: CUDAAAAGHInt, i: CUDAAAAGHInt) -> CUDAAAAGHInt:
-  return CUDAAAAGHInt((n.val >> i.val) & 1)
+        # Determine the number of bits to process
+        max_bits = max(self.bit_length(), other.bit_length())
+        
+        # Calculate all bits concurrently
+        tasks = [compute_bit_xor(i) for i in range(max_bits)]
+        all_bits = await asyncio.gather(*tasks)
+        
+        # Sum the results
+        result = CUDAAAAGHInt(0)
+        for bit in all_bits:
+            result = result + bit
+            
+        return result
+        
+    async def _ith_bit(self, i: 'CUDAAAAGHInt') -> 'CUDAAAAGHInt':
+        return CUDAAAAGHInt((self.val >> i.val) & 1)
+        
+    def bit_length(self) -> int:
+        return self.val.bit_length()
 ```
 
 This will reduce the time it takes for us to calculate the XOR of two numbers `M` and `N` by a factor of about `log2(max(M, N))`. We're mostly dealing with 32-bit integers, so this is a 5x speedup.
@@ -284,15 +298,15 @@ What is the SHA-256 hash of 01003ba3edfd7b...? (0.0000000001 marks)
 (and so on for 1,471,126,721 more questions)
 ```
 
-Some Associates were initially concerned that their Computation Partners might balk at such ambitious workloads, despite all the knowledge and hands-on-experience and so on that it would give them. They worried that some Partners might cheat and use computer programs to do their hashing homework for them. Fortunately we were able to use spreadsheets and a lot of winking to help most of them realise that this might not actually be a problem.
+Some Associates were initially concerned that their Computation Partners might balk at such ambitious workloads, despite all the knowledge and hands-on-experience and so on that it would give them. They worried that some Partners might cheat and use specialized mining software to do their hashing homework for them. Fortunately we were able to use spreadsheets and a lot of winking to help most of them realise that this might not actually be a problem.
 
-> MinorMiner would like to make it clear that we do not in any way condone cheating. Use of our "Hashing Homework Answer Submission" APIs and their associated SDKs is strictly prohibited.
+> MinorMiner would like to make it clear that we do not in any way condone cheating. Use of our Homework Submission APIs and their associated SDKs is strictly prohibited.
 
-In short - yes, we are going to be fast enough. Through parallelisation, curriculum optimisation, and teacher incentive alignment, we believe that we are extremely well-positioned to speed up and scale massively in the coming years. Then what?
+So in short - yes, we are going to be fast enough. Through parallelisation, curriculum optimisation, and teacher incentive alignment, we believe that we are extremely well-positioned to speed up and scale massively in the coming years. Then what?
 
 ## From Bitcoin to AI
 
-After we've perfected the bitcoin use-case, we'll pivot straight to AI. We're already extending CUDAAAAGH with pytorch bindings that will allow users to run their training and inference code using our unique computing platform. Children don't know matrix algebra, but matrix algebra is just addition and multiplication wrapped up in funny symbols. All we need to do is implement matrix multiplication using CUDAAAAGH and we'll be very, very golden. And if our next legislative priority (SB-80085) passes, matrix algebra will soon be on the year eight curriculum too. It's curriculum optimisation all over again.
+After we've perfected the bitcoin use-case, we'll pivot straight to AI. We're already extending CUDAAAAGH with pytorch bindings that will allow users to run their training and inference code using our unique computing platform. Most children don't know much matrix algebra, but matrix algebra is just addition and multiplication wrapped up in funny symbols. All we need to do is implement matrix multiplication using CUDAAAAGH and we'll be very, very golden. And if our next legislative priority (SB-80085) passes, matrix algebra will soon be on the year eight curriculum too. It's curriculum optimisation all over again.
 
 ```python
 def matmul(m1: CUDAAAAGHMatrix, m2: CUDAAAAGHMatrix) -> CUDAAAAGHMatrix:
@@ -300,10 +314,10 @@ def matmul(m1: CUDAAAAGHMatrix, m2: CUDAAAAGHMatrix) -> CUDAAAAGHMatrix:
   # the joke by now)
 ```
 
-Applying CUDAAAAGH to AI also raises some delightful philosophical questions. Were you already deeply confused about whether sufficiently advanced AI models should count as conscious beings? Are we going to be morally obliged to care about their welfare? How much more confusing do these questions become if the AI models are an emergent property of billions of children doing their maths homework?
+Applying CUDAAAAGH to AI raises some delightful philosophical questions. Were you already deeply confused about whether sufficiently advanced AI models should count as conscious beings? Are we going to be morally obliged to care about their welfare? How much more confusing do these questions become if the AI models are an emergent property of billions of children doing their maths homework?
 
 And what will we do after AI? Cloud computing, ladies and gentlemen, cloud computing. Children are commodity hardware. Our big, audacious goal is to implement an entire computer using them. Everywhere that a computer normally has an electron, we'll replace it with a school-aged child doing their maths homework. CPUs become specialised children performing incredibly-specialised operations. Hard-drives become arrays of children remembering 1s and 0s. Motherboards become lines of children deciding what messages to send to the others. Think about the implications! Free computers for everyone!
 
 That's all I have to say today, thank you for listening. Believe in children! Invest in the MinorMiner pre-seed! Form an orderly line! Make your cheques payable to "Hobert Reaton." No madam, there's no "LLC" at the end. Just "Hobert Reaton." I also accept cash and a wide range of memecoins. Here's my wallet address. Thank you.
 
-*CUDAAAAGH is [available on GitHub](https://github.com/robert/CUDAAAAGH). It can also be installed [from PyPi](https://pypi.org/project/CUDAAAAGH/) using `pip install CUDAAAAGH`.*
+*CUDAAAAGH is [available on GitHub](https://github.com/robert/CUDAAAAGH). It can also be installed [from PyPi](https://pypi.org/project/CUDAAAAGH/) using `pip install CUDAAAAGH` although I can't imagine why on earth you would do this.*
