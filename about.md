@@ -5,7 +5,7 @@ classes: measure-wide f4
 ---
 I'm a researcher at [Anthropic][anthropic] on the frontier red team.
 
-I've written a book about being a dad that I'm working on [getting published](/book-draft-finished).
+I'm writing [a book about being a dad](/dad-book), coming late 2025.
 
 On this blog I write about:
 
