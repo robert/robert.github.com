@@ -4,53 +4,53 @@ regenerate: true
 ---
 <style>
   @media (max-width: 767px) {
-   .hide-small {
+    .hide-small {
       display: none;
-   }
-}
+    }
+  }
 </style>
 
 <!--<h2 class="pt4 mv0 f2 lh-title hide-small">Posts</h2>-->
-<div class="mt4">
+<div class="mt4 mb4">
   <h3 class="dib mb0 mt0 f2">Latest</h3>
   <ul class="list pl0 mb3">
     {% for post in site.posts limit: 5 %}
-      <li class="pv2">
-        <a class="link f3 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-        <div class="f5 silver">{{ post.date | date_to_string }}</div>
-      </li>
+    <li class="pv2">
+      <a class="link f3 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+      <div class="f5 silver">{{ post.date | date_to_string }}</div>
+    </li>
     {% endfor %}
   </ul>
 
   <a class="bw2 b--dark-gray pv2 ph3 ba link near-black dib" href="/archive">View full archive</a>
 </div>
 
+{% include rss.html %}
+
 <div class="mt4">
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.best_of.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.best_of.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
-
-{% include rss.html %}
 
 <div class="mt4">
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.projects.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.projects.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -65,11 +65,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.learning_programming.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.learning_programming.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -78,11 +78,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.online_tracking.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.online_tracking.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -97,11 +97,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.https.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.https.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -110,11 +110,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.vulns.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.vulns.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -129,24 +129,24 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.steve_steveington.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.steve_steveington.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
 
 <div class="mt4">
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.computer_games.title }}</h3>
-  <ul class="list pl0"> 
+  <ul class="list pl0">
     {% for post in site.data.home.computer_games.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -161,11 +161,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.productivity.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.productivity.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -182,11 +182,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.economics.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.economics.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -195,11 +195,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.office_hours.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.office_hours.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -208,11 +208,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.life_advice.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.life_advice.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -227,24 +227,25 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.stories.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.stories.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
 
 <div class="mt4">
-  <h3 id="parenthood" class="dib mb0 mt0 f2"><a href="#parenthood" style="text-decoration: none; color:#000">{{ site.data.home.parenthood.title }}</a></h3>
+  <h3 id="parenthood" class="dib mb0 mt0 f2"><a href="#parenthood" style="text-decoration: none; color:#000">{{
+      site.data.home.parenthood.title }}</a></h3>
   <ul class="list pl0">
     {% for post in site.data.home.parenthood.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -253,18 +254,18 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.music.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.music.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
 
 <div class="measure">
   <!-- <a href="/2019/03/31/the-robot-reserve-army-of-labor/"> -->
-    <img src="/images/levels-cover.png" />
+  <img src="/images/levels-cover.png" />
   <!-- </a> -->
 </div>
 
@@ -272,11 +273,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.writing.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.writing.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </div>
@@ -285,11 +286,11 @@ regenerate: true
   <h3 class="dib mb0 mt0 f2">{{ site.data.home.programming.title }}</h3>
   <ul class="list pl0">
     {% for post in site.data.home.programming.posts %}
-      <li class="pv2">
-        <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
-          {{ post.title}}
-        </a>
-      </li>
+    <li class="pv2">
+      <a class="link f4 underline near-black hover-dark-gray lh-solid" href="{{post.url}}">
+        {{ post.title}}
+      </a>
+    </li>
     {% endfor %}
   </ul>
   <a class="bw2 b--dark-gray pv2 ph3 ba link near-black dib" href="/archive">View full archive</a>
