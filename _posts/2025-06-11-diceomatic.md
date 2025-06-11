@@ -92,7 +92,9 @@ Truly a stream of infinite fun.
 
 Install diceomatic using:
 
-`pip install diceomatic`
+```
+pip install diceomatic
+```
 
 See [the GitHub repo](https://github.com/robert/diceomatic) for docs and examples. PRs welcome!
 
