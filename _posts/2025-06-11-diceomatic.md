@@ -2,7 +2,7 @@
 layout: post
 title: "diceomatic: a DSL for making children's dice games"
 tags: [Babies, Programming]
-og_image: https://robertheaton.com/images/sumchef/cover.webp
+og_image: https://robertheaton.com/images/sumchef/cover.png
 ---
 My five year-old is into football. Really, really, won't-sit-down, won't-let-anyone-else-sit-down into football. My wife and I spend every free minute taking half-hearted shots on goal; feigning agony as a daring counterattack puts us 23-0 down; and answering quiz questions about which hospital Harry Kane was born in.
 
