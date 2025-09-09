@@ -3,6 +3,7 @@ layout: post
 title: "Smartphones are marvellous, catastrophic tradeoffs"
 tags: [Phone]
 og_image: https://robertheaton.com/images/phone-tradeoff/cover.jpg
+published: false
 ---
 The problem with smartphones is two-part:
 
