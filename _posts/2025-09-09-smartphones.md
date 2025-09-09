@@ -1,9 +1,8 @@
 ---
 layout: post
 title: "Smartphones are marvellous, catastrophic tradeoffs"
-tags: [Work]
+tags: [Phone]
 og_image: https://robertheaton.com/images/phone-tradeoff/cover.jpg
-published: false
 ---
 The problem with smartphones is two-part:
 
@@ -24,7 +23,7 @@ And when I'm working I want to know if something truly important happens to some
 
 (My pocket just vibrated; I promise I'm not making this up. I'm in a library, writing a thousand words about how concentration is everything and smartphones are the mind-killer, and there's still no way I'm not going to look at my phone right now)
 
-(It was a dad-friend reacting :emoji: to a joke that someone else had sent our chat. Now I've completely lost my train of thought but we're becoming quite good friends and that would never have happened without WhatsApp)
+(It was a dad-friend reacting "😂" to a joke that someone else had sent our chat. Now I've completely lost my train of thought. But we're becoming quite good friends, and that would never have happened without WhatsApp)
 
 Many of the downsides of phones are the same as the upsides, just in a different context and taken to the extreme. This duality makes their successful, lasting mitigation difficult.
 
@@ -124,11 +123,13 @@ adb shell settings put system lockscreen_sounds_enabled 0
 
 You now have a completely blank canvas, to which you can add back a tiny number of carefully chosen apps.
 
-< SCREENSHOT OF MY BURNER PHONE>
+![image](/images/phone-tradeoff/screenshot.png)
+
+*My phone.*
 
 #### Which apps?
 
-You get to choose - it's your phone. But I'd suggest a few principles:
+You get to choose. But I'd suggest a few principles:
 
 * Only apps that don't feel like "being on your phone"
 * As few apps as possible
@@ -143,6 +144,7 @@ Apps that I think are OK:
 - Maps
 - Podcasts
 - Anki
+- Audible
 - Email client with a burner account that you only use for sending messages to yourself
 
 Apps that are probably unnecessary:
@@ -163,12 +165,12 @@ I'm not sure about AI apps like Claude and ChatGPT - it probably depends on how 
 Consider adding an app to your burner phone if:
 
 - You find yourself regularly using it on your main phone
-- - when you're trying not to use your main phone
-- - and you're happy that you're using the app
+- \- when you're trying not to use your main phone
+- \- and you're happy that you're using the app
 
 ## In conclusion
 
-It can feel impossible to get away from our phones. We use them for a huge fraction of the day, and they're on our minds for all of the rest of it. As useful and fun as they can be, I don't think this is good for us. It's certainly not good for me.
+It can feel impossible to get away from your phone. We all use them for a huge fraction of the day, and they're on our minds for all of the rest of it. As useful and fun as they can be, I don't think this is good for us. It's certainly not good for me.
 
 I've been hiding-and-burning my phone for several months. I still fiddle with my phone too much when it's around, but now it's around much less.
 
