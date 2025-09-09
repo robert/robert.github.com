@@ -2,7 +2,7 @@
 permalink: /2020/03/18/yourself-happier-iphone-worse/
 layout: post
 title: How to make yourself happier by making your iPhone worse
-tags: [Work]
+tags: [Phones]
 og_image: https://robertheaton.com/images/iphone-cover.png
 ---
 <style>
