@@ -6,7 +6,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #f5f9fc;
+    background-color: #e8e0f0;
     overflow: hidden;
     touch-action: none;
     user-select: none;
@@ -26,7 +26,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
 }
 
 .word {
@@ -40,63 +40,92 @@ body {
 
 .word span {
     display: inline-block;
+    color: #a0a0a0;
     transition: color 0.2s ease;
 }
 
 .word span.highlighted {
-    color: #3498db;
+    color: #000;
 }
 
 .arrow-track {
     position: relative;
     width: 100%;
     height: 60px;
-    background: linear-gradient(to right, #e8f4f8 0%, #e8f4f8 100%);
+    background: #e8f4f8;
     border-radius: 30px;
-    padding: 0 30px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #000;
+    border-radius: 30px 0 0 30px;
+    width: 0;
+    transition: none;
 }
 
 .arrow {
     position: absolute;
-    left: 30px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 40px;
-    color: #e74c3c;
+    left: 0;
+    top: calc(100% + 5px);
+    width: 80px;
+    height: 80px;
     cursor: grab;
     touch-action: none;
     transition: none;
+    transform: translateX(-50%);
+}
+
+.arrow svg {
+    width: 100%;
+    height: 100%;
+}
+
+.arrow path {
+    fill: white;
+    stroke: black;
+    stroke-width: 3;
 }
 
 .arrow.dragging {
     cursor: grabbing;
 }
 
-.next-btn {
+.nav-btn {
     position: absolute;
     right: 40px;
-    top: 50%;
-    transform: translateY(-50%);
     width: 80px;
     height: 80px;
-    border-radius: 50%;
-    background-color: #2ecc71;
-    border: none;
-    color: white;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: black;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease;
-    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.next-btn:hover {
-    background-color: #27ae60;
+.nav-btn:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.next-btn:active {
-    transform: translateY(-50%) scale(0.95);
+
+.prev-btn {
+    top: calc(50% - 50px);
+    transform: translateY(-50%);
+}
+
+.next-btn {
+    top: calc(50% + 50px);
+    transform: translateY(-50%);
 }
 
 @keyframes slide-out-up {
@@ -105,14 +134,36 @@ body {
         opacity: 1;
     }
     100% {
-        transform: translateY(-100%);
+        transform: translateY(-100vh);
         opacity: 0;
     }
 }
 
 @keyframes slide-in-up {
     0% {
-        transform: translateY(100%);
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out-down {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-in-down {
+    0% {
+        transform: translateY(-100vh);
         opacity: 0;
     }
     100% {
@@ -122,30 +173,97 @@ body {
 }
 
 .word-area {
-    overflow: hidden;
     position: relative;
 }
 
-.word.slide-out {
-    animation: slide-out-up 0.4s ease-in-out forwards;
+.word-area.slide-out {
+    animation: slide-out-up 0.5s ease-in-out forwards;
 }
 
-.word.slide-in {
-    animation: slide-in-up 0.4s ease-in-out forwards;
+.word-area.slide-in {
+    animation: slide-in-up 0.5s ease-in-out forwards;
 }
 
-.arrow-track.slide-out {
-    animation: slide-out-up 0.4s ease-in-out forwards;
+.word-area.slide-out-down {
+    animation: slide-out-down 0.5s ease-in-out forwards;
 }
 
-.arrow-track.slide-in {
-    animation: slide-in-up 0.4s ease-in-out forwards;
+.word-area.slide-in-down {
+    animation: slide-in-down 0.5s ease-in-out forwards;
 }
 
 .next-btn.disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
+}
+
+.dots-container {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.dot.completed {
+    background-color: #000;
+    border: none;
+}
+
+.dot.current {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border: 2px solid #000;
+    transform: scale(1.5);
+}
+
+.dot.upcoming {
+    background-color: #b0b0b0;
+    border: none;
+}
+
+@keyframes star-float {
+    0% {
+        transform: translate(0, 0) scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(var(--x), var(--y)) scale(1) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(var(--x) * 2), calc(var(--y) * 2)) scale(0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.star {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    animation: star-float 1s ease-out forwards;
+}
+
+.star::before {
+    content: "✦";
+    position: absolute;
+    font-size: 20px;
+    color: #ffd700;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
 }
 
 @media (max-width: 768px) {
@@ -156,7 +274,8 @@ body {
     }
     
     .arrow {
-        font-size: 30px;
+        width: 60px;
+        height: 60px;
     }
     
     .next-btn {
