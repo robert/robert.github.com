@@ -192,7 +192,7 @@ body {
     animation: slide-in-down 0.5s ease-in-out forwards;
 }
 
-.next-btn.disabled {
+.nav-btn.disabled {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
