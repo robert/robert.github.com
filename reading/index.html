@@ -9,16 +9,26 @@
 </head>
 <body>
     <div class="container">
+        <div class="dots-container" id="dotsContainer"></div>
         <div class="word-area">
             <div class="word" id="word"></div>
             <div class="arrow-track">
-                <div class="arrow" id="arrow">▲</div>
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="arrow" id="arrow">
+                <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                    <path d="M 50 15 L 75 40 L 85 50 Q 85 50 85 55 L 85 85 Q 85 90 80 90 L 20 90 Q 15 90 15 85 L 15 55 Q 15 50 15 50 L 25 40 L 50 15 Z" fill="currentColor"/>
+                </svg>
             </div>
         </div>
-        <button class="next-btn" id="nextBtn">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="9 11 12 14 15 11"></polyline>
-                <polyline points="9 6 12 9 15 6"></polyline>
+        <button class="nav-btn prev-btn" id="prevBtn">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="7 14 12 9 17 14"></polyline>
+            </svg>
+        </button>
+        <button class="nav-btn next-btn" id="nextBtn">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="7 10 12 15 17 10"></polyline>
             </svg>
         </button>
     </div>
