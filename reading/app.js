@@ -1,5 +1,5 @@
 const allWords = ['at', 'am', 'it', 'in', 'on', 'up', 'go', 'no', 'so', 'we', 'me', 'be', 'to', 'do', 'is', 'as', 
-                  'he', 'my', 'by', 'or', 'of', 'if', 'us', 'an', 'can', 'had', 'has', 'his', 'but', 'are', 'was'];
+                  'he', 'my', 'by', 'or', 'of', 'if', 'us', 'an'];
 
 let words = [];
 let currentWordIndex = 0;
