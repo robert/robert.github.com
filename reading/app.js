@@ -227,8 +227,18 @@ document.addEventListener('touchmove', drag, { passive: false });
 document.addEventListener('mouseup', endDrag);
 document.addEventListener('touchend', endDrag, { passive: false });
 
+// Add both click and touch events for better mobile support
 nextBtn.addEventListener('click', nextWord);
+nextBtn.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    nextWord();
+});
+
 prevBtn.addEventListener('click', prevWord);
+prevBtn.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    prevWord();
+});
 
 initializeDots();
 displayWord();
