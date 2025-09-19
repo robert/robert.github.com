@@ -79,6 +79,7 @@ body {
     touch-action: none;
     transition: none;
     transform: translateX(-50%);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 .arrow svg {
@@ -89,7 +90,7 @@ body {
 .arrow path {
     fill: white;
     stroke: black;
-    stroke-width: 3;
+    stroke-width: 2;
     stroke-linejoin: round;
     stroke-linecap: round;
 }
