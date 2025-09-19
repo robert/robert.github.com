@@ -1,5 +1,4 @@
-const allWords = ['at', 'am', 'it', 'in', 'is', 'as', 'an', 'sit', 'sat', 'mat', 'man', 'tan', 'ran', 'rat', 'tin', 
-                  'sin', 'tar', 'mar', 'rim', 'ram', 'tim', 'sam', 'ant', 'arm', 'art'];
+const allWords = ['at', 'am', 'it', 'in', 'is', 'as', 'an'];
 
 let words = [];
 let currentWordIndex = 0;
