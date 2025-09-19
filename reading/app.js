@@ -1,6 +1,16 @@
-const words = ['at', 'am', 'it', 'in', 'on', 'up', 'go', 'no', 'so', 'we', 'me', 'be', 'to', 'do', 'is', 'as'];
+const allWords = ['at', 'am', 'it', 'in', 'on', 'up', 'go', 'no', 'so', 'we', 'me', 'be', 'to', 'do', 'is', 'as', 
+                  'he', 'my', 'by', 'or', 'of', 'if', 'us', 'an', 'can', 'had', 'has', 'his', 'but', 'are', 'was'];
 
+let words = [];
 let currentWordIndex = 0;
+let isCompleted = false;
+
+function selectRandomWords() {
+    const shuffled = [...allWords].sort(() => 0.5 - Math.random());
+    words = shuffled.slice(0, 8);
+    currentWordIndex = 0;
+    isCompleted = false;
+}
 let isDragging = false;
 let startX = 0;
 let currentX = 0;
@@ -14,6 +24,11 @@ const arrowTrack = document.querySelector('.arrow-track');
 const wordArea = document.querySelector('.word-area');
 const progressFill = document.getElementById('progressFill');
 const dotsContainer = document.getElementById('dotsContainer');
+const presentContainer = document.getElementById('presentContainer');
+const present = document.getElementById('present');
+const prize = document.getElementById('prize');
+const playAgainBtn = document.getElementById('playAgainBtn');
+const confettiContainer = document.getElementById('confettiContainer');
 
 function initializeDots() {
     dotsContainer.innerHTML = '';
@@ -156,7 +171,48 @@ function endDrag(e) {
     e.preventDefault();
 }
 
+function showPresent() {
+    wordArea.style.display = 'none';
+    presentContainer.classList.add('show');
+    dotsContainer.style.display = 'none';
+    nextBtn.style.display = 'none';
+    prevBtn.style.display = 'none';
+}
+
+function createConfetti() {
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6ab04c', '#c7ecee'];
+    const prizeEmojis = ['🎉', '⭐', '🏆', '🎊', '🌟', '💫', '✨', '🎯', '🎨', '🎭', '🎪', '🎸', '🎺', '🥇', '🏅'];
+    
+    // Create confetti
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 3 + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        confettiContainer.appendChild(confetti);
+    }
+    
+    // Select random prize emoji
+    const randomPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
+    document.querySelector('.prize-emoji').textContent = randomPrize;
+    
+    // Show prize after explosion
+    setTimeout(() => {
+        present.style.display = 'none';
+        prize.classList.add('show');
+    }, 500);
+}
+
 function nextWord() {
+    if (currentWordIndex === words.length - 1) {
+        // Last word completed, show present
+        showPresent();
+        isCompleted = true;
+        return;
+    }
+    
     // Disable buttons during animation
     nextBtn.classList.add('disabled');
     prevBtn.classList.add('disabled');
@@ -167,7 +223,7 @@ function nextWord() {
     // Immediately start preparing the new word (no delay)
     setTimeout(() => {
         // Update to next word
-        currentWordIndex = (currentWordIndex + 1) % words.length;
+        currentWordIndex = currentWordIndex + 1;
         
         // Remove slide-out class
         wordArea.classList.remove('slide-out');
@@ -240,5 +296,40 @@ prevBtn.addEventListener('touchend', (e) => {
     prevWord();
 });
 
+present.addEventListener('click', () => {
+    if (!present.classList.contains('opened')) {
+        present.classList.add('opened');
+        createConfetti();
+    }
+});
+
+present.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    if (!present.classList.contains('opened')) {
+        present.classList.add('opened');
+        createConfetti();
+    }
+});
+
+playAgainBtn.addEventListener('click', () => {
+    resetGame();
+});
+
+function resetGame() {
+    selectRandomWords();
+    presentContainer.classList.remove('show');
+    prize.classList.remove('show');
+    present.classList.remove('opened');
+    present.style.display = 'block';
+    wordArea.style.display = 'flex';
+    dotsContainer.style.display = 'flex';
+    nextBtn.style.display = 'flex';
+    prevBtn.style.display = 'flex';
+    confettiContainer.innerHTML = '';
+    initializeDots();
+    displayWord();
+}
+
+selectRandomWords();
 initializeDots();
 displayWord();
