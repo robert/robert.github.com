@@ -180,7 +180,7 @@ function showPresent() {
 
 function createConfetti() {
     const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6ab04c', '#c7ecee'];
-    const prizeEmojis = ['🎉', '⭐', '🏆', '🎊', '🌟', '💫', '✨', '🎯', '🎨', '🎭', '🎪', '🎸', '🎺', '🥇', '🏅'];
+    const prizeEmojis = ['🎺', '🐕', '🐈', '🐒', '🎩', '🎹', '⚽', '🍕', '🍔', '🍦', '🍪'];
     
     // Create confetti
     for (let i = 0; i < 50; i++) {
