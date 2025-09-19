@@ -90,6 +90,8 @@ body {
     fill: white;
     stroke: black;
     stroke-width: 3;
+    stroke-linejoin: round;
+    stroke-linecap: round;
 }
 
 .arrow.dragging {
