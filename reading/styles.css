@@ -75,8 +75,8 @@ body {
     position: absolute;
     left: 0;
     top: calc(100% + 5px);
-    width: 80px;
-    height: 80px;
+    width: 160px;
+    height: 160px;
     cursor: grab;
     touch-action: none;
     transition: none;
@@ -440,8 +440,8 @@ body {
     }
     
     .arrow {
-        width: 60px;
-        height: 60px;
+        width: 120px;
+        height: 120px;
     }
     
     .next-btn {
