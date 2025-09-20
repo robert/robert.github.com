@@ -97,6 +97,17 @@ body {
     stroke-linecap: round;
 }
 
+.arrow-hitbox {
+    position: absolute;
+    width: 125%;
+    height: 125%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: inherit;
+    z-index: 1;
+}
+
 .arrow.dragging {
     cursor: grabbing;
 }
