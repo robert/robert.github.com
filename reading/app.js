@@ -151,7 +151,7 @@ function drag(e) {
     
     const trackRect = arrowTrack.getBoundingClientRect();
     const minX = 0; // Start at the very left
-    const maxX = trackRect.width - 80; // Account for half the arrow width
+    const maxX = trackRect.width; // Allow arrow to go all the way to the end
     
     const newOffset = arrowOffset + (currentX - startX);
     arrowOffset = Math.min(Math.max(newOffset, minX), maxX);
