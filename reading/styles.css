@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: 'Mulish', sans-serif;
     background-color: #e8e0f0;
     overflow: hidden;
     touch-action: none;
@@ -32,7 +34,7 @@ body {
 .word {
     font-size: 120px;
     font-weight: 600;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    font-family: 'Mulish', sans-serif;
     color: #2c3e50;
     letter-spacing: 40px;
     padding-left: 40px;
