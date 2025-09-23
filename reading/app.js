@@ -41,14 +41,12 @@ function displayChallenges() {
     challenges.forEach(challenge => {
         const card = document.createElement('div');
         card.className = 'challenge-card';
+        card.setAttribute('onclick', `window.selectChallengeById('${challenge.id}')`);
         card.innerHTML = `
             <h3>${challenge.name}</h3>
             <p>${challenge.words.join(', ')}</p>
+            <button onclick="alert('Button in card clicked'); event.stopPropagation();">Test</button>
         `;
-        card.onclick = function() {
-            console.log('Challenge clicked:', challenge.name);
-            selectChallenge(challenge);
-        };
         challengeGrid.appendChild(card);
     });
 }
@@ -62,6 +60,15 @@ function selectChallenge(challenge) {
     showPracticeView();
     resetGame();
 }
+
+// Global function for onclick attribute
+window.selectChallengeById = function(challengeId) {
+    alert('selectChallengeById called with: ' + challengeId);
+    const challenge = challenges.find(c => c.id === challengeId);
+    if (challenge) {
+        selectChallenge(challenge);
+    }
+};
 
 function showChallengeSelection() {
     challengeSelection.style.display = 'block';
