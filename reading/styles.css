@@ -443,6 +443,98 @@ body {
     box-shadow: 0 6px 16px rgba(46, 204, 113, 0.4);
 }
 
+/* Challenge Selection Styles */
+.challenge-selection {
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px 20px;
+}
+
+.challenge-selection h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 40px;
+    font-size: 48px;
+}
+
+.challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.challenge-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+}
+
+.challenge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: #000;
+}
+
+.challenge-card h3 {
+    color: #2c3e50;
+    margin-bottom: 12px;
+    font-size: 24px;
+}
+
+.challenge-card p {
+    color: #7f8c8d;
+    margin-bottom: 8px;
+}
+
+.challenge-card .word-count {
+    font-size: 14px;
+    color: #95a5a6;
+}
+
+.practice-view {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.practice-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+}
+
+.back-btn:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
     .word {
         font-size: 80px;
@@ -459,5 +551,19 @@ body {
         width: 60px;
         height: 60px;
         right: 20px;
+    }
+    
+    .challenge-selection h1 {
+        font-size: 32px;
+    }
+    
+    .challenge-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .back-btn {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
     }
 }

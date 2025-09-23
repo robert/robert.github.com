@@ -9,8 +9,25 @@
 </head>
 <body>
     <div class="container">
-        <div class="dots-container" id="dotsContainer"></div>
-        <div class="word-area">
+        <!-- Challenge Selection View -->
+        <div class="challenge-selection" id="challengeSelection">
+            <h1>Choose a Reading Challenge</h1>
+            <div class="challenge-grid" id="challengeGrid">
+                <!-- Challenge cards will be dynamically added here -->
+            </div>
+        </div>
+        
+        <!-- Practice View -->
+        <div class="practice-view" id="practiceView" style="display: none;">
+            <button class="back-btn" id="backBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </button>
+            <div class="practice-content">
+                <div class="dots-container" id="dotsContainer"></div>
+                <div class="word-area">
             <div class="word" id="word"></div>
             <div class="arrow-track">
                 <div class="progress-fill" id="progressFill"></div>
@@ -49,7 +66,10 @@
                 <polyline points="7 10 12 15 17 10"></polyline>
             </svg>
         </button>
+            </div>
+        </div>
     </div>
+    <script src="challenges.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
