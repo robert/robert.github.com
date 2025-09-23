@@ -1,22 +1,3 @@
-// DOM Elements
-const challengeSelection = document.getElementById('challengeSelection');
-const practiceView = document.getElementById('practiceView');
-const challengeGrid = document.getElementById('challengeGrid');
-const backBtn = document.getElementById('backBtn');
-const wordElement = document.getElementById('word');
-const arrowElement = document.getElementById('arrow');
-const nextBtn = document.getElementById('nextBtn');
-const prevBtn = document.getElementById('prevBtn');
-const arrowTrack = document.querySelector('.arrow-track');
-const wordArea = document.querySelector('.word-area');
-const progressFill = document.getElementById('progressFill');
-const dotsContainer = document.getElementById('dotsContainer');
-const presentContainer = document.getElementById('presentContainer');
-const present = document.getElementById('present');
-const prize = document.getElementById('prize');
-const playAgainBtn = document.getElementById('playAgainBtn');
-const confettiContainer = document.getElementById('confettiContainer');
-
 // Game state variables
 let currentChallenge = null;
 let allWords = [];
@@ -28,6 +9,12 @@ let isDragging = false;
 let startX = 0;
 let currentX = 0;
 let arrowOffset = 0;
+
+// DOM Elements (will be populated after DOM loads)
+let challengeSelection, practiceView, challengeGrid, backBtn;
+let wordElement, arrowElement, nextBtn, prevBtn, arrowTrack;
+let wordArea, progressFill, dotsContainer, presentContainer;
+let present, prize, playAgainBtn, confettiContainer;
 
 // URL handling
 function getChallengeFromURL() {
@@ -58,17 +45,10 @@ function displayChallenges() {
             <h3>${challenge.name}</h3>
             <p>${challenge.words.join(', ')}</p>
         `;
-        card.addEventListener('click', (e) => {
-            e.stopPropagation();
+        card.onclick = function() {
             console.log('Challenge clicked:', challenge.name);
             selectChallenge(challenge);
-        });
-        
-        // Make sure child elements don't block clicks
-        card.style.pointerEvents = 'auto';
-        card.querySelectorAll('*').forEach(child => {
-            child.style.pointerEvents = 'none';
-        });
+        };
         challengeGrid.appendChild(card);
     });
 }
@@ -361,51 +341,71 @@ function resetGame() {
     displayWord();
 }
 
-// Event listeners
-arrowElement.addEventListener('mousedown', startDrag);
-arrowElement.addEventListener('touchstart', startDrag, { passive: false });
-
-document.addEventListener('mousemove', drag);
-document.addEventListener('touchmove', drag, { passive: false });
-
-document.addEventListener('mouseup', endDrag);
-document.addEventListener('touchend', endDrag, { passive: false });
-
-nextBtn.addEventListener('click', nextWord);
-prevBtn.addEventListener('click', prevWord);
-
-present.addEventListener('click', () => {
-    if (!present.classList.contains('opened')) {
-        present.classList.add('opened');
-        createConfetti();
-    }
-});
-
-playAgainBtn.addEventListener('click', () => {
-    resetGame();
-});
-
-backBtn.addEventListener('click', () => {
-    showChallengeSelection();
-});
-
-// Handle browser navigation
-window.addEventListener('popstate', () => {
-    const challengeId = getChallengeFromURL();
-    if (challengeId) {
-        const challenge = challenges.find(c => c.id === challengeId);
-        if (challenge) {
-            selectChallenge(challenge);
+// Initialize
+function init() {
+    // Get DOM elements
+    challengeSelection = document.getElementById('challengeSelection');
+    practiceView = document.getElementById('practiceView');
+    challengeGrid = document.getElementById('challengeGrid');
+    backBtn = document.getElementById('backBtn');
+    wordElement = document.getElementById('word');
+    arrowElement = document.getElementById('arrow');
+    nextBtn = document.getElementById('nextBtn');
+    prevBtn = document.getElementById('prevBtn');
+    arrowTrack = document.querySelector('.arrow-track');
+    wordArea = document.querySelector('.word-area');
+    progressFill = document.getElementById('progressFill');
+    dotsContainer = document.getElementById('dotsContainer');
+    presentContainer = document.getElementById('presentContainer');
+    present = document.getElementById('present');
+    prize = document.getElementById('prize');
+    playAgainBtn = document.getElementById('playAgainBtn');
+    confettiContainer = document.getElementById('confettiContainer');
+    
+    // Set up event listeners
+    arrowElement.addEventListener('mousedown', startDrag);
+    arrowElement.addEventListener('touchstart', startDrag, { passive: false });
+    
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('touchmove', drag, { passive: false });
+    
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag, { passive: false });
+    
+    nextBtn.addEventListener('click', nextWord);
+    prevBtn.addEventListener('click', prevWord);
+    
+    present.addEventListener('click', () => {
+        if (!present.classList.contains('opened')) {
+            present.classList.add('opened');
+            createConfetti();
+        }
+    });
+    
+    playAgainBtn.addEventListener('click', () => {
+        resetGame();
+    });
+    
+    backBtn.addEventListener('click', () => {
+        showChallengeSelection();
+    });
+    
+    // Handle browser navigation
+    window.addEventListener('popstate', () => {
+        const challengeId = getChallengeFromURL();
+        if (challengeId) {
+            const challenge = challenges.find(c => c.id === challengeId);
+            if (challenge) {
+                selectChallenge(challenge);
+            } else {
+                showChallengeSelection();
+            }
         } else {
             showChallengeSelection();
         }
-    } else {
-        showChallengeSelection();
-    }
-});
-
-// Initialize
-function init() {
+    });
+    
+    // Check URL and display appropriate view
     const challengeId = getChallengeFromURL();
     if (challengeId) {
         const challenge = challenges.find(c => c.id === challengeId);
@@ -421,4 +421,9 @@ function init() {
     }
 }
 
-init();
+// Wait for DOM to be ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
