@@ -10,7 +10,6 @@ body {
     font-family: 'Mulish', sans-serif;
     background-color: #e8e0f0;
     overflow: hidden;
-    touch-action: none;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -82,6 +81,7 @@ body {
     transition: none;
     transform: translateX(-50%);
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    -webkit-touch-callout: none;
 }
 
 .arrow svg {
@@ -473,6 +473,8 @@ body {
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border: 2px solid transparent;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .challenge-card:hover {
