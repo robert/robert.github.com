@@ -58,7 +58,17 @@ function displayChallenges() {
             <h3>${challenge.name}</h3>
             <p>${challenge.words.join(', ')}</p>
         `;
-        card.addEventListener('click', () => selectChallenge(challenge));
+        card.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log('Challenge clicked:', challenge.name);
+            selectChallenge(challenge);
+        });
+        
+        // Make sure child elements don't block clicks
+        card.style.pointerEvents = 'auto';
+        card.querySelectorAll('*').forEach(child => {
+            child.style.pointerEvents = 'none';
+        });
         challengeGrid.appendChild(card);
     });
 }

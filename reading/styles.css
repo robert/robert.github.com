@@ -475,6 +475,8 @@ body {
     border: 2px solid transparent;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    position: relative;
+    z-index: 1;
 }
 
 .challenge-card:hover {
