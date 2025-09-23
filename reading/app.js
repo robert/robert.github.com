@@ -1,20 +1,8 @@
-const allWords = ['at', 'am', 'it', 'in', 'is', 'as', 'an'];
-
-let words = [];
-let currentWordIndex = 0;
-let isCompleted = false;
-
-function selectRandomWords() {
-    const shuffled = [...allWords].sort(() => 0.5 - Math.random());
-    words = shuffled.slice(0, 8);
-    currentWordIndex = 0;
-    isCompleted = false;
-}
-let isDragging = false;
-let startX = 0;
-let currentX = 0;
-let arrowOffset = 0;
-
+// DOM Elements
+const challengeSelection = document.getElementById('challengeSelection');
+const practiceView = document.getElementById('practiceView');
+const challengeGrid = document.getElementById('challengeGrid');
+const backBtn = document.getElementById('backBtn');
 const wordElement = document.getElementById('word');
 const arrowElement = document.getElementById('arrow');
 const nextBtn = document.getElementById('nextBtn');
@@ -28,6 +16,81 @@ const present = document.getElementById('present');
 const prize = document.getElementById('prize');
 const playAgainBtn = document.getElementById('playAgainBtn');
 const confettiContainer = document.getElementById('confettiContainer');
+
+// Game state variables
+let currentChallenge = null;
+let allWords = [];
+let lessonSize = 8;
+let words = [];
+let currentWordIndex = 0;
+let isCompleted = false;
+let isDragging = false;
+let startX = 0;
+let currentX = 0;
+let arrowOffset = 0;
+
+// URL handling
+function getChallengeFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('challenge');
+}
+
+function setChallengeInURL(challengeId) {
+    const url = new URL(window.location);
+    url.searchParams.set('challenge', challengeId);
+    window.history.pushState({}, '', url);
+}
+
+function clearChallengeFromURL() {
+    const url = new URL(window.location);
+    url.searchParams.delete('challenge');
+    window.history.pushState({}, '', url);
+}
+
+// Challenge selection
+function displayChallenges() {
+    challengeGrid.innerHTML = '';
+    
+    challenges.forEach(challenge => {
+        const card = document.createElement('div');
+        card.className = 'challenge-card';
+        card.innerHTML = `
+            <h3>${challenge.name}</h3>
+            <p>${challenge.words.join(', ')}</p>
+        `;
+        card.addEventListener('click', () => selectChallenge(challenge));
+        challengeGrid.appendChild(card);
+    });
+}
+
+function selectChallenge(challenge) {
+    currentChallenge = challenge;
+    allWords = challenge.words;
+    lessonSize = challenge.lessonSize;
+    
+    setChallengeInURL(challenge.id);
+    showPracticeView();
+    resetGame();
+}
+
+function showChallengeSelection() {
+    challengeSelection.style.display = 'block';
+    practiceView.style.display = 'none';
+    clearChallengeFromURL();
+}
+
+function showPracticeView() {
+    challengeSelection.style.display = 'none';
+    practiceView.style.display = 'block';
+}
+
+// Game functions
+function selectRandomWords() {
+    const shuffled = [...allWords].sort(() => 0.5 - Math.random());
+    words = shuffled.slice(0, lessonSize);
+    currentWordIndex = 0;
+    isCompleted = false;
+}
 
 function initializeDots() {
     dotsContainer.innerHTML = '';
@@ -273,6 +336,22 @@ function prevWord() {
     }, 50); // Minimal delay, just enough to start the slide-out
 }
 
+function resetGame() {
+    selectRandomWords();
+    presentContainer.classList.remove('show');
+    prize.classList.remove('show');
+    present.classList.remove('opened');
+    present.style.display = 'block';
+    wordArea.style.display = 'flex';
+    dotsContainer.style.display = 'flex';
+    nextBtn.style.display = 'flex';
+    prevBtn.style.display = 'flex';
+    confettiContainer.innerHTML = '';
+    initializeDots();
+    displayWord();
+}
+
+// Event listeners
 arrowElement.addEventListener('mousedown', startDrag);
 arrowElement.addEventListener('touchstart', startDrag, { passive: false });
 
@@ -314,21 +393,40 @@ playAgainBtn.addEventListener('click', () => {
     resetGame();
 });
 
-function resetGame() {
-    selectRandomWords();
-    presentContainer.classList.remove('show');
-    prize.classList.remove('show');
-    present.classList.remove('opened');
-    present.style.display = 'block';
-    wordArea.style.display = 'flex';
-    dotsContainer.style.display = 'flex';
-    nextBtn.style.display = 'flex';
-    prevBtn.style.display = 'flex';
-    confettiContainer.innerHTML = '';
-    initializeDots();
-    displayWord();
+backBtn.addEventListener('click', () => {
+    showChallengeSelection();
+});
+
+// Handle browser navigation
+window.addEventListener('popstate', () => {
+    const challengeId = getChallengeFromURL();
+    if (challengeId) {
+        const challenge = challenges.find(c => c.id === challengeId);
+        if (challenge) {
+            selectChallenge(challenge);
+        } else {
+            showChallengeSelection();
+        }
+    } else {
+        showChallengeSelection();
+    }
+});
+
+// Initialize
+function init() {
+    const challengeId = getChallengeFromURL();
+    if (challengeId) {
+        const challenge = challenges.find(c => c.id === challengeId);
+        if (challenge) {
+            selectChallenge(challenge);
+        } else {
+            displayChallenges();
+            showChallengeSelection();
+        }
+    } else {
+        displayChallenges();
+        showChallengeSelection();
+    }
 }
 
-selectRandomWords();
-initializeDots();
-displayWord();
+init();
