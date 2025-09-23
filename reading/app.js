@@ -1,83 +1,76 @@
-// Game state variables
+// Game state
 let currentChallenge = null;
 let allWords = [];
 let lessonSize = 8;
 let words = [];
 let currentWordIndex = 0;
-let isCompleted = false;
 let isDragging = false;
 let startX = 0;
-let currentX = 0;
 let arrowOffset = 0;
 
-// Wait for page to load
-window.addEventListener('load', function() {
-    // Get all elements
+document.addEventListener('DOMContentLoaded', function() {
+    // Get elements
     const challengeGrid = document.getElementById('challengeGrid');
     const challengeSelection = document.getElementById('challengeSelection');
     const practiceView = document.getElementById('practiceView');
     const backBtn = document.getElementById('backBtn');
     const wordElement = document.getElementById('word');
-    const arrowElement = document.getElementById('arrow');
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
-    const arrowTrack = document.querySelector('.arrow-track');
-    const wordArea = document.querySelector('.word-area');
-    const progressFill = document.getElementById('progressFill');
     const dotsContainer = document.getElementById('dotsContainer');
+    const arrowElement = document.getElementById('arrow');
+    const arrowTrack = document.querySelector('.arrow-track');
+    const progressFill = document.getElementById('progressFill');
+    const wordArea = document.querySelector('.word-area');
     const presentContainer = document.getElementById('presentContainer');
     const present = document.getElementById('present');
     const prize = document.getElementById('prize');
     const playAgainBtn = document.getElementById('playAgainBtn');
     const confettiContainer = document.getElementById('confettiContainer');
-
+    
     // Display challenges
-    function displayChallenges() {
+    function showChallenges() {
         challengeGrid.innerHTML = '';
+        
         challenges.forEach(function(challenge) {
             const card = document.createElement('div');
             card.className = 'challenge-card';
             card.innerHTML = '<h3>' + challenge.name + '</h3><p>' + challenge.words.join(', ') + '</p>';
             
-            // Use closure to capture challenge
-            (function(ch) {
-                card.onclick = function() {
-                    selectChallenge(ch);
-                };
-            })(challenge);
+            card.onclick = function() {
+                startChallenge(challenge);
+            };
             
             challengeGrid.appendChild(card);
         });
     }
-
-    // Select a challenge
-    function selectChallenge(challenge) {
+    
+    // Start challenge
+    function startChallenge(challenge) {
         currentChallenge = challenge;
         allWords = challenge.words;
         lessonSize = challenge.lessonSize;
         
         // Update URL
-        const url = new URL(window.location);
-        url.searchParams.set('challenge', challenge.id);
-        window.history.pushState({}, '', url);
+        window.history.pushState({}, '', '?challenge=' + challenge.id);
         
-        // Show practice view
+        // Switch views
         challengeSelection.style.display = 'none';
         practiceView.style.display = 'block';
         
-        // Start game
+        // Initialize game
         resetGame();
     }
-
-    // Game functions
+    
     function selectRandomWords() {
         const shuffled = [...allWords].sort(() => 0.5 - Math.random());
         words = shuffled.slice(0, lessonSize);
         currentWordIndex = 0;
-        isCompleted = false;
     }
-
+    
     function initializeDots() {
+        if (!dotsContainer) return;
+        
         dotsContainer.innerHTML = '';
         for (let i = 0; i < words.length; i++) {
             const dot = document.createElement('div');
@@ -86,90 +79,60 @@ window.addEventListener('load', function() {
         }
         updateDots();
     }
-
-    function createStars(dot) {
-        const dotRect = dot.getBoundingClientRect();
-        const containerRect = document.querySelector('.container').getBoundingClientRect();
-        
-        for (let i = 0; i < 5; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            
-            const angle = (Math.PI * 2 / 5) * i + Math.random() * 0.5;
-            const distance = 30 + Math.random() * 20;
-            const x = Math.cos(angle) * distance;
-            const y = Math.sin(angle) * distance;
-            
-            star.style.setProperty('--x', x + 'px');
-            star.style.setProperty('--y', y + 'px');
-            star.style.left = (dotRect.left - containerRect.left + dotRect.width / 2 - 10) + 'px';
-            star.style.top = (dotRect.top - containerRect.top + dotRect.height / 2 - 10) + 'px';
-            
-            document.querySelector('.container').appendChild(star);
-            
-            setTimeout(() => star.remove(), 1000);
-        }
-    }
-
+    
     function updateDots() {
+        if (!dotsContainer) return;
+        
         const dots = dotsContainer.querySelectorAll('.dot');
         dots.forEach((dot, index) => {
-            const wasCompleted = dot.classList.contains('completed');
-            const wasCurrent = dot.classList.contains('current');
-            
             dot.classList.remove('completed', 'current', 'upcoming');
             
             if (index < currentWordIndex) {
                 dot.classList.add('completed');
-                if (!wasCompleted && (wasCurrent || dot.classList.contains('upcoming'))) {
-                    createStars(dot);
-                }
             } else if (index === currentWordIndex) {
                 dot.classList.add('current');
-                if (!wasCurrent) {
-                    createStars(dot);
-                }
             } else {
                 dot.classList.add('upcoming');
             }
         });
     }
-
+    
     function displayWord() {
+        if (!wordElement || words.length === 0) return;
+        
         const word = words[currentWordIndex];
         wordElement.innerHTML = '';
         
         for (let i = 0; i < word.length; i++) {
             const span = document.createElement('span');
             span.textContent = word[i];
-            span.dataset.index = i;
             wordElement.appendChild(span);
         }
         
-        resetArrow();
         updateDots();
+        resetArrow();
     }
-
+    
     function resetArrow() {
+        if (!arrowElement) return;
+        
         arrowOffset = 0;
         arrowElement.style.left = arrowOffset + 'px';
-        progressFill.style.width = arrowOffset + 'px';
+        if (progressFill) progressFill.style.width = arrowOffset + 'px';
         
-        const letters = wordElement.querySelectorAll('span');
+        const letters = wordElement ? wordElement.querySelectorAll('span') : [];
         letters.forEach(letter => letter.classList.remove('highlighted'));
     }
-
+    
     function updateHighlighting() {
+        if (!wordElement || !arrowElement) return;
+        
         const letters = wordElement.querySelectorAll('span');
         const arrowRect = arrowElement.getBoundingClientRect();
         const arrowCenter = arrowRect.left + arrowRect.width / 2;
         
-        progressFill.style.width = arrowOffset + 'px';
-        
         letters.forEach((letter) => {
             const letterRect = letter.getBoundingClientRect();
-            const letterCenter = letterRect.left + letterRect.width / 2;
-            
             if (arrowCenter >= letterRect.left) {
                 letter.classList.add('highlighted');
             } else {
@@ -177,53 +140,20 @@ window.addEventListener('load', function() {
             }
         });
     }
-
-    function startDrag(e) {
-        isDragging = true;
-        arrowElement.classList.add('dragging');
-        
-        const touch = e.touches ? e.touches[0] : e;
-        startX = touch.clientX;
-        
-        e.preventDefault();
-    }
-
-    function drag(e) {
-        if (!isDragging) return;
-        
-        const touch = e.touches ? e.touches[0] : e;
-        currentX = touch.clientX;
-        
-        const trackRect = arrowTrack.getBoundingClientRect();
-        const minX = 0;
-        const maxX = trackRect.width;
-        
-        const newOffset = arrowOffset + (currentX - startX);
-        arrowOffset = Math.min(Math.max(newOffset, minX), maxX);
-        arrowElement.style.left = arrowOffset + 'px';
-        
-        startX = currentX;
-        
-        updateHighlighting();
-        
-        e.preventDefault();
-    }
-
-    function endDrag(e) {
-        isDragging = false;
-        arrowElement.classList.remove('dragging');
-        e.preventDefault();
-    }
-
+    
     function showPresent() {
+        if (!presentContainer || !wordArea) return;
+        
         wordArea.style.display = 'none';
         presentContainer.classList.add('show');
-        dotsContainer.style.display = 'none';
-        nextBtn.style.display = 'none';
-        prevBtn.style.display = 'none';
+        if (dotsContainer) dotsContainer.style.display = 'none';
+        if (nextBtn) nextBtn.style.display = 'none';
+        if (prevBtn) prevBtn.style.display = 'none';
     }
-
+    
     function createConfetti() {
+        if (!confettiContainer) return;
+        
         const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6ab04c', '#c7ecee'];
         const prizeEmojis = ['🎺', '🐕', '🐈', '🐒', '🎩', '🎹', '⚽', '🍕', '🍔', '🍦', '🍪'];
         
@@ -238,113 +168,145 @@ window.addEventListener('load', function() {
         }
         
         const randomPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
-        document.querySelector('.prize-emoji').textContent = randomPrize;
+        const prizeEmoji = document.querySelector('.prize-emoji');
+        if (prizeEmoji) prizeEmoji.textContent = randomPrize;
         
         setTimeout(() => {
-            present.style.display = 'none';
-            prize.classList.add('show');
+            if (present) present.style.display = 'none';
+            if (prize) prize.classList.add('show');
         }, 500);
     }
-
-    function nextWord() {
-        if (currentWordIndex === words.length - 1) {
-            showPresent();
-            isCompleted = true;
-            return;
-        }
-        
-        nextBtn.classList.add('disabled');
-        prevBtn.classList.add('disabled');
-        
-        wordArea.classList.add('slide-out');
-        
-        setTimeout(() => {
-            currentWordIndex = currentWordIndex + 1;
-            
-            wordArea.classList.remove('slide-out');
-            displayWord();
-            wordArea.classList.add('slide-in');
-            
-            setTimeout(() => {
-                wordArea.classList.remove('slide-in');
-                nextBtn.classList.remove('disabled');
-                prevBtn.classList.remove('disabled');
-            }, 500);
-        }, 50);
-    }
-
-    function prevWord() {
-        nextBtn.classList.add('disabled');
-        prevBtn.classList.add('disabled');
-        
-        wordArea.classList.add('slide-out-down');
-        
-        setTimeout(() => {
-            currentWordIndex = currentWordIndex === 0 ? words.length - 1 : currentWordIndex - 1;
-            
-            wordArea.classList.remove('slide-out-down');
-            displayWord();
-            wordArea.classList.add('slide-in-down');
-            
-            setTimeout(() => {
-                wordArea.classList.remove('slide-in-down');
-                nextBtn.classList.remove('disabled');
-                prevBtn.classList.remove('disabled');
-            }, 500);
-        }, 50);
-    }
-
+    
     function resetGame() {
         selectRandomWords();
-        presentContainer.classList.remove('show');
-        prize.classList.remove('show');
-        present.classList.remove('opened');
-        present.style.display = 'block';
-        wordArea.style.display = 'flex';
-        dotsContainer.style.display = 'flex';
-        nextBtn.style.display = 'flex';
-        prevBtn.style.display = 'flex';
-        confettiContainer.innerHTML = '';
+        if (presentContainer) presentContainer.classList.remove('show');
+        if (prize) prize.classList.remove('show');
+        if (present) {
+            present.classList.remove('opened');
+            present.style.display = 'block';
+        }
+        if (wordArea) wordArea.style.display = 'flex';
+        if (dotsContainer) dotsContainer.style.display = 'flex';
+        if (nextBtn) nextBtn.style.display = 'flex';
+        if (prevBtn) prevBtn.style.display = 'flex';
+        if (confettiContainer) confettiContainer.innerHTML = '';
         initializeDots();
         displayWord();
     }
-
-    // Set up event listeners
-    arrowElement.addEventListener('mousedown', startDrag);
-    arrowElement.addEventListener('touchstart', startDrag, { passive: false });
     
-    document.addEventListener('mousemove', drag);
-    document.addEventListener('touchmove', drag, { passive: false });
-    
-    document.addEventListener('mouseup', endDrag);
-    document.addEventListener('touchend', endDrag, { passive: false });
-    
-    nextBtn.onclick = nextWord;
-    prevBtn.onclick = prevWord;
-    
-    present.onclick = function() {
-        if (!present.classList.contains('opened')) {
-            present.classList.add('opened');
-            createConfetti();
+    function nextWord() {
+        if (currentWordIndex === words.length - 1) {
+            showPresent();
+            return;
         }
-    };
-    
-    playAgainBtn.onclick = function() {
-        resetGame();
-    };
-    
-    backBtn.onclick = function() {
-        console.log('Back button clicked');
-        challengeSelection.style.display = 'block';
-        practiceView.style.display = 'none';
         
-        const url = new URL(window.location);
-        url.searchParams.delete('challenge');
-        window.history.pushState({}, '', url);
+        currentWordIndex++;
+        displayWord();
+    }
+    
+    function prevWord() {
+        if (currentWordIndex > 0) {
+            currentWordIndex--;
+        } else {
+            currentWordIndex = words.length - 1;
+        }
+        displayWord();
+    }
+    
+    // Drag functions
+    function startDrag(e) {
+        // Don't start drag if clicking on buttons
+        if (e.target.closest('.nav-btn') || e.target.closest('.back-btn')) {
+            return;
+        }
         
-        displayChallenges();
-    };
-
+        isDragging = true;
+        arrowElement.classList.add('dragging');
+        
+        const touch = e.touches ? e.touches[0] : e;
+        startX = touch.clientX;
+        
+        e.preventDefault();
+    }
+    
+    function drag(e) {
+        if (!isDragging || !arrowElement || !arrowTrack) return;
+        
+        const touch = e.touches ? e.touches[0] : e;
+        const currentX = touch.clientX;
+        
+        const trackRect = arrowTrack.getBoundingClientRect();
+        const maxX = trackRect.width;
+        
+        const newOffset = arrowOffset + (currentX - startX);
+        arrowOffset = Math.min(Math.max(newOffset, 0), maxX);
+        arrowElement.style.left = arrowOffset + 'px';
+        
+        if (progressFill) progressFill.style.width = arrowOffset + 'px';
+        
+        startX = currentX;
+        updateHighlighting();
+        
+        e.preventDefault();
+    }
+    
+    function endDrag(e) {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        if (arrowElement) arrowElement.classList.remove('dragging');
+        e.preventDefault();
+    }
+    
+    // Set up event handlers
+    if (backBtn) {
+        backBtn.onclick = function() {
+            challengeSelection.style.display = 'block';
+            practiceView.style.display = 'none';
+            window.history.pushState({}, '', window.location.pathname);
+            showChallenges();
+        };
+    }
+    
+    if (nextBtn) {
+        nextBtn.onclick = function() {
+            nextWord();
+        };
+    }
+    
+    if (prevBtn) {
+        prevBtn.onclick = function() {
+            prevWord();
+        };
+    }
+    
+    if (present) {
+        present.onclick = function() {
+            if (!present.classList.contains('opened')) {
+                present.classList.add('opened');
+                createConfetti();
+            }
+        };
+    }
+    
+    if (playAgainBtn) {
+        playAgainBtn.onclick = function() {
+            resetGame();
+        };
+    }
+    
+    // Set up arrow drag - only on the arrow element itself
+    if (arrowElement) {
+        arrowElement.addEventListener('mousedown', startDrag);
+        arrowElement.addEventListener('touchstart', startDrag, { passive: false });
+        
+        // Add drag events to document
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag, { passive: false });
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchend', endDrag, { passive: false });
+    }
+    
     // Handle browser navigation
     window.addEventListener('popstate', function() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -353,7 +315,7 @@ window.addEventListener('load', function() {
         if (challengeId) {
             const challenge = challenges.find(c => c.id === challengeId);
             if (challenge) {
-                selectChallenge(challenge);
+                startChallenge(challenge);
             } else {
                 challengeSelection.style.display = 'block';
                 practiceView.style.display = 'none';
@@ -363,23 +325,19 @@ window.addEventListener('load', function() {
             practiceView.style.display = 'none';
         }
     });
-
-    // Initialize app
+    
+    // Initialize
     const urlParams = new URLSearchParams(window.location.search);
     const challengeId = urlParams.get('challenge');
     
     if (challengeId) {
         const challenge = challenges.find(c => c.id === challengeId);
         if (challenge) {
-            selectChallenge(challenge);
+            startChallenge(challenge);
         } else {
-            displayChallenges();
-            challengeSelection.style.display = 'block';
-            practiceView.style.display = 'none';
+            showChallenges();
         }
     } else {
-        displayChallenges();
-        challengeSelection.style.display = 'block';
-        practiceView.style.display = 'none';
+        showChallenges();
     }
 });
