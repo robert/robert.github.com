@@ -7,7 +7,8 @@
     <title>Reading Practice</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onclick="alert('body clicked')">
+    <button style="position: fixed; top: 0; left: 0; z-index: 9999; background: red; color: white; padding: 20px;" onclick="alert('Fixed button clicked!')">EMERGENCY TEST</button>
     <div class="container">
         <!-- Challenge Selection View -->
         <div class="challenge-selection" id="challengeSelection">
@@ -19,7 +20,7 @@
         </div>
         
         <!-- Practice View -->
-        <div class="practice-view" id="practiceView" style="display: none;">
+        <div class="practice-view" id="practiceView" style="display: none; pointer-events: none;">
             <button class="back-btn" id="backBtn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="19" y1="12" x2="5" y2="12"></line>
