@@ -79,6 +79,7 @@ function showChallengeSelection() {
 function showPracticeView() {
     challengeSelection.style.display = 'none';
     practiceView.style.display = 'block';
+    practiceView.style.pointerEvents = 'auto';
 }
 
 // Game functions
