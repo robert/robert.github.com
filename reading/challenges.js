@@ -8,7 +8,7 @@ const challenges = [
   {
     id: 'reading-com-level-11-3l',
     name: 'Reading.com Level 11 3-letter words',
-    words: ['sat', 'ant', 'man', 'Min', 'sit', 'tin', 'nan', 'Sam'],
+    words: ['sat', 'ant', 'man', 'Min', 'sit', 'Sam', 'ran', 'rat'],
     lessonSize: 8
   },
 ];
