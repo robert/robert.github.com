@@ -155,7 +155,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!confettiContainer) return;
         
         const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6ab04c', '#c7ecee'];
-        const prizeEmojis = ['🎺', '🐕', '🐈', '🐒', '🎩', '🎹', '⚽', '🍕', '🍔', '🍦', '🍪'];
+        const prizeEmojis = [
+            '🎺', '🐕', '🐈', '🐒', '🎩', '🎹', '⚽', '🍕', '🍔', '🍦', 
+            '🍪', '🎸', '🎯', '🎨', '🚀', '🦄', '🌟', '🏆', '🎪', '🦖'
+        ];
         
         for (let i = 0; i < 50; i++) {
             const confetti = document.createElement('div');
@@ -167,9 +170,22 @@ document.addEventListener('DOMContentLoaded', function() {
             confettiContainer.appendChild(confetti);
         }
         
-        const randomPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
+        // 1/3 chance for double prize
+        const isDoublePrize = Math.random() < 1/3;
         const prizeEmoji = document.querySelector('.prize-emoji');
-        if (prizeEmoji) prizeEmoji.textContent = randomPrize;
+        
+        if (isDoublePrize) {
+            // Pick two different emojis
+            const firstPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
+            let secondPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
+            while (secondPrize === firstPrize) {
+                secondPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
+            }
+            if (prizeEmoji) prizeEmoji.textContent = firstPrize + ' ' + secondPrize;
+        } else {
+            const randomPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
+            if (prizeEmoji) prizeEmoji.textContent = randomPrize;
+        }
         
         setTimeout(() => {
             if (present) present.style.display = 'none';
