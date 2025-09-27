@@ -11,4 +11,9 @@ const challenges = [
     words: ['sat', 'ant', 'man', 'Min', 'sit', 'Sam', 'ran', 'rat'],
     lessonSize: 8
   },
+  {
+    id: 'bob-mat-s1b1',
+    name: 'Bob Mat S1 B1',
+    words: ['Mat', 'sat', 'Sam', 'on']
+  }
 ];
