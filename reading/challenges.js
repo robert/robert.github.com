@@ -15,5 +15,23 @@ const challenges = [
     id: 'bob-mat-s1b1',
     name: 'Bob Mat S1 B1',
     words: ['Mat', 'sat', 'Sam', 'on']
+  },
+  {
+    id: 'game-1',
+    name: 'Game 1',
+    words: ['min', 'mit', 'mat', 'mad'],
+    lessonSize: 4
+  },
+  {
+    id: 'game-2',
+    name: 'Game 2',
+    words: ['sat', 'sad', 'sit', 'sip'],
+    lessonSize: 4
+  },
+  {
+    id: 'game-3',
+    name: 'Game 3',
+    words: ['fit', 'fin', 'fat', 'fan'],
+    lessonSize: 4
   }
 ];
