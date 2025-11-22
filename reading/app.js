@@ -7,6 +7,7 @@ let currentWordIndex = 0;
 let isDragging = false;
 let startX = 0;
 let arrowOffset = 0;
+let sizeMode = 'normal'; // 'normal', 'big', 'extra-big'
 
 document.addEventListener('DOMContentLoaded', function() {
     // Get elements
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const prize = document.getElementById('prize');
     const playAgainBtn = document.getElementById('playAgainBtn');
     const confettiContainer = document.getElementById('confettiContainer');
+    const bigModeBtn = document.getElementById('bigModeBtn');
     
     // Display challenges
     function showChallenges() {
@@ -156,8 +158,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6ab04c', '#c7ecee'];
         const prizeEmojis = [
-            '🎺', '🐕', '🐈', '🐒', '🎩', '🎹', '⚽', '🍕', '🍔', '🍦', 
-            '🍪', '🎸', '🎯', '🎨', '🚀', '🦄', '🌟', '🏆', '🎪', '🦖'
+            '🍔', '🌲', '⚽', '💧', '🚒', '👑', '🌍', '🥨',
+            '🍕', '🎂', '🍭', '🍪', '🧀', '🍩', '🏆', '🎲',
+            '🪗', '✈️', '❤️', '🎵', '🇬🇧', '🏴󠁧󠁢󠁥󠁮󠁧󠁿', '🐉', '🦖'
         ];
         
         for (let i = 0; i < 50; i++) {
@@ -170,22 +173,29 @@ document.addEventListener('DOMContentLoaded', function() {
             confettiContainer.appendChild(confetti);
         }
         
-        // 1/3 chance for double prize
-        const isDoublePrize = Math.random() < 1/3;
-        const prizeEmoji = document.querySelector('.prize-emoji');
-        
-        if (isDoublePrize) {
-            // Pick two different emojis
-            const firstPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
-            let secondPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
-            while (secondPrize === firstPrize) {
-                secondPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
-            }
-            if (prizeEmoji) prizeEmoji.textContent = firstPrize + ' ' + secondPrize;
+        // Determine number of prizes: 70% for 1, 20% for 2, 10% for 3
+        const rand = Math.random();
+        let numPrizes;
+        if (rand < 0.7) {
+            numPrizes = 1;
+        } else if (rand < 0.9) {
+            numPrizes = 2;
         } else {
-            const randomPrize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
-            if (prizeEmoji) prizeEmoji.textContent = randomPrize;
+            numPrizes = 3;
         }
+
+        const prizeEmoji = document.querySelector('.prize-emoji');
+        const selectedPrizes = [];
+
+        // Pick unique emojis
+        while (selectedPrizes.length < numPrizes) {
+            const prize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
+            if (!selectedPrizes.includes(prize)) {
+                selectedPrizes.push(prize);
+            }
+        }
+
+        if (prizeEmoji) prizeEmoji.textContent = selectedPrizes.join(' ');
         
         setTimeout(() => {
             if (present) present.style.display = 'none';
@@ -247,22 +257,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function drag(e) {
         if (!isDragging || !arrowElement || !arrowTrack) return;
-        
+
         const touch = e.touches ? e.touches[0] : e;
         const currentX = touch.clientX;
-        
+
         const trackRect = arrowTrack.getBoundingClientRect();
+        const trackLeft = trackRect.left;
         const maxX = trackRect.width;
-        
-        const newOffset = arrowOffset + (currentX - startX);
-        arrowOffset = Math.min(Math.max(newOffset, 0), maxX);
+
+        // Calculate position relative to the track
+        const relativeX = currentX - trackLeft;
+        arrowOffset = Math.min(Math.max(relativeX, 0), maxX);
         arrowElement.style.left = arrowOffset + 'px';
-        
+
         if (progressFill) progressFill.style.width = arrowOffset + 'px';
-        
-        startX = currentX;
+
         updateHighlighting();
-        
+
         e.preventDefault();
     }
     
@@ -310,7 +321,32 @@ document.addEventListener('DOMContentLoaded', function() {
             resetGame();
         };
     }
-    
+
+    if (bigModeBtn) {
+        bigModeBtn.onclick = function() {
+            if (!wordArea) return;
+
+            // Cycle through modes: normal -> big -> extra-big -> normal
+            if (sizeMode === 'normal') {
+                sizeMode = 'big';
+                wordArea.classList.remove('extra-big-mode');
+                wordArea.classList.add('big-mode');
+                bigModeBtn.classList.remove('extra-active');
+                bigModeBtn.classList.add('active');
+            } else if (sizeMode === 'big') {
+                sizeMode = 'extra-big';
+                wordArea.classList.remove('big-mode');
+                wordArea.classList.add('extra-big-mode');
+                bigModeBtn.classList.remove('active');
+                bigModeBtn.classList.add('extra-active');
+            } else {
+                sizeMode = 'normal';
+                wordArea.classList.remove('big-mode', 'extra-big-mode');
+                bigModeBtn.classList.remove('active', 'extra-active');
+            }
+        };
+    }
+
     // Set up arrow drag - only on the arrow element itself
     if (arrowElement) {
         arrowElement.addEventListener('mousedown', startDrag);
