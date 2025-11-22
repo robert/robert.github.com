@@ -33,5 +33,17 @@ const challenges = [
     name: 'Game 3',
     words: ['fit', 'fin', 'fat', 'fan'],
     lessonSize: 4
-  }
+  },
+  {
+    id: '2025-11-2-letter words',
+    name: 'More 2 letter words',
+    words: ['at', 'am', 'it', 'in', 'is', 'as', 'an', 'on', 'if'],
+    lessonSize: 8
+  },
+  {
+    id: '2025-11-3-letter words',
+    name: 'More 3 letter words',
+    words: ['bin', 'bat', 'pat', 'pin', 'tin', 'pan', 'tap', 'dot', 'pot', 'nod', 'bar'],
+    lessonSize: 8
+  },
 ];

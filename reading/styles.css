@@ -50,13 +50,40 @@ body {
     color: #000;
 }
 
+/* Big Mode */
+.word-area.big-mode .word {
+    font-size: 280px;
+    letter-spacing: 90px;
+    padding-left: 40px;
+}
+
+/* Extra Big Mode */
+.word-area.extra-big-mode .word {
+    font-size: 380px;
+    letter-spacing: 120px;
+    padding-left: 40px;
+}
+
+.word-area.extra-big-mode .arrow-track {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.word-area.extra-big-mode .arrow {
+    width: 100px;
+    height: 100px;
+    top: calc(100% - 100px);
+}
+
 .arrow-track {
     position: relative;
     width: 100%;
+    max-width: 900px;
     height: 60px;
     background: #e8f4f8;
     border-radius: 30px;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .progress-fill {
@@ -531,7 +558,7 @@ body {
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
-    z-index: 100;
+    z-index: 101;
     width: 48px;
     height: 48px;
 }
@@ -541,35 +568,102 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.big-mode-btn {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+}
+
+.big-mode-btn:hover {
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.big-mode-btn.active {
+    background-color: #666;
+    color: white;
+}
+
+.big-mode-btn.active:hover {
+    background-color: #555;
+}
+
+.big-mode-btn.extra-active {
+    background-color: #000;
+    color: white;
+}
+
+.big-mode-btn.extra-active:hover {
+    background-color: #333;
+}
+
 @media (max-width: 768px) {
     .word {
         font-size: 80px;
         letter-spacing: 30px;
         padding-left: 30px;
     }
-    
+
+    .word-area.big-mode .word {
+        font-size: 180px;
+        letter-spacing: 65px;
+        padding-left: 30px;
+    }
+
+    .word-area.extra-big-mode .word {
+        font-size: 240px;
+        letter-spacing: 85px;
+        padding-left: 30px;
+    }
+
+    .word-area.extra-big-mode .arrow {
+        width: 80px;
+        height: 80px;
+        top: calc(100% - 80px);
+    }
+
     .arrow {
         width: 120px;
         height: 120px;
     }
-    
+
     .next-btn {
         width: 60px;
         height: 60px;
         right: 20px;
     }
-    
+
     .challenge-selection h1 {
         font-size: 32px;
     }
-    
+
     .challenge-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .back-btn {
         width: 40px;
         height: 40px;
         padding: 8px;
+    }
+
+    .big-mode-btn {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        bottom: 20px;
+        right: 20px;
     }
 }
