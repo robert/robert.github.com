@@ -2,7 +2,7 @@ const challenges = [
   {
     id: 'reading-com-level-11-2l',
     name: 'Reading.com Level 11 2-letter words',
-    words: ['at', 'am', 'it', 'in', 'is', 'as', 'an'],
+    words: ['at', 'am', 'it', 'in', 'is', 'as', 'an', 'ap', 'ip', 'ab', 'ib', 'im', 'on', 'op', 'om', 'os'],
     lessonSize: 8
   },
   {
@@ -45,5 +45,11 @@ const challenges = [
     name: 'More 3 letter words',
     words: ['bin', 'bat', 'pat', 'pin', 'tin', 'pan', 'tap', 'dot', 'pot', 'nod', 'bar'],
     lessonSize: 8
+  },
+  {
+    id: 'an-ant-and',
+    name: 'An Ant And',
+    words: ['an', 'ant', 'and'],
+    lessonSize: 3
   },
 ];
