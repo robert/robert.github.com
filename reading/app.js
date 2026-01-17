@@ -9,7 +9,7 @@ let startX = 0;
 let arrowOffset = 0;
 let sizeMode = 'normal'; // 'normal', 'big', 'extra-big'
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Get elements
     const challengeGrid = document.getElementById('challengeGrid');
     const challengeSelection = document.getElementById('challengeSelection');
@@ -29,50 +29,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const playAgainBtn = document.getElementById('playAgainBtn');
     const confettiContainer = document.getElementById('confettiContainer');
     const bigModeBtn = document.getElementById('bigModeBtn');
-    
+
     // Display challenges
     function showChallenges() {
         challengeGrid.innerHTML = '';
-        
-        challenges.forEach(function(challenge) {
+
+        challenges.forEach(function (challenge) {
             const card = document.createElement('div');
             card.className = 'challenge-card';
             card.innerHTML = '<h3>' + challenge.name + '</h3><p>' + challenge.words.join(', ') + '</p>';
-            
-            card.onclick = function() {
+
+            card.onclick = function () {
                 startChallenge(challenge);
             };
-            
+
             challengeGrid.appendChild(card);
         });
     }
-    
+
     // Start challenge
     function startChallenge(challenge) {
         currentChallenge = challenge;
         allWords = challenge.words;
         lessonSize = challenge.lessonSize;
-        
+
         // Update URL
         window.history.pushState({}, '', '?challenge=' + challenge.id);
-        
+
         // Switch views
         challengeSelection.style.display = 'none';
         practiceView.style.display = 'block';
-        
+
         // Initialize game
         resetGame();
     }
-    
+
     function selectRandomWords() {
         const shuffled = [...allWords].sort(() => 0.5 - Math.random());
         words = shuffled.slice(0, lessonSize);
         currentWordIndex = 0;
     }
-    
+
     function initializeDots() {
         if (!dotsContainer) return;
-        
+
         dotsContainer.innerHTML = '';
         for (let i = 0; i < words.length; i++) {
             const dot = document.createElement('div');
@@ -81,14 +81,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         updateDots();
     }
-    
+
     function updateDots() {
         if (!dotsContainer) return;
-        
+
         const dots = dotsContainer.querySelectorAll('.dot');
         dots.forEach((dot, index) => {
             dot.classList.remove('completed', 'current', 'upcoming');
-            
+
             if (index < currentWordIndex) {
                 dot.classList.add('completed');
             } else if (index === currentWordIndex) {
@@ -98,41 +98,41 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     function displayWord() {
         if (!wordElement || words.length === 0) return;
-        
+
         const word = words[currentWordIndex];
         wordElement.innerHTML = '';
-        
+
         for (let i = 0; i < word.length; i++) {
             const span = document.createElement('span');
             span.textContent = word[i];
             wordElement.appendChild(span);
         }
-        
+
         updateDots();
         resetArrow();
     }
-    
+
     function resetArrow() {
         if (!arrowElement) return;
-        
+
         arrowOffset = 0;
         arrowElement.style.left = arrowOffset + 'px';
         if (progressFill) progressFill.style.width = arrowOffset + 'px';
-        
+
         const letters = wordElement ? wordElement.querySelectorAll('span') : [];
         letters.forEach(letter => letter.classList.remove('highlighted'));
     }
-    
+
     function updateHighlighting() {
         if (!wordElement || !arrowElement) return;
-        
+
         const letters = wordElement.querySelectorAll('span');
         const arrowRect = arrowElement.getBoundingClientRect();
         const arrowCenter = arrowRect.left + arrowRect.width / 2;
-        
+
         letters.forEach((letter) => {
             const letterRect = letter.getBoundingClientRect();
             if (arrowCenter >= letterRect.left) {
@@ -142,27 +142,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     function showPresent() {
         if (!presentContainer || !wordArea) return;
-        
+
         wordArea.style.display = 'none';
         presentContainer.classList.add('show');
         if (dotsContainer) dotsContainer.style.display = 'none';
         if (nextBtn) nextBtn.style.display = 'none';
         if (prevBtn) prevBtn.style.display = 'none';
     }
-    
+
     function createConfetti() {
         if (!confettiContainer) return;
-        
+
         const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b', '#6ab04c', '#c7ecee'];
         const prizeEmojis = [
             '🍔', '🌲', '⚽', '💧', '🚒', '👑', '🌍', '🥨',
             '🍕', '🎂', '🍭', '🍪', '🧀', '🍩', '🏆', '🎲',
-            '🪗', '✈️', '❤️', '🎵', '🇬🇧', '🏴󠁧󠁢󠁥󠁮󠁧󠁿', '🐉', '🦖'
+            '🪗', '✈️', '❤️', '🎵', '🇬🇧', '🏴󠁧󠁢󠁥󠁮󠁧󠁿', '🐉', '🦖',
+            '🚂', '🤩', '🦸', '🏎️', '🎤', '🗡️', '🚜', '🏓', '🍎', '🦉', '👻'
         ];
-        
+
         for (let i = 0; i < 50; i++) {
             const confetti = document.createElement('div');
             confetti.className = 'confetti';
@@ -172,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
             confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
             confettiContainer.appendChild(confetti);
         }
-        
+
         // Determine number of prizes: 70% for 1, 20% for 2, 10% for 3
         const rand = Math.random();
         let numPrizes;
@@ -196,13 +197,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (prizeEmoji) prizeEmoji.textContent = selectedPrizes.join(' ');
-        
+
         setTimeout(() => {
             if (present) present.style.display = 'none';
             if (prize) prize.classList.add('show');
         }, 500);
     }
-    
+
     function resetGame() {
         selectRandomWords();
         if (presentContainer) presentContainer.classList.remove('show');
@@ -219,17 +220,17 @@ document.addEventListener('DOMContentLoaded', function() {
         initializeDots();
         displayWord();
     }
-    
+
     function nextWord() {
         if (currentWordIndex === words.length - 1) {
             showPresent();
             return;
         }
-        
+
         currentWordIndex++;
         displayWord();
     }
-    
+
     function prevWord() {
         if (currentWordIndex > 0) {
             currentWordIndex--;
@@ -238,23 +239,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         displayWord();
     }
-    
+
     // Drag functions
     function startDrag(e) {
         // Don't start drag if clicking on buttons
         if (e.target.closest('.nav-btn') || e.target.closest('.back-btn')) {
             return;
         }
-        
+
         isDragging = true;
         arrowElement.classList.add('dragging');
-        
+
         const touch = e.touches ? e.touches[0] : e;
         startX = touch.clientX;
-        
+
         e.preventDefault();
     }
-    
+
     function drag(e) {
         if (!isDragging || !arrowElement || !arrowTrack) return;
 
@@ -276,54 +277,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
         e.preventDefault();
     }
-    
+
     function endDrag(e) {
         if (!isDragging) return;
-        
+
         isDragging = false;
         if (arrowElement) arrowElement.classList.remove('dragging');
         e.preventDefault();
     }
-    
+
     // Set up event handlers
     if (backBtn) {
-        backBtn.onclick = function() {
+        backBtn.onclick = function () {
             challengeSelection.style.display = 'block';
             practiceView.style.display = 'none';
             window.history.pushState({}, '', window.location.pathname);
             showChallenges();
         };
     }
-    
+
     if (nextBtn) {
-        nextBtn.onclick = function() {
+        nextBtn.onclick = function () {
             nextWord();
         };
     }
-    
+
     if (prevBtn) {
-        prevBtn.onclick = function() {
+        prevBtn.onclick = function () {
             prevWord();
         };
     }
-    
+
     if (present) {
-        present.onclick = function() {
+        present.onclick = function () {
             if (!present.classList.contains('opened')) {
                 present.classList.add('opened');
                 createConfetti();
             }
         };
     }
-    
+
     if (playAgainBtn) {
-        playAgainBtn.onclick = function() {
+        playAgainBtn.onclick = function () {
             resetGame();
         };
     }
 
     if (bigModeBtn) {
-        bigModeBtn.onclick = function() {
+        bigModeBtn.onclick = function () {
             if (!wordArea) return;
 
             // Cycle through modes: normal -> big -> extra-big -> normal
@@ -351,19 +352,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (arrowElement) {
         arrowElement.addEventListener('mousedown', startDrag);
         arrowElement.addEventListener('touchstart', startDrag, { passive: false });
-        
+
         // Add drag events to document
         document.addEventListener('mousemove', drag);
         document.addEventListener('touchmove', drag, { passive: false });
         document.addEventListener('mouseup', endDrag);
         document.addEventListener('touchend', endDrag, { passive: false });
     }
-    
+
     // Handle browser navigation
-    window.addEventListener('popstate', function() {
+    window.addEventListener('popstate', function () {
         const urlParams = new URLSearchParams(window.location.search);
         const challengeId = urlParams.get('challenge');
-        
+
         if (challengeId) {
             const challenge = challenges.find(c => c.id === challengeId);
             if (challenge) {
@@ -377,11 +378,11 @@ document.addEventListener('DOMContentLoaded', function() {
             practiceView.style.display = 'none';
         }
     });
-    
+
     // Initialize
     const urlParams = new URLSearchParams(window.location.search);
     const challengeId = urlParams.get('challenge');
-    
+
     if (challengeId) {
         const challenge = challenges.find(c => c.id === challengeId);
         if (challenge) {
