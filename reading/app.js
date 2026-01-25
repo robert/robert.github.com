@@ -120,7 +120,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const wordChoices = document.getElementById('wordChoices');
     const wordChoice1 = document.getElementById('wordChoice1');
     const wordChoice2 = document.getElementById('wordChoice2');
-    const speakBtn = document.getElementById('speakBtn');
+    const listeningNextBtn = document.getElementById('listeningNextBtn');
+    const listeningPrevBtn = document.getElementById('listeningPrevBtn');
     const listeningPresentContainer = document.getElementById('listeningPresentContainer');
     const listeningPresent = document.getElementById('listeningPresent');
     const listeningPrize = document.getElementById('listeningPrize');
@@ -455,8 +456,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (listeningPairs.length === 0) return;
 
         const pair = listeningPairs[currentPairIndex];
-        // Randomly pick which word is the target
-        targetWord = pair[Math.floor(Math.random() * 2)];
 
         // Randomly order the buttons
         const shuffledPair = [...pair].sort(() => 0.5 - Math.random());
@@ -464,71 +463,33 @@ document.addEventListener('DOMContentLoaded', function () {
         wordChoice1.textContent = shuffledPair[0];
         wordChoice2.textContent = shuffledPair[1];
 
-        // Reset button states - start disabled until speech finishes
-        wordChoice1.classList.remove('correct', 'incorrect');
-        wordChoice2.classList.remove('correct', 'incorrect');
-        wordChoice1.disabled = true;
-        wordChoice2.disabled = true;
-        listeningAnswered = false;
-
         updateListeningDots();
-
-        // Speak the target word 5 times, then enable buttons
-        setTimeout(() => {
-            speakWord(targetWord, 5, 800, function () {
-                // Enable buttons after all 5 repetitions
-                wordChoice1.disabled = false;
-                wordChoice2.disabled = false;
-            });
-        }, 300);
     }
 
-    function handleWordChoice(chosenWord, buttonElement) {
-        if (listeningAnswered) return;
-        listeningAnswered = true;
-
-        // Disable both buttons
-        wordChoice1.disabled = true;
-        wordChoice2.disabled = true;
-
-        if (chosenWord === targetWord) {
-            console.log(`Correct! "${chosenWord}" was the target word.`);
-            buttonElement.classList.add('correct');
-            // Move to next round after delay
-            setTimeout(() => {
-                if (currentPairIndex === listeningPairs.length - 1) {
-                    showListeningPresent();
-                } else {
-                    currentPairIndex++;
-                    displayListeningRound();
-                }
-            }, 1000);
+    function nextListeningRound() {
+        if (currentPairIndex === listeningPairs.length - 1) {
+            showListeningPresent();
         } else {
-            console.log(`Incorrect. Chose "${chosenWord}", but target was "${targetWord}".`);
-            buttonElement.classList.add('incorrect');
-            // Show which was correct
-            if (wordChoice1.textContent === targetWord) {
-                wordChoice1.classList.add('correct');
-            } else {
-                wordChoice2.classList.add('correct');
-            }
-            // Move to next round after longer delay
-            setTimeout(() => {
-                if (currentPairIndex === listeningPairs.length - 1) {
-                    showListeningPresent();
-                } else {
-                    currentPairIndex++;
-                    displayListeningRound();
-                }
-            }, 1500);
+            currentPairIndex++;
+            displayListeningRound();
         }
+    }
+
+    function prevListeningRound() {
+        if (currentPairIndex > 0) {
+            currentPairIndex--;
+        } else {
+            currentPairIndex = listeningPairs.length - 1;
+        }
+        displayListeningRound();
     }
 
     function showListeningPresent() {
         if (!listeningPresentContainer || !wordChoices) return;
 
         wordChoices.style.display = 'none';
-        if (speakBtn) speakBtn.style.display = 'none';
+        if (listeningNextBtn) listeningNextBtn.style.display = 'none';
+        if (listeningPrevBtn) listeningPrevBtn.style.display = 'none';
         listeningPresentContainer.classList.add('show');
         if (listeningDotsContainer) listeningDotsContainer.style.display = 'none';
     }
@@ -589,7 +550,8 @@ document.addEventListener('DOMContentLoaded', function () {
             listeningPresent.style.display = 'block';
         }
         if (wordChoices) wordChoices.style.display = 'flex';
-        if (speakBtn) speakBtn.style.display = 'flex';
+        if (listeningNextBtn) listeningNextBtn.style.display = 'flex';
+        if (listeningPrevBtn) listeningPrevBtn.style.display = 'flex';
         if (listeningDotsContainer) listeningDotsContainer.style.display = 'flex';
         if (listeningConfettiContainer) listeningConfettiContainer.innerHTML = '';
         initializeListeningDots();
@@ -717,23 +679,15 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
-    if (wordChoice1) {
-        wordChoice1.onclick = function () {
-            handleWordChoice(wordChoice1.textContent, wordChoice1);
+    if (listeningNextBtn) {
+        listeningNextBtn.onclick = function () {
+            nextListeningRound();
         };
     }
 
-    if (wordChoice2) {
-        wordChoice2.onclick = function () {
-            handleWordChoice(wordChoice2.textContent, wordChoice2);
-        };
-    }
-
-    if (speakBtn) {
-        speakBtn.onclick = function () {
-            if (targetWord) {
-                speakWord(targetWord, 5);
-            }
+    if (listeningPrevBtn) {
+        listeningPrevBtn.onclick = function () {
+            prevListeningRound();
         };
     }
 
