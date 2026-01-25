@@ -68,4 +68,10 @@ const challenges = [
     ],
     lessonSize: 5
   },
+  {
+    id: 'two-word-phrases',
+    name: 'Two Word Phrases',
+    words: ['the cat', 'a man', 'the rat', 'a bat', 'the mat', 'a hat'],
+    lessonSize: 6
+  },
 ];
