@@ -16,9 +16,66 @@
                 <!-- Challenge cards will be dynamically added here -->
             </div>
         </div>
-        
+
         <!-- Practice View -->
         <div class="practice-view" id="practiceView" style="display: none;">
+            <button class="back-btn" id="backBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </button>
+            <button class="big-mode-btn" id="bigModeBtn" title="Toggle Big Mode">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <line x1="11" y1="8" x2="11" y2="14"></line>
+                    <line x1="8" y1="11" x2="14" y2="11"></line>
+                </svg>
+            </button>
+            <div class="practice-content">
+                <div class="dots-container" id="dotsContainer"></div>
+                <div class="word-area">
+                    <div class="word" id="word"></div>
+                    <div class="arrow-track">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="arrow" id="arrow">
+                        <div class="arrow-hitbox"></div>
+                        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                            <path d="M 50 15 Q 52 17 54 20 L 70 36 Q 73 39 75 40 L 82 47 Q 85 50 85 55 L 85 85 Q 85 90 80 90 L 20 90 Q 15 90 15 85 L 15 55 Q 15 50 18 47 L 25 40 Q 27 39 30 36 L 46 20 Q 48 17 50 15 Z" fill="currentColor"/>
+                            <line x1="35" y1="45" x2="35" y2="75" stroke="black" stroke-width="2" opacity="0.3"/>
+                            <line x1="50" y1="35" x2="50" y2="75" stroke="black" stroke-width="2" opacity="0.3"/>
+                            <line x1="65" y1="45" x2="65" y2="75" stroke="black" stroke-width="2" opacity="0.3"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="present-container" id="presentContainer">
+                    <div class="present" id="present">
+                        <div class="present-box">
+                            <div class="present-lid"></div>
+                        </div>
+                        <div class="present-bow"></div>
+                    </div>
+                    <div class="confetti-container" id="confettiContainer"></div>
+                    <div class="prize" id="prize">
+                        <div class="prize-emoji">🏆</div>
+                        <div class="prize-text">Great Job!</div>
+                        <button class="play-again-btn" id="playAgainBtn">Play Again</button>
+                    </div>
+                </div>
+                <button class="nav-btn prev-btn" id="prevBtn">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="7 14 12 9 17 14"></polyline>
+                    </svg>
+                </button>
+                <button class="nav-btn next-btn" id="nextBtn">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
 
         <!-- Listening View -->
         <div class="listening-view" id="listeningView" style="display: none;">
@@ -55,63 +112,6 @@
                         <button class="play-again-btn" id="listeningPlayAgainBtn">Play Again</button>
                     </div>
                 </div>
-            </div>
-        </div>
-            <button class="back-btn" id="backBtn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-            </button>
-            <button class="big-mode-btn" id="bigModeBtn" title="Toggle Big Mode">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    <line x1="11" y1="8" x2="11" y2="14"></line>
-                    <line x1="8" y1="11" x2="14" y2="11"></line>
-                </svg>
-            </button>
-            <div class="practice-content">
-                <div class="dots-container" id="dotsContainer"></div>
-                <div class="word-area">
-            <div class="word" id="word"></div>
-            <div class="arrow-track">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <div class="arrow" id="arrow">
-                <div class="arrow-hitbox"></div>
-                <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                    <path d="M 50 15 Q 52 17 54 20 L 70 36 Q 73 39 75 40 L 82 47 Q 85 50 85 55 L 85 85 Q 85 90 80 90 L 20 90 Q 15 90 15 85 L 15 55 Q 15 50 18 47 L 25 40 Q 27 39 30 36 L 46 20 Q 48 17 50 15 Z" fill="currentColor"/>
-                    <line x1="35" y1="45" x2="35" y2="75" stroke="black" stroke-width="2" opacity="0.3"/>
-                    <line x1="50" y1="35" x2="50" y2="75" stroke="black" stroke-width="2" opacity="0.3"/>
-                    <line x1="65" y1="45" x2="65" y2="75" stroke="black" stroke-width="2" opacity="0.3"/>
-                </svg>
-            </div>
-        </div>
-        <div class="present-container" id="presentContainer">
-            <div class="present" id="present">
-                <div class="present-box">
-                    <div class="present-lid"></div>
-                </div>
-                <div class="present-bow"></div>
-            </div>
-            <div class="confetti-container" id="confettiContainer"></div>
-            <div class="prize" id="prize">
-                <div class="prize-emoji">🏆</div>
-                <div class="prize-text">Great Job!</div>
-                <button class="play-again-btn" id="playAgainBtn">Play Again</button>
-            </div>
-        </div>
-        <button class="nav-btn prev-btn" id="prevBtn">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="7 14 12 9 17 14"></polyline>
-            </svg>
-        </button>
-        <button class="nav-btn next-btn" id="nextBtn">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="7 10 12 15 17 10"></polyline>
-            </svg>
-        </button>
             </div>
         </div>
     </div>
