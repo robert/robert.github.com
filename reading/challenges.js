@@ -52,4 +52,20 @@ const challenges = [
     words: ['an', 'ant', 'and'],
     lessonSize: 3
   },
+  {
+    id: 'listening-cvc-1',
+    name: 'Listening: Which Word?',
+    mode: 'listening',
+    pairs: [
+      ['bat', 'bit'],
+      ['cat', 'cut'],
+      ['pan', 'pin'],
+      ['sat', 'sit'],
+      ['mat', 'mit'],
+      ['ran', 'run'],
+      ['hat', 'hit'],
+      ['pat', 'pit']
+    ],
+    lessonSize: 5
+  },
 ];

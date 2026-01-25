@@ -9,6 +9,12 @@ let startX = 0;
 let arrowOffset = 0;
 let sizeMode = 'normal'; // 'normal', 'big', 'extra-big'
 
+// Listening mode state
+let listeningPairs = [];
+let currentPairIndex = 0;
+let targetWord = null;
+let listeningAnswered = false;
+
 document.addEventListener('DOMContentLoaded', function () {
     // Get elements
     const challengeGrid = document.getElementById('challengeGrid');
@@ -30,6 +36,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const confettiContainer = document.getElementById('confettiContainer');
     const bigModeBtn = document.getElementById('bigModeBtn');
 
+    // Listening mode elements
+    const listeningView = document.getElementById('listeningView');
+    const listeningBackBtn = document.getElementById('listeningBackBtn');
+    const listeningDotsContainer = document.getElementById('listeningDotsContainer');
+    const wordChoices = document.getElementById('wordChoices');
+    const wordChoice1 = document.getElementById('wordChoice1');
+    const wordChoice2 = document.getElementById('wordChoice2');
+    const speakBtn = document.getElementById('speakBtn');
+    const listeningPresentContainer = document.getElementById('listeningPresentContainer');
+    const listeningPresent = document.getElementById('listeningPresent');
+    const listeningPrize = document.getElementById('listeningPrize');
+    const listeningPlayAgainBtn = document.getElementById('listeningPlayAgainBtn');
+    const listeningConfettiContainer = document.getElementById('listeningConfettiContainer');
+
     // Display challenges
     function showChallenges() {
         challengeGrid.innerHTML = '';
@@ -37,10 +57,20 @@ document.addEventListener('DOMContentLoaded', function () {
         challenges.forEach(function (challenge) {
             const card = document.createElement('div');
             card.className = 'challenge-card';
-            card.innerHTML = '<h3>' + challenge.name + '</h3><p>' + challenge.words.join(', ') + '</p>';
+
+            if (challenge.mode === 'listening') {
+                const pairText = challenge.pairs.map(p => p.join('/')).join(', ');
+                card.innerHTML = '<h3>' + challenge.name + '</h3><p>' + pairText + '</p>';
+            } else {
+                card.innerHTML = '<h3>' + challenge.name + '</h3><p>' + challenge.words.join(', ') + '</p>';
+            }
 
             card.onclick = function () {
-                startChallenge(challenge);
+                if (challenge.mode === 'listening') {
+                    startListeningChallenge(challenge);
+                } else {
+                    startChallenge(challenge);
+                }
             };
 
             challengeGrid.appendChild(card);
@@ -237,6 +267,229 @@ document.addEventListener('DOMContentLoaded', function () {
         displayWord();
     }
 
+    // ========== LISTENING MODE FUNCTIONS ==========
+
+    function startListeningChallenge(challenge) {
+        currentChallenge = challenge;
+        lessonSize = challenge.lessonSize || 5;
+
+        // Update URL
+        window.history.pushState({}, '', '?challenge=' + challenge.id);
+
+        // Switch views
+        challengeSelection.style.display = 'none';
+        practiceView.style.display = 'none';
+        listeningView.style.display = 'block';
+
+        // Initialize listening game
+        resetListeningGame();
+    }
+
+    function selectRandomPairs() {
+        const allPairs = currentChallenge.pairs;
+        const shuffled = [...allPairs].sort(() => 0.5 - Math.random());
+        listeningPairs = shuffled.slice(0, lessonSize);
+        currentPairIndex = 0;
+    }
+
+    function initializeListeningDots() {
+        if (!listeningDotsContainer) return;
+
+        listeningDotsContainer.innerHTML = '';
+        for (let i = 0; i < listeningPairs.length; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            listeningDotsContainer.appendChild(dot);
+        }
+        updateListeningDots();
+    }
+
+    function updateListeningDots() {
+        if (!listeningDotsContainer) return;
+
+        const dots = listeningDotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, index) => {
+            dot.classList.remove('completed', 'current', 'upcoming');
+
+            if (index < currentPairIndex) {
+                dot.classList.add('completed');
+            } else if (index === currentPairIndex) {
+                dot.classList.add('current');
+            } else {
+                dot.classList.add('upcoming');
+            }
+        });
+    }
+
+    function speakWord(word, times = 1, delay = 800) {
+        if (!('speechSynthesis' in window)) {
+            console.warn('Speech synthesis not supported');
+            return;
+        }
+
+        let count = 0;
+        function speak() {
+            if (count >= times) return;
+
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.rate = 0.8;
+            utterance.pitch = 1;
+            utterance.lang = 'en-US';
+
+            utterance.onend = function () {
+                count++;
+                if (count < times) {
+                    setTimeout(speak, delay);
+                }
+            };
+
+            speechSynthesis.speak(utterance);
+        }
+
+        // Cancel any ongoing speech
+        speechSynthesis.cancel();
+        speak();
+    }
+
+    function displayListeningRound() {
+        if (listeningPairs.length === 0) return;
+
+        const pair = listeningPairs[currentPairIndex];
+        // Randomly pick which word is the target
+        targetWord = pair[Math.floor(Math.random() * 2)];
+
+        // Randomly order the buttons
+        const shuffledPair = [...pair].sort(() => 0.5 - Math.random());
+
+        wordChoice1.textContent = shuffledPair[0];
+        wordChoice2.textContent = shuffledPair[1];
+
+        // Reset button states
+        wordChoice1.classList.remove('correct', 'incorrect');
+        wordChoice2.classList.remove('correct', 'incorrect');
+        wordChoice1.disabled = false;
+        wordChoice2.disabled = false;
+        listeningAnswered = false;
+
+        updateListeningDots();
+
+        // Speak the target word 5 times
+        setTimeout(() => speakWord(targetWord, 5), 300);
+    }
+
+    function handleWordChoice(chosenWord, buttonElement) {
+        if (listeningAnswered) return;
+        listeningAnswered = true;
+
+        // Disable both buttons
+        wordChoice1.disabled = true;
+        wordChoice2.disabled = true;
+
+        if (chosenWord === targetWord) {
+            buttonElement.classList.add('correct');
+            // Move to next round after delay
+            setTimeout(() => {
+                if (currentPairIndex === listeningPairs.length - 1) {
+                    showListeningPresent();
+                } else {
+                    currentPairIndex++;
+                    displayListeningRound();
+                }
+            }, 1000);
+        } else {
+            buttonElement.classList.add('incorrect');
+            // Show which was correct
+            if (wordChoice1.textContent === targetWord) {
+                wordChoice1.classList.add('correct');
+            } else {
+                wordChoice2.classList.add('correct');
+            }
+            // Move to next round after longer delay
+            setTimeout(() => {
+                if (currentPairIndex === listeningPairs.length - 1) {
+                    showListeningPresent();
+                } else {
+                    currentPairIndex++;
+                    displayListeningRound();
+                }
+            }, 1500);
+        }
+    }
+
+    function showListeningPresent() {
+        if (!listeningPresentContainer || !wordChoices) return;
+
+        wordChoices.style.display = 'none';
+        if (speakBtn) speakBtn.style.display = 'none';
+        listeningPresentContainer.classList.add('show');
+        if (listeningDotsContainer) listeningDotsContainer.style.display = 'none';
+    }
+
+    function createListeningConfetti() {
+        if (!listeningConfettiContainer) return;
+
+        const colors = ['#4ecdc4', '#45b7d1', '#5dade2', '#3498db', '#2980b9', '#1abc9c', '#48c9b0', '#76d7c4'];
+        const prizeEmojis = [
+            '🚂', '🤩', '🦸', '🏎️', '🚒', '🎤', '🗡️', '🚜', '🏓', '🍪', '🍩', '🍎', '🦉', '👻'
+        ];
+
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            listeningConfettiContainer.appendChild(confetti);
+        }
+
+        // Determine number of prizes
+        const rand = Math.random();
+        let numPrizes;
+        if (rand < 0.7) {
+            numPrizes = 1;
+        } else if (rand < 0.9) {
+            numPrizes = 2;
+        } else {
+            numPrizes = 3;
+        }
+
+        const prizeEmoji = listeningPresentContainer.querySelector('.prize-emoji');
+        const selectedPrizes = [];
+
+        while (selectedPrizes.length < numPrizes) {
+            const prize = prizeEmojis[Math.floor(Math.random() * prizeEmojis.length)];
+            if (!selectedPrizes.includes(prize)) {
+                selectedPrizes.push(prize);
+            }
+        }
+
+        if (prizeEmoji) prizeEmoji.textContent = selectedPrizes.join(' ');
+
+        setTimeout(() => {
+            if (listeningPresent) listeningPresent.style.display = 'none';
+            if (listeningPrize) listeningPrize.classList.add('show');
+        }, 500);
+    }
+
+    function resetListeningGame() {
+        selectRandomPairs();
+        if (listeningPresentContainer) listeningPresentContainer.classList.remove('show');
+        if (listeningPrize) listeningPrize.classList.remove('show');
+        if (listeningPresent) {
+            listeningPresent.classList.remove('opened');
+            listeningPresent.style.display = 'block';
+        }
+        if (wordChoices) wordChoices.style.display = 'flex';
+        if (speakBtn) speakBtn.style.display = 'flex';
+        if (listeningDotsContainer) listeningDotsContainer.style.display = 'flex';
+        if (listeningConfettiContainer) listeningConfettiContainer.innerHTML = '';
+        initializeListeningDots();
+        displayListeningRound();
+    }
+
+    // ========== END LISTENING MODE FUNCTIONS ==========
+
     // Drag functions
     function startDrag(e) {
         // Don't start drag if clicking on buttons
@@ -345,6 +598,52 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
+    // Listening mode event handlers
+    if (listeningBackBtn) {
+        listeningBackBtn.onclick = function () {
+            speechSynthesis.cancel();
+            challengeSelection.style.display = 'block';
+            listeningView.style.display = 'none';
+            window.history.pushState({}, '', window.location.pathname);
+            showChallenges();
+        };
+    }
+
+    if (wordChoice1) {
+        wordChoice1.onclick = function () {
+            handleWordChoice(wordChoice1.textContent, wordChoice1);
+        };
+    }
+
+    if (wordChoice2) {
+        wordChoice2.onclick = function () {
+            handleWordChoice(wordChoice2.textContent, wordChoice2);
+        };
+    }
+
+    if (speakBtn) {
+        speakBtn.onclick = function () {
+            if (targetWord) {
+                speakWord(targetWord, 5);
+            }
+        };
+    }
+
+    if (listeningPresent) {
+        listeningPresent.onclick = function () {
+            if (!listeningPresent.classList.contains('opened')) {
+                listeningPresent.classList.add('opened');
+                createListeningConfetti();
+            }
+        };
+    }
+
+    if (listeningPlayAgainBtn) {
+        listeningPlayAgainBtn.onclick = function () {
+            resetListeningGame();
+        };
+    }
+
     // Set up arrow drag - only on the arrow element itself
     if (arrowElement) {
         arrowElement.addEventListener('mousedown', startDrag);
@@ -359,20 +658,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Handle browser navigation
     window.addEventListener('popstate', function () {
+        speechSynthesis.cancel();
         const urlParams = new URLSearchParams(window.location.search);
         const challengeId = urlParams.get('challenge');
 
         if (challengeId) {
             const challenge = challenges.find(c => c.id === challengeId);
             if (challenge) {
-                startChallenge(challenge);
+                if (challenge.mode === 'listening') {
+                    startListeningChallenge(challenge);
+                } else {
+                    startChallenge(challenge);
+                }
             } else {
                 challengeSelection.style.display = 'block';
                 practiceView.style.display = 'none';
+                listeningView.style.display = 'none';
             }
         } else {
             challengeSelection.style.display = 'block';
             practiceView.style.display = 'none';
+            listeningView.style.display = 'none';
         }
     });
 
@@ -383,7 +689,11 @@ document.addEventListener('DOMContentLoaded', function () {
     if (challengeId) {
         const challenge = challenges.find(c => c.id === challengeId);
         if (challenge) {
-            startChallenge(challenge);
+            if (challenge.mode === 'listening') {
+                startListeningChallenge(challenge);
+            } else {
+                startChallenge(challenge);
+            }
         } else {
             showChallenges();
         }
