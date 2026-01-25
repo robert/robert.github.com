@@ -54,17 +54,17 @@ const challenges = [
   },
   {
     id: 'listening-cvc-1',
-    name: 'Listening: Which Word?',
+    name: 'Listening: a or i?',
     mode: 'listening',
     pairs: [
       ['bat', 'bit'],
-      ['cat', 'cut'],
       ['pan', 'pin'],
       ['sat', 'sit'],
       ['mat', 'mit'],
-      ['ran', 'run'],
       ['hat', 'hit'],
-      ['pat', 'pit']
+      ['pat', 'pit'],
+      ['tan', 'tin'],
+      ['man', 'min']
     ],
     lessonSize: 5
   },
