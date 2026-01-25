@@ -702,60 +702,14 @@ body {
     background: white;
     border: 4px solid #2c3e50;
     border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    cursor: default;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     color: #2c3e50;
     min-width: 250px;
     text-align: center;
+    pointer-events: none;
 }
 
-.word-choice-btn:hover:not(:disabled) {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.word-choice-btn:disabled {
-    cursor: default;
-    opacity: 0.4;
-    background: #e0e0e0;
-    border-color: #b0b0b0;
-    color: #888;
-}
-
-.word-choice-btn.correct {
-    background: #2ecc71;
-    border-color: #27ae60;
-    color: white;
-}
-
-.word-choice-btn.incorrect {
-    background: #e74c3c;
-    border-color: #c0392b;
-    color: white;
-}
-
-.speak-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: #3498db;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-    color: white;
-    width: 80px;
-    height: 80px;
-}
-
-.speak-btn:hover {
-    background: #2980b9;
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
-}
 
 .listening-present-container {
     position: absolute;
@@ -792,11 +746,5 @@ body {
         font-size: 60px;
         padding: 30px 40px;
         min-width: 200px;
-    }
-
-    .speak-btn {
-        width: 60px;
-        height: 60px;
-        padding: 15px;
     }
 }
