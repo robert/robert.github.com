@@ -19,6 +19,44 @@
         
         <!-- Practice View -->
         <div class="practice-view" id="practiceView" style="display: none;">
+
+        <!-- Listening View -->
+        <div class="listening-view" id="listeningView" style="display: none;">
+            <button class="back-btn" id="listeningBackBtn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </button>
+            <div class="listening-content">
+                <div class="dots-container" id="listeningDotsContainer"></div>
+                <div class="word-choices" id="wordChoices">
+                    <button class="word-choice-btn" id="wordChoice1"></button>
+                    <button class="word-choice-btn" id="wordChoice2"></button>
+                </div>
+                <button class="speak-btn" id="speakBtn" title="Hear the word again">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                    </svg>
+                </button>
+                <div class="listening-present-container" id="listeningPresentContainer">
+                    <div class="present listening-present" id="listeningPresent">
+                        <div class="present-box">
+                            <div class="present-lid"></div>
+                        </div>
+                        <div class="present-bow"></div>
+                    </div>
+                    <div class="confetti-container" id="listeningConfettiContainer"></div>
+                    <div class="prize" id="listeningPrize">
+                        <div class="prize-emoji">🏆</div>
+                        <div class="prize-text">Great Job!</div>
+                        <button class="play-again-btn" id="listeningPlayAgainBtn">Play Again</button>
+                    </div>
+                </div>
+            </div>
+        </div>
             <button class="back-btn" id="backBtn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="19" y1="12" x2="5" y2="12"></line>

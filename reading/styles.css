@@ -667,3 +667,132 @@ body {
         right: 20px;
     }
 }
+
+/* ========== LISTENING MODE STYLES ========== */
+
+.listening-view {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.listening-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 40px;
+}
+
+.word-choices {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.word-choice-btn {
+    font-family: 'Mulish', sans-serif;
+    font-size: 100px;
+    font-weight: 600;
+    padding: 40px 60px;
+    background: white;
+    border: 4px solid #2c3e50;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #2c3e50;
+    min-width: 250px;
+    text-align: center;
+}
+
+.word-choice-btn:hover:not(:disabled) {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.word-choice-btn:disabled {
+    cursor: default;
+}
+
+.word-choice-btn.correct {
+    background: #2ecc71;
+    border-color: #27ae60;
+    color: white;
+}
+
+.word-choice-btn.incorrect {
+    background: #e74c3c;
+    border-color: #c0392b;
+    color: white;
+}
+
+.speak-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #3498db;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    color: white;
+    width: 80px;
+    height: 80px;
+}
+
+.speak-btn:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+}
+
+.listening-present-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.listening-present-container.show {
+    display: flex;
+}
+
+/* Blue present for listening mode */
+.present.listening-present .present-box {
+    background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+}
+
+.present.listening-present .present-lid {
+    background: linear-gradient(135deg, #85c1e9 0%, #5dade2 100%);
+}
+
+@media (max-width: 768px) {
+    .word-choices {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .word-choice-btn {
+        font-size: 60px;
+        padding: 30px 40px;
+        min-width: 200px;
+    }
+
+    .speak-btn {
+        width: 60px;
+        height: 60px;
+        padding: 15px;
+    }
+}
