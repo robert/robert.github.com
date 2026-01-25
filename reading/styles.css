@@ -75,6 +75,13 @@ body {
     top: calc(100% - 100px);
 }
 
+/* Small Mode */
+.word-area.small-mode .word {
+    font-size: 60px;
+    letter-spacing: 20px;
+    padding-left: 20px;
+}
+
 .arrow-track {
     position: relative;
     width: 100%;
@@ -609,6 +616,15 @@ body {
     background-color: #333;
 }
 
+.big-mode-btn.small-active {
+    background-color: #3498db;
+    color: white;
+}
+
+.big-mode-btn.small-active:hover {
+    background-color: #2980b9;
+}
+
 @media (max-width: 768px) {
     .word {
         font-size: 80px;
@@ -632,6 +648,12 @@ body {
         width: 80px;
         height: 80px;
         top: calc(100% - 80px);
+    }
+
+    .word-area.small-mode .word {
+        font-size: 40px;
+        letter-spacing: 15px;
+        padding-left: 15px;
     }
 
     .arrow {

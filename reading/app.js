@@ -647,23 +647,29 @@ document.addEventListener('DOMContentLoaded', function () {
         bigModeBtn.onclick = function () {
             if (!wordArea) return;
 
-            // Cycle through modes: normal -> big -> extra-big -> normal
+            // Cycle through modes: normal -> big -> extra-big -> small -> normal
             if (sizeMode === 'normal') {
                 sizeMode = 'big';
-                wordArea.classList.remove('extra-big-mode');
+                wordArea.classList.remove('extra-big-mode', 'small-mode');
                 wordArea.classList.add('big-mode');
-                bigModeBtn.classList.remove('extra-active');
+                bigModeBtn.classList.remove('extra-active', 'small-active');
                 bigModeBtn.classList.add('active');
             } else if (sizeMode === 'big') {
                 sizeMode = 'extra-big';
-                wordArea.classList.remove('big-mode');
+                wordArea.classList.remove('big-mode', 'small-mode');
                 wordArea.classList.add('extra-big-mode');
-                bigModeBtn.classList.remove('active');
+                bigModeBtn.classList.remove('active', 'small-active');
                 bigModeBtn.classList.add('extra-active');
+            } else if (sizeMode === 'extra-big') {
+                sizeMode = 'small';
+                wordArea.classList.remove('big-mode', 'extra-big-mode');
+                wordArea.classList.add('small-mode');
+                bigModeBtn.classList.remove('active', 'extra-active');
+                bigModeBtn.classList.add('small-active');
             } else {
                 sizeMode = 'normal';
-                wordArea.classList.remove('big-mode', 'extra-big-mode');
-                bigModeBtn.classList.remove('active', 'extra-active');
+                wordArea.classList.remove('big-mode', 'extra-big-mode', 'small-mode');
+                bigModeBtn.classList.remove('active', 'extra-active', 'small-active');
             }
         };
     }
