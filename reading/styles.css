@@ -50,6 +50,10 @@ body {
     color: #000;
 }
 
+.word span.space {
+    width: 0.5em;
+}
+
 /* Big Mode */
 .word-area.big-mode .word {
     font-size: 280px;

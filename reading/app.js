@@ -216,6 +216,9 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i < word.length; i++) {
             const span = document.createElement('span');
             span.textContent = word[i];
+            if (word[i] === ' ') {
+                span.classList.add('space');
+            }
             wordElement.appendChild(span);
         }
 
