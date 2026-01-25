@@ -397,15 +397,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function speakWord(word, times = 1, delay = 800) {
+    function speakWord(word, times = 1, delay = 800, onComplete = null) {
         if (!('speechSynthesis' in window)) {
             console.warn('Speech synthesis not supported');
+            if (onComplete) onComplete();
             return;
         }
 
         let count = 0;
         function speak() {
-            if (count >= times) return;
+            if (count >= times) {
+                if (onComplete) onComplete();
+                return;
+            }
 
             const utterance = new SpeechSynthesisUtterance(word);
             utterance.rate = 0.85;
@@ -422,6 +426,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 count++;
                 if (count < times) {
                     setTimeout(speak, delay);
+                } else if (onComplete) {
+                    onComplete();
                 }
             };
 
@@ -431,6 +437,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 count++;
                 if (count < times) {
                     setTimeout(speak, delay);
+                } else if (onComplete) {
+                    onComplete();
                 }
             };
 
@@ -455,17 +463,23 @@ document.addEventListener('DOMContentLoaded', function () {
         wordChoice1.textContent = shuffledPair[0];
         wordChoice2.textContent = shuffledPair[1];
 
-        // Reset button states
+        // Reset button states - start disabled until speech finishes
         wordChoice1.classList.remove('correct', 'incorrect');
         wordChoice2.classList.remove('correct', 'incorrect');
-        wordChoice1.disabled = false;
-        wordChoice2.disabled = false;
+        wordChoice1.disabled = true;
+        wordChoice2.disabled = true;
         listeningAnswered = false;
 
         updateListeningDots();
 
-        // Speak the target word 5 times
-        setTimeout(() => speakWord(targetWord, 5), 300);
+        // Speak the target word 5 times, then enable buttons
+        setTimeout(() => {
+            speakWord(targetWord, 5, 800, function () {
+                // Enable buttons after all 5 repetitions
+                wordChoice1.disabled = false;
+                wordChoice2.disabled = false;
+            });
+        }, 300);
     }
 
     function handleWordChoice(chosenWord, buttonElement) {
