@@ -71,7 +71,8 @@ function selectBestVoice() {
     // Sort by score and pick the best
     scoredVoices.sort((a, b) => b.score - a.score);
 
-    console.log('Available voices:', scoredVoices.slice(0, 5).map(v => `${v.voice.name} (${v.score})`));
+    console.log('Top 5 voices:', scoredVoices.slice(0, 5).map(v => `${v.voice.name} (score: ${v.score})`));
+    console.log('Selected voice:', scoredVoices[0].voice.name, `(score: ${scoredVoices[0].score})`);
 
     return scoredVoices[0].voice;
 }
@@ -412,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const utterance = new SpeechSynthesisUtterance(word);
-            utterance.rate = 0.85;
+            utterance.rate = 0.7;
             utterance.pitch = 1;
 
             // Use the pre-selected best voice
@@ -491,6 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
         wordChoice2.disabled = true;
 
         if (chosenWord === targetWord) {
+            console.log(`Correct! "${chosenWord}" was the target word.`);
             buttonElement.classList.add('correct');
             // Move to next round after delay
             setTimeout(() => {
@@ -502,6 +504,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }, 1000);
         } else {
+            console.log(`Incorrect. Chose "${chosenWord}", but target was "${targetWord}".`);
             buttonElement.classList.add('incorrect');
             // Show which was correct
             if (wordChoice1.textContent === targetWord) {

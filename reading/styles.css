@@ -717,6 +717,10 @@ body {
 
 .word-choice-btn:disabled {
     cursor: default;
+    opacity: 0.4;
+    background: #e0e0e0;
+    border-color: #b0b0b0;
+    color: #888;
 }
 
 .word-choice-btn.correct {
