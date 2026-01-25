@@ -15,6 +15,82 @@ let currentPairIndex = 0;
 let targetWord = null;
 let listeningAnswered = false;
 
+// TTS voice selection
+let selectedVoice = null;
+
+function selectBestVoice() {
+    const voices = speechSynthesis.getVoices();
+    if (voices.length === 0) return null;
+
+    // Filter to English voices only
+    const englishVoices = voices.filter(v => v.lang.startsWith('en'));
+    if (englishVoices.length === 0) return voices[0];
+
+    // Prioritize voices (higher = better)
+    // Premium/enhanced voices are usually marked or have specific names
+    const scoredVoices = englishVoices.map(voice => {
+        let score = 0;
+        const name = voice.name.toLowerCase();
+
+        // Prefer local/offline voices (usually higher quality on modern systems)
+        if (voice.localService) score += 5;
+
+        // Premium voice indicators
+        if (name.includes('premium')) score += 20;
+        if (name.includes('enhanced')) score += 15;
+        if (name.includes('natural')) score += 15;
+        if (name.includes('neural')) score += 15;
+
+        // Specific high-quality voices by platform
+        // macOS - prefer Samantha or other natural voices
+        if (name.includes('samantha')) score += 25;
+        if (name.includes('karen')) score += 20;
+        if (name.includes('daniel')) score += 20;
+        if (name.includes('moira')) score += 18;
+        if (name.includes('tessa')) score += 18;
+
+        // Google voices (Chrome)
+        if (name.includes('google') && name.includes('us')) score += 15;
+        if (name.includes('google') && name.includes('uk')) score += 14;
+
+        // Microsoft voices (Edge)
+        if (name.includes('aria')) score += 18;
+        if (name.includes('jenny')) score += 18;
+        if (name.includes('guy')) score += 16;
+
+        // Prefer US or UK English
+        if (voice.lang === 'en-US') score += 3;
+        if (voice.lang === 'en-GB') score += 2;
+
+        // Avoid compact/low-quality voices
+        if (name.includes('compact')) score -= 10;
+
+        return { voice, score };
+    });
+
+    // Sort by score and pick the best
+    scoredVoices.sort((a, b) => b.score - a.score);
+
+    console.log('Available voices:', scoredVoices.slice(0, 5).map(v => `${v.voice.name} (${v.score})`));
+
+    return scoredVoices[0].voice;
+}
+
+// Initialize voice when voices are loaded
+function initVoices() {
+    selectedVoice = selectBestVoice();
+    if (selectedVoice) {
+        console.log('Selected TTS voice:', selectedVoice.name);
+    }
+}
+
+// Voices may load asynchronously
+if ('speechSynthesis' in window) {
+    speechSynthesis.onvoiceschanged = initVoices;
+    // Also try immediately (some browsers have voices ready)
+    initVoices();
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     // Get elements
     const challengeGrid = document.getElementById('challengeGrid');
@@ -332,11 +408,26 @@ document.addEventListener('DOMContentLoaded', function () {
             if (count >= times) return;
 
             const utterance = new SpeechSynthesisUtterance(word);
-            utterance.rate = 0.8;
+            utterance.rate = 0.85;
             utterance.pitch = 1;
-            utterance.lang = 'en-US';
+
+            // Use the pre-selected best voice
+            if (selectedVoice) {
+                utterance.voice = selectedVoice;
+            } else {
+                utterance.lang = 'en-US';
+            }
 
             utterance.onend = function () {
+                count++;
+                if (count < times) {
+                    setTimeout(speak, delay);
+                }
+            };
+
+            // Handle errors gracefully
+            utterance.onerror = function (e) {
+                console.warn('Speech error:', e.error);
                 count++;
                 if (count < times) {
                     setTimeout(speak, delay);
