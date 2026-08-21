@@ -3,8 +3,6 @@ layout: index
 title: About me
 classes: measure-wide f4
 ---
-I'm a researcher at [redacted][redacted] on the redacted.
-
 I'm writing [a book about being a dad](/dad-book), coming late 2025.
 
 On this blog I write about:
@@ -48,4 +46,3 @@ I'm on [Twitter][twitter] and I use email - `robqheaton at gmail dot com`. I'd l
 [twitter]: https://twitter.com/robjheaton
 [tcp-reset]: https://robertheaton.com/2020/04/27/how-does-a-tcp-reset-attack-work/
 [skyrim]: https://robertheaton.com/2018/07/04/i-went-to-skyrim-once/
-[redacted]: https://redacted.com
