@@ -2,7 +2,6 @@
 title: "Height: 2ft 10 inches. Occupation: baby"
 layout: post
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar-10-pub.jpg
 custom_meta: "As I understand it, you should let your children take risks. But surely you shouldn't let them take risks that could go wrong?"
 ---
 > Previously on parenting:
@@ -21,8 +20,6 @@ As I understand it, you should let your children take risks. But surely you shou
 
 I'm also told that you should help your children understand sharing. At the playground Oscar understood sharing enough to know that he hated it. Other children occasionally wanted to use the pretend telescope at the same time as each other and had a brief, cordial kerfuffle. But whenever anyone approached any part of what Oscar believed was his climbing frame he screamed "no! Don't do that!" and barrelled over to push them away. My quips like "everyone wants their child to be the one to learn lessons about sharing!" wore thin. I felt embarrassed and a little concerned. Back at home Gaby came up with a game called "The Sharing Slide". She made a small slide out of some planks of wood, and Oscar practiced letting Brown Bear, Penguin, and Horsey-Horse take turns to go down the slide ahead of him. Gaby felt absurd and fussy, but the slide seems to have been effective. Now Oscar is happy to take turns with people and stuffed animals and sometimes to even give them things that he likes. In the next module, Advanced Conflict Resolution, Penguin is going to start flagrantly violating the rules of the slide and Oscar is going to avoid pounding him into ice flakes.
 
-<img src="/images/oscar-10-horse.jpg" />
-
 Even when relations with his fellow toddlers were strained, it was wonderful watching Oscar play with other children. I don't know enough about kids to know which parts of Oscar are generic toddler and which are his unique personality. What stories will we tell him about himself when he's older? He seems to like cracking jokes. When Oscar meets new people his go-to icebreaker is "I did a wee wee on the carpet!" which is getting repetitive but his laughter is infectious. Does that mean he's funny? Gaby's mum tells her that she was a strong-willed and mischievous baby, so until now she's seen herself as a strong-willed and mischievous yet professional adult. But now that Gaby is struggling to divine her own toddler's personality she's started to wonder how good a judge of character her mum really was. Perhaps Gaby's will and mischief have softened a little as a result.
 
 Oscar has started going to toddler football club. The coach is bright and fizzy but over-estimates the complexity of instruction that two-year olds can follow, so a lot of the time Oscar sits on the floor and eats a snack and watches. This feels like an inefficient use of a tenner but I imagine he still gets something from it. When he does get involved it's a parent's responsibility to shepherd their child through the activities. I'm anxious to be a well-behaved parent so the coach doesn't get cross with me, but Oscar doesn't understand the goal net and sits inside it and calls it his tent. There's another child also named Oscar. My Oscar doesn't usually listen to me but he is very attentive to other-Oscar's dad and follows him around, trying to kick his ball and stomp on his cones and get in his way. Other-Oscar's dad seems tolerant but confused. I don't think he's worked out what's going on yet.
@@ -32,8 +29,6 @@ Oscar has started going to toddler football club. The coach is bright and fizzy 
 One night Oscar fell asleep while I was lying next to him. I got up and gave him a cinematic kiss goodnight. I might have even whispered "goodnight little Oscar." He woke up and wouldn't go back to sleep. I felt like an idiot.
 
 We took Oscar on holiday to the seaside with some friends. He got on splendidly with Uncle Sam, Auntie Jes, and Uncle Ronan The Dog. He went to the pub to watch England v Germany in the second round of the Euros. He had a curry but didn't join in the off-colour chanting. When England scored their second he knew that something important had happened, and stared and pointed at the TV screen for several minutes as the pub exploded around him.
-
-<img src="/images/oscar-10-pub.jpg" />
 
 ----
 
@@ -98,5 +93,3 @@ I loved my childhood but I could not be bothered to do it again. There's so far 
 I hope Oscar has a childhood that he can feel nostalgic about and I hope I get to hear about some of it.
 
 *Scroll down for more posts about parenthood.*
-
-<img src="/images/oscar-10-airport.jpg" />

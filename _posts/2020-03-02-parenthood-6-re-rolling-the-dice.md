@@ -3,7 +3,6 @@ permalink: /2020/03/02/parenthood-6-re-rolling-the-dice/
 layout: post
 title: "Parenthood #6: Re-rolling the dice"
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/parenthood6-kitchen.jpg
 ---
 > [(part 1)](/2019/06/17/childbirth-a-fathers-eye-view/)
 > [(part 2)](/2019/06/30/1-month-of-parenthood/)
@@ -12,8 +11,6 @@ og_image: https://robertheaton.com/images/parenthood6-kitchen.jpg
 > [(part 5)](/2020/01/06/parenthood-5-great-cement-ideas-that-will-make-your-partner-happy/)
 
 At gatherings with my non-parent friends Oscar is currently a fun novelty. But at what point will his clapping and gurgling start to become a tedious distraction, and at what point will people get fed up with being the ones who have to make the journey to our postcode "because of the little man"? Will I still have friends this time next year? Answers via WhatsApp please.
-
-<img src="/images/parenthood6-kitchen.jpg" />
 
 I wish I had done more back and shoulder strengthening exercises before Oscar was born. Babies need a lot of picking up and carrying and putting down. Oscar also still usually needs jiggling to sleep, and now that he's starting to try to walk he needs an adult (or at least a sturdy pre-teen) to bend down and give him some supporting fingers. On top of this, when I take Oscar outside I prefer to strap him to me in a sling instead of wheeling him around in a pushchair. In this configuration the two of us are much more compact and maneuverable, and our cuddling efficiency is maximized. However, all of this adds up to a sustained and significant strain on my back that is hard to take time off from.
 
@@ -96,7 +93,5 @@ Sometimes he mutters and tosses in his sleep, apparently in the midst of a baby 
 That's my boy.
 
 > Scroll down for more posts on parenthood.
-
-<img src="/images/parenthood6-fountain.jpg" />
 
 [wacom]: https://robertheaton.com/2020/02/05/wacom-drawing-tablets-track-name-of-every-application-you-open/

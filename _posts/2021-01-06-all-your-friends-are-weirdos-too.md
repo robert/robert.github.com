@@ -2,7 +2,6 @@
 layout: post
 title: "Don't worry son, all your friends are weirdos too"
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/parenthood9-woods.png
 custom_meta: "The morning after the US election it looked like the presidency was still up in the air and the Democrats were going to lose the senate."
 ---
 > Previously on parenting:
@@ -16,8 +15,6 @@ custom_meta: "The morning after the US election it looked like the presidency wa
 > [(part 8)](https://robertheaton.com/married-with-kids/)
 
 The morning after the US election it looked like the presidency was still up in the air and the Democrats were going to lose the senate. We were on edge. We went for a morose morning walk, and Oscar was uncharacteristically grumpy too. He got even crabbier as the walk wore on, until he was screaming and bawling and refusing to get out of his pushchair. We decided that we wouldn't send him to makeshift daycare at his grandparents and marveled at how amazing he was at picking up on world events and our subtle mood cues. When we got home we found a spoon in his boot.
-
-<img src="/images/parenthood9-woods.png" />
 
 ----
 
@@ -125,4 +122,3 @@ A few weeks later I was reading a book about network security that drew analogie
 
 > Scroll down for more posts on parenthood. [Let me know](/about) if you have any questions or stories of your own.
 
-<img src="/images/parenthood9-sleep.png" />

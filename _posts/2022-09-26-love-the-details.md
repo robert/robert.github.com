@@ -2,14 +2,11 @@
 title: "Love the details"
 layout: post
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar-16-cover.png
 custom_meta: "I always assumed that I'd teach my kids about the things that I love, and that I'd start at a young age. Gaby thought the same, and recently we've been putting more effort into guiding and challenging Oscar. At first this felt awkward and embarrassing. We worried that trying to teach maths and chess to a three year old might be a waste of time or harmful, or that other people might think we were ridiculous."
 ---
 > This is part 16 of a series about my experiences being a parent. Read the rest [here](https://robertheaton.com#parenthood).
 
 I always assumed that I'd teach my kids about the things that I love, and that I'd start early. Gaby thought the same, and recently we've been putting more effort into guiding and challenging Oscar. At first this felt awkward and embarrassing. We worried that trying to teach maths and chess to a three year old might be a waste of time or harmful, or that other people might think we were ridiculous. But we've since decided that it's probably worthwhile and nontoxic, and that no one else cares what we do.
-
-<img src="/images/oscar-16-cover.png" />
 
 We're starting by showing him the things that we love ourselves because those are the things that we know, but I hope that we'll be open-minded enough to embrace anything that Oscar falls for on his own, even if we don't understand it. Loving anything can be a tremendous source of happiness. But it can be difficult. How do you love something? How do we help Oscar to do it? Gaby's been having trouble sleeping, and she emailed me at 3am:
 
@@ -42,5 +39,3 @@ Gaby, in another midnight email:
 > "When I started going to Juilliard I saw parents hanging around campus so that they could go to lessons with their pre-teens. I thought this was intrusive and weird. But they probably saw it differently. If their kid was into music and they had the time and energy, they might as well help them do it right. I'm sure there were a lot of unhinged parents in there too, but some were just trying to support their kids and help them navigate their interest. I'm not saying that we or anyone has to do this, but I think it's a valid choice."
 
 *Scroll down for more posts about parenthood.*
-
-<img src="/images/oscar-16-end.png" />

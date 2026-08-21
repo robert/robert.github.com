@@ -2,9 +2,7 @@
 layout: post
 title: "I got married and had kids so you don't have to"
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/parenthood7-horse.jpg
 ---
-<img src="/images/parenthood7-horse.jpg" />
 
 > Previously:
 > [(part 1)](/2019/06/17/childbirth-a-fathers-eye-view/)
@@ -103,4 +101,3 @@ I’ve been becoming less afraid in the couple of weeks it’s taken to write th
 
 > Scroll down for more posts on parenthood.
 
-<img src="/images/parenthood7-berries.jpg" />

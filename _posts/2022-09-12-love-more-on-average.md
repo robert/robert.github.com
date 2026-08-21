@@ -2,14 +2,11 @@
 title: "I love him more and more every day on average"
 layout: post
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar-15-cover.jpg
 custom_meta: "We're having another baby. Gaby's been a blunt advocate for more ever since we got Oscar home. She muted her arguments when we were considering whether to have any children because she wanted to give me a free choice about my life's wide arc."
 ---
 > This is part 15 of a series about my experiences being a parent. Read the rest [here](https://robertheaton.com#parenthood).
 
 We're having another baby. Gaby's been a blunt advocate for more ever since we got Oscar home. She muted her arguments when we were considering whether to have any children because she wanted to give me a free choice about my life's wide arc. But now that we have one child our lifetype is set, and discussions about more are just debates about parameters. I knew that I'd agree when the time came, since Oscar is amazing and manageable, but I waffled until then to reserve some freedom of navigation.
-
-<img src="/images/oscar-15-cover.jpg" />
 
 Gaby loved being pregnant with Oscar. She glowed and knew it. But this pregnancy has felt harder. She wonders if the two have actually been about the same but her expectations have been different, or if perhaps now she just has less free time and reverence. Before having Oscar she read scads of accounts about how awful pregnancy and childbirth are and how women need to tell each other the truth. It was an obliging surprise when her own experience wasn't so bad. Second time round she expected another cinch, and whilst it's been tractable she has needed more steel than in her probably-airbrushed recollections. For example, Oscar's placenta was on the front of her belly and shielded her from his kicks. This baby's placenta is less well-placed, so she feels its feet more. Might sound trivial but nightkicks are a startling wakeup.
 
@@ -56,5 +53,3 @@ After the first round my friends warned me not to underestimate the kids. They w
 Now Oscar plays "chess tournament" at home. He gets out the chess board. He plays piano for a few seconds, because there was distracting foyer music playing during the first round and he thinks this is a key component of competition. He spends the rest of the make-believe telling his animals to be quiet. I'm not sure he has much passion for the game itself yet, but we've got time.
 
 > Read more of [my posts about parenthood](/#parenthood)
-
-<img src="/images/oscar-15-end.jpg" />

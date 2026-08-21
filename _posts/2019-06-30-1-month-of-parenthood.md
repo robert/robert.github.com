@@ -3,7 +3,6 @@ permalink: /2019/06/30/1-month-of-parenthood/
 title: "Port scans and industrial fans: 1 month of parenthood"
 layout: post
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar2-gardens.jpg
 ---
 > [(Read part 1 first)](/2019/06/17/childbirth-a-fathers-eye-view/)
 
@@ -13,8 +12,6 @@ Gaby was alone with Oscar for their first night in the hospital. It was 3am, and
 > Oscar, Oscar, you are my Oscar.
 
 It doesn't sound any better when performed live, but I suppose it was better than nothing.
-
-<img src="/images/oscar2-gardens.jpg" />
 
 ----
 
@@ -97,4 +94,3 @@ I didn't read any of the results, but I think I can retain my writing privileges
 
 [(Next: part 3)](/2019/08/25/parenthood-3-oscar-heaton-quarterly-baby-review/)
 
-<img src="/images/oscar2-observation.jpg" />

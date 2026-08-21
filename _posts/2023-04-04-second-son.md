@@ -2,7 +2,6 @@
 layout: post
 title: "I thought I knew what I was doing this time: how our second son was born"
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/sam.jpg
 custom_meta: "Before Oscar was born, I was entirely excited that we were going to have a child. I liked my life, but it was a good time to change everything."
 ---
 > This is part 17 of a series about my experiences being a parent. Read the rest [here](https://robertheaton.com#parenthood).
@@ -86,7 +85,5 @@ I started putting a nappy on Sam, but he'd already pooed in his blanket and I'd 
 The duty midwife told us that we could go home that evening if we wanted. At first that sounded silly. Sam was so fragile, and I'd already covered him in chemicals and faeces. But he'd still be fragile tomorrow, so we said yes. The midwife filled out the paperwork and Gaby asked me to sneak into the triage room and steal some biscuits that she'd seen there a few hours ago.
 
 My dad picked us up around 10. This time round Gaby could hobble herself to the car. I carried Sam in his new, unfamiliar seat and we strapped him in as best we could. We got home, hugged my parents and went to bed. Sam was comatose the whole night but Gaby lay awake shaking. She roused him every few hours to feed. The next day we introduced Oscar to his brother. Oscar said hello but was otherwise uninterested and went about his day as normal. Gaby's parents had given him a new cuddly lion to mark the day, and I suggested that we call it Lionel Richie. Oscar liked my idea, but got confused about which animal I was talking about. Now he has a baby brother called Sam, and a penguin called Lionel Richie.
-
-<img src="/images/sam.jpg" width="75%" />
 
 > This is part 17 of a series about my experiences being a parent. Read the rest [here](https://robertheaton.com#parenthood).

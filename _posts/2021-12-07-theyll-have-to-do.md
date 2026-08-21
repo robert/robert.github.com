@@ -2,7 +2,6 @@
 title: "I wouldn't call my friends strong male role models but they'll have to do"
 layout: post
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar-11-cover.jpg
 custom_meta: "Oscar and I have started playing chess. He saw the handsome wooden set my parents got me for my 18th birthday and wanted to know what it was. The rules of chess so far are that one person plays white and the other plays black."
 ---
 > Previously on parenting:
@@ -21,8 +20,6 @@ custom_meta: "Oscar and I have started playing chess. He saw the handsome wooden
 ## Chess
 
 Oscar and I have started playing chess. He saw the handsome wooden set my parents got me for my 18th birthday and wanted to know what it was. The rules of chess so far are that one person plays white and the other plays black. When it's your turn you pick up one of your pieces and place it on an unoccupied square anywhere on the board. The game ends when the two-year old gets bored.
-
-<img src="/images/oscar-11-running.jpg" />
 
 I was good at chess when I was younger. When I need to explain how good I was I say that I came 30th in the European Junior Championship in 2005. I am proud of this achievement but it's a little misleading since each country only gets to send two people and I imagine I'd have struggled against even the thirtieth-best teenager in Poland or Lithuania. Even so, I was good and if Oscar wants to play seriously then he'll be at least 12 before he takes a game off me.
 
@@ -112,4 +109,3 @@ How do you wish things for your child while also making it clear that whatever h
 
 > *Scroll down for more posts about parenthood*
 
-<img src="/images/oscar-11-window.png" />

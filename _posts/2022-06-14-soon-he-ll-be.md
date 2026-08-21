@@ -2,14 +2,11 @@
 title: "Soon he’ll be three and soon he’ll be twenty-one"
 layout: post
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar14-cover.jpg
 custom_meta: "I woke up and said good morning to Oscar. \"Go away daddy, I don't love you.\"  I went downstairs. \"Daddy can't eat breakfast with me, he is not fun and he makes me sad.\""
 ---
 > This is part 14 of a series on my experiences being a parent. Read parts 1-13 [here](https://robertheaton.com#parenthood).
 
 I woke up and said good morning to Oscar. "Go away daddy, I don't love you."  I went downstairs. "Daddy can't eat breakfast with me, he is not fun and he makes me sad." I loaded Oscar onto my bike to go to pre-school. "Mummy I love you so much but I don't love daddy at all." Apparently normal, but starting to get to me. What if he was old enough to mean it?
-
-<img src="/images/oscar14-cover.jpg" />
 
 I don't worry that my relationship with Oscar is ruined before it's even begun. He's two and is civil to me sometimes, especially when we're on our own. When I went away for a few days he sent me a video saying "I want you to come back soon, I love you daddy," although he wouldn't talk to me on the phone. But when he's browbeating me I do question the point of me being there if I'm just going to be ignored and abused. I wonder if I'm being over-sensitive. Aren't children meant to crave the approval of their parents, not the other way round? But Gaby says that if he was like that to her then she'd be devastated. She also says that when I'm not there he tries to call me to tell me that he loves me but his phone is made of wood and he doesn't know my number.
 

@@ -2,7 +2,6 @@
 layout: post
 title: "Another family without a backstory"
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar10-cover.jpg
 custom_meta: "Other people's kids are just as interesting as Oscar, but I hate being reminded of this. It makes Oscar feel like another generic baby and the three of us like another family without a backstory"
 ---
 > Previously on parenting:
@@ -19,8 +18,6 @@ custom_meta: "Other people's kids are just as interesting as Oscar, but I hate b
 Other people's kids are just as interesting as Oscar, but I hate being reminded of this. It makes Oscar feel like another generic baby and the three of us like another family without a backstory. Even so, the idea of having other children and parents round to our house to play still feels like an unimaginable luxury. I can't believe that one day, when the UK's COVID restrictions lift high enough, we'll be allowed to have as many playdates as we like. I can't believe that they will quickly get tiresome.
 
 Oscar lives in a pandemic-shrunk world that he's trying to make the most of. Last week he toddled over to some ten year-olds and tried to make small talk. He doesn't know much about anything so he tried his favorite topic of conversation. "Do you like cashews?" The ten year-olds pretended not to hear him. When Oscar was angry with Gaby he shouted "no more nursing!" which was the meanest thing he could think of. He sleeptalks about the few things he sees during the day "pushchair…want bread...build tower…"
-
-<img src="/images/oscar10-machines.jpg" />
 
 ----
 

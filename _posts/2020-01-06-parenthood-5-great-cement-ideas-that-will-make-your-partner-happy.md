@@ -3,7 +3,6 @@ permalink: /2020/01/06/parenthood-5-great-cement-ideas-that-will-make-your-partn
 layout: post
 title: "Parenthood #5: Great cement ideas that will make your partner happy"
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/parenthood5-office.jpg
 ---
 > [(part 1)](/2019/06/17/childbirth-a-fathers-eye-view/)
 > [(part 2)](/2019/06/30/1-month-of-parenthood/)
@@ -11,8 +10,6 @@ og_image: https://robertheaton.com/images/parenthood5-office.jpg
 > [(part 4)](/2019/10/10/parenthood-4-untitled-potato-portrait/)
 
 Here's a story - Gaby and Oscar were traveling home by train after visiting her grandparents. Oscar was looking around and smiling at anyone who would give him the time of day. Most people acknowledged him with a cordial smile, and then returned to scrolling through their Instasnapbook account. But then Oscar found someone behind Gaby who was willing to entertain him ad infinitum. He cooed and gurgled and had no end of fun with this mystery inexhaustible interlocutor. Gaby didn't want to have to turn around and say an awkward hello, but after fifteen minutes she felt like she had no choice but to say thank you. She looked back, but there was nobody there. Oscar giggled and made another face at a giant poster of a man advertising life insurance.
-
-<img src="/images/parenthood5-office.jpg" />
 
 ----
 
@@ -98,4 +95,3 @@ When he gets agitated we take a break to watch the ceiling fan. We try to come u
 
 We sometimes do these things as a whole family, all three of us. It's fun, if inefficient.
 
-<img src="/images/parenthood5-orchard.jpg" />

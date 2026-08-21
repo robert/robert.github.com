@@ -2,7 +2,6 @@
 title: "We're responsible for the Christmas magic now"
 layout: post
 tags: [Babies, Life]
-og_image: https://robertheaton.com/images/oscar13-cover.jpg
 custom_meta: "I woke up in December feeling rancid and stayed in bed for hours. Eventually Gaby came to check on me."
 ---
 > Previously on parenting:
@@ -37,8 +36,6 @@ Going For A Baby Latte With Daddy is about the journey. It takes an hour to walk
 
 When we get to the coffee shop Oscar tries to order us "a Baby Latte and an Americano." The barista can't really hear him but if it's someone we've seen before then they sometimes remember what we like. We go outside and read some books. It takes Oscar 5 minutes to drink his steamed milk and then another 10 before he loses interest in bonding with me and wants to go home.
 
-<img src="/images/oscar13-cover.jpg" />
-
 ----
 
 ## Hobbies
@@ -52,8 +49,6 @@ I had assumed that children were born resilient and that fear of failure was a l
 Still, these outbursts do give us pause for thought about whether we should be doing anything different. Oscar gets bashful when I ask him to play Jingle Bells for visitors, which I do too often. From now on I'm going to suggest it once per visit and then drop it. I'm also going to change the way I ask. At the moment I say "Oscar, can you play Jingle Bells for Uncle Moe?" and he often says "no I can't," which I think he thinks means "I would rather not." I'm going to start asking him "would you like to play Jingle Bells?" instead so he can reply "no I don't want to" directly. I don't know how much this wording matters but it must matter a bit and these tweaks give me a delusion of agency. I've stopped saying "I can't find my keys, I'm such a moron," just in case. He copies our speech a lot already. He issues compulsory toddler decrees in measured language: "I THINK WE SHOULD PROBABLY GO AND HAVE BREAKFAST RIGHT NOW." "I'M PRETTY SURE I CAN KNOCK THIS TOWER DOWN."
 
 Toddlers can do more than you think, or at least more than I think. We went to a BMX park and it was incredible. Children younger than Oscar cruised round the track on their balance bikes, on their own, up 45-degree-banked turns and down deep ramps. After a few hours of practice Oscar could do this too. He fell over once but Gaby was bracing him and she got hurt more than he did. Oscar's lip trembled but he just wanted to be picked up and thrown down the next ridge. It was the most exhilarating thing we've done as parents. I wanted to put a GoPro on Oscar's head but then you wouldn't be able to see that the pilot was a 2 year-old. As we walked home I tried to tell Oscar how proud I was of him. He's not a particularly skilled or unskilled balance-biker so I guess that any toddler could have done what he did, but I was happy that he had a go and got up when he fell down. I always assumed that my parents were lying when they said that kind of thing.
-
-<img src="/images/oscar13-bike.png" width="50%" />
 
 We've been playing more chess and have been learning how to set up the pieces. Oscar usually gets it half-right. He uses the chess set as a vehicle for dorky jokes. We start by lining up the pawns, and sometimes he assembles them on the fourth or fifth rank while giggling wildly. "I'm putting the pawns on a silly row!" Yes that's very funny son, but could you please put them in front of the rooks and show off properly for the camera?
 
@@ -99,4 +94,3 @@ She says that our split is good enough the way it is, but she would still apprec
 
 I just re-read the above section and I think that I'm judging myself too harshly and adhering too closely to the modern mark scheme. I do wonder how long it will be until my parenting is seen as affectionate and well-meaning but a product of my time. But last weekend Oscar was puttering around in the front room. He said "I'm pretending to be a daddy." Gaby asked him what a daddy does. "He cooks and cleans and helps people eat and brushes their teeth." Daddy's alright.
 
-<img src="/images/oscar13-coffee.jpg" width="50%" />
