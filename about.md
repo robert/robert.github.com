@@ -3,7 +3,7 @@ layout: index
 title: About me
 classes: measure-wide f4
 ---
-I'm writing [a book about being a dad](/dad-book), coming late 2025.
+I'm writing [a book about being a dad](/dad-book).
 
 On this blog I write about:
 
